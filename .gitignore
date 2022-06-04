@@ -1,0 +1,14 @@
+.DS_Store
+calcurse/
+dconf/
+git/
+htop/
+irssi/
+libreoffice/
+mutt/gmail_1/
+mutt/gmail_2/
+mutt/gmail_3/
+neofetch
+pulse
+zsh/.zcompdump
+zsh/zsh_history

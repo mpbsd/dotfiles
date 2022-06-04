@@ -1,0 +1,50 @@
+###############
+# sourcery
+#
+source "${XDG_CONFIG_HOME}/mutt/rc/colors.rc"
+source "${XDG_CONFIG_HOME}/mutt/rc/gpg.rc"
+source "${XDG_CONFIG_HOME}/mutt/rc/sidebar.rc"
+
+###############
+# folder hooks
+#
+folder-hook 'account_gmail_1' 'source ${XDG_CONFIG_HOME}/mutt/gmail_1/account_gmail_1'
+folder-hook 'account_gmail_2' 'source ${XDG_CONFIG_HOME}/mutt/gmail_2/account_gmail_2'
+folder-hook 'account_gmail_3' 'source ${XDG_CONFIG_HOME}/mutt/gmail_3/account_gmail_3'
+
+###############
+# default account
+#
+source ${XDG_CONFIG_HOME}/mutt/gmail_1/account_gmail_1
+
+###############
+# macros for switching accounts
+#
+macro index <f6> '<sync-mailbox><enter-command>source ${XDG_CONFIG_HOME}/mutt/gmail_1/account_gmail_1<enter><change-folder>!<enter>'
+macro index <f7> '<sync-mailbox><enter-command>source ${XDG_CONFIG_HOME}/mutt/gmail_2/account_gmail_2<enter><change-folder>!<enter>'
+macro index <f8> '<sync-mailbox><enter-command>source ${XDG_CONFIG_HOME}/mutt/gmail_3/account_gmail_3<enter><change-folder>!<enter>'
+
+###############
+# settings
+#
+set copy = no
+set delete = yes
+set editor = "vim"
+set sort = threads
+set edit_headers
+
+###############
+# mailcap
+#
+set mailcap_path = "${XDG_CONFIG_HOME}/mutt/rc/mailcap"
+auto_view text/html
+
+###############
+# key bindings
+#
+bind generic { top-page
+bind generic } bottom-page
+bind index f imap-fetch-mail
+
+# Prefer plain text over html.
+alternative_order text/plain text/enriched text/html

@@ -1,0 +1,12 @@
+browser           "firefox"
+player            "mpv"
+download-path     "~/downloads/%n"
+save-path         "~/downloads"
+reload-threads    20
+cleanup-on-quit   yes
+text-width        80
+
+bind-key G end
+bind-key g home
+bind-key j down
+bind-key k up

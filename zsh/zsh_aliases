@@ -1,0 +1,44 @@
+# colors
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias ls='ls --color=auto -F'
+alias ll='ls -lh'
+alias la='ls -la'
+
+# think twice man ;)
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+
+# administration
+alias update='sudo pacman -Syu'
+alias cleanup='sudo paccache -r && sudo paccache -ruk0'
+
+# git
+alias ggst='git status'
+alias ggaa='git add .'
+alias ggca='git commit -a'
+alias ggll='git pull origin main'
+alias ggsh='git push origin main'
+alias gglg='git log --graph'
+
+# irssi
+alias irssi="irssi --config=${XDG_CONFIG_HOME}/irssi/config --home=${XDG_DATA_HOME}/irssi"
+
+# config files
+alias i3config="vim ${XDG_CONFIG_HOME}/i3/config"
+alias tmconfig="vim ${XDG_CONFIG_HOME}/tmux/tmux.conf"
+alias evconfig="vim ${HOME}/.zshenv"
+
+# by suffix
+alias -s conf='vim'
+alias -s md='vim'
+alias -s py='vim'
+alias -s sh='vim'
+alias -s tex='vim'
+alias -s txt='vim'
+
+# python virtual environments
+alias ae='. venv/bin/activate'
+alias de='deactivate'
