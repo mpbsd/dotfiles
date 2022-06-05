@@ -7,13 +7,14 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-  colors   = true
-  interval = 5
+  colors    = true
+  interval  = 5
 }
 
 # order += "ipv6"
 order += "wireless _first_"
 order += "battery all"
+order += "volume master"
 order += "disk /"
 order += "disk /home"
 order += "cpu_temperature 0"
@@ -28,6 +29,12 @@ wireless _first_ {
 
 battery all {
   format = "[B] %status %percentage %remaining"
+}
+
+volume master {
+  format = "[V] %volume"
+  format_muted = "[V] muted"
+  device = "default"
 }
 
 disk "/" {
@@ -49,9 +56,9 @@ cpu_usage {
 memory {
   format             = "[M] %percentage_used"
   threshold_degraded = "1G"
-  format_degraded    = "MEMORY < %available"
+  format_degraded    = "[A] < %available"
 }
 
 tztime local {
-  format = "[D] (%R) %a, %b %d %Y"
+  format = "[D] %a, %b %d %Y %R"
 }

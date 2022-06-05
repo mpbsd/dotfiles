@@ -1,24 +1,23 @@
 # -*-muttrc-*-
 
-# Colors for use with xterm and the like, white background.
+# Palette for use with the Linux console.  Black background.
 
-color hdrdefault yellow black
-color quoted yellow black
-color signature yellow black
-color attachment yellow black
-color prompt yellow black
+color hdrdefault blue black
+color quoted blue black
+color signature blue black
+color attachment red black
+color prompt brightmagenta black
 color message yellow black
-color error yellow black
-color indicator black yellow
-color status black white
+color error brightred black
+color indicator yellow black
+color status yellow black
 color tree white black
 color normal white black
-color markers yellow black
+color markers red black
 color search white black
-color tilde yellow black
-color index yellow black ~F
-color index yellow black "~N|~O"
+color tilde brightmagenta black
+color index blue black ~F
+color index red black "~N|~O"
 
-
-color body white black '\*+[^*]+\*+'
-color body white black '_+[^_]+_+'
+# color body brightwhite black '\*+[^*]+\*+'
+# color body brightwhite black '_+[^_]+_+'

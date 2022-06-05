@@ -6,7 +6,7 @@ alias ls='ls --color=auto -F'
 alias ll='ls -lh'
 alias la='ls -la'
 
-# think twice man ;)
+# think again
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
@@ -28,6 +28,7 @@ alias irssi="irssi --config=${XDG_CONFIG_HOME}/irssi/config --home=${XDG_DATA_HO
 # config files
 alias i3config="vim ${XDG_CONFIG_HOME}/i3/config"
 alias tmconfig="vim ${XDG_CONFIG_HOME}/tmux/tmux.conf"
+alias alconfig="vim ${XDG_CONFIG_HOME}/zsh/zsh_aliases"
 alias evconfig="vim ${HOME}/.zshenv"
 
 # open files with these suffices with vim by default
