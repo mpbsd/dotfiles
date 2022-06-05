@@ -156,10 +156,11 @@ bar {
 # Tweaks
 
 # border width
-default_border pixel 4
+default_border pixel 0
 
 # gap between windows
-gaps inner 8
+gaps inner 6
+gaps outer 2
 
 # on small screens...
 workspace_layout stacking
@@ -172,8 +173,8 @@ bindsym $alt+b exec --no-startup-id i3-sensible-terminal -e "bc"
 bindsym $alt+c exec --no-startup-id i3-sensible-terminal -e "calcurse"
 bindsym $alt+d exec --no-startup-id i3-sensible-terminal -e "ncdu"
 
-bindsym $alt+f exec --no-startup-id firefox "https://archlinux.org"
-bindsym $alt+g exec --no-startup-id "sh ~/bin/open_home_dir_in_urxvt.sh"
+bindsym $alt+f exec --no-startup-id "sh ~/bin/reach.sh"
+bindsym $alt+g exec --no-startup-id "sh ~/bin/open_dir_in_my_home_folder_in_urxvt.sh"
 bindsym $alt+h exec --no-startup-id i3-sensible-terminal -e "htop"
 bindsym $alt+i exec --no-startup-id i3-sensible-terminal -e "irssi"
 
@@ -187,9 +188,12 @@ bindsym $alt+q exec --no-startup-id "sh ~/bin/shutdown.sh"
 bindsym $alt+r exec --no-startup-id i3-sensible-terminal -e "ranger"
 bindsym $alt+s exec --no-startup-id i3-sensible-terminal -e "sc"
 bindsym $alt+t exec --no-startup-id thunderbird
-bindsym $alt+u exec --no-startup-id firefox "https://ufgnet.ufg.br"
+
 bindsym $alt+v exec --no-startup-id i3-sensible-terminal -e "vim"
 bindsym $alt+w exec --no-startup-id "sh ~/bin/wallpaper.sh"
 bindsym $alt+x exec --no-startup-id xboard
 
+
+
 exec --no-startup-id i3-sensible-terminal
+exec --no-startup-id firefox "https://archlinux.org"
