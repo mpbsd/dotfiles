@@ -1,3 +1,5 @@
+let g:python3_host_prog = '/usr/bin/python'
+
 let mapleader="\<Space>"
 
 set number
@@ -27,10 +29,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" set undodir=~/.vim/undodir
-" set undofile
-
-" set viminfo+=n~/.vim/.viminfo
+set undofile
 
 set dict+=~/.vim/dict/frequently_used_words.txt
 set spelllang=en,pt
