@@ -2,16 +2,16 @@
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-alias ls='ls --color=auto -F'
+alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -la'
 
-# think again
+# think twice ;)
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 
-# administration
+# system administration
 alias update='sudo pacman -Syu'
 
 # git
@@ -26,10 +26,11 @@ alias ggst='git status'
 alias irssi="irssi --config=${XDG_CONFIG_HOME}/irssi/config --home=${XDG_DATA_HOME}/irssi"
 
 # config files
-alias i3config="vim ${XDG_CONFIG_HOME}/i3/config"
-alias tmconfig="vim ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 alias alconfig="vim ${XDG_CONFIG_HOME}/zsh/zsh_aliases"
 alias evconfig="vim ${HOME}/.zshenv"
+alias i3config="vim ${XDG_CONFIG_HOME}/i3/config"
+alias lgconfig="vim ${XDG_DATA_HOME}/ledger/ledger.dat"
+alias tmconfig="vim ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 
 # open files with these suffices with vim by default
 alias -s conf='vim'
