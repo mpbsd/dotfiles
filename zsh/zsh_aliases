@@ -1,7 +1,8 @@
-# colors
+# grep with colors
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+# ls with colors
 alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -la'
@@ -10,6 +11,9 @@ alias la='ls -la'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
+
+alias ..='cd ..'
+alias ...='cd ../..'
 
 # system administration
 alias update='sudo pacman -Syu'
