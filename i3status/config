@@ -60,5 +60,5 @@ memory {
 }
 
 tztime local {
-  format = "[D] %a, %b %d %Y %R"
+  format = "[D] %a, %b %d %R"
 }

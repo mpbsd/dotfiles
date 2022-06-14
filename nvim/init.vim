@@ -44,9 +44,6 @@ nnoremap <Leader>; :
 nnoremap <Leader>fq :q<CR>
 nnoremap <Leader>fs :w<CR>
 
-nnoremap <Leader>mc :make clean<CR>
-nnoremap <Leader>mk :make<CR>
-
 nnoremap <Leader>oe :edit $MYVIMRC<CR>
 nnoremap <Leader>os :source $MYVIMRC<CR>
 
@@ -60,9 +57,6 @@ nnoremap <C-l> <C-w>l
 
 inoremap <C-t> <Esc>b~ea
 inoremap <C-u> <Esc>gUiwea
-
-au BufWinLeave *.* mkview
-au BufWinEnter *.* silent loadview
 
 function TitleCaseSentence(l_or_u)
   if a:l_or_u ==# 'l'
@@ -97,7 +91,7 @@ call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme gruvbox
+colorscheme darcula
 
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<Tab>"
@@ -107,18 +101,18 @@ let g:UltiSnipsEditSplit="horizontal"
 
 " Markdown bindings and settings
 
-function MarkdownHeaderLevel(h_level)
-  if a:h_level ==# '1'
+function MarkdownHeaderLevel(header_level)
+  if a:header_level ==# '1'
     normal! yypVr=
-  elseif a:h_level ==# '2'
+  elseif a:header_level ==# '2'
     normal! yypVr-
-  elseif a:h_level ==# '3'
+  elseif a:header_level ==# '3'
     normal! I###
-  elseif a:h_level ==# '4'
+  elseif a:header_level ==# '4'
     normal! I####
-  elseif a:h_level ==# '5'
+  elseif a:header_level ==# '5'
     normal! I#####
-  elseif a:h_level ==# '6'
+  elseif a:header_level ==# '6'
     normal! I######
   endif
 endfunction
