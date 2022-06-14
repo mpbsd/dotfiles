@@ -173,28 +173,22 @@ bindsym $alt+a exec --no-startup-id i3-sensible-terminal -e "alsamixer"
 bindsym $alt+b exec --no-startup-id i3-sensible-terminal -e "bc"
 bindsym $alt+c exec --no-startup-id i3-sensible-terminal -e "calcurse"
 bindsym $alt+d exec --no-startup-id i3-sensible-terminal -e "ncdu"
-
-bindsym $alt+f exec --no-startup-id "sh ~/bin/reach.sh"
-bindsym $alt+g exec --no-startup-id "sh ~/bin/open_dir_in_my_home_folder_with_urxvt.sh"
 bindsym $alt+h exec --no-startup-id i3-sensible-terminal -e "htop"
 bindsym $alt+i exec --no-startup-id i3-sensible-terminal -e "irssi"
-
-
-
-
 bindsym $alt+n exec --no-startup-id i3-sensible-terminal -e "newsboat"
-
-bindsym $alt+p exec --no-startup-id "sh ~/bin/open_project_dir_with_urxvt.sh"
-bindsym $alt+q exec --no-startup-id "sh ~/bin/quit_session.sh"
 bindsym $alt+r exec --no-startup-id i3-sensible-terminal -e "ranger"
 bindsym $alt+s exec --no-startup-id i3-sensible-terminal -e "sc"
-bindsym $alt+t exec --no-startup-id thunderbird
+bindsym $alt+v exec --no-startup-id i3-sensible-terminal -e "nvim"
 
-bindsym $alt+v exec --no-startup-id i3-sensible-terminal -e "vim"
-bindsym $alt+w exec --no-startup-id "sh ~/bin/wallpaper.sh"
+bindsym $alt+f exec --no-startup-id firefox "https://archlinux.org"
+bindsym $alt+t exec --no-startup-id thunderbird
 bindsym $alt+x exec --no-startup-id xboard
 
-
+bindsym $alt+j exec --no-startup-id "sh ~/bin/open_dir_in_my_home_folder_with_urxvt.sh"
+bindsym $alt+k exec --no-startup-id "sh ~/bin/open_project_dir_with_urxvt.sh"
+bindsym $alt+o exec --no-startup-id "sh ~/bin/reach.sh"
+bindsym $alt+q exec --no-startup-id "sh ~/bin/quit_session.sh"
+bindsym $alt+w exec --no-startup-id "sh ~/bin/wallpaper.sh"
 
 exec --no-startup-id i3-sensible-terminal
 exec --no-startup-id firefox "https://archlinux.org"

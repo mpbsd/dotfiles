@@ -44,9 +44,6 @@ nnoremap <Leader>; :
 nnoremap <Leader>fq :q<CR>
 nnoremap <Leader>fs :w<CR>
 
-nnoremap <Leader>mc :make clean<CR>
-nnoremap <Leader>mk :make<CR>
-
 nnoremap <Leader>oe :edit $MYVIMRC<CR>
 nnoremap <Leader>os :source $MYVIMRC<CR>
 
@@ -60,9 +57,6 @@ nnoremap <C-l> <C-w>l
 
 inoremap <C-t> <Esc>b~ea
 inoremap <C-u> <Esc>gUiwea
-
-au BufWinLeave *.* mkview
-au BufWinEnter *.* silent loadview
 
 function TitleCaseSentence(l_or_u)
   if a:l_or_u ==# 'l'
@@ -97,7 +91,7 @@ call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme iceberg
+colorscheme darcula
 
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<Tab>"
@@ -107,18 +101,18 @@ let g:UltiSnipsEditSplit="horizontal"
 
 " Markdown bindings and settings
 
-function MarkdownHeaderLevel(h_level)
-  if a:h_level ==# '1'
+function MarkdownHeaderLevel(header_level)
+  if a:header_level ==# '1'
     normal! yypVr=
-  elseif a:h_level ==# '2'
+  elseif a:header_level ==# '2'
     normal! yypVr-
-  elseif a:h_level ==# '3'
+  elseif a:header_level ==# '3'
     normal! I###
-  elseif a:h_level ==# '4'
+  elseif a:header_level ==# '4'
     normal! I####
-  elseif a:h_level ==# '5'
+  elseif a:header_level ==# '5'
     normal! I#####
-  elseif a:h_level ==# '6'
+  elseif a:header_level ==# '6'
     normal! I######
   endif
 endfunction
@@ -135,7 +129,9 @@ nnoremap <Leader>h6 :call MarkdownHeaderLevel('6')<CR>
 let g:tex_flavor="latex"
 
 nnoremap <Leader>f= /<++><CR>
-nnoremap <Leader>c= caw
+nnoremap <Leader>b= ?<++><CR>
+
+nnoremap <Leader>c= ciw
 nnoremap <Leader>d= daw<CR>
 
 iabbrev lmt longmapsto
@@ -379,19 +375,79 @@ nnoremap <Leader>mbby :call LaTeXMathBB('y')<CR>
 nnoremap <Leader>mbbz :call LaTeXMathBB('z')<CR>
 
 function LaTeXEnvironment(environment_name)
-  let l:opening_env = '\begin{' . a:environment_name . '}'
-  let l:closing_env = '\end{' . a:environment_name . '}'
-  execute 'normal! o' . opening_env
-  execute 'normal! o' . '<++>'
-  execute 'normal! o' . closing_env
+  let l:opening_environment = '\begin{' . a:environment_name . '}'
+  let l:closing_environment = '\end{' . a:environment_name . '}'
+  if a:environment_name ==# 'document'
+    execute 'normal! o' . opening_environment
+    execute 'normal! o' . '<++>'
+    execute 'normal! o' . closing_environment
+  else
+    execute 'normal! o' . opening_environment
+    execute 'normal! o' . '\label{<++>}'
+    execute 'normal! o' . '<++>'
+    execute 'normal! o' . closing_environment
+    execute 'normal! o' . '<++>'
+  endif
+  ?<++>
+endfunction
+
+nnoremap <Leader>ldef :call LaTeXEnvironment('definition')<CR>
+nnoremap <Leader>ldoc :call LaTeXEnvironment('document')<CR>
+nnoremap <Leader>lexa :call LaTeXEnvironment('example')<CR>
+nnoremap <Leader>lrem :call LaTeXEnvironment('remark')<CR>
+
+nnoremap <Leader>lcor :call LaTeXEnvironment('corollary')<CR>
+nnoremap <Leader>llem :call LaTeXEnvironment('lemma')<CR>
+nnoremap <Leader>lpro :call LaTeXEnvironment('proposition')<CR>
+nnoremap <Leader>lthe :call LaTeXEnvironment('theorem')<CR>
+
+function LaTeXMatrixEnvironment(matrix_type, ncols)
+  let l:opening_environment = '\begin{' . a:matrix_type . '}'
+  let l:closing_environment = '\end{' . a:matrix_type . '}'
+  execute 'normal! o' . '\['
+  execute 'normal! o' . l:opening_environment
+  if a:matrix_type ==# 'array'
+    execute 'normal! a' . '{'
+    for i in range(a:ncols)
+      execute 'normal! a' . 'c'
+    endfor
+    execute 'normal! a' . '}'
+  endif
+  execute 'normal! o'
+  for i in range(a:ncols)
+    if i < a:ncols-1
+      execute 'normal! a' . ' <++> &'
+    else
+      execute 'normal! a' . ' <++> \\'
+    endif
+  endfor
+  execute 'normal! o' . l:closing_environment
+  execute 'normal! o' . '\]'
   execute 'normal! o' . '<++>'
   ?<++>
 endfunction
 
-nnoremap <Leader>lea :call LaTeXEnvironment('axiom')<CR>
-nnoremap <Leader>lec :call LaTeXEnvironment('corollary')<CR>
-nnoremap <Leader>led :call LaTeXEnvironment('definition')<CR>
-nnoremap <Leader>lel :call LaTeXEnvironment('lemma')<CR>
-nnoremap <Leader>lep :call LaTeXEnvironment('proposition')<CR>
-nnoremap <Leader>ler :call LaTeXEnvironment('remark')<CR>
-nnoremap <Leader>let :call LaTeXEnvironment('theorem')<CR>
+nnoremap <Leader>lam2 :call LaTeXMatrixEnvironment('array',   '2')<CR>
+nnoremap <Leader>lam3 :call LaTeXMatrixEnvironment('array',   '3')<CR>
+nnoremap <Leader>lam4 :call LaTeXMatrixEnvironment('array',   '4')<CR>
+nnoremap <Leader>lam5 :call LaTeXMatrixEnvironment('array',   '5')<CR>
+nnoremap <Leader>lam6 :call LaTeXMatrixEnvironment('array',   '6')<CR>
+nnoremap <Leader>lam7 :call LaTeXMatrixEnvironment('array',   '7')<CR>
+nnoremap <Leader>lam8 :call LaTeXMatrixEnvironment('array',   '8')<CR>
+nnoremap <Leader>lam9 :call LaTeXMatrixEnvironment('array',   '9')<CR>
+nnoremap <Leader>lbm2 :call LaTeXMatrixEnvironment('bmatrix', '2')<CR>
+nnoremap <Leader>lbm3 :call LaTeXMatrixEnvironment('bmatrix', '3')<CR>
+nnoremap <Leader>lbm4 :call LaTeXMatrixEnvironment('bmatrix', '4')<CR>
+nnoremap <Leader>lbm5 :call LaTeXMatrixEnvironment('bmatrix', '5')<CR>
+nnoremap <Leader>lbm6 :call LaTeXMatrixEnvironment('bmatrix', '6')<CR>
+nnoremap <Leader>lbm7 :call LaTeXMatrixEnvironment('bmatrix', '7')<CR>
+nnoremap <Leader>lbm8 :call LaTeXMatrixEnvironment('bmatrix', '8')<CR>
+nnoremap <Leader>lbm9 :call LaTeXMatrixEnvironment('bmatrix', '9')<CR>
+nnoremap <Leader>lpm2 :call LaTeXMatrixEnvironment('pmatrix', '2')<CR>
+nnoremap <Leader>lpm3 :call LaTeXMatrixEnvironment('pmatrix', '3')<CR>
+nnoremap <Leader>lpm4 :call LaTeXMatrixEnvironment('pmatrix', '4')<CR>
+nnoremap <Leader>lpm5 :call LaTeXMatrixEnvironment('pmatrix', '5')<CR>
+nnoremap <Leader>lpm6 :call LaTeXMatrixEnvironment('pmatrix', '6')<CR>
+nnoremap <Leader>lpm7 :call LaTeXMatrixEnvironment('pmatrix', '7')<CR>
+nnoremap <Leader>lpm8 :call LaTeXMatrixEnvironment('pmatrix', '8')<CR>
+nnoremap <Leader>lpm9 :call LaTeXMatrixEnvironment('pmatrix', '9')<CR>

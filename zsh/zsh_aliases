@@ -1,7 +1,8 @@
-# colors
+# grep with colors
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+# ls with colors
 alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -la'
@@ -10,6 +11,9 @@ alias la='ls -la'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
+
+alias ..='cd ..'
+alias ...='cd ../..'
 
 # system administration
 alias update='sudo pacman -Syu'
@@ -26,21 +30,23 @@ alias ggst='git status'
 alias irssi="irssi --config=${XDG_CONFIG_HOME}/irssi/config --home=${XDG_DATA_HOME}/irssi"
 
 # config files
-alias alconfig="vim ${XDG_CONFIG_HOME}/zsh/zsh_aliases"
-alias evconfig="vim ${HOME}/.zshenv"
-alias i3config="vim ${XDG_CONFIG_HOME}/i3/config"
-alias lgconfig="vim ${XDG_DATA_HOME}/ledger/ledger.dat"
-alias tmconfig="vim ${XDG_CONFIG_HOME}/tmux/tmux.conf"
+alias alconfig="nvim ${XDG_CONFIG_HOME}/zsh/zsh_aliases"
+alias evconfig="nvim ${HOME}/.zshenv"
+alias i3config="nvim ${XDG_CONFIG_HOME}/i3/config"
+alias taconfig="nvim ${XDG_DATA_HOME}/pta/ledger.dat"
+alias tmconfig="nvim ${XDG_CONFIG_HOME}/tmux/tmux.conf"
+alias toconfig="nvim ${XDG_DATA_HOME}/pto/ledger.dat"
 
-# open files with these suffices with vim by default
-alias -s conf='vim'
+# open files with these suffices with nvim by default
+alias -s c='nvim'
+alias -s conf='nvim'
 alias -s html='firefox'
-alias -s md='vim'
+alias -s md='nvim'
 alias -s pdf='zathura'
-alias -s py='vim'
-alias -s sh='vim'
-alias -s tex='vim'
-alias -s txt='vim'
+alias -s py='nvim'
+alias -s sh='nvim'
+alias -s tex='nvim'
+alias -s txt='nvim'
 
 # python virtual environments
 alias ae='. venv/bin/activate'
