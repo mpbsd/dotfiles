@@ -1,0 +1,53 @@
+\dt
+alter table professores rename to professor;
+select professor.nome, curriculo.universidade, curriculo.ano from professor, curriculo where professor.pid = curriculo.pid order by curriculo.ano desc limit 20;
+select nome from professor where nome ~ '^.* LEANDRO .*$';
+select nome from professor where nome ~ '^.*LEANDRO.*$';
+\q
+\dt
+\dt
+\d professor;
+\d sala;
+alter table professoradd column sala int;
+update professosr set sala = (select numero from sala where sala.pid = professor.pid);
+update professor set sala = (select numero from sala where sala.pid = professor.pid);
+select pid, sala from professor;
+drop table sala;
+\dt
+\d curriculo;
+alter table professoradd column escolaridade char(9),add column atuacao char(35),add column universidade char(10),add column ano int;
+update professor set escolaridade = (select escolaridade from curriculo where curriculo.pid = professor.pid);
+update professor set atuacao = (select atuacao from curriculo where curriculo.pid = professor.pid);
+update professor set universidade = (select universidade from curriculo where curriculo.pid = professor.pid);
+update professor set ano = (select ano from curriculo where curriculo.pid = professor.pid);
+\d professor;
+select * from professor;
+\d professor;
+alter table professoralter column escolaridade set not null,alter column atuacao set not null,alter column universidade set not null,alter column ano set not null;
+\d professor;
+alter table professor alter column email set not null;
+\d professor;
+\dt
+drop table curriculo;
+\l
+\q
+\dt
+\d book;
+select * from book;
+select bid, title, link from book;
+select title, link from book;
+\q
+select title, link from book;
+select count(*) from book;
+select title from book where title ~ '.*heory.*';
+select title from book where title ~ '.*umber.*';
+select title from book where title ~ '.*eoria.*';
+select bid, author, title from book where title ~ '.*eoria.*';
+\q
+\copy (select * from book) to imap.csv csv delimiter ';';
+\q
+select nome, email from professor where nome ~ 'ANA.*';
+\q
+select email from professor where nome ~ 'Benedito.*';
+select email from professor where nome ~ 'BENEDITO.*';
+\q
