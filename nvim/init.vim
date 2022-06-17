@@ -18,6 +18,8 @@ set history=1000
 
 set splitright
 
+set statusline=[%n]\ %f%4m%=%6p%6l%6c%8{&fenc?&fenc:&enc}%8y
+
 set ignorecase
 set smartcase
 
@@ -84,14 +86,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 Plug 'mpbsd/vim-ledgendary'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'cocopon/iceberg.vim'
-Plug 'doums/darcula'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme darcula
+colorscheme PaperColor
 
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<Tab>"
@@ -393,6 +393,7 @@ endfunction
 
 nnoremap <Leader>ldef :call LaTeXEnvironment('definition')<CR>
 nnoremap <Leader>ldoc :call LaTeXEnvironment('document')<CR>
+nnoremap <Leader>lequ :call LaTeXEnvironment('equation')<CR>
 nnoremap <Leader>lexa :call LaTeXEnvironment('example')<CR>
 nnoremap <Leader>lrem :call LaTeXEnvironment('remark')<CR>
 
