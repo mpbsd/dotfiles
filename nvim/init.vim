@@ -18,7 +18,7 @@ set history=1000
 
 set splitright
 
-set statusline=[%n]\ %f%4m%=%6p%6l%6c%8{&fenc?&fenc:&enc}%8y
+set statusline=[%n]\ %f%4m%=%12y%8{&fenc?&fenc:&enc}%8p%8l%8c
 
 set ignorecase
 set smartcase
