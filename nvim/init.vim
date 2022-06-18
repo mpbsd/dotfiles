@@ -91,7 +91,8 @@ call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme PaperColor
+colorscheme gruvbox
+" colorscheme PaperColor
 
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<Tab>"
