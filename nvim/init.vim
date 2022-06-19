@@ -18,8 +18,6 @@ set history=1000
 
 set splitright
 
-set statusline=[%n]\ %f%4m%=%12y%8{&fenc?&fenc:&enc}%8p%8l%8c
-
 set ignorecase
 set smartcase
 
@@ -74,6 +72,7 @@ nnoremap <Leader>uc :call TitleCaseSentence('u')<CR>
 " Manage plugins with vim-plug
 
 call plug#begin()
+
 Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim'
 Plug 'sirver/ultisnips'
@@ -83,16 +82,20 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
 Plug 'wellle/targets.vim'
+
+Plug 'dracula/vim',{'as': 'dracula'}
 Plug 'mpbsd/vim-ledgendary'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'morhetz/gruvbox'
+
 call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme gruvbox
-" colorscheme PaperColor
+colorscheme dracula
+
+" vim-airline config
+let g:airline_symbols_ascii = 1
 
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<Tab>"
