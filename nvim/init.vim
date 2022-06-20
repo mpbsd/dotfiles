@@ -85,7 +85,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'wellle/targets.vim'
 
-Plug 'dracula/vim',{'as': 'dracula'}
+Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'mpbsd/vim-ledgendary'
 
 call plug#end()
@@ -95,7 +95,8 @@ set background=dark
 colorscheme dracula
 
 " vim-airline config
-let g:airline_symbols_ascii = 1
+let g:airline_detect_modified=1
+let g:airline_symbols_ascii=1
 
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<Tab>"
