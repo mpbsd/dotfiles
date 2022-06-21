@@ -95,6 +95,7 @@ set background=dark
 colorscheme dracula
 
 " vim-airline config
+
 let g:airline_detect_modified=1
 let g:airline_symbols_ascii=1
 
