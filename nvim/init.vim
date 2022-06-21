@@ -91,7 +91,7 @@ call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme darcula
+colorscheme iceberg
 
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<Tab>"
