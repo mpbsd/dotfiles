@@ -72,6 +72,7 @@ nnoremap <Leader>uc :call TitleCaseSentence('u')<CR>
 " Manage plugins with vim-plug
 
 call plug#begin()
+
 Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim'
 Plug 'sirver/ultisnips'
@@ -81,17 +82,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
 Plug 'wellle/targets.vim'
+
+Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'mpbsd/vim-ledgendary'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'cocopon/iceberg.vim'
-Plug 'doums/darcula'
-Plug 'morhetz/gruvbox'
+
 call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme iceberg
+colorscheme dracula
+
+" vim-airline config
+let g:airline_detect_modified=1
+let g:airline_symbols_ascii=1
 
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<Tab>"
@@ -393,6 +398,7 @@ endfunction
 
 nnoremap <Leader>ldef :call LaTeXEnvironment('definition')<CR>
 nnoremap <Leader>ldoc :call LaTeXEnvironment('document')<CR>
+nnoremap <Leader>lequ :call LaTeXEnvironment('equation')<CR>
 nnoremap <Leader>lexa :call LaTeXEnvironment('example')<CR>
 nnoremap <Leader>lrem :call LaTeXEnvironment('remark')<CR>
 
