@@ -47,11 +47,11 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
 
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+  autoload -Uz add-zle-hook-widget
+  function zle_application_mode_start { echoti smkx }
+  function zle_application_mode_stop { echoti rmkx }
+  add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+  add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
 bindkey '^P' history-beginning-search-backward
@@ -95,5 +95,5 @@ autoload -Uz promptinit; promptinit
 prompt redhat
 
 # sourcery
-source "${HOME}/.config/zsh/plugin/gpg-agent.zsh"
-source "${HOME}/.config/zsh/zsh_aliases"
+source "${XDG_CONFIG_HOME}/zsh/plugin/gpg-agent.zsh"
+source "${XDG_CONFIG_HOME}/zsh/zsh_aliases"
