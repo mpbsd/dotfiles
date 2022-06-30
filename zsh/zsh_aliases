@@ -35,6 +35,7 @@ alias evconfig="nvim ${HOME}/.zshenv"
 alias i3config="nvim ${XDG_CONFIG_HOME}/i3/config"
 alias taconfig="nvim ${XDG_DATA_HOME}/pta/ledger.dat"
 alias toconfig="nvim ${XDG_DATA_HOME}/pto/ledger.dat"
+alias txconfig="nvim ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 alias xrconfig="nvim ${HOME}/.Xresources && xrdb ${HOME}/.Xresources"
 
 # open files with these suffices with nvim by default

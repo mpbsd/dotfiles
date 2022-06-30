@@ -95,5 +95,5 @@ autoload -Uz promptinit; promptinit
 prompt redhat
 
 # sourcery
-source "${XDG_CONFIG_HOME}/zsh/plugin/gpg-agent.zsh"
-source "${XDG_CONFIG_HOME}/zsh/zsh_aliases"
+source "${HOME}/.config/zsh/plugin/gpg-agent.zsh"
+source "${HOME}/.config/zsh/zsh_aliases"
