@@ -27,10 +27,10 @@ macro index <f8> '<sync-mailbox><enter-command>source ${XDG_CONFIG_HOME}/mutt/gm
 ###############
 # settings
 #
-set copy = no
+set copy   = no
 set delete = yes
 set editor = "vim"
-set sort = threads
+set sort   = threads
 set edit_headers
 
 ###############
