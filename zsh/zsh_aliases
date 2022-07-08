@@ -1,12 +1,12 @@
-# grep with colors
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
 # ls aliases
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+
+# grep with colors
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 # think twice ;)
 alias cp='cp -iv'
