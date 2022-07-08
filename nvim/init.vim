@@ -83,6 +83,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
+Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 
 Plug 'dracula/vim', {'as': 'dracula'}
@@ -104,6 +105,9 @@ let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsEditSplit="horizontal"
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/projects/vimwiki/', 'path_html': '~/projects/vimwiki/html/'}]
 
 " Markdown bindings and settings
 
