@@ -64,7 +64,7 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function format          argument */
+	/* function            format          argument */
   { keyboard_indicators, "[K] %s ",      "(c?n?)"        },
   { keymap,              "%s | ",        NULL            },
   { wifi_essid,          "[W] %s ",      "wlp0s20f3"     },
