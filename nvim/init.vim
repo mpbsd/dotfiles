@@ -19,6 +19,7 @@ set history=1000
 set splitright
 
 set ignorecase
+set nohlsearch
 set smartcase
 
 set expandtab
@@ -75,6 +76,8 @@ call plug#begin()
 
 Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'sirver/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -87,13 +90,14 @@ Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 
 Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'morhetz/gruvbox'
 Plug 'mpbsd/vim-ledgendary'
 
 call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme dracula
+colorscheme gruvbox
 
 " vim-airline config
 
@@ -106,7 +110,15 @@ let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsEditSplit="horizontal"
 
+" Telescope
+
+nnoremap <Leader>ff <Cmd>lua require('telescope.builtin').find_files()<CR>
+nnoremap <Leader>fg <Cmd>lua require('telescope.builtin').live_grep()<CR>
+nnoremap <Leader>fb <Cmd>lua require('telescope.builtin').buffers()<CR>
+nnoremap <Leader>fh <Cmd>lua require('telescope.builtin').help_tags()<CR>
+
 " VimWiki
+
 let g:vimwiki_list = [{'path': '~/projects/vimwiki/', 'path_html': '~/projects/vimwiki/html/'}]
 
 " Markdown bindings and settings
