@@ -44,6 +44,7 @@ alias xrconf="vim ${HOME}/.Xresources && xrdb ${HOME}/.Xresources"
 
 # open files with these suffices with vim by default
 alias -s c='vim'
+alias -s h='vim'
 alias -s conf='vim'
 alias -s html='firefox'
 alias -s md='vim'
