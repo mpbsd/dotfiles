@@ -18,8 +18,9 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # system administration
-alias update='sudo pacman -Syu'
 alias ccache='sudo paccache -r'
+alias kcache='sudo paccache -ruk0'
+alias update='sudo pacman -Syu'
 
 # git
 alias ggaa='git add .'
