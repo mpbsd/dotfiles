@@ -1,20 +1,21 @@
-# ls aliases
+# ls
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-# grep with colors
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
-# think twice ;)
+# just think twice man ;)
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 
+# moving around
 alias ..='cd ..'
 alias ...='cd ../..'
+
+# grep with colors
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 # system administration
 alias update='sudo pacman -Syu'
@@ -31,7 +32,7 @@ alias ggst='git status'
 # irssi
 alias irssi="irssi --config=${XDG_CONFIG_HOME}/irssi/config --home=${XDG_DATA_HOME}/irssi"
 
-# config files
+# conf files
 alias alconf="vim ${XDG_CONFIG_HOME}/zsh/zsh_aliases"
 alias evconf="vim ${HOME}/.zshenv"
 alias i3conf="vim ${XDG_CONFIG_HOME}/i3/config"
