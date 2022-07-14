@@ -5,6 +5,7 @@ let mapleader="\<Space>"
 set number
 set relativenumber
 
+set cursorcolumn
 set cursorline
 
 set colorcolumn=80
@@ -79,25 +80,27 @@ Plug 'junegunn/goyo.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'sirver/ultisnips'
+
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 
 Plug 'dracula/vim', {'as': 'dracula'}
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'mpbsd/vim-ledgendary'
 
 call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme gruvbox
+colorscheme dracula
 
 " vim-airline config
 
