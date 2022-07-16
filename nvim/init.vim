@@ -100,7 +100,7 @@ call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme dracula
+colorscheme gruvbox
 
 " vim-airline config
 
