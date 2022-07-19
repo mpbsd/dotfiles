@@ -5,7 +5,7 @@
 static int topbar = 1;
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"Fira Code:pixelsize=14"
+	"Ubuntu Mono:size=10"
 };
 /* -p  option; prompt to the left of input field */
 static const char *prompt = NULL;
