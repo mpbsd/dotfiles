@@ -1,0 +1,1207 @@
+la documents
+sudo pacman -Syu
+git clone git@github.com:mpbsd/dotfiles ~/.config
+la 
+cd .config
+la
+la
+la && la | wc -l
+la && la | wc -l
+ggst
+vim pg/psql_history
+vim .gitignore
+la
+cd pictures
+la
+mkdir -p wallpapers
+mv savannah.jpg wallpapers
+cd
+mv bin bin.bak
+git clone git@github.com:mpbsd/bin
+la 
+cd bin
+la
+cd
+mv bin.bak documents
+mv ~/.config documents/documents.bak
+la
+vim replacement.sh
+mv replacement.sh replacement.py
+vim replacement.py
+python -m replacement
+replacement.py
+python -m replacement
+vim replacement.py
+python -m replacement
+reboot
+sudo pacman -Syu
+lgconfig
+sudo paccache -r
+sudo paccahce -ruk0
+sudo paccache -ruk0
+vim
+sudo pacman -S neovim
+pacman -Ss python-pynvim
+sudo pacman -S python-pynvim
+pacman -Qe | wc -l
+nvim
+la .local/share
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim
+nvim
+evconfig
+vim .Xresources
+xrdb ~/.Xresources
+ssh ime
+cd documents
+la
+tar -zxvf configfiles.tar.gz
+ls
+cd home
+la
+cd marcelo
+la
+ll .config
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+mutt
+sudo updatedb
+scp ime:~/backups/config/configfiles.tar.gz documents
+pwd
+pwd
+ranger
+ranger
+sudo updatedb
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+vim
+nvim
+mutt
+tmconfig
+neofetch
+pacman -Qs ctags
+sudo pacman -Syu universal-ctags
+plocate libpq
+plocate libpq-fe
+la
+la | wc -l
+la
+rm .lesshst
+la | wc -l
+lgconfig
+sh bin/ledger.sh
+whoami
+pwd
+neofetch
+pacman -Qeq
+tmux
+tmux
+nvim
+vim .vim/vimrc
+vimdiff ~/.vim/vimrc ~/.config/nvim/init.vim
+scp ime:~/backups/config/vimrc documents/vimrc
+nvim .vim/vimrc
+nvimdiff .vim/vimrc documents/vimrc
+vimdiff .vim/vimrc documents/vimrc
+vim
+vim
+la .vim
+la
+la | wc -l
+rm ~/.viminfo
+la | wc -l
+la
+cd overleaf
+la
+git clone git@github.com:mpbsd/thamara
+cd thamara
+vim main.tex
+vim makefile
+make
+make clean
+vim main.tex
+make
+vim main.tex
+make
+make
+nvim main.tex
+make
+la fig
+nvim main.tex
+make
+nvim main.tex
+make
+make final
+la
+nvim makefile
+make
+ll
+vim main.tex
+make final
+vim main.tex
+make final
+nvim main.tex
+vim main.tex
+la
+make clean
+ggst
+ggaa
+ggca
+la
+cp main.tex eqref.tex
+nvim eqref.tex
+vim main.tex eqref.tex
+make
+vim main.tex
+make
+vim main.tex
+make
+vim main.tex
+make
+vim main.tex
+make final
+make clean
+vim main.tex
+make
+make clean
+vim main.tex
+vim
+vim
+vim teste.tex
+vim main.tex
+la
+la
+rm teste.tex
+la
+ll
+make final
+la
+make clean
+vim main.tex
+make
+make
+vim main.tex
+la
+make clean
+la
+make final
+vim main.tex
+la
+cd thamara
+ll
+rm eqref.tex
+la
+make clean
+la
+ggst
+ggaa
+ggca
+ggsh
+vim .Xresources
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+vim
+nvim
+ll
+ranger
+sdcv euclidean
+sdcv euclidian
+cd projects/overleaf/thamara
+ll
+vim main.tex citations.txt
+la
+vim crossrefs main.tex
+vim crossrefs main.tex
+vim crossrefs main.tex
+make final
+vim main.tex
+clean
+clear
+make final
+vim main.tex
+make 
+make
+vim main.tex
+ggst
+rm citations.txt
+vim crossrefs
+clear
+la
+make clean
+ls
+ll
+ggst
+rm crossrefs
+ggst
+ggaa
+ggca
+ggsh
+clear
+la
+vim makefile
+ggaa
+ggca
+ggsh
+psql ime
+ssh ime
+tmconfig
+mutt
+la
+rm -rf ~/.viminfo
+vim .config/nvim/init.vim
+vim
+vim
+la
+shred -xu ~/.viminfo
+tmux
+la
+vim
+la
+la .vim
+vim 
+ranger
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+vim
+nvim
+la
+ranger
+la
+la
+la | wc -l
+rm -rf ~/.w3m
+la
+la | wc -l
+la
+htop
+pkill 4226
+htop
+cd .config
+ggst
+git diff tmux/tmux.conf
+git diff pg
+gitk --help
+ggaa
+ggca
+ggll
+cd
+cd bin
+ggll
+pacman -Ss gdb
+pacman -Ss gap
+sudo pacman -Syu
+scp ime:~/downloads/pkgs.py downloads/
+pacman -Qeq >> downloads/pkgs.py
+nvim downloads/pkgs.py
+cd downloads
+python -m pkgs
+sudo pacman -Syu
+sudo pacman -S cronie
+sudo pacman -S arch-wiki-lite
+python -m pkgs
+sudo pacman -S gdb
+sudo pacman -S splint
+sudo pacman -S redshift
+python -m pkgs
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+pacman -Qeq >> pkgs.py
+nvim pkgs.py
+python -m pkgs
+pacman -Ss gdb
+tmux
+la
+evconfig
+nvim
+vim
+neofetch
+sudo updatedb
+la /usr/share
+la /usr/local
+sudo rm -rf /usr/local/texlive
+ls -la /usr/local
+la
+la .cache
+la
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+pacman -Ss texlive
+sudo pacman -S texlive-most texlive-lang
+sudo paccache -r
+sudo paccache -ruk0
+neofetch
+pacman -Qeq >> downloads/pkgs.py
+nvim downloads/pkgs.py
+cd downloads
+la
+python -m pkgs
+vim pkgs.py
+python -m pkgs
+pacman -Qs perl
+pacman -Sii perl-unicode-linebreak
+pacman -Qs perl
+la
+rm -rf __pycache__
+nvim pkgs.py
+ssh ime
+scp pkgs.py ime:~/downloads
+cd
+evconfig
+alconfig
+taconfig
+cd ~/.local/share
+la
+mv ledger pta
+cd
+taconfig
+pass git pull origin main
+taconfig
+ledger bal -b 2022/01/03 -e 2022/06/15 conta_corrente
+evconfig
+ledger bal -b 2022/01/03 -e 2022/06/15 conta_corrente
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+vim
+nvim
+mutt
+evconfig
+la
+cd thamara
+ggll
+la
+sudo vi /etc/X11/xorg.conf.d/00-keyboard.conf
+pass o/overleaf
+pass -c u/ufgnet
+pass -c o/overleaf
+cd projects/overleaf
+la
+git clone https://git.overleaf.com/62a8ea7f801a3dafbd916e29
+ll
+vimdiff 62a8ea7f801a3dafbd916e29/main.tex thamara/main.tex
+vimdiff 62a8ea7f801a3dafbd916e29/main.tex thamara/main.tex
+diff -s 62a8ea7f801a3dafbd916e29/main.tex thamara/main.tex
+cp -r thamara/{bib,fig} 62a8ea7f801a3dafbd916e29
+la
+la thamara
+cp thamara/{makefile,main.bbl} 62a8ea7f801a3dafbd916e29
+cd 62a8ea7f801a3dafbd916e29
+la
+ggst
+ggaa
+ggca
+ggsh
+git push origin main
+git push origin master
+mutt
+la
+nvim main.tex
+main.tex
+la
+nvim main.tex teste.tex
+git log --graph
+nvim main.tex
+ggst
+mv teste.tex labels.txt
+ggaa
+ggca
+git push origin master
+la
+vim bib/main.bib
+..
+la
+rm -rf thamara
+la
+la
+nvim
+nvim
+nvim main.tex
+cd 62a8ea7f801a3dafbd916e29
+la
+nvim main.tex
+ggll
+git pull 
+ggst
+git diff main.tex
+git commit -m "changed an equal sign"
+ggca
+git push
+la
+nvim main.tex
+ll
+ll
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+mutt
+vim .Xresources
+xrdb ~/.Xresources
+la
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+mutt
+la
+mutt
+cd downloads
+cd downloads
+ll
+tar -zcvf docs-monitoria.tar.gz *.{docx,pdf}
+la
+rm *.docx *.pdf
+la
+scp docs-monitoria.tar.gz ime:~/downloads
+scp ime:~/downloads/pkgs.py .
+nvim pkgs.py
+pacman -Qeq >> pkgs.py
+nvim pkgs.py
+python -m pkgs
+scp pkgs.py ime:~/downloads
+la
+ranger
+la
+la
+sudo vi /etc/pacman.conf
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+vim
+nvim
+cd ~/.config
+ggll
+ggst
+ggst
+git diff nvim/init.vim
+ggca
+ggll
+git mergetool
+nvim nvim/init.vim
+nvim
+ggll
+ggst
+rm nvim/init.vim/orig
+rm nvim/init.vim.orig
+ggst
+git diff alacritty/alacritty.yml
+ggca
+ggll
+ggsh
+cd
+nvim
+ll
+cd bin
+ggll
+ssh ime
+scp ime:~/downloads/xresources_zshenv.tar.gz.gpg ~/downloads
+cd ~/downloads
+la
+gpg -d xresources_zshenv.tar.gz.gpg > xresources_zshenv.tar.gz
+la
+tar -zxvf xresources_zshenv.tar.gz
+cd
+vimdiff ~/.zshenv ~/downloads/zshenv
+diff -s .zshenv downloads/zshenv
+vimdiff ~/.Xresources ~/downloads/Xresources
+sudo pacman -Syu
+sudo pacman -S ttf-fira-code
+xrdb ~/.Xresources
+la
+nvim ~/.Xresources && xrdb ~/.Xresources
+htop
+nvim ~/.Xresources && xrdb ~/.Xresources
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+nvim
+nvim ~/.Xresources && xrdb ~/.Xresources
+mutt
+pass o/overleaf
+cd 62a8ea7f801a3dafbd916e29
+la
+ggll
+git pull origin master
+git diff bib/main.bib
+nvim bib/main.bib
+nvim main.tex
+nvim labels.txt
+la
+rm labels.txt
+la
+la
+ggll
+git pull origin master
+nvim main.tex
+cd
+mutt
+vim .vim/vimrc .config/nvim/init.vim
+vim
+cd documents/
+la
+mkdir books
+wget -c http://62.182.86.140/main/1000/c684be9c0147b68596683222502675fb/Brian%20W.%20Kernighan%2C%20Dennis%20M.%20Ritchie%20-%20C%20Programming%20Language%20-Prentice%20Hall%20%281988%29.djvu
+ll
+la
+mv 'Brian W. Kernighan, Dennis M. Ritchie - C Programming Language -Prentice Hall (1988).djvu' books/the-c-programming-language.djvu
+la books
+zathura books/the-c-programming-language.djvu
+git clone git@github.com:mpbsd/the-c-programming-language tcpl
+cd tcpl
+la
+ll exr
+nvim exr/*.c
+cd projects
+la
+la
+tmux
+ll
+cd projects
+la
+cd agamma
+ggll
+git pull
+nvim pkgs/combinatorics.py
+ls
+cat requirements.txt
+rm -rf venv
+la
+python -m venv venv
+ae
+la
+which pip
+pip install --upgrade pip
+pip install -r requirements.txt
+la
+ll pkgs
+nvim pkgs/main.py
+la
+de
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+nvim 
+cd ~/.config
+la
+nvim
+la
+mkdir -p ~/.config/suckless
+cd suckless
+pwd
+whoami
+pwd
+whoami
+pwd
+tmux
+cd ~/.config/suckless
+la
+git clone https://git.suckless.org/dwm
+la
+whoami
+pwd
+git clone https://git.suckless.org/st
+la
+whoami
+pwd
+ll
+git clone https://git.suckless.org/surf
+git clone https://git.suckless.org/dmenu
+ll
+la
+..
+ggst
+git diff nvim/init.vim
+ggaa
+cd suckless/dwm
+la
+la
+rm -rf .git
+../st
+la
+la
+ls -lah
+../surf
+..
+ls
+cd dmenu
+la
+rm -rf .git
+..
+ls
+cd st
+la
+rm -rf .git
+ll
+la
+..
+la
+ls
+cd surf
+la
+rm -rf .git
+...
+pwd
+ggst
+ggaa
+ggca
+ggsh
+ll
+nvim .gitignore
+la
+sudo pacman -Syu
+pacman -Qdt
+sudo pacman -Rns ffmpeg4.4
+sudo pacman -Rns haskell-errors
+sudo pacman -Rns libibus
+sudo paccache -r
+sudo paccache -ruk0
+sudo pacman -Syu
+sudo updatedb
+plocate pacsave
+plocate pacnew
+pacman -Ss st
+pacman -Ss simple terminal
+tmux
+la
+cd ~/.config/suckless/st
+la
+nvim README
+pacman -Qs xlib
+pacman -Qs Xlib
+la
+nvim README
+nvim config.mk
+ggst
+tmux
+nvim ~/.Xresouces && xrdb ~/.Xresources
+nvim ~/.Xresources && xrdb ~/.Xresources
+nvim ~/.Xresources && xrdb ~/.Xresources
+la
+nvim ~/.Xresources && xrdb ~/.Xresources
+la
+nvim ~/.Xresources && xrdb ~/.Xresources
+ls /usr/local
+ls -l /usr/local/bin
+pacman -Sii ttf-fira-code
+cat .Xresources
+cat .Xresources
+la
+nvim
+mutt
+tmux
+la
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+tmux
+la
+tmux
+echo $SHELL
+cd projects
+la
+git clone git@github.com:mpbsd/dotfiles
+rm -rf ~/projects/dotfiles
+la
+git clone git@github.com:mpbsd/dotfiles
+la
+cd dotfiles
+ranger
+cd ~/.config/suckless/st
+nvim config.def.h config.mk README
+ggst
+...
+ggst
+cd
+whoami
+pwd
+cd ~/.config/suckless/st
+ll
+nvim README config.def.h config.mk
+la
+less README
+sudo make clean install
+ls /usr/local/bin
+la
+nvim config.def.h
+nvim Makefile
+make config
+nvim Makefile
+make config.h
+nvim config.h
+nvim config.def.h
+vimdiff config.def.h config.h
+vimdiff config.def.h config.h
+ll
+sudo make config.h
+cat config.h
+sudo rm config.h
+nvim config.def.h
+la
+sudo make clean install
+ls
+..
+la
+ls /usr/local/bin
+nvim st/config.def.h
+ls
+cd st
+whoami
+pwd
+ll
+sudo rm config.h
+sudo make clean install
+tmux ls
+la
+nvim config.def.h
+...
+ggst
+ggst
+cat win.h
+ll
+git log
+whoami
+pwd
+ls
+git add suckless/{dmenu,dwm,st,surf}/*
+git status
+cd suckless/dmenu
+la
+nvim arg.h
+../surf
+..
+ll
+la dmenu
+la dmenu/dmenu_path
+la dmenu/dmenu_run
+git add st/*
+git log --graph
+ls
+la
+cd surf
+la
+nvim README
+..
+la
+la st
+diff -s dmenu/arg.h st/arg.h
+ll
+ls -lah
+ls /usr/local/bin
+git add --help
+git add --dry-run st/*
+la
+git rm --cached dmenu
+la 
+la dmenu
+for d in dwm st surf; do git rm --cache $d; done
+for d in dmenu dwm st surf; do git add $d; done
+..
+ggst
+git commit -a
+ggsh
+ls
+ll
+cd
+tmux
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+vim
+nvim
+vim
+vim
+cd .config
+la
+ggll
+cd
+cd projects/dotfiles
+ggll
+ll suckless/dwm
+ll st
+ll suckless/st
+ranger
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+cd ~/.config
+ggll
+ggst
+git log --graph
+cd
+tmux
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+pacman -Qs wayland
+ranger
+ssh ime
+scp ime:~/downloads/pacman.py downloads
+ll
+ll
+vim downloads/pacman.py
+cd .config
+ggst
+ggll
+cd suckless
+ls /usr/share/bin
+ls /usr/local/bin
+ll
+cd dwm
+ll
+rm config.h
+sudo make clean install
+..
+ll
+sudo pacman -Rns spectrwm
+pacman -Qdt
+cd
+nvim .xsession
+reboot
+cd .config/suckless/st
+la
+ll
+rm config.h
+sudo make clean install
+cd bin
+la
+ggll
+ll
+cd
+nvim .xsession
+sudo pacman -Rns i3
+pacman -Qdt
+cd ~/.config/suckless/dmenu
+la
+nvim config.def.h
+ll
+rm config.h
+sudo make clean install
+ip -c a
+nmcli -p -f general,wifi-properties device show wl2s0
+nmcli -p -f general,wifi-properties device show wlp2s0
+nvim bin/dwm_status.sh
+chmod 700 ~/bin/dwm_status_thinkcentre.sh
+nvim .xsession
+la /usr/local/bin
+tmux
+sh bin/dwm_status.sh
+tmux
+reboot
+nvim bin/dwm_status_thinkcentre.sh
+pkill x
+ll bin
+nvim bin/dwm_status_thinkcentre.sh
+nvim bin/dwm_status_thinkcentre.sh
+ip -c a
+nvim bin/dwm_status_thinkcentre.sh
+pkill x && exit 
+nvim .xsession
+pkill x && exit 
+firefox
+reboot
+cd downloads
+ll
+pacman -Qeq >> pacman.py
+nvim pacman.py
+python -m pacman
+nvim pacman.py
+python -m pacman
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+cd
+ll
+ranger
+tmux
+sh ~/bin/dwm_status_thinkcentre.sh
+nvim ~/.xsession
+tmux
+reboot
+cd downloads/slock
+la
+ll
+la
+ls -lah
+rm -rf ~/downloads/slock/.git
+ll
+cd
+nmcli -p -f general,wifi-properties device show wlp2s0
+alsamixer
+alsamixer
+ncdu
+irssi
+cd projects
+la
+ll
+git clone git@github.com:mbpsd/monitoria
+git clone git@github.com:mpbsd/monitoria
+ll
+cd monitoria
+ll
+nvim emails.py
+ll
+nvim main.tex
+make
+ll
+nvim makefile
+ncdu
+ll
+nvim makefile
+ggst
+ggaa
+ggca
+ggsh
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+cd .config
+ggst
+cd
+sh bin/wallpaper.sh
+git clone https://git.suckless.org/slock downloads/
+git clone https://git.suckless.org/slock downloads/slock
+ll
+cd ~/.config/suckless
+la
+cp -r ~/downloads/slock .
+ll
+cd slock
+ll
+nvim config.def.h
+groups
+nvim config.def.h
+nvim config.def.h
+ll
+whoami
+pwd
+nvim README
+sudo make clean install
+ll
+..
+..
+ggst
+ggaa
+ggca
+ggsh
+cd
+pacman -Qs xlockmore
+sudo pacman -Rns xlockmore
+sudo paccache -r
+sudo paccache -ruk0
+neofetch
+ip -c a
+nvim bin/dwm_status_thinkcentre.sh
+ll
+ranger
+pass -c u/ufgnet
+pass -c u/ufgnet
+pass -c u/ufgnet
+pass -c u/ufgnet
+whoami
+pwd
+sh bin/wallpaper.sh
+vim
+nvim
+pass git pull origin main
+taconfig
+taconf
+pwd
+whoami
+sudo pacman -Syu
+sudo paccache -r
+sudo paccache -ruk0
+pacman -Ss moc
+pacman -Ss mocp
+pacman -Ss moc
+sudo pacman -Syu moc
+ccache
+sudo paccache -ruk0
+cd music
+la
+mocp 
+mocp
+cd royal_blood
+ll
+cd how_did_we_get_so_dark
+ll
+mpv *.mp3
+cd ~/music
+ll
+lsblk
+ll
+ll
+mkdir -p iron_maiden
+cd iron_maiden
+cd
+nvim bin/yt_music.sh
+sh ~/bin/yt_music.sh
+cd music/iron_maiden
+ll
+mkdir -p the_number_of_the_beast
+mv *.mp3 the_number_of_the_beast
+ll
+cd the_number_of_the_beast
+ll
+nvim rename.sh
+sh rename.sh
+ll
+nvim rename.sh
+sh rename.sh
+ll
+rm rename.sh
+ll
+mv '05 the number of the beast.mp3' 05_the_number_of_the_beast.mp3
+mv '06 run to the hills.mp3' 06_run_to_the_hills.mp3
+ll
+ls /tmp
+ls /mnt
+ls -lah /mnt
+lsblk
+sudo mount /dev/sda1 /mnt
+ranger
+cd
+ls -lah /mnt
+ls -lah /mnt/music
+tree /mnt/music
+ls -lah /mnt/music/joao_bosco
+sudo rm -r /mnt/music/joao_bosco_acustico_mtv
+sudo cp -r /home/marcelo/music/iron_maiden/the_number_of_the_beast /mnt/music
+cd /mnt/music
+ll
+tree
+ll
+sudo mkdir /mnt/music/iron_maiden
+ll
+sudo mv the_number_of_the_beast iron_maiden
+ll
+sudo cp -r /home/marcelo/music/royal_blood /mnt/music
+ll
+tree
+cd
+lsblk
+sudo umount /mnt
+lsblk
+cd bin
+ggst
+ggaa
+ggca
+ggsh
+cd ~/.config
+ggst
+cd
+tmux
+shutdown -h now
+sh ~/bin/wallpaper.sh
+sudo pacman -Syu
+cd /etc/pacman.d
+ls
+cd
+sudo rm -rf /etc/pacman.d/gnupg
+sudo pacman-key init
+sudo pacman-key --init
+sudo pacman-key --populate
+sudo paccache -r
+sudo paccache -ruk0
+sudo pacman -Syu
+sudo paccache -ruk0
+sudo paccache -r
+whoami
+pwd
+sudo vi /etc/X11/xorg.conf.d/00-keyboard.conf
+cd ~/.config
+ggst
+git pull origin main
+cd ~/bin
+git pull origin main
+ls
+cd
+whoami
+pwd
+sudo pacman -Syu
+pacman-key --recv-keys --help
+ls -lah /etc/pacman.d
+ls -lah /etc/pacman.d/gnupg
+sudo pacman -Syu
+sudo pacman -Sy archlinux-keyring && sudo pacman -Su
+sudo paccache -r
+sudo paccache -ruk0
+sudo updatedb
+tmux
+reboot
+sudo pacman -Syu
+sudo pacman -S webkit2gtk gcr
+sudo pacman -S hugo
+update
+ccache
+kcache
+sudo updatedb
+scp ime:~/downloads/arch.tar.gz.gpg ~/downloads
+ranger
+cd downloads
+ls -lah
+rm -rf __pycache__
+la
+gpg -d arch.tar.gz.gpg > arch.tar.gz
+ls
+tar -zxvf arch.tar.gz
+ll
+cd arch
+ls -lah
+pacman -Qdt
+sudo pacman -Rns js78
+sudo pacman -Rns lua53-lpeg
+pacman -Qeq >> pkgs.py
+vim pkgs.py
+python -m pkgs
+vim pkgs.py
+vim pkgs.py
+python -m pkgs
+sudo pacman -Syu
+sudo pacman -S ttf-ubuntu-font-family
+python -m pkgs
+vim pkgs.py
+ll
+rm -rf __pycache__
+ls
+cd
+vimdiff ~/.zshenv ~/downloads/arch/zshenv
+diff -s ~/.zshenv ~/downloads/arch/zshenv
+ranger
+cd ~/.config
+git pull origin main
+cd suckless
+ll
+cd dmenu
+ls
+ll
+rm config.h
+sudo make clean install
+..
+ls
+cd slstatus
+ls -lah
+rm config.h
+sudo make clean install
+..
+ll
+cd surf
+ls -lah
+rm config.h
+sudo make clean install
+ll
+..
+cd dwm
+ls -lah
+rm config.h
+sudo make clean install
+cd
+vim .xsession
+nvim
+vim
+nvim
+ls -lah /usr/local/bin
+vim .xsession
