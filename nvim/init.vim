@@ -72,7 +72,6 @@ nnoremap <Leader>lc :call TitleCaseSentence('l')<CR>
 nnoremap <Leader>uc :call TitleCaseSentence('u')<CR>
 
 " Manage plugins with vim-plug
-
 call plug#begin()
 
 Plug 'godlygeek/tabular'
@@ -80,14 +79,13 @@ Plug 'junegunn/goyo.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'sirver/ultisnips'
-
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-
+Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
@@ -100,10 +98,9 @@ call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme gruvbox
+colorscheme dracula
 
 " vim-airline config
-
 let g:airline_detect_modified=1
 let g:airline_symbols_ascii=1
 
@@ -114,18 +111,15 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsEditSplit="horizontal"
 
 " Telescope
-
 nnoremap <Leader>ff <Cmd>lua require('telescope.builtin').find_files()<CR>
 nnoremap <Leader>fg <Cmd>lua require('telescope.builtin').live_grep()<CR>
 nnoremap <Leader>fb <Cmd>lua require('telescope.builtin').buffers()<CR>
 nnoremap <Leader>fh <Cmd>lua require('telescope.builtin').help_tags()<CR>
 
 " VimWiki
-
-let g:vimwiki_list = [{'path': '~/projects/vimwiki/', 'path_html': '~/projects/vimwiki/html/'}]
+let g:vimwiki_list = [{'path': '~/projects/vimwiki/'}]
 
 " Markdown bindings and settings
-
 function MarkdownHeaderLevel(header_level)
   if a:header_level ==# '1'
     normal! yypVr=
@@ -150,7 +144,6 @@ nnoremap <Leader>h5 :call MarkdownHeaderLevel('5')<CR>
 nnoremap <Leader>h6 :call MarkdownHeaderLevel('6')<CR>
 
 " LaTeX bindings and settings
-
 let g:tex_flavor="latex"
 
 nnoremap <Leader>f= /<++><CR>
