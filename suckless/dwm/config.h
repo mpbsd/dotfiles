@@ -64,10 +64,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *surfcmd[]  = { "surf", "https://archlinux.org", NULL };
+static const char *browser[]  = { "firefox", "https://archlinux.org", NULL };
 static const char *mailcmd[]  = { "thunderbird", NULL };
-static const char *newscmd[]  = { "st", "-e", "newsboat", NULL };
-static const char *filecmd[]  = { "st", "-e", "ranger", NULL };
+static const char *lockcmd[]  = { "slock", NULL };
 
 static Key keys[] = {
   /* modifier                     key        function        argument */
@@ -120,10 +119,9 @@ static Key keys[] = {
   TAGKEYS(                        XK_8,                      7)
   TAGKEYS(                        XK_9,                      8)
   { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-  { Mod4Mask,                     XK_b,      spawn,          {.v = surfcmd } },
+  { Mod4Mask,                     XK_b,      spawn,          {.v = browser } },
   { Mod4Mask,                     XK_m,      spawn,          {.v = mailcmd } },
-  { Mod4Mask,                     XK_n,      spawn,          {.v = newscmd } },
-  { Mod4Mask,                     XK_r,      spawn,          {.v = filecmd } },
+  { Mod4Mask,                     XK_l,      spawn,          {.v = lockcmd } },
 };
 
 /* button definitions */
