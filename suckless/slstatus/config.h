@@ -67,8 +67,10 @@ static const struct arg args[] = {
 	/* function            format          argument */
   { keyboard_indicators, "[K] %s ",      "(c?n?)"        },
   { keymap,              "%s | ",        NULL            },
-  { wifi_essid,          "[W] %s ",      "wlp2s0"        },
-  { wifi_perc,           "%s%% | ",      "wlp2s0"        },
+  { wifi_essid,          "[W] %s ",      "wlp0s20f3"     },
+  { wifi_perc,           "%s%% | ",      "wlp0s20f3"     },
+  { battery_state,       "[B] %s ",      "BAT0"          },
+  { battery_perc,        "%s%% | ",      "BAT0"          },
   { ram_perc,            "[M] %s%% ",    NULL            },
   { swap_perc,           "[S] %s%% | ",  NULL            },
   { disk_perc,           "[R] %s%% ",    "/"             },
