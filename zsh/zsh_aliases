@@ -4,7 +4,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-# just think twice man ;)
+# think twice man ;)
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
@@ -57,3 +57,7 @@ alias -s txt='vim'
 # python virtual environments
 alias ae='. venv/bin/activate'
 alias de='deactivate'
+
+# ledger
+alias lbal="sh ~/bin/ledger.sh"
+alias wall="sh ~/bin/wallpaper.sh"
