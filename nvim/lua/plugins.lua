@@ -49,6 +49,7 @@ vim.g.UltiSnipsJumpBackwardTrigger = '<C-k>'
 vim.g.UltiSnipsEditSplit           = 'horizontal'
 
 vim.g.vimwiki_list = {{ path = '~/projects/vimwiki' }}
+
 -- telescope
 kmap('n', '<Leader>ff', "<Cmd>lua require('telescope.builtin').find_files()<CR>", opts)
 kmap('n', '<Leader>fg', "<Cmd>lua require('telescope.builtin').live_grep()<CR>", opts)
