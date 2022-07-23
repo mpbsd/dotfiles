@@ -41,18 +41,23 @@
 -- 'wildmenu'       is enabled
 -- 'wildoptions'    defaults to "pum,tagfile"
 
+vim.g.mapleader         = ' '
 vim.g.python3_host_prog = '/usr/bin/python'
+vim.g.tex_flavor        = 'latex'
 
-local opts       = {
-  cursorcolumn   = true,
-  cursorline     = true,
-  smartcase      = true,
-  hlsearch       = false,
+local opts = {
   number         = true,
   relativenumber = true,
-  softtabstop    = 2,
+  cursorcolumn   = true,
+  cursorline     = true,
+  ignorecase     = true,
+  smartcase      = true,
+  hlsearch       = false,
+  shiftwidth     = 2,
   tabstop        = 2,
   expandtab      = true,
+  splitbelow     = true,
+  splitright     = true,
   termguicolors  = true,
 }
 
