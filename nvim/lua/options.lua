@@ -50,6 +50,8 @@ local opts = {
   relativenumber = true,
   cursorcolumn   = true,
   cursorline     = true,
+  textwidth      = 80,
+  colorcolumn    = '81',
   ignorecase     = true,
   smartcase      = true,
   hlsearch       = false,
@@ -58,6 +60,7 @@ local opts = {
   expandtab      = true,
   splitbelow     = true,
   splitright     = true,
+  spelllang      = 'en,pt',
   termguicolors  = true,
 }
 

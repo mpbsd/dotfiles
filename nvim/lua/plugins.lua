@@ -12,7 +12,7 @@ Plug 'junegunn/goyo.vim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
 Plug 'sirver/ultisnips'
 
