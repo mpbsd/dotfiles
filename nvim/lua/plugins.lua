@@ -38,7 +38,7 @@ vim.call('plug#end')
 
 -- plugin's settings
 
-vim.cmd[[colorscheme dracula]]
+vim.cmd [[colorscheme dracula]]
 
 vim.g.airline_symbols_ascii = 1
 
