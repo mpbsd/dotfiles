@@ -213,7 +213,6 @@ kmap('i', '<Leader>dat', '\\date{\\today}', opts)
 
 kmap('i', '<Leader>leq', '\\label{eq:<++>}\n<++><Esc>#ca<', opts)
 
-kmap('i', '<Leader>equ', '\\begin{equation}\n<++>\n\\end{equation}\n<++><Esc>#S', opts)
 kmap('i', '<Leader>cor', '\\begin{corollary}\n<++>\n\\end{corollary}\n<++><Esc>#S', opts)
 kmap('i', '<Leader>def', '\\begin{definition}\n<++>\n\\end{definition}\n<++><Esc>#S', opts)
 kmap('i', '<Leader>lmm', '\\begin{lemma}\n<++>\n\\end{lemma}\n<++><Esc>#S', opts)
