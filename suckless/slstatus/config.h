@@ -67,10 +67,10 @@ static const struct arg args[] = {
 	/* function            format          argument */
   { keyboard_indicators, "[K] %s ",      "(c?n?)"                                                                   },
   { keymap,              "%s | ",        NULL                                                                       },
-  { wifi_essid,          "[W] %s ",      "wlp0s20f3"                                                                },
-  { wifi_perc,           "%s%% | ",      "wlp0s20f3"                                                                },
-  { battery_state,       "[B] %s ",      "BAT0"                                                                     },
-  { battery_perc,        "%s%% | ",      "BAT0"                                                                     },
+  { wifi_essid,          "[W] %s ",      "wlp2s0"                                                                },
+  { wifi_perc,           "%s%% | ",      "wlp2s0"                                                                },
+  /* { battery_state,       "[B] %s ",      "BAT0"                                                                     }, */
+  /* { battery_perc,        "%s%% | ",      "BAT0"                                                                     }, */
   { run_command,         "[V] %s | ",    "amixer sget Master | tail -1 | awk '{print $5 }' | sed 's@\\(\\[\\|\\]\\)@@g'" },
   { ram_perc,            "[M] %s%% ",    NULL                                                                       },
   { swap_perc,           "[S] %s%% | ",  NULL                                                                       },

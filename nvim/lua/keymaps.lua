@@ -2,8 +2,9 @@ local kmap = vim.keymap.set
 local opts = { noremap = true }
 
 kmap('i', 'jj', '<Esc>', opts)
-
 kmap('n', '<Leader>;', ':', opts)
+
+kmap('i', '<C-t>', '<Esc>mmb~`ma', opts)
 
 -- edit/source neovim config files
 kmap('n', '<Leader>erc', ':edit $MYVIMRC<CR>', opts)
@@ -215,6 +216,7 @@ kmap('i', '<Leader>leq', '\\label{eq:<++>}\n<++><Esc>#ca<', opts)
 
 kmap('i', '<Leader>cor', '\\begin{corollary}\n<++>\n\\end{corollary}\n<++><Esc>#S', opts)
 kmap('i', '<Leader>def', '\\begin{definition}\n<++>\n\\end{definition}\n<++><Esc>#S', opts)
+kmap('i', '<Leader>exm', '\\begin{example}\n<++>\n\\end{example}\n<++><Esc>#S', opts)
 kmap('i', '<Leader>lmm', '\\begin{lemma}\n<++>\n\\end{lemma}\n<++><Esc>#S', opts)
 kmap('i', '<Leader>rmk', '\\begin{remark}\n<++>\n\\end{remark}\n<++><Esc>#S', opts)
 kmap('i', '<Leader>thm', '\\begin{theorem}\n<++>\n\\end{theorem}\n<++><Esc>#S', opts)

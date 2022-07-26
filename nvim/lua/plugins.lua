@@ -39,7 +39,7 @@ vim.call('plug#end')
 
 -- plugin's settings
 
-vim.cmd [[colorscheme gruvbox]]
+vim.cmd [[colorscheme tokyonight]]
 
 vim.g.airline_symbols_ascii = 1
 
