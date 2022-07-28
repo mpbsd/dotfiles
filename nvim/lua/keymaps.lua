@@ -1,7 +1,8 @@
 local kmap = vim.keymap.set
-local opts = { noremap = true }
+local opts = {noremap = true}
 
 kmap('i', 'jj', '<Esc>', opts)
+
 kmap('n', '<Leader>;', ':', opts)
 
 kmap('i', '<C-t>', '<Esc>mmb~`ma', opts)
