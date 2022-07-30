@@ -9,5 +9,6 @@ mutt/gmail_1/
 mutt/gmail_2/
 mutt/gmail_3/
 neofetch
+nvim/plugin/packer_compiled.lua
 pulse
 zsh/.zcompdump
