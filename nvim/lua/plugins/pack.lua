@@ -1,6 +1,7 @@
 local packer = require 'packer'
+local util   = require 'packer.util'
 
-return packer.startup(
+local M = {
   function(use)
     use 'wbthomason/packer.nvim'
     use 'godlygeek/tabular'
@@ -26,8 +27,14 @@ return packer.startup(
     use 'tpope/vim-vinegar'
     use 'vimwiki/vimwiki'
     use 'wellle/targets.vim'
-    use 'gruvbox-community/gruvbox'
     use 'folke/tokyonight.nvim'
     use 'mpbsd/vim-ledgendary'
-  end
-)
+  end,
+  config = {
+    display = {
+      open_fn = util.float,
+    }
+  }
+}
+
+return packer.startup(M)

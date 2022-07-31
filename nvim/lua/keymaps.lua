@@ -7,19 +7,16 @@ kmap('i', 'jj', '<Esc>')
 kmap('n', '<Leader>;', ':')
 
 -- edit/source neovim config files
-kmap('n', '<Leader>erc', ':edit ~/.config/nvim/init.lua<CR>')
+kmap('n', '<Leader>erc', ':e ~/.config/nvim/init.lua<CR>')
 
-kmap('n', '<Leader>ecf', ':edit ~/.config/nvim/lua/configs.lua<CR>')
-kmap('n', '<Leader>eop', ':edit ~/.config/nvim/lua/options.lua<CR>')
-kmap('n', '<Leader>ekm', ':edit ~/.config/nvim/lua/keymaps.lua<CR>')
-kmap('n', '<Leader>epg', ':edit ~/.config/nvim/lua/plugins.lua<CR>')
+kmap('n', '<Leader>eop', ':e ~/.config/nvim/lua/options.lua<CR>')
+kmap('n', '<Leader>ekm', ':e ~/.config/nvim/lua/keymaps.lua<CR>')
+kmap('n', '<Leader>epg', ':e ~/.config/nvim/lua/plugins/<CR>')
 
-kmap('n', '<Leader>src', ':source ~/.config/nvim/init.lua<CR>')
+kmap('n', '<Leader>src', ':so ~/.config/nvim/init.lua<CR>')
 
-kmap('n', '<Leader>scf', ':source ~/.config/nvim/lua/configs.lua<CR>')
-kmap('n', '<Leader>sop', ':source ~/.config/nvim/lua/options.lua<CR>')
-kmap('n', '<Leader>skm', ':source ~/.config/nvim/lua/keymaps.lua<CR>')
-kmap('n', '<Leader>spg', ':source ~/.config/nvim/lua/plugins.lua<CR>')
+kmap('n', '<Leader>sop', ':so ~/.config/nvim/lua/options.lua<CR>')
+kmap('n', '<Leader>skm', ':so ~/.config/nvim/lua/keymaps.lua<CR>')
 
 -- file commands
 kmap('n', '<Leader>fw', ':w<CR>')
