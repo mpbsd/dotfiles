@@ -1,0 +1,11 @@
+allow_images=false
+insensitive=true
+mode=drun
+no_actions=true
+term=foot
+
+key_up=Control_L-p
+key_down=Control_L-n
+
+width=900
+height=500

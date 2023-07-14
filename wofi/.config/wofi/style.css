@@ -1,0 +1,23 @@
+* {
+  margin: 0.00em;
+  border: 0.00em;
+  border-radius: 0.00em;
+}
+
+#window {
+  font-family: Monospace;
+  font-size: 1.00em;
+  background-color: rgba(0,0,0,0);
+}
+
+#input {
+  background-color: rgba(10,10,10,0.2);
+}
+
+#entry:nth-child(even) {
+  background-color: rgba(99,99,99,0.2);
+}
+
+#entry:selected {
+  background-color: rgba(10,10,10,0.1);
+}
