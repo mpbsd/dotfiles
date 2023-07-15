@@ -114,6 +114,7 @@ iabbrev mensuraveis    mensuráveis
 iabbrev mensuravel     mensurável
 iabbrev metodo         método
 iabbrev metrico        métrico
+iabbrev metrizavel     metrizável
 iabbrev minimos        mínimos
 iabbrev modulo         módulo
 iabbrev monico         mônico
@@ -121,6 +122,7 @@ iabbrev monotonas      monótonas
 iabbrev multiplicacao  multiplicação
 iabbrev multiplicacoes multiplicações
 iabbrev multiplo       múltiplo
+iabbrev métrico        métrico
 iabbrev nao            não
 iabbrev necessario     necessário
 iabbrev nucleo         núcleo
