@@ -70,7 +70,7 @@ output * bg #000000 solid_color
 input "type:keyboard" {
   xkb_layout us,br
   xkb_variant ,abnt2
-  xkb_options compose:lwin,ctrl:nocaps,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
+  xkb_options altwin:ctrl_win,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
 }
 
 ### Key bindings

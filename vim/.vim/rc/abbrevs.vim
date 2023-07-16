@@ -19,6 +19,7 @@ iabbrev arbitrario     arbitrário
 iabbrev argumentacao   argumentação
 iabbrev aritmetica     aritmética
 iabbrev atraves        através
+iabbrev avaliacao      avaliação
 iabbrev basico         básico
 iabbrev bibliografica  bibliográfica
 iabbrev bijecao        bijeção
@@ -190,4 +191,3 @@ iabbrev unioes         uniões
 iabbrev valida         válida
 iabbrev velorio        velório
 iabbrev voce           você
-iabbrev yamabe         Yamabe

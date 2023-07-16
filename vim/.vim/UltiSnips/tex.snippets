@@ -258,6 +258,13 @@ env_v = environment[env_t]
 $0
 endsnippet
 
+snippet 'beg;([^;]+)?;' "Other environments" rA
+\begin{${1:`!p snip.rv = snip.v.tex if match.group(1) is None else match.group(1)`}}
+  $2
+\end{$1}
+$0
+endsnippet
+
 snippet 'func;' "Math Function" rA
 $1{\left($2\right)}=$0
 endsnippet
@@ -306,17 +313,17 @@ snippet '^custom cmds$' "My set of default cmds" rA
 %----------------------------------------------------------------------------------%
 % Norm and, more generally, p-norm                                                 %
 %----------------------------------------------------------------------------------%
-% \norm< space_dimension >( positive_real_number )[ vector ]                       %
+% \norm< space_dimension >[ positive_real_number ]( vector )                       %
 %----------------------------------------------------------------------------------%
 % Examples:                                                                        %
 %  - \norm          --> \lvert{\cdot}\rvert                                        %
 %  - \norm<n>       --> \lvert{\cdot}\rvert^{n}                                    %
-%  - \norm(p)       --> \lvert{\cdot}\rvert_{p}                                    %
-%  - \norm<n>(p)    --> \lvert{\cdot}\rvert_{p}^{n}                                %
-%  - \norm[x]       --> \lvert{x}\rvert                                            %
-%  - \norm<n>[x]    --> \lvert{x}\rvert^{n}                                        %
-%  - \norm(p)[x]    --> \lvert{x}\rvert_{p}                                        %
-%  - \norm<n>(p)[x] --> \lvert{x}\rvert_{p}^{n}                                    %
+%  - \norm[p]       --> \lvert{\cdot}\rvert_{p}                                    %
+%  - \norm<n>[p]    --> \lvert{\cdot}\rvert_{p}^{n}                                %
+%  - \norm(x)       --> \lvert{x}\rvert                                            %
+%  - \norm<n>(x)    --> \lvert{x}\rvert^{n}                                        %
+%  - \norm[p](x)    --> \lvert{x}\rvert_{p}                                        %
+%  - \norm<n>[p](x) --> \lvert{x}\rvert_{p}^{n}                                    %
 %----------------------------------------------------------------------------------%
 \NewDocumentCommand{\norm}{d <> d [] d ()}{                                        %
 	\IfValueTF{#1}{                                                                  %
@@ -386,14 +393,14 @@ snippet '^custom cmds$' "My set of default cmds" rA
 % Examples:                                                                        %
 % - \hess{f}          --> \textup{Hess}\left(f\right)                              %
 % - \hess{f}<g>       --> \textup{Hess}_{g}\left(f\right)                          %
-% - \hess{f}(X)       --> \textup{Hess}\left(f\right)\left(X,\cdot\right)          %
-% - \hess{f}<g>(X)    --> \textup{Hess}_{g}\left(f\right)\left(X,\cdot\right)      %
-% - \hess{f}[Y]       --> \textup{Hess}\left(f\right)\left(\cdot,Y\right)          %
-% - \hess{f}<g>[Y]    --> \textup{Hess}_{g}\left(f\right)\left(\cdot,Y\right)      %
-% - \hess{f}(X)[Y]    --> \textup{Hess}\left(f\right)\left(X,Y\right)              %
-% - \hess{f}<g>(X)[Y] --> \textup{Hess}_{g}\left(f\right)\left(X,Y\right)          %
+% - \hess{f}[X]       --> \textup{Hess}\left(f\right)\left(X,\cdot\right)          %
+% - \hess{f}<g>[X]    --> \textup{Hess}_{g}\left(f\right)\left(X,\cdot\right)      %
+% - \hess{f}(Y)       --> \textup{Hess}\left(f\right)\left(\cdot,Y\right)          %
+% - \hess{f}<g>(Y)    --> \textup{Hess}_{g}\left(f\right)\left(\cdot,Y\right)      %
+% - \hess{f}[X](Y)    --> \textup{Hess}\left(f\right)\left(X,Y\right)              %
+% - \hess{f}<g>[X](Y) --> \textup{Hess}_{g}\left(f\right)\left(X,Y\right)          %
 %----------------------------------------------------------------------------------%
-\NewDocumentCommand{\hess}{m d <> d () d []}{                                      %
+\NewDocumentCommand{\hess}{m d <> d [] d ()}{                                      %
 	\IfValueTF{#2}{                                                                  %
 		\IfValueTF{#3}{                                                                %
 			\IfValueTF{#4}{                                                              %
@@ -428,8 +435,8 @@ snippet '^custom cmds$' "My set of default cmds" rA
 % Laplacian                                                                        %
 %----------------------------------------------------------------------------------%
 % Examples:                                                                        %
-%  - \lapl{f}    --> \textup{lapl}f                                                %
-%  - \lapl{f}<g> --> \textup{lapl}\left(f\right)_{g}                               %
+%  - \lapl{f}    --> \Delta{f}                                                     %
+%  - \lapl{f}<g> --> \left(\Delta{f}\right)_{g}                                    %
 %----------------------------------------------------------------------------------%
 \NewDocumentCommand{\laplacian}{m d <>}{                                           %
 	\IfValueTF{#2}{                                                                  %
@@ -443,11 +450,11 @@ snippet '^custom cmds$' "My set of default cmds" rA
 %----------------------------------------------------------------------------------%
 % Examples:                                                                        %
 %  - \covariantDerivative       --> \nabla                                         %
-%  - \covariantDerivative(X)    --> \nabla_{X}                                     %
-%  - \covariantDerivative[Y]    --> \nabla{Y}                                      %
-%  - \covariantDerivative(X)[Y] --> \nabla_{X}Y                                    %
+%  - \covariantDerivative[X]    --> \nabla_{X}                                     %
+%  - \covariantDerivative(Y)    --> \nabla{Y}                                      %
+%  - \covariantDerivative[X](Y) --> \nabla_{X}Y                                    %
 %----------------------------------------------------------------------------------%
-\NewDocumentCommand{\covariantDerivative}{d () d []}{                              %
+\NewDocumentCommand{\covariantDerivative}{d [] d ()}{                              %
 	\IfValueTF{#1}{                                                                  %
 		\IfValueTF{#2}{                                                                %
 			\nabla_{#1}{#2}                                                              %
@@ -463,7 +470,7 @@ snippet '^custom cmds$' "My set of default cmds" rA
 	}                                                                                %
 }                                                                                  %
 %----------------------------------------------------------------------------------%
-% \lieDerivative( vector_field_1 )[ vector_field_2 ]                               %
+% \lieDerivative[ vector_field_1 ]( vector_field_2 )                               %
 %----------------------------------------------------------------------------------%
 \newcommand{\lieDerivative}[2]{\mathcal{L}_{#2}{#1}}                               %
 %----------------------------------------------------------------------------------%

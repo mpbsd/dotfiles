@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/bash
 
 
 declare -a TEXT_EDITORS=(
@@ -106,6 +106,7 @@ do
     then
       echo 'Proceeding with package installation.'
       sudo apt install -y $PKG
+      echo 'Done.'
     fi
   fi
 done
