@@ -19,6 +19,8 @@ declare -a COMPILED_LANGUAGES=(
   python3-venv
   nodejs
   npm
+  sqlite3
+  sqlite3-doc
 )
 
 
