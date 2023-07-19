@@ -87,6 +87,8 @@ declare -a BUILD_REQUIREMENTS_NEOVIM=(
 
 declare -a TILINGWM=(
   sway
+  swayidle
+  swaylock
   wev
   wofi
   wofi-pass
@@ -98,7 +100,7 @@ PKGS=("${TEXT_EDITORS[@]}" "${COMPILED_LANGUAGES[@]}" "${UTILS[@]}" "${LATEX[@]}
 
 for PKG in ${PKGS[@]}
 do
-  if [ -n "$(dpkg -l | grep -F $PKG)" ]
+  if [ -n "$(dpkg -l | grep -E "\<${PKG}")" ]
   then
     echo "Found: $PKG"
   else
