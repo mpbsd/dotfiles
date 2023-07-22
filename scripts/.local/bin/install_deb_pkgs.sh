@@ -3,6 +3,7 @@
 
 declare -a TEXT_EDITORS=(
   vim-nox
+  vim-gtk3
   ed
   nvi
 )
