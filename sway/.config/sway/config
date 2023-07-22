@@ -41,10 +41,10 @@ output * bg #000000 solid_color
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -128,7 +128,6 @@ input "type:keyboard" {
 # Workspaces:
 #
     # Switch to workspace
-    bindsym $mod+0 workspace number 0
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
     bindsym $mod+3 workspace number 3
@@ -140,7 +139,6 @@ input "type:keyboard" {
     bindsym $mod+9 workspace number 9
 
     # Move focused container to workspace
-    bindsym $mod+Shift+0 move container to workspace number 0
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
     bindsym $mod+Shift+3 move container to workspace number 3
@@ -151,7 +149,7 @@ input "type:keyboard" {
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     # Note: workspaces can have any name you want, not just numbers.
-    # We just use 0-9 as the default.
+    # We just use 1-9 as the default.
 #
 # Layout stuff:
 #
@@ -219,21 +217,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    font     pango:Monospace 12
-    gaps     4
-    height   24
-    mode     dock
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%a, %b %d %R'; do sleep 1; done
-
-    colors {
-        statusline #7E7D7B
-        background #151514
-        inactive_workspace #15151400 #15151400 #7E7D7B
-    }
+    swaybar_command waybar
 }
 
 include /etc/sway/config.d/*
@@ -247,8 +231,8 @@ workspace_layout tabbed
 #
 # disabling titlebars on new windows by default:
 #
-default_border          pixel 2
-default_floating_border pixel 2
+default_border          pixel 1
+default_floating_border pixel 1
 #
 # gaps between windows:
 #

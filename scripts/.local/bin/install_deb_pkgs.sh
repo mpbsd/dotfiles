@@ -88,6 +88,7 @@ declare -a BUILD_REQUIREMENTS_NEOVIM=(
 
 declare -a TILINGWM=(
   sway
+  waybar
   swayidle
   swaylock
   wev
