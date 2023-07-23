@@ -5,6 +5,9 @@ local G = {
   maplocalleader = ",",
   -- tex flavor
   tex_flavor = "latex",
+  loaded_perl_provider = 0,
+  loaded_ruby_provider = 0,
+  python3_host_prog = "/usr/bin/python3",
 }
 
 for k, v in pairs(G) do
