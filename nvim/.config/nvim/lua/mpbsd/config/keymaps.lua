@@ -12,8 +12,8 @@ nmap("<leader>;", ":")
 nmap("rw", ":Ex<cr>")
 
 nmap("<leader>erc", ":e ~/.config/nvim/init.lua<cr>")
-
 nmap("<leader>eop", ":e ~/.config/nvim/lua/mpbsd/config/options.lua<cr>")
 nmap("<leader>ekm", ":e ~/.config/nvim/lua/mpbsd/config/keymaps.lua<cr>")
 nmap("<leader>eau", ":e ~/.config/nvim/lua/mpbsd/config/autocmd.lua<cr>")
 nmap("<leader>egl", ":e ~/.config/nvim/lua/mpbsd/config/globals.lua<cr>")
+nmap("<leader>epg", ":e ~/.config/nvim/lua/mpbsd/plugins<cr>")
