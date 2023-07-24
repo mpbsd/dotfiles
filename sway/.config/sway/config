@@ -71,7 +71,7 @@ exec swayidle -w \
 input "type:keyboard" {
   xkb_layout us,br
   xkb_variant ,abnt2
-  xkb_options altwin:ctrl_win,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
+  xkb_options grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
 }
 
 ### Key bindings
@@ -225,44 +225,35 @@ include /etc/sway/config.d/*
 
 ### Appearance
 #
-# Default layout
+# border width
 #
-workspace_layout tabbed
-
-#
-# disabling titlebars on new windows by default:
-#
-default_border none
-default_floating_border none
-
+default_border pixel 1
+default_floating_border pixel 1
 #
 # gaps between windows:
 #
 gaps inner 4
 gaps outer 4
-
 ### Custom Keybindings
 #
 # web browsing
 #
-bindsym $mod+c exec chromium
-
+bindsym $win+c exec chromium
 #
 # mail and news
 #
-bindsym $mod+m exec $term -e mutt
-bindsym $mod+n exec $term -e newsboat
-
+bindsym $win+m exec $term -e mutt
+bindsym $win+n exec $term -e newsboat
 #
-# terminal client running tmux server
+# Tmux session
 #
-bindsym $mod+t exec $term -e tmux
+bindsym $win+t exec $term -e tmux
 #
 # wofi-pass
 #
-bindsym $mod+p exec wofi-pass -c
-### Autostart applications
+bindsym $win+p exec wofi-pass -c
+### Autostarting applications
 # 
-# Terminal client
+# Terminal
 #
 exec $term -e tmux
