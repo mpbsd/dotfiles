@@ -30,11 +30,14 @@ declare -a UTILS=(
   abook
   aptitude
   bat
+  bsdgames
+  cowsay
   curl
   deborphan
   debsums
   fd-find
   fonts-spleen
+  fortune
   fzf
   gtypist
   htop
