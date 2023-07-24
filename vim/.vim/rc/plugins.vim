@@ -29,7 +29,7 @@ if has("gui_running")
   set guioptions-=m
   set guioptions-=r
 else
-  colorscheme solarized
+  colorscheme habamax
 endif 
 
 " UltiSnips
