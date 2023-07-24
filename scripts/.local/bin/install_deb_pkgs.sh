@@ -38,6 +38,7 @@ declare -a UTILS=(
   gtypist
   htop
   hub
+  irssi
   ledger
   lf
   mutt
@@ -55,9 +56,9 @@ declare -a UTILS=(
   w3m
   zathura
   zsh
+  zsh-autosuggestions
   zsh-doc
   zsh-syntax-highlighting
-  zsh-autosuggestions
 )
 
 
