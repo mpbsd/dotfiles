@@ -8,7 +8,6 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod1
-set $win Mod4
 
 # Home row direction keys, like vim
 set $left  h
@@ -238,20 +237,20 @@ gaps outer 4
 #
 # web browsing
 #
-bindsym $win+c exec chromium
+bindsym $mod+c exec chromium
 #
 # mail and news
 #
-bindsym $win+m exec $term -e mutt
-bindsym $win+n exec $term -e newsboat
+bindsym $mod+m exec $term -e mutt
+bindsym $mod+n exec $term -e newsboat
 #
 # Tmux session
 #
-bindsym $win+t exec $term -e tmux
+bindsym $mod+t exec $term -e tmux
 #
 # wofi-pass
 #
-bindsym $win+p exec wofi-pass -c
+bindsym $mod+p exec wofi-pass -c
 ### Autostarting applications
 # 
 # Terminal
