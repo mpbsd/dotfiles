@@ -28,6 +28,7 @@ declare -a COMPILED_LANGUAGES=(
 declare -a UTILS=(
   9base
   abook
+  aptitude
   bat
   curl
   deborphan
