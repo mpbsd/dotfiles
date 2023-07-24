@@ -8,6 +8,7 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod1
+set $win Mod4
 
 # Home row direction keys, like vim
 set $left  h
@@ -28,7 +29,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg #000000 solid_color
+output * bg ~/.dotfiles/wallpapers/dark_sky.jpg fill
 
 #
 # Example configuration:
@@ -231,13 +232,14 @@ workspace_layout tabbed
 #
 # disabling titlebars on new windows by default:
 #
-default_border          pixel 1
-default_floating_border pixel 1
+default_border none
+default_floating_border none
+
 #
 # gaps between windows:
 #
-gaps inner 2
-gaps outer 2
+gaps inner 4
+gaps outer 4
 
 ### Custom Keybindings
 #
