@@ -45,9 +45,11 @@ declare -a UTILS=(
   irssi
   ledger
   lf
+  lowdown
   mutt
   neofetch
   newsboat
+  pandoc
   pass
   pass-otp
   plocate
