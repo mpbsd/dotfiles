@@ -10,23 +10,7 @@ return {
   config = function()
     -- Setup language servers.
     local lspconfig = require("lspconfig")
-    lspconfig.pyright.setup {
-      cmd = { "pyright-langserver", "--stdio" },
-      filetypes = { "python" },
-      -- root_dir = "see source file",
-      settings = {
-        ["pyright"] = {
-          python = {
-            analysis = {
-              autoSearchPaths = true,
-              diagnosticMode = "workspace",
-              useLibraryCodeForTypes = true
-            }
-          }
-        }
-      },
-      single_file_support = true,
-    }
+    lspconfig.pyright.setup {}
     lspconfig.rust_analyzer.setup {
       -- Server-specific settings. See `:help lspconfig-setup`
       settings = {
@@ -35,10 +19,10 @@ return {
     }
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-    vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-    vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, { desc = "Open diagnostic list" })
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+    vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
+    vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
     -- Use LspAttach autocommand to only map the following keys
     -- after the language server attaches to the current buffer
     vim.api.nvim_create_autocmd("LspAttach", {
