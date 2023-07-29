@@ -17,3 +17,5 @@ nmap("<leader>ekm", ":e ~/.config/nvim/lua/mpbsd/config/keymaps.lua<cr>")
 nmap("<leader>eau", ":e ~/.config/nvim/lua/mpbsd/config/autocmd.lua<cr>")
 nmap("<leader>egl", ":e ~/.config/nvim/lua/mpbsd/config/globals.lua<cr>")
 nmap("<leader>epg", ":e ~/.config/nvim/lua/mpbsd/plugins<cr>")
+
+-- vim: ts=2 sw=2 et

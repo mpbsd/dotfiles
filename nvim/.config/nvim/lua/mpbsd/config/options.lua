@@ -34,3 +34,5 @@ local O = {
 for k, v in pairs(O) do
   vim.o[k] = v
 end
+
+-- vim: ts=2 sw=2 et
