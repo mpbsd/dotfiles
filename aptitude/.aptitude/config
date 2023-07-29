@@ -1,0 +1,6 @@
+aptitude "";
+aptitude::Keep-Unused-Pattern "";
+aptitude::Delete-Unused-Pattern "";
+aptitude::UI "";
+aptitude::UI::Description-Visible-By-Default "false";
+aptitude::UI::Flat-View-As-First-View "true";
