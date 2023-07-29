@@ -9,7 +9,7 @@ declare -a TEXT_EDITORS=(
 )
 
 
-declare -a COMPILED_LANGUAGES=(
+declare -a DEVELOPMENT=(
   glibc-doc
   build-essential
   gdb
@@ -93,7 +93,7 @@ declare -a BUILD_REQUIREMENTS_NEOVIM=(
 )
 
 
-declare -a TILINGWM=(
+declare -a SWAYWM=(
   sway
   waybar
   swayidle
@@ -104,7 +104,15 @@ declare -a TILINGWM=(
 )
 
 
-PKGS=("${TEXT_EDITORS[@]}" "${COMPILED_LANGUAGES[@]}" "${UTILS[@]}" "${LATEX[@]}" "${GUI[@]}" "${BUILD_REQUIREMENTS_NEOVIM[@]}" "${TILINGWM[@]}")
+PKGS=(
+  "${TEXT_EDITORS[@]}"
+  "${DEVELOPMENT[@]}"
+  "${UTILS[@]}"
+  "${LATEX[@]}"
+  "${GUI[@]}"
+  "${BUILD_REQUIREMENTS_NEOVIM[@]}"
+  "${SWAYWM[@]}"
+)
 
 
 for PKG in ${PKGS[@]}

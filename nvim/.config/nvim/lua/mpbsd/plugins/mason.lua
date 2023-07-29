@@ -97,6 +97,7 @@ return {
     local mason_lspconfig = require("mason-lspconfig")
     local servers = {
       -- LSP servers
+      bashls = {},
       clangd = {},
       pyright = {},
       lua_ls = {
@@ -122,7 +123,7 @@ return {
       function(server_name)
         require("lspconfig")[server_name].setup({
           capabilities = require("cmp_nvim_lsp").default_capabilities(client_capabilities),
-          -- on_attach = on_attach,
+          on_attach = ON_ATTACH,
           settings = servers[server_name],
           filetypes = (servers[server_name] or {}).filetypes,
         })
