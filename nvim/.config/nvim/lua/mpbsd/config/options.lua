@@ -16,12 +16,14 @@ local O = {
   relativenumber = true,
   cursorcolumn = true,
   cursorline = true,
+  cursorlineopt = "number",
   hlsearch = false,
   ignorecase = true,
   smartcase = true,
   lazyredraw = true,
   spelllang = "en_us,pt_br",
   spellsuggest = "fast,20",
+  showmode = false,
   splitbelow = true,
   splitright = true,
   tabstop = 2,
@@ -29,6 +31,7 @@ local O = {
   expandtab = true,
   termguicolors = true,
   undofile = true,
+  wrap = false,
 }
 
 for k, v in pairs(O) do
