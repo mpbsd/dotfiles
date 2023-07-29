@@ -95,8 +95,10 @@ return {
       },
     })
     local mason_lspconfig = require("mason-lspconfig")
-    -- LSP servers, DAP servers, linters and formatters
     local servers = {
+      -- LSP servers
+      clangd = {},
+      pyright = {},
       lua_ls = {
         Lua = {
           diagnostics = {
@@ -110,15 +112,16 @@ return {
           },
         },
       },
+      texlab = {},
     }
     mason_lspconfig.setup({
       ensure_installed = vim.tbl_keys(servers)
     })
-    -- local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+    local client_capabilities = vim.lsp.protocol.make_client_capabilities()
     mason_lspconfig.setup_handlers({
       function(server_name)
         require("lspconfig")[server_name].setup({
-          -- capabilities = require("vim_nvim_lsp").default_capabilities(client_capabilities),
+          capabilities = require("cmp_nvim_lsp").default_capabilities(client_capabilities),
           -- on_attach = on_attach,
           settings = servers[server_name],
           filetypes = (servers[server_name] or {}).filetypes,
