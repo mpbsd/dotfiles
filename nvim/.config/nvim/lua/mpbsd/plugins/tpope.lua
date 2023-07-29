@@ -8,3 +8,5 @@ return {
   "tpope/vim-unimpaired",
   "tpope/vim-vinegar",
 }
+
+-- vim: ts=2 sw=2 et

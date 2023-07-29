@@ -39,3 +39,5 @@ return {
     vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
   end
 }
+
+-- vim: ts=2 sw=2 et
