@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.dotfiles/wallpapers/dracula2nd/illustrations/trees-and-mountains/dracula-mnt-6272a4.png fill
+output * bg ~/.dotfiles/wallpapers/dracula2nd/leaves/dracula-leaves-6272a4-dark.png fill
 
 #
 # Example configuration:
