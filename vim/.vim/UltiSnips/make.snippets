@@ -33,22 +33,19 @@ clean:
 .PHONY: draft final clean
 endsnippet
 
-snippet python "makefile snippet for python projects"
+snippet python "A bare bones makefile for python projects"
 build:
-	python -m pkgs.core
-
-black:
-	black -l 79 pkgs/core.py
+	python3 -m pkgs.core
 
 clean:
 	find . -type d -name __pycache__ | xargs rm -rf
 
 ready:
-	python -m venv venv; \
+	python3 -m venv venv; \
 	. venv/bin/activate; \
 	pip install -U pip; \
 	pip install -r requirements.txt; \
 	deactivate
 
-.PHONY: build black clean ready
+.PHONY: build clean
 endsnippet

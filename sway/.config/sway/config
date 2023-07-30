@@ -16,7 +16,7 @@ set $up    k
 set $right l
 
 # Your preferred terminal emulator
-set $term foot
+set $term alacritty
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg #000000 solid_color
+output * bg ~/.dotfiles/wallpapers/dracula2nd/leaves/dracula-leaves-6272a4-dark.png fill
 
 #
 # Example configuration:
@@ -70,7 +70,8 @@ exec swayidle -w \
 input "type:keyboard" {
   xkb_layout us,br
   xkb_variant ,abnt2
-  xkb_options altwin:ctrl_win,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
+  # xkb_options altwin:alt_win,compose:caps,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
+  xkb_options altwin:alt_win,ctrl:nocaps,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
 }
 
 ### Key bindings
@@ -224,43 +225,35 @@ include /etc/sway/config.d/*
 
 ### Appearance
 #
-# Default layout
+# border width
 #
-workspace_layout tabbed
-
-#
-# disabling titlebars on new windows by default:
-#
-default_border          pixel 1
+default_border pixel 1
 default_floating_border pixel 1
 #
 # gaps between windows:
 #
-gaps inner 2
-gaps outer 2
-
+gaps inner 4
+gaps outer 4
 ### Custom Keybindings
 #
 # web browsing
 #
-bindsym $mod+c exec chromium
-
+bindsym $mod+c exec chromium https://ufg.br/
 #
 # mail and news
 #
 bindsym $mod+m exec $term -e mutt
 bindsym $mod+n exec $term -e newsboat
-
 #
-# terminal client running tmux server
+# Tmux session
 #
 bindsym $mod+t exec $term -e tmux
 #
 # wofi-pass
 #
 bindsym $mod+p exec wofi-pass -c
-### Autostart applications
+### Autostarting applications
 # 
-# Terminal client
+# Terminal
 #
 exec $term -e tmux

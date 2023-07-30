@@ -9,7 +9,7 @@ declare -a TEXT_EDITORS=(
 )
 
 
-declare -a COMPILED_LANGUAGES=(
+declare -a DEVELOPMENT=(
   glibc-doc
   build-essential
   gdb
@@ -28,21 +28,30 @@ declare -a COMPILED_LANGUAGES=(
 declare -a UTILS=(
   9base
   abook
+  alacritty
+  aptitude
   bat
+  bsdgames
+  cowsay
   curl
   deborphan
   debsums
   fd-find
+  flatpak
   fonts-spleen
+  fortune
   fzf
   gtypist
   htop
   hub
+  irssi
   ledger
   lf
+  lowdown
   mutt
   neofetch
   newsboat
+  pandoc
   pass
   pass-otp
   plocate
@@ -55,9 +64,9 @@ declare -a UTILS=(
   w3m
   zathura
   zsh
+  zsh-autosuggestions
   zsh-doc
   zsh-syntax-highlighting
-  zsh-autosuggestions
 )
 
 
@@ -86,7 +95,7 @@ declare -a BUILD_REQUIREMENTS_NEOVIM=(
 )
 
 
-declare -a TILINGWM=(
+declare -a SWAYWM=(
   sway
   waybar
   swayidle
@@ -97,7 +106,15 @@ declare -a TILINGWM=(
 )
 
 
-PKGS=("${TEXT_EDITORS[@]}" "${COMPILED_LANGUAGES[@]}" "${UTILS[@]}" "${LATEX[@]}" "${GUI[@]}" "${BUILD_REQUIREMENTS_NEOVIM[@]}" "${TILINGWM[@]}")
+PKGS=(
+  "${TEXT_EDITORS[@]}"
+  "${DEVELOPMENT[@]}"
+  "${UTILS[@]}"
+  "${LATEX[@]}"
+  "${GUI[@]}"
+  "${BUILD_REQUIREMENTS_NEOVIM[@]}"
+  "${SWAYWM[@]}"
+)
 
 
 for PKG in ${PKGS[@]}
