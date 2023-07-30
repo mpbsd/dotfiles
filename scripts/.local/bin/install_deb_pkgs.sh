@@ -37,6 +37,7 @@ declare -a UTILS=(
   deborphan
   debsums
   fd-find
+  flatpak
   fonts-spleen
   fortune
   fzf

@@ -238,7 +238,7 @@ gaps outer 4
 #
 # web browsing
 #
-bindsym $mod+c exec chromium
+bindsym $mod+c exec chromium https://ufg.br/
 #
 # mail and news
 #
