@@ -28,6 +28,7 @@ declare -a DEVELOPMENT=(
 declare -a UTILS=(
   9base
   abook
+  alacritty
   aptitude
   bat
   bsdgames

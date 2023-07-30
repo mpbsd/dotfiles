@@ -16,7 +16,7 @@ set $up    k
 set $right l
 
 # Your preferred terminal emulator
-set $term foot
+set $term alacritty
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.dotfiles/wallpapers/c-printf-hello-world.png fill
+output * bg ~/.dotfiles/wallpapers/dracula.jpg fill
 
 #
 # Example configuration:
