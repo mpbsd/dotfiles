@@ -1,0 +1,79 @@
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "homebrew/services"
+
+# fun
+brew "cowsay"
+brew "fortune"
+brew "nbsdgames"
+
+brew "python"
+brew "gdb"
+brew "postgresql"
+
+brew "git"
+brew "hub"
+
+brew "libusb"
+brew "go"
+cask "chrysalis"
+
+
+
+brew "neofetch"
+brew "nmap"
+brew "node"
+
+
+brew "gnupg"
+brew "pass"
+brew "pass-otp"
+
+brew "abook"
+brew "fd"
+brew "gnu-typist"
+brew "irssi"
+brew "jq"
+brew "ledger"
+brew "lowdown"
+brew "m-cli"
+brew "mutt"
+brew "newsboat"
+brew "pandoc"
+brew "qpdf"
+brew "ripgrep"
+brew "sc-im"
+brew "starship"
+brew "w3m"
+brew "wget"
+
+# text editors that rock
+brew "ed"
+brew "nvi"
+brew "vim"
+brew "neovim"
+
+brew "fzf"
+brew "tmux"
+brew "lf"
+
+cask "amethyst"
+
+# web browsers
+cask "firefox"
+brew "geckodriver"
+cask "brave-browser"
+
+# better fonts
+cask "font-jetbrains-mono-nerd-font"
+
+# graphics
+cask "gimp"
+cask "inkscape"
+cask "blender"
+
+cask "libreoffice"
+cask "mactex"
+cask "zotero"
+
+cask "spotify"
