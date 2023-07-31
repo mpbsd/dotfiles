@@ -37,7 +37,6 @@ declare -a UTILS=(
   deborphan
   debsums
   fd-find
-  flatpak
   fonts-spleen
   fortune
   fzf
@@ -106,12 +105,6 @@ declare -a SWAYWM=(
 )
 
 
-declare -a FLATPAK=(
-  com.brave.Browser
-  com.spotify.Client
-)
-
-
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
@@ -135,29 +128,8 @@ do
     then
       echo 'Proceeding with package installation.'
       sudo apt install -y $PKG
-      if [ "$PKG" = 'flatpak' ]
-      then
-        sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-      fi
       echo 'Done.'
     fi
-  fi
-done
-
-
-for PKG in ${FLATPAK[@]}
-do
-  if [ -n "$(flatpak list | grep -E "\<${PKG}")" ]
-  then
-    echo "Found: $PKG"
-  else
-    echo "Flatpak package ${PKG} not found. Would you like to install it? (y/N)"
-    read ANSWER
-    if [ "$ANSWER" = 'y' ]
-    then
-      sudo flatpak install $PKG
-    fi
-    echo 'Done.'
   fi
 done
 
