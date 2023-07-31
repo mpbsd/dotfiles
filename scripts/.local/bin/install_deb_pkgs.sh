@@ -37,7 +37,6 @@ declare -a UTILS=(
   deborphan
   debsums
   fd-find
-  flatpak
   fonts-spleen
   fortune
   fzf
@@ -106,6 +105,15 @@ declare -a SWAYWM=(
 )
 
 
+declare -a FLATPAK=(
+  flatpak
+)
+
+
+# brave browser
+# spotify
+
+
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
@@ -114,6 +122,7 @@ PKGS=(
   "${GUI[@]}"
   "${BUILD_REQUIREMENTS_NEOVIM[@]}"
   "${SWAYWM[@]}"
+  "${FLATPAK[@]}"
 )
 
 
@@ -129,6 +138,10 @@ do
     then
       echo 'Proceeding with package installation.'
       sudo apt install -y $PKG
+      if [ "$PKG" = 'flatpak' ]
+      then
+        sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      fi
       echo 'Done.'
     fi
   fi
