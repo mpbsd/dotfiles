@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 24,
+  "height": 32,
   "spacing": 4,
   "modules-left": [
     "wlr/workspaces",
@@ -30,7 +30,7 @@
     "max-length": 128
   },
   "clock": {
-    "format": "{:%a, %b %d %H:%M}",
+    "format": "{:%a, %b %d %R}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "tray": {
