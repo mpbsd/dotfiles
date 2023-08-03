@@ -21,9 +21,25 @@ ON_ATTACH = function()
   -- workspace
   vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { desc = "[W]orkspace [A]dd Folder" })
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "[W]orkspace [R]emove Folder" })
-  vim.keymap.set("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { desc = "[W]orkspace [L]ist Folders" })
+  vim.keymap.set(
+    "n",
+    "<leader>wl",
+    function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end,
+    { desc = "[W]orkspace [L]ist Folders" }
+  )
   vim.keymap.set("n", "<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" })
   vim.keymap.set("n", "<leader>ds", telescope_builtin.lsp_document_symbols, { desc = "[D]ocument [S]ymbols" })
+  -- format
+  vim.keymap.set(
+    "n",
+    "<leader>fc",
+    function()
+      vim.lsp.buf.format({ async = true })
+    end,
+    { desc = "[F]ormat [C]ode" }
+  )
 end
 
 -- Testing

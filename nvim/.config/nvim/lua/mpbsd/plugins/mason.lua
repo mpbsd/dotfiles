@@ -99,7 +99,6 @@ return {
       -- LSP servers
       bashls = {},
       clangd = {},
-      pyright = {},
       lua_ls = {
         Lua = {
           runtime = {
@@ -117,7 +116,12 @@ return {
           },
         },
       },
+      pylsp = {},
       texlab = {},
+      -- error checking
+      -- flake8 = {},
+      -- formatting
+      -- autopep8,
     }
     mason_lspconfig.setup({
       ensure_installed = vim.tbl_keys(servers)
