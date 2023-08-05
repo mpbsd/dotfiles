@@ -3,9 +3,10 @@
 
 if [ -n "$(dpkg -l | grep -F 'flatpak')" ]
 then
-  echo "The 'flatpak' is already installed."
+  echo "The 'flatpak' package is already installed."
 else
-  echo "The 'flatpak' package is not installed. Do you want to install it?"
+  echo "The 'flatpak' package is not installed."
+  echo 'Do you want to install it? (y/N)'
   read ANSWER
   if [ "$ANSWER" = 'y' ]
   then
@@ -16,19 +17,20 @@ else
 fi
 
 
-declare -a FLATPAK_PKGS=(
+declare -a FLATPAK=(
   com.brave.Browser
   com.spotify.Client
 )
 
 
-for PKG in ${FLATPAK_PKGS[@]}
+for PKG in ${FLATPAK[@]}
 do
   if [ -n "$(flatpak list | grep -E "\<${PKG}")" ]
   then
     echo "Found: $PKG"
   else
-    echo "Flatpak package ${PKG} not found. Would you like to install it? (y/N)"
+    echo "Flatpak package ${PKG} not found."
+    echo 'Would you like to install it? (y/N)'
     read ANSWER
     if [ "$ANSWER" = 'y' ]
     then
