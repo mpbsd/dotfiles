@@ -171,6 +171,7 @@ iabbrev satisfaca      satisfaça
 iabbrev secao          seção
 iabbrev sequencia      sequência
 iabbrev serie          série
+iabbrev simetrica      simétrica
 iabbrev sobrejecao     sobrejeção
 iabbrev sobrejecoes    sobrejeções
 iabbrev solucao        solução
@@ -190,4 +191,5 @@ iabbrev unico          único
 iabbrev unioes         uniões
 iabbrev valida         válida
 iabbrev velorio        velório
+iabbrev vizinhanca     vizinhança
 iabbrev voce           você
