@@ -14,10 +14,10 @@
       "sway/window"
     ],
     "modules-right": [
+      "sway/language",
       "network",
       "pulseaudio",
       "clock",
-      "sway/language",
       "tray",
     ],
     // Modules configuration
@@ -35,6 +35,11 @@
             "focused": "",
             "urgent": ""
         }
+    },
+    "clock": {
+      "timezone": "America/Sao_Paulo",
+      "format": "{:%a, %b %d %R}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -63,11 +68,6 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-    "clock": {
-      "timezone": "America/Sao_Paulo",
-      "format": "{:[%a, %b %d %R]}",
-      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
     "sway/language": {
         "format-en": "[en]",
