@@ -30,5 +30,5 @@ window#waybar {
 }
 #clock {
   padding: 0 4px;
-  background: @background;
+  background: @background-darker;
 }
