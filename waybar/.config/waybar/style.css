@@ -3,19 +3,19 @@
   border: none;
   border-radius: 0;
   font-family: JetBrainsMono Nerd Font;
-  font-size: 11pt;
+  font-size: 10pt;
   min-height: 0;
 }
 window#waybar {
   opacity: 0.9;
   background: @background-darker;
   color: @foreground;
-  border-bottom: 2px solid @background;
+  border-bottom: 2px solid @background-darker;
 }
 #workspaces button {
   padding: 0 10px;
-  background: @background;
-  color: @foreground;
+  background: @background-darker;
+  color: @foreground-darker;
 }
 #workspaces button:hover {
   box-shadow: inherit;
