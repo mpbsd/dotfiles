@@ -25,7 +25,7 @@ declare -a FLATPAK=(
 
 for PKG in ${FLATPAK[@]}
 do
-  if [ -n "$(flatpak list | grep -E "\<${PKG}")" ]
+  if [ -n "$(flatpak list | grep -E "\<${PKG}\>")" ]
   then
     echo "Found: $PKG"
   else

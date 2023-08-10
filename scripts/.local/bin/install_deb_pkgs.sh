@@ -10,18 +10,19 @@ declare -a TEXT_EDITORS=(
 
 
 declare -a DEVELOPMENT=(
-  glibc-doc
   build-essential
+  cscope
   gdb
-  valgrind
-  universal-ctags
+  glibc-doc
+  nodejs
+  npm
   postgresql
   postgresql-client
   python3-venv
-  nodejs
-  npm
   sqlite3
   sqlite3-doc
+  universal-ctags
+  valgrind
 )
 
 
@@ -118,7 +119,7 @@ PKGS=(
 
 for PKG in ${PKGS[@]}
 do
-  if [ -n "$(dpkg -l | grep -E "\<${PKG}")" ]
+  if [ -n "$(dpkg -l | grep -E "\<${PKG}\>")" ]
   then
     echo "Found: $PKG"
   else
