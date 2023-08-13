@@ -45,6 +45,7 @@ declare -a UTILS=(
   htop
   hub
   irssi
+  keychain
   ledger
   lf
   lowdown
