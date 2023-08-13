@@ -11,8 +11,6 @@ set relativenumber
 set cursorline
 set cursorcolumn
 
-set statusline=[%n]\ %t\ %m%=%{&encoding}\ %{&ff}\ %Y\ %04l:%04c 
-
 set spelllang=en_us,pt_br
 set spellsuggest=fast,30
 

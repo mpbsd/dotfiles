@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'chrisbra/csv.vim'
+
 Plug 'godlygeek/tabular'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -20,6 +22,9 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'wellle/targets.vim'
 
