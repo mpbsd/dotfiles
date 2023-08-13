@@ -1,6 +1,3 @@
-# abook
-alias abook="abook --config ${HOME}/.config/abook/abookrc --datafile ${HOME}/.local/share/abook/addressbook"
-
 # file management
 alias cp='cp -iv'
 alias mv='mv -iv'
