@@ -111,7 +111,7 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 source "${HOME}/.config/zsh/zsh_aliases"
 
 # keychain
-keychain id_rsa_bitbucket id_rsa_github
+keychain --nogui id_rsa_bitbucket id_rsa_github
 [ -z "$HOSTNAME" ] && HOSTNAME=`uname -n`
 [ -f $HOME/.keychain/$HOSTNAME-sh ] && . $HOME/.keychain/$HOSTNAME-sh
 [ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && . $HOME/.keychain/$HOSTNAME-sh-gpg
