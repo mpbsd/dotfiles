@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.dotfiles/wallpapers/dracula2nd/illustrations/trees-and-mountains/dracula-mnt-282a36.png fill
+output * bg ~/.dotfiles/wallpapers/c-printf-hello-world.png fill
 
 #
 # Example configuration:
@@ -255,7 +255,7 @@ bindsym $mod+t exec $term -e tmux
 #
 bindsym $mod+p exec wofi-pass -c
 ### Autostarting applications
-# 
+#
 # Terminal
 #
 exec $term -e tmux

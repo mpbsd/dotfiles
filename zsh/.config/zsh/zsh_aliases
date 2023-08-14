@@ -23,10 +23,6 @@ alias ls='ls --color=auto'
 # swaylock
 alias lock='swaylock'
 
-# monitors
-# alias emttl='xrandr --output DP-1 --auto --left-of eDP-1'
-# alias emttr='xrandr --output DP-1 --auto --right-of eDP-1'
-
 # newsboat
 alias news='newsboat'
 

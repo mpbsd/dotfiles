@@ -100,7 +100,7 @@ change_directory() {
 }
 
 change_file() {
-  find ~ -type f | fzf | xargs -ro nvim
+  find ~ -type f | fzf | xargs -ro vim
 }
 
 # sourcery
