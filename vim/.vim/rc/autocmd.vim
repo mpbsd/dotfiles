@@ -1,4 +1,4 @@
-augroup PersistentFolds
+augroup Folds
   autocmd!
   autocmd BufWinLeave *.c,*.h,*.md,*.py,*.tex mkview
   autocmd BufWinEnter *.c,*.h,*.md,*.py,*.tex silent! loadview
