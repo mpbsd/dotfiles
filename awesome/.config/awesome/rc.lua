@@ -61,7 +61,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Add gaps between windows
-beautiful.useless_gap = 3
+beautiful.useless_gap = 4
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -208,7 +208,7 @@ local tasklist_buttons = gears.table.join(
   end))
 
 -- Set wallpaper
-beautiful.wallpaper = ".dotfiles/wallpapers/hello_world.png"
+beautiful.wallpaper = ".dotfiles/wallpapers/base.png"
 
 local function set_wallpaper(s)
   -- Wallpaper
