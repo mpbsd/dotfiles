@@ -98,6 +98,7 @@ declare -a BUILD_REQUIREMENTS_NEOVIM=(
 
 declare -a AWESOMEWM=(
   awesome
+  picom
 )
 
 
