@@ -96,6 +96,11 @@ declare -a BUILD_REQUIREMENTS_NEOVIM=(
 )
 
 
+declare -a AWESOMEWM=(
+  awesome
+)
+
+
 declare -a SWAYWM=(
   sway
   waybar
@@ -114,13 +119,14 @@ PKGS=(
   "${LATEX[@]}"
   "${GUI[@]}"
   "${BUILD_REQUIREMENTS_NEOVIM[@]}"
+  "${AWESOMEWM[@]}"
   "${SWAYWM[@]}"
 )
 
 
 for PKG in ${PKGS[@]}
 do
-  if [ -n "$(dpkg -l | grep -E "\<${PKG}\>")" ]
+  if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>/p")" ]
   then
     echo "Found: $PKG"
   else
