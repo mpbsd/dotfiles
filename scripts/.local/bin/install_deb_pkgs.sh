@@ -83,6 +83,7 @@ declare -a GUI=(
   blender
   chromium
   chromium-driver
+  xournalpp
 )
 
 
