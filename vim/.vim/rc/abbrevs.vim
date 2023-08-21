@@ -43,6 +43,7 @@ iabbrev conheco        conheço
 iabbrev conjugacao     conjugação
 iabbrev contem         contém
 iabbrev continua       contínua
+iabbrev contracao      contração
 iabbrev contradicao    contradição
 iabbrev convergencia   convergência
 iabbrev coracao        coração
