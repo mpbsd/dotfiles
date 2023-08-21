@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.dotfiles/wallpapers/c-printf-hello-world.png fill
+output * bg ~/.dotfiles/wallpapers/leaves.png fill
 
 #
 # Example configuration:
@@ -70,10 +70,7 @@ exec swayidle -w \
 input "type:keyboard" {
   xkb_layout us,br
   xkb_variant ,abnt2
-  # xkb_options altwin:alt_win,compose:caps,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
-  # xkb_options altwin:alt_win,ctrl:nocaps,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
-  # xkb_options altwin:ctrl_win,compose:paus,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
-  xkb_options compose:lwin,ctrl:nocaps,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
+  xkb_options altwin:ctrl_win,compose:paus,grp:alt_space_toggle,grp_led:caps,shift:both_capslock_cancel
 }
 
 ### Key bindings

@@ -83,6 +83,7 @@ declare -a GUI=(
   blender
   chromium
   chromium-driver
+  xournalpp
 )
 
 
@@ -93,6 +94,13 @@ declare -a BUILD_REQUIREMENTS_NEOVIM=(
   unzip
   curl
   ccache
+)
+
+
+declare -a AWESOMEWM=(
+  awesome
+  picom
+  conky
 )
 
 
@@ -114,13 +122,14 @@ PKGS=(
   "${LATEX[@]}"
   "${GUI[@]}"
   "${BUILD_REQUIREMENTS_NEOVIM[@]}"
+  "${AWESOMEWM[@]}"
   "${SWAYWM[@]}"
 )
 
 
 for PKG in ${PKGS[@]}
 do
-  if [ -n "$(dpkg -l | grep -E "\<${PKG}\>")" ]
+  if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>/p")" ]
   then
     echo "Found: $PKG"
   else

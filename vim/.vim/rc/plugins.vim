@@ -31,7 +31,7 @@ Plug 'wellle/targets.vim'
 call plug#end()
 
 if has("gui_running")
-  colorscheme seoul256
+  colorscheme dracula
   set guifont=JetBrainsMono\ Nerd\ Font\ 10
   set guioptions+=d
   set guioptions-=l
