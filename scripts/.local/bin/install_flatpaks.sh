@@ -19,6 +19,7 @@ fi
 
 declare -a FLATPAK=(
   com.brave.Browser
+  org.zotero.Zotero
   com.spotify.Client
 )
 

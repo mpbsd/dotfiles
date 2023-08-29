@@ -69,10 +69,12 @@ declare -a UTILS=(
   zsh-syntax-highlighting
 )
 
+
 declare -a TERMINAL_CLIENTS=(
   alacritty
   kitty
-}
+)
+
 
 declare -a LATEX=(
   texlive-full
