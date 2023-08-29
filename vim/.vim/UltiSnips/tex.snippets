@@ -65,8 +65,7 @@ alphabet = {
 	"vf": "\\varphi",
 	"vJ": "\\varTheta",
 }
-snip.rv = alphabet[match.group(1)]
-`$0
+snip.rv = alphabet[match.group(1)] `$0
 endsnippet
 
 snippet '(^)?m([id]);([^;]+)?;' "Math mode" rA
@@ -81,104 +80,104 @@ enclosing = {
 		"rhs": "\n\\]\n",
 	},
 }
-	at_the_beginning_of_a_line = "no" if match.group(1) is None else "yes"
-	mode = match.group(2)
+at_the_beginning_of_a_line = "no" if match.group(1) is None else "yes"
+mode = match.group(2)
 content = snip.v.text if match.group(3) is None else match.group(3)
-	opening = enclosing[mode]["lhs"]
-	closing = enclosing[mode]["rhs"]
-	if mode == "d" and at_the_beginning_of_a_line == "no":
+opening = enclosing[mode]["lhs"]
+closing = enclosing[mode]["rhs"]
+if mode == "d" and at_the_beginning_of_a_line == "no":
 	snip.rv = "\n" + opening
-	else:
+else:
 	snip.rv = opening
-	`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
-	endsnippet
+`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+endsnippet
 
-	snippet 'e([pbc])([sb]);([^;]+)?;' "Enclosing things inside parenthesis, brackets or curly braces" rA
-	`!p
-	enclosing = {
-		"p": {
-			"s": {
-				"lhs": "(",
-				"rhs": ")",
-			},
-			"b": {
-				"lhs": "\\left(",
-				"rhs": "\\right)",
-			},
+snippet 'e([pbc])([sb]);([^;]+)?;' "Enclosing things inside parenthesis, brackets or curly braces" rA
+`!p
+enclosing = {
+	"p": {
+		"s": {
+			"lhs": "(",
+			"rhs": ")",
 		},
 		"b": {
-			"s": {
-				"lhs": "[",
-				"rhs": "]",
-			},
-			"b": {
-				"lhs": "\\left[",
-				"rhs": "\\right]",
-			},
+			"lhs": "\\left(",
+			"rhs": "\\right)",
 		},
-		"c": {
-			"s": {
-				"lhs": "{",
-				"rhs": "}",
-			},
-			"b": {
-				"lhs": "\\left\\{",
-				"rhs": "\\right\\}",
-			}
+	},
+	"b": {
+		"s": {
+			"lhs": "[",
+			"rhs": "]",
+		},
+		"b": {
+			"lhs": "\\left[",
+			"rhs": "\\right]",
+		},
+	},
+	"c": {
+		"s": {
+			"lhs": "{",
+			"rhs": "}",
+		},
+		"b": {
+			"lhs": "\\left\\{",
+			"rhs": "\\right\\}",
 		}
 	}
-	type = match.group(1)
+}
+type = match.group(1)
 size = match.group(2)
-	opening = enclosing[type][size]["lhs"]
-	closing = enclosing[type][size]["rhs"]
+opening = enclosing[type][size]["lhs"]
+closing = enclosing[type][size]["rhs"]
 content = snip.v.text if match.group(3) is None else match.group(3)
-	snip.rv = opening
-	`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
-	endsnippet
+snip.rv = opening
+`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+endsnippet
 
-	snippet '(\^|_)\1' "Su(b|per)scripts" rA
-	`!p snip.rv = match.group(1)`{${1:${VISUAL}}}$0
-	endsnippet
+snippet '(\^|_)`' "Su(b|per)scripts" rA
+`!p snip.rv = match.group(1)`{${1:${VISUAL}}}$0
+endsnippet
 
-	snippet 'f;([^;]+)?;([^;]+)?;' "Fractions" rA
-	`!p
-	num = "num" if match.group(1) is None else match.group(1)
-	den = "den" if match.group(2) is None else match.group(2)
-	`\frac{${1:`!p snip.rv = num`}}{${2:`!p snip.rv = den`}}$0
-	endsnippet
+snippet 'f;([^;]+)?;([^;]+)?;' "Fractions" rA
+`!p
+num = "num" if match.group(1) is None else match.group(1)
+den = "den" if match.group(2) is None else match.group(2)
+`\frac{${1:`!p snip.rv = num`}}{${2:`!p snip.rv = den`}}$0
+endsnippet
 
-	snippet '(prod|sum);([^;]+);([^;]+)?;([^;]+)?;([^;]+);' "Performing (sums|products) over an index" r
-	`!p
-	op = match.group(1)
-	dumbvar = match.group(2)
-	lower_limit = match.group(3)
-	upper_limit = match.group(4)
+snippet '(prod|sum);([^;]+);([^;]+)?;([^;]+)?;([^;]+);' "Performing (sums|products) over an index" r
+`!p
+op = match.group(1)
+dumbvar = match.group(2)
+lower_limit = match.group(3)
+upper_limit = match.group(4)
 term = match.group(5)
-	if op == "prod":
+if op == "prod":
 	snip.rv = "\\prod\\limits"
-	else:
+else:
 	snip.rv = "\\sum\\limits"
-	if lower_limit:
+if lower_limit:
 	snip.rv += "_{" + dumbvar + "=" + lower_limit + "}"
-	else:
+else:
 	snip.rv += "_{" + dumbvar + "}"
-	if upper_limit:
+if upper_limit:
 	snip.rv += "^{" + upper_limit + "}"
 	snip.rv += term
-	`$0
-	endsnippet
+`$0
+endsnippet
 
-	snippet 'sty;(bb|ca|fr|it|no|rm|sc);([a-z]);' "Font style in math mode" rA
-	`!p
-	fsty = {
-		"bb": "\\mathbb",
-		"ca": "\\mathcal",
-		"fr": "\\mathfrak",
-		"it": "\\mathit",
-		"no": "\\mathnormal",
-		"rm": "\\mathrm",
-		"sc": "\\mathscr",
-	}
+snippet 'sty;(bb|ca|fr|it|no|rm|sc);([a-z]);' "Font style in math mode" rA
+`!p
+fsty = {
+	"bb": "\\mathbb",
+	"ca": "\\mathcal",
+	"fr": "\\mathfrak",
+	"it": "\\mathit",
+	"no": "\\mathnormal",
+	"rm": "\\mathrm",
+	"sc": "\\mathscr",
+}
 snip.rv = fsty[match.group(1)] + "{" + match.group(2).upper() + "}"
 `$0
 endsnippet
@@ -195,13 +194,13 @@ snippet '([^;\s]+)?;(in|nin|sset|nsset);([^;]+)?;' "Is a(n element| subset) of" 
 Elm = "Elm" if match.group(1) is None else match.group(1)
 Set = "Set" if match.group(3) is None else match.group(3)
 if match.group(2) == "in":
-Rel = "\\in"
+	Rel = "\\in"
 elif match.group(2) == "nin":
-Rel = "\\notin"
+	Rel = "\\notin"
 elif match.group(2) == "sset":
-Rel = "\\subseteq"
+	Rel = "\\subseteq"
 else:
-Rel = "\\not\\subset"
+	Rel = "\\not\\subset"
 `${1:`!p snip.rv = Elm`}`!p snip.rv = Rel`{${2:`!p snip.rv = Set`}}$0
 endsnippet
 
@@ -213,149 +212,149 @@ set2 = "Set 2" if match.group(2) is None else match.group(2)
 endsnippet
 
 snippet '([^;\s]+)?;(to|mapsto);([^;]+)?;' "Mappings" rA
-	`!p
-	elm = match.group(1)
-	rel = match.group(2)
+`!p
+elm = match.group(1)
+rel = match.group(2)
 img = match.group(3)
-	`${1:`!p snip.rv = elm`}`!p snip.rv = "\\" + rel`{${2:`!p snip.rv = img`}}$0
-	endsnippet
+`${1:`!p snip.rv = elm`}`!p snip.rv = "\\" + rel`{${2:`!p snip.rv = img`}}$0
+endsnippet
 
-	snippet '^(chp|sec|ssec|sssec);([^;]+);' "(chapter|(sub){0,2}section)" r
-	`!p
-	hdr = {
-		"chp": "chapter",
-		"sec": "section",
-		"ssec": "subsection",
-		"sssec": "subsubsection",
-	}
+snippet '^(chp|sec|ssec|sssec);([^;]+);' "(chapter|(sub){0,2}section)" r
+`!p
+hdr = {
+	"chp": "chapter",
+	"sec": "section",
+	"ssec": "subsection",
+	"sssec": "subsubsection",
+}
 hdr_t = match.group(1)
-	hdr_v = hdr[hdr_t]
+hdr_v = hdr[hdr_t]
 hdr_n = match.group(2)
-	hdr_l = match.group(2).lower().replace(" ", "-")
-	snip.rv = "\\" + hdr_v + "{" + hdr_n + "}\\label{" + hdr_t + ":" + hdr_l + "}"
-	`
-	$0
-	endsnippet
+hdr_l = match.group(2).lower().replace(" ", "-")
+snip.rv = "\\" + hdr_v + "{" + hdr_n + "}\\label{" + hdr_t + ":" + hdr_l + "}"
+`
+$0
+endsnippet
 
-	snippet '^(cor|def|eq|ex|lem|pf|prop|rmk|thm);' "Environments of ultimate interest" rA
-	`!p
-	environment = {
-		"cor": "corollary",
-		"def": "definition",
-		"eq": "equation",
-		"ex": "example",
-		"lem": "lemma",
-		"pf": "proof",
-		"prop": "proposition",
-		"rmk": "remark",
-		"thm": "theorem",
-	}
+snippet '^(cor|def|eq|ex|lem|pf|prop|rmk|thm);' "Environments of ultimate interest" rA
+`!p
+environment = {
+	"cor": "corollary",
+	"def": "definition",
+	"eq": "equation",
+	"ex": "example",
+	"lem": "lemma",
+	"pf": "proof",
+	"prop": "proposition",
+	"rmk": "remark",
+	"thm": "theorem",
+}
 env_t = match.group(1)
-	env_v = environment[env_t]
-	`\begin{`!p snip.rv = env_v`}\label{`!p snip.rv = env_t`:$1}
+env_v = environment[env_t]
+`\begin{`!p snip.rv = env_v`}\label{`!p snip.rv = env_t`:$1}
 	$2
-	\end{`!p snip.rv = env_v`}
-	$0
-	endsnippet
+\end{`!p snip.rv = env_v`}
+$0
+endsnippet
 
-	snippet 'beg;([^;]+)?;' "Other environments" rA
-	\begin{${1:`!p snip.rv = snip.v.tex if match.group(1) is None else match.group(1)`}}
-	$2
-	\end{$1}
-	$0
-	endsnippet
+snippet 'beg;([^;]+)?;' "Other environments" rA
+\begin{${1:`!p snip.rv = snip.v.tex if match.group(1) is None else match.group(1)`}}
+$2
+\end{$1}
+$0
+endsnippet
 
-	snippet 'func;' "Math Function" rA
-	$1{\left($2\right)}=$0
-	endsnippet
+snippet 'func;' "Math Function" rA
+$1{\left($2\right)}=$0
+endsnippet
 
-	snippet 'tf;(a)?(cos|cot|csc|sec|sin|tan)(h)?;' "(Trigonometric|Hyperbolic) Functions" rA
-	`!p
-	a_func = "\\arc" if match.group(1) is not None else "\\"
+snippet 'tf;(a)?(cos|cot|csc|sec|sin|tan)(h)?;' "(Trigonometric|Hyperbolic) Functions" rA
+`!p
+a_func = "\\arc" if match.group(1) is not None else "\\"
 t_func = match.group(2)
-	h_func = "h" if match.group(3) is not None else ""
-	snip.rv = a_func + t_func + h_func
-	`{\left(${1:${VISUAL}}\right)}$0
-	endsnippet
+h_func = "h" if match.group(3) is not None else ""
+snip.rv = a_func + t_func + h_func
+`{\left(${1:${VISUAL}}\right)}$0
+endsnippet
 
-	snippet '^default pkgs$' "My set of deafult packages" rA
-	\usepackage{amsmath,amssymb,amsthm}
-	\usepackage{hyperref}
-	\usepackage{mathtools}
-	\usepackage[table]{xcolor}
-	$0
-	endsnippet
+snippet '^default pkgs$' "My set of deafult packages" rA
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage[table]{xcolor}
+$0
+endsnippet
 
-	snippet '^u;([^;]+)?;([^;]+);$' "Loading packages" rA
-	`!p
-	if match.group(1) is not None:
+snippet '^u;([^;]+)?;([^;]+);$' "Loading packages" rA
+`!p
+if match.group(1) is not None:
 	opt = "[%s]" % match.group(1)
-	else:
+else:
 	opt = ""
 	pkg = "{%s}" % match.group(2)
-	snip.rv = "\\usepackage" + opt + pkg
-	`$0
-	endsnippet
+snip.rv = "\\usepackage" + opt + pkg
+`$0
+endsnippet
 
-	snippet '^custom cmds$' "My set of default cmds" rA
-	%----------------------------------------------------------------------------------%
-	% Numerical sets                                                                   %
-	%----------------------------------------------------------------------------------%
-	\newcommand{\naturals}{\mathbb{N}}                                                 %
-	\newcommand{\integers}{\mathbb{Z}}                                                 %
-	\newcommand{\rationals}{\mathbb{Q}}                                                %
-	\newcommand{\reals}{\mathbb{R}}                                                    %
-	\newcommand{\complexfield}{\mathbb{C}}                                             %
-	%----------------------------------------------------------------------------------%
-	% Absolute value                                                                   %
-	%----------------------------------------------------------------------------------%
-	\DeclarePairedDelimiter\abs{\lvert}{\rvert}                                        %
-	%----------------------------------------------------------------------------------%
-	% Norm and, more generally, p-norm                                                 %
-	%----------------------------------------------------------------------------------%
-	% \norm< space_dimension >[ positive_real_number ]( vector )                       %
-	%----------------------------------------------------------------------------------%
-	% Examples:                                                                        %
-	%  - \norm          --> \lvert{\cdot}\rvert                                        %
-	%  - \norm<n>       --> \lvert{\cdot}\rvert^{n}                                    %
-	%  - \norm[p]       --> \lvert{\cdot}\rvert_{p}                                    %
-	%  - \norm<n>[p]    --> \lvert{\cdot}\rvert_{p}^{n}                                %
-	%  - \norm(x)       --> \lvert{x}\rvert                                            %
-	%  - \norm<n>(x)    --> \lvert{x}\rvert^{n}                                        %
-	%  - \norm[p](x)    --> \lvert{x}\rvert_{p}                                        %
-	%  - \norm<n>[p](x) --> \lvert{x}\rvert_{p}^{n}                                    %
-	%----------------------------------------------------------------------------------%
-	\NewDocumentCommand{\norm}{d <> d [] d ()}{                                        %
-		\IfValueTF{#1}{                                                                  %
-			\IfValueTF{#2}{                                                                %
-				\IfValueTF{#3}{                                                              %
-					\lVert{#3}\rVert_{#2}^{#1}                                                 %
-				}{                                                                           %
-					\lVert{\cdot}\rVert_{#2}^{#1}                                              %
-				}                                                                            %
-			}{                                                                             %
-				\IfValueTF{#3}{                                                              %
-					\lVert{#3}\rVert^{#1}                                                      %
-				}{                                                                           %
-					\lVert{\cdot}\rVert^{#1}                                                   %
-				}                                                                            %
-			}                                                                              %
-		}{                                                                               %
-			\IfValueTF{#2}{                                                                %
-				\IfValueTF{#3}{                                                              %
-					\lVert{#3}\rVert_{#2}                                                      %
-				}{                                                                           %
-					\lVert{\cdot}\rVert_{#2}                                                   %
-				}                                                                            %
-			}{                                                                             %
-				\IfValueTF{#3}{                                                              %
-					\lVert{#3}\rVert\                                                          %
-				}{                                                                           %
-					\lVert{\cdot}\rVert\                                                       %
-				}                                                                            %
-			}                                                                              %
-		}                                                                                %
-	}                                                                                  %
+snippet '^custom cmds$' "My set of default cmds" rA
+%----------------------------------------------------------------------------------%
+% Numerical sets                                                                   %
+%----------------------------------------------------------------------------------%
+\newcommand{\naturals}{\mathbb{N}}                                                 %
+\newcommand{\integers}{\mathbb{Z}}                                                 %
+\newcommand{\rationals}{\mathbb{Q}}                                                %
+\newcommand{\reals}{\mathbb{R}}                                                    %
+\newcommand{\complexfield}{\mathbb{C}}                                             %
+%----------------------------------------------------------------------------------%
+% Absolute value                                                                   %
+%----------------------------------------------------------------------------------%
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}                                        %
+%----------------------------------------------------------------------------------%
+% Norm and, more generally, p-norm                                                 %
+%----------------------------------------------------------------------------------%
+% \norm< space_dimension >[ positive_real_number ]( vector )                       %
+%----------------------------------------------------------------------------------%
+% Examples:                                                                        %
+%  - \norm          --> \lvert{\cdot}\rvert                                        %
+%  - \norm<n>       --> \lvert{\cdot}\rvert^{n}                                    %
+%  - \norm[p]       --> \lvert{\cdot}\rvert_{p}                                    %
+%  - \norm<n>[p]    --> \lvert{\cdot}\rvert_{p}^{n}                                %
+%  - \norm(x)       --> \lvert{x}\rvert                                            %
+%  - \norm<n>(x)    --> \lvert{x}\rvert^{n}                                        %
+%  - \norm[p](x)    --> \lvert{x}\rvert_{p}                                        %
+%  - \norm<n>[p](x) --> \lvert{x}\rvert_{p}^{n}                                    %
+%----------------------------------------------------------------------------------%
+\NewDocumentCommand{\norm}{d <> d [] d ()}{                                        %
+	\IfValueTF{#1}{                                                                  %
+		\IfValueTF{#2}{                                                                %
+			\IfValueTF{#3}{                                                              %
+				\lVert{#3}\rVert_{#2}^{#1}                                                 %
+			}{                                                                           %
+				\lVert{\cdot}\rVert_{#2}^{#1}                                              %
+			}                                                                            %
+		}{                                                                             %
+			\IfValueTF{#3}{                                                              %
+				\lVert{#3}\rVert^{#1}                                                      %
+			}{                                                                           %
+				\lVert{\cdot}\rVert^{#1}                                                   %
+			}                                                                            %
+		}                                                                              %
+	}{                                                                               %
+		\IfValueTF{#2}{                                                                %
+			\IfValueTF{#3}{                                                              %
+				\lVert{#3}\rVert_{#2}                                                      %
+			}{                                                                           %
+				\lVert{\cdot}\rVert_{#2}                                                   %
+			}                                                                            %
+		}{                                                                             %
+			\IfValueTF{#3}{                                                              %
+				\lVert{#3}\rVert\                                                          %
+			}{                                                                           %
+				\lVert{\cdot}\rVert\                                                       %
+			}                                                                            %
+		}                                                                              %
+	}                                                                                %
+}                                                                                  %
 %----------------------------------------------------------------------------------%
 % Inner product                                                                    %
 %----------------------------------------------------------------------------------%
@@ -502,21 +501,21 @@ t_func = match.group(2)
 				\textup{Rm}\left(#1,\cdot\right)                                           %
 			}                                                                            %
 		}                                                                              %
-	}{                                                                             %
-		\IfValueTF{#2}{                                                              %
-			\IfValueTF{#3}{                                                            %
-				\textup{Rm}\left(\cdot,#2\right)#3                                       %
-			}{                                                                         %
-				\textup{Rm}\left(\cdot,#2\right)                                         %
-			}                                                                          %
-		}{                                                                           %
-			\IfValueTF{#3}{                                                            %
-				\textup{Rm}\left(\cdot,\cdot\right)#3                                    %
-			}{                                                                         %
-				\textup{Rm}                                                              %
-			}                                                                          %
-		}                                                                            %
-	}                                                                              %
+	}{                                                                               %
+		  \IfValueTF{#2}{                                                              %
+			  \IfValueTF{#3}{                                                            %
+				  \textup{Rm}\left(\cdot,#2\right)#3                                       %
+			}{                                                                           %
+				  \textup{Rm}\left(\cdot,#2\right)                                         %
+			}                                                                            %
+		}{                                                                             %
+			  \IfValueTF{#3}{                                                            %
+				  \textup{Rm}\left(\cdot,\cdot\right)#3                                    %
+			}{                                                                           %
+				  \textup{Rm}                                                              %
+			}                                                                            %
+		}                                                                              %
+	}                                                                                %
 }                                                                                  %
 %----------------------------------------------------------------------------------%
 % \riccitensor< riemannian_metric >( vector_field_1 )[ vector_field_2 ]            %
@@ -567,14 +566,16 @@ t_func = match.group(2)
 endsnippet
 
 snippet '^title;([^;]+)?;$' "Document authorship" rA
-\title{${1:`!p snip.rv = match.group(1) if match.group(1) is not None else snip.v.text`}}
+\title{
+	${1:`!p snip.rv = match.group(1) if match.group(1) is not None else snip.v.text`}
+}
 \author{
 	Marcelo Bezerra \\\\
-		\href{
-mailto:bezerra@ufg.br
-		}{
-			\small\texttt{bezerra@ufg.br}
-		}
+	\href{
+		mailto:bezerra@ufg.br
+	}{
+		\small\texttt{bezerra@ufg.br}
+	}
 }
 \date{\today}
 $0
