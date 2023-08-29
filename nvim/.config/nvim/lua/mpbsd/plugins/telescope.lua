@@ -15,14 +15,14 @@ return {
     pcall(require("telescope").load_extension, "fzf")
     local builtin = require("telescope.builtin")
     local themes = require("telescope.themes")
-    defaults = {
-      mappings = {
-        i = {
-          ["<C-u>"] = false,
-          ["<C-d>"] = false,
-        },
-      },
-    }
+    -- local defaults = {
+    --   mappings = {
+    --     i = {
+    --       ["<C-u>"] = false,
+    --       ["<C-d>"] = false,
+    --     },
+    --   },
+    -- }
     vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
     vim.keymap.set("n", "<leader>,", builtin.buffers, { desc = "[,] Find existing buffers" })
     vim.keymap.set("n", "<leader>/", function()

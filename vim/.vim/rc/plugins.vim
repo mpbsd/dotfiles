@@ -31,7 +31,7 @@ Plug 'wellle/targets.vim'
 call plug#end()
 
 if has("gui_running")
-  colorscheme dracula
+  colorscheme seoul256
   set guifont=JetBrainsMono\ Nerd\ Font\ 10
   set guioptions+=d
   set guioptions-=l
@@ -66,4 +66,4 @@ let g:UltiSnipsSnippetDirectories=['~/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger='<Tab>'
 let g:UltiSnipsJumpForwardTrigger='<Tab>'
 let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
-let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsEditSplit='horizontal'

@@ -9,13 +9,13 @@ end
 imap("jj", "<esc>")
 
 nmap("<leader>;", ":")
-nmap("rw", ":Ex<cr>")
+nmap("<leader>rw", ":Explore<cr>")
 
-nmap("<leader>erc", ":e ~/.config/nvim/init.lua<cr>")
-nmap("<leader>eop", ":e ~/.config/nvim/lua/mpbsd/config/options.lua<cr>")
-nmap("<leader>ekm", ":e ~/.config/nvim/lua/mpbsd/config/keymaps.lua<cr>")
-nmap("<leader>eau", ":e ~/.config/nvim/lua/mpbsd/config/autocmd.lua<cr>")
-nmap("<leader>egl", ":e ~/.config/nvim/lua/mpbsd/config/globals.lua<cr>")
-nmap("<leader>epg", ":e ~/.config/nvim/lua/mpbsd/plugins<cr>")
+nmap("<leader>erc", ":edit ~/.config/nvim/init.lua<cr>")
+nmap("<leader>eop", ":edit ~/.config/nvim/lua/mpbsd/config/options.lua<cr>")
+nmap("<leader>ekm", ":edit ~/.config/nvim/lua/mpbsd/config/keymaps.lua<cr>")
+nmap("<leader>eau", ":edit ~/.config/nvim/lua/mpbsd/config/autocmd.lua<cr>")
+nmap("<leader>egl", ":edit ~/.config/nvim/lua/mpbsd/config/globals.lua<cr>")
+nmap("<leader>epg", ":edit ~/.config/nvim/lua/mpbsd/plugins<cr>")
 
 -- vim: ts=2 sw=2 et
