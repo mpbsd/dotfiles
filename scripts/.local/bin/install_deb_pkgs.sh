@@ -29,7 +29,6 @@ declare -a DEVELOPMENT=(
 declare -a UTILS=(
   9base
   abook
-  alacritty
   aptitude
   bat
   bsdgames
@@ -70,6 +69,10 @@ declare -a UTILS=(
   zsh-syntax-highlighting
 )
 
+declare -a TERMINAL_CLIENTS=(
+  alacritty
+  kitty
+}
 
 declare -a LATEX=(
   texlive-full
@@ -119,6 +122,7 @@ PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
   "${UTILS[@]}"
+  "${TERMINAL_CLIENTS[@]}"
   "${LATEX[@]}"
   "${GUI[@]}"
   "${BUILD_REQUIREMENTS_NEOVIM[@]}"

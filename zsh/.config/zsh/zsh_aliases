@@ -1,3 +1,6 @@
+# cat
+alias cat='batcat'
+
 # file management
 alias cp='cp -iv'
 alias mv='mv -iv'
