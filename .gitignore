@@ -7,5 +7,6 @@ mutt/.config/mutt/gmail2/passwd.gpg
 mutt/.config/mutt/gmail3/config
 mutt/.config/mutt/gmail3/passwd.gpg
 nvim/.config/nvim/lazy-lock.json
+tmux/.config/tmux/plugins/
 vim/.vim/autoload/
 vim/.vim/plugged/
