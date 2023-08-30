@@ -41,24 +41,32 @@ end
 -- Handle runtime errors after startup
 do
   local in_error = false
-  awesome.connect_signal("debug::error", function(err)
-    -- Make sure we don't go into an endless error loop
-    if in_error then return end
-    in_error = true
+  awesome.connect_signal(
+    "debug::error",
+    function(err)
+      -- Make sure we don't go into an endless error loop
+      if in_error then
+        return
+      end
+      in_error = true
 
-    naughty.notify({
-      preset = naughty.config.presets.critical,
-      title = "Oops, an error happened!",
-      text = tostring(err)
-    })
-    in_error = false
-  end)
+      naughty.notify({
+        preset = naughty.config.presets.critical,
+        title = "Oops, an error happened!",
+        text = tostring(err)
+      })
+      in_error = false
+    end
+  )
 end
 -- }}}
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+
+-- Fonts
+beautiful.font = 'TerminessNerdFont 11'
 
 -- Add gaps between windows
 beautiful.useless_gap = 4
@@ -145,7 +153,10 @@ else
   mymainmenu = awful.menu({
     items = {
       menu_awesome,
-      { "Debian", debian.menu.Debian_menu.Debian },
+      {
+        "Debian",
+        debian.menu.Debian_menu.Debian
+      },
       menu_terminal,
     }
   })
@@ -169,43 +180,90 @@ mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
-  awful.button({}, 1, function(t) t:view_only() end),
-  awful.button({ modkey }, 1, function(t)
-    if client.focus then
-      client.focus:move_to_tag(t)
+  awful.button(
+    {},
+    1,
+    function(t)
+      t:view_only()
     end
-  end),
-  awful.button({}, 3, awful.tag.viewtoggle),
-  awful.button({ modkey }, 3, function(t)
-    if client.focus then
-      client.focus:toggle_tag(t)
+  ),
+  awful.button(
+    { modkey },
+    1,
+    function(t)
+      if client.focus then
+        client.focus:move_to_tag(t)
+      end
     end
-  end),
-  awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
-  awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
+  ),
+  awful.button(
+    {},
+    3,
+    awful.tag.viewtoggle
+  ),
+  awful.button(
+    { modkey },
+    3,
+    function(t)
+      if client.focus then
+        client.focus:toggle_tag(t)
+      end
+    end
+  ),
+  awful.button(
+    {},
+    4,
+    function(t)
+      awful.tag.viewnext(t.screen)
+    end
+  ),
+  awful.button(
+    {},
+    5,
+    function(t)
+      awful.tag.viewprev(t.screen)
+    end
+  )
 )
 
 local tasklist_buttons = gears.table.join(
-  awful.button({}, 1, function(c)
-    if c == client.focus then
-      c.minimized = true
-    else
-      c:emit_signal(
-        "request::activate",
-        "tasklist",
-        { raise = true }
-      )
+  awful.button(
+    {},
+    1,
+    function(c)
+      if c == client.focus then
+        c.minimized = true
+      else
+        c:emit_signal(
+          "request::activate",
+          "tasklist",
+          { raise = true }
+        )
+      end
     end
-  end),
-  awful.button({}, 3, function()
-    awful.menu.client_list({ theme = { width = 250 } })
-  end),
-  awful.button({}, 4, function()
-    awful.client.focus.byidx(1)
-  end),
-  awful.button({}, 5, function()
-    awful.client.focus.byidx(-1)
-  end))
+  ),
+  awful.button(
+    {},
+    3,
+    function()
+      awful.menu.client_list({ theme = { width = 250 } })
+    end
+  ),
+  awful.button(
+    {},
+    4,
+    function()
+      awful.client.focus.byidx(1)
+    end
+  ),
+  awful.button(
+    {},
+    5,
+    function()
+      awful.client.focus.byidx(-1)
+    end
+  )
+)
 
 -- Set wallpaper
 beautiful.wallpaper = "pictures/wallpapers/debian.png"
@@ -299,40 +357,75 @@ globalkeys = gears.table.join(
   awful.key({ modkey, }, "Escape", awful.tag.history.restore,
     { description = "go back", group = "tag" }),
 
-  awful.key({ modkey, }, "j",
+  awful.key(
+    { modkey, }, "j",
     function()
       awful.client.focus.byidx(1)
     end,
-    { description = "focus next by index", group = "client" }
+    {
+      description = "focus next by index",
+      group = "client"
+    }
   ),
-  awful.key({ modkey, }, "k",
+  awful.key(
+    { modkey, }, "k",
     function()
       awful.client.focus.byidx(-1)
     end,
     { description = "focus previous by index", group = "client" }
   ),
-  awful.key({ modkey, }, "w", function() mymainmenu:show() end,
-    { description = "show main menu", group = "awesome" }),
+  awful.key(
+    { modkey, }, "w",
+    function()
+      mymainmenu:show()
+    end,
+    { description = "show main menu", group = "awesome" }
+  ),
 
   -- Layout manipulation
-  awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
-    { description = "swap with next client by index", group = "client" }),
-  awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(-1) end,
-    { description = "swap with previous client by index", group = "client" }),
-  awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end,
-    { description = "focus the next screen", group = "screen" }),
-  awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end,
-    { description = "focus the previous screen", group = "screen" }),
-  awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
-    { description = "jump to urgent client", group = "client" }),
-  awful.key({ modkey, }, "Tab",
+  awful.key(
+    { modkey, "Shift" }, "j",
+    function()
+      awful.client.swap.byidx(1)
+    end,
+    { description = "swap with next client by index", group = "client" }
+  ),
+  awful.key(
+    { modkey, "Shift" }, "k",
+    function()
+      awful.client.swap.byidx(-1)
+    end,
+    { description = "swap with previous client by index", group = "client" }
+  ),
+  awful.key(
+    { modkey, "Control" }, "j",
+    function()
+      awful.screen.focus_relative(1)
+    end,
+    { description = "focus the next screen", group = "screen" }
+  ),
+  awful.key(
+    { modkey, "Control" }, "k",
+    function()
+      awful.screen.focus_relative(-1)
+    end,
+    { description = "focus the previous screen", group = "screen" }
+  ),
+  awful.key(
+    { modkey, }, "u",
+    awful.client.urgent.jumpto,
+    { description = "jump to urgent client", group = "client" }
+  ),
+  awful.key(
+    { modkey, }, "Tab",
     function()
       awful.client.focus.history.previous()
       if client.focus then
         client.focus:raise()
       end
     end,
-    { description = "go back", group = "client" }),
+    { description = "go back", group = "client" }
+  ),
 
   -- Standard program
   awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
