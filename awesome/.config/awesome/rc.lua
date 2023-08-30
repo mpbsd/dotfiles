@@ -208,7 +208,7 @@ local tasklist_buttons = gears.table.join(
   end))
 
 -- Set wallpaper
-beautiful.wallpaper = "pictures/wallpapers/hello_world.png"
+beautiful.wallpaper = "pictures/wallpapers/debian.png"
 
 local function set_wallpaper(s)
   -- Wallpaper

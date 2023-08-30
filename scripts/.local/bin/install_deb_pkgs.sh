@@ -19,6 +19,8 @@ declare -a DEVELOPMENT=(
   postgresql
   postgresql-client
   python3-venv
+  ruby-full
+  zlib1g-dev
   sqlite3
   sqlite3-doc
   universal-ctags

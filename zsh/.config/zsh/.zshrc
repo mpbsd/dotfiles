@@ -46,7 +46,8 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
 
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} ))
+then
   autoload -Uz add-zle-hook-widget
   function zle_application_mode_start { echoti smkx }
   function zle_application_mode_stop { echoti rmkx }
