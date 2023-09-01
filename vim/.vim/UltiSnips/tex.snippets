@@ -5,65 +5,65 @@ endsnippet
 snippet '([AaBbGgDdEeZzHhJjIiKkLlMmNnXxOοPpRrSsTtUuFfQqYyWw]|d[Gg]|v[sbejkprfJ])`' "Greek letters" rA
 `!p
 alphabet = {
-	"A": "\\Alpha",
-	"a": "\\alpha",
-	"B": "\\Beta",
-	"b": "\\beta",
-	"G": "\\Gamma",
-	"g": "\\gamma",
-	"D": "\\Delta",
-	"d": "\\delta",
-	"E": "\\Epsilon",
-	"e": "\\epsilon",
-	"Z": "\\Zeta",
-	"z": "\\zeta",
-	"H": "\\Eta",
-	"h": "\\eta",
-	"J": "\\Theta",
-	"j": "\\theta",
-	"I": "\\Iota",
-	"i": "\\iota",
-	"K": "\\Kappa",
-	"k": "\\kappa",
-	"L": "\\Lambda",
-	"l": "\\lambda",
-	"M": "\\Mu",
-	"m": "\\mu",
-	"N": "\\Nu",
-	"n": "\\nu",
-	"X": "\\Xi",
-	"x": "\\xi",
-	"O": "\\Omicron",
-	"o": "\\omicron",
-	"P": "\\Pi",
-	"p": "\\pi",
-	"R": "\\Rho",
-	"r": "\\rho",
-	"S": "\\Sigma",
-	"s": "\\sigma",
-	"T": "\\Tau",
-	"t": "\\tau",
-	"U": "\\Upsilon",
-	"u": "\\upsilon",
-	"F": "\\Phi",
-	"f": "\\phi",
-	"Q": "\\Chi",
-	"q": "\\chi",
-	"Y": "\\Psi",
-	"y": "\\psi",
-	"W": "\\Omega",
-	"w": "\\omega",
-	"dG": "\\Digamma",
-	"dg": "\\digamma",
-	"vs": "\\varsigma",
-	"vb": "\\varbeta",
-	"ve": "\\varepsilon",
-	"vj": "\\vartheta",
-	"vk": "\\varkappa",
-	"vp": "\\varpi",
-	"vr": "\\varrho",
-	"vf": "\\varphi",
-	"vJ": "\\varTheta",
+	"A": r"\Alpha",
+	"a": r"\alpha",
+	"B": r"\Beta",
+	"b": r"\beta",
+	"G": r"\Gamma",
+	"g": r"\gamma",
+	"D": r"\Delta",
+	"d": r"\delta",
+	"E": r"\Epsilon",
+	"e": r"\epsilon",
+	"Z": r"\Zeta",
+	"z": r"\zeta",
+	"H": r"\Eta",
+	"h": r"\eta",
+	"J": r"\Theta",
+	"j": r"\theta",
+	"I": r"\Iota",
+	"i": r"\iota",
+	"K": r"\Kappa",
+	"k": r"\kappa",
+	"L": r"\Lambda",
+	"l": r"\lambda",
+	"M": r"\Mu",
+	"m": r"\mu",
+	"N": r"\Nu",
+	"n": r"\nu",
+	"X": r"\Xi",
+	"x": r"\xi",
+	"O": r"\Omicron",
+	"o": r"\omicron",
+	"P": r"\Pi",
+	"p": r"\pi",
+	"R": r"\Rho",
+	"r": r"\rho",
+	"S": r"\Sigma",
+	"s": r"\sigma",
+	"T": r"\Tau",
+	"t": r"\tau",
+	"U": r"\Upsilon",
+	"u": r"\upsilon",
+	"F": r"\Phi",
+	"f": r"\phi",
+	"Q": r"\Chi",
+	"q": r"\chi",
+	"Y": r"\Psi",
+	"y": r"\psi",
+	"W": r"\Omega",
+	"w": r"\omega",
+	"dG": r"\Digamma",
+	"dg": r"\digamma",
+	"vs": r"\varsigma",
+	"vb": r"\varbeta",
+	"ve": r"\varepsilon",
+	"vj": r"\vartheta",
+	"vk": r"\varkappa",
+	"vp": r"\varpi",
+	"vr": r"\varrho",
+	"vf": r"\varphi",
+	"vJ": r"\varTheta",
 }
 snip.rv = alphabet[match.group(1)] `$0
 endsnippet
@@ -72,8 +72,8 @@ snippet '(^)?m([id]);([^;]+)?;' "Math mode" rA
 `!p
 enclosing = {
 	"i": {
-		"lhs": "\\(",
-		"rhs": "\\)",
+		"lhs": r"\(",
+		"rhs": r"\)",
 	},
 	"d": {
 		"lhs": "\\[\n\t",
@@ -92,7 +92,7 @@ else:
 `${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
 endsnippet
 
-snippet 'e([pbc])([sb]);([^;]+)?;' "Enclosing things inside parenthesis, brackets or curly braces" rA
+snippet 'e([pbc])([sb]);([^;]+)?;' "Enclosings: [p]arenthesis, [b]rackets or [c]urly braces" rA
 `!p
 enclosing = {
 	"p": {
@@ -101,8 +101,8 @@ enclosing = {
 			"rhs": ")",
 		},
 		"b": {
-			"lhs": "\\left(",
-			"rhs": "\\right)",
+			"lhs": r"\left(",
+			"rhs": r"\right)",
 		},
 	},
 	"b": {
@@ -111,8 +111,8 @@ enclosing = {
 			"rhs": "]",
 		},
 		"b": {
-			"lhs": "\\left[",
-			"rhs": "\\right]",
+			"lhs": r"\left[",
+			"rhs": r"\right]",
 		},
 	},
 	"c": {
@@ -121,16 +121,25 @@ enclosing = {
 			"rhs": "}",
 		},
 		"b": {
-			"lhs": "\\left\\{",
-			"rhs": "\\right\\}",
+			"lhs": r"\left\{",
+			"rhs": r"\right\}",
 		}
-	}
+	},
 }
 type = match.group(1)
 size = match.group(2)
 opening = enclosing[type][size]["lhs"]
 closing = enclosing[type][size]["rhs"]
 content = snip.v.text if match.group(3) is None else match.group(3)
+snip.rv = opening
+`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+endsnippet
+
+snippet 'e<;([^;]+)?;' "Enclosing: angles <>" rA
+`!p
+opening = "<"
+closing = ">"
+content = snip.v.text if match.group(1) is None else match.group(1)
 snip.rv = opening
 `${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
 endsnippet
@@ -154,9 +163,9 @@ lower_limit = match.group(3)
 upper_limit = match.group(4)
 term = match.group(5)
 if op == "prod":
-	snip.rv = "\\prod\\limits"
+	snip.rv = r"\prod\limits"
 else:
-	snip.rv = "\\sum\\limits"
+	snip.rv = r"\sum\limits"
 if lower_limit:
 	snip.rv += "_{" + dumbvar + "=" + lower_limit + "}"
 else:
@@ -167,22 +176,22 @@ if upper_limit:
 `$0
 endsnippet
 
-snippet 'sty;(bb|ca|fr|it|no|rm|sc);([a-z]);' "Font style in math mode" rA
+snippet 'fsty;(bb|ca|fr|it|no|rm|sc);([a-z]);' "Font style in math mode" rA
 `!p
 fsty = {
-	"bb": "\\mathbb",
-	"ca": "\\mathcal",
-	"fr": "\\mathfrak",
-	"it": "\\mathit",
-	"no": "\\mathnormal",
-	"rm": "\\mathrm",
-	"sc": "\\mathscr",
+	"bb": r"\mathbb",
+	"ca": r"\mathcal",
+	"fr": r"\mathfrak",
+	"it": r"\mathit",
+	"no": r"\mathnormal",
+	"rm": r"\mathrm",
+	"sc": r"\mathscr",
 }
 snip.rv = fsty[match.group(1)] + "{" + match.group(2).upper() + "}"
 `$0
 endsnippet
 
-snippet 'elms;([^;]+);st;([^;]+);' "Collection of items sharing a property in common" r
+snippet 'elms;([^;]+);st;([^;]+);' "Define a set of elements by properties" r
 `!p
 elms = "elms" if match.group(1) is None else match.group(1)
 prop = "prop" if match.group(2) is None else match.group(2)
@@ -278,7 +287,9 @@ snip.rv = a_func + t_func + h_func
 endsnippet
 
 snippet '^default pkgs$' "My set of deafult packages" rA
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{hyperref}
 \usepackage{mathtools}
 \usepackage[table]{xcolor}
@@ -287,12 +298,9 @@ endsnippet
 
 snippet '^u;([^;]+)?;([^;]+);$' "Loading packages" rA
 `!p
-if match.group(1) is not None:
-	opt = "[%s]" % match.group(1)
-else:
-	opt = ""
-	pkg = "{%s}" % match.group(2)
-snip.rv = "\\usepackage" + opt + pkg
+opt = "" if match.group(1) is None else "[%s]" % match.group(1)
+pkg = "{%s}" % match.group(2)
+snip.rv = r"\usepackage" + opt + pkg
 `$0
 endsnippet
 
@@ -609,20 +617,4 @@ snippet '^custom cmds$' "My set of default cmds" rA
   }                                                                                %
 }                                                                                  %
 %----------------------------------------------------------------------------------%
-endsnippet
-
-snippet '^title;([^;]+)?;$' "Document authorship" rA
-\title{
-	${1:`!p snip.rv = match.group(1) if match.group(1) is not None else snip.v.text`}
-}
-\author{
-	Marcelo Bezerra \\\\
-	\href{
-		mailto:bezerra@ufg.br
-	}{
-		\small\texttt{bezerra@ufg.br}
-	}
-}
-\date{\today}
-$0
 endsnippet

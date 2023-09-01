@@ -4,7 +4,7 @@ let maplocalleader="\<Space>"
 set background=dark
 colorscheme habamax
 
-set statusline=[%n]\ %f\ %m%=%{&fileencoding}\ %Y\ %06l,%06v
+set statusline=[%n]\ %f\ %m%=%{&fileformat}\ %{&fileencoding}\ %Y\ %06l,%06v
 
 set ignorecase
 set smartcase
