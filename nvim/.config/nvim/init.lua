@@ -18,4 +18,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("mpbsd.plugins", {})
+require("lazy").setup("mpbsd.plugin", {})
