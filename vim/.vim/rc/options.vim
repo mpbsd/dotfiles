@@ -14,7 +14,6 @@ set splitbelow
 set splitright
 
 set cursorline
-" set cursorcolumn
 set colorcolumn=80
 
 set statusline=[%n]\ %f\ %m%=%{&fileformat}\ %{&fileencoding}\ %Y\ %06l,%06v
@@ -26,6 +25,8 @@ set hidden
 set lazyredraw
 set nojoinspaces
 set showcmd
+
+let g:tex_flavor='latex'
 
 set dictionary=~/.vim/dict/words.txt
 set spelllang=en_us,pt_br
@@ -39,8 +40,6 @@ set viewdir=~/.cache/vim/view
 
 let g:netrw_home='~/.cache/vim'
 set viminfofile=~/.cache/vim/.viminfo
-
-let g:tex_flavor='latex'
 
 if has("gui_running")
   set guifont=TerminessNerdFont\ 12

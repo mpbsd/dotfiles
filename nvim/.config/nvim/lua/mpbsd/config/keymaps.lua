@@ -1,3 +1,5 @@
+-- vim: ts=2 sw=2 et
+
 local imap = function(k, v)
   vim.keymap.set("i", k, v, { noremap=true })
 end
@@ -21,6 +23,7 @@ nmap("<leader>eau", ":edit ~/.config/nvim/lua/mpbsd/config/autocmd.lua<cr>")
 nmap("<leader>egl", ":edit ~/.config/nvim/lua/mpbsd/config/globals.lua<cr>")
 nmap("<leader>epg", ":edit ~/.config/nvim/lua/mpbsd/plugins<cr>")
 
-
-
--- vim: ts=2 sw=2 et
+nmap("<c-h>", "<c-w>h")
+nmap("<c-j>", "<c-w>j")
+nmap("<c-k>", "<c-w>k")
+nmap("<c-l>", "<c-w>l")

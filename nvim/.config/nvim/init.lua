@@ -1,3 +1,5 @@
+-- vim: ts=2 sw=2 et
+
 require("mpbsd.config.options")
 require("mpbsd.config.keymaps")
 require("mpbsd.config.autocmd")
@@ -17,5 +19,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("mpbsd.plugins", {})
-
--- vim: ts=2 sw=2 et

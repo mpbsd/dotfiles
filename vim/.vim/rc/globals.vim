@@ -1,3 +1,5 @@
+" vim: ts=2 sw=2 et
+
 function AddWordUnderCursorToWordsList()
   let l:cw = expand("<cword>")
   call writefile([cw], "/home/marcelo/.vim/dict/words.txt", "a")

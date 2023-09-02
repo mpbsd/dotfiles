@@ -1,3 +1,5 @@
+-- vim: ts=2 sw=2 et
+
 vim.api.nvim_create_augroup("PersistentFolds", { clear=true })
 
 vim.api.nvim_create_autocmd("BufWinLeave", {
@@ -19,5 +21,3 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   command = "setlocal textwidth=80",
   group = "AutoWrapping"
 })
-
--- vim: ts=2 sw=2 et
