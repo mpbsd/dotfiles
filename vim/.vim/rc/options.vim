@@ -1,62 +1,47 @@
-let mapleader="\<Space>"
-let maplocalleader="\<Space>"
-
 set background=dark
 colorscheme habamax
 
-set statusline=[%n]\ %f\ %m%=%{&fileformat}\ %{&fileencoding}\ %Y\ %06l,%06v
-
-set ignorecase
-set smartcase
+set cursorline
+" set cursorcolumn
+set colorcolumn=80
 
 set number
 set relativenumber
 
-set cursorline
-set cursorcolumn
-
-set spelllang=en_us,pt_br
-set spellsuggest=fast,30
-
-set dictionary=~/.vim/dict/words.txt
-
-set hidden
-
-set showcmd
-
-set backupdir=~/.cache/vim/backup
-set directory=~/.cache/vim/swap
-set viewdir=~/.cache/vim/view
-
-set viminfofile=~/.cache/vim/.viminfo
-
-set undodir=~/.cache/vim/undo
-set undofile
-
-set lazyredraw
-
-set nojoinspaces
-
-set ruler
+set statusline=[%n]\ %f\ %m%=%{&fileformat}\ %{&fileencoding}\ %Y\ %06l,%06v
 
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-set wildoptions=pum,tagfile
+set lazyredraw
 
-function! StripTrailingWhitespace()
-  if !&binary && &filetype != 'diff'
-    normal mz
-    normal Hmy
-    %s/\s\+$//e
-    normal 'yz<CR>
-    normal `z
-  endif
-endfunction
+set splitbelow
+set splitright
+
+set ignorecase
+set smartcase
+
+set showcmd
+
+set dictionary=~/.vim/dict/words.txt
+set spelllang=en_us,pt_br
+set spellsuggest=fast,20
+
+set hidden
+
+set nojoinspaces
+
+set backupdir=~/.cache/vim/backup
+set directory=~/.cache/vim/swap
+set viewdir=~/.cache/vim/view
+set viminfofile=~/.cache/vim/.viminfo
+set undodir=~/.cache/vim/undo
+set undofile
+let g:netrw_home='~/.cache/vim'
 
 if has("gui_running")
-  set guifont=JetBrainsMono\ Nerd\ Font\ 10
+  set guifont=TerminessNerdFont\ 12
   set guioptions+=d
   set guioptions-=l
   set guioptions-=T
@@ -64,8 +49,6 @@ if has("gui_running")
   set guioptions-=m
   set guioptions-=r
 endif
-
-let g:netrw_home='~/.cache/vim'
 
 let g:tex_flavor='latex'
 

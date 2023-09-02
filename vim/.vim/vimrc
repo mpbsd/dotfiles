@@ -1,3 +1,6 @@
+let mapleader="\<space>"
+let maplocalleader=","
+
 source ~/.vim/rc/abbrevs.vim
 source ~/.vim/rc/autocmd.vim
 source ~/.vim/rc/options.vim
