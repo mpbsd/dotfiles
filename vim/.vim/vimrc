@@ -1,5 +1,5 @@
-let mapleader="\<space>"
-let maplocalleader=","
+let mapleader      = "\<space>"
+let maplocalleader = ","
 
 source ~/.vim/rc/abbrevs.vim
 source ~/.vim/rc/autocmd.vim

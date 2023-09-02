@@ -105,7 +105,7 @@ iabbrev irredutivel    irredutível
 iabbrev iteracoes      iterações
 iabbrev ja             já
 iabbrev lancamentos    lançamentos
-iabbrev latex          LaTeX
+iabbrev latex                         LaTeX
 iabbrev logaritmicas   logarítmicas
 iabbrev macarrao       macarrão
 iabbrev matematica     matemática
@@ -124,7 +124,7 @@ iabbrev monotonas      monótonas
 iabbrev multiplicacao  multiplicação
 iabbrev multiplicacoes multiplicações
 iabbrev multiplo       múltiplo
-iabbrev métrico        métrico
+iabbrev 
 iabbrev nao            não
 iabbrev necessario     necessário
 iabbrev nucleo         núcleo
@@ -132,7 +132,7 @@ iabbrev numero         número
 iabbrev observacao     observação
 iabbrev obtem          obtém
 iabbrev ocasioes       ocasiões
-iabbrev oo             \infty
+iabbrev oo             \              infty
 iabbrev operacao       operação
 iabbrev operacoes      operações
 iabbrev orgao          órgão
