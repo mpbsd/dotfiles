@@ -18,31 +18,31 @@ nnoremap <leader>sgb :source ~/.vim/rc/globals.vim<cr>
 nnoremap <leader>skm :source ~/.vim/rc/keymaps.vim<cr>
 nnoremap <leader>swo :source ~/.vim/dict/words.txt<cr>
 
-nnoremap <localleader>pc :plugclean<cr>
-nnoremap <localleader>pg :plugupgrade<cr>
-nnoremap <localleader>pi :pluginstall<cr>
-nnoremap <localleader>pu :plugupdate<cr>
+nnoremap <localleader>pc :PlugClean<cr>
+nnoremap <localleader>pg :PlugUpgrade<cr>
+nnoremap <localleader>pi :PlugInstall<cr>
+nnoremap <localleader>pu :PlugUpdate<cr>
 
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
-nnoremap <leader>ue :ultisnipsedit<cr>
-
 inoremap jj <esc>
 
 inoremap <localleader>tu <esc>mmbgUiw`ma
 inoremap <localleader>tl <esc>mmbguiw`ma
 
-nnoremap <localleader>; :
-nnoremap <localleader>rw :Explore<cr>
+nnoremap <leader>; :
+nnoremap <leader>rw :Explore<cr>
 
 nnoremap <localleader>fw :w<cr>
 nnoremap <localleader>fq :q<cr>
 nnoremap <localleader>fs :so %<cr>
 
-nnoremap <leader>sf :fzf<cr>
-nnoremap <leader>sg :ag<cr>
+nnoremap <localleader>sf :FZF<cr>
+nnoremap <localleader>sg :Ag<cr>
+
+nnoremap <localleader>ue :UltiSnipsEdit<cr>
 
 nnoremap <localleader>aw :call AddWordUnderCursorToWordsList()<cr>

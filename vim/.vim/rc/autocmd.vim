@@ -8,7 +8,7 @@ augroup END
 
 augroup LaTeX
   autocmd!
-  autocmd FileType tex nnoremap <localleader>mk :make<cr>
+  autocmd FileType tex nnoremap <localleader>mm :make<cr>
   autocmd FileType tex nnoremap <localleader>md :make draft<cr>
   autocmd FileType tex nnoremap <localleader>mf :make final<cr>
   autocmd FileType tex nnoremap <localleader>mc :make clean<cr>
