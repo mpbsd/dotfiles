@@ -1,3 +1,5 @@
+" vim: ts=2 sw=2 et
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'chrisbra/csv.vim'
@@ -26,9 +28,8 @@ Plug 'wellle/targets.vim'
 
 call plug#end()
 
-" UltiSnips
-let g:UltiSnipsSnippetDirectories=['~/.vim/UltiSnips']
-let g:UltiSnipsExpandTrigger='<Tab>'
-let g:UltiSnipsJumpForwardTrigger='<Tab>'
-let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
-let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories  = ['~/.vim/UltiSnips']
+let g:UltiSnipsExpandTrigger       = '<tab>'
+let g:UltiSnipsJumpForwardTrigger  = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsEditSplit           = 'vertical'

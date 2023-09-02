@@ -1,3 +1,5 @@
+" vim: ts=2 sw=2 et
+
 iabbrev acao           ação
 iabbrev acumulacao     acumulação
 iabbrev aderencia      aderência

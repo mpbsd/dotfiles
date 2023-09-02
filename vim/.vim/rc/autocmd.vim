@@ -1,13 +1,15 @@
+" vim: ts=2 sw=2 et
+
 augroup Folds
   autocmd!
-  autocmd BufWinLeave *.c,*.h,*.md,*.py,*.tex mkview
-  autocmd BufWinEnter *.c,*.h,*.md,*.py,*.tex silent! loadview
+  autocmd BufWinLeave *.c,*.h,*.py,*.tex mkview
+  autocmd BufWinEnter *.c,*.h,*.py,*.tex silent! loadview
 augroup END
 
 augroup LaTeX
   autocmd!
-  autocmd FileType tex nnoremap <Leader>mk :make<CR>
-  autocmd FileType tex nnoremap <Leader>md :make draft<CR>
-  autocmd FileType tex nnoremap <Leader>mf :make final<CR>
-  autocmd FileType tex nnoremap <Leader>mc :make clean<CR>
+  autocmd FileType tex nnoremap <localleader>mk :make<cr>
+  autocmd FileType tex nnoremap <localleader>md :make draft<cr>
+  autocmd FileType tex nnoremap <localleader>mf :make final<cr>
+  autocmd FileType tex nnoremap <localleader>mc :make clean<cr>
 augroup END
