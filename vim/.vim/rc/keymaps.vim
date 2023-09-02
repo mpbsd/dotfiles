@@ -45,4 +45,4 @@ nnoremap <localleader>fs :so %<cr>
 nnoremap <leader>sf :fzf<cr>
 nnoremap <leader>sg :ag<cr>
 
-nnoremap <localleader>gw :call GetWordUnderCursor()<cr>
+nnoremap <localleader>aw :call AddWordUnderCursorToWordsList()<cr>
