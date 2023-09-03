@@ -36,13 +36,13 @@ inoremap <localleader>tl <esc>mmbguiw`ma
 nnoremap <leader>; :
 nnoremap <leader>rw :Explore<cr>
 
-nnoremap <localleader>fw :w<cr>
-nnoremap <localleader>fq :q<cr>
-nnoremap <localleader>fs :so %<cr>
+nnoremap <leader>fw :w<cr>
+nnoremap <leader>fq :q<cr>
+nnoremap <leader>fs :so %<cr>
 
-nnoremap <localleader>sf :FZF<cr>
-nnoremap <localleader>sg :Ag<cr>
+nnoremap <leader>sf :FZF<cr>
+nnoremap <leader>sg :Ag<cr>
 
-nnoremap <localleader>ue :UltiSnipsEdit<cr>
+nnoremap <leader>ue :UltiSnipsEdit<cr>
 
-nnoremap <localleader>aw :call AddWordUnderCursorToWordsList()<cr>
+nnoremap <leader>aw :call AddWordUnderCursorToWordsList()<cr>

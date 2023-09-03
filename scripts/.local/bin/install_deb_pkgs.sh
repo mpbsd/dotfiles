@@ -60,6 +60,8 @@ declare -a UTILS=(
   qpdf
   ripgrep
   sdcv
+  signify-openbsd
+  signify-openbsd-keys
   silversearcher-ag
   stow
   tmux
