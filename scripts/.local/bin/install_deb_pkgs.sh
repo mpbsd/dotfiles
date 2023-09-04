@@ -4,69 +4,84 @@
 declare -a TEXT_EDITORS=(
   vim-nox
   vim-gtk3
-  ed
   nvi
 )
 
 
 declare -a DEVELOPMENT=(
   build-essential
-  cscope
   gdb
   glibc-doc
-  nodejs
-  npm
-  postgresql
-  postgresql-client
   python3-venv
-  ruby-full
-  zlib1g-dev
-  sqlite3
-  sqlite3-doc
   universal-ctags
   valgrind
 )
 
 
-declare -a UTILS=(
-  9base
+declare -a DATABASE=(
+  postgresql
+  postgresql-client
+  sqlite3
+  sqlite3-doc
+)
+
+
+declare -a MAIL_CHAT_AND_NEWS=(
   abook
+  mutt
+  w3m
+  irssi
+  newsboat
+)
+
+
+declare -a SYSTEM_MAINTENANCE=(
   aptitude
-  bat
-  bsdgames
-  cowsay
-  curl
   deborphan
   debsums
-  fd-find
-  fonts-spleen
+  stow
+)
+
+
+declare -a FUN_AND_GAMES=(
+  bsdgames
+  cowsay
   fortune
-  fzf
-  gtypist
-  htop
-  hub
-  irssi
-  keychain
-  ledger
-  lf
-  lowdown
-  mutt
-  neofetch
-  newsboat
-  pandoc
+)
+
+
+declare -a SECURITY=(
   pass
   pass-otp
+  keychain
+)
+
+declare -a BLOGGING=(
+  lowdown
+  hugo
+)
+
+
+declare -a UTILS=(
+  9base
+  bat
+  curl
+  fd-find
+  fzf
+  gtypist
+  hub
+  ledger
+  lf
   plocate
   qpdf
   ripgrep
   sdcv
-  signify-openbsd
-  signify-openbsd-keys
   silversearcher-ag
-  stow
   tmux
-  w3m
-  zathura
+)
+
+
+declare -a SHELL=(
   zsh
   zsh-autosuggestions
   zsh-doc
@@ -76,44 +91,44 @@ declare -a UTILS=(
 
 declare -a TERMINAL_CLIENTS=(
   alacritty
-  kitty
 )
 
 
 declare -a LATEX=(
   texlive-full
-  kile
-  kbibtex
+  zathura
 )
 
 
-declare -a GUI=(
+declare -a IMAGE=(
   inkscape
-  blender
+)
+
+
+declare -a BROWSER=(
   chromium
   chromium-driver
-  xournalpp
 )
 
 
-declare -a BUILD_REQUIREMENTS_NEOVIM=(
-  ninja-build
-  gettext
-  cmake
-  unzip
-  curl
-  ccache
-)
+# declare -a NEOVIM_BUILD_REQUIREMENTS=(
+#   ninja-build
+#   gettext
+#   cmake
+#   unzip
+#   curl
+#   ccache
+# )
 
 
-declare -a AWESOMEWM=(
-  awesome
-  picom
-  conky
-)
+# declare -a AWESOME=(
+#   awesome
+#   picom
+#   conky
+# )
 
 
-declare -a SWAYWM=(
+declare -a SWAY=(
   sway
   waybar
   swayidle
@@ -127,13 +142,19 @@ declare -a SWAYWM=(
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
+  "${DATABASE[@]}"
+  "${MAIL_CHAT_AND_NEWS[@]}"
+  "${SYSTEM_MAINTENANCE[@]}"
+  "${FUN_AND_GAMES[@]}"
+  "${SECURITY[@]}"
+  "${BLOGGING[@]}"
   "${UTILS[@]}"
+  "${SHELL[@]}"
   "${TERMINAL_CLIENTS[@]}"
   "${LATEX[@]}"
-  "${GUI[@]}"
-  "${BUILD_REQUIREMENTS_NEOVIM[@]}"
-  "${AWESOMEWM[@]}"
-  "${SWAYWM[@]}"
+  "${IMAGE[@]}"
+  "${BROWSER[@]}"
+  "${SWAY[@]}"
 )
 
 
