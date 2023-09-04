@@ -12,9 +12,14 @@ declare -a DEVELOPMENT=(
   build-essential
   gdb
   glibc-doc
-  python3-venv
   universal-ctags
   valgrind
+)
+
+
+declare -a PYTHON_DEVELOPMENT=(
+  python3-venv
+  python3-pip
 )
 
 
@@ -142,6 +147,7 @@ declare -a SWAY=(
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
+  "${PYTHON_DEVELOPMENT[@]}"
   "${DATABASE[@]}"
   "${MAIL_CHAT_AND_NEWS[@]}"
   "${SYSTEM_MAINTENANCE[@]}"
