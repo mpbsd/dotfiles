@@ -56,10 +56,10 @@ then
 fi
 
 # navigate through command line history
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+
 bindkey '^P' up-line-or-beginning-search
 bindkey '^N' down-line-or-beginning-search
 
@@ -95,6 +95,11 @@ bindkey -M vicmd ds delete-surround
 bindkey -M vicmd ys add-surround
 bindkey -M visual S add-surround
 
+# shell prompt
+PROMPT='%n%F{red}@%f%m %F{magenta}>%f '
+RPROMPT='%~'
+
+# Custom functions that use FZF
 change_directory() {
   DEST="$(find ~ -type d | fzf)"
   [[ -n "${DEST}" ]] && cd "${DEST}"
