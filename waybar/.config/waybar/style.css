@@ -2,8 +2,8 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: JetBrainsMono Nerd Font;
-  font-size: 10pt;
+  font-family: TerminessNerdFont;
+  font-size: 12pt;
   min-height: 0;
 }
 window#waybar {
