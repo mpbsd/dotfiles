@@ -16,7 +16,6 @@ nnoremap <leader>sab :source ~/.vim/rc/abbrevs.vim<cr>
 nnoremap <leader>sau :source ~/.vim/rc/autocmd.vim<cr>
 nnoremap <leader>sgb :source ~/.vim/rc/globals.vim<cr>
 nnoremap <leader>skm :source ~/.vim/rc/keymaps.vim<cr>
-nnoremap <leader>swo :source ~/.vim/dict/words.txt<cr>
 
 nnoremap <localleader>pc :PlugClean<cr>
 nnoremap <localleader>pg :PlugUpgrade<cr>
@@ -45,4 +44,4 @@ nnoremap <leader>sg :Ag<cr>
 
 nnoremap <leader>ue :UltiSnipsEdit<cr>
 
-nnoremap <leader>aw :call AddWordUnderCursorToWordsList()<cr>
+nnoremap <localleader>aw :call AddWordUnderCursorToWordsList()<cr>
