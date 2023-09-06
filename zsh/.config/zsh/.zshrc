@@ -1,123 +1,33 @@
-# completion
-autoload -Uz compinit; compinit -d ~/.cache/zsh/zcompdump
+# configuring $PATH
+source ${HOME}/.config/zsh/rc/path.zsh
 
-zstyle ':completion:*' menu select
-
-zmodload zsh/complist
-
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-up-line-or-history
-bindkey -M menuselect 'k' vi-forward-char
-bindkey -M menuselect 'l' vi-down-line-or-history
-
-# vi mode
-bindkey -v
-
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd '^e' edit-command-line
+# command completion
+source ${HOME}/.config/zsh/rc/completion.zsh
 
 # key bindings
-typeset -g -A key
+source ${HOME}/.config/zsh/rc/key_bindings.zsh
 
-key[Home]="${terminfo[khome]}"
-key[End]="${terminfo[kend]}"
-key[Insert]="${terminfo[kich1]}"
-key[Backspace]="${terminfo[kbs]}"
-key[Delete]="${terminfo[kdch1]}"
-key[Up]="${terminfo[kcuu1]}"
-key[Down]="${terminfo[kcud1]}"
-key[Left]="${terminfo[kcub1]}"
-key[Right]="${terminfo[kcuf1]}"
-key[PageUp]="${terminfo[kpp]}"
-key[PageDown]="${terminfo[knp]}"
-key[Shift-Tab]="${terminfo[kcbt]}"
+# history search
+source ${HOME}/.config/zsh/rc/history.zsh
 
-[[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
-[[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"        end-of-line
-[[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"     overwrite-mode
-[[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}"  backward-delete-char
-[[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"     delete-char
-[[ -n "${key[Up]}"        ]] && bindkey -- "${key[Up]}"         up-line-or-history
-[[ -n "${key[Down]}"      ]] && bindkey -- "${key[Down]}"       down-line-or-history
-[[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"       backward-char
-[[ -n "${key[Right]}"     ]] && bindkey -- "${key[Right]}"      forward-char
-[[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
-[[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
+# vi mode
+source ${HOME}/.config/zsh/rc/vimode.zsh
 
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} ))
-then
-  autoload -Uz add-zle-hook-widget
-  function zle_application_mode_start { echoti smkx }
-  function zle_application_mode_stop { echoti rmkx }
-  add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-  add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
-fi
-
-# navigate through command line history
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-bindkey '^P' up-line-or-beginning-search
-bindkey '^N' down-line-or-beginning-search
-
-# adding text objects
-autoload -Uz select-quoted
-zle -N select-quoted
-
-autoload -Uz select-bracketed
-zle -N select-bracketed
-
-for km in viopp visual
-do
-  bindkey -M $km -- '-' vi-up-line-or-history
-  for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}
-  do
-    bindkey -M $km $c select-quoted
-  done
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}
-  do
-    bindkey -M $km $c select-bracketed
-  done
-done
-
-# emulate Tim Pope's surround plugin behaviour
-autoload -Uz surround
-
-zle -N delete-surround surround
-zle -N add-surround surround
-zle -N change-surround surround
-
-bindkey -M vicmd cs change-surround
-bindkey -M vicmd ds delete-surround
-bindkey -M vicmd ys add-surround
-bindkey -M visual S add-surround
-
-# shell prompt
-PROMPT='%n%F{red}@%f%m %F{magenta}>%f '
-RPROMPT='%~'
-
-# Custom functions that use FZF
-change_directory() {
-  DEST="$(find ~ -type d | fzf)"
-  [[ -n "${DEST}" ]] && cd "${DEST}"
-}
-
-change_file() {
-  find ~ -type f | fzf | xargs -ro vim
-}
+# keychain
+source ${HOME}/.config/zsh/rc/keychain.zsh
 
 # sourcery
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+# Custom functions that use FZF
+source ${HOME}/.config/zsh/rc/globals.zsh
+
+# aliases
 source "${HOME}/.config/zsh/zsh_aliases"
 
-# keychain
-keychain --nogui id_rsa_bitbucket id_rsa_github id_rsa_obsdams
-[ -z "$HOSTNAME" ] && HOSTNAME=`uname -n`
-[ -f $HOME/.keychain/$HOSTNAME-sh ] && . $HOME/.keychain/$HOSTNAME-sh
-[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && . $HOME/.keychain/$HOSTNAME-sh-gpg
+# prompt
+source ${HOME}/.config/zsh/rc/git.zsh
+source ${HOME}/.config/zsh/rc/prompt.zsh
