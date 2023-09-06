@@ -144,6 +144,11 @@ declare -a SWAY=(
 )
 
 
+declare -a ZSA_WALLY=(
+  libusb-1.0-0-dev
+)
+
+
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
@@ -161,6 +166,7 @@ PKGS=(
   "${IMAGE[@]}"
   "${BROWSER[@]}"
   "${SWAY[@]}"
+  "${ZSA_WALLY[@]}"
 )
 
 
