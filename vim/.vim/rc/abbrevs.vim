@@ -76,7 +76,7 @@ iabbrev equacao equação
 iabbrev equacoes equações
 iabbrev equivalencia equivalência
 iabbrev espaco espaço
-iabbrev esta está
+iabbrev estah está
 iabbrev estao estão
 iabbrev exercicio exercício
 iabbrev explicita explícita

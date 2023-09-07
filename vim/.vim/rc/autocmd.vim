@@ -1,5 +1,12 @@
 " vim: ts=2 sw=2 et
 
+" set foldmethod=marker for vim filetypes {{{
+augroup vim_filetype
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
 augroup Folds
   autocmd!
   autocmd BufWinLeave *.c,*.h,*.py,*.tex mkview
