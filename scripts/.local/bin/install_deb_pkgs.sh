@@ -1,13 +1,18 @@
 #!/usr/bin/bash
+#
+# date: 2023-09-07
+# 
+# author: marcelo barboza <salve.barboza@pm.me>
 
 
+# {{{ TEXT_EDITORS
 declare -a TEXT_EDITORS=(
   vim-nox
   vim-gtk3
   nvi
 )
-
-
+# }}}
+# {{{ DEVELOPMENT
 declare -a DEVELOPMENT=(
   build-essential
   gdb
@@ -15,22 +20,22 @@ declare -a DEVELOPMENT=(
   universal-ctags
   valgrind
 )
-
-
+# }}}
+# {{{ PYTHON_DEVELOPMENT
 declare -a PYTHON_DEVELOPMENT=(
   python3-venv
   python3-pip
 )
-
-
+# }}}
+# {{{ DATABASE
 declare -a DATABASE=(
   postgresql
   postgresql-client
   sqlite3
   sqlite3-doc
 )
-
-
+# }}}
+# {{{ MAIL_CHAT_AND_NEWS
 declare -a MAIL_CHAT_AND_NEWS=(
   abook
   mutt
@@ -38,35 +43,36 @@ declare -a MAIL_CHAT_AND_NEWS=(
   irssi
   newsboat
 )
-
-
+# }}}
+# {{{ SYSTEM_MAINTENANCE
 declare -a SYSTEM_MAINTENANCE=(
   aptitude
   deborphan
   debsums
   stow
 )
-
-
+# }}}
+# {{{ FUN_AND_GAMES
 declare -a FUN_AND_GAMES=(
   bsdgames
   cowsay
   fortune
 )
-
-
+# }}}
+# {{{ SECURITY
 declare -a SECURITY=(
   pass
   pass-otp
   keychain
 )
-
+# }}}
+# {{{ BLOGGING
 declare -a BLOGGING=(
   lowdown
   hugo
 )
-
-
+# }}}
+# {{{ UTILS
 declare -a UTILS=(
   9base
   bat
@@ -84,38 +90,38 @@ declare -a UTILS=(
   silversearcher-ag
   tmux
 )
-
-
+# }}}
+# {{{ SHELL
 declare -a SHELL=(
   zsh
   zsh-autosuggestions
   zsh-doc
   zsh-syntax-highlighting
 )
-
-
+# }}}
+# {{{ TERMINAL_CLIENTS
 declare -a TERMINAL_CLIENTS=(
   alacritty
 )
-
-
+# }}}
+# {{{ LATEX
 declare -a LATEX=(
   texlive-full
   zathura
 )
-
-
+# }}}
+# {{{ IMAGE
 declare -a IMAGE=(
   inkscape
 )
-
-
+# }}}
+# {{{ BROWSER
 declare -a BROWSER=(
   chromium
   chromium-driver
 )
-
-
+# }}}
+# {{{ NEOVIM_BUILD_REQUIREMENTS
 # declare -a NEOVIM_BUILD_REQUIREMENTS=(
 #   ninja-build
 #   gettext
@@ -124,15 +130,15 @@ declare -a BROWSER=(
 #   curl
 #   ccache
 # )
-
-
+# }}}
+# {{{ AWESOME
 # declare -a AWESOME=(
 #   awesome
 #   picom
 #   conky
 # )
-
-
+# }}}
+# {{{ SWAY
 declare -a SWAY=(
   sway
   waybar
@@ -142,11 +148,12 @@ declare -a SWAY=(
   wofi
   wofi-pass
 )
-
-
+# }}}
+# {{{ ZSA_WALLY
 declare -a ZSA_WALLY=(
   libusb-1.0-0-dev
 )
+# }}}
 
 
 PKGS=(
@@ -169,7 +176,7 @@ PKGS=(
   "${ZSA_WALLY[@]}"
 )
 
-
+# {{{ loop through packages
 for PKG in ${PKGS[@]}
 do
   if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>/p")" ]
@@ -186,6 +193,6 @@ do
     fi
   fi
 done
-
+# }}}
 
 exit 0

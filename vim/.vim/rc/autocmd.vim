@@ -9,8 +9,8 @@ augroup END
 
 augroup Folds
   autocmd!
-  autocmd BufWinLeave *.c,*.h,*.py,*.tex mkview
-  autocmd BufWinEnter *.c,*.h,*.py,*.tex silent! loadview
+  autocmd BufWinLeave *.c,*.h,*.py,*.sh,*.tex mkview
+  autocmd BufWinEnter *.c,*.h,*.py,*.sh,*.tex silent! loadview
 augroup END
 
 augroup LaTeX
