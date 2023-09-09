@@ -174,3 +174,4 @@ válida
 ínfimo
 órgão
 único
+dígito

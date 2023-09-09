@@ -213,6 +213,20 @@ else:
 `${1:`!p snip.rv = Elm`}`!p snip.rv = Rel`{${2:`!p snip.rv = Set`}}$0
 endsnippet
 
+snippet '([<>])=;([^;]+)?;' "[gl]eqslant" rA
+`!p
+if match.group(1) == "<":
+  rel = r"\leqslant"
+else:
+  rel = r"\geqslant"
+if match.group(2):
+  exp = match.group(2)
+else:
+  exp = snip.v.text
+snip.rv = rel
+`{${1:`!p snip.rv = exp`}}$0
+endsnippet
+
 snippet '([^;\s]+)?;times;([^;]+)?;' "Cartesian product of two sets" rA
 `!p
 set1 = "Set 1" if match.group(1) is None else match.group(1)
@@ -394,7 +408,7 @@ snippet '^custom cmds$' "My set of default cmds" rA
 %----------------------------------------------------------------------------------%
 % \smoothvectorfields                                                              %
 %----------------------------------------------------------------------------------%
-\NewEditorCommand{\smoothvectorfields}{d ()}{                                      %
+\NewDocumentCommand{\smoothvectorfields}{d ()}{                                    %
   \IfValueTF{#1}{                                                                  %
     \mathfrak{X}^{\infty}\left(#1\right)                                           %
   }{                                                                               %
@@ -509,31 +523,6 @@ snippet '^custom cmds$' "My set of default cmds" rA
   }                                                                                %
 }                                                                                  %
 %----------------------------------------------------------------------------------%
-% \covariantDerivative( vector_field_1 )[ vector_field_2 ]                         %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \covariantDerivative       --> \nabla                                         %
-%  - \covariantDerivative[X]    --> \nabla_{X}                                     %
-%  - \covariantDerivative(Y)    --> \nabla{Y}                                      %
-%  - \covariantDerivative[X](Y) --> \nabla_{X}Y                                    %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\covariantDerivative}{d [] d ()}{                              %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \nabla_{#1}{#2}                                                              %
-    }{                                                                             %
-      \nabla_{#1}                                                                  %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \nabla{#2}                                                                   %
-    }{                                                                             %
-      \nabla\                                                                      %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
 % \liederivative                                                                   %
 %----------------------------------------------------------------------------------%
 \newcommand{\liederivative}[2]{\mathcal{L}_{#2}{#1}}                               %
@@ -550,15 +539,15 @@ snippet '^custom cmds$' "My set of default cmds" rA
 \NewDocumentCommand{\curvaturetensor}{d <> m m d ()}{                              %
   \IfValueTF{#1}{                                                                  %
     \IfValueTF{#4}{                                                                %
-      \textup{R}_{#1}\left(#2,#3)#4                                                %
+      \textup{R}_{#1}\left(#2,#3\right)#4                                          %
     }{                                                                             %
-      \textup{R}_{#1}\left(#2,#3)                                                  %
+      \textup{R}_{#1}\left(#2,#3\right)                                            %
     }                                                                              %
   }{                                                                               %
     \IfValueTF{#4}{                                                                %
-      \textup{R}\left(#2,#3)#4                                                     %
+      \textup{R}\left(#2,#3\right)#4                                               %
     }{                                                                             %
-      \textup{R}\left(#2,#3)                                                       %
+      \textup{R}\left(#2,#3\right)                                                 %
     }                                                                              %
   }                                                                                %
 }                                                                                  %

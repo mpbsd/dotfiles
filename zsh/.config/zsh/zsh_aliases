@@ -1,19 +1,35 @@
+# vim: foldmethod=marker #
+
 # cat
 alias cat='batcat'
 
-# file management
+# {{{ file management
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
+alias xu='shred -xu'
+# }}}
 
-# git
-alias gaa='git add .'
-alias gca='git commit -a'
-alias gff='git diff'
-alias glg='git log --graph --oneline --decorate'
-alias gll='git pull origin main:main'
-alias gsh='git push origin main:main'
-alias gst='git status'
+# {{{ git
+alias gadd='git add'
+alias gbra='git branch '
+alias gbrr='git branch -r'
+alias giff='git diff'
+alias glog='git log'
+alias glpo='git log --pretty="oneline"'
+alias glgo='git log --graph --oneline --decorate'
+alias gcmm='git commit'
+alias gout='git checkout '
+alias grmt='git remote'
+alias grms='git remote show'
+alias gsts='git status'
+alias gtdl='git tag --delete'
+alias gtdo='git tag --delete origin'
+alias gull='git pull'
+alias gulo='git pull origin'
+alias gush='git push'
+alias guso='git push origin'
+# }}}
 
 # htop
 alias htop='htop -C'
