@@ -54,7 +54,7 @@ declare -a SYSTEM_MAINTENANCE=(
 declare -a FUN_AND_GAMES=(
   bsdgames
   cowsay
-  fortune
+  fortunes
 )
 # }}}
 # {{{ SECURITY
@@ -149,7 +149,7 @@ declare -a SWAY=(
 # }}}
 # {{{ ZSA_WALLY
 declare -a ZSA_WALLY=(
-  libusb-1.0-0-dev
+  libusb-1.0-0-dev:amd64
 )
 # }}}
 
@@ -181,14 +181,19 @@ for PKG in ${PKGS[@]}
 do
   if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s/p")" ]
   then
-    echo "Found: $PKG"
+    echo "Found: ${PKG}"
   else
     echo "Package ${PKG} not found. Would you like to install it? (y/N)"
     read ANSWER
-    if [ "$ANSWER" = 'y' ]
+    if [ "${ANSWER}" = 'y' ]
     then
       echo 'Proceeding with package installation.'
-      sudo apt install -y $PKG
+      if [ "${PKG}" = 'libusb-1.0-0-dev' ]
+      then
+        sudo apt install libusb-1.0-0-dev
+      else
+        sudo apt install -y $PKG
+      fi
       echo 'Done.'
     fi
   fi
