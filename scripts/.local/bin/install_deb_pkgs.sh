@@ -1,9 +1,7 @@
 #!/usr/bin/bash
 #
-# date: 2023-09-07
-# 
 # author: marcelo barboza <salve.barboza@pm.me>
-
+# date: 2023-09-07
 
 # {{{ TEXT_EDITORS
 declare -a TEXT_EDITORS=(
@@ -122,14 +120,14 @@ declare -a BROWSER=(
 )
 # }}}
 # {{{ NEOVIM_BUILD_REQUIREMENTS
-# declare -a NEOVIM_BUILD_REQUIREMENTS=(
-#   ninja-build
-#   gettext
-#   cmake
-#   unzip
-#   curl
-#   ccache
-# )
+declare -a NEOVIM_BUILD_REQUIREMENTS=(
+  ninja-build
+  gettext
+  cmake
+  unzip
+  curl
+  ccache
+)
 # }}}
 # {{{ AWESOME
 # declare -a AWESOME=(
@@ -155,7 +153,7 @@ declare -a ZSA_WALLY=(
 )
 # }}}
 
-
+# {{{ package list
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
@@ -172,14 +170,16 @@ PKGS=(
   "${LATEX[@]}"
   "${IMAGE[@]}"
   "${BROWSER[@]}"
+  "${NEOVIM_BUILD_REQUIREMENTS[@]}"
   "${SWAY[@]}"
   "${ZSA_WALLY[@]}"
 )
+# }}}
 
 # {{{ loop through packages
 for PKG in ${PKGS[@]}
 do
-  if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>/p")" ]
+  if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s/p")" ]
   then
     echo "Found: $PKG"
   else
@@ -196,3 +196,5 @@ done
 # }}}
 
 exit 0
+
+# vim: set foldmethod=marker #

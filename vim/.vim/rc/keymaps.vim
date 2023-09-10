@@ -1,4 +1,4 @@
-" vim: ts=2 sw=2 et
+" vim: set foldmethod=marker "
 
 nnoremap <leader>erc :edit ~/.vim/vimrc<cr>
 nnoremap <leader>eop :edit ~/.vim/rc/options.vim<cr>
@@ -35,9 +35,8 @@ inoremap <localleader>tl <esc>mmbguiw`ma
 nnoremap <leader>; :
 nnoremap <localleader>rw :Explore<cr>
 
-nnoremap <localleader>fw :w<cr>
-nnoremap <localleader>fq :q<cr>
-nnoremap <localleader>fs :so %<cr>
+nnoremap <localleader>w :w<cr>
+nnoremap <localleader>q :q<cr>
 
 nnoremap <localleader>sf :FZF<cr>
 nnoremap <localleader>sg :Ag<cr>

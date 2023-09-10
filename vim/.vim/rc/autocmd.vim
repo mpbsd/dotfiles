@@ -4,6 +4,7 @@
 augroup vim_filetype
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType vim nnoremap <localleader>s :so %<cr>
 augroup END
 " }}}
 

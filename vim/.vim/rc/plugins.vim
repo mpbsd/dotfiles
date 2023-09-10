@@ -1,4 +1,4 @@
-" vim: ts=2 sw=2 et
+" vim: set foldmethod=marker "
 
 call plug#begin('~/.vim/plugged')
 
