@@ -129,15 +129,15 @@ declare -a NEOVIM_BUILD_REQUIREMENTS=(
   ccache
 )
 # }}}
-# {{{ AWESOME
-# declare -a AWESOME=(
-#   awesome
-#   picom
-#   conky
-# )
+# {{{ AWESOMEWM
+declare -a AWESOMEWM=(
+  awesome
+  picom
+  conky
+)
 # }}}
-# {{{ SWAY
-declare -a SWAY=(
+# {{{ SWAYWM
+declare -a SWAYWM=(
   sway
   waybar
   swayidle
@@ -171,15 +171,16 @@ PKGS=(
   "${IMAGE[@]}"
   "${BROWSER[@]}"
   "${NEOVIM_BUILD_REQUIREMENTS[@]}"
-  "${SWAY[@]}"
+  "${AWESOMEWM[@]}"
+  "${SWAYWM[@]}"
   "${ZSA_WALLY[@]}"
 )
 # }}}
 
-# {{{ loop through packages
+# {{{ loop through PKGS
 for PKG in ${PKGS[@]}
 do
-  if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s/p")" ]
+  if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s\+/p")" ]
   then
     echo "Found: ${PKG}"
   else
@@ -188,7 +189,7 @@ do
     if [ "${ANSWER}" = 'y' ]
     then
       echo 'Proceeding with package installation.'
-      if [ "${PKG}" = 'libusb-1.0-0-dev' ]
+      if [ "${PKG}" = 'libusb-1.0-0-dev:amd64' ]
       then
         sudo apt install libusb-1.0-0-dev
       else

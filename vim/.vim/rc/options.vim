@@ -14,7 +14,9 @@ set splitbelow
 set splitright
 
 set cursorline
+set cursorcolumn
 set colorcolumn=80
+set textwidth=80
 
 set statusline=[%n]\ %f\ %m%=%{&fileformat}\ %{&fileencoding}\ %Y\ %06l,%06v
 

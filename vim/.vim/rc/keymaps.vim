@@ -1,5 +1,6 @@
 " vim: set foldmethod=marker "
 
+" {{{ edit/source config files
 nnoremap <leader>erc :edit ~/.vim/vimrc<cr>
 nnoremap <leader>eop :edit ~/.vim/rc/options.vim<cr>
 nnoremap <leader>epg :edit ~/.vim/rc/plugins.vim<cr>
@@ -16,31 +17,34 @@ nnoremap <leader>sab :source ~/.vim/rc/abbrevs.vim<cr>
 nnoremap <leader>sau :source ~/.vim/rc/autocmd.vim<cr>
 nnoremap <leader>sgb :source ~/.vim/rc/globals.vim<cr>
 nnoremap <leader>skm :source ~/.vim/rc/keymaps.vim<cr>
-
+" }}}
+" {{{ plugin management
 nnoremap <localleader>pc :PlugClean<cr>
 nnoremap <localleader>pg :PlugUpgrade<cr>
 nnoremap <localleader>pi :PlugInstall<cr>
 nnoremap <localleader>pu :PlugUpdate<cr>
-
+" }}}
+" {{{ window navigation
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+" }}}
 
 inoremap jj <esc>
+nnoremap <leader>; :
+
+nnoremap <localleader>fw :w<cr>
+nnoremap <localleader>fq :q<cr>
 
 inoremap <localleader>tu <esc>mmbgUiw`ma
 inoremap <localleader>tl <esc>mmbguiw`ma
 
-nnoremap <leader>; :
-nnoremap <localleader>rw :Explore<cr>
-
-nnoremap <localleader>w :w<cr>
-nnoremap <localleader>q :q<cr>
+nnoremap <localleader>ex :Explore<cr>
 
 nnoremap <localleader>sf :FZF<cr>
-nnoremap <localleader>sg :Ag<cr>
+nnoremap <localleader>sa :Ag<cr>
 
-nnoremap <localleader>ue :UltiSnipsEdit<cr>
+nnoremap <localleader>se :UltiSnipsEdit<cr>
 
 nnoremap <localleader>aw :call AddWordUnderCursorToWordsList()<cr>

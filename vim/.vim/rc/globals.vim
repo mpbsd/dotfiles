@@ -1,7 +1,9 @@
 " vim: set foldmethod=marker "
 
+" {{{ add the word under the cursor to my own dictionary
 function AddWordUnderCursorToWordsList()
   let l:cw = expand("<cword>")
   call writefile([cw], "/home/marcelo/.vim/dict/words.txt", "a")
   echo 'Added ' . cw . 'to ~/.vim/dict/words.txt'
 endfunction
+" }}}
