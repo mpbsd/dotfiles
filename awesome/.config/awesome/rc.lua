@@ -66,14 +66,14 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Fonts
-beautiful.font = 'TerminessNerdFont 11'
+beautiful.font = 'TerminessNerdFont 12'
 
 -- Add gaps between windows
 beautiful.useless_gap = 4
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "nvim"
+editor = os.getenv("EDITOR") or "nvi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.

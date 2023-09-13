@@ -1,5 +1,3 @@
-" vim: set foldmethod=marker "
-
 " {{{ set foldmethod=marker for vim filetypes
 augroup vim_filetype
   autocmd!

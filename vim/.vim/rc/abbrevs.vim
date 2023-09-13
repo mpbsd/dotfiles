@@ -1,5 +1,3 @@
-" vim: set foldmethod=marker "
-
 iabbrev acao ação
 iabbrev acumulacao acumulação
 iabbrev aderencia aderência

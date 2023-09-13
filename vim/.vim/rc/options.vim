@@ -1,5 +1,3 @@
-"vim: set foldmethod=marker "
-
 set background=dark
 colorscheme habamax
 

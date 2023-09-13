@@ -1,5 +1,3 @@
-" vim: set foldmethod=marker "
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'chrisbra/csv.vim'
