@@ -3,7 +3,8 @@ let maplocalleader = ","
 
 source ~/.vim/rc/options.vim
 source ~/.vim/rc/plugins.vim
-source ~/.vim/rc/abbrevs.vim
 source ~/.vim/rc/autocmd.vim
 source ~/.vim/rc/globals.vim
 source ~/.vim/rc/keymaps.vim
+
+source ~/.vim/spell/words.abbrev

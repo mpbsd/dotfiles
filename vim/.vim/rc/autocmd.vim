@@ -1,22 +1,27 @@
 " {{{ set foldmethod=marker for vim filetypes
-augroup vim_filetype
+augroup Foldmethod
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType vim nnoremap <localleader>s :so %<cr>
 augroup END
 " }}}
 " {{{ autoload views
-augroup Folds
+augroup AutoloadFolds
   autocmd!
   autocmd BufWinLeave *.c,*.h,*.py,*.sh,*.tex mkview
   autocmd BufWinEnter *.c,*.h,*.py,*.sh,*.tex silent! loadview
 augroup END
 " }}}
-" {{{ create make commands for tex filetypes
-augroup LaTeX
+" {{{ automatically sort words and abbreviations files
+augroup Sort
   autocmd!
-  autocmd FileType tex nnoremap <localleader>m :make<cr>
-  autocmd FileType tex nnoremap <localleader>f :make bib<cr>
-  autocmd FileType tex nnoremap <localleader>c :make clean<cr>
+  autocmd BufWinEnter *.abbrev,*.dict :%sort u
+augroup END
+" }}}
+" {{{ create make commands for tex filetypes
+augroup LaTeXBuildCmds
+  autocmd!
+  autocmd FileType tex nnoremap <localleader>mk :make<cr>
+  autocmd FileType tex nnoremap <localleader>mb :make bib<cr>
+  autocmd FileType tex nnoremap <localleader>mc :make clean<cr>
 augroup END
 " }}}

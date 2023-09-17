@@ -28,7 +28,7 @@ set showcmd
 
 let g:tex_flavor='latex'
 
-set dictionary=~/.vim/dict/words.txt
+set dictionary=~/.vim/spell/words.dict
 set spelllang=en_us,pt_br
 set spellsuggest=fast,20
 
