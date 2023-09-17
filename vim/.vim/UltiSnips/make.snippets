@@ -1,4 +1,4 @@
-snippet tex "makefile snippet for tex projects"
+snippet latex "A bare bones makefile for tex projects"
 TEX_ENGINE = xelatex
 BIB_ENGINE = bibtex
 OPR_SYSTEM = $(shell uname -s)
@@ -37,6 +37,9 @@ snippet python "A bare bones makefile for python projects"
 build:
 	python3 -m pkgs.core
 
+black:
+	black -l 80 pkgs/core.py
+
 clean:
 	find . -type d -name __pycache__ | xargs rm -rf
 
@@ -47,5 +50,5 @@ ready:
 	pip install -r requirements.txt; \
 	deactivate
 
-.PHONY: build clean ready
+.PHONY: build black clean ready
 endsnippet

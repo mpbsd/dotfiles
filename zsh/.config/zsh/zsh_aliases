@@ -1,5 +1,8 @@
 # vim: foldmethod=marker #
 
+alias -s txt=vim
+alias -s ods=localc
+
 # cat
 alias cat='batcat'
 

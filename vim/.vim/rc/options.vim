@@ -8,15 +8,15 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-set splitbelow
-set splitright
+" set splitbelow
+" set splitright
 
 set cursorline
 set cursorcolumn
 set colorcolumn=80
 set textwidth=80
 
-set statusline=[%n]\ %f\ %m%=%{&fileformat}\ %{&fileencoding}\ %Y\ %06l,%06v
+set statusline=[%n]\ %f\ %m%=%{&fileencoding}\ %{&fileformat}\ %Y\ %06l,%06v
 
 set ignorecase
 set smartcase
@@ -38,8 +38,13 @@ set undodir=~/.cache/vim/undo
 set undofile
 set viewdir=~/.cache/vim/view
 
+let g:netrw_liststyle = 3
+let g:netrw_preview   = 1
+
 let g:netrw_home='~/.cache/vim'
 set viminfofile=~/.cache/vim/.viminfo
+
+set path+=**
 
 if has("gui_running")
   set guifont=TerminessNerdFont\ 12

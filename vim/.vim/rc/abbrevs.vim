@@ -126,6 +126,7 @@ iabbrev multiplicacoes multiplicações
 iabbrev multiplo múltiplo
 iabbrev nao não
 iabbrev necessario necessário
+iabbrev notacao notação 
 iabbrev nucleo núcleo
 iabbrev numero número
 iabbrev observacao observação
@@ -134,6 +135,7 @@ iabbrev ocasioes ocasiões
 iabbrev oo \infty
 iabbrev operacao operação
 iabbrev operacoes operações
+iabbrev opniao opinião
 iabbrev orgao órgão
 iabbrev oscilacao oscilação
 iabbrev paralelepipedo paralelepípedo
@@ -179,6 +181,7 @@ iabbrev subaneis subanéis
 iabbrev subespaco subespaço
 iabbrev submodulos submódulos
 iabbrev subsequencia subsequência
+iabbrev substituicao substituição
 iabbrev superficie superfície
 iabbrev tambem também
 iabbrev tecnica técnica

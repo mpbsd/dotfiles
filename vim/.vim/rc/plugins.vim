@@ -6,16 +6,16 @@ Plug 'godlygeek/tabular'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/seoul256.vim'
 
 Plug 'sirver/ultisnips'
 
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-jdaddy'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
