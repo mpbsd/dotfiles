@@ -21,12 +21,12 @@ endfunction
 function AddWordUnderCursorToMyListOfAbbreviations()
   let l:ep = SpecialCharactersHandler()
   call writefile([ep], "/home/marcelo/.vim/spell/words.abbrev", "a")
-  echo ep
+  echo "Added '" . ep . "' to ~/.vim/spell/words.abbrev"
 endfunction
 
 function AddWordUnderCursorToMyWordsList()
   let l:cw = expand("<cword>")
   call writefile([cw], "/home/marcelo/.vim/spell/words.dict", "a")
-  echo 'Added ' . cw . 'to ~/.vim/dict/words.txt'
+  echo "Added '" . cw . "' to ~/.vim/spell/words.dict"
 endfunction
 " }}}

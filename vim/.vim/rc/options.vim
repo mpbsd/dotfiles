@@ -8,9 +8,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" set splitbelow
-" set splitright
-
 set cursorline
 set cursorcolumn
 set colorcolumn=80
@@ -28,9 +25,10 @@ set showcmd
 
 let g:tex_flavor='latex'
 
-set dictionary=~/.vim/spell/words.dict
 set spelllang=en_us,pt_br
 set spellsuggest=fast,20
+
+set dictionary=~/.vim/spell/words.dict
 
 set backupdir=~/.cache/vim/backup
 set directory=~/.cache/vim/swap
@@ -38,11 +36,12 @@ set undodir=~/.cache/vim/undo
 set undofile
 set viewdir=~/.cache/vim/view
 
+set viminfofile=~/.cache/vim/.viminfo
+
 let g:netrw_liststyle = 3
 let g:netrw_preview   = 1
 
 let g:netrw_home='~/.cache/vim'
-set viminfofile=~/.cache/vim/.viminfo
 
 set path+=**
 
