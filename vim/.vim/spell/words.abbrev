@@ -1,4 +1,5 @@
 iabbrev aa à
+iabbrev abraco abraço
 iabbrev acao ação
 iabbrev acumulacao acumulação
 iabbrev aderencia aderência
@@ -7,6 +8,7 @@ iabbrev afirmacao afirmação
 iabbrev alem além
 iabbrev algebrica algébrica
 iabbrev algebrico algébrico
+iabbrev amigavel amigável
 iabbrev analogo análogo
 iabbrev aneis anéis
 iabbrev angulo ângulo
@@ -17,6 +19,7 @@ iabbrev arbitraria arbitrária
 iabbrev arbitrario arbitrário
 iabbrev argumentacao argumentação
 iabbrev aritmetica aritmética
+iabbrev ate até
 iabbrev atraves através
 iabbrev avaliacao avaliação
 iabbrev basico básico
@@ -31,6 +34,8 @@ iabbrev capitulo capítulo
 iabbrev caracteristico característico
 iabbrev caracterizacao caracterização
 iabbrev classificacao classificação
+iabbrev codigo código
+iabbrev codigos códigos
 iabbrev colecao coleção
 iabbrev combinacao combinação
 iabbrev combinacoes combinações
@@ -66,6 +71,7 @@ iabbrev dominio domínio
 iabbrev eh é
 iabbrev elaboracao elaboração
 iabbrev eliminacao eliminação
+iabbrev endereco endereço
 iabbrev entao então
 iabbrev enumeraveis enumeráveis
 iabbrev enumeravel enumerável
@@ -93,6 +99,7 @@ iabbrev imersoes imersões
 iabbrev impar ímpar
 iabbrev implicita implícita
 iabbrev infimo ínfimo
+iabbrev inscricoes inscrições
 iabbrev instalacao instalação
 iabbrev integraveis integráveis
 iabbrev integravel integrável
@@ -131,12 +138,14 @@ iabbrev numero número
 iabbrev observacao observação
 iabbrev obtem obtém
 iabbrev ocasioes ocasiões
+iabbrev olimpiada olimpíada
 iabbrev oo \infty
 iabbrev operacao operação
 iabbrev operacoes operações
 iabbrev opniao opinião
 iabbrev orgao órgão
 iabbrev oscilacao oscilação
+iabbrev pagina página
 iabbrev paralelepipedo paralelepípedo
 iabbrev particao partição
 iabbrev particoes partições
@@ -192,6 +201,7 @@ iabbrev ufg UFG
 iabbrev uniao união
 iabbrev unico único
 iabbrev unioes uniões
+iabbrev usuario usuário
 iabbrev valida válida
 iabbrev velorio velório
 iabbrev vizinhanca vizinhança
