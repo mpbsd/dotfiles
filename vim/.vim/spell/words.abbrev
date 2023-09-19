@@ -8,6 +8,7 @@ iabbrev afirmacao afirmação
 iabbrev alem além
 iabbrev algebrica algébrica
 iabbrev algebrico algébrico
+iabbrev amanha amanhã
 iabbrev amigavel amigável
 iabbrev analogo análogo
 iabbrev aneis anéis
@@ -68,6 +69,7 @@ iabbrev dimensao dimensão
 iabbrev diretorio diretório
 iabbrev distribuicoes distribuições
 iabbrev dominio domínio
+iabbrev duvida dúvida
 iabbrev eh é
 iabbrev elaboracao elaboração
 iabbrev eliminacao eliminação
@@ -199,6 +201,7 @@ iabbrev transformacao transformação
 iabbrev transformacoes transformações
 iabbrev ufg UFG
 iabbrev uniao união
+iabbrev unica única
 iabbrev unico único
 iabbrev unioes uniões
 iabbrev usuario usuário
