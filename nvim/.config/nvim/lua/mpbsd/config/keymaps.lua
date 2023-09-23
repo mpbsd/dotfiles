@@ -12,8 +12,13 @@ imap("jj", "<esc>")
 
 imap("<localleader>tu", "<esc>mmbgUiw`ma")
 imap("<localleader>tl", "<esc>mmbguiw`ma")
+imap("<localleader>cc", "<esc>mmb~`ma")
 
 nmap("<leader>;", ":")
+
+nmap("<localleader>fw", ":w")
+nmap("<localleader>fq", ":q")
+
 nmap("<leader>rw", ":Explore<cr>")
 
 nmap("<leader>erc", ":edit ~/.config/nvim/init.lua<cr>")

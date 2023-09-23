@@ -39,6 +39,7 @@ nnoremap <localleader>fq :q<cr>
 
 inoremap <localleader>tu <esc>mmbgUiw`ma
 inoremap <localleader>tl <esc>mmbguiw`ma
+inoremap <localleader>cc <esc>mmb~`ma
 
 nnoremap <localleader>ex :Explore<cr>
 

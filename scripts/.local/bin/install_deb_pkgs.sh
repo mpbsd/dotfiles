@@ -16,6 +16,7 @@ declare -a DEVELOPMENT=(
   gdb
   glibc-doc
   universal-ctags
+  podman
   valgrind
 )
 # }}}
@@ -132,8 +133,10 @@ declare -a NEOVIM_BUILD_REQUIREMENTS=(
 # {{{ AWESOMEWM
 declare -a AWESOMEWM=(
   awesome
-  picom
   conky
+  picom
+  polybar
+  rofi
 )
 # }}}
 # {{{ SWAYWM
