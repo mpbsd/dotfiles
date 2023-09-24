@@ -20,13 +20,22 @@ endfunction
 
 function AddWordUnderCursorToMyListOfAbbreviations()
   let l:ep = SpecialCharactersHandler()
-  call writefile([ep], "/home/marcelo/.vim/spell/words.abbrev", "a")
+  call writefile([ep], expand("~/.vim/spell/words.abbrev"), "a")
   echo "Added '" . ep . "' to ~/.vim/spell/words.abbrev"
 endfunction
 
 function AddWordUnderCursorToMyWordsList()
   let l:cw = expand("<cword>")
-  call writefile([cw], "/home/marcelo/.vim/spell/words.dict", "a")
+  call writefile([cw], expand("~/.vim/spell/words.dict"), "a")
   echo "Added '" . cw . "' to ~/.vim/spell/words.dict"
+endfunction
+" }}}
+" remove trailing spaces {{{
+function RemoveTrailingSpaces()
+  let l:cursor_position = getpos(".")
+  let l:last_search = getreg("/")
+  silent %s/\s\+$//e
+  call setpos(".", cursor_position)
+  call setreg("/", last_search)
 endfunction
 " }}}

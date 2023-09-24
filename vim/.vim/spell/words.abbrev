@@ -9,6 +9,7 @@ iabbrev afirmacao afirmação
 iabbrev alem além
 iabbrev algebrica algébrica
 iabbrev algebrico algébrico
+iabbrev algebricos algébricos
 iabbrev amanha amanhã
 iabbrev amigavel amigável
 iabbrev analises análises
@@ -38,6 +39,7 @@ iabbrev bijecoes bijeções
 iabbrev binaria binária
 iabbrev bissecao bisseção
 iabbrev calculo cálculo
+iabbrev canfora cânfora
 iabbrev canonicas canônicas
 iabbrev capitulo capítulo
 iabbrev caracteristico característico
@@ -61,6 +63,7 @@ iabbrev contem contém
 iabbrev continua contínua
 iabbrev contracao contração
 iabbrev contradicao contradição
+iabbrev contratil contrátil
 iabbrev convergencia convergência
 iabbrev coracao coração
 iabbrev corolario corolário
@@ -132,6 +135,7 @@ iabbrev intersecao interseção
 iabbrev intersecoes interseções
 iabbrev introducao introdução
 iabbrev intuicao intuição
+iabbrev investigacao investigação
 iabbrev irredutiveis irredutíveis
 iabbrev irredutivel irredutível
 iabbrev iteracoes iterações
@@ -191,6 +195,7 @@ iabbrev possivel possível
 iabbrev preco preço
 iabbrev primaria primária
 iabbrev primario primário
+iabbrev principios princípios
 iabbrev programacao programação
 iabbrev progressao progressão
 iabbrev projecao projeção
@@ -215,6 +220,7 @@ iabbrev reunioes reuniões
 iabbrev sao são
 iabbrev satisfaca satisfaça
 iabbrev secao seção
+iabbrev secessao secessão
 iabbrev seculo século
 iabbrev sequencia sequência
 iabbrev serie série
@@ -247,8 +253,3 @@ iabbrev varios vários
 iabbrev velorio velório
 iabbrev vizinhanca vizinhança
 iabbrev voce você
-iabbrev investigacao investigação
-iabbrev principios princípios
-iabbrev algebricos algébricos
-iabbrev secessao secessão
-iabbrev contratil contrátil

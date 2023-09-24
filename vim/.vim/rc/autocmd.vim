@@ -25,3 +25,9 @@ augroup latex_build_cmds
   autocmd FileType tex nnoremap <localleader>mc :make clean<cr>
 augroup END
 " }}}
+" remove trailing spaces on bufwrite {{{
+augroup remove_trailing_spaces
+  autocmd!
+  autocmd BufWrite *.lua,*.py,*.sh,*.tex,*.txt,*.vim :call RemoveTrailingSpaces()
+augroup END
+" }}}

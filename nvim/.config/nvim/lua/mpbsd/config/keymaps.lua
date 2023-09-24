@@ -28,27 +28,13 @@ nmap("<leader>egl", ":edit ~/.config/nvim/lua/mpbsd/config/globals.lua<cr>")
 nmap("<leader>epg", ":edit ~/.config/nvim/lua/mpbsd/plugin<cr>")
 
 -- window management {{{
-nmap("<localleader>sp", ":sp")
-nmap("<localleader>vs", ":vs")
+nmap("<localleader>sp", ":sp<cr>")
+nmap("<localleader>vs", ":vs<cr>")
 
-local movement = {
-  lhs = {
-    "<c-h>",
-    "<c-j>",
-    "<c-k>",
-    "<c-l>",
-  },
-  rhs = {
-    "<c-w>h",
-    "<c-w>j",
-    "<c-w>k",
-    "<c-w>l",
-  }
-}
-
-for i=1,4 do
-  nmap(movement.lhs[i], movement.rhs[i])
-end
+nmap("<c-h>", "<c-w>h")
+nmap("<c-j>", "<c-w>j")
+nmap("<c-k>", "<c-w>k")
+nmap("<c-l>", "<c-w>l")
 
 local resizing = {
   lhs = {

@@ -1,5 +1,10 @@
+set encoding=utf8
+
 set background=dark
 colorscheme habamax
+
+" status line
+set statusline=[%n]\ %f\ %m%=%{&fileencoding}\ %{&fileformat}\ %Y\ %06l,%06v
 
 set number
 set relativenumber
@@ -8,17 +13,22 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set autoindent
+set smartindent
+
 set cursorline
 set cursorcolumn
+
 set colorcolumn=80
 set textwidth=80
 
-set statusline=[%n]\ %f\ %m%=%{&fileencoding}\ %{&fileformat}\ %Y\ %06l,%06v
-
+" make searching great again
 set ignorecase
 set smartcase
+set magic
 
 set hidden
+
 set lazyredraw
 set nojoinspaces
 set showcmd
@@ -28,29 +38,26 @@ let g:tex_flavor='latex'
 set spelllang=en_us,pt_br
 set spellsuggest=fast,20
 
-set dictionary=~/.vim/spell/words.dict
-
+let g:netrw_home='~/.cache/vim'
 set backupdir=~/.cache/vim/backup
+set dictionary=~/.vim/spell/words.dict
 set directory=~/.cache/vim/swap
 set undodir=~/.cache/vim/undo
-set undofile
 set viewdir=~/.cache/vim/view
-
 set viminfofile=~/.cache/vim/.viminfo
 
-let g:netrw_liststyle = 0
-let g:netrw_preview   = 1
-
-let g:netrw_home='~/.cache/vim'
+set undofile
 
 set path+=**
 
 if has("gui_running")
+  set t_Co=256
   set guifont=TerminessNerdFont\ 12
+  set guiheadroom=0
   set guioptions+=d
-  set guioptions-=l
   set guioptions-=T
   set guioptions-=b
+  set guioptions-=l
   set guioptions-=m
   set guioptions-=r
 endif
