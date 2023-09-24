@@ -32,10 +32,10 @@ endfunction
 " }}}
 " remove trailing spaces {{{
 function RemoveTrailingSpaces()
-  let l:cursor_position = getpos(".")
-  let l:last_search = getreg("/")
+  let l:cp = getpos(".")  " cursor position
+  let l:re = getreg("/")  " regular expression from last query
   silent %s/\s\+$//e
-  call setpos(".", cursor_position)
-  call setreg("/", last_search)
+  call setpos(".", cp)
+  call setreg("/", re)
 endfunction
 " }}}
