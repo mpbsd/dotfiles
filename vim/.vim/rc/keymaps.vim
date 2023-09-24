@@ -1,4 +1,4 @@
-" {{{ edit/source config files
+" edit and source config files {{{
 nnoremap <leader>erc :edit ~/.vim/vimrc<cr>
 
 nnoremap <leader>eop :edit ~/.vim/rc/options.vim<cr>
@@ -18,13 +18,7 @@ nnoremap <leader>skm :source ~/.vim/rc/keymaps.vim<cr>
 nnoremap <leader>eab :edit ~/.vim/spell/words.abbrev<cr>
 nnoremap <leader>ewo :edit ~/.vim/spell/words.dict<cr>
 " }}}
-" {{{ plugin management
-nnoremap <localleader>pc :PlugClean<cr>
-nnoremap <localleader>pg :PlugUpgrade<cr>
-nnoremap <localleader>pi :PlugInstall<cr>
-nnoremap <localleader>pu :PlugUpdate<cr>
-" }}}
-" {{{ window management
+" window management {{{
 nnoremap <localleader>sp :sp<cr>
 nnoremap <localleader>vs :vs<cr>
 
@@ -37,6 +31,12 @@ nnoremap <c-left>  <c-w>>
 nnoremap <c-down>  <c-w>-
 nnoremap <c-up>    <c-w>+
 nnoremap <c-right> <c-w><
+" }}}
+" plugin management {{{
+nnoremap <localleader>pc :PlugClean<cr>
+nnoremap <localleader>pg :PlugUpgrade<cr>
+nnoremap <localleader>pi :PlugInstall<cr>
+nnoremap <localleader>pu :PlugUpdate<cr>
 " }}}
 
 inoremap jj <esc>
@@ -56,5 +56,5 @@ nnoremap <localleader>sa :Ag<cr>
 
 nnoremap <localleader>se :UltiSnipsEdit<cr>
 
-nnoremap <localleader>ab :call AddWordUnderCursorToMyListOfAbbreviations()<cr>
+nnoremap <localleader>ab :call AddWordUnderCursorToMyAbbreviationsList()<cr>
 nnoremap <localleader>aw :call AddWordUnderCursorToMyWordsList()<cr>

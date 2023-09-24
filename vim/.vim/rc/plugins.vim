@@ -1,18 +1,18 @@
 call plug#begin('~/.vim/plugged')
-" {{{ by chrisbra
+" by chrisbra {{{
 Plug 'chrisbra/csv.vim'
 "}}}
-" {{{ by godlygeek
+" by godlygeek {{{
 Plug 'godlygeek/tabular'
 "}}}
-" {{{ by junegunn
+" by junegunn {{{
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "}}}
-" {{{ by sirver
+" by sirver {{{
 Plug 'sirver/ultisnips'
 "}}}
-" {{{ by tpope
+" by tpope {{{
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-commentary'
@@ -25,12 +25,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 "}}}
-" {{{ by wellle
+" by wellle {{{
 Plug 'wellle/targets.vim'
 "}}}
 call plug#end()
 
-" {{{ my ultisnips settings
+" ultisnips settings {{{
 let g:UltiSnipsSnippetDirectories  = ['~/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger       = '<tab>'
 let g:UltiSnipsJumpForwardTrigger  = '<tab>'

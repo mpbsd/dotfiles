@@ -1,4 +1,4 @@
-" {{{ add the word under the cursor to my own dictionary
+" add the word under the cursor to my own dict file {{{
 function SpecialCharactersHandler()
   let l:cw = expand("<cword>") " current word
   let l:pw = expand("<cword>") " parsed word
@@ -18,7 +18,7 @@ function SpecialCharactersHandler()
   return ep
 endfunction
 
-function AddWordUnderCursorToMyListOfAbbreviations()
+function AddWordUnderCursorToMyAbbreviationsList()
   let l:ep = SpecialCharactersHandler()
   call writefile([ep], expand("~/.vim/spell/words.abbrev"), "a")
   echo "Added '" . ep . "' to ~/.vim/spell/words.abbrev"

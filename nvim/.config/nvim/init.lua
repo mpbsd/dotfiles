@@ -1,4 +1,4 @@
--- options {{{
+-- opts {{{
 require("mpbsd.config.options")
 require("mpbsd.config.keymaps")
 require("mpbsd.config.autocmd")

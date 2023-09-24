@@ -33,7 +33,7 @@ local O = {
   expandtab      = true,
   termguicolors  = true,
   undofile       = true,
-  wrap           = false,
+  wrap           = true,
 }
 
 for k, v in pairs(O) do

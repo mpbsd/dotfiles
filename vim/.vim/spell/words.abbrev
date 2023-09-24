@@ -15,6 +15,7 @@ iabbrev amigavel amigável
 iabbrev analises análises
 iabbrev analitica analítica
 iabbrev analogo análogo
+iabbrev ancora âncora
 iabbrev aneis anéis
 iabbrev angulo ângulo
 iabbrev aplicacao aplicação
@@ -97,6 +98,7 @@ iabbrev enumeravel enumerável
 iabbrev equacao equação
 iabbrev equacoes equações
 iabbrev equivalencia equivalência
+iabbrev ergonomico ergonômico
 iabbrev espaco espaço
 iabbrev espacos espaços
 iabbrev estah está
@@ -253,3 +255,12 @@ iabbrev varios vários
 iabbrev velorio velório
 iabbrev vizinhanca vizinhança
 iabbrev voce você
+iabbrev ferias férias
+iabbrev deveriamos deveríamos
+iabbrev haviamos havíamos
+iabbrev categorica categórica
+iabbrev mamae mamãe
+iabbrev escritorio escritório
+iabbrev caisse caísse
+iabbrev chao chão
+iabbrev medico médico
