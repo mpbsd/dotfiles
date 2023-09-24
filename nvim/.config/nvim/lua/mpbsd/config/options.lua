@@ -1,18 +1,18 @@
--- vim: ts=2 sw=2 et
-
+-- globals {{{
 local G = {
   mapleader            = " ",
   maplocalleader       = ",",
-  tex_flavor           = "latex",
   loaded_perl_provider = 0,
   loaded_ruby_provider = 0,
   python3_host_prog    = "/usr/bin/python3",
+  tex_flavor           = "latex",
 }
 
 for k, v in pairs(G) do
   vim.g[k] = v
 end
-
+-- }}}
+-- options {{{
 local O = {
   number         = true,
   relativenumber = true,
@@ -39,3 +39,4 @@ local O = {
 for k, v in pairs(O) do
   vim.o[k] = v
 end
+-- }}}

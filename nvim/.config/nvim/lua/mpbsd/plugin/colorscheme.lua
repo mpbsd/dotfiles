@@ -1,11 +1,9 @@
 return {
-  "Mofiqul/dracula.nvim",
+  "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
   opts = {},
   config = function()
-    vim.cmd.colorscheme("dracula-soft")
+    vim.cmd.colorscheme("tokyonight")
   end
 }
-
--- vim: ts=2 sw=2 et

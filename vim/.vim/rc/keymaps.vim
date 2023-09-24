@@ -24,11 +24,19 @@ nnoremap <localleader>pg :PlugUpgrade<cr>
 nnoremap <localleader>pi :PlugInstall<cr>
 nnoremap <localleader>pu :PlugUpdate<cr>
 " }}}
-" {{{ window navigation
+" {{{ window management
+nnoremap <localleader>sp :sp<cr>
+nnoremap <localleader>vs :vs<cr>
+
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+
+nnoremap <c-left>  <c-w>>
+nnoremap <c-down>  <c-w>-
+nnoremap <c-up>    <c-w>+
+nnoremap <c-right> <c-w><
 " }}}
 
 inoremap jj <esc>

@@ -1,5 +1,3 @@
--- vim: ts=2 sw=2 et
-
 vim.api.nvim_create_augroup("PersistentFolds", { clear=true })
 
 vim.api.nvim_create_autocmd("BufWinLeave", {

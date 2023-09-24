@@ -38,7 +38,7 @@ set viewdir=~/.cache/vim/view
 
 set viminfofile=~/.cache/vim/.viminfo
 
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 0
 let g:netrw_preview   = 1
 
 let g:netrw_home='~/.cache/vim'

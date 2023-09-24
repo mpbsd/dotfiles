@@ -12,6 +12,7 @@ iabbrev algebrico algébrico
 iabbrev amanha amanhã
 iabbrev amigavel amigável
 iabbrev analises análises
+iabbrev analitica analítica
 iabbrev analogo análogo
 iabbrev aneis anéis
 iabbrev angulo ângulo
@@ -21,6 +22,7 @@ iabbrev apos após
 iabbrev apresentacao apresentação
 iabbrev arbitraria arbitrária
 iabbrev arbitrario arbitrário
+iabbrev areas áreas
 iabbrev argumentacao argumentação
 iabbrev aritmetica aritmética
 iabbrev ate até
@@ -30,6 +32,7 @@ iabbrev basicas básicas
 iabbrev basico básico
 iabbrev beneficios benefícios
 iabbrev bibliografica bibliográfica
+iabbrev bibliograficas bibliográficas
 iabbrev bijecao bijeção
 iabbrev bijecoes bijeções
 iabbrev binaria binária
@@ -45,6 +48,7 @@ iabbrev codigos códigos
 iabbrev colecao coleção
 iabbrev combinacao combinação
 iabbrev combinacoes combinações
+iabbrev combinatoria combinatória
 iabbrev composicao composição
 iabbrev composicoes composições
 iabbrev conclusao conclusão
@@ -91,6 +95,7 @@ iabbrev equacao equação
 iabbrev equacoes equações
 iabbrev equivalencia equivalência
 iabbrev espaco espaço
+iabbrev espacos espaços
 iabbrev estah está
 iabbrev estao estão
 iabbrev estatistica estatística
@@ -117,6 +122,7 @@ iabbrev implicita implícita
 iabbrev imprescindivel imprescindível
 iabbrev infimo ínfimo
 iabbrev informacoes informacoes
+iabbrev inicio início
 iabbrev inscricoes inscrições
 iabbrev instalacao instalação
 iabbrev integraveis integráveis
@@ -142,6 +148,7 @@ iabbrev mensuraveis mensuráveis
 iabbrev mensuravel mensurável
 iabbrev metodo método
 iabbrev metrico métrico
+iabbrev metricos métricos
 iabbrev metrizavel metrizável
 iabbrev minimos mínimos
 iabbrev modulo módulo
@@ -153,6 +160,7 @@ iabbrev multiplicacoes multiplicações
 iabbrev multiplo múltiplo
 iabbrev nao não
 iabbrev necessario necessário
+iabbrev nocao noção
 iabbrev nocoes noções
 iabbrev notacao notação 
 iabbrev nucleo núcleo
@@ -196,6 +204,7 @@ iabbrev questao questão
 iabbrev questionario questionário
 iabbrev raizes raízes
 iabbrev razao razão
+iabbrev referencias referências
 iabbrev relacao relação
 iabbrev relacoes relações
 iabbrev representacao representação
@@ -206,6 +215,7 @@ iabbrev reunioes reuniões
 iabbrev sao são
 iabbrev satisfaca satisfaça
 iabbrev secao seção
+iabbrev seculo século
 iabbrev sequencia sequência
 iabbrev serie série
 iabbrev simetrica simétrica
@@ -230,8 +240,15 @@ iabbrev unica única
 iabbrev unico único
 iabbrev unioes uniões
 iabbrev usuario usuário
+iabbrev uteis úteis
 iabbrev valida válida
 iabbrev variavel variável
+iabbrev varios vários
 iabbrev velorio velório
 iabbrev vizinhanca vizinhança
 iabbrev voce você
+iabbrev investigacao investigação
+iabbrev principios princípios
+iabbrev algebricos algébricos
+iabbrev secessao secessão
+iabbrev contratil contrátil

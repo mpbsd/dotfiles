@@ -1,5 +1,3 @@
--- vim: ts=2 sw=2 et
-
 return {
   "nvim-telescope/telescope.nvim",
   tag = "0.1.2",
