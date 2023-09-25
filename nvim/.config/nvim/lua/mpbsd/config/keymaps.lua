@@ -2,7 +2,6 @@
 local imap = function(k, v)
   vim.keymap.set("i", k, v, { noremap=true })
 end
-
 local nmap = function(k, v)
   vim.keymap.set("n", k, v, { noremap=true })
 end
