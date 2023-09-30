@@ -21,12 +21,12 @@ nnoremap <leader>ewo :edit ~/.vim/spell/words.dict<cr>
 " window management {{{
 nnoremap <localleader>sp :sp<cr>
 nnoremap <localleader>vs :vs<cr>
-
+" navigate
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-
+" resize
 nnoremap <c-left>  <c-w>>
 nnoremap <c-down>  <c-w>-
 nnoremap <c-up>    <c-w>+
@@ -45,9 +45,11 @@ nnoremap <leader>; :
 nnoremap <localleader>fw :w<cr>
 nnoremap <localleader>fq :q<cr>
 
+" change capitalization {{{
 inoremap <localleader>tu <esc>mmbgUiw`ma
 inoremap <localleader>tl <esc>mmbguiw`ma
 inoremap <localleader>cc <esc>mmb~`ma
+" }}}
 
 nnoremap <localleader>ex :Explore<cr>
 
