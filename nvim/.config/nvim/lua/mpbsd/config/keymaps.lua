@@ -42,3 +42,4 @@ kmap("n", "<localleader>fw", ":w<cr>")
 kmap("n", "<localleader>fq", ":q<cr>")
 
 kmap("n", "<localleader>ex", ":Explore<cr>")
+kmap("n", "<localleader>se", ":lua require('luasnip.loaders').edit_snippet_files()<cr>")

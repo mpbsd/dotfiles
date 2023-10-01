@@ -17,7 +17,6 @@ local O = {
   relativenumber = true,
   cursorcolumn   = true,
   cursorline     = true,
-  cursorlineopt  = "number",
   hlsearch       = false,
   ignorecase     = true,
   smartcase      = true,

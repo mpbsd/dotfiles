@@ -38,11 +38,10 @@ return {
       store_selection_keys = "<tab>",
       updateevents         = "TextChanged,TextChangedI",
     })
-    local snippets_dir = "~/.config/nvim/lua/mpbsd/plugin/luasnips/luasnippets"
+    local snippets_dir = "~/.config/nvim/lua/mpbsd/plugin/luasnips/snippets/"
     require("luasnip.loaders.from_lua").load({ paths = snippets_dir })
     kmap("i"       , "<tab>"  , function() ls.expand() end)
     kmap({"i", "s"}, "<tab>"  , function() ls.jump( 1) end)
     kmap({"i", "s"}, "<s-tab>", function() ls.jump(-1) end)
-    -- require("luasnip.loaders").edit_snippet_files({})
   end
 }
