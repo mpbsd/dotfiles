@@ -3,6 +3,7 @@ require("mpbsd.config.options")
 require("mpbsd.config.keymaps")
 require("mpbsd.config.autocmd")
 require("mpbsd.config.globals")
+require("mpbsd.config.abbrevs")
 -- }}}
 -- lazy {{{
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"

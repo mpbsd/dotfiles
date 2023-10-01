@@ -7,8 +7,8 @@ local G = {
   python3_host_prog    = "/usr/bin/python3",
   tex_flavor           = "latex",
 }
-for k, v in pairs(G) do
-  vim.g[k] = v
+for lhs, rhs in pairs(G) do
+  vim.g[lhs] = rhs
 end
 -- }}}
 -- options {{{
@@ -34,7 +34,7 @@ local O = {
   undofile       = true,
   wrap           = true,
 }
-for k, v in pairs(O) do
-  vim.o[k] = v
+for lhs, rhs in pairs(O) do
+  vim.o[lhs] = rhs
 end
 -- }}}

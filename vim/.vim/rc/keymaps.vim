@@ -1,4 +1,4 @@
-" edit and source config files {{{
+" edit/source config files {{{
 nnoremap <leader>erc :edit ~/.vim/vimrc<cr>
 
 nnoremap <leader>eop :edit ~/.vim/rc/options.vim<cr>
@@ -18,7 +18,7 @@ nnoremap <leader>skm :source ~/.vim/rc/keymaps.vim<cr>
 nnoremap <leader>eab :edit ~/.vim/spell/words.abbrev<cr>
 nnoremap <leader>ewo :edit ~/.vim/spell/words.dict<cr>
 " }}}
-" window management {{{
+" windows {{{
 nnoremap <localleader>sp :sp<cr>
 nnoremap <localleader>vs :vs<cr>
 " navigation
