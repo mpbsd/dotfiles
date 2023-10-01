@@ -11,13 +11,7 @@ augroup autoload_folds
   autocmd BufWinEnter *.c,*.h,*.py,*.sh,*.tex silent! loadview
 augroup END
 " }}}
-" sort word and abbreviation files {{{
-augroup sorting_words_list
-  autocmd!
-  autocmd BufWinEnter *.abbrev,*.dict :%sort u
-augroup END
-" }}}
-" make commands for tex filetypes {{{
+" build commands for tex filetypes {{{
 augroup latex_build_cmds
   autocmd!
   autocmd FileType tex nnoremap <localleader>mk :make<cr>
@@ -26,15 +20,21 @@ augroup latex_build_cmds
   autocmd FileType tex nnoremap <localleader>mf :make final<cr>
 augroup END
 " }}}
-" remove trailing spaces on bufwrite {{{
+" remove trailing spaces {{{
 augroup remove_trailing_spaces
   autocmd!
   autocmd BufWrite *.lua,*.py,*.sh,*.tex,*.txt,*.vim :call RemoveTrailingSpaces()
 augroup END
 " }}}
-" load abbreviations for writting in portuguese {{{
+" load abbreviations {{{
 augroup abbreviations
   autocmd!
   autocmd BufWinEnter *.mail,*.md,*.tex,*.txt source ~/.vim/spell/words.abbrev
+augroup END
+" }}}
+" sort word and abbreviation files {{{
+augroup sorting_words_list
+  autocmd!
+  autocmd BufWinEnter *.abbrev,*.dict :%sort u
 augroup END
 " }}}
