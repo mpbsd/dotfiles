@@ -21,12 +21,12 @@ nnoremap <leader>ewo :edit ~/.vim/spell/words.dict<cr>
 " window management {{{
 nnoremap <localleader>sp :sp<cr>
 nnoremap <localleader>vs :vs<cr>
-" navigate
+" navigation
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-" resize
+" resizing
 nnoremap <c-left>  <c-w>>
 nnoremap <c-down>  <c-w>-
 nnoremap <c-up>    <c-w>+
@@ -38,6 +38,16 @@ nnoremap <localleader>pg :PlugUpgrade<cr>
 nnoremap <localleader>pi :PlugInstall<cr>
 nnoremap <localleader>pu :PlugUpdate<cr>
 " }}}
+" capitalization {{{
+inoremap <localleader>tu <esc>mmbgUiw`ma
+inoremap <localleader>tl <esc>mmbguiw`ma
+inoremap <localleader>cc <esc>mmb~`ma
+" }}}
+" abbreviations {{{
+nnoremap <localleader>aa :source ~/.vim/spell/words.abbrev<cr>
+nnoremap <localleader>ab :call AddWordUnderCursorToMyAbbreviationsList()<cr>
+nnoremap <localleader>aw :call AddWordUnderCursorToMyWordsList()<cr>
+"}}}
 
 inoremap jj <esc>
 nnoremap <leader>; :
@@ -45,18 +55,9 @@ nnoremap <leader>; :
 nnoremap <localleader>fw :w<cr>
 nnoremap <localleader>fq :q<cr>
 
-" change capitalization {{{
-inoremap <localleader>tu <esc>mmbgUiw`ma
-inoremap <localleader>tl <esc>mmbguiw`ma
-inoremap <localleader>cc <esc>mmb~`ma
-" }}}
-
 nnoremap <localleader>ex :Explore<cr>
 
 nnoremap <localleader>sf :FZF<cr>
 nnoremap <localleader>sa :Ag<cr>
 
 nnoremap <localleader>se :UltiSnipsEdit<cr>
-
-nnoremap <localleader>ab :call AddWordUnderCursorToMyAbbreviationsList()<cr>
-nnoremap <localleader>aw :call AddWordUnderCursorToMyWordsList()<cr>

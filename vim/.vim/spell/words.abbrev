@@ -50,6 +50,7 @@ iabbrev caracteristico característico
 iabbrev caracterizacao caracterização
 iabbrev categorica categórica
 iabbrev chao chão
+iabbrev cientificos científicos
 iabbrev classificacao classificação
 iabbrev codificacao codificação
 iabbrev codigo código
@@ -115,6 +116,7 @@ iabbrev ergonomico ergonômico
 iabbrev escritorio escritório
 iabbrev espaco espaço
 iabbrev espacos espaços
+iabbrev estagio estágio
 iabbrev estah está
 iabbrev estao estão
 iabbrev estatistica estatística
@@ -135,6 +137,7 @@ iabbrev funcao função
 iabbrev funcoes funções
 iabbrev goiania Goiânia
 iabbrev goias Goiás
+iabbrev graduacao graduação
 iabbrev graficos gráficos
 iabbrev haviamos havíamos
 iabbrev historia história
@@ -168,6 +171,7 @@ iabbrev logaritmicas logarítmicas
 iabbrev macarrao macarrão
 iabbrev mamae mamãe
 iabbrev matematica matemática
+iabbrev matematico matemático
 iabbrev maximos máximos
 iabbrev medico médico
 iabbrev medio médio
@@ -285,3 +289,4 @@ iabbrev varios vários
 iabbrev velorio velório
 iabbrev vizinhanca vizinhança
 iabbrev voce você
+iabbrev torcao torção

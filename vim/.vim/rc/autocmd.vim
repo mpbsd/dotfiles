@@ -4,30 +4,37 @@ augroup foldmethod_filetype_vim
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 " }}}
-" autoload views {{{
+" load views {{{
 augroup autoload_folds
   autocmd!
   autocmd BufWinLeave *.c,*.h,*.py,*.sh,*.tex mkview
   autocmd BufWinEnter *.c,*.h,*.py,*.sh,*.tex silent! loadview
 augroup END
 " }}}
-" automatically sort word and abbreviation files {{{
+" sort word and abbreviation files {{{
 augroup sorting_words_list
   autocmd!
   autocmd BufWinEnter *.abbrev,*.dict :%sort u
 augroup END
 " }}}
-" create make commands for tex filetypes {{{
+" make commands for tex filetypes {{{
 augroup latex_build_cmds
   autocmd!
   autocmd FileType tex nnoremap <localleader>mk :make<cr>
   autocmd FileType tex nnoremap <localleader>mb :make bib<cr>
   autocmd FileType tex nnoremap <localleader>mc :make clean<cr>
+  autocmd FileType tex nnoremap <localleader>mf :make final<cr>
 augroup END
 " }}}
 " remove trailing spaces on bufwrite {{{
 augroup remove_trailing_spaces
   autocmd!
   autocmd BufWrite *.lua,*.py,*.sh,*.tex,*.txt,*.vim :call RemoveTrailingSpaces()
+augroup END
+" }}}
+" load abbreviations for writting in portuguese {{{
+augroup abbreviations
+  autocmd!
+  autocmd BufWinEnter *.mail,*.md,*.tex,*.txt source ~/.vim/spell/words.abbrev
 augroup END
 " }}}
