@@ -1,8 +1,8 @@
 -- opts {{{
 require("mpbsd.config.options")
+require("mpbsd.config.globals")
 require("mpbsd.config.keymaps")
 require("mpbsd.config.autocmd")
-require("mpbsd.config.globals")
 require("mpbsd.config.abbrevs")
 -- }}}
 -- lazy {{{
