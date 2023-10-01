@@ -3,14 +3,14 @@
 # author: marcelo barboza <salve.barboza@pm.me>
 # date: 2023-09-07
 
-# {{{ TEXT_EDITORS
+# TEXT_EDITORS {{{
 declare -a TEXT_EDITORS=(
   vim-nox
   vim-gtk3
   nvi
 )
 # }}}
-# {{{ DEVELOPMENT
+# DEVELOPMENT {{{
 declare -a DEVELOPMENT=(
   build-essential
   gdb
@@ -20,13 +20,19 @@ declare -a DEVELOPMENT=(
   valgrind
 )
 # }}}
-# {{{ PYTHON_DEVELOPMENT
+# NODEJS_DEVELOPMENT {{{
+declare -a NODEJS_DEVELOPMENT=(
+  nodejs
+  npm
+)
+# }}}
+# PYTHON_DEVELOPMENT {{{
 declare -a PYTHON_DEVELOPMENT=(
   python3-venv
   python3-pip
 )
 # }}}
-# {{{ DATABASE
+# DATABASE {{{
 declare -a DATABASE=(
   postgresql
   postgresql-client
@@ -34,7 +40,7 @@ declare -a DATABASE=(
   sqlite3-doc
 )
 # }}}
-# {{{ MAIL_CHAT_AND_NEWS
+# MAIL_CHAT_AND_NEWS {{{
 declare -a MAIL_CHAT_AND_NEWS=(
   abook
   mutt
@@ -43,7 +49,7 @@ declare -a MAIL_CHAT_AND_NEWS=(
   newsboat
 )
 # }}}
-# {{{ SYSTEM_MAINTENANCE
+# SYSTEM_MAINTENANCE {{{
 declare -a SYSTEM_MAINTENANCE=(
   aptitude
   deborphan
@@ -51,27 +57,27 @@ declare -a SYSTEM_MAINTENANCE=(
   stow
 )
 # }}}
-# {{{ FUN_AND_GAMES
+# FUN_AND_GAMES {{{
 declare -a FUN_AND_GAMES=(
   bsdgames
   cowsay
   fortunes
 )
 # }}}
-# {{{ SECURITY
+# SECURITY {{{
 declare -a SECURITY=(
   pass
   pass-otp
   keychain
 )
 # }}}
-# {{{ BLOGGING
+# BLOGGING {{{
 declare -a BLOGGING=(
   lowdown
   hugo
 )
 # }}}
-# {{{ UTILS
+# UTILS {{{
 declare -a UTILS=(
   9base
   bat
@@ -90,7 +96,7 @@ declare -a UTILS=(
   tmux
 )
 # }}}
-# {{{ SHELL
+# SHELL {{{
 declare -a SHELL=(
   zsh
   zsh-autosuggestions
@@ -98,29 +104,29 @@ declare -a SHELL=(
   zsh-syntax-highlighting
 )
 # }}}
-# {{{ TERMINAL_CLIENTS
+# TERMINAL_CLIENTS {{{
 declare -a TERMINAL_CLIENTS=(
   alacritty
 )
 # }}}
-# {{{ LATEX
+# LATEX {{{
 declare -a LATEX=(
   texlive-full
   zathura
 )
 # }}}
-# {{{ IMAGE
+# IMAGE {{{
 declare -a IMAGE=(
   inkscape
 )
 # }}}
-# {{{ BROWSER
+# BROWSER {{{
 declare -a BROWSER=(
   chromium
   chromium-driver
 )
 # }}}
-# {{{ NEOVIM_BUILD_REQUIREMENTS
+# NEOVIM_BUILD_REQUIREMENTS {{{
 declare -a NEOVIM_BUILD_REQUIREMENTS=(
   ninja-build
   gettext
@@ -130,7 +136,7 @@ declare -a NEOVIM_BUILD_REQUIREMENTS=(
   ccache
 )
 # }}}
-# {{{ AWESOMEWM
+# AWESOMEWM {{{
 declare -a AWESOMEWM=(
   awesome
   conky
@@ -139,7 +145,7 @@ declare -a AWESOMEWM=(
   rofi
 )
 # }}}
-# {{{ SWAYWM
+# SWAYWM {{{
 declare -a SWAYWM=(
   sway
   waybar
@@ -150,7 +156,7 @@ declare -a SWAYWM=(
   wofi-pass
 )
 # }}}
-# {{{ ZSA_WALLY
+# ZSA_WALLY {{{
 declare -a ZSA_WALLY=(
   libusb-1.0-0-dev:amd64
 )
@@ -160,6 +166,7 @@ declare -a ZSA_WALLY=(
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
+  "${NODEJS_DEVELOPMENT[@]}"
   "${PYTHON_DEVELOPMENT[@]}"
   "${DATABASE[@]}"
   "${MAIL_CHAT_AND_NEWS[@]}"

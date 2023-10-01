@@ -31,4 +31,5 @@ source "${HOME}/.config/zsh/rc/globals.zsh"
 source "${HOME}/.config/zsh/zsh_aliases"
 
 # prompt
-source "${HOME}/.config/zsh/rc/prompt.zsh"
+# source "${HOME}/.config/zsh/rc/prompt.zsh"
+eval "$(starship init zsh)"
