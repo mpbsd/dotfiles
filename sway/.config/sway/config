@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/pictures/wallpapers/debian.png fill
+output * bg ~/pictures/wallpapers/helloworld.png fill
 
 #
 # Example configuration:
@@ -69,7 +69,9 @@ exec swayidle -w \
 #
 input "type:keyboard" {
   xkb_layout us
-  xkb_options altwin:ctrl_win,compose:caps,shift:both_capslock_cancel
+  # xkb_options altwin:ctrl_win,compose:caps,shift:both_capslock_cancel
+  xkb_options altwin:ctrl_win,compose:paus,shift:both_capslock_cancel
+  # xkb_options compose:lwin,ctrl:nocaps,shift:both_capslock_cancel
 }
 
 ### Key bindings

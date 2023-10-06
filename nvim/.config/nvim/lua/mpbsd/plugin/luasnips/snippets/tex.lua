@@ -1,100 +1,97 @@
 local M = {
   -- lower case greek letter {{{
-  -- lhs {{{
   lower_case_greek_letter = {
     lhs = {
-      trig        = "([abgdezhjiklmnxoprstufqyw])`",
-      dscr        = "Lower case greek letter",
+      trig        = "([abgdezhjiklmnxprstufqyw])`",
+      dscr        = "Lower case greek letters",
       regTrig     = true,
       wordTrig    = false,
       snippetType = "autosnippet",
     },
-    -- }}}
-    -- rhs {{{
-    rhs = {
-      f(function(_, snip)
-        -- alphabet {{{
+    rhs = f(
+      function(_, snip)
         local alphabet = {
-          a = "\\alpha",
-          b = "\\beta",
-          g = "\\gamma",
-          d = "\\delta",
-          e = "\\epsilon",
-          z = "\\zeta",
-          h = "\\eta",
-          j = "\\theta",
-          i = "\\iota",
-          k = "\\kappa",
-          l = "\\lambda",
-          m = "\\mu",
-          n = "\\nu",
-          x = "\\xi",
-          o = "\\omicron",
-          p = "\\pi",
-          r = "\\rho",
-          s = "\\sigma",
-          t = "\\tau",
-          u = "\\upsilon",
-          f = "\\phi",
-          q = "\\chi",
-          y = "\\psi",
-          w = "\\omega",
+          a  = "\\alpha",
+          b  = "\\beta",
+          g  = "\\gamma",
+          d  = "\\delta",
+          e  = "\\epsilon",
+          z  = "\\zeta",
+          h  = "\\eta",
+          j  = "\\theta",
+          i  = "\\iota",
+          k  = "\\kappa",
+          l  = "\\lambda",
+          m  = "\\mu",
+          n  = "\\nu",
+          x  = "\\xi",
+          p  = "\\pi",
+          r  = "\\rho",
+          s  = "\\sigma",
+          t  = "\\tau",
+          u  = "\\upsilon",
+          f  = "\\phi",
+          q  = "\\chi",
+          y  = "\\psi",
+          w  = "\\omega",
         }
-        -- }}}
         return alphabet[snip.captures[1]]
       end
-      )
-    }
-    -- }}}
+    )
   },
   -- }}}
   -- upper case greek letter {{{
-  -- lhs {{{
   upper_case_greek_letter = {
     lhs = {
-      trig        = "([ABGDEZHJIKLMNXOPRSTUFQYW])`",
-      dscr        = "upper case greek letter",
+      trig        = "([GDLFPYSJUXW])`",
+      dscr        = "Upper case greek letters",
       regTrig     = true,
       wordTrig    = false,
       snippetType = "autosnippet",
     },
-    -- }}}
-    -- rhs {{{
-    rhs = {
-      f(function(_, snip)
-        -- alphabet {{{
+    rhs = f(
+      function(_, snip)
         local alphabet = {
-          A = "\\Alpha",
-          B = "\\Beta",
-          G = "\\Gamma",
-          D = "\\Delta",
-          E = "\\Epsilon",
-          Z = "\\Zeta",
-          H = "\\Eta",
-          J = "\\Theta",
-          I = "\\Iota",
-          K = "\\Kappa",
-          L = "\\Lambda",
-          M = "\\Mu",
-          N = "\\Nu",
-          X = "\\Xi",
-          O = "\\Omicron",
-          P = "\\Pi",
-          R = "\\Rho",
-          S = "\\Sigma",
-          T = "\\Tau",
-          U = "\\Upsilon",
-          F = "\\Phi",
-          Q = "\\Chi",
-          Y = "\\Psi",
-          W = "\\Omega",
+          G  = "\\Gamma",
+          D  = "\\Delta",
+          L  = "\\Lambda",
+          F  = "\\Phi",
+          P  = "\\Pi",
+          Y  = "\\Psi",
+          S  = "\\Sigma",
+          J  = "\\Theta",
+          U  = "\\Upsilon",
+          X  = "\\Xi",
+          W  = "\\Omega",
         }
-        -- }}}
         return alphabet[snip.captures[1]]
       end
-      )
-    }
-    -- }}}
+    )
+  },
+  -- }}}
+  -- upper case greek letter {{{
+  variant_form_greek_letter = {
+    lhs = {
+      trig        = "(v[ekfprsj])`",
+      dscr        = "Variant form greek letters",
+      regTrig     = true,
+      wordTrig    = false,
+      snippetType = "autosnippet",
+    },
+    rhs = f(
+      function(_, snip)
+        local alphabet = {
+          ve = "\\varepsilon",
+          vk = "\\varkappa",
+          vf = "\\varphi",
+          vp = "\\varpi",
+          vr = "\\varrho",
+          vs = "\\varsigma",
+          vj = "\\vartheta",
+        }
+        return alphabet[snip.captures[1]]
+      end
+    )
   },
   -- }}}
 }
@@ -102,4 +99,15 @@ local M = {
 return {
   s(M.lower_case_greek_letter.lhs, M.lower_case_greek_letter.rhs),
   s(M.upper_case_greek_letter.lhs, M.upper_case_greek_letter.rhs),
+  s(M.variant_form_greek_letter.lhs, M.variant_form_greek_letter.rhs),
 }
+
+
+
+
+
+
+
+
+
+

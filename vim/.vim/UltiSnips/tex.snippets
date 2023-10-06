@@ -1,620 +1,168 @@
-snippet '([a-z]);`' "Capitalize letters" rA
-`!p snip.rv = match.group(1).upper()`$0
+snippet 'im;' "inline math mode" rA
+\(${1:${VISUAL}}\)$0
 endsnippet
 
-snippet '([AaBbGgDdEeZzHhJjIiKkLlMmNnXxOοPpRrSsTtUuFfQqYyWw]|d[Gg]|v[sbejkprfJ])`' "Greek letters" rA
+snippet '(^)?dm;' "display math mode" rA
 `!p
-alphabet = {
-	"A": r"\Alpha",
-	"a": r"\alpha",
-	"B": r"\Beta",
-	"b": r"\beta",
-	"G": r"\Gamma",
-	"g": r"\gamma",
-	"D": r"\Delta",
-	"d": r"\delta",
-	"E": r"\Epsilon",
-	"e": r"\epsilon",
-	"Z": r"\Zeta",
-	"z": r"\zeta",
-	"H": r"\Eta",
-	"h": r"\eta",
-	"J": r"\Theta",
-	"j": r"\theta",
-	"I": r"\Iota",
-	"i": r"\iota",
-	"K": r"\Kappa",
-	"k": r"\kappa",
-	"L": r"\Lambda",
-	"l": r"\lambda",
-	"M": r"\Mu",
-	"m": r"\mu",
-	"N": r"\Nu",
-	"n": r"\nu",
-	"X": r"\Xi",
-	"x": r"\xi",
-	"O": r"\Omicron",
-	"o": r"\omicron",
-	"P": r"\Pi",
-	"p": r"\pi",
-	"R": r"\Rho",
-	"r": r"\rho",
-	"S": r"\Sigma",
-	"s": r"\sigma",
-	"T": r"\Tau",
-	"t": r"\tau",
-	"U": r"\Upsilon",
-	"u": r"\upsilon",
-	"F": r"\Phi",
-	"f": r"\phi",
-	"Q": r"\Chi",
-	"q": r"\chi",
-	"Y": r"\Psi",
-	"y": r"\psi",
-	"W": r"\Omega",
-	"w": r"\omega",
-	"dG": r"\Digamma",
-	"dg": r"\digamma",
-	"vs": r"\varsigma",
-	"vb": r"\varbeta",
-	"ve": r"\varepsilon",
-	"vj": r"\vartheta",
-	"vk": r"\varkappa",
-	"vp": r"\varpi",
-	"vr": r"\varrho",
-	"vf": r"\varphi",
-	"vJ": r"\varTheta",
-}
-snip.rv = alphabet[match.group(1)] `$0
+at_the_beginning_of_a_line = False if match.group(1) is None else True
+if at_the_beginning_of_a_line is False:
+	snip.rv = "\n"
+`\[
+	${1:${VISUAL}}
+\]
+$0
 endsnippet
 
-snippet '(^)?m([id]);([^;]+)?;' "Math mode" rA
-`!p
-enclosing = {
-	"i": {
-		"lhs": r"\(",
-		"rhs": r"\)",
-	},
-	"d": {
-		"lhs": "\\[\n\t",
-		"rhs": "\n\\]\n",
-	},
-}
-at_the_beginning_of_a_line = "no" if match.group(1) is None else "yes"
-mode = match.group(2)
-content = snip.v.text if match.group(3) is None else match.group(3)
-opening = enclosing[mode]["lhs"]
-closing = enclosing[mode]["rhs"]
-if mode == "d" and at_the_beginning_of_a_line == "no":
-	snip.rv = "\n" + opening
-else:
-	snip.rv = opening
-`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+snippet 'frac;' "fraction" rA
+\frac{$1}{$2}$0
 endsnippet
 
-snippet 'e([pbc])([sb]);([^;]+)?;' "Enclosings: [p]arenthesis, [b]rackets or [c]urly braces" rA
-`!p
-enclosing = {
-	"p": {
-		"s": {
-			"lhs": "(",
-			"rhs": ")",
-		},
-		"b": {
-			"lhs": r"\left(",
-			"rhs": r"\right)",
-		},
-	},
-	"b": {
-		"s": {
-			"lhs": "[",
-			"rhs": "]",
-		},
-		"b": {
-			"lhs": r"\left[",
-			"rhs": r"\right]",
-		},
-	},
-	"c": {
-		"s": {
-			"lhs": "{",
-			"rhs": "}",
-		},
-		"b": {
-			"lhs": r"\left\{",
-			"rhs": r"\right\}",
-		}
-	},
-}
-type = match.group(1)
-size = match.group(2)
-opening = enclosing[type][size]["lhs"]
-closing = enclosing[type][size]["rhs"]
-content = snip.v.text if match.group(3) is None else match.group(3)
-snip.rv = opening
-`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
-endsnippet
-
-snippet 'e<;([^;]+)?;' "Enclosing: angles <>" rA
-`!p
-opening = "<"
-closing = ">"
-content = snip.v.text if match.group(1) is None else match.group(1)
-snip.rv = opening
-`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
-endsnippet
-
-snippet '(\^|_)`' "Su(b|per)scripts" rA
+snippet '([_^]);' "su(per|b)script" rA
 `!p snip.rv = match.group(1)`{${1:${VISUAL}}}$0
 endsnippet
 
-snippet 'f;([^;]+)?;([^;]+)?;' "Fractions" rA
+snippet '([GDLFPYSJUXW])`' "upper case greek letter" rA
 `!p
-num = "num" if match.group(1) is None else match.group(1)
-den = "den" if match.group(2) is None else match.group(2)
-`\frac{${1:`!p snip.rv = num`}}{${2:`!p snip.rv = den`}}$0
-endsnippet
-
-snippet '(prod|sum);([^;]+);([^;]+)?;([^;]+)?;([^;]+);' "Performing (sums|products) over an index" r
-`!p
-op = match.group(1)
-dumbvar = match.group(2)
-lower_limit = match.group(3)
-upper_limit = match.group(4)
-term = match.group(5)
-if op == "prod":
-	snip.rv = r"\prod\limits"
-else:
-	snip.rv = r"\sum\limits"
-if lower_limit:
-	snip.rv += "_{" + dumbvar + "=" + lower_limit + "}"
-else:
-	snip.rv += "_{" + dumbvar + "}"
-if upper_limit:
-	snip.rv += "^{" + upper_limit + "}"
-	snip.rv += term
-`$0
-endsnippet
-
-snippet 'fsty;(bb|ca|fr|it|no|rm|sc);([a-z]);' "Font style in math mode" rA
-`!p
-fsty = {
-	"bb": r"\mathbb",
-	"ca": r"\mathcal",
-	"fr": r"\mathfrak",
-	"it": r"\mathit",
-	"no": r"\mathnormal",
-	"rm": r"\mathrm",
-	"sc": r"\mathscr",
+alphabet = {
+	"G" : r"\Gamma",
+	"D" : r"\Delta",
+	"L" : r"\Lambda",
+	"F" : r"\Phi",
+	"P" : r"\Pi",
+	"Y" : r"\Psi",
+	"S" : r"\Sigma",
+	"J" : r"\Theta",
+	"U" : r"\Upsilon",
+	"X" : r"\Xi",
+	"W" : r"\Omega",
 }
-snip.rv = fsty[match.group(1)] + "{" + match.group(2).upper() + "}"
-`$0
-endsnippet
-
-snippet 'elms;([^;]+);st;([^;]+);' "Define a set of elements by properties" r
-`!p
-elms = "elms" if match.group(1) is None else match.group(1)
-prop = "prop" if match.group(2) is None else match.group(2)
-`\left\\{${1:`!p snip.rv = elms`}:${2:`!p snip.rv = prop`}\right\\}$0
-endsnippet
-
-snippet '([^;\s]+)?;(in|nin|sset|nsset);([^;]+)?;' "Is a(n element| subset) of" rA
-`!p
-Elm = "Elm" if match.group(1) is None else match.group(1)
-Set = "Set" if match.group(3) is None else match.group(3)
-if match.group(2) == "in":
-	Rel = "\\in"
-elif match.group(2) == "nin":
-	Rel = "\\notin"
-elif match.group(2) == "sset":
-	Rel = "\\subseteq"
-else:
-	Rel = "\\not\\subset"
-`${1:`!p snip.rv = Elm`}`!p snip.rv = Rel`{${2:`!p snip.rv = Set`}}$0
-endsnippet
-
-snippet '([<>])=;([^;]+)?;' "[gl]eqslant" rA
-`!p
-if match.group(1) == "<":
-  rel = r"\leqslant"
-else:
-  rel = r"\geqslant"
-if match.group(2):
-  exp = match.group(2)
-else:
-  exp = snip.v.text
-snip.rv = rel
-`{${1:`!p snip.rv = exp`}}$0
-endsnippet
-
-snippet '([^;\s]+)?;times;([^;]+)?;' "Cartesian product of two sets" rA
-`!p
-set1 = "Set 1" if match.group(1) is None else match.group(1)
-set2 = "Set 2" if match.group(2) is None else match.group(2)
-`${1:`!p snip.rv = set1`}\times{${2:`!p snip.rv = set2`}}$0
-endsnippet
-
-snippet '([^;\s]+)?;(to|mapsto);([^;]+)?;' "Mappings" rA
-`!p
-elm = match.group(1)
-rel = match.group(2)
-img = match.group(3)
-`${1:`!p snip.rv = elm`}`!p snip.rv = "\\" + rel`{${2:`!p snip.rv = img`}}$0
-endsnippet
-
-snippet '^(chp|sec|ssec|sssec);([^;]+);' "(chapter|(sub){0,2}section)" r
-`!p
-hdr = {
-	"chp": "chapter",
-	"sec": "section",
-	"ssec": "subsection",
-	"sssec": "subsubsection",
-}
-hdr_t = match.group(1)
-hdr_v = hdr[hdr_t]
-hdr_n = match.group(2)
-hdr_l = match.group(2).lower().replace(" ", "-")
-snip.rv = "\\" + hdr_v + "{" + hdr_n + "}\\label{" + hdr_t + ":" + hdr_l + "}"
+snip.rv = alphabet[match.group(1)]
 `
-$0
 endsnippet
 
-snippet '^(cor|def|eq|ex|lem|pf|prop|rmk|thm);' "Environments of ultimate interest" rA
+snippet '([abgdezhjiklmnxprstufqyw])`' "lower case greek letter" rA
 `!p
-environment = {
-	"cor": "corollary",
-	"def": "definition",
-	"eq": "equation",
-	"ex": "example",
-	"lem": "lemma",
-	"pf": "proof",
-	"prop": "proposition",
-	"rmk": "remark",
-	"thm": "theorem",
+alphabet = {
+  "a" : r"\alpha",
+  "b" : r"\beta",
+  "g" : r"\gamma",
+  "d" : r"\delta",
+  "e" : r"\epsilon",
+  "z" : r"\zeta",
+  "h" : r"\eta",
+  "j" : r"\theta",
+  "i" : r"\iota",
+  "k" : r"\kappa",
+  "l" : r"\lambda",
+  "m" : r"\mu",
+  "n" : r"\nu",
+  "x" : r"\xi",
+  "p" : r"\pi",
+  "r" : r"\rho",
+  "s" : r"\sigma",
+  "t" : r"\tau",
+  "u" : r"\upsilon",
+  "f" : r"\phi",
+  "q" : r"\chi",
+  "y" : r"\psi",
+  "w" : r"\omega",
 }
-env_t = match.group(1)
-env_v = environment[env_t]
-`\begin{`!p snip.rv = env_v`}\label{`!p snip.rv = env_t`:$1}
-	$2
-\end{`!p snip.rv = env_v`}
-$0
+snip.rv = alphabet[match.group(1)]
+`
 endsnippet
 
-snippet 'beg;([^;]+)?;' "Other environments" rA
-\begin{${1:`!p snip.rv = snip.v.tex if match.group(1) is None else match.group(1)`}}
-$2
-\end{$1}
-$0
-endsnippet
-
-snippet 'func;' "Math Function" rA
-$1{\left($2\right)}=$0
-endsnippet
-
-snippet 'tf;(a)?(cos|cot|csc|sec|sin|tan)(h)?;' "(Trigonometric|Hyperbolic) Functions" rA
+snippet '(v[gekfprsj])`' "variant greek letter" rA
 `!p
-a_func = "\\arc" if match.group(1) is not None else "\\"
-t_func = match.group(2)
-h_func = "h" if match.group(3) is not None else ""
-snip.rv = a_func + t_func + h_func
-`{\left(${1:${VISUAL}}\right)}$0
+alphabet = {
+	"ve": r"\varepsilon",
+	"vk": r"\varkappa",
+	"vf": r"\varphi",
+	"vp": r"\varpi",
+	"vr": r"\varrho",
+	"vs": r"\varsigma",
+	"vj": r"\vartheta",
+}
+snip.rv = alphabet[match.group(1)]
+`
 endsnippet
 
-snippet '^default pkgs$' "My set of deafult packages" rA
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{hyperref}
-\usepackage{mathtools}
-\usepackage[table]{xcolor}
-$0
+snippet '\b(bb|cal|scr|frak)([^;]+);' "math font" rA
+`!p snip.rv = "\math" + match.group(1) + "{" + match.group(2).upper() + "}"`
 endsnippet
 
-snippet '^u;([^;]+)?;([^;]+);$' "Loading packages" rA
+snippet 'e([bs])([abcp]);' "enclosing" rA
 `!p
-opt = "" if match.group(1) is None else "[%s]" % match.group(1)
-pkg = "{%s}" % match.group(2)
-snip.rv = r"\usepackage" + opt + pkg
-`$0
+enclosing = {
+	"angle": {
+	  "big": {
+		  "opening": r"\left\langle{",
+			"closing": r"}\right\rangle",
+		},
+		"small": {
+		  "opening": r"\langle{",
+			"closing": r"}\rangle",
+		},
+	},
+	"square_bracket": {
+		"big": {
+			"opening": r"\left[",
+			"closing": r"\right]",
+		},
+		"small": {
+		  "opening": r"[",
+			"closing": r"]",
+		},
+	},
+	"curly_brace": {
+		"big": {
+			"opening": r"\left\{",
+			"closing": r"\right\}",
+		},
+		"small": {
+		  "opening": r"{",
+			"closing": r"}",
+		},
+	},
+	"parenthesis": {
+		"big": {
+			"opening": r"\left(",
+			"closing": r"\right)",
+		},
+		"small": {
+		  "opening": r"(",
+			"closing": r")",
+		},
+	},
+}
+if match.group(1) == "b":
+	size = "big"
+else:
+	size = "small"
+if match.group(2) == "a":
+  type = "angle"
+elif match.group(2) == "b":
+	type = "square_bracket"
+elif match.group(2) == "c":
+	type = "curly_brace"
+else:
+	type = "parenthesis"
+opening = enclosing[type][size]["opening"]
+closing = enclosing[type][size]["closing"]
+snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
-snippet '^custom cmds$' "My set of default cmds" rA
-%----------------------------------------------------------------------------------%
-% Numerical sets                                                                   %
-%----------------------------------------------------------------------------------%
-\newcommand{\naturals}{\mathbb{N}}                                                 %
-\newcommand{\integers}{\mathbb{Z}}                                                 %
-\newcommand{\rationals}{\mathbb{Q}}                                                %
-\newcommand{\reals}{\mathbb{R}}                                                    %
-\newcommand{\complexfield}{\mathbb{C}}                                             %
-%----------------------------------------------------------------------------------%
-% Spaces of constant sectional curvature                                           %
-%----------------------------------------------------------------------------------%
-\newcommand{\euclideanspace}[1]{\mathbb{R}^{#1}}                                   %
-\newcommand{\hyperbolicspace}[1]{\mathbb{H}^{#1}}                                  %
-\newcommand{\roundsphere}[1]{\mathbb{S}^{#1}}                                      %
-%----------------------------------------------------------------------------------%
-% Absolute value                                                                   %
-%----------------------------------------------------------------------------------%
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}                                        %
-%----------------------------------------------------------------------------------%
-% Norm and, more generally, p-norm                                                 %
-%----------------------------------------------------------------------------------%
-% \norm                                                                            %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \norm          --> \lvert{\cdot}\rvert                                        %
-%  - \norm<n>       --> \lvert{\cdot}\rvert^{n}                                    %
-%  - \norm[p]       --> \lvert{\cdot}\rvert_{p}                                    %
-%  - \norm<n>[p]    --> \lvert{\cdot}\rvert_{p}^{n}                                %
-%  - \norm(x)       --> \lvert{x}\rvert                                            %
-%  - \norm<n>(x)    --> \lvert{x}\rvert^{n}                                        %
-%  - \norm[p](x)    --> \lvert{x}\rvert_{p}                                        %
-%  - \norm<n>[p](x) --> \lvert{x}\rvert_{p}^{n}                                    %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\norm}{d <> d [] d ()}{                                        %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \IfValueTF{#3}{                                                              %
-        \lVert{#3}\rVert_{#2}^{#1}                                                 %
-      }{                                                                           %
-        \lVert{\cdot}\rVert_{#2}^{#1}                                              %
-      }                                                                            %
-    }{                                                                             %
-      \IfValueTF{#3}{                                                              %
-        \lVert{#3}\rVert^{#1}                                                      %
-      }{                                                                           %
-        \lVert{\cdot}\rVert^{#1}                                                   %
-      }                                                                            %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \IfValueTF{#3}{                                                              %
-        \lVert{#3}\rVert_{#2}                                                      %
-      }{                                                                           %
-        \lVert{\cdot}\rVert_{#2}                                                   %
-      }                                                                            %
-    }{                                                                             %
-      \IfValueTF{#3}{                                                              %
-        \lVert{#3}\rVert\                                                          %
-      }{                                                                           %
-        \lVert{\cdot}\rVert\                                                       %
-      }                                                                            %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \innerproduct{ vector_1, vector_2 }                                              %
-%----------------------------------------------------------------------------------%
-\DeclarePairedDelimiter\innerproduct{\langle}{\rangle}                             %
-%----------------------------------------------------------------------------------%
-% FUNCTION SPACES                                                                  %
-%----------------------------------------------------------------------------------%
-% \smoothfunctions                                                                 %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \smoothfunctions    --> \C^{\infty}                                           %
-%  - \smoothfunctions(M) --> \C^{\infty}\left(M\right)                             %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\smoothfunctions}{d ()}{                                       %
-  \IfValueTF{#1}{                                                                  %
-    C^{\infty}\left(#1\right)                                                      %
-  }{                                                                               %
-    C^{\infty}                                                                     %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \smoothvectorfields                                                              %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\smoothvectorfields}{d ()}{                                    %
-  \IfValueTF{#1}{                                                                  %
-    \mathfrak{X}^{\infty}\left(#1\right)                                           %
-  }{                                                                               %
-    \mathfrak{X}^{\infty}                                                          %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \diffeomorphisms                                                                 %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \diffeomorphisms    --> \mathcal{D}                                           %
-%  - \diffeomorphisms(M) --> \mathcal{D}\left(M\right)                             %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\diffeomorphisms}{d ()}{                                       %
-  \IfValueTF{#1}{                                                                  %
-    \mathcal{D}\left(#1\right)                                                     %
-  }{                                                                               %
-    \mathcal{D}                                                                    %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \riemannianmetrics                                                               %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \riemannianmetrics    --> \mathcal{M}                                         %
-%  - \riemannianmetrics(M) --> \mathcal{M}\left(M\right)                           %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\riemannianmetrics}{d ()}{                                     %
-  \IfValueTF{#1}{                                                                  %
-    \mathcal{M}\left(#1\right)                                                     %
-  }{                                                                               %
-    \mathcal{M}                                                                    %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% DIFFERENTIAL OPERATORS                                                           %
-%----------------------------------------------------------------------------------%
-% \gradientfield                                                                   %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \gradientfield{f}    --> \textup{grad}\left(f\right)                          %
-%  - \gradientfield<g>{f} --> \textup{grad}_{g}\left(f\right)                      %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\gradientfield}{d <> m}{                                       %
-  \IfValueTF{#1}{                                                                  %
-    \textup{grad}_{#1}\left(#2\right)                                              %
-  }{                                                                               %
-    \textup{grad}\left(#2\right)                                                   %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \hessian                                                                         %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-% - \hessian{f}          --> \textup{Hess}\left(f\right)                           %
-% - \hessian<g>{f}       --> \textup{Hess}_{g}\left(f\right)                       %
-% - \hessian{f}[X]       --> \textup{Hess}\left(f\right)\left(X,\cdot\right)       %
-% - \hessian<g>{f}[X]    --> \textup{Hess}_{g}\left(f\right)\left(X,\cdot\right)   %
-% - \hessian{f}(Y)       --> \textup{Hess}\left(f\right)\left(\cdot,Y\right)       %
-% - \hessian<g>{f}(Y)    --> \textup{Hess}_{g}\left(f\right)\left(\cdot,Y\right)   %
-% - \hessian{f}[X](Y)    --> \textup{Hess}\left(f\right)\left(X,Y\right)           %
-% - \hessian<g>{f}[X](Y) --> \textup{Hess}_{g}\left(f\right)\left(X,Y\right)       %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\hessian}{d <> m d [] d ()}{                                   %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#3}{                                                                %
-      \IfValueTF{#4}{                                                              %
-        \textup{Hess}_{#1}\left(#2\right)\left(#3,#4\right)                        %
-      }{                                                                           %
-        \textup{Hess}_{#1}\left(#2\right)\left(#3,\cdot\right)                     %
-      }                                                                            %
-    }{                                                                             %
-      \IfValueTF{#4}{                                                              %
-        \textup{Hess}_{#1}\left(#2\right)\left(\cdot,#4\right)                     %
-      }{                                                                           %
-        \textup{Hess}_{#1}\left(#2\right)                                          %
-      }                                                                            %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#3}{                                                                %
-      \IfValueTF{#4}{                                                              %
-        \textup{Hess}\left(#2\right)\left(#3,#4\right)                             %
-      }{                                                                           %
-        \textup{Hess}\left(#2\right)\left(#3,\cdot\right)                          %
-      }                                                                            %
-    }{                                                                             %
-      \IfValueTF{#4}{                                                              %
-        \textup{Hess}\left(#2\right)\left(\cdot,#4\right)                          %
-      }{                                                                           %
-        \textup{Hess}\left(#2\right)                                               %
-      }                                                                            %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \laplacian                                                                       %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \laplacian{f}    --> \Delta{f}                                                %
-%  - \laplacian<g>{f} --> \left(\Delta{f}\right)_{g}                               %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\laplacian}{d <> m}{                                           %
-  \IfValueTF{#1}{                                                                  %
-    \left(\Delta{#2}\right)_{#1}                                                   %
-  }{                                                                               %
-    \Delta{#2}                                                                     %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \liederivative                                                                   %
-%----------------------------------------------------------------------------------%
-\newcommand{\liederivative}[2]{\mathcal{L}_{#2}{#1}}                               %
-%----------------------------------------------------------------------------------%
-% \curvaturetensor                                                                 %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \curvaturetensor{X}{Y}       --> \textup{R}\left(X,Y\right)                   %
-%  - \curvaturetensor<g>{X}{Y}    --> \textup{R}_{g}\left(X,Y\right)               %
-%  - \curvaturetensor{X}{Y}(Z)    --> \textup{R}\left(X,Y\right)Z                  %
-%  - \curvaturetensor<g>{X}{Y}(Z) --> \textup{R}_{g}\left(X,Y\right)Z              %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\curvaturetensor}{d <> m m d ()}{                              %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#4}{                                                                %
-      \textup{R}_{#1}\left(#2,#3\right)#4                                          %
-    }{                                                                             %
-      \textup{R}_{#1}\left(#2,#3\right)                                            %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#4}{                                                                %
-      \textup{R}\left(#2,#3\right)#4                                               %
-    }{                                                                             %
-      \textup{R}\left(#2,#3\right)                                                 %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \riccitensor                                                                     %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \riccitensor          --> \textup{Rc}                                         %
-%  - \riccitensor(X)       --> \textup{Rc}\left(X,\cdot\right)                     %
-%  - \riccitensor[Y]       --> \textup{Rc}\left(\cdot,Y\right)                     %
-%  - \riccitensor(X)[Y]    --> \textup{Rc}\left(X,Y\right)                         %
-%  - \riccitensor<g>       --> \textup{Rc}_{g}                                     %
-%  - \riccitensor<g>(X)    --> \textup{Rc}_{g}\left(X,\cdot\right)                 %
-%  - \riccitensor<g>[Y]    --> \textup{Rc}_{g}\left(\cdot,Y\right)                 %
-%  - \riccitensor<g>(X)[Y] --> \textup{Rc}_{g}\left(X,Y\right)                     %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\riccitensor}{d <> d [] d ()}{                                 %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \IfValueTF{#3}{                                                              %
-        \textup{Rc}_{#1}\left(#2,#3\right)                                         %
-      }{                                                                           %
-        \textup{Rc}_{#1}\left(#2,\cdot\right)                                      %
-      }                                                                            %
-    }{                                                                             %
-      \IfValueTF{#3}{                                                              %
-        \textup{Rc}_{#1}\left(\cdot,#3\right)                                      %
-      }{                                                                           %
-        \textup{Rc}_{#1}                                                           %
-      }                                                                            %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \IfValueTF{#3}{                                                              %
-        \textup{Rc}\left(#2,#3\right)                                              %
-      }{                                                                           %
-        \textup{Rc}\left(#2,\cdot\right)                                           %
-      }                                                                            %
-    }{                                                                             %
-      \IfValueTF{#3}{                                                              %
-        \textup{Rc}\left(\cdot,#3\right)                                           %
-      }{                                                                           %
-        \textup{Rc}                                                                %
-      }                                                                            %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \scalarcurvature                                                                 %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \scalarcurvature    --> R                                                     %
-%  - \scalarcurvature<g> --> R_{g}                                                 %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\scalarcurvature}{d <>}{                                       %
-  \IfValueTF{#1}{                                                                  %
-    \textup{R}_{#1}                                                                %
-  }{                                                                               %
-    \textup{R}                                                                     %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-$0
-endsnippet
-
-snippet '^mailto' "add mailto" rA
-\href{mailto:$1}{$1}$0
+snippet ';([^;]+);' "relationship" rA
+`!p
+relationship = [
+	"in",
+	"owns",
+	"subset",
+	"contains",
+	"times",
+	"cdot",
+	"hat",
+	"overline",
+]
+if match.group(1) in relationship:
+  snip.rv = "\\" + match.group(1)`{$1}$0
 endsnippet
