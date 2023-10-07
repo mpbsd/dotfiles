@@ -50,16 +50,16 @@ set undofile
 
 set path+=**
 
-if has("gui_running")
-  set t_Co=256
-  set guifont=TerminessNerdFont\ 12
-  set guiheadroom=0
-  set guioptions+=d
-  set guioptions-=T
-  set guioptions-=b
-  set guioptions-=l
-  set guioptions-=m
-  set guioptions-=r
-endif
+" if has("gui_running")
+"   set t_Co=256
+"   set guifont=TerminessNerdFont\ 12
+"   set guiheadroom=0
+"   set guioptions+=d
+"   set guioptions-=T
+"   set guioptions-=b
+"   set guioptions-=l
+"   set guioptions-=m
+"   set guioptions-=r
+" endif
 
 runtime ftplugin/man.vim

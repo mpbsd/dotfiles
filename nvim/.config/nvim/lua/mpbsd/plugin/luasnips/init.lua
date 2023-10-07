@@ -41,7 +41,7 @@ return {
     local snippets_dir = "~/.config/nvim/lua/mpbsd/plugin/luasnips/snippets/"
     require("luasnip.loaders.from_lua").load({ paths = snippets_dir })
     kmap("i"       , "<tab>"  , function() ls.expand() end)
-    kmap({"i", "s"}, "<tab>"  , function() ls.jump( 1) end)
-    kmap({"i", "s"}, "<s-tab>", function() ls.jump(-1) end)
+    kmap({"i", "s"}, "<c-j>"  , function() ls.jump( 1) end)
+    kmap({"i", "s"}, "<c-k>", function() ls.jump(-1) end)
   end
 }
