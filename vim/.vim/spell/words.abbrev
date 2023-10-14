@@ -122,6 +122,7 @@ iabbrev estao estão
 iabbrev estatistica estatística
 iabbrev exercicio exercício
 iabbrev existencia existência
+iabbrev expansao expansão
 iabbrev explicita explícita
 iabbrev expressao expressão
 iabbrev extensao extensão
@@ -191,6 +192,7 @@ iabbrev monotonas monótonas
 iabbrev multiplicacao multiplicação
 iabbrev multiplicacoes multiplicações
 iabbrev multiplo múltiplo
+iabbrev multiplos múltiplos
 iabbrev nao não
 iabbrev necessario necessário
 iabbrev nocao noção
@@ -224,6 +226,7 @@ iabbrev pivotacao pivotação
 iabbrev poderiamos poderíamos
 iabbrev polinomio polinômio
 iabbrev possivel possível
+iabbrev potencia potência
 iabbrev preco preço
 iabbrev primaria primária
 iabbrev primario primário
@@ -239,6 +242,7 @@ iabbrev publicacao publicação
 iabbrev quadratica quadrática
 iabbrev questao questão
 iabbrev questionario questionário
+iabbrev raciocinio raciocínio
 iabbrev raizes raízes
 iabbrev razao razão
 iabbrev referencias referências
@@ -274,6 +278,7 @@ iabbrev tambem também
 iabbrev tecnica técnica
 iabbrev topologica topológica
 iabbrev topologicos topológicos
+iabbrev torcao torção
 iabbrev transformacao transformação
 iabbrev transformacoes transformações
 iabbrev ufg UFG
@@ -289,8 +294,3 @@ iabbrev varios vários
 iabbrev velorio velório
 iabbrev vizinhanca vizinhança
 iabbrev voce você
-iabbrev torcao torção
-iabbrev expansao expansão
-iabbrev multiplos múltiplos
-iabbrev potencia potência
-iabbrev raciocinio raciocínio

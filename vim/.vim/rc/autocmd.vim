@@ -29,7 +29,7 @@ augroup END
 " load abbreviations {{{
 augroup abbreviations
   autocmd!
-  autocmd BufWinEnter *.mail,*.md,*.tex,*.txt source ~/.vim/spell/words.abbrev
+  autocmd BufWinEnter *.md,*.tex,*.txt,/var/tmp/mutt* source ~/.vim/spell/words.abbrev
 augroup END
 " }}}
 " sort word and abbreviation files {{{

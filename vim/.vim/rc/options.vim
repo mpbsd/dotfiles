@@ -1,13 +1,14 @@
-set encoding=utf8
 
 set background=dark
 colorscheme habamax
 
-" status line
 set statusline=[%n]\ %f\ %m%=%{&fileencoding}\ %{&fileformat}\ %Y\ %06l,%06v
+
+set encoding=utf8
 
 set number
 set relativenumber
+set numberwidth=5
 
 set tabstop=2
 set shiftwidth=2
@@ -17,7 +18,7 @@ set autoindent
 set smartindent
 
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 set colorcolumn=80
 set textwidth=80
@@ -30,7 +31,9 @@ set magic
 set hidden
 
 set lazyredraw
+
 set nojoinspaces
+
 set showcmd
 
 let g:tex_flavor='latex'
@@ -39,16 +42,16 @@ set spelllang=en_us,pt_br
 set spellsuggest=fast,20
 
 let g:netrw_home='~/.cache/vim'
+
 set backupdir=~/.cache/vim/backup
-set dictionary=~/.vim/spell/words.dict
 set directory=~/.cache/vim/swap
 set undodir=~/.cache/vim/undo
 set viewdir=~/.cache/vim/view
 set viminfofile=~/.cache/vim/.viminfo
 
-set undofile
+set dictionary=~/.vim/spell/words.dict
 
-set path+=**
+set undofile
 
 " if has("gui_running")
 "   set t_Co=256
