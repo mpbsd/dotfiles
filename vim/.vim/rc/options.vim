@@ -1,4 +1,3 @@
-
 set background=dark
 colorscheme habamax
 
@@ -18,7 +17,7 @@ set autoindent
 set smartindent
 
 set cursorline
-" set cursorcolumn
+set cursorcolumn
 
 set colorcolumn=80
 set textwidth=80
@@ -33,8 +32,6 @@ set hidden
 set lazyredraw
 
 set nojoinspaces
-
-set showcmd
 
 let g:tex_flavor='latex'
 

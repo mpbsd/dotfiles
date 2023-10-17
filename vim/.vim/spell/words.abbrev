@@ -60,12 +60,14 @@ iabbrev colecao coleção
 iabbrev combinacao combinação
 iabbrev combinacoes combinações
 iabbrev combinatoria combinatória
+iabbrev comecar começar
 iabbrev composicao composição
 iabbrev composicoes composições
 iabbrev comunicacao comunicação
 iabbrev conclusao conclusão
 iabbrev condicao condição
 iabbrev condicoes condições
+iabbrev confusao confusão
 iabbrev conheco conheço
 iabbrev conjugacao conjugação
 iabbrev construcao construção
@@ -79,6 +81,7 @@ iabbrev contribuicao contribuição
 iabbrev convergencia convergência
 iabbrev coracao coração
 iabbrev corolario corolário
+iabbrev criacao criação
 iabbrev criterio critério
 iabbrev dai daí
 iabbrev decompoe decompõe
@@ -87,6 +90,8 @@ iabbrev definicao definição
 iabbrev delecao deleção
 iabbrev demonstracao demonstração
 iabbrev dependencia dependência
+iabbrev dependencias dependências
+iabbrev depuracao depuração
 iabbrev derivaveis deriváveis
 iabbrev derivavel derivável
 iabbrev desejavel desejável
@@ -95,9 +100,12 @@ iabbrev diferenciaveis diferenciáveis
 iabbrev diferenciavel diferenciável
 iabbrev dimensao dimensão
 iabbrev dinamicos dinâmicos
+iabbrev dirao dirão
 iabbrev diretorio diretório
 iabbrev discussao discussão
+iabbrev disposicao disposição
 iabbrev distribuicoes distribuições
+iabbrev documentacao documentação
 iabbrev dominio domínio
 iabbrev duvida dúvida
 iabbrev educacao educação
@@ -120,6 +128,7 @@ iabbrev estagio estágio
 iabbrev estah está
 iabbrev estao estão
 iabbrev estatistica estatística
+iabbrev evolucao evolução
 iabbrev exercicio exercício
 iabbrev existencia existência
 iabbrev expansao expansão
@@ -138,6 +147,7 @@ iabbrev funcao função
 iabbrev funcoes funções
 iabbrev goiania Goiânia
 iabbrev goias Goiás
+iabbrev gostariamos gostaríamos
 iabbrev graduacao graduação
 iabbrev graficos gráficos
 iabbrev haviamos havíamos
@@ -149,6 +159,7 @@ iabbrev imersoes imersões
 iabbrev impar ímpar
 iabbrev implicita implícita
 iabbrev imprescindivel imprescindível
+iabbrev impressao impressão
 iabbrev infimo ínfimo
 iabbrev informacoes informacoes
 iabbrev inicio início
@@ -171,6 +182,7 @@ iabbrev latex LaTeX
 iabbrev logaritmicas logarítmicas
 iabbrev macarrao macarrão
 iabbrev mamae mamãe
+iabbrev maquina máquina
 iabbrev matematica matemática
 iabbrev matematico matemático
 iabbrev maximos máximos
@@ -194,6 +206,7 @@ iabbrev multiplicacoes multiplicações
 iabbrev multiplo múltiplo
 iabbrev multiplos múltiplos
 iabbrev nao não
+iabbrev necessarias necessárias
 iabbrev necessario necessário
 iabbrev nocao noção
 iabbrev nocoes noções
@@ -245,6 +258,7 @@ iabbrev questionario questionário
 iabbrev raciocinio raciocínio
 iabbrev raizes raízes
 iabbrev razao razão
+iabbrev recem recém
 iabbrev referencias referências
 iabbrev relacao relação
 iabbrev relacoes relações
@@ -262,6 +276,7 @@ iabbrev seculo século
 iabbrev seminario seminário
 iabbrev sequencia sequência
 iabbrev serie série
+iabbrev sessao sessão
 iabbrev simetrica simétrica
 iabbrev sobrejecao sobrejeção
 iabbrev sobrejecoes sobrejeções
@@ -292,5 +307,8 @@ iabbrev valida válida
 iabbrev variavel variável
 iabbrev varios vários
 iabbrev velorio velório
+iabbrev versao versão
+iabbrev versoes versões
 iabbrev vizinhanca vizinhança
 iabbrev voce você
+iabbrev disponiveis disponíveis

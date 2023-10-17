@@ -69,8 +69,8 @@ exec swayidle -w \
 #
 input "type:keyboard" {
   xkb_layout us
-  xkb_options altwin:ctrl_win,compose:caps,shift:both_capslock_cancel
-  # xkb_options altwin:ctrl_win,compose:paus,shift:both_capslock_cancel
+  # xkb_options altwin:ctrl_win,compose:caps,shift:both_capslock_cancel
+  xkb_options altwin:ctrl_win,compose:paus,shift:both_capslock_cancel
   # xkb_options compose:lwin,shift:both_capslock_cancel
 }
 
