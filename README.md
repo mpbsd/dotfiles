@@ -1,7 +1,7 @@
 My dotfiles
 ===========
 
-These is where I keep all the dotfiles that I want to share accross machines. I
-manage them with [GNU stow][].
+This is where I keep all the dotfiles that I want to share accross my machines.
+I manage them with [GNU Stow][].
 
-[GNU stow]: https://www.gnu.org/software/stow/
+[GNU Stow]: https://www.gnu.org/software/stow/

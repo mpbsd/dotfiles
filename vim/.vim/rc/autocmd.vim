@@ -26,10 +26,17 @@ augroup remove_trailing_spaces
   autocmd BufWrite *.lua,*.py,*.sh,*.tex,*.txt,*.vim :call RemoveTrailingSpaces()
 augroup END
 " }}}
+" emailing {{{
+augroup emailing
+  autocmd!
+  autocmd FileType mail setlocal spell
+  autocmd FileType mail source ~/.vim/spell/words.abbrev
+augroup END
+" }}}
 " load abbreviations {{{
 augroup abbreviations
   autocmd!
-  autocmd BufWinEnter *.mail,*.md,*.tex,*.txt source ~/.vim/spell/words.abbrev
+  autocmd BufWinEnter *.md,*.tex,*.txt source ~/.vim/spell/words.abbrev
 augroup END
 " }}}
 " sort word and abbreviation files {{{
