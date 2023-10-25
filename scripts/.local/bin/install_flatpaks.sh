@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-if [ -n "$(dpkg -l | grep -F 'flatpak')" ]
+if [ -n "$(dpkg -l | grep -E "\<flatpaka\>")" ]
 then
   echo "The 'flatpak' package is already installed."
 else
