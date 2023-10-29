@@ -43,10 +43,11 @@ declare -a DATABASE=(
 # MAIL_CHAT_AND_NEWS {{{
 declare -a MAIL_CHAT_AND_NEWS=(
   abook
-  mutt
-  w3m
   irssi
+  mutt
   newsboat
+  notmuch-mutt
+  w3m
 )
 # }}}
 # SYSTEM_MAINTENANCE {{{
@@ -146,6 +147,7 @@ declare -a SUCKLESS_SOFTWARE=(
   libx11-dev:amd64
   libxft-dev:amd64
   libxinerama-dev:amd64
+  libfreetype6-dev:amd64
 )
 # }}}
 # ZSA_WALLY {{{
