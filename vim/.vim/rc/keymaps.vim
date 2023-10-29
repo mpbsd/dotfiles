@@ -61,3 +61,5 @@ nnoremap <localleader>sf :FZF<cr>
 nnoremap <localleader>sa :Ag<cr>
 
 nnoremap <localleader>se :UltiSnipsEdit<cr>
+
+nnoremap <localleader>cd :%s/\<D\([aeo]s\?\)\>/d\1/g<cr>

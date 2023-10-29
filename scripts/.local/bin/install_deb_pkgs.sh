@@ -17,7 +17,7 @@ declare -a DEVELOPMENT=(
   glibc-doc
   universal-ctags
   podman
-  valgrind
+  # valgrind
 )
 # }}}
 # NODEJS_DEVELOPMENT {{{
@@ -117,6 +117,7 @@ declare -a LATEX=(
 # }}}
 # IMAGE {{{
 declare -a IMAGE=(
+  gimp
   inkscape
 )
 # }}}
@@ -136,24 +137,15 @@ declare -a NEOVIM_BUILD_REQUIREMENTS=(
   ccache
 )
 # }}}
-# AWESOMEWM {{{
-declare -a AWESOMEWM=(
-  awesome
-  conky
-  picom
-  polybar
-  rofi
-)
-# }}}
-# SWAYWM {{{
-declare -a SWAYWM=(
-  sway
-  waybar
-  swayidle
-  swaylock
-  wev
-  wofi
-  wofi-pass
+# SUCKLESS_SOFTWARE {{{
+declare -a SUCKLESS_SOFTWARE=(
+  dwm
+  suckless-tools
+  stterm
+  surf
+  libx11-dev:amd64
+  libxft-dev:amd64
+  libxinerama-dev:amd64
 )
 # }}}
 # ZSA_WALLY {{{
@@ -162,7 +154,7 @@ declare -a ZSA_WALLY=(
 )
 # }}}
 
-# {{{ package list
+# PACKAGES' LIST {{{
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${DEVELOPMENT[@]}"
@@ -181,13 +173,12 @@ PKGS=(
   "${IMAGE[@]}"
   "${BROWSER[@]}"
   "${NEOVIM_BUILD_REQUIREMENTS[@]}"
-  "${AWESOMEWM[@]}"
-  "${SWAYWM[@]}"
+  "${SUCKLESS_SOFTWARE[@]}"
   "${ZSA_WALLY[@]}"
 )
 # }}}
 
-# {{{ loop through PKGS
+# LOOP THROUGH PKGS {{{
 for PKG in ${PKGS[@]}
 do
   if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s\+/p")" ]
@@ -199,11 +190,12 @@ do
     if [ "${ANSWER}" = 'y' ]
     then
       echo 'Proceeding with package installation.'
-      if [ "${PKG}" = 'libusb-1.0-0-dev:amd64' ]
+      if [ -n "$(echo $PKG | grep -F ':amd64')" ]
       then
-        sudo apt install libusb-1.0-0-dev
+        LIBPKG="$(echo $PKG | sed s/:amd64//)"
+        sudo apt install $LIBPKG
       else
-        sudo apt install -y $PKG
+        sudo apt install $PKG
       fi
       echo 'Done.'
     fi
@@ -212,5 +204,3 @@ done
 # }}}
 
 exit 0
-
-# vim: set foldmethod=marker #

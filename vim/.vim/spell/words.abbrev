@@ -43,6 +43,7 @@ iabbrev binaria binária
 iabbrev bissecao bisseção
 iabbrev caisse caísse
 iabbrev calculo cálculo
+iabbrev calculos cálculos
 iabbrev canfora cânfora
 iabbrev canonicas canônicas
 iabbrev capitulo capítulo
@@ -51,6 +52,7 @@ iabbrev caracterizacao caracterização
 iabbrev categorica categórica
 iabbrev chao chão
 iabbrev cientificos científicos
+iabbrev circunferencia circunferência
 iabbrev classificacao classificação
 iabbrev codificacao codificação
 iabbrev codigo código
@@ -64,6 +66,7 @@ iabbrev comecar começar
 iabbrev composicao composição
 iabbrev composicoes composições
 iabbrev comunicacao comunicação
+iabbrev concluimos concluímos
 iabbrev conclusao conclusão
 iabbrev condicao condição
 iabbrev condicoes condições
@@ -263,7 +266,9 @@ iabbrev raciocinio raciocínio
 iabbrev raizes raízes
 iabbrev razao razão
 iabbrev recem recém
+iabbrev refaca refaça
 iabbrev referencias referências
+iabbrev regiao região
 iabbrev relacao relação
 iabbrev relacoes relações
 iabbrev representacao representação
