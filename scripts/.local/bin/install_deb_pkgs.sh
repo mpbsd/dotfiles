@@ -194,10 +194,10 @@ do
       echo 'Proceeding with package installation.'
       if [ -n "$(echo $PKG | grep -F ':amd64')" ]
       then
-        LIBPKG="$(echo $PKG | sed s/:amd64//)"
-        sudo apt install $LIBPKG
+        LIB="$(echo $PKG | sed s/:amd64//)"
+        sudo apt install -y $LIB
       else
-        sudo apt install $PKG
+        sudo apt install -y $PKG
       fi
       echo 'Done.'
     fi
