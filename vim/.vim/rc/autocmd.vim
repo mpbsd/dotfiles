@@ -1,5 +1,5 @@
 " foldmethod for vim filetypes {{{
-augroup foldmethod_filetype_vim
+augroup set_foldmethod_to_marker
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END

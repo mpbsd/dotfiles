@@ -51,6 +51,7 @@ iabbrev caracteristico característico
 iabbrev caracterizacao caracterização
 iabbrev categorica categórica
 iabbrev chao chão
+iabbrev ciencia ciência
 iabbrev cientificos científicos
 iabbrev circunferencia circunferência
 iabbrev classico clássico
@@ -66,6 +67,7 @@ iabbrev combinatoria combinatória
 iabbrev comecar começar
 iabbrev composicao composição
 iabbrev composicoes composições
+iabbrev computacao computação
 iabbrev comunicacao comunicação
 iabbrev concluimos concluímos
 iabbrev conclusao conclusão
@@ -166,6 +168,7 @@ iabbrev impar ímpar
 iabbrev implicita implícita
 iabbrev imprescindivel imprescindível
 iabbrev impressao impressão
+iabbrev inducao indução
 iabbrev infimo ínfimo
 iabbrev informacoes informacoes
 iabbrev inicio início
