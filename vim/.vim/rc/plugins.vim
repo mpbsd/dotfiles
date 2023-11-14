@@ -1,7 +1,4 @@
 call plug#begin('~/.vim/plugged')
-" by chrisbra {{{
-Plug 'chrisbra/csv.vim'
-"}}}
 " by godlygeek {{{
 Plug 'godlygeek/tabular'
 "}}}
