@@ -3,11 +3,13 @@
 
 ADDRESS='https://github.com/ryanoasis/nerd-fonts/releases/download'
 VERSION='v3.0.2'
-PKGDEST="${HOME}/.local/share/fonts"
+
+FONTDIR="${HOME}/.local/share/fonts"
+TMPDIR="${HOME}/downloads"
 
 
-# FONTS {{{
-declare -a FONTS=(
+# {{{
+declare -a FONTSLIST=(
   3270
   Agave
   AnonymousPro
@@ -66,19 +68,44 @@ declare -a FONTS=(
 # }}}
 
 
-for FONT in ${FONTS[@]}
+for FONTNAME in "${FONTSLIST[@]}"
 do
-  if [ ! -d "${PKGDEST}/${FONT}" ]
+  if [ ! -d "${FONTDIR}/${FONTNAME}" ]
   then
-    mkdir -p ${PKGDEST}/${FONT}
-    cd ${PKGDEST}/${FONT}
-    wget "${ADDRESS}/${VERSION}/${FONT}.tar.xz"
-    tar -xvf ${FONT}.tar.xz
-    find ${PKGDEST}/${FONT} -type f -name 'LICENSE' | xargs rm -rf
-    find ${PKGDEST}/${FONT} -type f -name "*.txt"   | xargs rm -rf
-    find ${PKGDEST}/${FONT} -type f -name "*.md"    | xargs rm -rf
-    rm -rf ${FONT}.tar.xz
+    mkdir -p ${FONTDIR}/${FONTNAME}
+    wget "${ADDRESS}/${VERSION}/${FONTNAME}.tar.xz" -O ${TMPDIR}/${FONTNAME}.tar.xz
+    tar -xvf ${TMPDIR}/${FONTNAME}.tar.xz -C ${FONTDIR}/${FONTNAME}
+    rm -rf ${TMPDIR}/${FONTNAME}.tar.xz
   fi
+done
+
+
+# {{{
+declare -a TXT_FILES=(
+  Apache License.txt
+  Bitstream Vera License.txt
+  COPYING-LICENSE
+  LICENCE-FAQ.txt
+  LICENCE.txt
+  LICENSE
+  LICENSE.TXT
+  LICENSE.md
+  LICENSE.txt
+  LICENSE_OFL.txt
+  Licence.txt
+  OFL.txt
+  README.md
+  SIL Open Font License.txt
+  Vic Fieger License.txt
+  license.txt
+  readme.md
+)
+# }}}
+
+
+for FILE in "${TXT_FILES[@]}"
+do
+  find $FONTDIR -type f -name $FILE -delete
 done
 
 

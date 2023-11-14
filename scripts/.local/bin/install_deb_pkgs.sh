@@ -46,7 +46,6 @@ declare -a MAIL_CHAT_AND_NEWS=(
   irssi
   mutt
   newsboat
-  # notmuch-mutt
   w3m
 )
 # }}}
