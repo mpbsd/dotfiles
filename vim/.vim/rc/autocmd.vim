@@ -27,7 +27,7 @@ augroup remove_trailing_spaces
 augroup END
 " }}}
 " emailing {{{
-augroup emailing
+augroup set_abbreviations_in_insert_mode_and_enable_spell_checking_for_emails
   autocmd!
   autocmd FileType mail setlocal spell
   autocmd FileType mail source ~/.vim/spell/words.abbrev
@@ -36,7 +36,7 @@ augroup END
 " load abbreviations {{{
 augroup abbreviations
   autocmd!
-  autocmd BufWinEnter *.md,*.tex,*.txt source ~/.vim/spell/words.abbrev
+  autocmd FileType *.md,*.tex,*.txt source ~/.vim/spell/words.abbrev
 augroup END
 " }}}
 " sort word and abbreviation files {{{
