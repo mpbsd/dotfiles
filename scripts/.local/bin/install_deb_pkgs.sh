@@ -38,6 +38,7 @@ declare -a DATABASE=(
   postgresql-client
   sqlite3
   sqlite3-doc
+  recutils
 )
 # }}}
 # MAIL_CHAT_AND_NEWS {{{

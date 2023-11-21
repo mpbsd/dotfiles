@@ -63,3 +63,6 @@ nnoremap <localleader>sa :Ag<cr>
 nnoremap <localleader>se :UltiSnipsEdit<cr>
 
 nnoremap <localleader>cd :%s/\<D\([aeo]s\?\)\>/d\1/g<cr>
+
+nnoremap <localleader>id :%s@\(0[1-9]\\|[12][0-9]\\|3[01]\)\/\(0[1-9]\\|1[012]\)\/\(202[3-9]\)@\3-\2-\1@g<cr>
+nnoremap <localleader>im :%s@\([0-9.]\+\),\([0-9]\+\)\s(\([+-]\))$@\3\1\.\2\ BRL@<cr>

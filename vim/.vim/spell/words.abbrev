@@ -206,6 +206,7 @@ iabbrev metrico métrico
 iabbrev metricos métricos
 iabbrev metrizavel metrizável
 iabbrev minimizacao minimização
+iabbrev minimo mínimo
 iabbrev minimos mínimos
 iabbrev modulo módulo
 iabbrev modulos módulos
@@ -281,6 +282,7 @@ iabbrev restricoes restrições
 iabbrev reuniao reunião
 iabbrev reunioes reuniões
 iabbrev reversiveis reversíveis
+iabbrev salarios salários
 iabbrev sao são
 iabbrev satisfaca satisfaça
 iabbrev secao seção
@@ -318,6 +320,7 @@ iabbrev unioes uniões
 iabbrev usuario usuário
 iabbrev uteis úteis
 iabbrev valida válida
+iabbrev variancia variância
 iabbrev variavel variável
 iabbrev varios vários
 iabbrev velorio velório
@@ -325,6 +328,3 @@ iabbrev versao versão
 iabbrev versoes versões
 iabbrev vizinhanca vizinhança
 iabbrev voce você
-iabbrev variancia variância
-iabbrev salarios salários
-iabbrev minimo mínimo

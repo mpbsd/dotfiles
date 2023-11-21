@@ -1,4 +1,4 @@
-" add the word under the cursor to my own dict file {{{
+" add word under the cursor to my dict file {{{
 function SpecialCharactersHandler()
   let l:cw = expand("<cword>") " current word
   let l:pw = expand("<cword>") " parsed word
