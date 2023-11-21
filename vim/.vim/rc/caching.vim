@@ -8,9 +8,15 @@ for item in items(s:c_dirs)
   let s:d = s:c_dirs_parent_dir . s:v
   let s:c = 'set ' . s:k . '=' . s:d
   if !isdirectory(s:d)
-    silent! execute "!mkdir -p " . s:d
+    silent! exe "!mkdir -p " . s:d
   endif
   exe s:c
 endfor
+
+" sets netrw_home
+if !isdirectory('~/.cache/vim')
+  silent! exe "!mkdir -p ~/.cache/vim"
+endif
+let g:netrw_home='~/.cache/vim/'
 
 set vif=~/.cache/vim/.viminfo
