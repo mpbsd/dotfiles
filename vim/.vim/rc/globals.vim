@@ -1,4 +1,13 @@
-" add word under the cursor to my dict file {{{
+" tex_flavor {{{
+let g:tex_flavor='latex'
+" }}}
+" netrw_home {{{
+if !isdirectory('~/.cache/vim')
+  silent! exe "!mkdir -p ~/.cache/vim"
+endif
+let g:netrw_home='~/.cache/vim'
+" }}}
+" add word under the cursor to my dict {{{
 function SpecialCharactersHandler()
   let l:cw = expand("<cword>") " current word
   let l:pw = expand("<cword>") " parsed word
