@@ -1,6 +1,15 @@
-" sets bdir, dir, udir, vdir
-let s:c_dirs = {"bdir": "bdir", "dir": "sdir", "udir": "udir", "vdir": "vdir"}
 let s:c_dirs_parent_dir = "~/.cache/vim/"
+
+if !isdirectory(s:c_dirs_parent_dir)
+  let s:c = "!mkdir -p " . s:c_dirs_parent_dir
+  silent! exe c
+endif
+
+let g:netrw_home=s:c_dirs_parent_dir
+
+set vif=~/.cache/vim/.viminfo
+
+let s:c_dirs = {"bdir": "bdir", "dir": "sdir", "udir": "udir", "vdir": "vdir"}
 
 for item in items(s:c_dirs)
   let s:k = item[0]
@@ -12,11 +21,3 @@ for item in items(s:c_dirs)
   endif
   exe s:c
 endfor
-
-" sets netrw_home
-if !isdirectory('~/.cache/vim')
-  silent! exe "!mkdir -p ~/.cache/vim"
-endif
-let g:netrw_home='~/.cache/vim/'
-
-set vif=~/.cache/vim/.viminfo

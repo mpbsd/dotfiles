@@ -1,7 +1,5 @@
-" tex_flavor {{{
 let g:tex_flavor='latex'
-" }}}
-" add word under the cursor to my dict {{{
+
 function SpecialCharactersHandler()
   let l:cw = expand("<cword>") " current word
   let l:pw = expand("<cword>") " parsed word
@@ -32,13 +30,10 @@ function AddWordUnderCursorToMyWordsList()
   call writefile([cw], expand("~/.vim/spell/words.dict"), "a")
   echo "Added '" . cw . "' to ~/.vim/spell/words.dict"
 endfunction
-" }}}
-" remove trailing spaces {{{
 function RemoveTrailingSpaces()
-  let l:cp = getpos(".")  " cursor position
-  let l:re = getreg("/")  " regular expression from last query
+  let l:cp = getpos(".")
+  let l:re = getreg("/")
   silent %s/\s\+$//e
   call setpos(".", cp)
   call setreg("/", re)
 endfunction
-" }}}
