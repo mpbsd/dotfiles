@@ -1,7 +1,35 @@
+let s:keymap = {
+      \"edit_rc_files": {
+      \"options": {
+      \"mode": "normal",
+      \"keys": "<leader>eop",
+      \"action": ":edit ~/.vim/rc/options.vim<cr>"
+      \},
+      \},
+      \}
+
+function Keymap(mode, keys, action)
+  if a:mode ==# "normal"
+    let l:c = "nnoremap " . a:keys . " " . a:action
+    exe l:c
+  endif
+endfunction
+
+for keybindingCategory in keys(s:keymap)
+  let s:keybindings = s:keymap[keybindingCategory]
+  for keybinding in keys(s:keybindings)
+    let s:keymap = s:keybindings[keybinding]
+    let s:mode = s:keymap["mode"]
+    let s:keys = s:keymap["keys"]
+    let s:action = s:keymap["action"]
+    silent call Keymap(s:mode, s:keys, s:action)
+  endfor
+endfor
+
 " edit/source config files {{{
 nnoremap <leader>erc :edit ~/.vim/vimrc<cr>
 
-nnoremap <leader>eop :edit ~/.vim/rc/options.vim<cr>
+" nnoremap <leader>eop :edit ~/.vim/rc/options.vim<cr>
 nnoremap <leader>epg :edit ~/.vim/rc/plugins.vim<cr>
 nnoremap <leader>eau :edit ~/.vim/rc/autocmd.vim<cr>
 nnoremap <leader>egb :edit ~/.vim/rc/globals.vim<cr>
