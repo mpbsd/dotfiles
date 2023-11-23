@@ -2,7 +2,7 @@ let mapleader      = "\<space>"
 let maplocalleader = ","
 
 " sourcery
-let s:files = [
+let s:rc_files = [
       \"options",
       \"globals",
       \"autocmd",
@@ -13,8 +13,8 @@ let s:files = [
       \]
 let s:parent_dir = "~/.vim/rc/"
 
-for file in s:files
-  let s:f = s:parent_dir . file . '.vim'
+for rc_file in s:rc_files
+  let s:f = s:parent_dir . rc_file . '.vim'
   let s:c = 'source ' . s:f
   exe s:c
 endfor

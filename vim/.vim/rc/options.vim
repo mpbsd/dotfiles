@@ -1,4 +1,3 @@
-" appearance
 set background=dark
 colorscheme slate
 
@@ -23,7 +22,6 @@ set cursorcolumn
 set colorcolumn=80
 set textwidth=80
 
-" make searching great again
 set ignorecase
 set smartcase
 set magic
