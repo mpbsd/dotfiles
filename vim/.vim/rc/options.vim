@@ -1,5 +1,5 @@
 set background=dark
-colorscheme habamax
+colorscheme slate
 
 set statusline=[%n]\ %f\ %m%=%{&fenc}\ %{&ff}\ %Y\ (%06l,%06v)
 

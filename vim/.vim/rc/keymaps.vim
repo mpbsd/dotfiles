@@ -2,84 +2,84 @@ let s:catalogue_of_keybindings = {
       \"edit_rc_files": {
       \    "default": {
       \        "mod": "normal",
-      \        "key": "<leader>erc",
+      \        "key": "<localleader>erc",
       \        "act": ":edit ~/.vim/vimrc<cr>"
       \    },
       \    "options": {
       \        "mod": "normal",
-      \        "key": "<leader>eop",
+      \        "key": "<localleader>eop",
       \        "act": ":edit ~/.vim/rc/options.vim<cr>"
       \    },
       \    "globals": {
       \        "mod": "normal",
-      \        "key": "<leader>egb",
+      \        "key": "<localleader>egb",
       \        "act": ":edit ~/.vim/rc/globals.vim<cr>"
       \    },
       \    "autocmd": {
       \        "mod": "normal",
-      \        "key": "<leader>eac",
+      \        "key": "<localleader>eac",
       \        "act": ":edit ~/.vim/rc/autocmd.vim<cr>"
       \    },
       \    "plugins": {
       \        "mod": "normal",
-      \        "key": "<leader>epg",
+      \        "key": "<localleader>epg",
       \        "act": ":edit ~/.vim/rc/plugins.vim<cr>"
       \    },
       \    "keymaps": {
       \        "mod": "normal",
-      \        "key": "<leader>ekm",
+      \        "key": "<localleader>ekm",
       \        "act": ":edit ~/.vim/rc/keymaps.vim<cr>"
       \    },
       \    "caching": {
       \        "mod": "normal",
-      \        "key": "<leader>eca",
+      \        "key": "<localleader>eca",
       \        "act": ":edit ~/.vim/rc/caching.vim<cr>"
       \    },
       \    "guiopts": {
       \        "mod": "normal",
-      \        "key": "<leader>eui",
+      \        "key": "<localleader>eui",
       \        "act": ":edit ~/.vim/rc/guiopts.vim<cr>"
       \    },
       \},
       \"source_rc_files": {
       \    "default": {
       \        "mod": "normal",
-      \        "key": "<leader>src",
+      \        "key": "<localleader>src",
       \        "act": ":source ~/.vim/vimrc.vim<cr>"
       \    },
       \    "options": {
       \        "mod": "normal",
-      \        "key": "<leader>sop",
+      \        "key": "<localleader>sop",
       \        "act": ":source ~/.vim/rc/options.vim<cr>"
       \    },
       \    "globals": {
       \        "mod": "normal",
-      \        "key": "<leader>sgb",
+      \        "key": "<localleader>sgb",
       \        "act": ":source ~/.vim/rc/globals.vim<cr>"
       \    },
       \    "autocmd": {
       \        "mod": "normal",
-      \        "key": "<leader>sac",
+      \        "key": "<localleader>sac",
       \        "act": ":source ~/.vim/rc/autocmd.vim<cr>"
       \    },
       \    "plugins": {
       \        "mod": "normal",
-      \        "key": "<leader>spg",
+      \        "key": "<localleader>spg",
       \        "act": ":source ~/.vim/rc/plugins.vim<cr>"
       \    },
       \    "keymaps": {
       \        "mod": "normal",
-      \        "key": "<leader>skm",
+      \        "key": "<localleader>skm",
       \        "act": ":source ~/.vim/rc/keymaps.vim<cr>"
       \    },
       \    "caching": {
       \        "mod": "normal",
-      \        "key": "<leader>sca",
+      \        "key": "<localleader>sca",
       \        "act": ":source ~/.vim/rc/caching.vim<cr>"
       \    },
       \    "guiopts": {
       \        "mod": "normal",
-      \        "key": "<leader>sui",
+      \        "key": "<localleader>sui",
       \        "act": ":source ~/.vim/rc/guiopts.vim<cr>"
       \    },
       \}
@@ -92,8 +92,8 @@ function Keymap(mode, keys, action)
   endif
 endfunction
 
-for keybindings_category in keys(s:catalogue_of_keybindings)
-  let s:category = s:catalogue_of_keybindings[keybindings_category]
+for keybinding_category in keys(s:catalogue_of_keybindings)
+  let s:category = s:catalogue_of_keybindings[keybinding_category]
   for keybinding in keys(s:category)
     let s:mod = s:category[keybinding]["mod"]
     let s:key = s:category[keybinding]["key"]
