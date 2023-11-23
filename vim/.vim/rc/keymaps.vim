@@ -1,10 +1,10 @@
 let s:keymap = {
       \"edit_rc_files": {
-      \"options": {
-      \"mode": "normal",
-      \"keys": "<leader>eop",
-      \"action": ":edit ~/.vim/rc/options.vim<cr>"
-      \},
+      \    "options": {
+      \        "mode": "normal",
+      \        "keys": "<leader>eop",
+      \        "action": ":edit ~/.vim/rc/options.vim<cr>"
+      \    },
       \},
       \}
 
