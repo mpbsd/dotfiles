@@ -1,11 +1,88 @@
-let s:keymap = {
+let s:catalogue_of_keybindings = {
       \"edit_rc_files": {
+      \    "default": {
+      \        "mod": "normal",
+      \        "key": "<leader>erc",
+      \        "act": ":edit ~/.vim/vimrc<cr>"
+      \    },
       \    "options": {
-      \        "mode": "normal",
-      \        "keys": "<leader>eop",
-      \        "action": ":edit ~/.vim/rc/options.vim<cr>"
+      \        "mod": "normal",
+      \        "key": "<leader>eop",
+      \        "act": ":edit ~/.vim/rc/options.vim<cr>"
+      \    },
+      \    "globals": {
+      \        "mod": "normal",
+      \        "key": "<leader>egb",
+      \        "act": ":edit ~/.vim/rc/globals.vim<cr>"
+      \    },
+      \    "autocmd": {
+      \        "mod": "normal",
+      \        "key": "<leader>eac",
+      \        "act": ":edit ~/.vim/rc/autocmd.vim<cr>"
+      \    },
+      \    "plugins": {
+      \        "mod": "normal",
+      \        "key": "<leader>epg",
+      \        "act": ":edit ~/.vim/rc/plugins.vim<cr>"
+      \    },
+      \    "keymaps": {
+      \        "mod": "normal",
+      \        "key": "<leader>ekm",
+      \        "act": ":edit ~/.vim/rc/keymaps.vim<cr>"
+      \    },
+      \    "caching": {
+      \        "mod": "normal",
+      \        "key": "<leader>eca",
+      \        "act": ":edit ~/.vim/rc/caching.vim<cr>"
+      \    },
+      \    "guiopts": {
+      \        "mod": "normal",
+      \        "key": "<leader>eui",
+      \        "act": ":edit ~/.vim/rc/guiopts.vim<cr>"
       \    },
       \},
+      \"source_rc_files": {
+      \    "default": {
+      \        "mod": "normal",
+      \        "key": "<leader>src",
+      \        "act": ":source ~/.vim/vimrc.vim<cr>"
+      \    },
+      \    "options": {
+      \        "mod": "normal",
+      \        "key": "<leader>sop",
+      \        "act": ":source ~/.vim/rc/options.vim<cr>"
+      \    },
+      \    "globals": {
+      \        "mod": "normal",
+      \        "key": "<leader>sgb",
+      \        "act": ":source ~/.vim/rc/globals.vim<cr>"
+      \    },
+      \    "autocmd": {
+      \        "mod": "normal",
+      \        "key": "<leader>sac",
+      \        "act": ":source ~/.vim/rc/autocmd.vim<cr>"
+      \    },
+      \    "plugins": {
+      \        "mod": "normal",
+      \        "key": "<leader>spg",
+      \        "act": ":source ~/.vim/rc/plugins.vim<cr>"
+      \    },
+      \    "keymaps": {
+      \        "mod": "normal",
+      \        "key": "<leader>skm",
+      \        "act": ":source ~/.vim/rc/keymaps.vim<cr>"
+      \    },
+      \    "caching": {
+      \        "mod": "normal",
+      \        "key": "<leader>sca",
+      \        "act": ":source ~/.vim/rc/caching.vim<cr>"
+      \    },
+      \    "guiopts": {
+      \        "mod": "normal",
+      \        "key": "<leader>sui",
+      \        "act": ":source ~/.vim/rc/guiopts.vim<cr>"
+      \    },
+      \}
       \}
 
 function Keymap(mode, keys, action)
@@ -15,37 +92,19 @@ function Keymap(mode, keys, action)
   endif
 endfunction
 
-for keybindingCategory in keys(s:keymap)
-  let s:keybindings = s:keymap[keybindingCategory]
-  for keybinding in keys(s:keybindings)
-    let s:keymap = s:keybindings[keybinding]
-    let s:mode = s:keymap["mode"]
-    let s:keys = s:keymap["keys"]
-    let s:action = s:keymap["action"]
-    silent call Keymap(s:mode, s:keys, s:action)
+for keybindings_category in keys(s:catalogue_of_keybindings)
+  let s:category = s:catalogue_of_keybindings[keybindings_category]
+  for keybinding in keys(s:category)
+    let s:mod = s:category[keybinding]["mod"]
+    let s:key = s:category[keybinding]["key"]
+    let s:act = s:category[keybinding]["act"]
+    silent call Keymap(s:mod, s:key, s:act)
   endfor
 endfor
 
-" edit/source config files {{{
-nnoremap <leader>erc :edit ~/.vim/vimrc<cr>
-
-" nnoremap <leader>eop :edit ~/.vim/rc/options.vim<cr>
-nnoremap <leader>epg :edit ~/.vim/rc/plugins.vim<cr>
-nnoremap <leader>eau :edit ~/.vim/rc/autocmd.vim<cr>
-nnoremap <leader>egb :edit ~/.vim/rc/globals.vim<cr>
-nnoremap <leader>ekm :edit ~/.vim/rc/keymaps.vim<cr>
-
-nnoremap <leader>src :source ~/.vim/vimrc<cr>
-
-nnoremap <leader>sop :source ~/.vim/rc/options.vim<cr>
-nnoremap <leader>spg :source ~/.vim/rc/plugins.vim<cr>
-nnoremap <leader>sau :source ~/.vim/rc/autocmd.vim<cr>
-nnoremap <leader>sgb :source ~/.vim/rc/globals.vim<cr>
-nnoremap <leader>skm :source ~/.vim/rc/keymaps.vim<cr>
-
 nnoremap <leader>eab :edit ~/.vim/spell/words.abbrev<cr>
 nnoremap <leader>ewo :edit ~/.vim/spell/words.dict<cr>
-" }}}
+
 " windows {{{
 nnoremap <localleader>sp :sp<cr>
 nnoremap <localleader>vs :vs<cr>

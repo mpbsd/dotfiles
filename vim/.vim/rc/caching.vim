@@ -7,8 +7,6 @@ endif
 
 let g:netrw_home=s:c_dirs_parent_dir
 
-set vif=~/.cache/vim/.viminfo
-
 let s:c_dirs = {"bdir": "bdir", "dir": "sdir", "udir": "udir", "vdir": "vdir"}
 
 for item in items(s:c_dirs)
@@ -21,3 +19,5 @@ for item in items(s:c_dirs)
   endif
   exe s:c
 endfor
+
+set vif=~/.cache/vim/.viminfo

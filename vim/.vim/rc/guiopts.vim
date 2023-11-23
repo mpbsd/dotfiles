@@ -1,17 +1,17 @@
 let s:guiopt = {
       \"bool": {
-      \"d": 1,
-      \"T": 0,
-      \"b": 0,
-      \"l": 0,
-      \"m": 0,
-      \"r": 0
+      \    "d": 1,
+      \    "T": 0,
+      \    "b": 0,
+      \    "l": 0,
+      \    "m": 0,
+      \    "r": 0
       \},
       \"misc": {
-      \"t_Co": 256,
-      \"guifont": "SauceCodePro\\ Nerd\\ Font\\ Mono\\ 12",
-      \"guiheadroom": 0
-      \}
+      \    "t_Co": 256,
+      \    "guifont": "SauceCodePro\\ Nerd\\ Font\\ Mono\\ 12",
+      \    "guiheadroom": 0
+      \},
       \}
 
 if has("gui_running")
