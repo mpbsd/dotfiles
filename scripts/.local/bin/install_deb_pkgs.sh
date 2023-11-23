@@ -63,6 +63,7 @@ declare -a FUN_AND_GAMES=(
   bsdgames
   cowsay
   fortunes
+  stockfish
 )
 # }}}
 # SECURITY {{{
