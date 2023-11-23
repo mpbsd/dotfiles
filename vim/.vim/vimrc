@@ -1,8 +1,10 @@
 let mapleader      = "\<space>"
 let maplocalleader = ","
 
-" sourcery
-let s:rc_files = [
+let s:rc_files_dir = "~/.vim/rc/"
+
+" let the sourcery begin ;)
+let s:rc_filenames = [
       \"options",
       \"globals",
       \"autocmd",
@@ -12,10 +14,8 @@ let s:rc_files = [
       \"guiopts"
       \]
 
-let s:parent_dir = "~/.vim/rc/"
-
-for rc_file in s:rc_files
-  let s:f = s:parent_dir . rc_file . '.vim'
+for rc_file in s:rc_filenames
+  let s:f = s:rc_files_dir . rc_file . '.vim'
   let s:c = 'source ' . s:f
   exe s:c
 endfor

@@ -82,7 +82,19 @@ let s:catalogue_of_keybindings = {
       \        "key": "<localleader>sui",
       \        "act": ":source ~/.vim/rc/guiopts.vim<cr>"
       \    },
-      \}
+      \},
+      \"edit_abbreviations_and_my_dictionary": {
+      \    "abbreviations": {
+      \        "mod": "normal",
+      \        "key": "<localleader>eab",
+      \        "act": ":edit ~/.vim/spell/words.abbr<cr>"
+      \    },
+      \    "my_own_dictionary": {
+      \        "mod": "normal",
+      \        "key": "<localleader>ewo",
+      \        "act": ":edit ~/.vim/spell/words.dict<cr>"
+      \    },
+      \},
       \}
 
 function Keymap(mode, keys, action)
@@ -101,9 +113,6 @@ for keybinding_category in keys(s:catalogue_of_keybindings)
     silent call Keymap(s:mod, s:key, s:act)
   endfor
 endfor
-
-nnoremap <leader>eab :edit ~/.vim/spell/words.abbrev<cr>
-nnoremap <leader>ewo :edit ~/.vim/spell/words.dict<cr>
 
 " windows {{{
 nnoremap <localleader>sp :sp<cr>
