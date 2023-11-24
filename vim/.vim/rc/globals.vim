@@ -31,7 +31,7 @@ function AddWordUnderCursorToMyWordsList()
   echo "Added '" . cw . "' to ~/.vim/spell/words.dict"
 endfunction
 
-function RemoveTrailingSpaces()
+function RmTrailingSpaces()
   let l:cp = getpos(".")
   let l:re = getreg("/")
   silent %s/\s\+$//e
