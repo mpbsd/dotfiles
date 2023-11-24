@@ -13,6 +13,11 @@ let s:rc_filenames = [
       \"caching",
       \"guiopts"
       \]
+<<<<<<< HEAD
+
+let s:parent_dir = "~/.vim/rc/"
+=======
+>>>>>>> a280518b8b364603791f5996efa02c9aa6a5fffd
 
 for rc_file in s:rc_filenames
   let s:f = s:rc_files_dir . rc_file . '.vim'
