@@ -157,7 +157,7 @@ let s:catalogue_of_keybindings = {
       \    "update": {
       \        "mod": "normal",
       \        "key": "<localleader>pu",
-      \        "act": ":PluginUpdate<cr>",
+      \        "act": ":PlugUpdate<cr>",
       \    },
       \    "upgrade": {
       \        "mod": "normal",

@@ -1,4 +1,4 @@
-let s:guiopt = {
+let s:guiopts = {
       \"bool": {
       \    "d": 1,
       \    "T": 0,
@@ -15,20 +15,21 @@ let s:guiopt = {
       \}
 
 if has("gui_running")
-  for opt in items(s:guiopt["bool"])
-    let s:k = opt[0]
-    let s:v = opt[1]
-    if s:v == 0
-      let s:c = "set guioptions-=" . s:k
-    elseif s:v == 1
-      let s:c = "set guioptions+=" . s:k
-    endif
-    exe s:c
-  endfor
-  for opt in items(s:guiopt["misc"])
-    let s:k = opt[0]
-    let s:v = opt[1]
-    let s:c = "set " . s:k . "=" . s:v
-    exe s:c
+  for category in keys(s:guiopts)
+    for key_value in items(s:guiopts[category])
+      let s:k = key_value[0]  " key
+      let s:v = key_value[1]  " value
+      if category ==# "bool"
+        if s:v == 0
+          let s:c = "set guioptions-=" . s:k
+        elseif s:v == 1
+          let s:c = "set guioptions+=" . s:k
+        endif
+      elseif category ==# "misc"
+        let s:c = "set " . s:k . "=" . s:v
+        exe s:c
+      endif
+      exe s:c
+    endfor
   endfor
 endif
