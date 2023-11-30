@@ -37,4 +37,3 @@ augroup remove_duplicates_from_my_wording_lists
   autocmd!
   autocmd BufWinEnter words.abbr,words.dict :%sort u
 augroup END
-

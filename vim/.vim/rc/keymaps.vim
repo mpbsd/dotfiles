@@ -213,7 +213,14 @@ let s:catalogue_of_keybindings = {
       \        "act": ":",
       \    },
       \},
-      \"dealing_with_general_files": {
+      \"manpages": {
+      \    "opening": {
+      \        "mod": "normal",
+      \        "key": "<localleader>mp",
+      \        "act": ":Man ",
+      \    },
+      \},
+      \"dealing_with_files_in_general": {
       \    "saving": {
       \        "mod": "normal",
       \        "key": "<localleader>fw",

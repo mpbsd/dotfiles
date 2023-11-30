@@ -17,8 +17,8 @@ let s:guiopts = {
 if has("gui_running")
   for category in keys(s:guiopts)
     for key_value in items(s:guiopts[category])
-      let s:k = key_value[0]  " key
-      let s:v = key_value[1]  " value
+      let s:k = key_value[0] " key
+      let s:v = key_value[1] " value
       if category ==# "bool"
         if s:v == 0
           let s:c = "set guioptions-=" . s:k

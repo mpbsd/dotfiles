@@ -20,7 +20,8 @@ set cursorline
 set cursorcolumn
 
 set colorcolumn=80
-set textwidth=80
+" set textwidth=80
+set nowrap
 
 set ignorecase
 set smartcase
