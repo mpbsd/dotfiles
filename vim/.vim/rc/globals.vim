@@ -15,14 +15,14 @@ function SpecialCharactersHandler()
   let l:pword = substitute(l:pword, 'õ', 'o', 'gi')
   let l:pword = substitute(l:pword, 'ú', 'u', 'gi')
   let l:pword = substitute(l:pword, 'ç', 'c', 'gi')
-  let l:abbrv = 'abbrv' . ' ' . l:pword . ' ' . l:cword
+  let l:abbrv = 'iabbrv' . ' ' . l:pword . ' ' . l:cword
   return l:abbrv
 endfunction
 
 function AddWordUnderCursorToMyAbbreviationsList()
   let l:abbrv = SpecialCharactersHandler()
-  call writefile([l:abbrv], expand('~/.vim/spell/words.abbrev'), 'a')
-  echo 'Added ''' . l:abbrv . ''' to ~/.vim/spell/words.abbrev'
+  call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
+  echo 'Added ''' . l:abbrv . ''' to ~/.vim/spell/words.abbr'
 endfunction
 
 function AddWordUnderCursorToMyWordsList()
@@ -32,9 +32,9 @@ function AddWordUnderCursorToMyWordsList()
 endfunction
 
 function RmTrailingSpaces()
-  let l:cp = getpos('.')
-  let l:re = getreg('/')
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
   silent %s/\s\+$//e
-  call setpos('.', l:cp)
-  call setreg('/', l:re)
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
 endfunction

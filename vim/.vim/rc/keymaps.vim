@@ -84,7 +84,17 @@ let s:catalogue_of_keybindings = {
       \        'act': ':source ~/.vim/rc/guiopts.vim<cr>',
       \    },
       \},
-      \'edit_abbreviations_and_dictionary': {
+      \'abbreviations_and_dictionary': {
+      \    'add_word_under_the_cursor_to_abbreviations_list': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>ab',
+      \        'act': ':call AddWordUnderCursorToMyAbbreviationsList()<cr>',
+      \    },
+      \    'add_word_under_the_cursor_to_words_list': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>aw',
+      \        'act': ':call AddWordUnderCursorToMyWordsList()<cr>',
+      \    },
       \    'abbreviations': {
       \        'mod': 'normal',
       \        'key': '<localleader>eab',
@@ -187,22 +197,15 @@ let s:catalogue_of_keybindings = {
       \        'act': '<esc>mmb~`ma',
       \    },
       \},
-      \'abbreviations': {
-      \    'add_word_under_the_cursor_to_abbreviations_list': {
-      \        'mod': 'normal',
-      \        'key': '<localleader>ab',
-      \        'act': ':call AddWordUnderCursorToMyAbbreviationsList()<cr>',
-      \    },
-      \    'add_word_under_the_cursor_to_words_list': {
-      \        'mod': 'normal',
-      \        'key': '<localleader>aw',
-      \        'act': ':call AddWordUnderCursorToMyWordsList()<cr>',
-      \    },
-      \},
-      \'get_back_to_normal_mode': {
-      \    'from_insert_mode': {
+      \'back_to_normal_mode': {
+      \    'from_insert_mode_1': {
       \        'mod': 'insert',
       \        'key': 'jj',
+      \        'act': '<esc>',
+      \    },
+      \    'from_insert_mode_2': {
+      \        'mod': 'insert',
+      \        'key': 'jk',
       \        'act': '<esc>',
       \    },
       \},

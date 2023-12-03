@@ -6,6 +6,7 @@ iabbrev acumulacao acumulação
 iabbrev aderencia aderência
 iabbrev adicao adição
 iabbrev afirmacao afirmação
+iabbrev aleatoria aleatória
 iabbrev alem além
 iabbrev algebrica algébrica
 iabbrev algebrico algébrico
@@ -44,6 +45,7 @@ iabbrev bissecao bisseção
 iabbrev caisse caísse
 iabbrev calculo cálculo
 iabbrev calculos cálculos
+iabbrev calendario calendário
 iabbrev canfora cânfora
 iabbrev canonicas canônicas
 iabbrev capitulo capítulo
@@ -188,6 +190,7 @@ iabbrev irredutivel irredutível
 iabbrev iteracoes iterações
 iabbrev ja já
 iabbrev lancamentos lançamentos
+iabbrev lancar lançar
 iabbrev latex LaTeX
 iabbrev logaritmicas logarítmicas
 iabbrev macarrao macarrão
@@ -219,6 +222,7 @@ iabbrev multiplos múltiplos
 iabbrev nao não
 iabbrev necessarias necessárias
 iabbrev necessario necessário
+iabbrev ninguem ninguém
 iabbrev nocao noção
 iabbrev nocoes noções
 iabbrev notacao notação 

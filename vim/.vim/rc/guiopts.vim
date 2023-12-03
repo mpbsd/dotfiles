@@ -9,7 +9,7 @@ let s:guiopts = {
       \},
       \'misc': {
       \    't_Co': 256,
-      \    'guifont': 'UbuntuMono Nerd Font Mono 14',
+      \    'guifont': "UbuntuMono\\ Nerd\\ Font\\ Mono\\ 14",
       \    'guiheadroom': 0
       \},
       \}
