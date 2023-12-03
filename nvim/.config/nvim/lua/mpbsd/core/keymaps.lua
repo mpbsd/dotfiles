@@ -179,7 +179,7 @@ local catalogue_of_keybindings  = {
     change_date_iso_format = {
       mod = "n",
       key = "<localleader>id",
-      act = ":%s@\\(0[1-9]\\\\|[12][0-9]\\\\|3[01]\\)\\/\\(0[1-9]\\\\|1[012]\\)\\/\\(202[3-9]\\)@\\3-\\2-\\1@g<cr>",
+      act = ":%s@\\(0[1-9]\\|[12][0-9]\\|3[01]\\)\\/\\(0[1-9]\\|1[012]\\)\\/\\(202[3-9]\\)@\\3-\\2-\\1@g<cr>",
     },
     convert_values_to_the_ledger_format = {
       mod = "n",

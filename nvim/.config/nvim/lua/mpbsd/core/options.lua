@@ -1,10 +1,10 @@
 local G = {
-  mapleader            = " ",
-  maplocalleader       = ",",
+  mapleader = " ",
+  maplocalleader = ",",
   loaded_perl_provider = 0,
   loaded_ruby_provider = 0,
-  python3_host_prog    = "/usr/bin/python3",
-  tex_flavor           = "latex",
+  python3_host_prog = "/usr/bin/python3",
+  tex_flavor = "latex",
 }
 
 for lhs, rhs in pairs(G) do
@@ -12,25 +12,25 @@ for lhs, rhs in pairs(G) do
 end
 
 local O = {
-  number         = true,
+  number = true,
   relativenumber = true,
-  cursorcolumn   = true,
-  cursorline     = true,
-  hlsearch       = false,
-  ignorecase     = true,
-  smartcase      = true,
-  lazyredraw     = true,
-  spelllang      = "en_us,pt_br",
-  spellsuggest   = "fast,20",
-  showmode       = false,
-  splitbelow     = true,
-  splitright     = true,
-  tabstop        = 2,
-  shiftwidth     = 2,
-  expandtab      = true,
-  termguicolors  = true,
-  undofile       = true,
-  wrap           = true,
+  cursorcolumn = true,
+  cursorline = true,
+  hlsearch = false,
+  ignorecase = true,
+  smartcase = true,
+  lazyredraw = true,
+  spelllang = "en_us,pt_br",
+  spellsuggest = "fast,20",
+  showmode = false,
+  splitbelow = true,
+  splitright = true,
+  tabstop = 2,
+  shiftwidth = 2,
+  expandtab = true,
+  termguicolors = true,
+  undofile = true,
+  wrap = true,
 }
 
 for lhs, rhs in pairs(O) do

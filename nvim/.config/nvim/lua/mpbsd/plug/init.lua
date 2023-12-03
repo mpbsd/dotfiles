@@ -13,4 +13,4 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ import = "mpbsd.plug" })
+require("lazy").setup({ import = "mpbsd.plug.pkgs" })

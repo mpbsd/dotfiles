@@ -1,6 +1,2 @@
-require("mpbsd.core.options")
-require("mpbsd.core.globals")
-require("mpbsd.core.autocmd")
-require("mpbsd.core.keymaps")
-require("mpbsd.core.abbrevs")
-require("mpbsd.lazy")
+require("mpbsd.core")
+require("mpbsd.plug")

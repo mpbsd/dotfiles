@@ -1,16 +1,17 @@
 set background=dark
-colorscheme slate
-
-set statusline=[%n]\ %f\ %m%=%{&fenc}\ %{&ff}\ %Y\ (%06l,%06v)
-
-set splitright
-set splitbelow
-
-set encoding=utf8
+colorscheme quiet
 
 set number
 set relativenumber
 set numberwidth=6
+
+set cursorline
+set cursorcolumn
+
+set colorcolumn=80
+" set textwidth=80
+
+set statusline=[%n]\ %f\ %m%=%{&fenc}\ %{&ff}\ %Y\ (%06l,%06v)
 
 set tabstop=2
 set shiftwidth=2
@@ -19,30 +20,30 @@ set expandtab
 set autoindent
 set smartindent
 
-set cursorline
-set cursorcolumn
-
-set colorcolumn=80
-" set textwidth=80
 set nowrap
+
+set nojoinspaces
+
+set splitright
+set splitbelow
 
 set ignorecase
 set smartcase
 set magic
 
-set hidden
-
 set lazyredraw
 
-set nojoinspaces
+set encoding=utf8
 
-set spelllang=en_us,pt_br
-set spellsuggest=fast,20
+set secure
 
-set dict=~/.vim/spell/words.dict
+set hidden
 
 set undofile
 
 runtime ftplugin/man.vim
 
-set secure
+set spelllang=en_us,pt_br
+set spellsuggest=fast,20
+
+set dict=~/.vim/spell/words.dict
