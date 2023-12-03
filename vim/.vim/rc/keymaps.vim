@@ -274,12 +274,12 @@ let s:catalogue_of_keybindings = {
       \}
 " }}}
 
-function Keymap(mode, keys, action)
+function Keymap(mod, key, act)
   let l:mod = {
         \'normal': 'nnoremap',
         \'insert': 'inoremap',
         \}
-  let l:cmd = l:mod[a:mode] . ' ' . a:keys . ' ' . a:action
+  let l:cmd = l:mod[a:mod] . ' ' . a:key . ' ' . a:act
   exe l:cmd
 endfunction
 
