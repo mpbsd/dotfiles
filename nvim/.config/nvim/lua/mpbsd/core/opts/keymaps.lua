@@ -8,7 +8,7 @@ local catalogue_of_keybindings  = {-- {{{
     options = {
       mod = "n",
       key = "<localleader>eop",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/options.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>",
     },
     globals = {
       mod = "n",
@@ -45,7 +45,7 @@ local catalogue_of_keybindings  = {-- {{{
     options = {
       mod = "n",
       key = "<localleader>sop",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/options.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>",
     },
     globals = {
       mod = "n",
