@@ -38,7 +38,7 @@ return {
       store_selection_keys = "<tab>",
       updateevents         = "TextChanged,TextChangedI",
     })
-    local snippets_dir = "~/.config/nvim/lua/mpbsd/plugin/luasnips/snippets/"
+    local snippets_dir = "~/.config/nvim/lua/mpbsd/snip/"
     require("luasnip.loaders.from_lua").load({ paths = snippets_dir })
     Keymap("i"       , "<tab>"  , function() ls.expand() end)
     Keymap({"i", "s"}, "<c-j>"  , function() ls.jump( 1) end)

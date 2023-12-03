@@ -1,4 +1,4 @@
-local catalogue_of_keybindings  = {
+local catalogue_of_keybindings  = {-- {{{
   edit_rc_files = {
     default = {
       mod = "n",
@@ -187,7 +187,7 @@ local catalogue_of_keybindings  = {
       act = ":%s@R$\\s\\+\\([0-9.]\\+\\),\\([0-9]\\+\\)\\s(\\([+-]\\))$@\\3\\1\\.\\2\\ BRL@<cr>",
     },
   },
-}
+}-- }}}
 
 for _, keybinding_category in pairs(catalogue_of_keybindings) do
   for _, keybinding in pairs(keybinding_category) do
