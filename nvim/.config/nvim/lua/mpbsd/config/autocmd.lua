@@ -1,5 +1,4 @@
--- autoload folds {{{
-vim.api.nvim_create_augroup("autoload_folds", { clear=true })
+vim.api.nvim_create_augroup("autoload_folds", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWinLeave", {
   pattern = { "*.c", "*.h", "*.lua", "*.md", "*.py", "*.tex" },
@@ -12,4 +11,3 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   command = "silent! loadview",
   group = "autoload_folds"
 })
--- }}}

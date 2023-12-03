@@ -1,4 +1,3 @@
--- globals {{{
 local G = {
   mapleader            = " ",
   maplocalleader       = ",",
@@ -7,11 +6,11 @@ local G = {
   python3_host_prog    = "/usr/bin/python3",
   tex_flavor           = "latex",
 }
+
 for lhs, rhs in pairs(G) do
   vim.g[lhs] = rhs
 end
--- }}}
--- options {{{
+
 local O = {
   number         = true,
   relativenumber = true,
@@ -33,7 +32,7 @@ local O = {
   undofile       = true,
   wrap           = true,
 }
+
 for lhs, rhs in pairs(O) do
   vim.o[lhs] = rhs
 end
--- }}}
