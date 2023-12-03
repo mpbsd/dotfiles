@@ -8,32 +8,32 @@ local catalogue_of_keybindings  = {
     options = {
       mod = "n",
       key = "<localleader>eop",
-      act = ":edit ~/.config/nvim/lua/mpbsd/config/options.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/options.lua<cr>",
     },
     globals = {
       mod = "n",
       key = "<localleader>egb",
-      act = ":edit ~/.config/nvim/lua/mpbsd/config/globals.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/globals.lua<cr>",
     },
     keymaps = {
       mod = "n",
       key = "<localleader>ekm",
-      act = ":edit ~/.config/nvim/lua/mpbsd/config/keymaps.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/keymaps.lua<cr>",
     },
     autocmd = {
       mod = "n",
       key = "<localleader>eac",
-      act = ":edit ~/.config/nvim/lua/mpbsd/config/autocmd.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/autocmd.lua<cr>",
     },
     abbrevs = {
       mod = "n",
       key = "<localleader>eab",
-      act = ":edit ~/.config/nvim/lua/mpbsd/config/abbrevs.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/abbrevs.lua<cr>",
     },
     plugins = {
       mod = "n",
       key = "<localleader>epg",
-      act = ":edit ~/.config/nvim/lua/mpbsd/plugin<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/plug<cr>",
     },
   },
   source_rc_files = {
@@ -45,27 +45,27 @@ local catalogue_of_keybindings  = {
     options = {
       mod = "n",
       key = "<localleader>sop",
-      act = ":source ~/.config/nvim/lua/mpbsd/config/options.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/options.lua<cr>",
     },
     globals = {
       mod = "n",
       key = "<localleader>sgb",
-      act = ":source ~/.config/nvim/lua/mpbsd/config/globals.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/globals.lua<cr>",
     },
     keymaps = {
       mod = "n",
       key = "<localleader>skm",
-      act = ":source ~/.config/nvim/lua/mpbsd/config/keymaps.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/keymaps.lua<cr>",
     },
     autocmd = {
       mod = "n",
       key = "<localleader>sac",
-      act = ":source ~/.config/nvim/lua/mpbsd/config/autocmd.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/autocmd.lua<cr>",
     },
     abbrevs = {
       mod = "n",
       key = "<localleader>sab",
-      act = ":source ~/.config/nvim/lua/mpbsd/config/abbrevs.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/abbrevs.lua<cr>",
     },
   },
   get_into_normal_mode = {
