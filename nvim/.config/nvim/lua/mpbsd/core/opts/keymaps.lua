@@ -1,5 +1,5 @@
 local catalogue_of_keybindings  = {-- {{{
-  edit_rc_files = {
+  edit_vimrc_files = {
     default = {
       mod = "n",
       key = "<localleader>erc",
@@ -8,27 +8,27 @@ local catalogue_of_keybindings  = {-- {{{
     options = {
       mod = "n",
       key = "<localleader>eop",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/options.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/options.lua<cr>",
     },
     globals = {
       mod = "n",
       key = "<localleader>egb",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/globals.lua<cr>",
-    },
-    keymaps = {
-      mod = "n",
-      key = "<localleader>ekm",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/keymaps.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/globals.lua<cr>",
     },
     autocmd = {
       mod = "n",
       key = "<localleader>eac",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/autocmd.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/autocmd.lua<cr>",
+    },
+    keymaps = {
+      mod = "n",
+      key = "<localleader>ekm",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>",
     },
     abbrevs = {
       mod = "n",
       key = "<localleader>eab",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/abbrevs.lua<cr>",
+      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/abbrevs.lua<cr>",
     },
     plugins = {
       mod = "n",
@@ -36,7 +36,7 @@ local catalogue_of_keybindings  = {-- {{{
       act = ":edit ~/.config/nvim/lua/mpbsd/plug<cr>",
     },
   },
-  source_rc_files = {
+  source_vimrc_files = {
     default = {
       mod = "n",
       key = "<localleader>src",
@@ -45,27 +45,27 @@ local catalogue_of_keybindings  = {-- {{{
     options = {
       mod = "n",
       key = "<localleader>sop",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/options.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/options.lua<cr>",
     },
     globals = {
       mod = "n",
       key = "<localleader>sgb",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/globals.lua<cr>",
-    },
-    keymaps = {
-      mod = "n",
-      key = "<localleader>skm",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/keymaps.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/globals.lua<cr>",
     },
     autocmd = {
       mod = "n",
       key = "<localleader>sac",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/autocmd.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/autocmd.lua<cr>",
+    },
+    keymaps = {
+      mod = "n",
+      key = "<localleader>skm",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>",
     },
     abbrevs = {
       mod = "n",
       key = "<localleader>sab",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/abbrevs.lua<cr>",
+      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/abbrevs.lua<cr>",
     },
   },
   get_into_normal_mode = {
@@ -88,21 +88,14 @@ local catalogue_of_keybindings  = {-- {{{
       key = "<localleader>fw",
       act = ":w<cr>",
     },
-    quitting = {
+  },
+  window_management = {
+    closing = {
       mod = "n",
       key = "<localleader>fq",
       act = ":q<cr>",
     },
-  },
-  accessing_manpages_from_within_vim = {
-    opening = {
-      mod = "n",
-      key = "<localleader>mp",
-      act = ":Man ",
-    },
-  },
-  window_management = {
-    move_focus_to_windows_on_the_left = {
+    move_focus_to_the_left_window = {
       mod = "n",
       key = "<c-h>",
       act = "<c-w>h",
@@ -117,7 +110,7 @@ local catalogue_of_keybindings  = {-- {{{
       key = "<c-k>",
       act = "<c-w>k",
     },
-    move_focus_to_windows_on_the_right = {
+    move_focus_to_the_right_window = {
       mod = "n",
       key = "<c-l>",
       act = "<c-w>l",
@@ -168,6 +161,13 @@ local catalogue_of_keybindings  = {-- {{{
       mod = "i",
       key = "<localleader>cc",
       act = "<esc>mmb~`ma",
+    },
+  },
+  accessing_manpages_from_within_vim = {
+    opening = {
+      mod = "n",
+      key = "<localleader>mp",
+      act = ":Man ",
     },
   },
   useful_regexes = {

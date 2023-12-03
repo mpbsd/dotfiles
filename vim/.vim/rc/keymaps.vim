@@ -1,6 +1,6 @@
 " catalogue_of_keybindings {{{
 let s:catalogue_of_keybindings = {
-      \'edit_rc_files': {
+      \'edit_vimrc_files': {
       \    'default': {
       \        'mod': 'normal',
       \        'key': '<localleader>erc',
@@ -42,7 +42,7 @@ let s:catalogue_of_keybindings = {
       \        'act': ':edit ~/.vim/rc/guiopts.vim<cr>',
       \    },
       \},
-      \'source_rc_files': {
+      \'source_vimrc_files': {
       \    'default': {
       \        'mod': 'normal',
       \        'key': '<localleader>src',
@@ -84,30 +84,39 @@ let s:catalogue_of_keybindings = {
       \        'act': ':source ~/.vim/rc/guiopts.vim<cr>',
       \    },
       \},
-      \'abbreviations_and_dictionary': {
-      \    'add_word_under_the_cursor_to_abbreviations_list': {
+      \'dealing_with_files_in_general': {
+      \    'saving': {
       \        'mod': 'normal',
-      \        'key': '<localleader>ab',
-      \        'act': ':call AddWordUnderCursorToMyAbbreviationsList()<cr>',
+      \        'key': '<localleader>fw',
+      \        'act': ':w<cr>',
       \    },
-      \    'add_word_under_the_cursor_to_words_list': {
-      \        'mod': 'normal',
-      \        'key': '<localleader>aw',
-      \        'act': ':call AddWordUnderCursorToMyWordsList()<cr>',
+      \},
+      \'back_to_normal_mode': {
+      \    'from_insert_mode_1': {
+      \        'mod': 'insert',
+      \        'key': 'jj',
+      \        'act': '<esc>',
       \    },
-      \    'abbreviations': {
-      \        'mod': 'normal',
-      \        'key': '<localleader>eab',
-      \        'act': ':edit ~/.vim/spell/words.abbr<cr>',
+      \    'from_insert_mode_2': {
+      \        'mod': 'insert',
+      \        'key': 'jk',
+      \        'act': '<esc>',
       \    },
-      \    'dictionary': {
+      \},
+      \'get_into_cmd_mode': {
+      \    'from_normal_mode': {
       \        'mod': 'normal',
-      \        'key': '<localleader>ewo',
-      \        'act': ':edit ~/.vim/spell/words.dict<cr>',
+      \        'key': '<localleader>;',
+      \        'act': ':',
       \    },
       \},
       \'window_management': {
-      \    'move_focus_to_windows_on_the_left': {
+      \    'closing': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>fq',
+      \        'act': ':q<cr>',
+      \    },
+      \    'move_focus_to_the_left_window': {
       \        'mod': 'normal',
       \        'key': '<c-h>',
       \        'act': '<c-w>h',
@@ -122,7 +131,7 @@ let s:catalogue_of_keybindings = {
       \        'key': '<c-k>',
       \        'act': '<c-w>k',
       \    },
-      \    'move_focus_to_windows_on_the_right': {
+      \    'move_focus_to_the_right_window': {
       \        'mod': 'normal',
       \        'key': '<c-l>',
       \        'act': '<c-w>l',
@@ -156,6 +165,28 @@ let s:catalogue_of_keybindings = {
       \        'mod': 'normal',
       \        'key': '<c-right>',
       \        'act': '<c-w><',
+      \    },
+      \},
+      \'abbreviations_and_dictionary': {
+      \    'add_word_under_the_cursor_to_abbreviations_list': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>ab',
+      \        'act': ':call AddWordUnderCursorToMyAbbreviationsList()<cr>',
+      \    },
+      \    'add_word_under_the_cursor_to_words_list': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>aw',
+      \        'act': ':call AddWordUnderCursorToMyWordsList()<cr>',
+      \    },
+      \    'abbreviations': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>eab',
+      \        'act': ':edit ~/.vim/spell/words.abbr<cr>',
+      \    },
+      \    'dictionary': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>ewo',
+      \        'act': ':edit ~/.vim/spell/words.dict<cr>',
       \    },
       \},
       \'plugins': {
@@ -197,42 +228,11 @@ let s:catalogue_of_keybindings = {
       \        'act': '<esc>mmb~`ma',
       \    },
       \},
-      \'back_to_normal_mode': {
-      \    'from_insert_mode_1': {
-      \        'mod': 'insert',
-      \        'key': 'jj',
-      \        'act': '<esc>',
-      \    },
-      \    'from_insert_mode_2': {
-      \        'mod': 'insert',
-      \        'key': 'jk',
-      \        'act': '<esc>',
-      \    },
-      \},
-      \'get_into_cmd_mode': {
-      \    'from_normal_mode': {
-      \        'mod': 'normal',
-      \        'key': '<localleader>;',
-      \        'act': ':',
-      \    },
-      \},
       \'manpages': {
       \    'opening': {
       \        'mod': 'normal',
       \        'key': '<localleader>mp',
       \        'act': ':Man ',
-      \    },
-      \},
-      \'dealing_with_files_in_general': {
-      \    'saving': {
-      \        'mod': 'normal',
-      \        'key': '<localleader>fw',
-      \        'act': ':w<cr>',
-      \    },
-      \    'quitting': {
-      \        'mod': 'normal',
-      \        'key': '<localleader>fq',
-      \        'act': ':q<cr>',
       \    },
       \},
       \'fuzzy_file_finding': {

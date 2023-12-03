@@ -1,5 +1,5 @@
 set background=dark
-colorscheme quiet
+colorscheme slate
 
 set number
 set relativenumber
