@@ -201,8 +201,8 @@ local catalogue_of_keybindings  = {-- {{{
   },
 }-- }}}
 
-for _, keybinding_category in pairs(catalogue_of_keybindings) do
-  for _, keybinding in pairs(keybinding_category) do
+for _, category in pairs(catalogue_of_keybindings) do
+  for _, keybinding in pairs(category) do
     local mod = keybinding["mod"]
     local key = keybinding["key"]
     local act = keybinding["act"]

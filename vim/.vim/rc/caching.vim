@@ -1,4 +1,4 @@
-let s:c_dirs_parent_dir = '~/.cache/vim/'
+let s:c_dirs_parent_dir = "~/.cache/vim/"
 
 if !isdirectory(s:c_dirs_parent_dir)
   let s:cmd = '!mkdir -p ' . s:c_dirs_parent_dir
@@ -9,11 +9,9 @@ let g:netrw_home=s:c_dirs_parent_dir
 
 let s:c_dirs = {'bdir': 'bdir', 'dir': 'sdir', 'udir': 'udir', 'vdir': 'vdir'}
 
-for key_val in items(s:c_dirs)
-  let s:key = key_val[0]
-  let s:val = key_val[1]
-  let s:dir = s:c_dirs_parent_dir . s:val
-  let s:cmd = 'set ' . s:key . '=' . s:dir
+for [key, val] in items(s:c_dirs)
+  let s:dir = s:c_dirs_parent_dir . val
+  let s:cmd = 'set ' . key . '=' . s:dir
   if !isdirectory(s:dir)
     silent! exe '!mkdir -p ' . s:dir
   endif

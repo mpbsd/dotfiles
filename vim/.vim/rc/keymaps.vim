@@ -283,12 +283,11 @@ function Keymap(mod, key, act)
   exe l:cmd
 endfunction
 
-for keybinding_category in keys(s:catalogue_of_keybindings)
-  let s:category = s:catalogue_of_keybindings[keybinding_category]
-  for keybinding in keys(s:category)
-    let s:mod = s:category[keybinding]['mod']
-    let s:key = s:category[keybinding]['key']
-    let s:act = s:category[keybinding]['act']
+for category in values(s:catalogue_of_keybindings)
+  for keybinding in values(category)
+    let s:mod = keybinding['mod']
+    let s:key = keybinding['key']
+    let s:act = keybinding['act']
     silent call Keymap(s:mod, s:key, s:act)
   endfor
 endfor
