@@ -228,13 +228,6 @@ let s:catalogue_of_keybindings = {
       \        'act': '<esc>mmb~`ma',
       \    },
       \},
-      \'manpages': {
-      \    'opening': {
-      \        'mod': 'normal',
-      \        'key': '<localleader>mp',
-      \        'act': ':Man ',
-      \    },
-      \},
       \'fuzzy_file_finding': {
       \    'searching_by_filename': {
       \        'mod': 'normal',
@@ -254,13 +247,20 @@ let s:catalogue_of_keybindings = {
       \        'act': ':UltiSnipsEdit<cr>',
       \    },
       \},
+      \'manpages': {
+      \    'opening': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>mp',
+      \        'act': ':Man ',
+      \    },
+      \},
       \'useful_regexes': {
       \    'change_capitalization_of_D[aeo]s?': {
       \        'mod': 'normal',
       \        'key': '<localleader>cd',
       \        'act': ':%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>',
       \    },
-      \    'change_date_iso_format': {
+      \    'convert_data_to_iso_format': {
       \        'mod': 'normal',
       \        'key': '<localleader>id',
       \        'act': ':%s@\\(0[1-9]\\\\|[12][0-9]\\\\|3[01]\\)\\/\\(0[1-9]\\\\|1[012]\\)\\/\\(202[3-9]\\)@\\3-\\2-\\1@g<cr>',

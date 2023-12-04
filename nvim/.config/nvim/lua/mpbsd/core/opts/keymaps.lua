@@ -146,6 +146,18 @@ local catalogue_of_keybindings  = {-- {{{
       act = "<c-w><",
     },
   },
+  plugin_management = {
+    lazy = {
+      mod = "n",
+      key = "<localleader>la",
+      act = ":Lazy<cr>",
+    },
+    mason = {
+      mod = "n",
+      key = "<localleader>ma",
+      act = ":Mason<cr>",
+    },
+  },
   change_capitalization_of_words = {
     all_upper_case = {
       mod = "i",
@@ -171,12 +183,12 @@ local catalogue_of_keybindings  = {-- {{{
     },
   },
   useful_regexes = {
-    change_capitalization_of_Daeos = {
+    change_capitalization_of_daeos = {
       mod = "n",
       key = "<localleader>cd",
       act = ":%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>",
     },
-    change_date_iso_format = {
+    convert_date_to_iso_format = {
       mod = "n",
       key = "<localleader>id",
       act = ":%s@\\(0[1-9]\\|[12][0-9]\\|3[01]\\)\\/\\(0[1-9]\\|1[012]\\)\\/\\(202[3-9]\\)@\\3-\\2-\\1@g<cr>",

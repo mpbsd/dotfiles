@@ -122,7 +122,7 @@ return {
     mason_lspconfig.setup({
       ensure_installed = vim.tbl_keys(servers)
     })
-    local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- local client_capabilities = vim.lsp.protocol.make_client_capabilities()
     -- Function ON_ATTACH adds keybindings to Neovim when LSP attachs to buffers
     local ON_ATTACH = function()
       local telescope_builtin = require("telescope.builtin")

@@ -2,7 +2,7 @@ local snip = {
   -- inline math mode {{{
   inline_math_mode = {
     lhs = {
-      trig        = "im;",
+      trig        = ";im",
       dscr        = "inline math mode",
       regTrig     = true,
       wordTrig    = false,
@@ -14,7 +14,7 @@ local snip = {
   -- display math mode {{{
   display_math_mode = {
     lhs = {
-      trig        = "dm;",
+      trig        = ";dm",
       dscr        = "display math mode",
       regTrig     = true,
       wordTrig    = false,
@@ -27,34 +27,6 @@ local snip = {
       \]
       ]],
       { i(1) }
-    )
-  },
-  -- }}}
-  -- upper case greek letter {{{
-  upper_case_greek_letter = {
-    lhs = {
-      trig        = "([GDLFPYSJUXW])`",
-      dscr        = "upper case greek letter",
-      regTrig     = false,
-      wordTrig    = false,
-      snippetType = "autosnippet",
-    },
-    rhs = f(
-      function(_, snip)
-        local alphabet = {
-          G = "\\Gamma",
-          D = "\\Delta",
-          L = "\\Lambda",
-          F = "\\Phi",
-          P = "\\Pi",
-          S = "\\Sigma",
-          J = "\\Theta",
-          U = "\\Upsilon",
-          X = "\\Xi",
-          W = "\\Omega",
-        }
-        return alphabet[snip.captures[1]]
-      end
     )
   },
   -- }}}
@@ -93,6 +65,34 @@ local snip = {
           q = "\\chi",
           y = "\\psi",
           w = "\\omega",
+        }
+        return alphabet[snip.captures[1]]
+      end
+    )
+  },
+  -- }}}
+  -- upper case greek letter {{{
+  upper_case_greek_letter = {
+    lhs = {
+      trig        = "([GDLFPYSJUXW])`",
+      dscr        = "upper case greek letter",
+      regTrig     = false,
+      wordTrig    = false,
+      snippetType = "autosnippet",
+    },
+    rhs = f(
+      function(_, snip)
+        local alphabet = {
+          G = "\\Gamma",
+          D = "\\Delta",
+          L = "\\Lambda",
+          F = "\\Phi",
+          P = "\\Pi",
+          S = "\\Sigma",
+          J = "\\Theta",
+          U = "\\Upsilon",
+          X = "\\Xi",
+          W = "\\Omega",
         }
         return alphabet[snip.captures[1]]
       end
