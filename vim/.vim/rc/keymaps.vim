@@ -228,6 +228,13 @@ let s:catalogue_of_keybindings = {
       \        'act': '<esc>mmb~`ma',
       \    },
       \},
+      \'search_and_replace': {
+      \    'subs_word_under_the_cursor_with_the_contents_of_register_0': {
+      \        'mod': 'normal',
+      \        'key': '<localleader>rw',
+      \        'act': ':%s/<c-r><c-w>/<c-r>0/g<cr>',
+      \    },
+      \},
       \'fuzzy_file_finding': {
       \    'searching_by_filename': {
       \        'mod': 'normal',
