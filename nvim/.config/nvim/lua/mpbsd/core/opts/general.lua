@@ -17,6 +17,7 @@ local O = {
   numberwidth = 6,
   cursorline = true,
   cursorcolumn = true,
+  colorcolumn = "80",
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,

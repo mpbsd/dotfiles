@@ -1,5 +1,5 @@
 set background=dark
-colorscheme slate
+colorscheme habamax
 
 set number
 set relativenumber

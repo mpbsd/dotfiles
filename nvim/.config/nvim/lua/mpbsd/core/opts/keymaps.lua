@@ -146,6 +146,13 @@ local catalogue_of_keybindings  = {-- {{{
       act = "<c-w><",
     },
   },
+  search_and_replace = {
+    subs_word_under_the_cursor_with_the_contents_of_reg_zero = {
+      mod = "n",
+      key = "<localleader>r0",
+      act = ":%s/<c-r><c-w>/<c-r>0/g<cr>",
+    }
+  },
   plugin_management = {
     lazy = {
       mod = "n",
