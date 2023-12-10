@@ -20,7 +20,9 @@ set expandtab
 set autoindent
 set smartindent
 
-" set nowrap
+set wrap
+set linebreak
+set nolist
 
 set nojoinspaces
 
