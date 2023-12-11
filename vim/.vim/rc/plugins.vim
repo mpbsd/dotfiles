@@ -1,8 +1,8 @@
-let s:hub = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-let s:cmd = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:hub
+let s:a = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let s:b = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:a
 
-if empty(expand('~/.vim/autoload/plug.vim'))
-  silent exe s:cmd
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent exe s:b
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -28,7 +28,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'wellle/targets.vim'
 call plug#end()
 
-if empty(expand('~/.vim/plugged/gruvbox'))
+if empty(glob('~/.vim/plugged/gruvbox'))
   colorscheme habamax
 else
   colorscheme gruvbox

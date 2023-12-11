@@ -4,14 +4,14 @@ let maplocalleader = ' '
 let s:rc_files_dir = expand('~/.vim/rc/')
 
 let s:rc_filenames = [
-      \'options',
-      \'globals',
       \'autocmd',
-      \'keymaps',
       \'caching',
-      \'speller',
+      \'globals',
       \'guiopts',
+      \'keymaps',
+      \'options',
       \'plugins',
+      \'speller',
       \]
 
 for rc_file in s:rc_filenames
