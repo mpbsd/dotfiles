@@ -1,11 +1,11 @@
 let s:guiopts = {
       \'bool': {
-      \    'd': 1,
-      \    'T': 0,
-      \    'b': 0,
-      \    'l': 0,
-      \    'm': 0,
-      \    'r': 0
+      \    'd': '+',
+      \    'T': '-',
+      \    'b': '-',
+      \    'l': '-',
+      \    'm': '-',
+      \    'r': '-',
       \},
       \'misc': {
       \    't_Co': 256,
@@ -16,18 +16,11 @@ let s:guiopts = {
 
 if has('gui_running')
   for category in keys(s:guiopts)
-    for key_val in items(s:guiopts[category])
-      let s:key = key_val[0]
-      let s:val = key_val[1]
+    for [key, val] in items(s:guiopts[category])
       if category ==# 'bool'
-        if s:val == 0
-          let s:cmd = 'set guioptions-=' . s:key
-        elseif s:val == 1
-          let s:cmd = 'set guioptions+=' . s:key
-        endif
+        let s:cmd = 'set guioptions' . val . '=' . key
       elseif category ==# 'misc'
-        let s:cmd = 'set ' . s:key . '=' . s:val
-        exe s:cmd
+        let s:cmd = 'set ' . key . '=' . val
       endif
       exe s:cmd
     endfor

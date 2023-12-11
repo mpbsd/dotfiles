@@ -1,4 +1,4 @@
-let s:c_dirs_parent_dir = "~/.cache/vim/"
+let s:c_dirs_parent_dir = expand('~/.cache/vim/')
 
 if !isdirectory(s:c_dirs_parent_dir)
   let s:cmd = '!mkdir -p ' . s:c_dirs_parent_dir

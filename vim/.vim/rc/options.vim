@@ -1,5 +1,4 @@
 set background=dark
-colorscheme habamax
 
 set number
 set relativenumber

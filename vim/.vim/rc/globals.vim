@@ -1,6 +1,6 @@
 let g:tex_flavor='latex'
 
-function SpecialCharactersHandler()
+function SpecialCharactersHandler() abort
   let l:cword = expand('<cword>')
   let l:pword = expand('<cword>')
   let l:pword = substitute(l:pword, 'à', 'a', 'gi')
@@ -15,23 +15,23 @@ function SpecialCharactersHandler()
   let l:pword = substitute(l:pword, 'õ', 'o', 'gi')
   let l:pword = substitute(l:pword, 'ú', 'u', 'gi')
   let l:pword = substitute(l:pword, 'ç', 'c', 'gi')
-  let l:abbrv = 'iabbrv' . ' ' . l:pword . ' ' . l:cword
+  let l:abbrv = 'iabbrev' . ' ' . l:pword . ' ' . l:cword
   return l:abbrv
 endfunction
 
-function AddWordUnderCursorToMyAbbreviationsList()
+function AddWordUnderCursorToMyAbbreviationsList() abort
   let l:abbrv = SpecialCharactersHandler()
   call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo 'Added ''' . l:abbrv . ''' to ~/.vim/spell/words.abbr'
 endfunction
 
-function AddWordUnderCursorToMyWordsList()
+function AddWordUnderCursorToMyWordsList() abort
   let l:cword = expand('<cword>')
   call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
   echo 'Added ''' . l:cword . ''' to ~/.vim/spell/words.dict'
 endfunction
 
-function RmTrailingSpaces()
+function RmTrailingSpaces() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   silent %s/\s\+$//e

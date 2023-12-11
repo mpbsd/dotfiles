@@ -1,4 +1,4 @@
-augroup set_foldmethod_to_marker_for_vimscripts
+augroup set_foldmethod_based_on_the_filetype
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
@@ -24,13 +24,8 @@ augroup END
 
 augroup load_abbreviations_based_on_the_filetype
   autocmd!
-  autocmd BufWinEnter *.md,*.tex,*.txt source ~/.vim/spell/words.abbr
-augroup END
-
-augroup enable_spellchecking_and_load_abbreviations_when_writing_emails
-  autocmd!
   autocmd FileType mail setlocal spell
-  autocmd FileType mail source ~/.vim/spell/words.abbr
+  autocmd FileType mail,markdown,tex,text source ~/.vim/spell/words.abbr
 augroup END
 
 augroup remove_duplicates_from_my_wording_lists

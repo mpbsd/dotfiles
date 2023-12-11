@@ -5,6 +5,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 Plug 'sirver/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'
@@ -19,6 +20,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'wellle/targets.vim'
 call plug#end()
+
+if isdirectory(expand('~/.vim/plugged/gruvbox'))
+  colorscheme gruvbox
+else
+  colorscheme slate
+endif
 
 let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']
 let g:UltiSnipsExpandTrigger       = '<tab>'
