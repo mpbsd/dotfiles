@@ -1,3 +1,10 @@
+let s:hub = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let s:cmd = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:hub
+
+if empty(expand('~/.vim/autoload/plug.vim'))
+  silent exe s:cmd
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -21,10 +28,10 @@ Plug 'tpope/vim-vinegar'
 Plug 'wellle/targets.vim'
 call plug#end()
 
-if isdirectory(expand('~/.vim/plugged/gruvbox'))
-  colorscheme gruvbox
+if empty(expand('~/.vim/plugged/gruvbox'))
+  colorscheme habamax
 else
-  colorscheme slate
+  colorscheme gruvbox
 endif
 
 let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']

@@ -38,3 +38,9 @@ function RmTrailingSpaces() abort
   call setpos('.', l:pos)
   call setreg('/', l:reg)
 endfunction
+
+function InstallMissingPlugins() abort
+  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    PlugInstall --sync
+  endif
+endfunction
