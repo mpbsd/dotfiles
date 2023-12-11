@@ -1,7 +1,7 @@
 let mapleader      = ','
 let maplocalleader = ' '
 
-let s:rc_files_dir = expand('~/.vim/rc/')
+let s:rc_files_dir = glob('~/.vim/rc/')
 
 let s:rc_filenames = [
       \'autocmd',
