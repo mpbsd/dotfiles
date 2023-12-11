@@ -1,7 +1,7 @@
 let mapleader      = ' '
 let maplocalleader = ','
 
-let s:rc_files_dir = '~/.vim/rc/'
+let s:rc_files_dir = expand('~/.vim/rc/')
 
 let s:rc_filenames = [
       \'options',

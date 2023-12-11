@@ -1,4 +1,4 @@
-let g:tex_flavor='latex'
+let g:tex_flavor = 'latex'
 
 function SpecialCharactersHandler() abort
   let l:cword = expand('<cword>')
