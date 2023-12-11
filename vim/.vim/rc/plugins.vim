@@ -1,8 +1,8 @@
 let s:a = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let s:b = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:a
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent exe s:b
+if empty(expand('~/.vim/autoload/plug.vim'))
+  sil exe s:b
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -28,10 +28,10 @@ Plug 'tpope/vim-vinegar'
 Plug 'wellle/targets.vim'
 call plug#end()
 
-if empty(glob('~/.vim/plugged/gruvbox'))
-  colorscheme habamax
-else
+if isdirectory(expand('~/.vim/plugged/gruvbox'))
   colorscheme gruvbox
+else
+  colorscheme habamax
 endif
 
 let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']

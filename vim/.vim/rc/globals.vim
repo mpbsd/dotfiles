@@ -34,7 +34,7 @@ endfunction
 function RmTrailingSpaces() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
-  silent %s/\s\+$//e
+  sil %s/\s\+$//e
   call setpos('.', l:pos)
   call setreg('/', l:reg)
 endfunction
