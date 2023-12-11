@@ -1,7 +1,7 @@
 let s:a = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let s:b = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:a
 
-if empty(expand('~/.vim/autoload/plug.vim'))
+if empty(glob('~/.vim/autoload/plug.vim'))
   sil exe s:b
 endif
 
