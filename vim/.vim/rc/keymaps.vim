@@ -295,6 +295,6 @@ for category in values(s:catalogue_of_keybindings)
     let s:mod = keybinding['mod']
     let s:key = keybinding['key']
     let s:act = keybinding['act']
-    silent call Keymap(s:mod, s:key, s:act)
+    sil call Keymap(s:mod, s:key, s:act)
   endfor
 endfor
