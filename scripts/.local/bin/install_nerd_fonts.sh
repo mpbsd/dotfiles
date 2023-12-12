@@ -2,13 +2,13 @@
 
 
 ADDRESS='https://github.com/ryanoasis/nerd-fonts/releases/download'
-VERSION='v3.0.2'
+VERSION='v3.1.1'
 
 FONTDIR="${HOME}/.local/share/fonts"
 TMPDIR="${HOME}/downloads"
 
 
-# {{{
+# FONTLIST {{{
 declare -a FONTSLIST=(
   3270
   Agave
@@ -80,32 +80,32 @@ do
 done
 
 
-# {{{
+# TXT_FILES {{{
 declare -a TXT_FILES=(
-  Apache License.txt
-  Bitstream Vera License.txt
-  COPYING-LICENSE
-  LICENCE-FAQ.txt
-  LICENCE.txt
-  LICENSE
-  LICENSE.TXT
-  LICENSE.md
-  LICENSE.txt
-  LICENSE_OFL.txt
-  Licence.txt
-  OFL.txt
-  README.md
-  SIL Open Font License.txt
-  Vic Fieger License.txt
-  license.txt
-  readme.md
+  'Apache License.txt'
+  'Bitstream Vera License.txt'
+  'COPYING-LICENSE'
+  'LICENCE-FAQ.txt'
+  'LICENCE.txt'
+  'LICENSE'
+  'LICENSE.TXT'
+  'LICENSE.md'
+  'LICENSE.txt'
+  'LICENSE_OFL.txt'
+  'Licence.txt'
+  'OFL.txt'
+  'README.md'
+  'SIL Open Font License.txt'
+  'Vic Fieger License.txt'
+  'license.txt'
+  'readme.md'
 )
 # }}}
 
 
 for FILE in "${TXT_FILES[@]}"
 do
-  find $FONTDIR -type f -name $FILE -delete
+  find "${FONTDIR}" -type f -name "${FILE}" -delete
 done
 
 
