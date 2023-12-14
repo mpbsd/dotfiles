@@ -14,20 +14,28 @@ source "${HOME}/.config/zsh/rc/history.zsh"
 source "${HOME}/.config/zsh/rc/vimode.zsh"
 
 # keychain
-if [ "$(uname -s)" != 'Darwin' ]
+if [ "$(uname -s)" = 'Linux' ]
 then
   source "${HOME}/.config/zsh/rc/keychain.zsh"
 fi
 
 # sourcery
-if [ "$(uname -s)" = 'Darwin' ]
+if [ "$(uname -s)" = 'Linux' ]
+then
+  source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+elif [ "$(uname -s)" = 'Darwin' ]
 then
   source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
 # FZF
-if [ "$(uname -s)" = 'Darwin' ]
+if [ "$(uname -s)" = 'Linux' ]
+then
+  source "/usr/share/doc/fzf/examples/completion.zsh"
+  source "/usr/share/doc/fzf/examples/key-bindings.zsh"
+elif [ "$(uname -s)" = 'Darwin' ]
 then
   source "/usr/local/opt/fzf/shell/completion.zsh"
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"

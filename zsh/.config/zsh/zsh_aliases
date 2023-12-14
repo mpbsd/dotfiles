@@ -1,10 +1,8 @@
-# vim: foldmethod=marker #
-
 alias -s txt=vim
 alias -s ods=localc
 
 # cat
-# alias cat='batcat'
+alias cat='batcat'
 
 # {{{ file management
 alias cp='cp -iv'
@@ -43,7 +41,7 @@ alias ll='ls --color=auto -l'
 alias ls='ls --color=auto'
 
 # swaylock
-alias lock='swaylock'
+# alias lock='swaylock'
 
 # newsboat
 alias news='newsboat'
