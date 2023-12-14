@@ -232,7 +232,7 @@ let s:catalogue_of_keybindings = {
       \    'subs_word_under_the_cursor_with_the_contents_of_register_0': {
       \        'mod': 'normal',
       \        'key': '<leader>rw',
-      \        'act': ':%s/<c-r><c-w>/<c-r>0/g<cr>',
+      \        'act': ':call BetterSubstitution()<cr>',
       \    },
       \},
       \'fuzzy_file_finding': {

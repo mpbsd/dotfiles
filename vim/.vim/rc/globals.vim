@@ -21,13 +21,13 @@ endfunction
 
 function AddWordUnderCursorToMyAbbreviationsList() abort
   let l:abbrv = SpecialCharactersHandler()
-  call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
+  cal writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo 'Added ''' . l:abbrv . ''' to ~/.vim/spell/words.abbr'
 endfunction
 
 function AddWordUnderCursorToMyWordsList() abort
   let l:cword = expand('<cword>')
-  call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
+  cal writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
   echo 'Added ''' . l:cword . ''' to ~/.vim/spell/words.dict'
 endfunction
 
@@ -35,8 +35,15 @@ function RmTrailingSpaces() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   sil %s/\s\+$//e
-  call setpos('.', l:pos)
-  call setreg('/', l:reg)
+  cal setpos('.', l:pos)
+  cal setreg('/', l:reg)
+endfunction
+
+function BetterSubstitution() abort
+  let l:pos = getpos('.')
+  let l:cmd = '%s/' . expand('<cword>') . '/' . getreg('0') . '/g'
+  sil exe l:cmd
+  cal setpos('.', l:pos)
 endfunction
 
 function InstallMissingPlugins() abort

@@ -151,6 +151,7 @@ iabbrev familia família
 iabbrev ferias férias
 iabbrev fisica física
 iabbrev formula fórmula
+iabbrev formulario formulário
 iabbrev fracionario fracionário
 iabbrev fracoes frações
 iabbrev funcao função
@@ -247,6 +248,7 @@ iabbrev paralelepipedo paralelepípedo
 iabbrev parametro parâmetro
 iabbrev particao partição
 iabbrev particoes partições
+iabbrev peco peço
 iabbrev periodico periódico
 iabbrev permutacao permutação
 iabbrev permutacoes permutações
@@ -333,5 +335,3 @@ iabbrev versoes versões
 iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
-iabbrev formulario formulário
-iabbrev peco peço
