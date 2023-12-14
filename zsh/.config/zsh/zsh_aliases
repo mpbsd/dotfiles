@@ -4,7 +4,7 @@ alias -s txt=vim
 alias -s ods=localc
 
 # cat
-alias cat='batcat'
+# alias cat='batcat'
 
 # {{{ file management
 alias cp='cp -iv'
