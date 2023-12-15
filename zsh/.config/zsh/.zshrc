@@ -19,7 +19,7 @@ then
   source "${HOME}/.config/zsh/rc/keychain.zsh"
 fi
 
-# sourcery
+# syntax-highlighting and autosuggestions
 if [ "$(uname -s)" = 'Linux' ]
 then
   source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -41,7 +41,7 @@ then
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 fi
 
-# Custom functions that use FZF
+# Custom FZF-functions
 source "${HOME}/.config/zsh/rc/globals.zsh"
 
 # aliases
