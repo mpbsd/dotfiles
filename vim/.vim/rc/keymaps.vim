@@ -211,6 +211,13 @@ let s:catalogue_of_keybindings = {
       \        'act': ':PlugClean<cr>',
       \    },
       \},
+      \'fugitive_git_interface': {
+      \    'git_status': {
+      \        'mod': 'normal',
+      \        'key': '<leader>gs',
+      \        'act': ':Git<cr>',
+      \    },
+      \},
       \'change_capitalization_of_words': {
       \    'to_upper_case': {
       \        'mod': 'insert',
@@ -229,7 +236,7 @@ let s:catalogue_of_keybindings = {
       \    },
       \},
       \'search_and_replace': {
-      \    'subs_word_under_the_cursor_with_the_contents_of_register_0': {
+      \    'subs_word_under_the_cursor_with_the_contents_of_register': {
       \        'mod': 'normal',
       \        'key': '<leader>rw',
       \        'act': ':call BetterSubstitution()<cr>',
