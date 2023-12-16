@@ -213,6 +213,6 @@ for _, category in pairs(catalogue_of_keybindings) do
     local mod = keybinding["mod"]
     local key = keybinding["key"]
     local act = keybinding["act"]
-    Keymap(mod, key, act)
+    vim.keymap.set(mod, key, act, { noremap = true })
   end
 end

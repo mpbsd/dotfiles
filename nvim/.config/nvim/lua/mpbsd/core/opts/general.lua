@@ -1,13 +1,17 @@
-local M = {
-  g = {
+local G = {
     mapleader = " ",
     maplocalleader = ",",
     loaded_perl_provider = 0,
     loaded_ruby_provider = 0,
     python3_host_prog = "/usr/bin/python3",
     tex_flavor = "latex",
-  },
-  o = {
+  }
+
+for lhs, rhs in pairs(G) do
+  vim.g[lhs] = rhs
+end
+
+local O = {
     number = true,
     relativenumber = true,
     numberwidth = 6,
@@ -34,13 +38,8 @@ local M = {
     showmode = true,
     termguicolors = true,
     undofile = true,
-  },
-}
+  }
 
-for lhs, rhs in pairs(M.g) do
-  vim.g[lhs] = rhs
-end
-
-for lhs, rhs in pairs(M.o) do
+for lhs, rhs in pairs(O) do
   vim.o[lhs] = rhs
 end
