@@ -41,6 +41,6 @@ for lhs, rhs in pairs(M.g) do
   vim.g[lhs] = rhs
 end
 
-for lhs, rhs in pairs(O) do
+for lhs, rhs in pairs(M.o) do
   vim.o[lhs] = rhs
 end
