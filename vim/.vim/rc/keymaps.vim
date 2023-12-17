@@ -226,10 +226,15 @@ let s:catalogue_of_keybindings = {
       \    },
       \},
       \'limelight': {
-      \    'toggle': {
+      \    'toggle_on': {
       \        'mod': 'normal',
-      \        'key': '<leader>ll',
+      \        'key': '<leader>ln',
       \        'act': ':Limelight<cr>',
+      \    },
+      \    'toggle_off': {
+      \        'mod': 'normal',
+      \        'key': '<leader>lf',
+      \        'act': ':Limelight!<cr>',
       \    },
       \},
       \'change_capitalization_of_words': {
