@@ -218,6 +218,20 @@ let s:catalogue_of_keybindings = {
       \        'act': ':Git<cr>',
       \    },
       \},
+      \'goyo': {
+      \    'toggle': {
+      \        'mod': 'normal',
+      \        'key': '<leader>gy',
+      \        'act': ':Goyo<cr>',
+      \    },
+      \},
+      \'limelight': {
+      \    'toggle': {
+      \        'mod': 'normal',
+      \        'key': '<leader>ll',
+      \        'act': ':Limelight<cr>',
+      \    },
+      \},
       \'change_capitalization_of_words': {
       \    'to_upper_case': {
       \        'mod': 'insert',
