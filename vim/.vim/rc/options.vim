@@ -7,8 +7,6 @@ set cursorcolumn
 
 set colorcolumn=80
 
-set statusline=[%n]\ %f\ %m%=%{&fenc}\ %{&ff}\ %Y\ (%06l,%06v)
-
 set tabstop=2
 set shiftwidth=2
 set expandtab

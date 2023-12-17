@@ -1,3 +1,13 @@
+set background=dark
+
+if empty(glob('~/.vim/plugged/seoul256'))
+  colorscheme seoul256
+else
+  colorscheme habamax
+endif
+
+set statusline=[%n]\ %f\ %m%=%{&fenc}\ %{&ff}\ %Y\ (%06l,%06v)
+
 " options {{{
 let s:guiopts = {
       \'bool': {
