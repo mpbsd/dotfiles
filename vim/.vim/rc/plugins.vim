@@ -27,15 +27,3 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'wellle/targets.vim'
 call plug#end()
-
-if isdirectory(expand('~/.vim/plugged/gruvbox'))
-  colorscheme gruvbox
-else
-  colorscheme habamax
-endif
-
-let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']
-let g:UltiSnipsExpandTrigger       = '<tab>'
-let g:UltiSnipsJumpForwardTrigger  = '<c-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
-let g:UltiSnipsEditSplit           = 'horizontal'

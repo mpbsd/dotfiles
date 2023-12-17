@@ -1,3 +1,4 @@
+" options {{{
 let s:guiopts = {
       \'bool': {
       \    'd': '+',
@@ -13,6 +14,7 @@ let s:guiopts = {
       \    'guiheadroom': 0
       \},
       \}
+" }}}
 
 if has('gui_running')
   for category in keys(s:guiopts)

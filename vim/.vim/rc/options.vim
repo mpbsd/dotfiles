@@ -1,5 +1,3 @@
-set background=dark
-
 set number
 set relativenumber
 set numberwidth=6
@@ -8,7 +6,6 @@ set cursorline
 set cursorcolumn
 
 set colorcolumn=80
-" set textwidth=80
 
 set statusline=[%n]\ %f\ %m%=%{&fenc}\ %{&ff}\ %Y\ (%06l,%06v)
 
@@ -19,7 +16,6 @@ set expandtab
 set autoindent
 set smartindent
 
-set wrap
 set linebreak
 set nolist
 

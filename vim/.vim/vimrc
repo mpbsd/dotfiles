@@ -7,11 +7,13 @@ let s:rc_filenames = [
       \'autocmd',
       \'caching',
       \'globals',
-      \'guiopts',
-      \'keymaps',
       \'options',
+      \'keymaps',
       \'plugins',
       \'speller',
+      \'snippet',
+      \'gcolors',
+      \'guiopts',
       \]
 
 for rc_file in s:rc_filenames
