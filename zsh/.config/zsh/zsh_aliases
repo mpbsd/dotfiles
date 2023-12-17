@@ -36,9 +36,17 @@ alias guso='git push origin'
 alias htop='htop -C'
 
 # ls
-alias la='ls --color=auto -A'
-alias ll='ls --color=auto -l'
-alias ls='ls --color=auto'
+if [ "$(uname -s)" = 'Linux' ]
+then
+  alias la='ls --color=auto -A'
+  alias ll='ls --color=auto -l'
+  alias ls='ls --color=auto'
+elif [ "$(uname -s)" = 'Darwin' ]
+then
+  alias la='ls -G -A'
+  alias ll='ls -G -l'
+  alias ls='ls -G'
+fi
 
 # swaylock
 # alias lock='swaylock'
