@@ -6,6 +6,16 @@ let s:catalogue_of_keybindings = {
       \        'key': '<leader>erc',
       \        'act': ':edit ~/.vim/vimrc<cr>',
       \    },
+      \    'speller': {
+      \        'mod': 'normal',
+      \        'key': '<leader>esp',
+      \        'act': ':edit ~/.vim/rc/speller.vim<cr>',
+      \    },
+      \    'snippet': {
+      \        'mod': 'normal',
+      \        'key': '<leader>esn',
+      \        'act': ':edit ~/.vim/rc/snippet.vim<cr>',
+      \    },
       \    'options': {
       \        'mod': 'normal',
       \        'key': '<leader>eop',
@@ -46,7 +56,17 @@ let s:catalogue_of_keybindings = {
       \    'default': {
       \        'mod': 'normal',
       \        'key': '<leader>src',
-      \        'act': ':source ~/.vim/vimrc.vim<cr>',
+      \        'act': ':source ~/.vim/vimrc<cr>',
+      \    },
+      \    'speller': {
+      \        'mod': 'normal',
+      \        'key': '<leader>ssp',
+      \        'act': ':source ~/.vim/rc/speller.vim<cr>',
+      \    },
+      \    'snippet': {
+      \        'mod': 'normal',
+      \        'key': '<leader>ssn',
+      \        'act': ':source ~/.vim/rc/snippet.vim<cr>',
       \    },
       \    'options': {
       \        'mod': 'normal',

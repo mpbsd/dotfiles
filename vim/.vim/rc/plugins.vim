@@ -1,8 +1,8 @@
-let s:a = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-let s:b = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:a
+let s:github_repo = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let s:install_cmd = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:github_repo
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  sil exe s:b
+  sil exe s:install_cmd
 endif
 
 call plug#begin('~/.vim/plugged')
