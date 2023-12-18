@@ -1,39 +1,35 @@
-set number
-set relativenumber
-set numberwidth=6
+let s:options = [
+      \"number",
+      \"relativenumber",
+      \"numberwidth=6",
+      \"cursorline",
+      \"cursorcolumn",
+      \"colorcolumn=80",
+      \"tabstop=2",
+      \"shiftwidth=2",
+      \"expandtab",
+      \"autoindent",
+      \"smartindent",
+      \"linebreak",
+      \"nolist",
+      \"nojoinspaces",
+      \"splitright",
+      \"splitbelow",
+      \"ignorecase",
+      \"smartcase",
+      \"magic",
+      \"lazyredraw",
+      \"encoding=utf8",
+      \"secure",
+      \"hidden",
+      \"undofile",
+      \]
 
-set cursorline
-set cursorcolumn
 
-set colorcolumn=80
+for option in s:options
+  let s:cmd = "set " . option
+  sil exe s:cmd
+endfor
 
-set tabstop=2
-set shiftwidth=2
-set expandtab
-
-set autoindent
-set smartindent
-
-set linebreak
-set nolist
-
-set nojoinspaces
-
-set splitright
-set splitbelow
-
-set ignorecase
-set smartcase
-set magic
-
-set lazyredraw
-
-set encoding=utf8
-
-set secure
-
-set hidden
-
-set undofile
 
 runtime ftplugin/man.vim
