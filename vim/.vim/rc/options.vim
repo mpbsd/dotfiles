@@ -2,10 +2,8 @@
 let s:options = [
       \'number',
       \'relativenumber',
-      \'numberwidth=6',
       \'cursorline',
       \'cursorcolumn',
-      \'colorcolumn=80',
       \'tabstop=2',
       \'shiftwidth=2',
       \'expandtab',
