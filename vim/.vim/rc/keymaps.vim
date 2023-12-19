@@ -300,11 +300,21 @@ let s:catalogue_of_keybindings = {
       \        'act': ':UltiSnipsEdit<cr>',
       \    },
       \},
-      \'manpages': {
-      \    'opening': {
+      \'help_and_manpages': {
+      \    'help': {
+      \        'mod': 'normal',
+      \        'key': '<leader>hh',
+      \        'act': ':tab h ',
+      \    },
+      \    'search_for_the_word_under_the_cursor': {
+      \        'mod': 'normal',
+      \        'key': '<leader>hw',
+      \        'act': ':exe ''tab h '' . expand(''<cword>'')<cr>',
+      \    },
+      \    'manpages': {
       \        'mod': 'normal',
       \        'key': '<leader>mp',
-      \        'act': ':Man ',
+      \        'act': ':tab Man ',
       \    },
       \},
       \'useful_regexes': {
