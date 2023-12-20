@@ -6,24 +6,10 @@ snippet ';im' "inline math mode" rA
 \(${1:${VISUAL}}\)$0
 endsnippet
 
-snippet '(^)?(\s+)?;dm' "display math mode" rA
-`!p
-enclosing = {
-	'opening': r'\[',
-	'closing': r'\]',
-}
-if match.group(2) is None:
-	indentation_level = ''
-else:
-	indentation_level = match.group(2)
-if match.group(1) is None:
-	newline_char = '\n'
-else:
-	newline_char = ''
-lhs = indentation_level + newline_char + enclosing['opening'] + '\n' + indentation_level + '\t'
-rhs = indentation_level + enclosing['closing']
-snip.rv = lhs`${1:${VISUAL}}
-`!p snip.rv = rhs`$0
+snippet ';dm' "display math mode" rA
+\[
+	${1:${VISUAL}}
+\]$0
 endsnippet
 
 snippet ';fr' "fraction" rA
