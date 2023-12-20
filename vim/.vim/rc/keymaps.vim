@@ -337,7 +337,7 @@ let s:catalogue_of_keybindings = {
       \}
 " }}}
 
-function Keymap(mod, key, act)
+function Keymap(mod, key, act) abort
   let l:mod = {
         \'normal': 'nnoremap',
         \'insert': 'inoremap',
