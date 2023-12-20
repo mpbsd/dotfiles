@@ -29,5 +29,3 @@ for option in s:options
   let s:cmd = 'set ' . option
   sil exe s:cmd
 endfor
-
-runtime ftplugin/man.vim
