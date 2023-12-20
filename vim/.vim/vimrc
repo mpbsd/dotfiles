@@ -17,6 +17,6 @@ let s:rc_filenames = [
 
 for rc_file in s:rc_filenames
   let s:f = s:rc_files_dir . rc_file . '.vim'
-  let s:c = 'source ' . s:f
+  let s:c = 'source' . ' ' . s:f
   exe s:c
 endfor
