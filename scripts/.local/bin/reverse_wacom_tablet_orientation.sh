@@ -2,9 +2,13 @@
 
 VENDOR_NAME='Wacom One by Wacom S Pen stylus'
 DEVICE_TYPE='type: STYLUS'
-
 TABLET_ID="$(xsetwacom --list devices | grep -E "${VENDOR_NAME}" | sed "s/\(${VENDOR_NAME}\|${DEVICE_TYPE}\|id:\)//g")"
 
-xsetwacom --set ${TABLET_ID} Rotate half
+if [ -n "${TABLET_ID}" ]
+then
+  xsetwacom --set ${TABLET_ID} Rotate half
+else
+  echo "No Wacom tablets found."
+fi
 
 exit 0
