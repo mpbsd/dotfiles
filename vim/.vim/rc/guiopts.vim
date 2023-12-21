@@ -25,7 +25,7 @@ let s:options = {
 " }}}
 
 for [key, val] in items(s:options['term'])
-  let s:cmd = 'set ' . key . '=' . val
+  let s:cmd = 'set' . ' ' . key . '=' . val
   exe s:cmd
 endfor
 
@@ -35,7 +35,7 @@ if has('gui_running')
       if category ==# 'bool'
         let s:cmd = 'set guioptions' . val . '=' . key
       elseif category ==# 'misc'
-        let s:cmd = 'set ' . key . '=' . val
+        let s:cmd = 'set' . ' ' . key . '=' . val
       endif
       exe s:cmd
     endfor

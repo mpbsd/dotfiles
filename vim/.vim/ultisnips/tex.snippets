@@ -6,12 +6,8 @@ snippet ';im' "inline math mode" rA
 \(${1:${VISUAL}}\)$0
 endsnippet
 
-snippet '(^\s*)?;dm' "display math mode" rA
-`!p
-at_the_beginning_of_a_line = False if match.group(1) is None else True
-if at_the_beginning_of_a_line is False:
-	snip.rv = "\n"
-`\[
+snippet ';dm' "display math mode" rA
+\[
 	${1:${VISUAL}}
 \]$0
 endsnippet
