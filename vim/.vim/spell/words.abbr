@@ -24,13 +24,13 @@ iabbrev aplicacao aplicação
 iabbrev aplicacoes aplicações
 iabbrev apos após
 iabbrev apresentacao apresentação
-iabbrev arxiv arXiv
 iabbrev arbitraria arbitrária
 iabbrev arbitrario arbitrário
 iabbrev area área
 iabbrev areas áreas
 iabbrev argumentacao argumentação
 iabbrev aritmetica aritmética
+iabbrev arxiv arXiv
 iabbrev ate até
 iabbrev atraves através
 iabbrev avaliacao avaliação
@@ -55,6 +55,7 @@ iabbrev caracterizacao caracterização
 iabbrev categorica categórica
 iabbrev chao chão
 iabbrev ciencia ciência
+iabbrev ciencias ciências
 iabbrev cientificos científicos
 iabbrev circunferencia circunferência
 iabbrev classico clássico
@@ -122,6 +123,7 @@ iabbrev duvida dúvida
 iabbrev educacao educação
 iabbrev eh é
 iabbrev elaboracao elaboração
+iabbrev eletrica elétrica
 iabbrev eliminacao eliminação
 iabbrev eliptico elíptico
 iabbrev endereco endereço
