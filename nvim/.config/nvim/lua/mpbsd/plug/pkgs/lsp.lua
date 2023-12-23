@@ -134,54 +134,141 @@ return {
     })
     -- local client_capabilities = vim.lsp.protocol.make_client_capabilities()
     -- Function ON_ATTACH adds keybindings to Neovim when LSP attachs to buffers
-    local ON_ATTACH = function()
-      local telescope_builtin = require("telescope.builtin")
-      -- diagnostics
-      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-      vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-      vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-      vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-      -- action
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
-      -- goto
-      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
-      vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "[G]oto [I]mplementation" })
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "[G]oto [R]eferences" })
-      vim.keymap.set("n", "td", vim.lsp.buf.type_definition, { desc = "[T]ype [D]efinition" })
-      -- documentation
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-      vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
-      -- workspace
-      vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { desc = "[W]orkspace [A]dd Folder" })
-      vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "[W]orkspace [R]emove Folder" })
-      vim.keymap.set(
-        "n",
-        "<leader>wl",
-        function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end,
-        { desc = "[W]orkspace [L]ist Folders" }
-      )
-      vim.keymap.set("n", "<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols,
-        { desc = "[W]orkspace [S]ymbols" })
-      vim.keymap.set("n", "<leader>ds", telescope_builtin.lsp_document_symbols, { desc = "[D]ocument [S]ymbols" })
-      -- format
-      vim.keymap.set(
-        "n",
-        "<leader>fc",
-        function()
-          vim.lsp.buf.format({ async = true })
-        end,
-        { desc = "[F]ormat [C]ode" }
-      )
-    end
     mason_lspconfig.setup_handlers({
       function(server_name)
         require("lspconfig")[server_name].setup({
           -- capabilities = require("cmp_nvim_lsp").default_capabilities(client_capabilities),
-          on_attach = ON_ATTACH,
+          on_attach = function(_, bufnr)
+            Keymap({
+              {
+                mod = "n",
+                lhs = "<leader>rn",
+                rhs = vim.lsp.buf.rename,
+                opt = {
+                  desc = "[R]e[n]ame",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<leader>ca",
+                rhs = vim.lsp.buf.code_action,
+                opt = {
+                  desc = "[C]ode [A]ction",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "gd",
+                rhs = require("telescope.builtin").lsp_definitions,
+                opt = {
+                  desc = "[G]oto [D]efinition",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "gr",
+                rhs = require("telescope.builtin").lsp_references,
+                opt = {
+                  desc = "[G]oto [R]eferences",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "gI",
+                rhs = require("telescope.builtin").lsp_implementations,
+                opt = {
+                  desc = "[G]oto [I]mplementation",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<leader>D",
+                rhs = require("telescope.builtin").lsp_type_definitions,
+                opt = {
+                  desc = "Type [D]efinition",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<leader>ds",
+                rhs = require("telescope.builtin").lsp_document_symbols,
+                opt = {
+                  desc = "[D]ocument [S]ymbols",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<leader>ws",
+                rhs = require("telescope.builtin").lsp_dynamic_workspace_symbols,
+                opt = {
+                  desc = "[W]orkspace [S]ymbols",
+                }
+              },
+              -- See `:help K` for why this keymap
+              {
+                mod = "n",
+                lhs = "K",
+                rhs = vim.lsp.buf.hover,
+                opt = {
+                  desc = "Hover Documentation",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<C-k>",
+                rhs = vim.lsp.buf.signature_help,
+                opt = {
+                  desc = "Signature Documentation",
+                }
+              },
+              -- Lesser used LSP functionality
+              {
+                mod = "n",
+                lhs = "gD",
+                rhs = vim.lsp.buf.declaration,
+                opt = {
+                  desc = "[G]oto [D]eclaration",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<leader>wa",
+                rhs = vim.lsp.buf.add_workspace_folder,
+                opt = {
+                  desc = "[W]orkspace [A]dd Folder",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<leader>wr",
+                rhs = vim.lsp.buf.remove_workspace_folder,
+                opt = {
+                  desc = "[W]orkspace [R]emove Folder",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<leader>wl",
+                rhs = function()
+                  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                end,
+                opt = {
+                  desc = "[W]orkspace [L]ist Folders",
+                }
+              },
+            })
+            -- Create a command `:Format` local to the LSP buffer
+            vim.api.nvim_buf_create_user_command(
+              bufnr,
+              'Format',
+              function(_)
+                vim.lsp.buf.format()
+              end,
+              {
+                desc = 'Format current buffer with LSP'
+              }
+            )
+          end,
           settings = servers[server_name],
           filetypes = (servers[server_name] or {}).filetypes,
         })
