@@ -5,6 +5,7 @@ let s:options = {
       \    'colorcolumn': 80,
       \    'background': 'dark',
       \    'statusline': "[\%n]\\ \%f\\ \%m\%=\%{&fenc}\\ \%{&ff}\\ \%Y\\ (\%06l,\%06v)",
+      \    'fillchars': "vert:\\|,fold:.,foldsep:\\|",
       \},
       \'grpx': {
       \    'bool': {

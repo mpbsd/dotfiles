@@ -1,218 +1,85 @@
-local catalogue_of_keybindings  = {-- {{{
-  edit_vimrc_files = {
-    default = {
-      mod = "n",
-      key = "<localleader>erc",
-      act = ":edit ~/.config/nvim/init.lua<cr>",
-    },
-    options = {
-      mod = "n",
-      key = "<localleader>eop",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>",
-    },
-    globals = {
-      mod = "n",
-      key = "<localleader>egb",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/globals.lua<cr>",
-    },
-    autocmd = {
-      mod = "n",
-      key = "<localleader>eac",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/autocmd.lua<cr>",
-    },
-    keymaps = {
-      mod = "n",
-      key = "<localleader>ekm",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>",
-    },
-    abbrevs = {
-      mod = "n",
-      key = "<localleader>eab",
-      act = ":edit ~/.config/nvim/lua/mpbsd/core/opts/abbrevs.lua<cr>",
-    },
-    plugins = {
-      mod = "n",
-      key = "<localleader>epg",
-      act = ":edit ~/.config/nvim/lua/mpbsd/plug<cr>",
-    },
-  },
-  source_vimrc_files = {
-    default = {
-      mod = "n",
-      key = "<localleader>src",
-      act = ":source ~/.config/nvim/init.lua<cr>",
-    },
-    options = {
-      mod = "n",
-      key = "<localleader>sop",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>",
-    },
-    globals = {
-      mod = "n",
-      key = "<localleader>sgb",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/globals.lua<cr>",
-    },
-    autocmd = {
-      mod = "n",
-      key = "<localleader>sac",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/autocmd.lua<cr>",
-    },
-    keymaps = {
-      mod = "n",
-      key = "<localleader>skm",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>",
-    },
-    abbrevs = {
-      mod = "n",
-      key = "<localleader>sab",
-      act = ":source ~/.config/nvim/lua/mpbsd/core/opts/abbrevs.lua<cr>",
-    },
-  },
-  get_into_normal_mode = {
-    from_insert_mode = {
-      mod = "i",
-      key = "jj",
-      act = "<esc>",
-    },
-  },
-  get_into_command_mode = {
-    from_normal_mode = {
-      mod = "n",
-      key = "<localleader>;",
-      act = ":",
-    },
-  },
-  dealing_with_files_in_general = {
-    saving = {
-      mod = "n",
-      key = "<localleader>fw",
-      act = ":w<cr>",
-    },
-  },
-  window_management = {
-    closing = {
-      mod = "n",
-      key = "<localleader>fq",
-      act = ":q<cr>",
-    },
-    move_focus_to_the_left_window = {
-      mod = "n",
-      key = "<c-h>",
-      act = "<c-w>h",
-    },
-    move_focus_to_the_downward_window = {
-      mod = "n",
-      key = "<c-j>",
-      act = "<c-w>j",
-    },
-    move_focus_to_the_upward_window = {
-      mod = "n",
-      key = "<c-k>",
-      act = "<c-w>k",
-    },
-    move_focus_to_the_right_window = {
-      mod = "n",
-      key = "<c-l>",
-      act = "<c-w>l",
-    },
-    split_the_window_vertically = {
-      mod = "n",
-      key = "<localleader>sp",
-      act = ":sp<cr>",
-    },
-    split_the_window_horizontally = {
-      mod = "n",
-      key = "<localleader>vs",
-      act = ":vs<cr>",
-    },
-    increase_width = {
-      mod = "n",
-      key = "<c-left>",
-      act = "<c-w>>",
-    },
-    decrease_height = {
-      mod = "n",
-      key = "<c-down>",
-      act = "<c-w>-",
-    },
-    increase_height = {
-      mod = "n",
-      key = "<c-up>",
-      act = "<c-w>+",
-    },
-    decrease_width = {
-      mod = "n",
-      key = "<c-right>",
-      act = "<c-w><",
-    },
-  },
-  search_and_replace = {
-    subs_word_under_the_cursor_with_the_contents_of_reg_zero = {
-      mod = "n",
-      key = "<localleader>r0",
-      act = ":%s/<c-r><c-w>/<c-r>0/g<cr>",
+-- keymaps {{{
+local keymaps = {
+  {
+    mod = "n",
+    lhs = "<leader>erc",
+    rhs = ":edit ~/.config/nvim/init.lua<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[e]dit vim[r][c] file",
     }
   },
-  plugin_management = {
-    lazy = {
-      mod = "n",
-      key = "<localleader>la",
-      act = ":Lazy<cr>",
-    },
-    mason = {
-      mod = "n",
-      key = "<localleader>ma",
-      act = ":Mason<cr>",
-    },
+  {
+    mod = "n",
+    lhs = "<leader>eop",
+    rhs = ":edit ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[e]dit general [o][p]tions file",
+    }
   },
-  change_capitalization_of_words = {
-    all_upper_case = {
-      mod = "i",
-      key = "<localleader>tu",
-      act = "<esc>mmbgUiw`ma",
-    },
-    all_lower_case = {
-      mod = "i",
-      key = "<localleader>tl",
-      act = "<esc>mmbguiw`ma",
-    },
-    only_the_first_letter = {
-      mod = "i",
-      key = "<localleader>cc",
-      act = "<esc>mmb~`ma",
-    },
+  {
+    mod = "n",
+    lhs = "<leader>ekm",
+    rhs = ":edit ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[e]dit [k]ey[m]aps file",
+    }
   },
-  accessing_manpages_from_within_vim = {
-    opening = {
-      mod = "n",
-      key = "<localleader>mp",
-      act = ":Man ",
-    },
+  {
+    mod = "n",
+    lhs = "<leader>src",
+    rhs = ":source ~/.config/nvim/init.lua<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[s]ource vim[r][c] file",
+    }
   },
-  useful_regexes = {
-    change_capitalization_of_daeos = {
-      mod = "n",
-      key = "<localleader>cd",
-      act = ":%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>",
-    },
-    convert_date_to_iso_format = {
-      mod = "n",
-      key = "<localleader>id",
-      act = ":%s@\\(0[1-9]\\|[12][0-9]\\|3[01]\\)\\/\\(0[1-9]\\|1[012]\\)\\/\\(202[3-9]\\)@\\3-\\2-\\1@g<cr>",
-    },
-    convert_values_to_the_ledger_format = {
-      mod = "n",
-      key = "<localleader>im",
-      act = ":%s@R$\\s\\+\\([0-9.]\\+\\),\\([0-9]\\+\\)\\s(\\([+-]\\))$@\\3\\1\\.\\2\\ BRL@<cr>",
-    },
+  {
+    mod = "n",
+    lhs = "<leader>sop",
+    rhs = ":source ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[s]ource general [o][p]tions file",
+    }
   },
-}-- }}}
+  {
+    mod = "n",
+    lhs = "<leader>skm",
+    rhs = ":source ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[s]ource [k]ey[m]aps file",
+    }
+  },
+  {
+    mod = "n",
+    lhs = "<leader>lsy",
+    rhs = function()
+      pcall(require("lazy").sync)
+    end,
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[l]azy [s][y]nc",
+    }
+  },
+}
+-- }}}
 
-for _, category in pairs(catalogue_of_keybindings) do
-  for _, keybinding in pairs(category) do
-    local mod = keybinding["mod"]
-    local key = keybinding["key"]
-    local act = keybinding["act"]
-    vim.keymap.set(mod, key, act, { noremap = true })
-  end
+
+for _, keymap in pairs(keymaps) do
+  local mod = keymap["mod"]
+  local lhs = keymap["lhs"]
+  local rhs = keymap["rhs"]
+  local opt = keymap["opt"]
+  vim.keymap.set(mod, lhs, rhs, opt)
 end
