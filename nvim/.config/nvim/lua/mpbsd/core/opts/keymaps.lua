@@ -1,4 +1,3 @@
--- keymaps {{{
 local keymaps = {
   {
     mod = "n",
@@ -18,6 +17,16 @@ local keymaps = {
       silent  = true,
       noremap = true,
       desc    = "[e]dit general [o][p]tions file",
+    }
+  },
+  {
+    mod = "n",
+    lhs = "<leader>epg",
+    rhs = ":edit ~/.config/nvim/lua/mpbsd/plug<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[e]dit [p]lu[g]ins",
     }
   },
   {
@@ -62,18 +71,37 @@ local keymaps = {
   },
   {
     mod = "n",
-    lhs = "<leader>lsy",
+    lhs = "<leader>wt",
+    rhs = ":w<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[w]ri[t]e",
+    }
+  },
+  {
+    mod = "n",
+    lhs = "<leader>qu",
+    rhs = ":q<cr>",
+    opt = {
+      silent  = true,
+      noremap = true,
+      desc    = "[q][u]it",
+    }
+  },
+  {
+    mod = "n",
+    lhs = "<leader>ls",
     rhs = function()
       pcall(require("lazy").sync)
     end,
     opt = {
       silent  = true,
       noremap = true,
-      desc    = "[l]azy [s][y]nc",
+      desc    = "[l]azy [s]ync",
     }
   },
 }
--- }}}
 
 
 for _, keymap in pairs(keymaps) do

@@ -1,5 +1,14 @@
 let g:tex_flavor = 'latex'
 
+function Keymap(mod, lhs, rhs) abort
+  let l:mod = {
+        \'normal': 'nnoremap',
+        \'insert': 'inoremap',
+        \}
+  let l:cmd = l:mod[a:mod] . ' ' . a:lhs . ' ' . a:rhs
+  exe l:cmd
+endfunction
+
 function SpecialCharactersHandler() abort
   let l:cword = expand('<cword>')
   let l:pword = expand('<cword>')

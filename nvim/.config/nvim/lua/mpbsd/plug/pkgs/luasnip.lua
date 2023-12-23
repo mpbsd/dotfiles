@@ -40,8 +40,33 @@ return {
     })
     local snippets_dir = "~/.config/nvim/lua/mpbsd/snip/"
     require("luasnip.loaders.from_lua").load({ paths = snippets_dir })
-    Keymap("i"       , "<tab>"  , function() ls.expand() end)
-    Keymap({"i", "s"}, "<c-j>"  , function() ls.jump( 1) end)
-    Keymap({"i", "s"}, "<c-k>", function() ls.jump(-1) end)
+    Keymap({
+      {
+        mod = "i",
+        lhs = "<tab>",
+        rhs = function()
+          ls.expand()
+        end,
+        opt = {
+          desc = "Snippets trigger",
+        }
+      },
+      {
+        mod = {"i", "s"},
+        lhs = "<c-j>",
+        rhs = function() ls.jump(1) end,
+        opt = {
+          desc = "Jump next",
+        }
+      },
+      {
+        mod = {"i", "s"},
+        lhs = "<c-k>",
+        rhs = function() ls.jump(-1) end,
+        opt = {
+          desc = "Jump previous",
+        }
+      }
+    })
   end
 }

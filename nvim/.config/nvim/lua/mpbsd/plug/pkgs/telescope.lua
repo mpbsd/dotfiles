@@ -25,26 +25,87 @@ return {
     --     },
     --   },
     -- }
-    vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
-    vim.keymap.set("n", "<leader>,", builtin.buffers, { desc = "[,] Find existing buffers" })
-    vim.keymap.set(
-      "n",
-      "<leader>/",
-      function()
-        builtin.current_buffer_fuzzy_find(
-          themes.get_dropdown {
-            winblend = 10,
-            previewer = false,
-          }
-        )
-      end,
-      { desc = "[/] Fuzzily search in current buffer" }
-    )
-    vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles" })
-    vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-    vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-    vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-    vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-    vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+    Keymap({
+      {
+        mod = "n",
+        lhs = "<leader>?",
+        rhs = builtin.oldfiles,
+        opt = {
+          desc = "[?] Find recently opened files",
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>,",
+        rhs = builtin.buffers,
+        opt = {
+          desc = "[,] Find existing buffers"
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>/",
+        rhs = function()
+          builtin.current_buffer_fuzzy_find(
+            themes.get_dropdown {
+              winblend = 10,
+              previewer = false,
+            }
+          )
+        end,
+        opt = {
+          desc = "[/] Fuzzily search in current buffer"
+        }
+      },
+
+      {
+        mod = "n",
+        lhs = "<leader>gf",
+        rhs = builtin.git_files,
+        opt = {
+          desc = "Search [G]it [F]iles"
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>sf",
+        rhs = builtin.find_files,
+        opt = {
+          desc = "[S]earch [F]iles"
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>sh",
+        rhs = builtin.help_tags,
+        opt = {
+          desc = "[S]earch [H]elp"
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>sw",
+        rhs = builtin.grep_string,
+        opt = {
+          desc = "[S]earch current [W]ord"
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>sg",
+        rhs = builtin.live_grep,
+        opt = {
+          desc = "[S]earch by [G]rep"
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>sd",
+        rhs = builtin.diagnostics,
+        opt = {
+          desc = "[S]earch [D]iagnostics"
+        }
+      },
+    })
   end
 }
