@@ -71,6 +71,8 @@ declare -a SECURITY=(
   pass
   pass-otp
   keychain
+  signify-openbsd
+  signify-openbsd-keys
 )
 # }}}
 # BLOGGING {{{
