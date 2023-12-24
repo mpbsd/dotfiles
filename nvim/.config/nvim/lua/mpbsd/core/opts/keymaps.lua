@@ -4,7 +4,7 @@ local keymaps = {
     lhs = "<leader>erc",
     rhs = ":edit ~/.config/nvim/init.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[e]dit vim[r][c]",
     }
@@ -14,7 +14,7 @@ local keymaps = {
     lhs = "<leader>eac",
     rhs = ":edit ~/.config/nvim/lua/mpbsd/core/opts/autocmd.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[e]dit [a]uto[c]ommands",
     }
@@ -24,7 +24,7 @@ local keymaps = {
     lhs = "<leader>egb",
     rhs = ":edit ~/.config/nvim/lua/mpbsd/core/opts/globals.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[e]dit [g]lo[b]al resources",
     }
@@ -34,7 +34,7 @@ local keymaps = {
     lhs = "<leader>ekm",
     rhs = ":edit ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[e]dit [k]ey[m]aps",
     }
@@ -44,7 +44,7 @@ local keymaps = {
     lhs = "<leader>eop",
     rhs = ":edit ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[e]dit [o][p]tions",
     }
@@ -54,7 +54,7 @@ local keymaps = {
     lhs = "<leader>epg",
     rhs = ":edit ~/.config/nvim/lua/mpbsd/plug/<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[e]dit [p]lu[g]ins",
     }
@@ -64,7 +64,7 @@ local keymaps = {
     lhs = "<leader>src",
     rhs = ":source ~/.config/nvim/init.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]ource vim[r][c]",
     }
@@ -74,7 +74,7 @@ local keymaps = {
     lhs = "<leader>sac",
     rhs = ":source ~/.config/nvim/lua/mpbsd/core/opts/autocmd.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]ource [a]uto[c]ommands",
     }
@@ -84,7 +84,7 @@ local keymaps = {
     lhs = "<leader>sgb",
     rhs = ":source ~/.config/nvim/lua/mpbsd/core/opts/globals.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]ource [g]lo[b]al resources",
     }
@@ -94,7 +94,7 @@ local keymaps = {
     lhs = "<leader>skm",
     rhs = ":source ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]ource [k]ey[m]aps",
     }
@@ -104,7 +104,7 @@ local keymaps = {
     lhs = "<leader>sop",
     rhs = ":source ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]ource [o][p]tions",
     }
@@ -114,7 +114,7 @@ local keymaps = {
     lhs = "<leader>spg",
     rhs = ":source ~/.config/nvim/lua/mpbsd/plug/<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]ource [p]lu[g]ins",
     }
@@ -124,7 +124,7 @@ local keymaps = {
     lhs = "<leader>;",
     rhs = ":",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "get into command mode without hitting the shift key",
     }
@@ -134,7 +134,7 @@ local keymaps = {
     lhs = "jj",
     rhs = "<esc>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "back to normal mode from insert mode",
     }
@@ -144,7 +144,7 @@ local keymaps = {
     lhs = "<leader>w;",
     rhs = ":w<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[w]ri[t]e",
     }
@@ -154,7 +154,7 @@ local keymaps = {
     lhs = "<leader>q;",
     rhs = ":q<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[q][u]it",
     }
@@ -164,7 +164,7 @@ local keymaps = {
     lhs = "<c-h>",
     rhs = "<c-w>h",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "move focus to the left window",
     }
@@ -174,7 +174,7 @@ local keymaps = {
     lhs = "<c-j>",
     rhs = "<c-w>j",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "move focus to the window below",
     }
@@ -184,7 +184,7 @@ local keymaps = {
     lhs = "<c-k>",
     rhs = "<c-w>k",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "move focus to the window above",
     }
@@ -194,7 +194,7 @@ local keymaps = {
     lhs = "<c-l>",
     rhs = "<c-w>l",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "move focus to the right window",
     }
@@ -204,7 +204,7 @@ local keymaps = {
     lhs = "<leader>sh",
     rhs = ":sp<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]plit window [h]orizontally",
     }
@@ -214,7 +214,7 @@ local keymaps = {
     lhs = "<leader>sv",
     rhs = ":vs<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]plit window [v]erticaly",
     }
@@ -224,7 +224,7 @@ local keymaps = {
     lhs = "<c-left>",
     rhs = "<c-w>>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "increase window width",
     }
@@ -234,7 +234,7 @@ local keymaps = {
     lhs = "<c-down>",
     rhs = "<c-w>-",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "decrease window height",
     }
@@ -244,7 +244,7 @@ local keymaps = {
     lhs = "<c-up>",
     rhs = "<c-w>+",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "increase window height",
     }
@@ -254,7 +254,7 @@ local keymaps = {
     lhs = "<c-right>",
     rhs = "<c-w><",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "decrease window width",
     }
@@ -264,7 +264,7 @@ local keymaps = {
     lhs = "<leader>ab",
     rhs = ":call AddWordUnderCursorToMyAbbreviationsList()<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[a]dd the word under the cursor to my a[b]breviations list",
     }
@@ -274,7 +274,7 @@ local keymaps = {
     lhs = "<leader>aw",
     rhs = ":call AddWordUnderCursorToMyWordsList()<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[a]dd the word under the cursor to my words list",
     }
@@ -284,7 +284,7 @@ local keymaps = {
     lhs = "<leader>eab",
     rhs = ":edit ~/.config/nvim/spell/words.abbr<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[e]dit [a][b]breviations",
     }
@@ -294,7 +294,7 @@ local keymaps = {
     lhs = "<leader>ewo",
     rhs = ":edit ~/.config/nvim/spell/words.dict<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[e]dit [w]ords",
     }
@@ -304,7 +304,7 @@ local keymaps = {
     lhs = "<leader>pi",
     rhs = ":PlugInstall<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[p]lug [i]install",
     }
@@ -314,7 +314,7 @@ local keymaps = {
     lhs = "<leader>pu",
     rhs = ":PlugUpdate<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[p]lug [u]pdate",
     }
@@ -324,7 +324,7 @@ local keymaps = {
     lhs = "<leader>pg",
     rhs = ":PlugUpgrade<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[p]lug up[g]rade",
     }
@@ -334,7 +334,7 @@ local keymaps = {
     lhs = "<leader>pc",
     rhs = ":PlugClean<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[p]lug [c]lean",
     }
@@ -344,7 +344,7 @@ local keymaps = {
     lhs = "<leader>gs",
     rhs = ":Git<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[g]it [s]tatus",
     }
@@ -354,7 +354,7 @@ local keymaps = {
     lhs = "<leader>gy",
     rhs = ":Goyo<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[g]o[y]o",
     }
@@ -364,7 +364,7 @@ local keymaps = {
     lhs = "<leader>ln",
     rhs = ":Limelight<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[l]imelight o[n]",
     }
@@ -374,7 +374,7 @@ local keymaps = {
     lhs = "<leader>lf",
     rhs = ":Limelight!<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[l]imelight o[f]f",
     }
@@ -384,7 +384,7 @@ local keymaps = {
     lhs = "<leader>tu",
     rhs = "<esc>mmbgUiw`ma",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[t]o [u]pper case",
     }
@@ -394,7 +394,7 @@ local keymaps = {
     lhs = "<leader>tl",
     rhs = "<esc>mmbguiw`ma",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[t]o [l]ower case",
     }
@@ -404,7 +404,7 @@ local keymaps = {
     lhs = "<leader>cc",
     rhs = "<esc>mmb~`ma",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[c]amel [c]ase",
     }
@@ -414,7 +414,7 @@ local keymaps = {
     lhs = "<leader>sf",
     rhs = ":FZF<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[s]earch [f]ile",
     }
@@ -424,7 +424,7 @@ local keymaps = {
     lhs = "<leader>ht",
     rhs = ":tab h ",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "open [h]elp in another [t]ab",
     }
@@ -434,7 +434,7 @@ local keymaps = {
     lhs = "<leader>mp",
     rhs = ":tab Man ",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "open [m]an [p]age in another tab",
     },
@@ -444,7 +444,7 @@ local keymaps = {
     lhs = "<leader>cd",
     rhs = ":%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[c]hange the capitalization of [d][aeo]s?",
     },
@@ -454,7 +454,7 @@ local keymaps = {
     lhs = "<leader>id",
     rhs = ":%s@\\(0[1-9]\\\\|[12][0-9]\\\\|3[01]\\)\\/\\(0[1-9]\\\\|1[012]\\)\\/\\(202[3-9]\\)@\\3-\\2-\\1@g<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[i]so [d]ate",
     },
@@ -464,7 +464,7 @@ local keymaps = {
     lhs = "<leader>cm",
     rhs = ":%s@R$\\s\\+\\([0-9.]\\+\\),\\([0-9]\\+\\)\\s(\\([+-]\\))$@\\3\\1\\.\\2\\ BRL@<cr>",
     opt = {
-      silent = true,
+      silent = false,
       noremap = true,
       desc = "[c]onvert [m]oney",
     },
@@ -476,9 +476,7 @@ local keymaps = {
       pcall(require("lazy").sync)
     end,
     opt = {
-      silent = true,
-      noremap = true,
-      silent  = true,
+      silent = false,
       noremap = true,
       desc    = "[l]azy [s]ync",
     }
@@ -494,7 +492,7 @@ Keymap(keymaps)
 --    lhs = "<leader>hw",
 --    rhs = ":exe tab h " .. expand("<cword>") .. "<cr>",
 --    opt = {
---      silent = true,
+--      silent = false,
 --      noremap = true,
 --      desc = "searc[h] for the [w]ord under the cursor in the help pages",
 --    },
