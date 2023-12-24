@@ -1,3 +1,4 @@
+-- keymaps {{{
 local keymaps = {
   {
     mod = "n",
@@ -482,6 +483,7 @@ local keymaps = {
     }
   },
 }
+-- }}}
 
 
 Keymap(keymaps)

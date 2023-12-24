@@ -32,7 +32,7 @@ return {
     local ms = ls.multi_snippet
     local k = require("luasnip.nodes.key_indexer").new_key
     -- }}}
-    ls.config.setup({
+    ls.setup({
       enable_autosnippets  = true,
       history              = true,
       store_selection_keys = "<tab>",
@@ -48,23 +48,23 @@ return {
           ls.expand()
         end,
         opt = {
-          desc = "Snippets trigger",
+          desc = "Triggers snippets",
         }
       },
       {
-        mod = {"i", "s"},
+        mod = { "i", "s" },
         lhs = "<c-j>",
         rhs = function() ls.jump(1) end,
         opt = {
-          desc = "Jump next",
+          desc = "Jump to the next node",
         }
       },
       {
-        mod = {"i", "s"},
+        mod = { "i", "s" },
         lhs = "<c-k>",
         rhs = function() ls.jump(-1) end,
         opt = {
-          desc = "Jump previous",
+          desc = "Jump to the previous node",
         }
       }
     })
