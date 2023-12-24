@@ -302,46 +302,6 @@ local keymaps = {
   },
   {
     mod = "n",
-    lhs = "<leader>pi",
-    rhs = ":PlugInstall<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[p]lug [i]install",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>pu",
-    rhs = ":PlugUpdate<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[p]lug [u]pdate",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>pg",
-    rhs = ":PlugUpgrade<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[p]lug up[g]rade",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>pc",
-    rhs = ":PlugClean<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[p]lug [c]lean",
-    }
-  },
-  {
-    mod = "n",
     lhs = "<leader>gs",
     rhs = ":Git<cr>",
     opt = {
