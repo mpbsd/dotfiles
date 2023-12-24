@@ -40,7 +40,7 @@ return {
     })
     local snippets_dir = "~/.config/nvim/lua/mpbsd/snip/"
     require("luasnip.loaders.from_lua").load({ paths = snippets_dir })
-    Keymap({
+    KeymapSet({
       {
         mod = "i",
         lhs = "<tab>",

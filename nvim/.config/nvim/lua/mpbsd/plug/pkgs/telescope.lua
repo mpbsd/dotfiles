@@ -60,7 +60,7 @@ return {
     --     },
     --   },
     -- }
-    Keymap({
+    KeymapSet({
       {
         mod = "n",
         lhs = "<leader>?",

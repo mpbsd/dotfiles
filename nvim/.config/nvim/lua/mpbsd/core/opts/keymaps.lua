@@ -486,7 +486,7 @@ local keymaps = {
 -- }}}
 
 
-Keymap(keymaps)
+KeymapSet(keymaps)
 
 
 --  {

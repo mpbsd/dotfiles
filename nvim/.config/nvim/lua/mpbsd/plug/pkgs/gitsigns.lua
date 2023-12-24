@@ -10,7 +10,7 @@ return {
     },
     on_attach = function(_, bufnr)
       local gitsigns = require("gitsigns")
-      Keymap({
+      KeymapSet({
         {
           mod = "n",
           lhs = "<leader>gp",

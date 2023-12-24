@@ -49,7 +49,7 @@ return {
         },
       },
     })
-    Keymap({
+    KeymapSet({
       {
         mod = "n",
         lhs = "<F6>",

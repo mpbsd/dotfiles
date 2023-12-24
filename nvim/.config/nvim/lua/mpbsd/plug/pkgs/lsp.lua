@@ -153,7 +153,7 @@ return {
                 desc = "Format current buffer with LSP"
               }
             )
-            Keymap({
+            KeymapSet({
               {
                 mod = "n",
                 lhs = "<leader>df",

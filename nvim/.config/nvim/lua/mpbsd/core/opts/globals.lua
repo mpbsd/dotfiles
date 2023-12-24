@@ -1,4 +1,4 @@
-function Keymap(keymaps_table)
+function KeymapSet(keymaps_table)
   for _, keymap in pairs(keymaps_table) do
     local mod = keymap["mod"]
     local lhs = keymap["lhs"]
