@@ -52,7 +52,7 @@ return {
     Keymap({
       {
         mod = "n",
-        lhs = "<F5>",
+        lhs = "<F6>",
         rhs = dap.continue,
         opt = {
           desc = "Debug: Start/Continue",
@@ -60,7 +60,7 @@ return {
       },
       {
         mod = "n",
-        lhs = "<F1>",
+        lhs = "<F7>",
         rhs = dap.step_into,
         opt = {
           desc = "Debug: Step Into",
@@ -68,7 +68,7 @@ return {
       },
       {
         mod = "n",
-        lhs = "<F2>",
+        lhs = "<F8>",
         rhs = dap.step_over,
         opt = {
           desc = "Debug: Step Over",
@@ -76,7 +76,7 @@ return {
       },
       {
         mod = "n",
-        lhs = "<F3>",
+        lhs = "<F9>",
         rhs = dap.step_out,
         opt = {
           desc = "Debug: Step Out",
@@ -102,7 +102,7 @@ return {
       },
       {
         mod = "n",
-        lhs = "<F7>",
+        lhs = "<F10>",
         rhs = dapui.toggle,
         opt = {
           desc = "Debug: See last session result.",

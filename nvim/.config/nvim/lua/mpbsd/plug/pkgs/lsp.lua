@@ -12,6 +12,7 @@ return {
       tag = "legacy",
       opts = {}
     },
+    "folke/neodev.nvim",
   },
   config = function()
     require("mason").setup({
@@ -314,5 +315,6 @@ return {
         })
       end
     })
+    require("neodev").setup()
   end
 }
