@@ -15,6 +15,41 @@ return {
     pcall(require("telescope").load_extension, "fzf")
     local builtin = require("telescope.builtin")
     local themes = require("telescope.themes")
+    local find_git_root = function()
+      -- Use the current buffer"s path as the starting point for the git search
+      local current_file = vim.api.nvim_buf_get_name(0)
+      local current_dir
+      local cwd = vim.fn.getcwd()
+      -- If the buffer is not associated with a file, return nil
+      if current_file == "" then
+        current_dir = cwd
+      else
+        -- Extract the directory from the current file"s path
+        current_dir = vim.fn.fnamemodify(current_file, ":h")
+      end
+      -- Find the Git root directory from the current file"s path
+      local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
+      if vim.v.shell_error ~= 0 then
+        print "Not a git repository. Searching on current working directory"
+        return cwd
+      end
+      return git_root
+    end
+    local live_grep_git_root = function()
+      local git_root = find_git_root()
+      if git_root then
+        require("telescope.builtin").live_grep({
+          search_dirs = { git_root },
+        })
+      end
+    end
+    vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
+    local telescope_live_grep_open_files = function()
+      builtin.live_grep({
+        grep_open_files = true,
+        prompt_title = "Live Grep in Open Files",
+      })
+    end
     -- local actions = require("telescope.actions")
     -- local defaults = {
     --   mappings = {
@@ -39,7 +74,7 @@ return {
         lhs = "<leader>,",
         rhs = builtin.buffers,
         opt = {
-          desc = "[,] Find existing buffers"
+          desc = "[,] Find existing buffers",
         }
       },
       {
@@ -54,16 +89,31 @@ return {
           )
         end,
         opt = {
-          desc = "[/] Fuzzily search in current buffer"
+          desc = "[/] Fuzzily search in current buffer",
         }
       },
-
+      {
+        mod = "n",
+        lhs = "<leader>s/",
+        rhs = telescope_live_grep_open_files,
+        opt = {
+          desc = "[S]earch [/] in Open Files",
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>ss",
+        rhs = builtin.builtin,
+        opt = {
+          desc = "[S]earch [S]elect Telescope",
+        }
+      },
       {
         mod = "n",
         lhs = "<leader>gf",
         rhs = builtin.git_files,
         opt = {
-          desc = "Search [G]it [F]iles"
+          desc = "Search [G]it [F]iles",
         }
       },
       {
@@ -71,7 +121,7 @@ return {
         lhs = "<leader>sf",
         rhs = builtin.find_files,
         opt = {
-          desc = "[S]earch [F]iles"
+          desc = "[S]earch [F]iles",
         }
       },
       {
@@ -79,7 +129,7 @@ return {
         lhs = "<leader>sh",
         rhs = builtin.help_tags,
         opt = {
-          desc = "[S]earch [H]elp"
+          desc = "[S]earch [H]elp",
         }
       },
       {
@@ -87,7 +137,7 @@ return {
         lhs = "<leader>sw",
         rhs = builtin.grep_string,
         opt = {
-          desc = "[S]earch current [W]ord"
+          desc = "[S]earch current [W]ord",
         }
       },
       {
@@ -95,7 +145,15 @@ return {
         lhs = "<leader>sg",
         rhs = builtin.live_grep,
         opt = {
-          desc = "[S]earch by [G]rep"
+          desc = "[S]earch by [G]rep",
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>sG",
+        rhs = ":LiveGrepGitRoot<cr>",
+        opt = {
+          desc = "[S]earch by [G]rep on Git Root",
         }
       },
       {
@@ -103,7 +161,15 @@ return {
         lhs = "<leader>sd",
         rhs = builtin.diagnostics,
         opt = {
-          desc = "[S]earch [D]iagnostics"
+          desc = "[S]earch [D]iagnostics",
+        }
+      },
+      {
+        mod = "n",
+        lhs = "<leader>sr",
+        rhs = builtin.resume,
+        opt = {
+          desc = "[S]earch [R]esume",
         }
       },
     })

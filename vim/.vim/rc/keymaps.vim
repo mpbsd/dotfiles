@@ -121,12 +121,6 @@ let s:keymaps = [
       \    'des': '[s]ource g[u][i]options',
       \},
       \{
-      \    'mod': 'normal',
-      \    'lhs': '<leader>wt',
-      \    'rhs': ':w<cr>',
-      \    'des': '[w]ri[t]e',
-      \},
-      \{
       \    'mod': 'insert',
       \    'lhs': 'jj',
       \    'rhs': '<esc>',
@@ -140,7 +134,13 @@ let s:keymaps = [
       \},
       \{
       \    'mod': 'normal',
-      \    'lhs': '<leader>qu',
+      \    'lhs': '<leader>w;',
+      \    'rhs': ':w<cr>',
+      \    'des': '[w]ri[t]e',
+      \},
+      \{
+      \    'mod': 'normal',
+      \    'lhs': '<leader>q;',
       \    'rhs': ':q<cr>',
       \    'des': '[q][u]it',
       \},

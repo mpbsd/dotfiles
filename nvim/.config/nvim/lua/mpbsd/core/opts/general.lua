@@ -30,6 +30,7 @@ local O = {
   ignorecase     = true,
   smartcase      = true,
   magic          = true,
+  hlsearch       = false,
   spelllang      = "en_us,pt_br",
   spellsuggest   = "fast,20",
   splitbelow     = true,

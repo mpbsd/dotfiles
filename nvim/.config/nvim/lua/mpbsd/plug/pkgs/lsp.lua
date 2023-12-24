@@ -18,12 +18,12 @@ return {
       -- The directory in which to install packages.
       install_root_dir = vim.fn.stdpath("data") .. "/mason",
       -- Where Mason should put its bin location in your PATH. Can be one of:
-      -- - "prepend" (default, Mason's bin location is put first in PATH)
-      -- - "append" (Mason's bin location is put at the end of PATH)
-      -- - "skip" (doesn't modify PATH)
-      ---@type '"prepend"' | '"append"' | '"skip"'
+      -- - "prepend" (default, Mason"s bin location is put first in PATH)
+      -- - "append" (Mason"s bin location is put at the end of PATH)
+      -- - "skip" (doesn"t modify PATH)
+      -- - @type ""prepend"" | ""append"" | ""skip""
       PATH = "prepend",
-      -- Controls to which degree logs are written to the log file. It's useful to set this to vim.log.levels.DEBUG when
+      -- Controls to which degree logs are written to the log file. It"s useful to set this to vim.log.levels.DEBUG when
       -- debugging issues with package installations.
       log_level = vim.log.levels.INFO,
       -- Limit for the maximum amount of packages to be installed at the same time. Once this limit is reached, any further
@@ -139,7 +139,51 @@ return {
         require("lspconfig")[server_name].setup({
           -- capabilities = require("cmp_nvim_lsp").default_capabilities(client_capabilities),
           on_attach = function(_, bufnr)
+            local telescope_builtin = require("telescope.builtin")
+            -- Create a command `:Format` local to the LSP buffer
+            vim.api.nvim_buf_create_user_command(
+              bufnr,
+              "Format",
+              function(_)
+                vim.lsp.buf.format()
+              end,
+              {
+                desc = "Format current buffer with LSP"
+              }
+            )
             Keymap({
+              {
+                mod = "n",
+                lhs = "<leader>df",
+                rhs = vim.diagnostic.open_float,
+                opt = {
+                  desc = "Show diagnostics in a floting window",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "[d",
+                rhs = vim.diagnostic.goto_prev,
+                opt = {
+                  desc = "Move to the previous diagnostic in the current buffer",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "]d",
+                rhs = vim.diagnostic.goto_next,
+                opt = {
+                  desc = "Move to the next diagnostic in the current buffer",
+                }
+              },
+              {
+                mod = "n",
+                lhs = "<leader>ll",
+                rhs = vim.diagnostic.setloclist,
+                opt = {
+                  desc = "Add buffer diagnostics to the location list",
+                }
+              },
               {
                 mod = "n",
                 lhs = "<leader>rn",
@@ -159,7 +203,7 @@ return {
               {
                 mod = "n",
                 lhs = "gd",
-                rhs = require("telescope.builtin").lsp_definitions,
+                rhs = telescope_builtin.lsp_definitions,
                 opt = {
                   desc = "[G]oto [D]efinition",
                 }
@@ -167,7 +211,7 @@ return {
               {
                 mod = "n",
                 lhs = "gr",
-                rhs = require("telescope.builtin").lsp_references,
+                rhs = telescope_builtin.lsp_references,
                 opt = {
                   desc = "[G]oto [R]eferences",
                 }
@@ -175,7 +219,7 @@ return {
               {
                 mod = "n",
                 lhs = "gI",
-                rhs = require("telescope.builtin").lsp_implementations,
+                rhs = telescope_builtin.lsp_implementations,
                 opt = {
                   desc = "[G]oto [I]mplementation",
                 }
@@ -183,7 +227,7 @@ return {
               {
                 mod = "n",
                 lhs = "<leader>D",
-                rhs = require("telescope.builtin").lsp_type_definitions,
+                rhs = telescope_builtin.lsp_type_definitions,
                 opt = {
                   desc = "Type [D]efinition",
                 }
@@ -191,7 +235,7 @@ return {
               {
                 mod = "n",
                 lhs = "<leader>ds",
-                rhs = require("telescope.builtin").lsp_document_symbols,
+                rhs = telescope_builtin.lsp_document_symbols,
                 opt = {
                   desc = "[D]ocument [S]ymbols",
                 }
@@ -199,15 +243,14 @@ return {
               {
                 mod = "n",
                 lhs = "<leader>ws",
-                rhs = require("telescope.builtin").lsp_dynamic_workspace_symbols,
+                rhs = telescope_builtin.lsp_dynamic_workspace_symbols,
                 opt = {
                   desc = "[W]orkspace [S]ymbols",
                 }
               },
-              -- See `:help K` for why this keymap
               {
                 mod = "n",
-                lhs = "K",
+                lhs = "<leader>hd",
                 rhs = vim.lsp.buf.hover,
                 opt = {
                   desc = "Hover Documentation",
@@ -215,7 +258,7 @@ return {
               },
               {
                 mod = "n",
-                lhs = "<C-k>",
+                lhs = "<leader>sd",
                 rhs = vim.lsp.buf.signature_help,
                 opt = {
                   desc = "Signature Documentation",
@@ -256,18 +299,15 @@ return {
                   desc = "[W]orkspace [L]ist Folders",
                 }
               },
-            })
-            -- Create a command `:Format` local to the LSP buffer
-            vim.api.nvim_buf_create_user_command(
-              bufnr,
-              'Format',
-              function(_)
-                vim.lsp.buf.format()
-              end,
               {
-                desc = 'Format current buffer with LSP'
-              }
-            )
+                mod = "n",
+                lhs = "<leader>fb",
+                rhs = ":Format<cr>",
+                opt = {
+                  desc = "[F]ormat current [B]uffer with LSP",
+                }
+              },
+            })
           end,
           settings = servers[server_name],
           filetypes = (servers[server_name] or {}).filetypes,
