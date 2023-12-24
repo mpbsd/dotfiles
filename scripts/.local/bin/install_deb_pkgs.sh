@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #
 # author: marcelo barboza <salve.barboza@pm.me>
 # date: 2023-09-07

@@ -297,7 +297,7 @@ let s:keymaps = [
       \{
       \    'mod': 'normal',
       \    'lhs': '<leader>rw',
-      \    'rhs': ':call BetterSubstitution()<cr>',
+      \    'rhs': ':call SubsCWordWithRegZeroWhileRetainingCursorPos()<cr>',
       \    'des': '[r]eplace word',
       \},
       \{

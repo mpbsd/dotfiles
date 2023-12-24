@@ -48,7 +48,7 @@ function RmTrailingSpaces() abort
   cal setreg('/', l:reg)
 endfunction
 
-function BetterSubstitution() abort
+function SubsCWordWithRegZeroWhileRetainingCursorPos() abort
   let l:pos = getpos('.')
   let l:cmd = '%s/' . expand('<cword>') . '/' . getreg('0') . '/g'
   sil exe l:cmd

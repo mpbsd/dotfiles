@@ -129,6 +129,7 @@ return {
       },
       pylsp = {},
       texlab = {},
+      vimls = {},
     }
     mason_lspconfig.setup({
       ensure_installed = vim.tbl_keys(servers)
