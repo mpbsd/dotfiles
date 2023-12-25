@@ -357,7 +357,7 @@ local keymaps = {
       pcall(require("lazy").sync)
     end,
     opt = {
-      silent = false,
+      silent  = false,
       noremap = true,
       desc    = "[l]azy [s]ync",
     }
