@@ -262,122 +262,12 @@ local keymaps = {
   },
   {
     mod = "n",
-    lhs = "<leader>ab",
-    rhs = ":call AddWordUnderCursorToMyAbbreviationsList()<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[a]dd the word under the cursor to my a[b]breviations list",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>aw",
-    rhs = ":call AddWordUnderCursorToMyWordsList()<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[a]dd the word under the cursor to my words list",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>eab",
-    rhs = ":edit ~/.config/nvim/spell/words.abbr<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[e]dit [a][b]breviations",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>ewo",
-    rhs = ":edit ~/.config/nvim/spell/words.dict<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[e]dit [w]ords",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>pi",
-    rhs = ":PlugInstall<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[p]lug [i]install",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>pu",
-    rhs = ":PlugUpdate<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[p]lug [u]pdate",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>pg",
-    rhs = ":PlugUpgrade<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[p]lug up[g]rade",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>pc",
-    rhs = ":PlugClean<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[p]lug [c]lean",
-    }
-  },
-  {
-    mod = "n",
     lhs = "<leader>gs",
     rhs = ":Git<cr>",
     opt = {
       silent = false,
       noremap = true,
       desc = "[g]it [s]tatus",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>gy",
-    rhs = ":Goyo<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[g]o[y]o",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>ln",
-    rhs = ":Limelight<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[l]imelight o[n]",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>lf",
-    rhs = ":Limelight!<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[l]imelight o[f]f",
     }
   },
   {
@@ -408,16 +298,6 @@ local keymaps = {
       silent = false,
       noremap = true,
       desc = "[c]amel [c]ase",
-    }
-  },
-  {
-    mod = "n",
-    lhs = "<leader>sf",
-    rhs = ":FZF<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[s]earch [f]ile",
     }
   },
   {
