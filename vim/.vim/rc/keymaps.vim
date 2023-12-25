@@ -140,9 +140,21 @@ let s:keymaps = [
       \},
       \{
       \    'mod': 'normal',
+      \    'lhs': '<leader>wa',
+      \    'rhs': ':wa<cr>',
+      \    'des': '[w]rite [a]ll',
+      \},
+      \{
+      \    'mod': 'normal',
       \    'lhs': '<leader>q;',
       \    'rhs': ':q<cr>',
       \    'des': '[q][u]it',
+      \},
+      \{
+      \    'mod': 'normal',
+      \    'lhs': '<leader>qa',
+      \    'rhs': ':qa<cr>',
+      \    'des': '[q]uit [a]ll',
       \},
       \{
       \    'mod': 'normal',
