@@ -323,31 +323,11 @@ local keymaps = {
   {
     mod = "n",
     lhs = "<leader>cd",
-    rhs = ":%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>",
+    rhs = [[:%s@\<D\([aeo]s\?\)\>@d\1@g<cr>]],
     opt = {
       silent = false,
       noremap = true,
       desc = "[c]hange the capitalization of [d][aeo]s?",
-    },
-  },
-  {
-    mod = "n",
-    lhs = "<leader>id",
-    rhs = ":%s@\\(0[1-9]\\\\|[12][0-9]\\\\|3[01]\\)\\/\\(0[1-9]\\\\|1[012]\\)\\/\\(202[3-9]\\)@\\3-\\2-\\1@g<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[i]so [d]ate",
-    },
-  },
-  {
-    mod = "n",
-    lhs = "<leader>cm",
-    rhs = ":%s@R$\\s\\+\\([0-9.]\\+\\),\\([0-9]\\+\\)\\s(\\([+-]\\))$@\\3\\1\\.\\2\\ BRL@<cr>",
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = "[c]onvert [m]oney",
     },
   },
   {
@@ -367,15 +347,3 @@ local keymaps = {
 
 
 KeymapSet(keymaps)
-
-
---  {
---    mod = "n",
---    lhs = "<leader>hw",
---    rhs = ":exe tab h " .. expand("<cword>") .. "<cr>",
---    opt = {
---      silent = false,
---      noremap = true,
---      desc = "searc[h] for the [w]ord under the cursor in the help pages",
---    },
---  },
