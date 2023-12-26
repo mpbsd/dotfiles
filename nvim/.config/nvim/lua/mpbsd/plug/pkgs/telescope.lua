@@ -119,14 +119,6 @@ return {
           desc = "[S]earch by [G]rep",
         }
       },
-      -- {
-      --   mod = "n",
-      --   lhs = "<leader>sG",
-      --   rhs = ":LiveGrepGitRoot<cr>",
-      --   opt = {
-      --     desc = "[S]earch by [G]rep on Git Root",
-      --   }
-      -- },
       {
         mod = "n",
         lhs = "<leader>sd",
