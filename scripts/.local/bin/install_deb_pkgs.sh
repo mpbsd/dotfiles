@@ -88,6 +88,7 @@ declare -a UTILS=(
   curl
   fd-find
   fzf
+  groff
   gtypist
   hub
   ledger

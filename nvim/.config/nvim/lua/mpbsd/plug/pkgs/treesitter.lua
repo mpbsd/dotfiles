@@ -6,10 +6,10 @@ return {
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
-      -- Add languages to be installed here that you want installed for treesitter
       ensure_installed = {
         "c",
         "latex",
+        "bibtex",
         "ledger",
         "lua",
         "python",
@@ -17,9 +17,22 @@ return {
         "vim",
         "vimdoc"
       },
-      -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
+      sync_install = false,
       auto_install = true,
-      highlight = { enable = true },
+      ignore_install = {
+        "javascript",
+      },
+      highlight = {
+        enable = true,
+        disable = function(_, buf)
+          local max_filesize = 100 * 1024 -- 100 KB
+          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
+          if ok and stats and stats.size > max_filesize then
+            return true
+          end
+        end,
+        additional_vim_regex_highlighting = false,
+      },
       indent = { enable = true },
       incremental_selection = {
         enable = true,
@@ -38,10 +51,12 @@ return {
             -- You can use the capture groups defined in textobjects.scm
             ["aa"] = "@parameter.outer",
             ["ia"] = "@parameter.inner",
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
+            ["ab"] = "@block.outer",
+            ["ib"] = "@block.inner",
             ["ac"] = "@class.outer",
             ["ic"] = "@class.inner",
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
           },
         },
         move = {
@@ -50,18 +65,22 @@ return {
           goto_next_start = {
             ["]m"] = "@function.outer",
             ["]]"] = "@class.outer",
+            ["]b"] = "@block.outer",
           },
           goto_next_end = {
             ["]M"] = "@function.outer",
             ["]["] = "@class.outer",
+            ["]B"] = "@block.outer",
           },
           goto_previous_start = {
             ["[m"] = "@function.outer",
             ["[["] = "@class.outer",
+            ["[b"] = "@block.outer",
           },
           goto_previous_end = {
             ["[M"] = "@function.outer",
             ["[]"] = "@class.outer",
+            ["[B"] = "@block.outer",
           },
         },
         swap = {
