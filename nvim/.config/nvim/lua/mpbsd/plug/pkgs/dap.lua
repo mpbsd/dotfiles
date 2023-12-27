@@ -1,34 +1,21 @@
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
-    -- Creates a beautiful debugger UI
     "rcarriga/nvim-dap-ui",
-    -- Installs the debug adapters for you
     "jay-babu/mason-nvim-dap.nvim",
-    -- Add your own debuggers here
-    -- "leoluz/nvim-dap-go",
   },
   config = function()
     local dap = require("dap")
     local dapui = require("dapui")
     require("mason-nvim-dap").setup({
-      -- Makes a best effort to setup the various debuggers with
-      -- reasonable debug configurations
       automatic_setup = true,
-      -- You can provide additional configuration to the handlers,
-      -- see mason-nvim-dap README for more information
       handlers = {},
-      -- Update this to ensure that you have the debuggers for the langs you want
       ensure_installed = {
         "bash",
         "cppdbg",
         "python",
       },
     })
-    -- Dap UI setup
-    -- For more information, see |:help nvim-dap-ui|
-    -- Toggle to see last session result. Without this, you can't see session
-    -- output in case of unhandled exception.
     dapui.setup({
       controls = {
         element = "repl",
@@ -162,7 +149,5 @@ return {
     dap.listeners.after.event_initialized["dapui_config"] = dapui.open
     dap.listeners.before.event_terminated["dapui_config"] = dapui.close
     dap.listeners.before.event_exited["dapui_config"] = dapui.close
-    -- Install golang specific config
-    -- require("dap-go").setup({})
   end,
 }
