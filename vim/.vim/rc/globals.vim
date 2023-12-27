@@ -1,6 +1,6 @@
 let g:tex_flavor = 'latex'
 
-function Keymap(mod, lhs, rhs) abort
+function KeymapSet(mod, lhs, rhs) abort
   let l:mod = {
         \'normal': 'nnoremap',
         \'insert': 'inoremap',
