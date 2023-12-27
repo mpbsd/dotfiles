@@ -1,4 +1,6 @@
-function KeymapSet(keymaps_table)
+local M = {}
+
+M.keymapset = function(keymaps_table)
   for _, keymap in pairs(keymaps_table) do
     local mod = keymap["mod"]
     local lhs = keymap["lhs"]
@@ -8,13 +10,15 @@ function KeymapSet(keymaps_table)
   end
 end
 
-function P(v)
+M.inspect = function(v)
   print(vim.inspect(v))
   return v
 end
 
 if vim.fn.has("nvim-0.10.0") then
-  Libuv = vim.uv
+  M.libuv = vim.uv
 else
-  Libuv = vim.loop
+  M.libuv = vim.loop
 end
+
+return M

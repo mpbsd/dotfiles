@@ -4,6 +4,7 @@ return {
   build = "make install_jsregexp",
   config = function()
     local ls = require("luasnip")
+    local keymapset = require("mpbsd.core.opts.globals").keymapset
     local snippets_dir = "~/.config/nvim/lua/mpbsd/snip/"
     ls.setup({
       enable_autosnippets  = true,
@@ -12,7 +13,7 @@ return {
       updateevents         = "TextChanged,TextChangedI",
     })
     require("luasnip.loaders.from_lua").load({ paths = snippets_dir })
-    KeymapSet({
+    keymapset({
       {
         mod = "i",
         lhs = "<tab>",

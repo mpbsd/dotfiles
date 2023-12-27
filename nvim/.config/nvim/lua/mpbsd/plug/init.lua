@@ -1,6 +1,8 @@
+local libuv = require("mpbsd.core.opts.globals").libuv
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-if not Libuv.fs_stat(lazypath) then
+if not libuv.fs_stat(lazypath) then
   vim.fn.system {
     "git",
     "clone",

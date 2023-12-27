@@ -345,5 +345,6 @@ local keymaps = {
 }
 -- }}}
 
+local keymapset = require("mpbsd.core.opts.globals").keymapset
 
-KeymapSet(keymaps)
+keymapset(keymaps)

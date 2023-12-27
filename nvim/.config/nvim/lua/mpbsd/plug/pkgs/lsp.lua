@@ -141,6 +141,7 @@ return {
           -- capabilities = require("cmp_nvim_lsp").default_capabilities(client_capabilities),
           on_attach = function(_, bufnr)
             local telescope_builtin = require("telescope.builtin")
+            local keymapset = require("mpbsd.core.opts.globals").keymapset
             -- Create a command `:Format` local to the LSP buffer
             vim.api.nvim_buf_create_user_command(
               bufnr,
@@ -152,7 +153,7 @@ return {
                 desc = "Format current buffer with LSP"
               }
             )
-            KeymapSet({
+            keymapset({
               {
                 mod = "n",
                 lhs = "<leader>df",

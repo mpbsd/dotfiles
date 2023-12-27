@@ -49,6 +49,7 @@ return {
     })
     local builtin = require("telescope.builtin")
     local themes = require("telescope.themes")
+    local keymapset = require("mpbsd.core.opts.globals").keymapset
     telescope.load_extension("bibtex")
     local telescope_live_grep_open_files = function()
       builtin.live_grep({
@@ -56,7 +57,7 @@ return {
         prompt_title = "Live Grep in Open Files",
       })
     end
-    KeymapSet({
+    keymapset({
       {
         mod = "n",
         lhs = "<leader>?",

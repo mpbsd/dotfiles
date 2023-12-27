@@ -10,7 +10,8 @@ return {
     },
     on_attach = function(_, bufnr)
       local gitsigns = require("gitsigns")
-      KeymapSet({
+      local keymapset = require("mpbsd.core.opts.globals").keymapset
+      keymapset({
         {
           mod = "n",
           lhs = "<leader>gp",
