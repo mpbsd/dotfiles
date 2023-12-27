@@ -4,13 +4,13 @@ return {
   build = "make install_jsregexp",
   config = function()
     local ls = require("luasnip")
+    local snippets_dir = "~/.config/nvim/lua/mpbsd/snip/"
     ls.setup({
       enable_autosnippets  = true,
       history              = true,
       store_selection_keys = "<tab>",
       updateevents         = "TextChanged,TextChangedI",
     })
-    local snippets_dir = "~/.config/nvim/lua/mpbsd/snip/"
     require("luasnip.loaders.from_lua").load({ paths = snippets_dir })
     KeymapSet({
       {
@@ -20,7 +20,7 @@ return {
           ls.expand()
         end,
         opt = {
-          desc = "Triggers snippets",
+          desc = "Snippets' trigger",
         }
       },
       {
