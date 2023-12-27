@@ -12,3 +12,9 @@ function P(v)
   print(vim.inspect(v))
   return v
 end
+
+if vim.fn.has("nvim-0.10.0") then
+  Libuv = vim.uv
+else
+  Libuv = vim.loop
+end

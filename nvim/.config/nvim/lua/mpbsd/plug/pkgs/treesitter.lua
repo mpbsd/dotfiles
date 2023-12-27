@@ -26,7 +26,7 @@ return {
         enable = true,
         disable = function(_, buf)
           local max_filesize = 100 * 1024 -- 100 KB
-          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          local ok, stats = pcall(Libuv.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
             return true
           end
@@ -63,24 +63,24 @@ return {
           enable = true,
           set_jumps = true, -- whether to set jumps in the jumplist
           goto_next_start = {
-            ["]m"] = "@function.outer",
             ["]]"] = "@class.outer",
             ["]b"] = "@block.outer",
+            ["]m"] = "@function.outer",
           },
           goto_next_end = {
-            ["]M"] = "@function.outer",
             ["]["] = "@class.outer",
             ["]B"] = "@block.outer",
+            ["]M"] = "@function.outer",
           },
           goto_previous_start = {
-            ["[m"] = "@function.outer",
             ["[["] = "@class.outer",
             ["[b"] = "@block.outer",
+            ["[m"] = "@function.outer",
           },
           goto_previous_end = {
-            ["[M"] = "@function.outer",
             ["[]"] = "@class.outer",
             ["[B"] = "@block.outer",
+            ["[M"] = "@function.outer",
           },
         },
         swap = {
