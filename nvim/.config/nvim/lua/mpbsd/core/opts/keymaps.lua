@@ -1,4 +1,4 @@
-local vim_keymap_set = require("mpbsd.core.opts.globals").vim_keymap_set
+local globals = require("mpbsd.core.opts.globals")
 
 -- keymaps {{{
 local keymaps = {
@@ -347,4 +347,4 @@ local keymaps = {
 }
 -- }}}
 
-vim_keymap_set(keymaps)
+globals.vim_keymap_set(keymaps)
