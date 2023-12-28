@@ -250,7 +250,7 @@ return {
                     {
                       mod = "n",
                       lhs = "<leader>fb",
-                      rhs = vim.lsp.buf.format(),
+                      rhs = vim.lsp.buf.format,
                       opt = {
                         desc = "[F]ormat current [B]uffer with LSP",
                       }
