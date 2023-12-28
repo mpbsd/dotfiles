@@ -10,8 +10,8 @@ return {
     },
     on_attach = function(_, bufnr)
       local gitsigns = require("gitsigns")
-      local keymapset = require("mpbsd.core.opts.globals").keymapset
-      keymapset({
+      local vim_keymap_set = require("mpbsd.core.opts.globals").vim_keymap_set
+      vim_keymap_set({
         {
           mod = "n",
           lhs = "<leader>gp",

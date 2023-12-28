@@ -7,7 +7,7 @@ return {
   config = function()
     local dap = require("dap")
     local dapui = require("dapui")
-    local keymapset = require("mpbsd.core.opts.globals").keymapset
+    local vim_keymap_set = require("mpbsd.core.opts.globals").vim_keymap_set
     require("mason-nvim-dap").setup({
       automatic_setup = true,
       handlers = {},
@@ -98,7 +98,7 @@ return {
         max_value_lines = 100
       }
     })
-    keymapset({
+    vim_keymap_set({
       {
         mod = "n",
         lhs = "<F6>",

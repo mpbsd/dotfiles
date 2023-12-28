@@ -1,6 +1,6 @@
-local M = {}
+local globals = {}
 
-M.keymapset = function(keymaps_table)
+globals.vim_keymap_set = function(keymaps_table)
   for _, keymap in pairs(keymaps_table) do
     local mod = keymap["mod"]
     local lhs = keymap["lhs"]
@@ -10,15 +10,15 @@ M.keymapset = function(keymaps_table)
   end
 end
 
-M.inspect = function(v)
+globals.vim_inspect = function(v)
   print(vim.inspect(v))
   return v
 end
 
-if vim.fn.has("nvim-0.10.0") then
-  M.libuv = vim.uv
+if vim.fn.has("nvim-0.9.4") then
+  globals.vim_uv = vim.loop
 else
-  M.libuv = vim.loop
+  globals.vim_uv = vim.uv
 end
 
-return M
+return globals

@@ -25,9 +25,9 @@ return {
       highlight = {
         enable = true,
         disable = function(_, buf)
+          local vim_uv = require("mpbsd.core.opts.globals").vim_uv
           local max_filesize = 100 * 1024 -- 100 KB
-          local libuv = require("mpbsd.core.opts.globals").libuv
-          local ok, stats = pcall(libuv.fs_stat, vim.api.nvim_buf_get_name(buf))
+          local ok, stats = pcall(vim_uv.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
             return true
           end
