@@ -13,6 +13,7 @@ return {
     telescope.setup(
       {
         defaults = {
+          path_display = "absolute",
           mappings = {
             -- i = {
             --   ["<c-j>"] = actions.move_selection_next,
@@ -23,17 +24,7 @@ return {
         },
         extensions = {
           bibtex = {
-            depth = 1,
-            custom_formats = {},
-            format = "",
             global_files = { "~/.local/share/references/zotero.bib" },
-            search_keys = { "author", "year", "title" },
-            citation_format = "{{author}} ({{year}}), {{title}}.",
-            citation_trim_firstname = true,
-            citation_max_auth = 2,
-            context = false,
-            context_fallback = true,
-            wrap = false,
           },
         },
       }

@@ -204,7 +204,7 @@ local keymaps = {
   },
   {
     mod = "n",
-    lhs = "<leader>sh",
+    lhs = "<leader>s-",
     rhs = ":sp<cr>",
     opt = {
       silent = false,
@@ -214,7 +214,7 @@ local keymaps = {
   },
   {
     mod = "n",
-    lhs = "<leader>sv",
+    lhs = [[<leader>s\]],
     rhs = ":vs<cr>",
     opt = {
       silent = false,

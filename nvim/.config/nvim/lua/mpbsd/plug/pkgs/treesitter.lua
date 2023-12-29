@@ -55,8 +55,8 @@ return {
             enable = true,
             lookahead = true,
             keymaps = {
-              ["ap"] = "@parameter.outer",
-              ["ip"] = "@parameter.inner",
+              ["aa"] = "@parameter.outer",
+              ["ia"] = "@parameter.inner",
               ["a]"] = "@class.outer",
               ["i]"] = "@class.inner",
               ["ab"] = "@block.outer",

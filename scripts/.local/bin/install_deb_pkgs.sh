@@ -111,7 +111,8 @@ declare -a SHELL=(
 # }}}
 # TERMINAL_CLIENTS {{{
 declare -a TERMINAL_CLIENTS=(
-  alacritty
+  # alacritty
+  kitty
 )
 # }}}
 # LATEX {{{
