@@ -16,7 +16,6 @@ local O = {
   relativenumber = true,
   numberwidth = 6,
   colorcolumn = "80",
-  textwidth = 80,
   wrap = true,
   linebreak = true,
   list = false,

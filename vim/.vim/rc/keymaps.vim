@@ -158,13 +158,13 @@ let s:keymaps = [
       \},
       \{
       \    'mod': 'normal',
-      \    'lhs': '<leader>sh',
+      \    'lhs': '<leader>s-',
       \    'rhs': ':sp<cr>',
       \    'des': '[s]plit window [h]orizontally',
       \},
       \{
       \    'mod': 'normal',
-      \    'lhs': '<leader>sv',
+      \    'lhs': '<leader>s\',
       \    'rhs': ':vs<cr>',
       \    'des': '[s]plit window [v]erticaly',
       \},

@@ -188,6 +188,15 @@ snippet '^;eq' "equation environment" rA
 $0
 endsnippet
 
+snippet 'sum;([^;]+);([^;]+);([^;]+);' "summation over an index" rA
+`!p
+index_var = match.group(1)
+lower_ind = match.group(2)
+upper_ind = match.group(3)
+snip.rv = r"\sum_{" + index_var + r"=" + lower_ind + r"}^{" + upper_ind + r"}"
+`$0
+endsnippet
+
 snippet '^my cmds$' "My set of default cmds" rA
 %----------------------------------------------------------------------------------%
 % RIEMANNIAN GEOMETRY                                                              %
