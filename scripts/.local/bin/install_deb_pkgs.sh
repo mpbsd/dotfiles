@@ -98,6 +98,7 @@ declare -a UTILS=(
   ripgrep
   sdcv
   silversearcher-ag
+  thefuck
   tmux
 )
 # }}}
