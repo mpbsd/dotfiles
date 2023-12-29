@@ -5,7 +5,7 @@ source "${HOME}/.config/zsh/rc/path.zsh"
 source "${HOME}/.config/zsh/rc/completion.zsh"
 
 # key bindings
-source "${HOME}/.config/zsh/rc/key_bindings.zsh"
+source "${HOME}/.config/zsh/rc/mappings.zsh"
 
 # history search
 source "${HOME}/.config/zsh/rc/history.zsh"
@@ -41,12 +41,8 @@ then
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 fi
 
-# Custom FZF-functions
-source "${HOME}/.config/zsh/rc/globals.zsh"
-
 # aliases
 source "${HOME}/.config/zsh/zsh_aliases"
 
 # prompt
-# source "${HOME}/.config/zsh/rc/prompt.zsh"
 eval "$(starship init zsh)"
