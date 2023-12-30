@@ -3,14 +3,11 @@ return {
   dependencies = {
     {
       "williamboman/mason.nvim",
-      dependencies = {
-        "williamboman/mason-lspconfig.nvim",
-      },
+      "williamboman/mason-lspconfig.nvim",
     },
     {
       "j-hui/fidget.nvim",
       tag = "legacy",
-      opts = {}
     },
   },
   config = function()

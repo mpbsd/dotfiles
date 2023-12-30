@@ -23,7 +23,7 @@ return {
           },
         },
         extensions = {
-          bibtex = {
+          ["bibtex"] = {
             global_files = { "~/.local/share/references/zotero.bib" },
           },
         },
