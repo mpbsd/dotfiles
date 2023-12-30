@@ -255,7 +255,7 @@ let s:keymaps = [
       \{
       \    'mod': 'normal',
       \    'lhs': '<leader>gs',
-      \    'rhs': ':Git<cr>',
+      \    'rhs': ':tab G<cr>',
       \    'des': '[g]it [s]tatus',
       \},
       \{
@@ -308,7 +308,7 @@ let s:keymaps = [
       \},
       \{
       \    'mod': 'normal',
-      \    'lhs': '<leader>ss',
+      \    'lhs': '<leader>sg',
       \    'rhs': ':Ag<cr>',
       \    'des': '[s]each with [s]ilver searcher (a.k.a. Ag)',
       \},
