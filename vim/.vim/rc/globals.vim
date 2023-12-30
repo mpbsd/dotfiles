@@ -1,5 +1,13 @@
 let g:tex_flavor = 'latex'
 
+let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']
+let g:UltiSnipsExpandTrigger       = '<tab>'
+let g:UltiSnipsJumpForwardTrigger  = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+let g:UltiSnipsEditSplit           = 'tabdo'
+
+let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/'}]
+
 function KeymapSet(mod, lhs, rhs) abort
   let l:mod = {
         \'normal': 'nnoremap',
