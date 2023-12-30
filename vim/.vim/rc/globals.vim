@@ -6,7 +6,14 @@ let g:UltiSnipsJumpForwardTrigger  = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 let g:UltiSnipsEditSplit           = 'tabdo'
 
-let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/'}]
+let s:wiki_1 = {
+      \'path': '~/.local/share/vimwiki/',
+      \'index': 'index',
+      \'syntax': 'default',
+      \'ext': '.wiki',
+      \}
+
+let g:vimwiki_list = [s:wiki_1]
 
 function KeymapSet(mod, lhs, rhs) abort
   let l:mod = {
