@@ -53,6 +53,7 @@ iabbrev capitulo capítulo
 iabbrev caracteristico característico
 iabbrev caracterizacao caracterização
 iabbrev categorica categórica
+iabbrev cha chá
 iabbrev chao chão
 iabbrev ciencia ciência
 iabbrev ciencias ciências
@@ -166,6 +167,7 @@ iabbrev graduacao graduação
 iabbrev graficos gráficos
 iabbrev haviamos havíamos
 iabbrev historia história
+iabbrev homogenea homogênea
 iabbrev horario horário
 iabbrev ime IME
 iabbrev imersao imersão
@@ -237,6 +239,7 @@ iabbrev observacao observação
 iabbrev observacoes observações
 iabbrev obtem obtém
 iabbrev ocasioes ocasiões
+iabbrev oleo óleo
 iabbrev olimpiada olimpíada
 iabbrev oo \infty
 iabbrev opcao opção
@@ -338,3 +341,4 @@ iabbrev versoes versões
 iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
+iabbrev xicara xícara

@@ -98,18 +98,6 @@ let s:keymaps = [
       \},
       \{
       \    'mod': 'normal',
-      \    'lhs': '<leader>esn',
-      \    'rhs': ':edit ~/.vim/rc/snippet.vim<cr>',
-      \    'des': '[e]dit ulti[s][n]ips',
-      \},
-      \{
-      \    'mod': 'normal',
-      \    'lhs': '<leader>ssn',
-      \    'rhs': ':source ~/.vim/rc/snippet.vim<cr>',
-      \    'des': '[s]ource ulti[s][n]ips',
-      \},
-      \{
-      \    'mod': 'normal',
       \    'lhs': '<leader>esp',
       \    'rhs': ':edit ~/.vim/rc/speller.vim<cr>',
       \    'des': '[e]dit [s][p]ell',
@@ -267,7 +255,7 @@ let s:keymaps = [
       \{
       \    'mod': 'normal',
       \    'lhs': '<leader>gs',
-      \    'rhs': ':Git<cr>',
+      \    'rhs': ':tab G<cr>',
       \    'des': '[g]it [s]tatus',
       \},
       \{
@@ -320,7 +308,7 @@ let s:keymaps = [
       \},
       \{
       \    'mod': 'normal',
-      \    'lhs': '<leader>ss',
+      \    'lhs': '<leader>sg',
       \    'rhs': ':Ag<cr>',
       \    'des': '[s]each with [s]ilver searcher (a.k.a. Ag)',
       \},
