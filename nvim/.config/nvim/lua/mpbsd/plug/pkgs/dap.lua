@@ -1,100 +1,100 @@
 return {
-  "mfussenegger/nvim-dap",
+  'mfussenegger/nvim-dap',
   dependencies = {
-    "rcarriga/nvim-dap-ui",
-    "jay-babu/mason-nvim-dap.nvim",
+    'rcarriga/nvim-dap-ui',
+    'jay-babu/mason-nvim-dap.nvim',
   },
   config = function()
-    local dap = require("dap")
-    local dapui = require("dapui")
-    local globals = require("mpbsd.core.opts.globals")
-    require("mason-nvim-dap").setup(
+    local dap = require('dap')
+    local dapui = require('dapui')
+    local globals = require('mpbsd.core.opts.globals')
+    require('mason-nvim-dap').setup(
       {
         automatic_setup = true,
         handlers = {},
         ensure_installed = {
-          "bash",
-          "cppdbg",
-          "python",
+          'bash',
+          'cppdbg',
+          'python',
         },
       }
     )
     dapui.setup(
       {
         controls = {
-          element = "repl",
+          element = 'repl',
           enabled = true,
           icons = {
-            disconnect = "",
-            pause = "",
-            play = "",
-            run_last = "",
-            step_back = "",
-            step_into = "",
-            step_out = "",
-            step_over = "",
-            terminate = ""
+            disconnect = '',
+            pause = '',
+            play = '',
+            run_last = '',
+            step_back = '',
+            step_into = '',
+            step_out = '',
+            step_over = '',
+            terminate = ''
           }
         },
         element_mappings = {},
         expand_lines = true,
         floating = {
-          border = "single",
+          border = 'single',
           mappings = {
-            close = { "q", "<esc>" }
+            close = { 'q', '<esc>' }
           }
         },
         force_buffers = true,
         icons = {
-          collapsed = "",
-          current_frame = "",
-          expanded = ""
+          collapsed = '',
+          current_frame = '',
+          expanded = ''
         },
         layouts = {
           {
             elements = {
               {
-                id = "scopes",
+                id = 'scopes',
                 size = 0.25
               },
               {
-                id = "breakpoints",
+                id = 'breakpoints',
                 size = 0.25
               },
               {
-                id = "stacks",
+                id = 'stacks',
                 size = 0.25
               },
               {
-                id = "watches",
+                id = 'watches',
                 size = 0.25
               }
             },
-            position = "left",
+            position = 'left',
             size = 40
           },
           {
             elements = {
               {
-                id = "repl",
+                id = 'repl',
                 size = 0.5
               },
               {
-                id = "console",
+                id = 'console',
                 size = 0.5
               }
             },
-            position = "bottom",
+            position = 'bottom',
             size = 10
           }
         },
         mappings = {
-          edit = "e",
-          expand = { "<CR>", "<2-LeftMouse>" },
-          open = "o",
-          remove = "d",
-          repl = "r",
-          toggle = "t"
+          edit = 'e',
+          expand = { '<CR>', '<2-LeftMouse>' },
+          open = 'o',
+          remove = 'd',
+          repl = 'r',
+          toggle = 't'
         },
         render = {
           indent = 1,
@@ -105,67 +105,67 @@ return {
     globals.vim_keymap_set(
       {
         {
-          mod = "n",
-          lhs = "<F6>",
+          mod = 'n',
+          lhs = '<F6>',
           rhs = dap.continue,
           opt = {
-            desc = "Debug: Start/Continue",
+            desc = 'Debug: Start/Continue',
           }
         },
         {
-          mod = "n",
-          lhs = "<F7>",
+          mod = 'n',
+          lhs = '<F7>',
           rhs = dap.step_into,
           opt = {
-            desc = "Debug: Step Into",
+            desc = 'Debug: Step Into',
           }
         },
         {
-          mod = "n",
-          lhs = "<F8>",
+          mod = 'n',
+          lhs = '<F8>',
           rhs = dap.step_over,
           opt = {
-            desc = "Debug: Step Over",
+            desc = 'Debug: Step Over',
           }
         },
         {
-          mod = "n",
-          lhs = "<F9>",
+          mod = 'n',
+          lhs = '<F9>',
           rhs = dap.step_out,
           opt = {
-            desc = "Debug: Step Out",
+            desc = 'Debug: Step Out',
           }
         },
         {
-          mod = "n",
-          lhs = "<leader>b",
+          mod = 'n',
+          lhs = '<leader>b',
           rhs = dap.toggle_breakpoint,
           opt = {
-            desc = "Debug: Toggle Breakpoint",
+            desc = 'Debug: Toggle Breakpoint',
           }
         },
         {
-          mod = "n",
-          lhs = "<leader>B",
+          mod = 'n',
+          lhs = '<leader>B',
           rhs = function()
-            dap.set_breakpoint(vim.fn.input "Breakpoint condition: ")
+            dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
           end,
           opt = {
-            desc = "Debug: Set Breakpoint",
+            desc = 'Debug: Set Breakpoint',
           }
         },
         {
-          mod = "n",
-          lhs = "<F10>",
+          mod = 'n',
+          lhs = '<F10>',
           rhs = dapui.toggle,
           opt = {
-            desc = "Debug: See last session result.",
+            desc = 'Debug: See last session result.',
           }
         },
       }
     )
-    dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-    dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-    dap.listeners.before.event_exited["dapui_config"] = dapui.close
+    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+    dap.listeners.before.event_exited['dapui_config'] = dapui.close
   end
 }

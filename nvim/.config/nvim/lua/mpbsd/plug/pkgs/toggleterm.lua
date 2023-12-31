@@ -1,12 +1,7 @@
 return {
-  "akinsho/toggleterm.nvim",
+  'akinsho/toggleterm.nvim',
+  tab = '*',
   config = function()
-    require("toggleterm").setup({
-      open_mapping    = [[<C-\>]],
-      start_in_insert = true,
-      autochdir       = true,
-      direction       = "float",
-      close_on_exit   = true,
-    })
+    require('toggleterm').setup({})
   end
 }

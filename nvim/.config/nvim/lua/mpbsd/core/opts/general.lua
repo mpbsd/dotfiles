@@ -1,10 +1,10 @@
 local G = {
   loaded_perl_provider = 0,
   loaded_ruby_provider = 0,
-  mapleader = ",",
-  maplocalleader = " ",
-  python3_host_prog = "/usr/bin/python3",
-  tex_flavor = "latex",
+  mapleader = ',',
+  maplocalleader = ' ',
+  python3_host_prog = '/usr/bin/python3',
+  tex_flavor = 'latex',
 }
 
 for lhs, rhs in pairs(G) do
@@ -15,7 +15,7 @@ local O = {
   number = true,
   relativenumber = true,
   numberwidth = 6,
-  colorcolumn = "80",
+  colorcolumn = '80',
   wrap = true,
   linebreak = true,
   list = false,
@@ -32,11 +32,11 @@ local O = {
   hlsearch = false,
   splitbelow = true,
   splitright = true,
-  spelllang = { "en_us", "pt_br" },
-  spellsuggest = { "fast", "20" },
+  spelllang = { 'en_us', 'pt_br' },
+  spellsuggest = { 'fast', '20' },
   termguicolors = true,
   undofile = true,
-  clipboard = "unnamedplus",
+  clipboard = 'unnamedplus',
   lazyredraw = true,
 }
 
