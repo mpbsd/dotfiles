@@ -15,7 +15,7 @@ let s:wiki_1 = {
 
 let g:vimwiki_list = [s:wiki_1]
 
-function KeymapSet(mod, lhs, rhs) abort
+function VimKeymapSet(mod, lhs, rhs) abort
   let l:mod = {
         \'normal': 'nnoremap',
         \'insert': 'inoremap',

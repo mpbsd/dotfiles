@@ -362,5 +362,5 @@ for keymap in s:keymaps
   let s:mod = keymap['mod']
   let s:lhs = keymap['lhs']
   let s:rhs = keymap['rhs']
-  sil cal KeymapSet(s:mod, s:lhs, s:rhs)
+  sil cal VimKeymapSet(s:mod, s:lhs, s:rhs)
 endfor
