@@ -1,7 +1,7 @@
 local globals = {}
 
-globals.vim_keymap_set = function(keymaps_table)
-  for _, keymap in pairs(keymaps_table) do
+globals.vim_keymap_set = function(mappings_table)
+  for _, keymap in pairs(mappings_table) do
     local mod = keymap['mod']
     local lhs = keymap['lhs']
     local rhs = keymap['rhs']

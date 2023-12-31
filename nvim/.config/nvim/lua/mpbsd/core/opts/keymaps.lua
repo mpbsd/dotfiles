@@ -1,7 +1,7 @@
 local globals = require('mpbsd.core.opts.globals')
 
--- keymaps {{{
-local keymaps = {
+-- mappings {{{
+local mappings = {
   {
     mod = 'n',
     lhs = '<leader>erc',
@@ -347,4 +347,4 @@ local keymaps = {
 }
 -- }}}
 
-globals.vim_keymap_set(keymaps)
+globals.vim_keymap_set(mappings)
