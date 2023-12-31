@@ -4,12 +4,17 @@
 ADDRESS='https://github.com/ryanoasis/nerd-fonts/releases/download'
 VERSION='v3.1.1'
 
-FONTDIR="${HOME}/.local/share/fonts"
-TMPDIR="${HOME}/downloads"
+FNTDIR="${HOME}/.local/share/fonts"
+TMPDIR="${HOME}/downloads/nerdfonts"
+
+
+[[ -d "${FNTDIR}" ]] || mkdir -p "${FNTDIR}"
+[[ -d "${TMPDIR}" ]] || mkdir -p "${TMPDIR}"
 
 
 # FONTLIST {{{
 declare -a FONTSLIST=(
+  0xProto
   3270
   Agave
   AnonymousPro
@@ -18,33 +23,42 @@ declare -a FONTSLIST=(
   BigBlueTerminal
   BitstreamVeraSansMono
   CascadiaCode
+  CascadiaMono
   CodeNewRoman
   ComicShannsMono
+  CommitMono
   Cousine
+  D2Coding
   DaddyTimeMono
   DejaVuSansMono
   DroidSansMono
+  EnvyCodeR
   FantasqueSansMono
   FiraCode
   FiraMono
-  Gohu
+  GeistMono
   Go-Mono
+  Gohu
   Hack
   Hasklig
   HeavyData
   Hermit
   iA-Writer
   IBMPlexMono
+  Inconsolata
   InconsolataGo
   InconsolataLGC
-  Inconsolata
-  IosevkaTerm
+  IntelOneMono
   Iosevka
+  IosevkaTerm
+  IosevkaTermSlab
   JetBrainsMono
   Lekton
   LiberationMono
   Lilex
+  MartianMono
   Meslo
+  Monaspace
   Monofur
   Monoid
   Mononoki
@@ -61,8 +75,8 @@ declare -a FONTSLIST=(
   SpaceMono
   Terminus
   Tinos
-  UbuntuMono
   Ubuntu
+  UbuntuMono
   VictorMono
 )
 # }}}
@@ -70,12 +84,14 @@ declare -a FONTSLIST=(
 
 for FONTNAME in "${FONTSLIST[@]}"
 do
-  if [ ! -d "${FONTDIR}/${FONTNAME}" ]
+  if [ ! -d "${FNTDIR}/${FONTNAME}" ]
   then
-    mkdir -p ${FONTDIR}/${FONTNAME}
-    wget "${ADDRESS}/${VERSION}/${FONTNAME}.tar.xz" -O ${TMPDIR}/${FONTNAME}.tar.xz
-    tar -xvf ${TMPDIR}/${FONTNAME}.tar.xz -C ${FONTDIR}/${FONTNAME}
-    rm -rf ${TMPDIR}/${FONTNAME}.tar.xz
+    mkdir -p "${FNTDIR}/${FONTNAME}"
+    PKGONLINE="${ADDRESS}/${VERSION}/${FONTNAME}.tar.xz"
+    PKGONDISK="${TMPDIR}/${FONTNAME}.tar.xz"
+    wget "${PKGONLINE}" -O "${PKGONDISK}"
+    tar -xvf "${PKGONDISK}" -C "${FNTDIR}/${FONTNAME}"
+    rm -rf "${PKGONDISK}"
   fi
 done
 
@@ -86,6 +102,7 @@ declare -a TXT_FILES=(
   'Bitstream Vera License.txt'
   'COPYING-LICENSE'
   'LICENCE-FAQ.txt'
+  'LICENCE.md'
   'LICENCE.txt'
   'LICENSE'
   'LICENSE.TXT'
@@ -98,14 +115,13 @@ declare -a TXT_FILES=(
   'SIL Open Font License.txt'
   'Vic Fieger License.txt'
   'license.txt'
-  'readme.md'
 )
 # }}}
 
 
 for FILE in "${TXT_FILES[@]}"
 do
-  find "${FONTDIR}" -type f -name "${FILE}" -delete
+  find "${FNTDIR}" -type f -name "${FILE}" -delete
 done
 
 
