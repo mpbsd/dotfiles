@@ -154,6 +154,7 @@ declare -a SUCKLESS_SOFTWARE=(
   libxft-dev:amd64
   libxinerama-dev:amd64
   libfreetype6-dev:amd64
+  libharfbuzz-dev:amd64
 )
 # }}}
 # ZSA_WALLY {{{
