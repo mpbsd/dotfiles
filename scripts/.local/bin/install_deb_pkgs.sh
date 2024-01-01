@@ -38,7 +38,7 @@ declare -a DATABASE=(
   postgresql-client
   sqlite3
   sqlite3-doc
-  recutils
+  # recutils
 )
 # }}}
 # MAIL_CHAT_AND_NEWS {{{
@@ -112,7 +112,7 @@ declare -a SHELL=(
 # }}}
 # TERMINAL_CLIENTS {{{
 declare -a TERMINAL_CLIENTS=(
-  # alacritty
+  alacritty
   kitty
 )
 # }}}
