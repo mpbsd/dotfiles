@@ -25,7 +25,7 @@ augroup END
 augroup load_abbreviations_based_on_the_filetype
   autocmd!
   autocmd FileType mail setlocal spell
-  autocmd FileType mail,markdown,tex,text source ~/.vim/spell/words.abbr
+  autocmd FileType mail,markdown,tex,text,vimwiki source ~/.vim/spell/words.abbr
 augroup END
 
 augroup remove_duplicates_from_my_wording_lists
