@@ -214,7 +214,7 @@ let s:keymaps = [
       \    'mod': 'normal',
       \    'lhs': '<leader>aw',
       \    'rhs': ':call AddWordUnderCursorToMyWordsList()<cr>',
-      \    'des': '[a]dd the word under the cursor to my words list',
+      \    'des': '[a]dd the [w]ord under the cursor to my words list',
       \},
       \{
       \    'mod': 'normal',
