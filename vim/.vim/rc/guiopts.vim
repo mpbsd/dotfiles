@@ -19,7 +19,7 @@ let s:options = {
       \    'misc': {
       \        't_Co': 256,
       \        'guiheadroom': 0,
-      \        'guifont': "JetBrainsMono\\ Nerd\\ Font\\ Mono\\ 14",
+      \        'guifont': "JetBrainsMono\\ Nerd\\ Font\\ Mono\\ 16",
       \    },
       \},
       \}
@@ -43,8 +43,10 @@ if has('gui_running')
   endfor
 endif
 
-if empty(glob('~/.vim/plugged/seoul256.vim'))
-  colorscheme habamax
-else
-  colorscheme seoul256
-endif
+colorscheme habamax
+
+" if empty(glob('~/.vim/plugged/seoul256.vim'))
+"   colorscheme habamax
+" else
+"   colorscheme seoul256
+" endif
