@@ -87,6 +87,7 @@ iabbrev continua contínua
 iabbrev continuo contínuo
 iabbrev contracao contração
 iabbrev contradicao contradição
+iabbrev contrario contrário
 iabbrev contratil contrátil
 iabbrev contribuicao contribuição
 iabbrev convergencia convergência
@@ -166,6 +167,7 @@ iabbrev gostariamos gostaríamos
 iabbrev graduacao graduação
 iabbrev graficos gráficos
 iabbrev haviamos havíamos
+iabbrev higienico higiênico
 iabbrev historia história
 iabbrev homogenea homogênea
 iabbrev horario horário
@@ -228,6 +230,7 @@ iabbrev multiplos múltiplos
 iabbrev nao não
 iabbrev necessarias necessárias
 iabbrev necessario necessário
+iabbrev necessarios necessários
 iabbrev ninguem ninguém
 iabbrev nocao noção
 iabbrev nocoes noções
@@ -255,6 +258,7 @@ iabbrev parametro parâmetro
 iabbrev particao partição
 iabbrev particoes partições
 iabbrev peco peço
+iabbrev perceptiveis perceptíveis
 iabbrev periodico periódico
 iabbrev permutacao permutação
 iabbrev permutacoes permutações
@@ -265,6 +269,7 @@ iabbrev populacao população
 iabbrev possivel possível
 iabbrev potencia potência
 iabbrev preco preço
+iabbrev preferencias preferências
 iabbrev primaria primária
 iabbrev primario primário
 iabbrev principios princípios
@@ -274,6 +279,7 @@ iabbrev projecao projeção
 iabbrev projecoes projeções
 iabbrev proporcoes proporções
 iabbrev proposicao proposição
+iabbrev proprias próprias
 iabbrev proximo próximo
 iabbrev publicacao publicação
 iabbrev quadratica quadrática

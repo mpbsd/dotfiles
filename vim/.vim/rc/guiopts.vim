@@ -43,10 +43,8 @@ if has('gui_running')
   endfor
 endif
 
-colorscheme habamax
-
-" if empty(glob('~/.vim/plugged/seoul256.vim'))
-"   colorscheme habamax
-" else
-"   colorscheme seoul256
-" endif
+if empty(glob('~/.vim/plugged/seoul256.vim'))
+  colorscheme habamax
+else
+  colorscheme seoul256
+endif

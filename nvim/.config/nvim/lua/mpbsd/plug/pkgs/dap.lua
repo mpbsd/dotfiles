@@ -148,7 +148,7 @@ return {
           mod = 'n',
           lhs = '<leader>B',
           rhs = function()
-            dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+            dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
           end,
           opt = {
             desc = 'Debug: Set Breakpoint',

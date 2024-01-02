@@ -187,7 +187,7 @@ PKGS=(
 )
 # }}}
 
-# LOOP THROUGH PKGS {{{
+
 for PKG in ${PKGS[@]}
 do
   if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s\+/p")" ]
@@ -210,6 +210,6 @@ do
     fi
   fi
 done
-# }}}
+
 
 exit 0

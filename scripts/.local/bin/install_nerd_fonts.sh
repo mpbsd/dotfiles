@@ -125,4 +125,7 @@ do
 done
 
 
+fc-cache -fv
+
+
 exit 0
