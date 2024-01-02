@@ -536,3 +536,37 @@ snippet '^my cmds$' "My set of default cmds" rA
 \newcommand{\hypersurface}{M}                                                      %
 %----------------------------------------------------------------------------------%
 endsnippet
+
+snippet ';vf([a-z])' "Vector field" rA
+`!p
+snip.rv = r"\vectorField{" + match.group(1).upper() + r"}"
+`$0
+endsnippet
+
+snippet ';of([a-z0-9])' "Orthonormal frame" rA
+`!p
+snip.rv = r"\orthonormalFrame{" + match.group(1) + r"}"
+`$0
+endsnippet
+
+snippet ';om([a-z0-9])' "Orthonormal frame in flat metric" rA
+`!p
+snip.rv = r"\orthonormalFrameFlatMetric{" + match.group(1) + r"}"
+`$0
+endsnippet
+
+snippet ';so' "Shape operator" rA
+\shapeOperator$0
+endsnippet
+
+snippet ';sm' "Shape operator in flat space" rA
+\shapeOperatorInFlatSpace$0
+endsnippet
+
+snippet ';gcf' "Gradient field of the conformal factor" rA
+\grad{\conformalFactor}$0
+endsnippet
+
+snippet ';hcf' "Hessian form of the conformal factor" rA
+\hess{\conformalFactor}$0
+endsnippet
