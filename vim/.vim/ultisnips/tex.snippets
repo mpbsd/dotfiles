@@ -537,15 +537,15 @@ snippet '^my cmds$' "My set of default cmds" rA
 %----------------------------------------------------------------------------------%
 endsnippet
 
-snippet ';vf([a-z])' "Vector field" rA
+snippet ';vf([a-z])' "Tangent Vector field" rA
 `!p
-snip.rv = r"\vectorField{" + match.group(1).upper() + r"}"
+snip.rv = r"\tangField{" + match.group(1).upper() + r"}"
 `$0
 endsnippet
 
 snippet ';of([a-z0-9])' "Orthonormal frame" rA
 `!p
-snip.rv = r"\orthonormalFrame{" + match.group(1) + r"}"
+snip.rv = r"\orthoFrame{" + match.group(1) + r"}"
 `$0
 endsnippet
 
@@ -556,7 +556,7 @@ snip.rv = r"\orthonormalFrameFlatMetric{" + match.group(1) + r"}"
 endsnippet
 
 snippet ';so' "Shape operator" rA
-\shapeOperator$0
+\shapeOp$0
 endsnippet
 
 snippet ';sm' "Shape operator in flat space" rA
