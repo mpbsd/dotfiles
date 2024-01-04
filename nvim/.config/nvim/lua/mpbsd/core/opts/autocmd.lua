@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd(
     pattern = { 'tex' },
     callback = function()
       local globals = require('mpbsd.core.opts.globals')
-      local keymaps = {
+      local keymaps = {-- {{{
         {
           mod = 'n',
           lhs = '<localleader>mk',
@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd(
             desc = '[m]ake [f]inal',
           }
         },
-      }
+      }-- }}}
       globals.vim_keymap_set(keymaps)
     end,
     group = 'latex_editing_made_easy',
