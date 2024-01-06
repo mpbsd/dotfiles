@@ -2,7 +2,10 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     {
-      'williamboman/mason.nvim',
+      {
+        'williamboman/mason.nvim',
+        config = true,
+      },
       'williamboman/mason-lspconfig.nvim',
     },
     {
@@ -66,6 +69,7 @@ return {
             version = 'LuaJIT',
           },
           diagnostics = {
+            disable = { 'missing-fields' },
             globals = { 'vim' },
           },
           workspace = {

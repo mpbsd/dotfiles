@@ -1,31 +1,14 @@
-vim.api.nvim_create_augroup('marker_foldmethod', { clear = true })
+local latex_editing_made_easy = vim.api.nvim_create_augroup('latex_editing_made_easy', { clear = true })
+local marker_foldmethod = vim.api.nvim_create_augroup('marker_foldmethod', { clear = true })
+local remove_traling_spaces = vim.api.nvim_create_augroup('remove_traling_spaces', { clear = true })
 
 vim.api.nvim_create_autocmd(
   'FileType',
   {
-    pattern = {
-      'c',
-      'h',
-      'lua',
-      'markdown',
-      'python',
-      'sh',
-      'tex'
-    },
-    command = 'setlocal foldmethod=marker',
-    group = 'marker_foldmethod',
-  }
-)
-
-vim.api.nvim_create_augroup('latex_editing_made_easy', { clear = true })
-
-vim.api.nvim_create_autocmd(
-  'FileType',
-  {
-    pattern = { 'tex' },
+    pattern = { '*.tex' },
     callback = function()
       local globals = require('mpbsd.core.opts.globals')
-      local keymaps = {-- {{{
+      local keymaps = { -- {{{
         {
           mod = 'n',
           lhs = '<localleader>mk',
@@ -62,9 +45,49 @@ vim.api.nvim_create_autocmd(
             desc = '[m]ake [f]inal',
           }
         },
-      }-- }}}
+      } -- }}}
       globals.vim_keymap_set(keymaps)
     end,
-    group = 'latex_editing_made_easy',
+    group = latex_editing_made_easy,
+  }
+)
+
+vim.api.nvim_create_autocmd(
+  'FileType',
+  {
+    pattern = {
+      '*.c',
+      '*.h',
+      '*.lua',
+      '*.markdown',
+      '*.python',
+      '*.sh',
+      '*.tex'
+    },
+    command = 'setlocal foldmethod=marker',
+    group = marker_foldmethod,
+  }
+)
+
+vim.api.nvim_create_autocmd(
+  'BufWritePre',
+  {
+    pattern = {
+      '*.c',
+      '*.h',
+      '*.lua',
+      '*.markdown',
+      '*.python',
+      '*.sh',
+      '*.tex'
+    },
+    callback = function()
+      local pos = vim.fn.getpos('.')
+      local reg = vim.fn.getreg('/')
+      vim.cmd([[%s/\s\+$//e]])
+      vim.fn.setpos('.', pos)
+      vim.fn.setreg('/', reg)
+    end,
+    group = remove_traling_spaces,
   }
 )
