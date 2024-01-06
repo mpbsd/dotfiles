@@ -344,6 +344,15 @@ local mappings = {
       desc    = '[l]azy [s]ync',
     }
   },
+  {
+    mod = 'n',
+    lhs = '<leader>rw',
+    rhs = globals.subs_cword_with_whatever_is_in_reg_zero,
+    opt = {
+      noremap = true,
+      desc = '[r]eplace [w]ord',
+    }
+  },
 }
 -- }}}
 
