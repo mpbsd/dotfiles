@@ -15,7 +15,7 @@ globals.vim_inspect = function(v)
   return v
 end
 
-if vim.fn.has('nvim-0.9.4') then
+if vim.fn.has('nvim-0.9.5') then
   globals.vim_uv = vim.loop
 else
   globals.vim_uv = vim.uv

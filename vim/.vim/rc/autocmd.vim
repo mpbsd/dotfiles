@@ -19,7 +19,7 @@ augroup END
 
 augroup remove_trailing_spaces_on_every_save
   autocmd!
-  autocmd BufWrite *.lua,*.py,*.sh,*.tex,*.txt,*.vim :call RmTrailingSpaces()
+  autocmd BufWritePre *.lua,*.py,*.sh,*.tex,*.txt,*.vim :call RmTrailingSpaces()
 augroup END
 
 augroup load_abbreviations_based_on_the_filetype

@@ -13,7 +13,7 @@ return {
     telescope.setup(
       {
         defaults = {
-          path_display = 'absolute',
+          path_display = { 'tail' },
           mappings = {
             -- i = {
             --   ['<c-j>'] = actions.move_selection_next,
