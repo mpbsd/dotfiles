@@ -551,7 +551,7 @@ endsnippet
 
 snippet ';om([a-z0-9])' "Orthonormal frame in flat metric" rA
 `!p
-snip.rv = r"\orthonormalFrameFlatMetric{" + match.group(1) + r"}"
+snip.rv = r"\orthoFrameFlatMetr{" + match.group(1) + r"}"
 `$0
 endsnippet
 
@@ -560,7 +560,11 @@ snippet ';so' "Shape operator" rA
 endsnippet
 
 snippet ';sm' "Shape operator in flat space" rA
-\shapeOperatorInFlatSpace$0
+\shapeOpFlatMetr$0
+endsnippet
+
+snippet ';cf' "Conformal factor" rA
+\conformalFactor$0
 endsnippet
 
 snippet ';gcf' "Gradient field of the conformal factor" rA
@@ -569,4 +573,24 @@ endsnippet
 
 snippet ';hcf' "Hessian form of the conformal factor" rA
 \hess{\conformalFactor}$0
+endsnippet
+
+snippet ';rm' "Riemannian Metric" rA
+\riemMetr[$1]($2)$0
+endsnippet
+
+snippet ';rc' "Riemannian Connection" rA
+\riemConn[$1]($2)$0
+endsnippet
+
+snippet ';fc' "Flat Connection" rA
+\flatConn[$1]($2)$0
+endsnippet
+
+snippet ';ip' "Inner Product" rA
+\innerProd[$1]($2)$0
+endsnippet
+
+snippet ';gsf' "Gradient Scalar Function" rA
+\gradScalFuncFlatMetric{$1}$0
 endsnippet
