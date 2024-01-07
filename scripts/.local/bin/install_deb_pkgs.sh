@@ -93,6 +93,7 @@ declare -a UTILS=(
   hub
   ledger
   lf
+  neofetch
   plocate
   qpdf
   ripgrep
