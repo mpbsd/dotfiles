@@ -108,5 +108,47 @@ return {
         },
       }
     )
+    local ts_repeatable_move = require('nvim-treesitter.textobjects.repeatable_move')
+    local globals = require('mpbsd.core.opts.globals')
+    globals.vim_keymap_set(
+      {
+        {
+          mod = { 'n', 'x', 'o' },
+          lhs = ';',
+          rhs = ts_repeatable_move.repeat_last_move,
+          opt = {}
+        },
+        {
+          mod = { 'n', 'x', 'o' },
+          lhs = ',',
+          rhs = ts_repeatable_move.repeat_last_move_opposite,
+          opt = {}
+        },
+        {
+          mod = { 'n', 'x', 'o' },
+          lhs = 'f',
+          rhs = ts_repeatable_move.builtin_f,
+          opt = {}
+        },
+        {
+          mod = { 'n', 'x', 'o' },
+          lhs = 'F',
+          rhs = ts_repeatable_move.builtin_F,
+          opt = {}
+        },
+        {
+          mod = { 'n', 'x', 'o' },
+          lhs = 't',
+          rhs = ts_repeatable_move.builtin_t,
+          opt = {}
+        },
+        {
+          mod = { 'n', 'x', 'o' },
+          lhs = 'T',
+          rhs = ts_repeatable_move.builtin_T,
+          opt = {}
+        },
+      }
+    )
   end
 }
