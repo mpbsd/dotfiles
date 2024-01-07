@@ -359,8 +359,19 @@ local mappings = {
     lhs = '<leader>rw',
     rhs = globals.subs_cword_with_whatever_is_in_reg_zero,
     opt = {
+      silent  = false,
       noremap = true,
-      desc = '[r]eplace [w]ord',
+      desc    = '[r]eplace [w]ord',
+    }
+  },
+  {
+    mod = 'n',
+    lhs = '<leader>ilf',
+    rhs = globals.let_mason_install_linters_and_formatters,
+    opt = {
+      silent  = false,
+      noremap = true,
+      desc    = '[i]install [l]inters and [f]ormatters',
     }
   },
 }
