@@ -24,6 +24,28 @@ globals.vim_inspect = function(v)
   return v
 end
 
+globals.let_mason_install_linters_and_formatters = function()
+  local mason_registry = require('mason-registry')
+  local mason_pkgs = {
+    ["linter"] = {
+      'flake8',
+      'misspell',
+      'shellcheck',
+    },
+    ["formatter"] = {
+      'autopep8',
+      'isort',
+    },
+  }
+  for _, pkg_category in pairs(mason_pkgs) do
+    for _, pkg_name in pairs(pkg_category) do
+      if not mason_registry.is_installed(pkg_name) then
+        vim.cmd(':MasonInstall ' .. pkg_name)
+      end
+    end
+  end
+end
+
 if vim.fn.has('nvim-0.9.5') then
   globals.vim_uv = vim.loop
 else
