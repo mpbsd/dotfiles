@@ -69,9 +69,9 @@ return {
           width = 0.8,
           height = 0.9,
           icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
+            package_installed = '✓',
+            package_pending = '➜',
+            package_uninstalled = '✗'
           },
           keymaps = {
             toggle_package_expand = '<CR>',
@@ -97,7 +97,8 @@ return {
     mason_lspconfig.setup_handlers(
       {
         function(server_name)
-          require('lspconfig')[server_name].setup(
+          local lspconfig = require('lspconfig')
+          lspconfig[server_name].setup(
             {
               on_attach = function()
                 local telescope_builtin = require('telescope.builtin')
@@ -283,7 +284,7 @@ return {
           types = true,
           -- installed opt or start plugins in packpath you can also specify the
           -- list of plugins to make available as a workspace library
-          -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+          -- plugins = { 'nvim-treesitter', 'plenary.nvim', 'telescope.nvim' },
           plugins = true,
         },
         -- configures jsonls to provide completion for project specific
@@ -295,14 +296,14 @@ return {
         setup_jsonls = true,
         -- example that overrides the settings for /etc/nixos
         -- override = function(root_dir, library)
-        --   if root_dir:find("/etc/nixos", 1, true) == 1 then
+        --   if root_dir:find('/etc/nixos', 1, true) == 1 then
         --     library.enabled = true
         --     library.plugins = true
         --   end
         -- end,
         -- With lspconfig, Neodev will automatically setup your
         -- lua-language-server If you disable this, then you have to set
-        -- {before_init=require("neodev.lsp").before_init} in your lsp start
+        -- {before_init=require('neodev.lsp').before_init} in your lsp start
         -- options much faster, but needs lua-language-server >= 3.6.0
         lspconfig = true,
         pathStrict = true,
