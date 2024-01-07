@@ -10,12 +10,13 @@ return {
     },
     {
       'j-hui/fidget.nvim',
-      tag = 'legacy',
     },
+    'folke/neodev.nvim',
   },
   config = function()
     local mason = require('mason')
     local mason_lspconfig = require('mason-lspconfig')
+    local neodev = require('neodev')
     mason.setup(
       {
         install_root_dir = vim.fn.stdpath('data') .. '/mason',
@@ -42,9 +43,9 @@ return {
           width = 0.8,
           height = 0.9,
           icons = {
-            package_installed = '◍',
-            package_pending = '◍',
-            package_uninstalled = '◍',
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
           },
           keymaps = {
             toggle_package_expand = '<CR>',
@@ -56,6 +57,8 @@ return {
             uninstall_package = 'X',
             cancel_installation = '<C-c>',
             apply_language_filter = '<C-f>',
+            toggle_package_install_log = '<CR>',
+            toggle_help = 'g?',
           },
         },
       }
@@ -88,6 +91,44 @@ return {
     mason_lspconfig.setup(
       {
         ensure_installed = vim.tbl_keys(servers)
+      }
+    )
+    neodev.setup(
+      {
+        library = {
+          -- when not enabled, neodev will not change any settings to the LSP
+          -- server these settings will be used for your Neovim config directory
+          enabled = true,
+          -- runtime path
+          runtime = true,
+          -- full signature, docs and completion of vim.api, vim.treesitter,
+          -- vim.lsp and others
+          types = true,
+          -- installed opt or start plugins in packpath you can also specify the
+          -- list of plugins to make available as a workspace library
+          -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+          plugins = true,
+        },
+        -- configures jsonls to provide completion for project specific
+        -- .luarc.json files for your Neovim config directory, the
+        -- config.library settings will be used as is for plugin directories
+        -- (root_dirs having a /lua directory), config.library.plugins will be
+        -- disabled for any other directory, config.library.enabled will be set
+        -- to false
+        setup_jsonls = true,
+        -- example that overrides the settings for /etc/nixos
+        -- override = function(root_dir, library)
+        --   if root_dir:find("/etc/nixos", 1, true) == 1 then
+        --     library.enabled = true
+        --     library.plugins = true
+        --   end
+        -- end,
+        -- With lspconfig, Neodev will automatically setup your
+        -- lua-language-server If you disable this, then you have to set
+        -- {before_init=require("neodev.lsp").before_init} in your lsp start
+        -- options much faster, but needs lua-language-server >= 3.6.0
+        lspconfig = true,
+        pathStrict = true,
       }
     )
     mason_lspconfig.setup_handlers(

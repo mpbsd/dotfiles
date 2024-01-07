@@ -77,22 +77,22 @@ return {
             set_jumps = true,
             goto_next_start = {
               [']]'] = '@class.outer',
-              [']b'] = '@block.outer',
+              -- [']b'] = '@block.outer',
               [']m'] = '@function.outer',
             },
             goto_next_end = {
               [']['] = '@class.outer',
-              [']B'] = '@block.outer',
+              -- [']B'] = '@block.outer',
               [']M'] = '@function.outer',
             },
             goto_previous_start = {
               ['[['] = '@class.outer',
-              ['[b'] = '@block.outer',
+              -- ['[b'] = '@block.outer',
               ['[m'] = '@function.outer',
             },
             goto_previous_end = {
               ['[]'] = '@class.outer',
-              ['[B'] = '@block.outer',
+              -- ['[B'] = '@block.outer',
               ['[M'] = '@function.outer',
             },
           },

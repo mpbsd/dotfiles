@@ -13,14 +13,14 @@ return {
     telescope.setup(
       {
         defaults = {
-          path_display = { 'tail' },
-          mappings = {
-            -- i = {
-            --   ['<c-j>'] = actions.move_selection_next,
-            --   ['<c-k>'] = actions.move_selection_previous,
-            --   ['<c-q>'] = actions.send_selected_to_qflist + actions.openqflist,
-            -- },
-          },
+          path_display = { 'absolute' },
+          -- mappings = {
+          --   i = {
+          --     ['<c-j>'] = actions.move_selection_next,
+          --     ['<c-k>'] = actions.move_selection_previous,
+          --     ['<c-q>'] = actions.send_selected_to_qflist + actions.openqflist,
+          --   },
+          -- },
         },
         extensions = {
           ['bibtex'] = {

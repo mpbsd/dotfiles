@@ -7,8 +7,9 @@ return {
   config = function()
     local dap = require('dap')
     local dapui = require('dapui')
+    local mason_nvim_dap = require('mason-nvim-dap')
     local globals = require('mpbsd.core.opts.globals')
-    require('mason-nvim-dap').setup(
+    mason_nvim_dap.setup(
       {
         automatic_setup = true,
         handlers = {},

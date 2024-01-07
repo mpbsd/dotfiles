@@ -346,6 +346,16 @@ local mappings = {
   },
   {
     mod = 'n',
+    lhs = '<leader>ma',
+    rhs = ':Mason<cr>',
+    opt = {
+      silent  = false,
+      noremap = true,
+      desc    = '[m][a]son',
+    }
+  },
+  {
+    mod = 'n',
     lhs = '<leader>rw',
     rhs = globals.subs_cword_with_whatever_is_in_reg_zero,
     opt = {
