@@ -6,7 +6,7 @@ TABLET_ID="$(xsetwacom --list devices | grep -E "${VENDOR_NAME}" | sed "s/\(${VE
 
 if [ -n "${TABLET_ID}" ]
 then
-  xsetwacom --set ${TABLET_ID} Rotate half
+  xsetwacom --set "${TABLET_ID}" Rotate half
 else
   echo "No Wacom tablets found."
 fi

@@ -189,23 +189,23 @@ PKGS=(
 # }}}
 
 
-for PKG in ${PKGS[@]}
+for PKG in "${PKGS[@]}"
 do
   if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s\+/p")" ]
   then
     echo "Found: ${PKG}"
   else
     echo "Package ${PKG} not found. Would you like to install it? (y/N)"
-    read ANSWER
+    read -r ANSWER
     if [ "${ANSWER}" = 'y' ]
     then
       echo 'Proceeding with package installation.'
-      if [ -n "$(echo $PKG | grep -F ':amd64')" ]
+      if [ -n "$(echo "$PKG" | grep -F ':amd64')" ]
       then
-        LIB="$(echo $PKG | sed s/:amd64//)"
-        sudo apt install -y $LIB
+        LIB="$(echo "$PKG" | sed s/:amd64//)"
+        sudo apt install -y "$LIB"
       else
-        sudo apt install -y $PKG
+        sudo apt install -y "$PKG"
       fi
       echo 'Done.'
     fi

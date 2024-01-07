@@ -7,7 +7,7 @@ then
 else
   echo "The 'flatpak' package is not installed."
   echo 'Do you want to install it? (y/N)'
-  read ANSWER
+  read -r ANSWER
   if [ "$ANSWER" = 'y' ]
   then
     echo 'Proceeding with installation.'
@@ -24,7 +24,7 @@ declare -a FLATPAK=(
 )
 
 
-for PKG in ${FLATPAK[@]}
+for PKG in "${FLATPAK[@]}"
 do
   if [ -n "$(flatpak list | grep -E "\<${PKG}\>")" ]
   then
@@ -32,11 +32,11 @@ do
   else
     echo "Flatpak package ${PKG} not found."
     echo 'Would you like to install it? (y/N)'
-    read ANSWER
+    read -r ANSWER
     if [ "$ANSWER" = 'y' ]
     then
       echo 'Proceeding with package installation.'
-      sudo flatpak install $PKG
+      sudo flatpak install "$PKG"
       echo 'Done.'
     fi
   fi

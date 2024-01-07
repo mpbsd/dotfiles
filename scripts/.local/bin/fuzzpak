@@ -7,7 +7,7 @@ CMD=${CMD:-flatpak run}
 launch_app() {
     find "${DIR}" -mindepth 1 -maxdepth 1 \
      -type d -iname "*$1*" -printf '%f\n' \
-    | xargs $CMD
+    | xargs "$CMD"
 }
 
 while [ True ]; do
