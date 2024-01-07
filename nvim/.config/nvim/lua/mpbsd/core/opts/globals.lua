@@ -7,7 +7,6 @@ globals.vim_keymap_set = function(mappings_table)
     local rhs = keymap['rhs']
     local opt = keymap['opt']
     vim.keymap.set(mod, lhs, rhs, opt)
-    -- vim.keymap.set(unpack(keymap))
   end
 end
 
@@ -22,7 +21,6 @@ end
 
 globals.vim_inspect = function(v)
   print(vim.inspect(v))
-  return v
 end
 
 globals.let_mason_install_linters_and_formatters = function()
