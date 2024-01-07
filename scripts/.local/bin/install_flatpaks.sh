@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-if [ -n "$(dpkg -l | grep -E "\<flatpak\>")" ]
+if dpkg -l | grep -qE '\<flatpak\>'
 then
   echo "The 'flatpak' package is already installed."
 else
@@ -26,7 +26,7 @@ declare -a FLATPAK=(
 
 for PKG in "${FLATPAK[@]}"
 do
-  if [ -n "$(flatpak list | grep -E "\<${PKG}\>")" ]
+  if flatpak list | grep -qE "\<${PKG}\>"
   then
     echo "Found: $PKG"
   else

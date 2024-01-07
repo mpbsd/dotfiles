@@ -200,9 +200,10 @@ do
     if [ "${ANSWER}" = 'y' ]
     then
       echo 'Proceeding with package installation.'
-      if [ -n "$(echo "$PKG" | grep -F ':amd64')" ]
+      if echo "$PKG" | grep -qF ':amd64'
       then
-        LIB="$(echo "$PKG" | sed s/:amd64//)"
+        # LIB="$(echo "$PKG" | sed s/:amd64//)"
+        LIB="${PKG//:amd64/}"
         sudo apt install -y "$LIB"
       else
         sudo apt install -y "$PKG"
