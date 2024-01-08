@@ -366,12 +366,12 @@ local mappings = {
   },
   {
     mod = 'n',
-    lhs = '<leader>ilf',
+    lhs = '<leader>milf',
     rhs = globals.let_mason_install_linters_and_formatters,
     opt = {
       silent  = false,
       noremap = true,
-      desc    = '[i]install [l]inters and [f]ormatters',
+      desc    = '[m]ason [i]install [l]inters and [f]ormatters',
     }
   },
 }

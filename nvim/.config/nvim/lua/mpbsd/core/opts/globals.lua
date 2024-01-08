@@ -9,8 +9,8 @@ globals.let_mason_install_linters_and_formatters = function()
       'shellcheck',
     },
     ["formatter"] = {
-      'autopep8',
       'isort',
+      'black',
     },
   }
   for _, pkg_category in pairs(mason_pkgs) do
