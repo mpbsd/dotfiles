@@ -14,13 +14,10 @@ source "${HOME}/.config/zsh/rc/history.zsh"
 source "${HOME}/.config/zsh/rc/vimode.zsh"
 
 # keychain
-if [ "$(uname -s)" = 'Linux' ]
-then
-  source "${HOME}/.config/zsh/rc/keychain.zsh"
-elif [ "$(uname -s)" = 'Darwin' ]
-then
-  ssh-add --apple-load-keychain ~/.ssh/id_rsa_github
-fi
+# if [ "$(uname -s)" = 'Linux' ]
+# then
+#   source "${HOME}/.config/zsh/rc/keychain.zsh"
+# fi
 
 # syntax-highlighting and autosuggestions
 if [ "$(uname -s)" = 'Linux' ]
