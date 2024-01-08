@@ -5,18 +5,12 @@ return {
   config = function()
     local conform = require('conform')
     local globals = require('mpbsd.core.opts.globals')
-    local options = {
-      lsp_fallback = true,
-      async = false,
-      timeout_ms = 1000,
-    }
     conform.setup(
       {
         formatters_by_ft = {
           lua = { 'stylua' },
           python = { 'isort', 'black' },
         },
-        format_on_save = options,
       }
     )
     globals.vim_keymap_set(
@@ -25,7 +19,13 @@ return {
           mod = { 'n', 'v' },
           lhs = '<leader>fc',
           rhs = function()
-            conform.format(options)
+            conform.format(
+              {
+                lsp_fallback = true,
+                async = false,
+                timeout_ms = 1000,
+              }
+            )
           end
         },
       }
