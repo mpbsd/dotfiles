@@ -1,5 +1,5 @@
 return {
-  'mfusseneger/nvim-lint',
+  'mfussenegger/nvim-lint',
   lazy = true,
   event = { 'BufWritePost' },
   config = function()
