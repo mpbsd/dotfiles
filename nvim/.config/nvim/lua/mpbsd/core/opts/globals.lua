@@ -1,28 +1,5 @@
 local globals = {}
 
-globals.vim_keymap_set = function(mappings_table)
-  for _, keymap in pairs(mappings_table) do
-    local mod = keymap['mod']
-    local lhs = keymap['lhs']
-    local rhs = keymap['rhs']
-    local opt = keymap['opt']
-    vim.keymap.set(mod, lhs, rhs, opt)
-  end
-end
-
-globals.subs_cword_with_whatever_is_in_reg_zero = function()
-  local pos = vim.fn.getpos('.')
-  local reg = vim.fn.getreg('0')
-  local cword = vim.fn.expand('<cword>')
-  local cmd = '%s/' .. cword .. '/' .. reg .. '/g'
-  vim.cmd(cmd)
-  vim.fn.setpos('.', pos)
-end
-
-globals.vim_inspect = function(v)
-  print(vim.inspect(v))
-end
-
 globals.let_mason_install_linters_and_formatters = function()
   local mason_registry = require('mason-registry')
   local mason_pkgs = {
@@ -42,6 +19,29 @@ globals.let_mason_install_linters_and_formatters = function()
         vim.cmd(':MasonInstall ' .. pkg_name)
       end
     end
+  end
+end
+
+globals.subs_cword_with_whatever_is_in_reg_zero = function()
+  local pos = vim.fn.getpos('.')
+  local reg = vim.fn.getreg('0')
+  local cword = vim.fn.expand('<cword>')
+  local cmd = '%s/' .. cword .. '/' .. reg .. '/g'
+  vim.cmd(cmd)
+  vim.fn.setpos('.', pos)
+end
+
+globals.vim_inspect = function(v)
+  print(vim.inspect(v))
+end
+
+globals.vim_keymap_set = function(mappings_table)
+  for _, keymap in pairs(mappings_table) do
+    local mod = keymap['mod']
+    local lhs = keymap['lhs']
+    local rhs = keymap['rhs']
+    local opt = keymap['opt']
+    vim.keymap.set(mod, lhs, rhs, opt)
   end
 end
 
