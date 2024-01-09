@@ -7,6 +7,7 @@ globals.let_mason_install_linters_and_formatters = function()
       'flake8',
       'misspell',
       'shellcheck',
+      'vint',
     },
     ["formatter"] = {
       'isort',
