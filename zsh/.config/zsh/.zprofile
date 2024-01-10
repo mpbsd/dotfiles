@@ -6,5 +6,5 @@ then
   [ -f ${HOME}/.keychain/${HOSTNAME}-sh-gpg ] && . ${HOME}/.keychain/${HOSTNAME}-sh-gpg
 elif [ "$(uname -s)" = 'Darwin' ]
 then
-  ssh-add --apple-load-keychain ~/.ssh/id_rsa_github
+  ssh-add --apple-load-keychain ~/.ssh/id_ed25519_github
 fi
