@@ -11,10 +11,10 @@ augroup END
 
 augroup keybindings_for_building_latex_documents
   autocmd!
-  autocmd FileType tex nnoremap <localleader>mk :make<cr>
-  autocmd FileType tex nnoremap <localleader>mb :make bib<cr>
-  autocmd FileType tex nnoremap <localleader>mc :make clean<cr>
-  autocmd FileType tex nnoremap <localleader>mf :make final<cr>
+  autocmd FileType tex nnoremap <leader>mk :make<cr>
+  autocmd FileType tex nnoremap <leader>mb :make bib<cr>
+  autocmd FileType tex nnoremap <leader>mc :make clean<cr>
+  autocmd FileType tex nnoremap <leader>mf :make final<cr>
 augroup END
 
 augroup remove_trailing_spaces_on_every_save
