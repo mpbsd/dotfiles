@@ -14,10 +14,16 @@ source "${HOME}/.config/zsh/rc/history.zsh"
 source "${HOME}/.config/zsh/rc/vimode.zsh"
 
 # keychain
-# if [ "$(uname -s)" = 'Linux' ]
-# then
-#   source "${HOME}/.config/zsh/rc/keychain.zsh"
-# fi
+if [ "$(uname -s)" = 'Linux' ]
+then
+  keychain --nogui id_ed25519_bitbucket id_ed25519_github
+  [ -z "${HOSTNAME}" ] && HOSTNAME=`uname -n`
+  [ -f ${HOME}/.keychain/${HOSTNAME}-sh ] && . ${HOME}/.keychain/${HOSTNAME}-sh
+  [ -f ${HOME}/.keychain/${HOSTNAME}-sh-gpg ] && . ${HOME}/.keychain/${HOSTNAME}-sh-gpg
+elif [ "$(uname -s)" = 'Darwin' ]
+then
+  ssh-add --apple-load-keychain ~/.ssh/id_rsa_github
+fi
 
 # syntax-highlighting and autosuggestions
 if [ "$(uname -s)" = 'Linux' ]
