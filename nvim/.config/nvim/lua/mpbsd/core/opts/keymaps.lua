@@ -274,7 +274,7 @@ local mappings = {
   },
   {
     mod = 'i',
-    lhs = '<leader>tu',
+    lhs = '<localleader>tu',
     rhs = '<esc>mmbgUiw`ma',
     opt = {
       silent = false,
@@ -284,7 +284,7 @@ local mappings = {
   },
   {
     mod = 'i',
-    lhs = '<leader>tl',
+    lhs = '<localleader>tl',
     rhs = '<esc>mmbguiw`ma',
     opt = {
       silent = false,
@@ -294,7 +294,7 @@ local mappings = {
   },
   {
     mod = 'i',
-    lhs = '<leader>cc',
+    lhs = '<localleader>cc',
     rhs = '<esc>mmb~`ma',
     opt = {
       silent = false,
