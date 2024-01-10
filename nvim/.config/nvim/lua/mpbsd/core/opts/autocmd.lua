@@ -5,13 +5,13 @@ local remove_traling_spaces = vim.api.nvim_create_augroup('remove_traling_spaces
 vim.api.nvim_create_autocmd(
   'FileType',
   {
-    pattern = { '*.tex' },
+    pattern = { 'tex' },
     callback = function()
       local globals = require('mpbsd.core.opts.globals')
       local keymaps = { -- {{{
         {
           mod = 'n',
-          lhs = '<localleader>mk',
+          lhs = '<leader>mk',
           rhs = ':make<cr>',
           opt = {
             noremap = true,
@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd(
         },
         {
           mod = 'n',
-          lhs = '<localleader>mb',
+          lhs = '<leader>mb',
           rhs = ':make bib<cr>',
           opt = {
             noremap = true,
@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd(
         },
         {
           mod = 'n',
-          lhs = '<localleader>mc',
+          lhs = '<leader>mc',
           rhs = ':make clean<cr>',
           opt = {
             noremap = true,
@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd(
         },
         {
           mod = 'n',
-          lhs = '<localleader>mf',
+          lhs = '<leader>mf',
           rhs = ':make final<cr>',
           opt = {
             noremap = true,
@@ -74,6 +74,7 @@ vim.api.nvim_create_autocmd(
   {
     pattern = {
       '*.c',
+      '*.csv',
       '*.h',
       '*.lua',
       '*.markdown',

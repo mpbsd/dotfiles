@@ -278,19 +278,19 @@ let s:keymaps = [
       \},
       \{
       \    'mod': 'insert',
-      \    'lhs': '<leader>tu',
+      \    'lhs': '<localleader>tu',
       \    'rhs': '<esc>mmbgUiw`ma',
       \    'des': '[t]o [u]pper case',
       \},
       \{
       \    'mod': 'insert',
-      \    'lhs': '<leader>tl',
+      \    'lhs': '<localleader>tl',
       \    'rhs': '<esc>mmbguiw`ma',
       \    'des': '[t]o [l]ower case',
       \},
       \{
       \    'mod': 'insert',
-      \    'lhs': '<leader>cc',
+      \    'lhs': '<localleader>cc',
       \    'rhs': '<esc>mmb~`ma',
       \    'des': '[c]amel [c]ase',
       \},
