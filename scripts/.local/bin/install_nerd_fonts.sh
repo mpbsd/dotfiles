@@ -1,16 +1,13 @@
 #!/bin/bash
 
-
 ADDRESS='https://github.com/ryanoasis/nerd-fonts/releases/download'
 VERSION='v3.1.1'
 
 FNTDIR="${HOME}/.local/share/fonts"
 TMPDIR="${HOME}/downloads/nerdfonts"
 
-
 [[ -d "${FNTDIR}" ]] || mkdir -p "${FNTDIR}"
 [[ -d "${TMPDIR}" ]] || mkdir -p "${TMPDIR}"
-
 
 # FONTLIST {{{
 declare -a FONTSLIST=(
@@ -81,7 +78,6 @@ declare -a FONTSLIST=(
 )
 # }}}
 
-
 for FONTNAME in "${FONTSLIST[@]}"
 do
   if [ ! -d "${FNTDIR}/${FONTNAME}" ]
@@ -94,7 +90,6 @@ do
     rm -rf "${PKGONDISK}"
   fi
 done
-
 
 # TXT_FILES {{{
 declare -a TXT_FILES=(
@@ -118,14 +113,11 @@ declare -a TXT_FILES=(
 )
 # }}}
 
-
 for FILE in "${TXT_FILES[@]}"
 do
   find "${FNTDIR}" -type f -name "${FILE}" -delete
 done
 
-
 fc-cache -fv
-
 
 exit 0
