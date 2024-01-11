@@ -19,6 +19,12 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup(
   {
     {
+      'folke/neoconf.nvim',
+      cmd = 'Neoconf'
+    },
+    'folke/neodev.nvim',
+    'folke/which-key.nvim',
+    {
       import = 'mpbsd.plug.pkgs'
     },
     {
