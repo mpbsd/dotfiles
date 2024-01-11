@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # author: marcelo barboza <salve.barboza@pm.me>
-# date: 2023-09-07
+# date: 2024-01-11
 
 # TEXT_EDITORS {{{
 declare -a TEXT_EDITORS=(
@@ -11,13 +11,13 @@ declare -a TEXT_EDITORS=(
 )
 # }}}
 # DEVELOPMENT {{{
-declare -a DEVELOPMENT=(
+declare -a C_DEVELOPMENT=(
   build-essential
   gdb
   glibc-doc
   universal-ctags
   podman
-  # valgrind
+  valgrind
 )
 # }}}
 # NODEJS_DEVELOPMENT {{{
@@ -82,7 +82,7 @@ declare -a BLOGGING=(
 )
 # }}}
 # UTILS {{{
-declare -a UTILS=(
+declare -a CORE_UTILS=(
   9base
   bat
   curl
@@ -167,7 +167,7 @@ declare -a ZSA_WALLY=(
 # PACKAGES' LIST {{{
 PKGS=(
   "${TEXT_EDITORS[@]}"
-  "${DEVELOPMENT[@]}"
+  "${C_DEVELOPMENT[@]}"
   "${NODEJS_DEVELOPMENT[@]}"
   "${PYTHON_DEVELOPMENT[@]}"
   "${DATABASE[@]}"
@@ -176,7 +176,7 @@ PKGS=(
   "${FUN_AND_GAMES[@]}"
   "${SECURITY[@]}"
   "${BLOGGING[@]}"
-  "${UTILS[@]}"
+  "${CORE_UTILS[@]}"
   "${SHELL[@]}"
   "${TERMINAL_CLIENTS[@]}"
   "${LATEX[@]}"
@@ -187,7 +187,6 @@ PKGS=(
   "${ZSA_WALLY[@]}"
 )
 # }}}
-
 
 for PKG in "${PKGS[@]}"
 do
@@ -202,7 +201,6 @@ do
       echo 'Proceeding with package installation.'
       if echo "$PKG" | grep -qF ':amd64'
       then
-        # LIB="$(echo "$PKG" | sed s/:amd64//)"
         LIB="${PKG//:amd64/}"
         sudo apt install -y "$LIB"
       else
