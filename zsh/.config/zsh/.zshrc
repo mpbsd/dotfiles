@@ -14,7 +14,7 @@ source "${HOME}/.config/zsh/rc/history.zsh"
 source "${HOME}/.config/zsh/rc/vimode.zsh"
 
 # keychain
-source "${HOME}/.config/zsh/rc/vimode.zsh"
+source "${HOME}/.config/zsh/rc/keychain.zsh"
 
 # syntax-highlighting and autosuggestions
 if [ "$(uname -s)" = 'Linux' ]
