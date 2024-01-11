@@ -23,7 +23,6 @@ require('lazy').setup(
       cmd = 'Neoconf'
     },
     'folke/neodev.nvim',
-    'folke/which-key.nvim',
     {
       import = 'mpbsd.plug.pkgs'
     },
