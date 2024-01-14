@@ -7,78 +7,6 @@ color = "#ffffff"
 command = "None"
 duration = 0
 
-[colors.bright]
-black = "#666666"
-blue = "#7aa6da"
-cyan = "#70c0b1"
-green = "#b9ca4a"
-magenta = "#c397d8"
-red = "#d54e53"
-white = "#eaeaea"
-yellow = "#e7c547"
-
-[colors.cursor]
-cursor = "CellForeground"
-text = "CellBackground"
-
-[colors.dim]
-black = "#131415"
-blue = "#556a7d"
-cyan = "#5b7d78"
-green = "#777c44"
-magenta = "#75617b"
-red = "#864343"
-white = "#828482"
-yellow = "#9e824c"
-
-[colors.footer_bar]
-background = "#c5c8c6"
-foreground = "#1d1f21"
-
-[colors.hints.end]
-background = "#1d1f21"
-foreground = "#e9ff5e"
-
-[colors.hints.start]
-background = "#e9ff5e"
-foreground = "#1d1f21"
-
-[colors.line_indicator]
-background = "None"
-foreground = "None"
-
-[colors.normal]
-black = "#1d1f21"
-blue = "#81a2be"
-cyan = "#8abeb7"
-green = "#b5bd68"
-magenta = "#b294bb"
-red = "#cc6666"
-white = "#c5c8c6"
-yellow = "#f0c674"
-
-[colors.primary]
-background = "#1d1f21"
-bright_foreground = "#eaeaea"
-dim_foreground = "#828482"
-foreground = "#c5c8c6"
-
-[colors.search.focused_match]
-background = "#000000"
-foreground = "#ffffff"
-
-[colors.search.matches]
-background = "#ffffff"
-foreground = "#000000"
-
-[colors.selection]
-background = "CellForeground"
-text = "CellBackground"
-
-[colors.vi_mode_cursor]
-cursor = "CellForeground"
-text = "CellBackground"
-
 [cursor]
 blink_interval = 750
 blink_timeout = 5
@@ -622,7 +550,7 @@ save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [window]
-decorations = "none"
+decorations = "full"
 dynamic_padding = true
 dynamic_title = true
 opacity = 1.0
@@ -640,3 +568,34 @@ y = 8
 [window.position]
 x = 255
 y = 420
+
+# Colors (Gruvbox dark)
+
+# Default colors
+[colors.primary]
+# hard contrast background = = '#1d2021'
+background = '#282828'
+# soft contrast background = = '#32302f'
+foreground = '#ebdbb2'
+
+# Normal colors
+[colors.normal]
+black   = '#282828'
+red     = '#cc241d'
+green   = '#98971a'
+yellow  = '#d79921'
+blue    = '#458588'
+magenta = '#b16286'
+cyan    = '#689d6a'
+white   = '#a89984'
+
+# Bright colors
+[colors.bright]
+black   = '#928374'
+red     = '#fb4934'
+green   = '#b8bb26'
+yellow  = '#fabd2f'
+blue    = '#83a598'
+magenta = '#d3869b'
+cyan    = '#8ec07c'
+white   = '#ebdbb2'
