@@ -3,15 +3,16 @@ local globals = {}
 globals.let_mason_install_linters_and_formatters = function()
   local mason_registry = require('mason-registry')
   local mason_pkgs = {
-    ["linter"] = {
+    ['linter'] = {
       'flake8',
       'misspell',
       'shellcheck',
       'vint',
     },
-    ["formatter"] = {
+    ['formatter'] = {
       'isort',
       'black',
+      'stylua',
     },
   }
   for _, pkg_category in pairs(mason_pkgs) do

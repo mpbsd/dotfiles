@@ -19,9 +19,10 @@ return {
     local mason_lspconfig = require('mason-lspconfig')
     local neodev = require('neodev')
     local language_servers = {
-      bashls = {},
-      clangd = {},
-      lua_ls = {
+      ["bashls"] = {},
+      ["clangd"] = {},
+      ["jsonls"] = {},
+      ["lua_ls"] = {
         Lua = {
           runtime = {
             version = 'LuaJIT',
@@ -39,9 +40,9 @@ return {
           },
         },
       },
-      pylsp = {},
-      texlab = {},
-      vimls = {},
+      ["pylsp"] = {},
+      ["texlab"] = {},
+      ["vimls"] = {},
     }
     mason.setup(
       {
