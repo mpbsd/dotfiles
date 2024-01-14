@@ -42,4 +42,4 @@ fi
 source "${HOME}/.config/zsh/zsh_aliases"
 
 # prompt
-eval "$(starship init zsh)"
+source "${HOME}/.local/share/npm/lib/node_modules/spaceship-prompt/spaceship.zsh"
