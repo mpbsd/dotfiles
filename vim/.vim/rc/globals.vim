@@ -15,13 +15,18 @@ let s:wiki_1 = {
 
 let g:vimwiki_list = [s:wiki_1]
 
-function VimKeymapSet(mod, lhs, rhs) abort
-  let l:mod = {
+function VimKeymapSet(keymaps) abort
+  let l:noremap = {
         \'normal': 'nnoremap',
         \'insert': 'inoremap',
         \}
-  let l:cmd = l:mod[a:mod] . ' ' . a:lhs . ' ' . a:rhs
-  exe l:cmd
+  for keymap in a:keymaps
+    let l:mod = keymap['mod']
+    let l:lhs = keymap['lhs']
+    let l:rhs = keymap['rhs']
+    let l:cmd = l:noremap[l:mod] . ' ' . l:lhs . ' ' . l:rhs
+    exe l:cmd
+  endfor
 endfunction
 
 function SpecialCharactersHandler() abort
