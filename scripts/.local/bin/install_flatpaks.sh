@@ -1,6 +1,10 @@
 #!/usr/bin/bash
 
 
+FLATPAK_REPO='https://flathub.org/repo/flathub.flatpakrepo'
+
+
+# install the flatpak package {{{
 if dpkg -l | grep -qE '\<flatpak\>'
 then
   echo "The 'flatpak' package is already installed."
@@ -8,35 +12,36 @@ else
   echo "The 'flatpak' package is not installed."
   echo 'Do you want to install it? (y/N)'
   read -r ANSWER
-  if [ "$ANSWER" = 'y' ]
+  if [ "${ANSWER}" = 'y' ]
   then
     echo 'Proceeding with installation.'
     sudo apt install -y flatpak
-    sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    sudo flatpak remote-add --if-not-exists flathub "${FLATPAK_REPO}"
   fi
 fi
+# }}}
 
 
-declare -a FLATPAK=(
+declare -a FLATPAKS=(# {{{
   com.brave.Browser
   com.spotify.Client
   org.zotero.Zotero
-)
+)# }}}
 
 
-for PKG in "${FLATPAK[@]}"
+for FLATPAK in "${FLATPAKS[@]}"
 do
-  if flatpak list | grep -qE "\<${PKG}\>"
+  if flatpak list | grep -qE "\<${FLATPAK}\>"
   then
-    echo "Found: $PKG"
+    echo "Found: ${FLATPAK}"
   else
-    echo "Flatpak package ${PKG} not found."
+    echo "Flatpak package ${FLATPAK} not found."
     echo 'Would you like to install it? (y/N)'
     read -r ANSWER
-    if [ "$ANSWER" = 'y' ]
+    if [ "${ANSWER}" = 'y' ]
     then
       echo 'Proceeding with package installation.'
-      sudo flatpak install "$PKG"
+      sudo flatpak install "${FLATPAK}"
       echo 'Done.'
     fi
   fi

@@ -120,4 +120,6 @@ done
 
 fc-cache -fv
 
+[[ -d "${TMPDIR}" ]] && rm -rf "${TMPDIR}"
+
 exit 0
