@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 
 FLATPAK_REPO='https://flathub.org/repo/flathub.flatpakrepo'

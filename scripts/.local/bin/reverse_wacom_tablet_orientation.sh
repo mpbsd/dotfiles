@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 VENDOR_NAME='Wacom One by Wacom S Pen stylus'
 DEVICE_TYPE='type: STYLUS'

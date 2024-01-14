@@ -1,10 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ADDRESS='https://github.com/ryanoasis/nerd-fonts/releases/download'
 VERSION='v3.1.1'
 
 FNTDIR="${HOME}/.local/share/fonts"
 TMPDIR="${HOME}/downloads/nerdfonts"
+
+SYSTEM="$(uname -s)"
 
 [[ -d "${FNTDIR}" ]] || mkdir -p "${FNTDIR}"
 [[ -d "${TMPDIR}" ]] || mkdir -p "${TMPDIR}"
@@ -86,7 +88,13 @@ do
     PKGONLINE="${ADDRESS}/${VERSION}/${FONTNAME}.tar.xz"
     PKGONDISK="${TMPDIR}/${FONTNAME}.tar.xz"
     wget "${PKGONLINE}" -O "${PKGONDISK}"
-    tar -xvf "${PKGONDISK}" -C "${FNTDIR}/${FONTNAME}"
+    if [ "${SYSTEM}" = 'Linux' ]
+    then
+      tar -xvf "${PKGONDISK}" -C "${FNTDIR}/${FONTNAME}"
+    elif [ "${SYSTEM}" = 'OpenBSD' ]
+    then
+      xzcat "${PKGONDISK}" | tar xvf - -C "${FNTDIR}/${FONTNAME}"
+    fi
     rm -rf "${PKGONDISK}"
   fi
 done
