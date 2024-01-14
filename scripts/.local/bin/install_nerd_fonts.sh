@@ -6,8 +6,6 @@ VERSION='v3.1.1'
 FNTDIR="${HOME}/.local/share/fonts"
 TMPDIR="${HOME}/downloads/nerdfonts"
 
-SYSTEM="$(uname -s)"
-
 [[ -d "${FNTDIR}" ]] || mkdir -p "${FNTDIR}"
 [[ -d "${TMPDIR}" ]] || mkdir -p "${TMPDIR}"
 
@@ -88,13 +86,7 @@ do
     PKGONLINE="${ADDRESS}/${VERSION}/${FONTNAME}.tar.xz"
     PKGONDISK="${TMPDIR}/${FONTNAME}.tar.xz"
     wget "${PKGONLINE}" -O "${PKGONDISK}"
-    if [ "${SYSTEM}" = 'Linux' ]
-    then
-      tar -xvf "${PKGONDISK}" -C "${FNTDIR}/${FONTNAME}"
-    elif [ "${SYSTEM}" = 'OpenBSD' ]
-    then
-      xzcat "${PKGONDISK}" | tar xvf - -C "${FNTDIR}/${FONTNAME}"
-    fi
+    xzcat "${PKGONDISK}" | tar xvf - -C "${FNTDIR}/${FONTNAME}"
     rm -rf "${PKGONDISK}"
   fi
 done
