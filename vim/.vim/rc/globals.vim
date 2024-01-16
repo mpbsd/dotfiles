@@ -19,6 +19,7 @@ function VimKeymapSet(keymaps) abort
   let l:noremap = {
         \'normal': 'nnoremap',
         \'insert': 'inoremap',
+        \'visual': 'vnoremap',
         \}
   for keymap in a:keymaps
     let l:mod = keymap['mod']

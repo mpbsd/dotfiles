@@ -121,6 +121,12 @@ let s:keymaps = [
       \    'des': 'get into command mode without hitting the shift key',
       \},
       \{
+      \    'mod': 'visual',
+      \    'lhs': '<leader>;',
+      \    'rhs': ':',
+      \    'des': 'get into command mode without hitting the shift key',
+      \},
+      \{
       \    'mod': 'normal',
       \    'lhs': '<leader>w;',
       \    'rhs': ':w<cr>',

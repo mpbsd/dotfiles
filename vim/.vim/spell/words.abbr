@@ -72,6 +72,7 @@ iabbrev combinatoria combinatória
 iabbrev comecar começar
 iabbrev composicao composição
 iabbrev composicoes composições
+iabbrev compreensao compreensão
 iabbrev computacao computação
 iabbrev comunicacao comunicação
 iabbrev concluimos concluímos
@@ -147,6 +148,7 @@ iabbrev evolucao evolução
 iabbrev exercicio exercício
 iabbrev existencia existência
 iabbrev expansao expansão
+iabbrev experiencia experiência
 iabbrev explicita explícita
 iabbrev expressao expressão
 iabbrev extensao extensão
@@ -336,6 +338,7 @@ iabbrev unica única
 iabbrev unico único
 iabbrev unioes uniões
 iabbrev usuario usuário
+iabbrev usuarios usuários
 iabbrev uteis úteis
 iabbrev valida válida
 iabbrev variancia variância
@@ -344,11 +347,8 @@ iabbrev varios vários
 iabbrev velorio velório
 iabbrev versao versão
 iabbrev versoes versões
+iabbrev visualizacao visualização
 iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
 iabbrev xicara xícara
-iabbrev usuarios usuários
-iabbrev usuarios usuários
-iabbrev visualizacao visualização
-iabbrev experiencia experiência
