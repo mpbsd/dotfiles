@@ -10,7 +10,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[e]dit vim[r][c]',
-    }
+    },
   },
   {
     mod = 'n',
@@ -20,7 +20,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[e]dit [a]uto[c]ommands',
-    }
+    },
   },
   {
     mod = 'n',
@@ -30,7 +30,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[e]dit [g]lo[b]al resources',
-    }
+    },
   },
   {
     mod = 'n',
@@ -40,7 +40,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[e]dit [k]ey[m]aps',
-    }
+    },
   },
   {
     mod = 'n',
@@ -50,7 +50,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[e]dit [o][p]tions',
-    }
+    },
   },
   {
     mod = 'n',
@@ -60,7 +60,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[e]dit [p]lu[g]ins',
-    }
+    },
   },
   {
     mod = 'n',
@@ -70,7 +70,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[s]ource vim[r][c]',
-    }
+    },
   },
   {
     mod = 'n',
@@ -80,7 +80,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[s]ource [a]uto[c]ommands',
-    }
+    },
   },
   {
     mod = 'n',
@@ -90,7 +90,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[s]ource [g]lo[b]al resources',
-    }
+    },
   },
   {
     mod = 'n',
@@ -100,7 +100,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[s]ource [k]ey[m]aps',
-    }
+    },
   },
   {
     mod = 'n',
@@ -110,7 +110,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[s]ource [o][p]tions',
-    }
+    },
   },
   {
     mod = 'n',
@@ -120,17 +120,17 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[s]ource [p]lu[g]ins',
-    }
+    },
   },
   {
-    mod = 'n',
+    mod = { 'n', 'v' },
     lhs = '<leader>;',
     rhs = ':',
     opt = {
       silent = false,
       noremap = true,
       desc = 'get into command mode without hitting the shift key',
-    }
+    },
   },
   {
     mod = 'i',
@@ -140,7 +140,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'back to normal mode from insert mode',
-    }
+    },
   },
   {
     mod = 'n',
@@ -150,7 +150,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[w]ri[t]e',
-    }
+    },
   },
   {
     mod = 'n',
@@ -160,7 +160,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[q][u]it',
-    }
+    },
   },
   {
     mod = 'n',
@@ -170,7 +170,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'move focus to the left window',
-    }
+    },
   },
   {
     mod = 'n',
@@ -180,7 +180,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'move focus to the window below',
-    }
+    },
   },
   {
     mod = 'n',
@@ -190,7 +190,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'move focus to the window above',
-    }
+    },
   },
   {
     mod = 'n',
@@ -200,7 +200,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'move focus to the right window',
-    }
+    },
   },
   {
     mod = 'n',
@@ -210,7 +210,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[s]plit window [h]orizontally',
-    }
+    },
   },
   {
     mod = 'n',
@@ -220,7 +220,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[s]plit window [v]erticaly',
-    }
+    },
   },
   {
     mod = 'n',
@@ -230,7 +230,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'increase window width',
-    }
+    },
   },
   {
     mod = 'n',
@@ -240,7 +240,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'decrease window height',
-    }
+    },
   },
   {
     mod = 'n',
@@ -250,7 +250,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'increase window height',
-    }
+    },
   },
   {
     mod = 'n',
@@ -260,7 +260,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'decrease window width',
-    }
+    },
   },
   {
     mod = 'n',
@@ -270,7 +270,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[g]it [s]tatus',
-    }
+    },
   },
   {
     mod = 'i',
@@ -280,7 +280,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[t]o [u]pper case',
-    }
+    },
   },
   {
     mod = 'i',
@@ -290,7 +290,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[t]o [l]ower case',
-    }
+    },
   },
   {
     mod = 'i',
@@ -300,7 +300,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = '[c]amel [c]ase',
-    }
+    },
   },
   {
     mod = 'n',
@@ -310,7 +310,7 @@ local mappings = {
       silent = false,
       noremap = true,
       desc = 'open [h]elp in another [t]ab',
-    }
+    },
   },
   {
     mod = 'n',
@@ -339,40 +339,40 @@ local mappings = {
       pcall(require('lazy').sync)
     end,
     opt = {
-      silent  = false,
+      silent = false,
       noremap = true,
-      desc    = '[l]azy [s]ync',
-    }
+      desc = '[l]azy [s]ync',
+    },
   },
   {
     mod = 'n',
     lhs = '<leader>ma',
     rhs = ':Mason<cr>',
     opt = {
-      silent  = false,
+      silent = false,
       noremap = true,
-      desc    = '[m][a]son',
-    }
+      desc = '[m][a]son',
+    },
   },
   {
     mod = 'n',
     lhs = '<leader>rw',
     rhs = globals.subs_cword_with_whatever_is_in_reg_zero,
     opt = {
-      silent  = false,
+      silent = false,
       noremap = true,
-      desc    = '[r]eplace [w]ord',
-    }
+      desc = '[r]eplace [w]ord',
+    },
   },
   {
     mod = 'n',
     lhs = '<leader>milf',
     rhs = globals.let_mason_install_linters_and_formatters,
     opt = {
-      silent  = false,
+      silent = false,
       noremap = true,
-      desc    = '[m]ason [i]install [l]inters and [f]ormatters',
-    }
+      desc = '[m]ason [i]install [l]inters and [f]ormatters',
+    },
   },
 }
 -- }}}
