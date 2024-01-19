@@ -344,6 +344,30 @@ let s:keymaps = [
       \},
       \{
       \    'mod': 'normal',
+      \    'lhs': '<leader>ch',
+      \    'rhs': ':colorscheme habamax<cr>',
+      \    'des': '[c]olorscheme [h]abamax',
+      \},
+      \{
+      \    'mod': 'normal',
+      \    'lhs': '<leader>cl',
+      \    'rhs': ':colorscheme lunaperche<cr>',
+      \    'des': '[c]olorscheme [l]unaperche',
+      \},
+      \{
+      \    'mod': 'normal',
+      \    'lhs': '<leader>cs',
+      \    'rhs': ':colorscheme slate<cr>',
+      \    'des': '[c]olorscheme [s]late',
+      \},
+      \{
+      \    'mod': 'normal',
+      \    'lhs': '<leader>cq',
+      \    'rhs': ':colorscheme quiet<cr>',
+      \    'des': '[c]olorscheme [q]uiet',
+      \},
+      \{
+      \    'mod': 'normal',
       \    'lhs': '<leader>cd',
       \    'rhs': ':%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>',
       \    'des': '[c]hange the capitalization of [d][aeo]s?',

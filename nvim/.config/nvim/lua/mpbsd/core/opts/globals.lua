@@ -12,7 +12,6 @@ globals.let_mason_install_linters_and_formatters = function()
     ['formatter'] = {
       'isort',
       'black',
-      'stylua',
     },
   }
   for _, pkg_category in pairs(mason_pkgs) do

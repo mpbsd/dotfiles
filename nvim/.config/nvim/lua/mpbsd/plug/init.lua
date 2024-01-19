@@ -26,12 +26,6 @@ require('lazy').setup(
     {
       import = 'mpbsd.plug.pkgs'
     },
-    {
-      import = 'mpbsd.plug.pkgs.dap'
-    },
-    {
-      import = 'mpbsd.plug.pkgs.lsp'
-    },
   },
   {
     checker = {

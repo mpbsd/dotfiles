@@ -163,6 +163,15 @@ declare -a ZSA_WALLY=(
   libusb-1.0-0-dev:amd64
 )
 # }}}
+# QMK {{{
+declare -a QMK=(
+  gcc-arm-none-eabi
+  gcc-avr
+  avrdude
+  dfu-programmer
+  dfu-util
+)
+# }}}
 
 # PACKAGES' LIST {{{
 PKGS=(
@@ -185,6 +194,7 @@ PKGS=(
   "${NEOVIM_BUILD_REQUIREMENTS[@]}"
   "${SUCKLESS_SOFTWARE[@]}"
   "${ZSA_WALLY[@]}"
+  "${QMK[@]}"
 )
 # }}}
 
