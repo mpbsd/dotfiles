@@ -7,26 +7,26 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 let g:UltiSnipsEditSplit           = 'tabdo'
 
 let s:wiki1 = {
-      \'path': '~/.local/share/vimwiki/wiki1/',
-      \'index': 'index',
-      \'syntax': 'default',
-      \'ext': '.wiki',
+      \  'path': '~/.local/share/vimwiki/wiki1/',
+      \  'index': 'index',
+      \  'syntax': 'default',
+      \  'ext': '.wiki',
       \}
 
 let s:wiki2 = {
-      \'path': '~/.local/share/vimwiki/wiki2/',
-      \'index': 'index',
-      \'syntax': 'default',
-      \'ext': '.wiki',
+      \  'path': '~/.local/share/vimwiki/wiki2/',
+      \  'index': 'index',
+      \  'syntax': 'default',
+      \  'ext': '.wiki',
       \}
 
 let g:vimwiki_list = [s:wiki1, s:wiki2]
 
 function VimKeymapSet(keymaps) abort
   let l:noremap = {
-        \'normal': 'nnoremap',
-        \'insert': 'inoremap',
-        \'visual': 'vnoremap',
+        \  'normal': 'nnoremap',
+        \  'insert': 'inoremap',
+        \  'visual': 'vnoremap',
         \}
   for keymap in a:keymaps
     let l:mod = keymap['mod']
@@ -238,4 +238,56 @@ function ShowVimMode() abort
   if has_key(modes_description, l:mod)
     return modes_description[l:mod]['mod']
   endif
+endfunction
+
+function MyStatusLine() abort
+  " options {{{
+  let stl_opt = {
+        \  'lhs': [
+        \    {
+        \      'cmd': '[%n]',
+        \      'des': 'buffer number',
+        \    },
+        \    {
+        \      'cmd': '%{ShowVimMode()}',
+        \      'des': 'mode',
+        \    },
+        \    {
+        \      'cmd': '%t',
+        \      'des': 'tail of the file in the buffer',
+        \    },
+        \  ],
+        \  'sep': [
+        \    {
+        \      'cmd': '%=',
+        \      'des': 'lhs/rhs separator',
+        \    },
+        \  ],
+        \  'rhs': [
+        \    {
+        \      'cmd': '%{&fenc}',
+        \      'des': 'file encoding',
+        \    },
+        \    {
+        \      'cmd': '%{&ff}',
+        \      'des': 'file format',
+        \    },
+        \    {
+        \      'cmd': '%Y',
+        \      'des': 'type of file in the buffer',
+        \    },
+        \    {
+        \      'cmd': '(%06l,%06v)',
+        \      'des': 'line and column numbers',
+        \    },
+        \  ],
+        \}
+  " }}}
+  let l:stl = []
+  for stl_categ in ['lhs', 'sep', 'rhs']
+    for stl_obj in stl_opt[stl_categ]
+      call add(l:stl, stl_obj['cmd'])
+    endfor
+  endfor
+  return join(l:stl)
 endfunction

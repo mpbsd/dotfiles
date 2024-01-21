@@ -4,7 +4,7 @@ let s:options = {
       \    'numberwidth': 6,
       \    'colorcolumn': 80,
       \    'background': 'dark',
-      \    'statusline': "[\%n]\\ %{ShowVimMode()}\\ \%t\\ \%m\%=\%{&fenc}\\ \%{&ff}\\ \%Y\\ (\%06l,\%06v)",
+      \    'statusline': '%!MyStatusLine()',
       \    'fillchars': "vert:\\|,fold:.,foldsep:\\|",
       \  },
       \  'grpx': {
