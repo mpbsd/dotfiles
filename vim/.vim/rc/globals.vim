@@ -174,7 +174,7 @@ function MyStatusLine() abort
         \    },
         \    {
         \      'cmd': '%{ShowVimMode()}',
-        \      'des': 'mode',
+        \      'des': 'current mode',
         \    },
         \    {
         \      'cmd': '%t',
