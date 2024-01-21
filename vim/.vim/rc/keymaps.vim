@@ -350,6 +350,12 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
+      \    'lhs': '<leader>c6',
+      \    'rhs': ':colorscheme seoul256<cr>',
+      \    'des': '[c]olorscheme [s]eoul256',
+      \  },
+      \  {
+      \    'mod': 'normal',
       \    'lhs': '<leader>cs',
       \    'rhs': ':colorscheme slate<cr>',
       \    'des': '[c]olorscheme [s]late',
