@@ -98,18 +98,6 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>esp',
-      \    'rhs': ':edit ~/.vim/rc/speller.vim<cr>',
-      \    'des': '[e]dit [s][p]ell',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>ssp',
-      \    'rhs': ':source ~/.vim/rc/speller.vim<cr>',
-      \    'des': '[s]ource [s][p]ell',
-      \  },
-      \  {
-      \    'mod': 'normal',
       \    'lhs': '<leader>;',
       \    'rhs': ':',
       \    'des': 'get into command mode without hitting the shift key',

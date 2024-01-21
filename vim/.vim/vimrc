@@ -9,7 +9,6 @@ let s:rc_filenames = [
       \  'options',
       \  'keymaps',
       \  'plugins',
-      \  'speller',
       \  'autocmd',
       \  'guiopts',
       \]
