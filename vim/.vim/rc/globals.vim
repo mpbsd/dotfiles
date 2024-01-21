@@ -88,3 +88,154 @@ function InstallMissingPlugins() abort
     PlugInstall --sync
   endif
 endfunction
+
+function ShowVimMode() abort
+  " modes description {{{
+  let l:modes_description = {
+        \  'n': {
+        \    'mod': 'NORMAL',
+        \    'des': 'Normal',
+        \  },
+        \  'no': {
+        \    'mod': 'O-PENDING',
+        \    'des': 'Operator-pending',
+        \  },
+        \  'nov': {
+        \    'mod': 'O-PENDING',
+        \    'des': 'Operator-pending (forced characterwise |o_v|)',
+        \  },
+        \  'noV': {
+        \    'mod': 'O-PENDING',
+        \    'des': 'Operator-pending (forced linewise |o_V|)',
+        \  },
+        \  'noCTRL-V': {
+        \    'mod': 'O-PENDING',
+        \    'des': 'Operator-pending (forced blockwise |o_CTRL-V|);',
+        \  },
+        \  'niI': {
+        \    'mod': 'NORMAL',
+        \    'des': 'Normal using |i_CTRL-O| in |Insert-mode|',
+        \  },
+        \  'niR': {
+        \    'mod': 'NORMAL',
+        \    'des': 'Normal using |i_CTRL-O| in |Replace-mode|',
+        \  },
+        \  'niV': {
+        \    'mod': 'NORMAL',
+        \    'des': 'Normal using |i_CTRL-O| in |Virtual-Replace-mode|',
+        \  },
+        \  'nt': {
+        \    'mod': 'NORMAL',
+        \    'des': 'Terminal-Normal (insert goes to Terminal-Job mode)',
+        \  },
+        \  'v': {
+        \    'mod': 'VISUAL',
+        \    'des': 'Visual by character',
+        \  },
+        \  'vs': {
+        \    'mod': 'VISUAL',
+        \    'des': 'Visual by character using |v_CTRL-O| in Select mode',
+        \  },
+        \  'V': {
+        \    'mod': 'VISUAL',
+        \    'des': 'Visual by line',
+        \  },
+        \  'Vs': {
+        \    'mod': 'VISUAL',
+        \    'des': 'Visual by line using |v_CTRL-O| in Select mode',
+        \  },
+        \  'CTRL-V': {
+        \    'mod': 'VISUAL',
+        \    'des': 'Visual blockwise',
+        \  },
+        \  'CTRL-Vs': {
+        \    'mod': 'VISUAL',
+        \    'des': 'Visual blockwise using |v_CTRL-O| in Select mode',
+        \  },
+        \  's': {
+        \    'mod': 'SELECT',
+        \    'des': 'Select by character',
+        \  },
+        \  'S': {
+        \    'mod': 'SELECT',
+        \    'des': 'Select by line',
+        \  },
+        \  'CTRL-S': {
+        \    'mod': 'SELECT',
+        \    'des': 'Select blockwise',
+        \  },
+        \  'i': {
+        \    'mod': 'INSERT',
+        \    'des': 'Insert',
+        \  },
+        \  'ic': {
+        \    'mod': 'INSERT',
+        \    'des': 'Insert mode completion |compl-generic|',
+        \  },
+        \  'ix': {
+        \    'mod': 'INSERT',
+        \    'des': 'Insert mode |i_CTRL-X| completion',
+        \  },
+        \  'R': {
+        \    'mod': 'REPLACE',
+        \    'des': 'Replace |R|',
+        \  },
+        \  'Rc': {
+        \    'mod': 'REPLACE',
+        \    'des': 'Replace mode completion |compl-generic|',
+        \  },
+        \  'Rx': {
+        \    'mod': 'REPLACE',
+        \    'des': 'Replace mode |i_CTRL-X| completion',
+        \  },
+        \  'Rv': {
+        \    'mod': 'REPLACE',
+        \    'des': 'Virtual Replace |gR|',
+        \  },
+        \  'Rvc': {
+        \    'mod': 'REPLACE',
+        \    'des': 'Virtual Replace mode completion |compl-generic|',
+        \  },
+        \  'Rvx': {
+        \    'mod': 'REPLACE',
+        \    'des': 'Virtual Replace mode |i_CTRL-X| completion',
+        \  },
+        \  'c': {
+        \    'mod': 'COMMAND',
+        \    'des': 'Command-line editing',
+        \  },
+        \  'cv': {
+        \    'mod': 'COMMAND',
+        \    'des': 'Vim Ex mode |gQ|',
+        \  },
+        \  'ce': {
+        \    'mod': 'COMMAND',
+        \    'des': 'Normal Ex mode |Q|',
+        \  },
+        \  'r': {
+        \    'mod': 'PROMPT',
+        \    'des': 'Hit-enter prompt',
+        \  },
+        \  'rm': {
+        \    'mod': 'PROMPT',
+        \    'des': 'The -- more -- prompt',
+        \  },
+        \  'r?': {
+        \    'mod': 'CONFIRM',
+        \    'des': 'A |:confirm| query of some sort',
+        \  },
+        \  '!': {
+        \    'mod': 'EXTERNAL',
+        \    'des': 'Shell or external command is executing',
+        \  },
+        \  't': {
+        \    'mod': 'TERMINAL',
+        \    'des': 'Terminal-Job mode: keys go to the job',
+        \  },
+        \}
+  " }}}
+  let l:mod = mode()
+  if has_key(modes_description, l:mod)
+    return modes_description[l:mod]['mod']
+  endif
+endfunction

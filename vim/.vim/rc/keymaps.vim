@@ -1,389 +1,389 @@
 " keymaps {{{
 let s:keymaps = [
-      \{
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>erc',
       \    'rhs': ':edit ~/.vim/vimrc<cr>',
       \    'des': '[e]dit vim[r][c]',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>src',
       \    'rhs': ':source ~/.vim/vimrc<cr>',
       \    'des': '[s]ource vim[r][c]',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>eac',
       \    'rhs': ':edit ~/.vim/rc/autocmd.vim<cr>',
       \    'des': '[e]dit [a]uto[c]ommands',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>sac',
       \    'rhs': ':source ~/.vim/rc/autocmd.vim<cr>',
       \    'des': '[s]ource [a]uto[c]ommands',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>eca',
       \    'rhs': ':edit ~/.vim/rc/caching.vim<cr>',
       \    'des': '[e]dit [c][a]ching',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>sca',
       \    'rhs': ':source ~/.vim/rc/caching.vim<cr>',
       \    'des': '[s]ource [c][a]ching',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>egb',
       \    'rhs': ':edit ~/.vim/rc/globals.vim<cr>',
       \    'des': '[e]dit [g]lo[b]al resources',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>sgb',
       \    'rhs': ':source ~/.vim/rc/globals.vim<cr>',
       \    'des': '[s]ource [g]lo[b]al resources',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>eui',
       \    'rhs': ':edit ~/.vim/rc/guiopts.vim<cr>',
       \    'des': '[e]dit g[u][i]options',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>sui',
       \    'rhs': ':source ~/.vim/rc/guiopts.vim<cr>',
       \    'des': '[s]ource g[u][i]options',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ekm',
       \    'rhs': ':edit ~/.vim/rc/keymaps.vim<cr>',
       \    'des': '[e]dit [k]ey[m]aps',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>skm',
       \    'rhs': ':source ~/.vim/rc/keymaps.vim<cr>',
       \    'des': '[s]ource [k]ey[m]aps',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>eop',
       \    'rhs': ':edit ~/.vim/rc/options.vim<cr>',
       \    'des': '[e]dit [o][p]tions',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>sop',
       \    'rhs': ':source ~/.vim/rc/options.vim<cr>',
       \    'des': '[s]ource [o][p]tions',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>epg',
       \    'rhs': ':edit ~/.vim/rc/plugins.vim<cr>',
       \    'des': '[e]dit [p]lu[g]ins',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>spg',
       \    'rhs': ':source ~/.vim/rc/plugins.vim<cr>',
       \    'des': '[s]ource [p]lu[g]ins',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>esp',
       \    'rhs': ':edit ~/.vim/rc/speller.vim<cr>',
       \    'des': '[e]dit [s][p]ell',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ssp',
       \    'rhs': ':source ~/.vim/rc/speller.vim<cr>',
       \    'des': '[s]ource [s][p]ell',
-      \},
-      \{
-      \    'mod': 'insert',
-      \    'lhs': 'jj',
-      \    'rhs': '<esc>',
-      \    'des': 'back to normal mode from insert mode',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>;',
       \    'rhs': ':',
       \    'des': 'get into command mode without hitting the shift key',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'visual',
       \    'lhs': '<leader>;',
       \    'rhs': ':',
       \    'des': 'get into command mode without hitting the shift key',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>w;',
       \    'rhs': ':w<cr>',
       \    'des': '[w]ri[t]e',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>wa',
       \    'rhs': ':wa<cr>',
       \    'des': '[w]rite [a]ll',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>q;',
       \    'rhs': ':q<cr>',
       \    'des': '[q][u]it',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>qa',
       \    'rhs': ':qa<cr>',
       \    'des': '[q]uit [a]ll',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>s-',
       \    'rhs': ':sp<cr>',
       \    'des': '[s]plit window [h]orizontally',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>s\',
       \    'rhs': ':vs<cr>',
       \    'des': '[s]plit window [v]erticaly',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<c-h>',
       \    'rhs': '<c-w>h',
       \    'des': 'move focus to the left window',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<c-j>',
       \    'rhs': '<c-w>j',
       \    'des': 'move focus to the window below',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<c-k>',
       \    'rhs': '<c-w>k',
       \    'des': 'move focus to the window above',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<c-l>',
       \    'rhs': '<c-w>l',
       \    'des': 'move focus to the right window',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<c-left>',
       \    'rhs': '<c-w>>',
       \    'des': 'increase window width',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<c-down>',
       \    'rhs': '<c-w>-',
       \    'des': 'decrease window height',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<c-up>',
       \    'rhs': '<c-w>+',
       \    'des': 'increase window height',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<c-right>',
       \    'rhs': '<c-w><',
       \    'des': 'decrease window width',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ab',
       \    'rhs': ':call AddWordUnderCursorToMyAbbreviationsList()<cr>',
       \    'des': '[a]dd the word under the cursor to my a[b]breviations list',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>aw',
       \    'rhs': ':call AddWordUnderCursorToMyWordsList()<cr>',
       \    'des': '[a]dd the [w]ord under the cursor to my words list',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>eab',
       \    'rhs': ':edit ~/.vim/spell/words.abbr<cr>',
       \    'des': '[e]dit [a][b]breviations',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ewo',
       \    'rhs': ':edit ~/.vim/spell/words.dict<cr>',
       \    'des': '[e]dit [w]ords',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>pi',
       \    'rhs': ':PlugInstall<cr>',
       \    'des': '[p]lug [i]install',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>pu',
       \    'rhs': ':PlugUpdate<cr>',
       \    'des': '[p]lug [u]pdate',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>pg',
       \    'rhs': ':PlugUpgrade<cr>',
       \    'des': '[p]lug up[g]rade',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>pc',
       \    'rhs': ':PlugClean<cr>',
       \    'des': '[p]lug [c]lean',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>gs',
       \    'rhs': ':tab G<cr>',
       \    'des': '[g]it [s]tatus',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>gy',
       \    'rhs': ':Goyo<cr>',
       \    'des': '[g]o[y]o',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ln',
       \    'rhs': ':Limelight<cr>',
       \    'des': '[l]imelight o[n]',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>lf',
       \    'rhs': ':Limelight!<cr>',
       \    'des': '[l]imelight o[f]f',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'insert',
       \    'lhs': '<localleader>tu',
       \    'rhs': '<esc>mmbgUiw`ma',
       \    'des': '[t]o [u]pper case',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'insert',
       \    'lhs': '<localleader>tl',
       \    'rhs': '<esc>mmbguiw`ma',
       \    'des': '[t]o [l]ower case',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'insert',
       \    'lhs': '<localleader>cc',
       \    'rhs': '<esc>mmb~`ma',
       \    'des': '[c]amel [c]ase',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>rw',
       \    'rhs': ':call SubsCWordWithRegZeroWhileRetainingCursorPos()<cr>',
       \    'des': '[r]eplace word',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>sf',
       \    'rhs': ':FZF<cr>',
       \    'des': '[s]earch [f]ile',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>sg',
       \    'rhs': ':Ag<cr>',
       \    'des': '[s]each with [s]ilver searcher (a.k.a. Ag)',
-      \},
-      \{
+      \  },
+      \  {
       \     'mod': 'normal',
       \     'lhs': '<leader>ue',
       \     'rhs': ':UltiSnipsEdit<cr>',
       \     'des': '[u]ltisnips [e]dit',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ht',
       \    'rhs': ':tab h ',
       \    'des': 'open [h]elp in another [t]ab',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>hw',
       \    'rhs': ':exe ''tab h '' . expand(''<cword>'')<cr>',
       \    'des': 'searc[h] for the [w]ord under the cursor in the help pages',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>mp',
       \    'rhs': ':tab Man ',
       \    'des': 'open [m]an [p]age in another tab',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ch',
       \    'rhs': ':colorscheme habamax<cr>',
       \    'des': '[c]olorscheme [h]abamax',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>cl',
       \    'rhs': ':colorscheme lunaperche<cr>',
       \    'des': '[c]olorscheme [l]unaperche',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>cs',
       \    'rhs': ':colorscheme slate<cr>',
       \    'des': '[c]olorscheme [s]late',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>cq',
       \    'rhs': ':colorscheme quiet<cr>',
       \    'des': '[c]olorscheme [q]uiet',
-      \},
-      \{
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>sm',
+      \    'rhs': ':call ShowVimMode()<cr>',
+      \    'des': 'for my statuline',
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>cd',
       \    'rhs': ':%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>',
       \    'des': '[c]hange the capitalization of [d][aeo]s?',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>id',
       \    'rhs': ':%s@\\(0[1-9]\\\\|[12][0-9]\\\\|3[01]\\)\\/\\(0[1-9]\\\\|1[012]\\)\\/\\(202[3-9]\\)@\\3-\\2-\\1@g<cr>',
       \    'des': '[i]so [d]ate',
-      \},
-      \{
+      \  },
+      \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>cm',
       \    'rhs': ':%s@R$\\s\\+\\([0-9.]\\+\\),\\([0-9]\\+\\)\\s(\\([+-]\\))$@\\3\\1\\.\\2\\ BRL@<cr>',
       \    'des': '[c]onvert [m]oney',
-      \},
+      \  },
       \]
 " }}}
 
