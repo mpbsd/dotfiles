@@ -2,7 +2,7 @@
 
 VENDOR_NAME='Wacom One by Wacom S Pen stylus'
 DEVICE_TYPE='type: STYLUS'
-TABLET_ID="$(xsetwacom --list devices | grep -E "${VENDOR_NAME}" | sed "s/\(${VENDOR_NAME}\|${DEVICE_TYPE}\|id:\)//g")"
+TABLET_ID="$(xsetwacom --list devices | grep -E "${VENDOR_NAME}" | sed "s/\(${VENDOR_NAME}\|${DEVICE_TYPE}\|id:\|\s\)//g")"
 
 if [ -n "${TABLET_ID}" ]
 then
