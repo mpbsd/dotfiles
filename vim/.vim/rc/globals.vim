@@ -182,7 +182,7 @@ function MyStatusLine() abort
         \    },
         \    {
         \      'cmd': '%m',
-        \      'des': 'current mode',
+        \      'des': 'modified flag',
         \    },
         \  ],
         \  'sep': [
