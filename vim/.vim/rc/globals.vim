@@ -180,6 +180,10 @@ function MyStatusLine() abort
         \      'cmd': '%t',
         \      'des': 'tail of the file in the buffer',
         \    },
+        \    {
+        \      'cmd': '%m',
+        \      'des': 'current mode',
+        \    },
         \  ],
         \  'sep': [
         \    {
