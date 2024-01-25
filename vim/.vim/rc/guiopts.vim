@@ -1,13 +1,13 @@
 " general options {{{
 let s:options = {
-      \'term': {
+      \  'term': {
       \    'numberwidth': 6,
       \    'colorcolumn': 80,
       \    'background': 'dark',
-      \    'statusline': "[\%n]\\ \%f\\ \%m\%=\%{&fenc}\\ \%{&ff}\\ \%Y\\ (\%06l,\%06v)",
+      \    'statusline': '%!MyStatusLine()',
       \    'fillchars': "vert:\\|,fold:.,foldsep:\\|",
-      \},
-      \'grpx': {
+      \  },
+      \  'grpx': {
       \    'bool': {
       \        'd': '+',
       \        'T': '-',
@@ -21,7 +21,7 @@ let s:options = {
       \        'guiheadroom': 0,
       \        'guifont': "JetBrainsMono\\ Nerd\\ Font\\ Mono\\ 16",
       \    },
-      \},
+      \  },
       \}
 " }}}
 
