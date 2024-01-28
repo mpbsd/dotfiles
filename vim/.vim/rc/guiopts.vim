@@ -44,7 +44,7 @@ if has('gui_running')
 endif
 
 if empty(glob('~/.vim/plugged/nord-vim/'))
-  colorscheme quiet
+  colorscheme slate
 else
   colorscheme nord
 endif

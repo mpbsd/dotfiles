@@ -120,6 +120,7 @@ iabbrev discussao discussão
 iabbrev disponiveis disponíveis
 iabbrev disposicao disposição
 iabbrev distribuicoes distribuições
+iabbrev divisoes divisões
 iabbrev documentacao documentação
 iabbrev dominio domínio
 iabbrev duvida dúvida
@@ -352,3 +353,4 @@ iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
 iabbrev xicara xícara
+iabbrev indices índices
