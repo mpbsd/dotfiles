@@ -205,7 +205,11 @@ function MyStatusLine() abort
         \      'des': 'type of file in the buffer',
         \    },
         \    {
-        \      'cmd': '(%06l,%06v)',
+        \      'cmd': '%P',
+        \      'des': 'percentage through file of splayed window',
+        \    },
+        \    {
+        \      'cmd': '(%06l:%06v)',
         \      'des': 'line and column numbers',
         \    },
         \  ],

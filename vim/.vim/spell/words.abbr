@@ -79,6 +79,7 @@ iabbrev concluimos concluímos
 iabbrev conclusao conclusão
 iabbrev condicao condição
 iabbrev condicoes condições
+iabbrev confianca confiança
 iabbrev confusao confusão
 iabbrev conheco conheço
 iabbrev conjugacao conjugação
@@ -147,6 +148,7 @@ iabbrev estao estão
 iabbrev estatistica estatística
 iabbrev evolucao evolução
 iabbrev exercicio exercício
+iabbrev exercicios exercícios
 iabbrev existencia existência
 iabbrev expansao expansão
 iabbrev experiencia experiência
@@ -181,6 +183,7 @@ iabbrev impar ímpar
 iabbrev implicita implícita
 iabbrev imprescindivel imprescindível
 iabbrev impressao impressão
+iabbrev indices índices
 iabbrev inducao indução
 iabbrev infimo ínfimo
 iabbrev informacoes informacoes
@@ -280,6 +283,7 @@ iabbrev programacao programação
 iabbrev progressao progressão
 iabbrev projecao projeção
 iabbrev projecoes projeções
+iabbrev proporcao proporção
 iabbrev proporcoes proporções
 iabbrev proposicao proposição
 iabbrev proprias próprias
@@ -334,6 +338,7 @@ iabbrev torcao torção
 iabbrev transformacao transformação
 iabbrev transformacoes transformações
 iabbrev ufg UFG
+iabbrev ultima última
 iabbrev uniao união
 iabbrev unica única
 iabbrev unico único
@@ -353,4 +358,3 @@ iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
 iabbrev xicara xícara
-iabbrev indices índices
