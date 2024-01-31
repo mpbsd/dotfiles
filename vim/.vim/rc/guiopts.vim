@@ -43,8 +43,8 @@ if has('gui_running')
   endfor
 endif
 
-if empty(glob('~/.vim/plugged/nord-vim/'))
-  colorscheme slate
+if empty(glob('~/.vim/plugged/gruvbox/'))
+  colorscheme habamax
 else
-  colorscheme nord
+  colorscheme gruvbox
 endif

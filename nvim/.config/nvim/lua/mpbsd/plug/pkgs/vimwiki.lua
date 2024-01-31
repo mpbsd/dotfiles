@@ -7,6 +7,12 @@ return {
       syntax = 'default',
       ext = '.wiki',
     }
-    vim.g.vimwiki_list = { wiki1 }
+    local wiki2 = {
+      path = '~/.local/share/vimwiki/wiki2/',
+      index = 'index',
+      syntax = 'default',
+      ext = '.wiki',
+    }
+    vim.g.vimwiki_list = { wiki1, wiki2 }
   end
 }

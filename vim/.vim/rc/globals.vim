@@ -15,7 +15,7 @@ endfunction
 
 function ShowVimMode() abort
   " modes description {{{
-  let l:modes_description = {
+  let l:modes = {
         \  'n': {
         \    'mod': 'NORMAL',
         \    'des': 'Normal',
@@ -159,8 +159,8 @@ function ShowVimMode() abort
         \}
   " }}}
   let l:mod = mode()
-  if has_key(modes_description, l:mod)
-    return modes_description[l:mod]['mod']
+  if has_key(modes, l:mod)
+    return modes[l:mod]['mod']
   endif
 endfunction
 
@@ -192,6 +192,10 @@ function MyStatusLine() abort
         \    },
         \  ],
         \  'rhs': [
+        \    {
+        \      'cmd': '%{FugitiveStatusline()}',
+        \      'des': 'get git related info',
+        \    },
         \    {
         \      'cmd': '%{&fenc}',
         \      'des': 'file encoding',
