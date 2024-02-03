@@ -250,13 +250,13 @@ endfunction
 function AddWordUnderCursorToMyAbbreviationsList() abort
   let l:abbrv = SpecialCharactersHandler()
   cal writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
-  echo 'Added ''' . l:abbrv . ''' to ~/.vim/spell/words.abbr'
+  echo 'Added' . ' ' . l:abbrv . ' ' . 'to ~/.vim/spell/words.abbr'
 endfunction
 
 function AddWordUnderCursorToMyWordsList() abort
   let l:cword = expand('<cword>')
   cal writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
-  echo 'Added ''' . l:cword . ''' to ~/.vim/spell/words.dict'
+  echo 'Added' . ' ' . l:cword . ' ' . 'to ~/.vim/spell/words.dict'
 endfunction
 
 function RmTrailingSpaces() abort
