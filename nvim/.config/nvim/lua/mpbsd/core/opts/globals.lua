@@ -46,7 +46,7 @@ globals.vim_keymap_set = function(mappings_table)
   end
 end
 
-globals.vim_show_mode = function()
+globals.vim_mode = function()
   -- modes {{{
   local modes = {
     ['n'] = {
