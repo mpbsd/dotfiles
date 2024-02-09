@@ -243,7 +243,7 @@ let s:keymaps = [
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>gs',
-      \    'rhs': ':tab G<cr>',
+      \    'rhs': ':0G<cr>',
       \    'des': '[g]it [s]tatus',
       \  },
       \  {
