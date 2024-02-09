@@ -303,3 +303,7 @@ let s:wiki2 = {
       \}
 
 let g:vimwiki_list = [s:wiki1, s:wiki2]
+
+let g:ledger_bin = 'ledger'
+let g:ledger_maxwidth = 80
+let g:ledger_data_format = '%Y/%m/%d'

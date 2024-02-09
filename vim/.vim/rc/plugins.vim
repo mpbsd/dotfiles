@@ -8,13 +8,14 @@ endif
 call plug#begin('~/.vim/plugged')
 " Plug 'tpope/vim-jdaddy'
 " Plug 'tpope/vim-rhubarb'
-Plug 'arcticicestudio/nord-vim'
+" Plug 'arcticicestudio/nord-vim'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'ledger/vim-ledger'
 Plug 'morhetz/gruvbox'
 Plug 'sirver/ultisnips'
 Plug 'tpope/vim-abolish'
