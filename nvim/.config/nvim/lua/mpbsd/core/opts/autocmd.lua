@@ -1,6 +1,7 @@
 local globals = require('mpbsd.core.opts.globals')
 
-globals.vim_create_autocmd({
+-- autocmds {{{
+local autocmds = {
   {
     evt = { 'FileType' },
     ptn = {
@@ -15,4 +16,7 @@ globals.vim_create_autocmd({
     cmd = 'setlocal foldmethod=marker',
     grp = 'marker_foldmethod',
   },
-})
+}
+-- }}}
+
+globals.vim_create_autocmd(autocmds)

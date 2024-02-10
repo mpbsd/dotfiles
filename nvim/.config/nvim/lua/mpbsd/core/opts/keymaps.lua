@@ -354,6 +354,16 @@ local mappings = {
       desc = '[m][a]son',
     },
   },
+  {
+    mod = 'n',
+    lhs = '<leader>sb',
+    rhs = ':e ~/.local/share/references/zotero.bib<cr>',
+    opt = {
+      silent = false,
+      noremap = true,
+      desc = '[s]earch [b]ibliography',
+    },
+  },
 }
 -- }}}
 
