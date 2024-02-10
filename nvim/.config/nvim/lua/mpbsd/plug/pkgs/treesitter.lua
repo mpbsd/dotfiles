@@ -8,8 +8,7 @@ return {
     local configs = require('nvim-treesitter.configs')
     local rept_move = require('nvim-treesitter.textobjects.repeatable_move')
     local globals = require('mpbsd.core.opts.globals')
-    configs.setup(
-    {
+    configs.setup({
       ensure_installed = {
         'c',
         'latex',
@@ -109,10 +108,8 @@ return {
           },
         },
       },
-    }
-    )
-    globals.vim_keymap_set(
-    {
+    })
+    globals.vim_keymap_set({
       {
         mod = { 'n', 'x', 'o' },
         lhs = ';',
@@ -149,7 +146,6 @@ return {
         rhs = rept_move.builtin_T,
         opt = {}
       },
-    }
-    )
+    })
   end
 }

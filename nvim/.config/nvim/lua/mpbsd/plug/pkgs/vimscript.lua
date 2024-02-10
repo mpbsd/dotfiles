@@ -1,4 +1,5 @@
 return {
+  'godlygeek/tabular',
   'tpope/vim-characterize',
   'tpope/vim-commentary',
   'tpope/vim-dadbod',
