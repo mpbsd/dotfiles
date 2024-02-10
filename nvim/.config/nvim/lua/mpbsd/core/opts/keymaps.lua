@@ -265,7 +265,7 @@ local mappings = {
   {
     mod = 'n',
     lhs = '<leader>gs',
-    rhs = ':tab G<cr>',
+    rhs = ':0G<cr>',
     opt = {
       silent = false,
       noremap = true,
