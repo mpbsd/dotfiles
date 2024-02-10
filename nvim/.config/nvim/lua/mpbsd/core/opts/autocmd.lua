@@ -4,15 +4,7 @@ local globals = require('mpbsd.core.opts.globals')
 local autocmds = {
   {
     evt = { 'FileType' },
-    ptn = {
-      'c',
-      'h',
-      'lua',
-      'markdown',
-      'python',
-      'sh',
-      'tex',
-    },
+    ptn = { 'c', 'h', 'lua', 'python', 'sh', 'tex' },
     cmd = 'setlocal foldmethod=marker',
     grp = 'marker_foldmethod',
   },

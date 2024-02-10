@@ -276,6 +276,20 @@ function InstallMissingPlugins() abort
   endif
 endfunction
 
+function ChooseBuiltinColorschemeAtRandom() abort
+  let s:colorscheme = [
+        \  'habamax',
+        \  'lunaperche',
+        \  'quiet',
+        \  'slate',
+        \]
+  let s:number_of_colorschemes = len(s:colorscheme)
+  let s:seed = srand()
+  let s:choice = rand(s:seed) % s:number_of_colorschemes
+  let s:cmd = 'colorscheme' . ' ' . s:colorscheme[s:choice]
+  exe s:cmd
+endfunction
+
 let g:tex_flavor = 'latex'
 
 let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']

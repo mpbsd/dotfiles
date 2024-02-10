@@ -42,4 +42,9 @@ fi
 source "${HOME}/.config/zsh/zsh_aliases"
 
 # prompt
-source "${HOME}/.local/share/npm/lib/node_modules/spaceship-prompt/spaceship.zsh"
+if [ "$(uname -s)" = 'Linux' ]
+then
+  eval "$(starship init zsh)"
+else
+  source "${HOME}/.local/share/npm/lib/node_modules/spaceship-prompt/spaceship.zsh"
+fi

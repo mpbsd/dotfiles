@@ -43,8 +43,8 @@ if has('gui_running')
   endfor
 endif
 
-if empty(glob('~/.vim/plugged/seoul256.vim/'))
-  colorscheme habamax
+if !empty(glob('~/.vim/plugged/seoul256.vim/'))
+  sil cal ChooseBuiltinColorschemeAtRandom()
 else
   colorscheme seoul256
 endif
