@@ -8,7 +8,7 @@ local M = {
     }
   },
   cfg = {
-    cmd = vim.o,
+    cmd = vim.opt,
     opt = {
       number = true,
       relativenumber = true,
@@ -21,6 +21,7 @@ local M = {
       splitright = true,
       splitbelow = true,
       colorcolumn = '80',
+      path = { '**' },
     }
   }
 }

@@ -26,6 +26,7 @@ let s:options = [
       \  'dict=~/.vim/spell/words.dict',
       \  'spelllang=en_us,pt_br',
       \  'spellsuggest=fast,10',
+      \  'path+=**',
       \]
 " }}}
 

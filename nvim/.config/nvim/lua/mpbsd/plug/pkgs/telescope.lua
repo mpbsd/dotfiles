@@ -10,7 +10,7 @@ return {
     local globals = require('mpbsd.core.opts.globals')
     telescope.setup({
       defaults = {
-        path_display = { "tail" },
+        path_display = { 'absolute' },
         mappings = {
           i = {
             ['<C-u>'] = false,
