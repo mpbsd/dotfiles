@@ -378,6 +378,12 @@ let s:keymaps = [
       \    'rhs': ':%s@R$\\s\\+\\([0-9.]\\+\\),\\([0-9]\\+\\)\\s(\\([+-]\\))$@\\3\\1\\.\\2\\ BRL@<cr>',
       \    'des': '[c]onvert [m]oney',
       \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>gis',
+      \    'rhs': ':call GetStudentsInfoFromSIGAA()<cr>',
+      \    'des': 'get student''s info from sigaa',
+      \  },
       \]
 " }}}
 

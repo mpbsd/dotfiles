@@ -15,152 +15,152 @@ endfunction
 
 function ShowVimMode() abort
   " mode {{{
-  let l:mode = {
+  let l:vim_mode = {
         \  'n': {
-        \    'mode': '',
+        \    'mode': 'NORMAL',
         \    'desc': 'Normal'
         \  },
         \  'no': {
-        \    'mode': '',
+        \    'mode': 'O-PENDING',
         \    'desc': 'Operator-pending'
         \  },
         \  'nov': {
-        \    'mode': '',
+        \    'mode': 'O-PENDING',
         \    'desc': 'Operator-pending (forced characterwise |o_v|)'
         \  },
         \  'noV': {
-        \    'mode': '',
+        \    'mode': 'O-PENDING',
         \    'desc': 'Operator-pending (forced linewise |o_V|)'
         \  },
         \  'noCTRL-V': {
-        \    'mode': '',
-        \    'desc': 'Operator-pending (forced blockwise |o_CTRL-V|); CTRL-V is one character'
+        \    'mode': 'O-PENDING',
+        \    'desc': 'Operator-pending (forced blockwise |o_CTRL-V|)'
         \  },
         \  'niI': {
-        \    'mode': '',
+        \    'mode': 'NORMAL',
         \    'desc': 'Normal using |i_CTRL-O| in |Insert-mode|'
         \  },
         \  'niR': {
-        \    'mode': '',
+        \    'mode': 'NORMAL',
         \    'desc': 'Normal using |i_CTRL-O| in |Replace-mode|'
         \  },
         \  'niV': {
-        \    'mode': '',
+        \    'mode': 'NORMAL',
         \    'desc': 'Normal using |i_CTRL-O| in |Virtual-Replace-mode|'
         \  },
         \  'nt': {
-        \    'mode': '',
+        \    'mode': 'TERMINAL',
         \    'desc': 'Terminal-Normal (insert goes to Terminal-Job mode)'
         \  },
         \  'v': {
-        \    'mode': '',
+        \    'mode': 'VISUAL',
         \    'desc': 'Visual by character'
         \  },
         \  'vs': {
-        \    'mode': '',
+        \    'mode': 'VISUAL',
         \    'desc': 'Visual by character using |v_CTRL-O| in Select mode'
         \  },
         \  'V': {
-        \    'mode': '',
+        \    'mode': 'VISUAL',
         \    'desc': 'Visual by line'
         \  },
         \  'Vs': {
-        \    'mode': '',
+        \    'mode': 'VISUAL',
         \    'desc': 'Visual by line using |v_CTRL-O| in Select mode'
         \  },
         \  'CTRL-V': {
-        \    'mode': '',
+        \    'mode': 'VISUAL',
         \    'desc': 'Visual blockwise'
         \  },
         \  'CTRL-Vs': {
-        \    'mode': '',
+        \    'mode': 'VISUAL',
         \    'desc': 'Visual blockwise using |v_CTRL-O| in Select mode'
         \  },
         \  's': {
-        \    'mode': '',
+        \    'mode': 'SELECT',
         \    'desc': 'Select by character'
         \  },
         \  'S': {
-        \    'mode': '',
+        \    'mode': 'SELECT',
         \    'desc': 'Select by line'
         \  },
         \  'CTRL-S': {
-        \    'mode': '',
+        \    'mode': 'SELECT',
         \    'desc': 'Select blockwise'
         \  },
         \  'i': {
-        \    'mode': '',
+        \    'mode': 'INSERT',
         \    'desc': 'Insert'
         \  },
         \  'ic': {
-        \    'mode': '',
+        \    'mode': 'INSERT',
         \    'desc': 'Insert mode completion |compl-generic|'
         \  },
         \  'ix': {
-        \    'mode': '',
+        \    'mode': 'INSERT',
         \    'desc': 'Insert mode |i_CTRL-X| completion'
         \  },
         \  'R': {
-        \    'mode': '',
+        \    'mode': 'REPLACE',
         \    'desc': 'Replace |R|'
         \  },
         \  'Rc': {
-        \    'mode': '',
+        \    'mode': 'REPLACE',
         \    'desc': 'Replace mode completion |compl-generic|'
         \  },
         \  'Rx': {
-        \    'mode': '',
+        \    'mode': 'REPLACE',
         \    'desc': 'Replace mode |i_CTRL-X| completion'
         \  },
         \  'Rv': {
-        \    'mode': '',
+        \    'mode': 'REPLACE',
         \    'desc': 'Virtual Replace |gR|'
         \  },
         \  'Rvc': {
-        \    'mode': '',
+        \    'mode': 'REPLACE',
         \    'desc': 'Virtual Replace mode completion |compl-generic|'
         \  },
         \  'Rvx': {
-        \    'mode': '',
+        \    'mode': 'REPLACE',
         \    'desc': 'Virtual Replace mode |i_CTRL-X| completion'
         \  },
         \  'c': {
-        \    'mode': '',
+        \    'mode': 'COMMAND',
         \    'desc': 'Command-line editing'
         \  },
         \  'cv': {
-        \    'mode': '',
+        \    'mode': 'EX',
         \    'desc': 'Vim Ex mode |gQ|'
         \  },
         \  'ce': {
-        \    'mode': '',
+        \    'mode': 'EX',
         \    'desc': 'Normal Ex mode |Q|'
         \  },
         \  'r': {
-        \    'mode': '',
+        \    'mode': 'PROMPT',
         \    'desc': 'Hit-enter prompt'
         \  },
         \  'rm': {
-        \    'mode': '',
+        \    'mode': 'PROMPT',
         \    'desc': 'The -- more -- prompt'
         \  },
         \  'r?': {
-        \    'mode': '',
+        \    'mode': 'CONFIRM',
         \    'desc': 'A |:confirm| query of some sort'
         \  },
         \  '!': {
-        \    'mode': '',
+        \    'mode': 'SHELL',
         \    'desc': 'Shell or external command is executing'
         \  },
         \  't': {
-        \    'mode': '',
+        \    'mode': 'TERMINAL',
         \    'desc': 'Terminal-Job mode: keys go to the job'
         \  },
         \}
   " }}}
   let l:mod = mode()
-  if has_key(l:mode, l:mod)
-    return l:mode[l:mod]['mode']
+  if has_key(l:vim_mode, l:mod)
+    return l:vim_mode[l:mod]['mode']
   endif
 endfunction
 
@@ -288,6 +288,16 @@ function ChooseBuiltinColorschemeAtRandom() abort
   let s:choice = rand(s:seed) % s:number_of_colorschemes
   let s:cmd = 'colorscheme' . ' ' . s:colorscheme[s:choice]
   exe s:cmd
+endfunction
+
+function GetStudentsInfoFromSIGAA() abort
+  let l:regex = "^\\s\\+\\([^(]\\+\\) (Perfil) Matrícula: \\(\\d\\{9}\\) E-mail: \\(.*\\) Enviar Mensagem"
+  %s/\vusuário (off|on)-line no sigaa/\r/g
+  g!/\((Perfil)\|Matrícula:\|E-mail:\)/d
+  g/(Perfil)/j
+  g/Matrícula:/j
+  let l:substitute_cmd = '%s/' . l:regex . '/\1;\2;\3/'
+  sil exe l:substitute_cmd
 endfunction
 
 let g:tex_flavor = 'latex'
