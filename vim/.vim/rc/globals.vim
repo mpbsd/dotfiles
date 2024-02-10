@@ -14,159 +14,159 @@ function VimKeymapSet(keymaps) abort
 endfunction
 
 function ShowVimMode() abort
-  " modes description {{{
-  let l:modes = {
+  " mode {{{
+  let l:mode = {
         \  'n': {
-        \    'mod': 'NORMAL',
-        \    'des': 'Normal',
+        \    'mode': '',
+        \    'desc': 'Normal'
         \  },
         \  'no': {
-        \    'mod': 'O-PENDING',
-        \    'des': 'Operator-pending',
+        \    'mode': '',
+        \    'desc': 'Operator-pending'
         \  },
         \  'nov': {
-        \    'mod': 'O-PENDING',
-        \    'des': 'Operator-pending (forced characterwise |o_v|)',
+        \    'mode': '',
+        \    'desc': 'Operator-pending (forced characterwise |o_v|)'
         \  },
         \  'noV': {
-        \    'mod': 'O-PENDING',
-        \    'des': 'Operator-pending (forced linewise |o_V|)',
+        \    'mode': '',
+        \    'desc': 'Operator-pending (forced linewise |o_V|)'
         \  },
         \  'noCTRL-V': {
-        \    'mod': 'O-PENDING',
-        \    'des': 'Operator-pending (forced blockwise |o_CTRL-V|);',
+        \    'mode': '',
+        \    'desc': 'Operator-pending (forced blockwise |o_CTRL-V|); CTRL-V is one character'
         \  },
         \  'niI': {
-        \    'mod': 'NORMAL',
-        \    'des': 'Normal using |i_CTRL-O| in |Insert-mode|',
+        \    'mode': '',
+        \    'desc': 'Normal using |i_CTRL-O| in |Insert-mode|'
         \  },
         \  'niR': {
-        \    'mod': 'NORMAL',
-        \    'des': 'Normal using |i_CTRL-O| in |Replace-mode|',
+        \    'mode': '',
+        \    'desc': 'Normal using |i_CTRL-O| in |Replace-mode|'
         \  },
         \  'niV': {
-        \    'mod': 'NORMAL',
-        \    'des': 'Normal using |i_CTRL-O| in |Virtual-Replace-mode|',
+        \    'mode': '',
+        \    'desc': 'Normal using |i_CTRL-O| in |Virtual-Replace-mode|'
         \  },
         \  'nt': {
-        \    'mod': 'NORMAL',
-        \    'des': 'Terminal-Normal (insert goes to Terminal-Job mode)',
+        \    'mode': '',
+        \    'desc': 'Terminal-Normal (insert goes to Terminal-Job mode)'
         \  },
         \  'v': {
-        \    'mod': 'VISUAL',
-        \    'des': 'Visual by character',
+        \    'mode': '',
+        \    'desc': 'Visual by character'
         \  },
         \  'vs': {
-        \    'mod': 'VISUAL',
-        \    'des': 'Visual by character using |v_CTRL-O| in Select mode',
+        \    'mode': '',
+        \    'desc': 'Visual by character using |v_CTRL-O| in Select mode'
         \  },
         \  'V': {
-        \    'mod': 'VISUAL',
-        \    'des': 'Visual by line',
+        \    'mode': '',
+        \    'desc': 'Visual by line'
         \  },
         \  'Vs': {
-        \    'mod': 'VISUAL',
-        \    'des': 'Visual by line using |v_CTRL-O| in Select mode',
+        \    'mode': '',
+        \    'desc': 'Visual by line using |v_CTRL-O| in Select mode'
         \  },
         \  'CTRL-V': {
-        \    'mod': 'VISUAL',
-        \    'des': 'Visual blockwise',
+        \    'mode': '',
+        \    'desc': 'Visual blockwise'
         \  },
         \  'CTRL-Vs': {
-        \    'mod': 'VISUAL',
-        \    'des': 'Visual blockwise using |v_CTRL-O| in Select mode',
+        \    'mode': '',
+        \    'desc': 'Visual blockwise using |v_CTRL-O| in Select mode'
         \  },
         \  's': {
-        \    'mod': 'SELECT',
-        \    'des': 'Select by character',
+        \    'mode': '',
+        \    'desc': 'Select by character'
         \  },
         \  'S': {
-        \    'mod': 'SELECT',
-        \    'des': 'Select by line',
+        \    'mode': '',
+        \    'desc': 'Select by line'
         \  },
         \  'CTRL-S': {
-        \    'mod': 'SELECT',
-        \    'des': 'Select blockwise',
+        \    'mode': '',
+        \    'desc': 'Select blockwise'
         \  },
         \  'i': {
-        \    'mod': 'INSERT',
-        \    'des': 'Insert',
+        \    'mode': '',
+        \    'desc': 'Insert'
         \  },
         \  'ic': {
-        \    'mod': 'INSERT',
-        \    'des': 'Insert mode completion |compl-generic|',
+        \    'mode': '',
+        \    'desc': 'Insert mode completion |compl-generic|'
         \  },
         \  'ix': {
-        \    'mod': 'INSERT',
-        \    'des': 'Insert mode |i_CTRL-X| completion',
+        \    'mode': '',
+        \    'desc': 'Insert mode |i_CTRL-X| completion'
         \  },
         \  'R': {
-        \    'mod': 'REPLACE',
-        \    'des': 'Replace |R|',
+        \    'mode': '',
+        \    'desc': 'Replace |R|'
         \  },
         \  'Rc': {
-        \    'mod': 'REPLACE',
-        \    'des': 'Replace mode completion |compl-generic|',
+        \    'mode': '',
+        \    'desc': 'Replace mode completion |compl-generic|'
         \  },
         \  'Rx': {
-        \    'mod': 'REPLACE',
-        \    'des': 'Replace mode |i_CTRL-X| completion',
+        \    'mode': '',
+        \    'desc': 'Replace mode |i_CTRL-X| completion'
         \  },
         \  'Rv': {
-        \    'mod': 'REPLACE',
-        \    'des': 'Virtual Replace |gR|',
+        \    'mode': '',
+        \    'desc': 'Virtual Replace |gR|'
         \  },
         \  'Rvc': {
-        \    'mod': 'REPLACE',
-        \    'des': 'Virtual Replace mode completion |compl-generic|',
+        \    'mode': '',
+        \    'desc': 'Virtual Replace mode completion |compl-generic|'
         \  },
         \  'Rvx': {
-        \    'mod': 'REPLACE',
-        \    'des': 'Virtual Replace mode |i_CTRL-X| completion',
+        \    'mode': '',
+        \    'desc': 'Virtual Replace mode |i_CTRL-X| completion'
         \  },
         \  'c': {
-        \    'mod': 'COMMAND',
-        \    'des': 'Command-line editing',
+        \    'mode': '',
+        \    'desc': 'Command-line editing'
         \  },
         \  'cv': {
-        \    'mod': 'COMMAND',
-        \    'des': 'Vim Ex mode |gQ|',
+        \    'mode': '',
+        \    'desc': 'Vim Ex mode |gQ|'
         \  },
         \  'ce': {
-        \    'mod': 'COMMAND',
-        \    'des': 'Normal Ex mode |Q|',
+        \    'mode': '',
+        \    'desc': 'Normal Ex mode |Q|'
         \  },
         \  'r': {
-        \    'mod': 'PROMPT',
-        \    'des': 'Hit-enter prompt',
+        \    'mode': '',
+        \    'desc': 'Hit-enter prompt'
         \  },
         \  'rm': {
-        \    'mod': 'PROMPT',
-        \    'des': 'The -- more -- prompt',
+        \    'mode': '',
+        \    'desc': 'The -- more -- prompt'
         \  },
         \  'r?': {
-        \    'mod': 'CONFIRM',
-        \    'des': 'A |:confirm| query of some sort',
+        \    'mode': '',
+        \    'desc': 'A |:confirm| query of some sort'
         \  },
         \  '!': {
-        \    'mod': 'EXTERNAL',
-        \    'des': 'Shell or external command is executing',
+        \    'mode': '',
+        \    'desc': 'Shell or external command is executing'
         \  },
         \  't': {
-        \    'mod': 'TERMINAL',
-        \    'des': 'Terminal-Job mode: keys go to the job',
+        \    'mode': '',
+        \    'desc': 'Terminal-Job mode: keys go to the job'
         \  },
         \}
   " }}}
   let l:mod = mode()
-  if has_key(modes, l:mod)
-    return modes[l:mod]['mod']
+  if has_key(l:mode, l:mod)
+    return l:mode[l:mod]['mode']
   endif
 endfunction
 
 function MyStatusLine() abort
   " options {{{
-  let stl_opt = {
+  let l:section = {
         \  'lhs': [
         \    {
         \      'cmd': '[%n]',
@@ -178,24 +178,20 @@ function MyStatusLine() abort
         \    },
         \    {
         \      'cmd': '%t',
-        \      'des': 'tail of the file in the buffer',
+        \      'des': 'tail of the filename in the buffer',
         \    },
         \    {
         \      'cmd': '%m',
         \      'des': 'modified flag',
         \    },
         \  ],
-        \  'sep': [
+        \  'mid': [
         \    {
         \      'cmd': '%=',
         \      'des': 'lhs/rhs separator',
         \    },
         \  ],
         \  'rhs': [
-        \    {
-        \      'cmd': '%{FugitiveStatusline()}',
-        \      'des': 'get git related info',
-        \    },
         \    {
         \      'cmd': '%{&fenc}',
         \      'des': 'file encoding',
@@ -210,7 +206,7 @@ function MyStatusLine() abort
         \    },
         \    {
         \      'cmd': '%P',
-        \      'des': 'percentage through file of splayed window',
+        \      'des': 'percentage through file of displayed window',
         \    },
         \    {
         \      'cmd': '(%06l:%06v)',
@@ -220,9 +216,9 @@ function MyStatusLine() abort
         \}
   " }}}
   let l:stl = []
-  for stl_categ in ['lhs', 'sep', 'rhs']
-    for stl_obj in stl_opt[stl_categ]
-      call add(l:stl, stl_obj['cmd'])
+  for sec in ['lhs', 'mid', 'rhs']
+    for obj in section[sec]
+      call add(l:stl, obj['cmd'])
     endfor
   endfor
   return join(l:stl)
