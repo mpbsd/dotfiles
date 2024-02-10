@@ -1,9 +1,8 @@
 return {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.5',
+  -- tag = '0.1.5',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope-bibtex.nvim',
   },
   config = function()
     local telescope = require('telescope')
@@ -19,14 +18,8 @@ return {
             ['<C-d>'] = false,
           },
         },
-        extensions = {
-          ['bibtex'] = {
-            global_files = { '~/.local/share/references/zotero.bib' },
-          },
-        },
       },
     })
-    telescope.load_extension('bibtex')
     globals.vim_keymap_set({
       -- keymaps {{{
       {
@@ -146,14 +139,6 @@ return {
       rhs = builtin.resume,
       opt = {
         desc = '[S]earch [R]esume',
-      }
-    },
-    {
-      mod = 'n',
-      lhs = '<leader>sb',
-      rhs = ':Telescope bibtex<cr>',
-      opt = {
-        desc = '[S]earch [B]ibliography',
       }
     },
     -- }}}
