@@ -55,7 +55,7 @@ local mappings = {
   {
     mod = 'n',
     lhs = '<leader>epg',
-    rhs = ':edit ~/.config/nvim/lua/mpbsd/plug/<cr>',
+    rhs = ':edit ~/.config/nvim/lua/mpbsd/plug/pkgs/<cr>',
     opt = {
       silent = false,
       noremap = true,

@@ -17,12 +17,12 @@ M.vim_create_autocmd = function(autocmds_table)
     local cmd = autocmd['cmd']
     local grp = autocmd['grp']
     vim.api.nvim_create_autocmd(
-    evt,
-    {
-      pattern = ptn,
-      command = cmd,
-      group = vim.api.nvim_create_augroup(grp, { clear = true })
-    }
+      evt,
+      {
+        pattern = ptn,
+        command = cmd,
+        group = vim.api.nvim_create_augroup(grp, { clear = true })
+      }
     )
   end
 end
