@@ -308,22 +308,41 @@ function ChooseBuiltinColorschemeAtRandom() abort
 endfunction
 
 function GetStudentsInfoFromSIGAA() abort
-  let l:reg_fname = '^\s*\([^(]\+\)\s*(Perfil)'
-  let l:reg_rgstr = 'Matrícula: \(\d\{9}\)'
-  let l:reg_email = 'E-mail: \(.*\)\s*Enviar Mensagem'
-  let l:reg_stdnt = l:reg_fname . ' ' .l:reg_rgstr . ' ' . l:reg_email
-  let l:sub_fname = '"\2": "fname": "\1",'
-  let l:sub_email = '"email": "\3",'
-  let l:sub_grade = '"grade": {"E1": 0.0, "E2": 0.0, "E3": 0.0},'
-  let l:sub_stdnt = l:sub_fname . ' ' . l:sub_email . ' ' . l:sub_grade
-  %s/\vusuário (off|on)-line no sigaa/\r/g
-  g!/\((Perfil)\|Matrícula:\|E-mail:\)/d
-  g/(Perfil)/j
-  g/Matrícula:/j
-  let l:sub = '%s/' . l:reg_stdnt . '/' . l:sub_stdnt . '/'
+  let l:regex = [
+        \  '^ +([a-z ]+) \(perfil\)',
+        \  'curso: ([a-z ]+)',
+        \  'matricula: ([0-9]{9})',
+        \  'usuario: ([a-z0-9_.]+)',
+        \  'e-mail: ([a-z0-9_.@]+)\s*enviar mensagem',
+        \]
+  let l:subst = [
+        \  '"\3": {\r\t',
+        \  '"fname": "\1",\r\t',
+        \  '"gradc": "\2",\r\t',
+        \  '"uname": "\4",\r\t',
+        \  '"email": "\5",\r\t',
+        \  '"grade": {"E1": 0.0,"E2": 0.0,"E3": 0.0},\r},',
+        \]
+  let l:reg_stdnt = join(l:regex)
+  let l:sub_stdnt = join(l:subst)
+  sil exe 'normal ggVGu'
+  sil %s/[àáâã]/a/ge
+  sil %s/[éê]/e/ge
+  sil %s/í/i/ge
+  sil %s/[óôõ]/o/ge
+  sil %s/ú/u/ge
+  sil %s/ç/c/ge
+  %s/\vusuario (off|on)-line no sigaa/\r/g
+  g!/\((perfil)\|\(matricula\|curso\|usuario\|e-mail\):\)/d
+  g/(perfil)/j
+  g/curso:/j
+  g/matricula:/j
+  g/usuario:/j
+  let l:sub = '%s/\v' . l:reg_stdnt . '/' . l:sub_stdnt . '/'
   sil exe l:sub
-  sil %s/\s\+",/",/g
-  sil %s/\s\+$//
+  sil %s/\s\+",/",/ge
+  sil %s/\s\+$//e
+  g/^usuario:/d
 endfunction
 
 let g:tex_flavor = 'latex'
