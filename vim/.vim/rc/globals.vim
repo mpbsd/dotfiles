@@ -324,7 +324,8 @@ function GetStudentsInfoFromSIGAA() abort
         \  '"grade": {"E1": 0.0,"E2": 0.0,"E3": 0.0},\r},',
         \]
   let l:reg_stdnt = join(l:regex)
-  let l:sub_stdnt = join(l:subst)
+  let l:sub_stdnt = join(l:subst, '')
+  let l:sub = '%s/\v' . l:reg_stdnt . '/' . l:sub_stdnt . '/'
   sil exe 'normal ggVGu'
   sil %s/[àáâã]/a/ge
   sil %s/[éê]/e/ge
@@ -338,11 +339,10 @@ function GetStudentsInfoFromSIGAA() abort
   g/curso:/j
   g/matricula:/j
   g/usuario:/j
-  let l:sub = '%s/\v' . l:reg_stdnt . '/' . l:sub_stdnt . '/'
   sil exe l:sub
   sil %s/\s\+",/",/ge
   sil %s/\s\+$//e
-  g/^usuario:/d
+  sil g/^usuario:/d
 endfunction
 
 let g:tex_flavor = 'latex'
