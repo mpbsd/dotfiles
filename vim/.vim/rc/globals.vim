@@ -291,13 +291,22 @@ function ChooseBuiltinColorschemeAtRandom() abort
 endfunction
 
 function GetStudentsInfoFromSIGAA() abort
-  let l:regex = "^\\s\\+\\([^(]\\+\\) (Perfil) Matrícula: \\(\\d\\{9}\\) E-mail: \\(.*\\) Enviar Mensagem"
+  let l:reg_fname = '^\s*\([^(]\+\)\s*(Perfil)'
+  let l:reg_rgstr = 'Matrícula: \(\d\{9}\)'
+  let l:reg_email = 'E-mail: \(.*\)\s*Enviar Mensagem'
+  let l:reg_stdnt = l:reg_fname . ' ' .l:reg_rgstr . ' ' . l:reg_email
+  let l:sub_fname = '"\2": "fname": "\1",'
+  let l:sub_email = '"email": "\3",'
+  let l:sub_grade = '"grade": {"E1": 0.0, "E2": 0.0, "E3": 0.0},'
+  let l:sub_stdnt = l:sub_fname . ' ' . l:sub_email . ' ' . l:sub_grade
   %s/\vusuário (off|on)-line no sigaa/\r/g
   g!/\((Perfil)\|Matrícula:\|E-mail:\)/d
   g/(Perfil)/j
   g/Matrícula:/j
-  let l:substitute_cmd = '%s/' . l:regex . '/\1;\2;\3/'
-  sil exe l:substitute_cmd
+  let l:sub = '%s/' . l:reg_stdnt . '/' . l:sub_stdnt . '/'
+  sil exe l:sub
+  sil %s/\s\+",/",/g
+  sil %s/\s\+$//
 endfunction
 
 let g:tex_flavor = 'latex'

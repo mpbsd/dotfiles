@@ -18,6 +18,7 @@ let s:options = [
       \  'magic',
       \  'ignorecase',
       \  'smartcase',
+      \  'infercase',
       \  'hidden',
       \  'undofile',
       \  'lazyredraw',
