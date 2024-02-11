@@ -6,15 +6,12 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-" Plug 'tpope/vim-jdaddy'
-" Plug 'tpope/vim-rhubarb'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'ledger/vim-ledger'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/seoul256.vim'
 Plug 'sirver/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'

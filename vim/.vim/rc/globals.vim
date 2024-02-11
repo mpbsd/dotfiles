@@ -209,7 +209,7 @@ function MyStatusLine() abort
         \      'des': 'percentage through file of displayed window',
         \    },
         \    {
-        \      'cmd': '(%06l:%06v)',
+        \      'cmd': '(%06l:%06c)',
         \      'des': 'line and column numbers',
         \    },
         \  ],
@@ -278,10 +278,27 @@ endfunction
 
 function ChooseBuiltinColorschemeAtRandom() abort
   let s:colorscheme = [
+        \  'blue',
+        \  'darkblue',
+        \  'default',
+        \  'delek',
+        \  'desert',
+        \  'elflord',
+        \  'evening',
         \  'habamax',
+        \  'industry',
+        \  'koehler',
         \  'lunaperche',
+        \  'morning',
+        \  'murphy',
+        \  'pablo',
+        \  'peachpuff',
         \  'quiet',
+        \  'ron',
+        \  'shine',
         \  'slate',
+        \  'torte',
+        \  'zellner',
         \]
   let s:number_of_colorschemes = len(s:colorscheme)
   let s:seed = srand()
@@ -332,7 +349,3 @@ let s:wiki2 = {
       \}
 
 let g:vimwiki_list = [s:wiki1, s:wiki2]
-
-let g:ledger_bin = 'ledger'
-let g:ledger_maxwidth = 80
-let g:ledger_data_format = '%Y/%m/%d'

@@ -66,18 +66,6 @@ return {
       },
       {
         mod = 'n',
-        lhs = '<leader>s/',
-        rhs = function()
-          builtin.live_grep({ grep_open_files = true,
-            prompt_title = 'Live Grep in Open Files',
-          })
-        end,
-        opt = {
-          desc = '[S]earch [/] in Open Files',
-        }
-      },
-      {
-        mod = 'n',
         lhs = '<leader>ss',
         rhs = builtin.builtin,
         opt = {
