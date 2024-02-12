@@ -173,7 +173,7 @@ declare -a QMK=(
 )
 # }}}
 
-# PACKAGES' LIST {{{
+# LIST OF PACKAGES {{{
 PKGS=(
   "${TEXT_EDITORS[@]}"
   "${C_DEVELOPMENT[@]}"
@@ -220,6 +220,5 @@ do
     fi
   fi
 done
-
 
 exit 0

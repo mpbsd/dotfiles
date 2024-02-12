@@ -10,8 +10,6 @@ let s:options = [
       \  'autoindent',
       \  'smartindent',
       \  'linebreak',
-      \  'listchars=tab:<->,nbsp:_,trail:.',
-      \  'list',
       \  'nojoinspaces',
       \  'splitright',
       \  'splitbelow',
@@ -29,6 +27,8 @@ let s:options = [
       \  'spelllang=en_us,pt_br',
       \  'spellsuggest=fast,10',
       \  'path+=**',
+      \  'listchars=tab:<->,nbsp:_,trail:.',
+      \  'list',
       \]
 " }}}
 

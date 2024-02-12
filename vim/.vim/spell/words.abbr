@@ -119,6 +119,7 @@ iabbrev dirao dirão
 iabbrev diretorio diretório
 iabbrev discussao discussão
 iabbrev disponiveis disponíveis
+iabbrev dispos dispôs
 iabbrev disposicao disposição
 iabbrev distribuicoes distribuições
 iabbrev divisoes divisões
@@ -131,6 +132,7 @@ iabbrev eh é
 iabbrev elaboracao elaboração
 iabbrev eletrica elétrica
 iabbrev eliminacao eliminação
+iabbrev elipsoide elipsóide
 iabbrev eliptico elíptico
 iabbrev endereco endereço
 iabbrev entao então
@@ -155,6 +157,7 @@ iabbrev expansao expansão
 iabbrev experiencia experiência
 iabbrev explicita explícita
 iabbrev expressao expressão
+iabbrev expressoes expressões
 iabbrev extensao extensão
 iabbrev extensoes extensões
 iabbrev facil fácil
@@ -213,6 +216,7 @@ iabbrev mamae mamãe
 iabbrev maquina máquina
 iabbrev matematica matemática
 iabbrev matematico matemático
+iabbrev matematicos matemáticos
 iabbrev maximos máximos
 iabbrev medico médico
 iabbrev medio médio
@@ -302,6 +306,7 @@ iabbrev referencias referências
 iabbrev regiao região
 iabbrev relacao relação
 iabbrev relacoes relações
+iabbrev repositorios repositórios
 iabbrev representacao representação
 iabbrev restricao restrição
 iabbrev restricoes restrições
@@ -359,4 +364,3 @@ iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
 iabbrev xicara xícara
-iabbrev elipsoide elipsóide
