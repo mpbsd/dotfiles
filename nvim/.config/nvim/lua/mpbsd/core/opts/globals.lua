@@ -58,6 +58,18 @@ M.language_servers = {
       },
     },
   },
+  pylsp = {
+    filetypes = { 'python' },
+    settings = {},
+  },
+  texlab = {
+    filetypes = { 'plaintex', 'bib' },
+    settings = {},
+  },
+  vimls = {
+    filetypes = { 'vim' },
+    settings = {},
+  },
   -- }}}
 }
 
