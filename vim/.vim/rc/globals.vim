@@ -313,7 +313,7 @@ function GetStudentsInfoFromSIGAA() abort
         \  'curso: ([a-z ]+)',
         \  'matricula: ([0-9]{9})',
         \  'usuario: ([a-z0-9_.]+)',
-        \  'e-mail: ([a-z0-9_.@]+)\s*enviar mensagem',
+        \  'e-mail: ([a-z0-9_.@]+) enviar mensagem',
         \]
   let l:subst = [
         \  '"\3": {\r\t',
