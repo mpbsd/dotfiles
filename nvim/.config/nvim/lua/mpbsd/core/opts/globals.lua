@@ -45,7 +45,7 @@ M.language_servers = {
           version = 'LuaJIT',
         },
         diagnostics = {
-          disable = { 'missing-field' },
+          disable = { 'missing-field', 'undefined-field' },
           globals = { 'vim' },
         },
         workspace = {

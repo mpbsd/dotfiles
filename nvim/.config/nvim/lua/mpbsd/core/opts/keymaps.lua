@@ -334,28 +334,6 @@ local mappings = {
   },
   {
     mod = 'n',
-    lhs = '<leader>ls',
-    rhs = function()
-      pcall(require('lazy').sync)
-    end,
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = '[l]azy [s]ync',
-    },
-  },
-  {
-    mod = 'n',
-    lhs = '<leader>ma',
-    rhs = ':Mason<cr>',
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = '[m][a]son',
-    },
-  },
-  {
-    mod = 'n',
     lhs = '<leader>sb',
     rhs = ':e ~/.local/share/references/zotero.bib<cr>',
     opt = {
