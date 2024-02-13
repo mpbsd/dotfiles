@@ -275,6 +275,13 @@ M.on_attach = function()
   })
 end
 
+M.debuggers = {
+  -- debuggers {{{
+  'cppdbg',
+  'python',
+  -- }}}
+}
+
 if vim.fn.has('nvim-0.9.5') then
   M.vim_uv = vim.loop
 else

@@ -360,11 +360,4 @@ let s:wiki1 = {
       \  'ext': '.wiki',
       \}
 
-let s:wiki2 = {
-      \  'path': '~/.local/share/vimwiki/wiki2/',
-      \  'index': 'index',
-      \  'syntax': 'default',
-      \  'ext': '.wiki',
-      \}
-
-let g:vimwiki_list = [s:wiki1, s:wiki2]
+let g:vimwiki_list = [s:wiki1]
