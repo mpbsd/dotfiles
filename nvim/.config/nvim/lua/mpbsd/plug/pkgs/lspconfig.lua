@@ -12,9 +12,9 @@ return {
 
     for server_name, server_settings in pairs(globals.language_servers) do
       lspconfig[server_name].setup({
-        settings = server_settings['settings'],
+        settings = server_settings.settings,
         on_attach = globals.on_attach,
-        filetypes = server_settings['filetypes'],
+        filetypes = server_settings.filetypes,
       })
     end
 
