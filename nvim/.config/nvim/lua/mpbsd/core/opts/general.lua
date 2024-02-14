@@ -4,7 +4,7 @@ local options = {
     opt = {
       mapleader = ' ',
       maplocalleader = ',',
-      tex_flavour = 'latex',
+      tex_flavor = 'latex',
       loaded_perl_provider = 0,
       loaded_ruby_provider = 0,
       python3_host_prog = '/usr/bin/python3',
@@ -25,7 +25,12 @@ local options = {
       splitbelow = true,
       colorcolumn = '80',
       hlsearch = false,
+      ignorecase = true,
+      smartcase = true,
+      magic = true,
+      lazyredraw = true,
       path = { '**' },
+      joinspaces = false,
       termguicolors = true,
     }
   },
