@@ -14,7 +14,9 @@ return {
       updateevents         = 'TextChanged,TextChangedI',
       -- }}}
     })
-    luasnip_loaders_from_lua.load({ paths = '~/.config/nvim/lua/mpbsd/snip/' })
+    luasnip_loaders_from_lua.load({
+      paths = '~/.config/nvim/lua/mpbsd/snip/'
+    })
     globals.vim_keymap_set({
       -- keymaps {{{
       {

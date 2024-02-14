@@ -10,20 +10,29 @@ M.vim_keymap_set = function(mappings_table)
   end
 end
 
-M.vim_create_autocmd = function(autocmds_table)
+M.vim_create_augroup = function(autocmds_table)
+  local augroup = {}
   for _, autocmd in pairs(autocmds_table) do
-    local evt = autocmd['evt']
-    local ptn = autocmd['ptn']
-    local cmd = autocmd['cmd']
-    local grp = autocmd['grp']
-    vim.api.nvim_create_autocmd(
-      evt,
-      {
-        pattern = ptn,
-        command = cmd,
-        group = vim.api.nvim_create_augroup(grp, { clear = true })
-      }
-    )
+    local opts = autocmd['opts']
+    if opts['group'] ~= nil then
+      augroup['group'] = vim.api.nvim_create_augroup(
+        opts['group'],
+        { clear = true }
+      )
+    end
+  end
+  return augroup
+end
+
+M.vim_create_autocmd = function(autocmds_table)
+  local augroup = M.vim_create_augroup(autocmds_table)
+  for _, autocmd in pairs(autocmds_table) do
+    local event = autocmd['event']
+    local opts = autocmd['opts']
+    if opts['group'] ~= nil then
+      opts['group'] = augroup[opts['group']]
+    end
+    vim.api.nvim_create_autocmd(event, opts)
   end
 end
 

@@ -7,6 +7,7 @@ local options = {
       tex_flavor = 'latex',
       loaded_perl_provider = 0,
       loaded_ruby_provider = 0,
+      node_host_prog = vim.fn.expand('~/.local/share/npm/lib/node_modules'),
       python3_host_prog = '/usr/bin/python3',
     }
   },
@@ -32,6 +33,8 @@ local options = {
       path = { '**' },
       joinspaces = false,
       termguicolors = true,
+      spelllang = { 'en_us', 'pt_br' },
+      spellsuggest = { 'fast', '10' },
     }
   },
   env = {
