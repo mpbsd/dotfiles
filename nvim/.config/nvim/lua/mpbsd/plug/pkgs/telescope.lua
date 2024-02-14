@@ -141,6 +141,14 @@ return {
           desc = '[S]earch [R]esume',
         }
       },
+      {
+        mod = 'n',
+        lhs = '<leader>sk',
+        rhs = builtin.keymaps,
+        opt = {
+          desc = '[S]earch [K]eymaps',
+        }
+      },
       -- }}}
     })
   end

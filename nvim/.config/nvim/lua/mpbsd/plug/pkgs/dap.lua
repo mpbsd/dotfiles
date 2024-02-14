@@ -2,12 +2,20 @@ return {
   'mfussenegger/nvim-dap',
   dependencies = {
     'rcarriga/nvim-dap-ui',
+    'jay-babu/mason-nvim-dap.nvim',
   },
   config = function()
     local dap = require('dap')
     local dapui = require('dapui')
+    local mason_nvim_dap = require('mason-nvim-dap')
     local globals = require('mpbsd.core.opts.globals')
+    mason_nvim_dap.setup({
+      automatic_setup = true,
+      handlers = {},
+      ensure_installed = globals.adapters,
+    })
     dapui.setup({
+      -- ui settings {{{
       controls = {
         element = 'repl',
         enabled = true,
@@ -87,14 +95,16 @@ return {
         indent = 1,
         max_value_lines = 100
       }
+      -- }}}
     })
     globals.vim_keymap_set({
+      -- keymaps {{{
       {
         mod = 'n',
         lhs = '<F6>',
         rhs = dap.continue,
         opt = {
-          desc = 'Debug: Start/Continue',
+          desc = 'Start/Continue',
         }
       },
       {
@@ -102,7 +112,7 @@ return {
         lhs = '<F7>',
         rhs = dap.step_into,
         opt = {
-          desc = 'Debug: Step Into',
+          desc = 'Step Into',
         }
       },
       {
@@ -110,7 +120,7 @@ return {
         lhs = '<F8>',
         rhs = dap.step_over,
         opt = {
-          desc = 'Debug: Step Over',
+          desc = 'Step Over',
         }
       },
       {
@@ -118,7 +128,15 @@ return {
         lhs = '<F9>',
         rhs = dap.step_out,
         opt = {
-          desc = 'Debug: Step Out',
+          desc = 'Step Out',
+        }
+      },
+      {
+        mod = 'n',
+        lhs = '<F10>',
+        rhs = dapui.toggle,
+        opt = {
+          desc = 'See last session result.',
         }
       },
       {
@@ -126,7 +144,7 @@ return {
         lhs = '<leader>b',
         rhs = dap.toggle_breakpoint,
         opt = {
-          desc = 'Debug: Toggle Breakpoint',
+          desc = 'Toggle Breakpoint',
         }
       },
       {
@@ -136,17 +154,10 @@ return {
           dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
         end,
         opt = {
-          desc = 'Debug: Set Breakpoint',
+          desc = 'Set Breakpoint',
         }
       },
-      {
-        mod = 'n',
-        lhs = '<F10>',
-        rhs = dapui.toggle,
-        opt = {
-          desc = 'Debug: See last session result.',
-        }
-      },
+      -- }}}
     })
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close

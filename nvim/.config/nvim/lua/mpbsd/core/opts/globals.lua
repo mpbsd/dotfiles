@@ -73,6 +73,13 @@ M.language_servers = {
   -- }}}
 }
 
+M.adapters = {
+  -- debuggers {{{
+  'cppdbg',
+  'python',
+  -- }}}
+}
+
 M.on_attach = function()
   local telescope_builtin = require('telescope.builtin')
   M.vim_keymap_set({
@@ -274,13 +281,6 @@ M.on_attach = function()
     -- }}}
   })
 end
-
-M.debuggers = {
-  -- debuggers {{{
-  'cppdbg',
-  'python',
-  -- }}}
-}
 
 if vim.fn.has('nvim-0.9.5') then
   M.vim_uv = vim.loop

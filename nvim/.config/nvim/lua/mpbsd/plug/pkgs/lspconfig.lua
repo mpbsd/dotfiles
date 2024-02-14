@@ -17,6 +17,5 @@ return {
         filetypes = server_settings.filetypes,
       })
     end
-
   end
 }
