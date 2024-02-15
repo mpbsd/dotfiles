@@ -380,7 +380,7 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>gi',
+      \    'lhs': '<leader>gis',
       \    'rhs': ':call GetStudentsInfoFromSIGAA()<cr>',
       \    'des': 'get student''s info from sigaa',
       \  },

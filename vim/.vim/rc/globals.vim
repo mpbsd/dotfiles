@@ -316,11 +316,11 @@ function GetStudentsInfoFromSIGAA() abort
         \  'e-mail: ([a-z0-9_.@]+) enviar mensagem',
         \]
   let l:subst = [
-        \  '"\3": {\r',
-        \  '"fname": "\1",\r',
-        \  '"gradc": "\2",\r',
-        \  '"uname": "\4",\r',
-        \  '"email": "\5",\r',
+        \  '"\3": {\r\t',
+        \  '"fname": "\1",\r\t',
+        \  '"gradc": "\2",\r\t',
+        \  '"uname": "\4",\r\t',
+        \  '"email": "\5",\r\t',
         \  '"grade": {"E1": 0.0,"E2": 0.0,"E3": 0.0},\r},',
         \]
   let l:reg_stdnt = join(l:regex)

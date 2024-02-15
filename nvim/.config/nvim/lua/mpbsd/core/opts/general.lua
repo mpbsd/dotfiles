@@ -7,7 +7,7 @@ local options = {
       tex_flavor = 'latex',
       loaded_perl_provider = 0,
       loaded_ruby_provider = 0,
-      node_host_prog = vim.fn.expand('~/.local/share/npm/lib/node_modules'),
+      node_host_prog = '/usr/bin/npm',
       python3_host_prog = '/usr/bin/python3',
     }
   },
