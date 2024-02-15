@@ -309,7 +309,7 @@ endfunction
 
 function GetStudentsInfoFromSIGAA() abort
   let l:regex = [
-        \  '^ +([a-z ]+) \(perfil\)',
+        \  '^ +([a-z ]+) +\(perfil\)',
         \  'curso: ([a-z ]+)',
         \  'matricula: ([0-9]{9})',
         \  'usuario: ([a-z0-9_.]+)',
@@ -333,6 +333,7 @@ function GetStudentsInfoFromSIGAA() abort
   sil %s/[óôõ]/o/ge
   sil %s/ú/u/ge
   sil %s/ç/c/ge
+  sil %s/\t/ /ge
   %s/\vusuario (off|on)-line no sigaa/\r/g
   g!/\((perfil)\|\(matricula\|curso\|usuario\|e-mail\):\)/d
   g/(perfil)/j
