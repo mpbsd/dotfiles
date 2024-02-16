@@ -384,6 +384,12 @@ let s:keymaps = [
       \    'rhs': ':call GetStudentsInfoFromSIGAA()<cr>',
       \    'des': 'get student''s info from sigaa',
       \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>pd1pc',
+      \    'rhs': ':call PracticeDayOnePrepareClasses()<cr>',
+      \    'des': 'practice day 1 prepare classes',
+      \  },
       \]
 " }}}
 
