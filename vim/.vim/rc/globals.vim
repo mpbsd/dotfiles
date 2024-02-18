@@ -323,6 +323,7 @@ function ChooseDisciplines() abort
   let @q = '/^campus samambaiajma:''a,$s/^/Samambaia ; /'
   sil exe 'norm @q'
   sil g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
+  sil %s/\([^;]\) \([0-9]\{1,3}[MTN][0-9]\{1,3}\)$/\1 ; \2/e
   %Tab /;
 endfunction
 
