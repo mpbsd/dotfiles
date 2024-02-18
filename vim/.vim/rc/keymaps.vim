@@ -381,8 +381,8 @@ let s:keymaps = [
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>cd',
-      \    'rhs': ':call ChooseDisciplines()<cr>',
-      \    'des': 'choose disciplines for the current semester',
+      \    'rhs': ':call CSVDisciplines()<cr>',
+      \    'des': 'create a CSV out of a TXT file with all disciplines',
       \  },
       \  {
       \    'mod': 'normal',

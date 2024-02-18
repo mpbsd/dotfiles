@@ -307,7 +307,7 @@ function ChooseBuiltinColorschemeAtRandom() abort
   exe s:cmd
 endfunction
 
-function ChooseDisciplines() abort
+function CSVDisciplines() abort
   sil %s/–/-/ge
   sil %s/\s\+/ /g
   sil %s/^ //g
