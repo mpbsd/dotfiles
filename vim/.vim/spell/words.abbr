@@ -36,6 +36,7 @@ iabbrev atraves através
 iabbrev avaliacao avaliação
 iabbrev basicas básicas
 iabbrev basico básico
+iabbrev basicos básicos
 iabbrev beneficios benefícios
 iabbrev bibliografica bibliográfica
 iabbrev bibliograficas bibliográficas
@@ -190,6 +191,7 @@ iabbrev impressao impressão
 iabbrev indices índices
 iabbrev inducao indução
 iabbrev infimo ínfimo
+iabbrev informacao informação
 iabbrev informacoes informacoes
 iabbrev inicio início
 iabbrev inscricoes inscrições
@@ -297,6 +299,7 @@ iabbrev publicacao publicação
 iabbrev quadratica quadrática
 iabbrev questao questão
 iabbrev questionario questionário
+iabbrev questoes questões
 iabbrev raciocinio raciocínio
 iabbrev raizes raízes
 iabbrev razao razão
@@ -364,5 +367,7 @@ iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
 iabbrev xicara xícara
-iabbrev informacao informação
-iabbrev basicos básicos
+iabbrev magica mágica
+iabbrev relatorios relatórios
+iabbrev presenca presença
+iabbrev situacao situação

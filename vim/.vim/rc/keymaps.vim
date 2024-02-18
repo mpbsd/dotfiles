@@ -362,7 +362,7 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>cd',
+      \    'lhs': '<leader>cc',
       \    'rhs': ':%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>',
       \    'des': '[c]hange the capitalization of [d][aeo]s?',
       \  },
@@ -377,6 +377,12 @@ let s:keymaps = [
       \    'lhs': '<leader>cm',
       \    'rhs': ':%s@R$\\s\\+\\([0-9.]\\+\\),\\([0-9]\\+\\)\\s(\\([+-]\\))$@\\3\\1\\.\\2\\ BRL@<cr>',
       \    'des': '[c]onvert [m]oney',
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>cd',
+      \    'rhs': ':call ChooseDisciplines()<cr>',
+      \    'des': 'choose disciplines for the current semester',
       \  },
       \  {
       \    'mod': 'normal',

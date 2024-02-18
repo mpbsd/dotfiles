@@ -307,6 +307,25 @@ function ChooseBuiltinColorschemeAtRandom() abort
   exe s:cmd
 endfunction
 
+function ChooseDisciplines() abort
+  sil %s/–/-/ge
+  sil %s/\s\+/ /g
+  sil %s/^ //g
+  sil %s/[0-9]\{1,3}[MTN][0-9]\{1,3}/&\r/g
+  sil g/^\(\s*\|MANHÃ\|TARDE\|NOITE\)$/d
+  sil g/^DISCIPLINAS/d
+  sil %s/^ //g
+  sil %s/\s*-\s*/ ; /g
+  let @q = '/^campus aparecidajma/^campus colemarkmb:''a,''bs/^/Aparecida ; /'
+  sil exe 'norm @q'
+  let @q = '/^campus colemarjma/^campus samambaiakmb:''a,''bs/^/Colemar ; /'
+  sil exe 'norm @q'
+  let @q = '/^campus samambaiajma:''a,$s/^/Samambaia ; /'
+  sil exe 'norm @q'
+  sil g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
+  %Tab /;
+endfunction
+
 function GetStudentsInfoFromSIGAA() abort
   let l:regex = [
         \  '^ +([a-z ]+) +\(perfil\)',
