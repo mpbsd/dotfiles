@@ -362,7 +362,7 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>cd',
+      \    'lhs': '<leader>cc',
       \    'rhs': ':%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>',
       \    'des': '[c]hange the capitalization of [d][aeo]s?',
       \  },
@@ -380,9 +380,21 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
+      \    'lhs': '<leader>cd',
+      \    'rhs': ':call CSVDisciplines()<cr>',
+      \    'des': 'create a CSV out of a TXT file with all disciplines',
+      \  },
+      \  {
+      \    'mod': 'normal',
       \    'lhs': '<leader>gis',
       \    'rhs': ':call GetStudentsInfoFromSIGAA()<cr>',
       \    'des': 'get student''s info from sigaa',
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>pd1pc',
+      \    'rhs': ':call PracticeDayOnePrepareClasses()<cr>',
+      \    'des': 'practice day 1 prepare classes',
       \  },
       \]
 " }}}

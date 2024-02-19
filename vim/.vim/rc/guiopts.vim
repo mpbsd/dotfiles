@@ -3,7 +3,6 @@ let s:options = {
       \  'term': {
       \    'numberwidth': 6,
       \    'colorcolumn': 80,
-      \    'background': 'dark',
       \    'statusline': '%!MyStatusLine()',
       \    'fillchars': "vert:\\|,fold:.,foldsep:\\|",
       \  },

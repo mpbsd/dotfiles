@@ -307,24 +307,44 @@ function ChooseBuiltinColorschemeAtRandom() abort
   exe s:cmd
 endfunction
 
+function CSVDisciplines() abort
+  sil %s/–/-/ge
+  sil %s/\s\+/ /g
+  sil %s/^ //g
+  sil %s/[0-9]\{1,3}[MTN][0-9]\{1,3}/&\r/g
+  sil g/^\(\s*\|MANHÃ\|TARDE\|NOITE\)$/d
+  sil g/^DISCIPLINAS/d
+  sil %s/^ //g
+  sil %s/\s*-\s*/ ; /g
+  let @q = '/^campus aparecidajma/^campus colemarkmb:''a,''bs/^/Aparecida ; /'
+  sil exe 'norm @q'
+  let @q = '/^campus colemarjma/^campus samambaiakmb:''a,''bs/^/Colemar ; /'
+  sil exe 'norm @q'
+  let @q = '/^campus samambaiajma:''a,$s/^/Samambaia ; /'
+  sil exe 'norm @q'
+  sil g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
+  sil %s/\([^;]\) \([0-9]\{1,3}[MTN][0-9]\{1,3}\)$/\1 ; \2/e
+  %Tab /;
+endfunction
+
 function GetStudentsInfoFromSIGAA() abort
   let l:regex = [
-        \  '^ +([a-z ]+) \(perfil\)',
+        \  '^ +([a-z ]+) +\(perfil\)',
         \  'curso: ([a-z ]+)',
         \  'matricula: ([0-9]{9})',
         \  'usuario: ([a-z0-9_.]+)',
-        \  'e-mail: ([a-z0-9_.@]+)\s*enviar mensagem',
+        \  'e-mail: ([a-z0-9_.@]+) enviar mensagem',
         \]
   let l:subst = [
-        \  '"\3": {\r\t',
-        \  '"fname": "\1",\r\t',
-        \  '"gradc": "\2",\r\t',
-        \  '"uname": "\4",\r\t',
-        \  '"email": "\5",\r\t',
+        \  '"\3": {',
+        \  '"fname": "\1",',
+        \  '"gradc": "\2",',
+        \  '"uname": "\4",',
+        \  '"email": "\5",',
         \  '"grade": {"E1": 0.0,"E2": 0.0,"E3": 0.0},\r},',
         \]
   let l:reg_stdnt = join(l:regex)
-  let l:sub_stdnt = join(l:subst, '')
+  let l:sub_stdnt = join(l:subst, '\r\t')
   let l:sub = '%s/\v' . l:reg_stdnt . '/' . l:sub_stdnt . '/'
   sil exe 'normal ggVGu'
   sil %s/[àáâã]/a/ge
@@ -333,6 +353,7 @@ function GetStudentsInfoFromSIGAA() abort
   sil %s/[óôõ]/o/ge
   sil %s/ú/u/ge
   sil %s/ç/c/ge
+  sil %s/\t/ /ge
   %s/\vusuario (off|on)-line no sigaa/\r/g
   g!/\((perfil)\|\(matricula\|curso\|usuario\|e-mail\):\)/d
   g/(perfil)/j
@@ -343,6 +364,33 @@ function GetStudentsInfoFromSIGAA() abort
   sil %s/\s\+",/",/ge
   sil %s/\s\+$//e
   sil g/^usuario:/d
+endfunction
+
+function PracticeDayOnePrepareClasses() abort
+  let l:head = [
+        \  '\\begin{table}[H]',
+        \  '\\centering',
+        \  '\\begin{tabular}{ccccccccccc}\r',
+        \]
+  let l:tail = [
+        \  '\r\\end{tabular}',
+        \  '\\caption{Standard Normal Distribution Function}',
+        \  '\\label{tbl:standard-normal-distribution-function}',
+        \  '\\end{table}'
+        \]
+  let l:payload_head = join(l:head, '\r')
+  let l:payload_tail = join(l:tail, '\r')
+  let l:substitute_cmd_head = '0s/^/' . l:payload_head . '/'
+  let l:substitute_cmd_tail = '$s/$/' . l:payload_tail . '/'
+  sil %s/\s\+/ /g
+  sil g!/\.\d\{2,}/d
+  sil %s/ \.0\(\d\)\>/ \& 0\.0\100/g
+  sil %s/ \.\(\d\)\>/ 0\.\1/
+  sil %s/ \.\(\d\{4}\)/ \& 0\.\1/g
+  sil g/0\.\d\+/s/$/\\\\/
+  Tab /\(&\|\\\\\)
+  sil exe l:substitute_cmd_head
+  sil exe l:substitute_cmd_tail
 endfunction
 
 let g:tex_flavor = 'latex'
@@ -360,11 +408,4 @@ let s:wiki1 = {
       \  'ext': '.wiki',
       \}
 
-let s:wiki2 = {
-      \  'path': '~/.local/share/vimwiki/wiki2/',
-      \  'index': 'index',
-      \  'syntax': 'default',
-      \  'ext': '.wiki',
-      \}
-
-let g:vimwiki_list = [s:wiki1, s:wiki2]
+let g:vimwiki_list = [s:wiki1]

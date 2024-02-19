@@ -7,9 +7,9 @@ local mappings = {
     lhs = '<leader>erc',
     rhs = ':edit ~/.config/nvim/init.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[e]dit vim[r][c]',
+      silent = false,
+      desc = 'edit vimrc',
     },
   },
   {
@@ -17,9 +17,9 @@ local mappings = {
     lhs = '<leader>eac',
     rhs = ':edit ~/.config/nvim/lua/mpbsd/core/opts/autocmd.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[e]dit [a]uto[c]ommands',
+      silent = false,
+      desc = 'edit autocommands',
     },
   },
   {
@@ -27,9 +27,9 @@ local mappings = {
     lhs = '<leader>egb',
     rhs = ':edit ~/.config/nvim/lua/mpbsd/core/opts/globals.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[e]dit [g]lo[b]al resources',
+      silent = false,
+      desc = 'edit global resources',
     },
   },
   {
@@ -37,9 +37,9 @@ local mappings = {
     lhs = '<leader>ekm',
     rhs = ':edit ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[e]dit [k]ey[m]aps',
+      silent = false,
+      desc = 'edit keymaps',
     },
   },
   {
@@ -47,9 +47,9 @@ local mappings = {
     lhs = '<leader>eop',
     rhs = ':edit ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[e]dit [o][p]tions',
+      silent = false,
+      desc = 'edit options',
     },
   },
   {
@@ -57,9 +57,19 @@ local mappings = {
     lhs = '<leader>epg',
     rhs = ':edit ~/.config/nvim/lua/mpbsd/plug/pkgs/<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[e]dit [p]lu[g]ins',
+      silent = false,
+      desc = 'edit plugins',
+    },
+  },
+  {
+    mod = 'n',
+    lhs = '<leader>esn',
+    rhs = ':edit ~/.config/nvim/lua/mpbsd/snip/<cr>',
+    opt = {
+      noremap = true,
+      silent = false,
+      desc = 'edit snippets',
     },
   },
   {
@@ -67,9 +77,9 @@ local mappings = {
     lhs = '<leader>src',
     rhs = ':source ~/.config/nvim/init.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]ource vim[r][c]',
+      silent = false,
+      desc = 'source vimrc',
     },
   },
   {
@@ -77,9 +87,9 @@ local mappings = {
     lhs = '<leader>sac',
     rhs = ':source ~/.config/nvim/lua/mpbsd/core/opts/autocmd.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]ource [a]uto[c]ommands',
+      silent = false,
+      desc = 'source autocommands',
     },
   },
   {
@@ -87,9 +97,9 @@ local mappings = {
     lhs = '<leader>sgb',
     rhs = ':source ~/.config/nvim/lua/mpbsd/core/opts/globals.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]ource [g]lo[b]al resources',
+      silent = false,
+      desc = 'source global resources',
     },
   },
   {
@@ -97,9 +107,9 @@ local mappings = {
     lhs = '<leader>skm',
     rhs = ':source ~/.config/nvim/lua/mpbsd/core/opts/keymaps.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]ource [k]ey[m]aps',
+      silent = false,
+      desc = 'source keymaps',
     },
   },
   {
@@ -107,9 +117,9 @@ local mappings = {
     lhs = '<leader>sop',
     rhs = ':source ~/.config/nvim/lua/mpbsd/core/opts/general.lua<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]ource [o][p]tions',
+      silent = false,
+      desc = 'source options',
     },
   },
   {
@@ -117,9 +127,9 @@ local mappings = {
     lhs = '<leader>spg',
     rhs = ':source ~/.config/nvim/lua/mpbsd/plug/<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]ource [p]lu[g]ins',
+      silent = false,
+      desc = 'source plugins',
     },
   },
   {
@@ -127,8 +137,8 @@ local mappings = {
     lhs = '<leader>;',
     rhs = ':',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'get into command mode without hitting the shift key',
     },
   },
@@ -137,8 +147,8 @@ local mappings = {
     lhs = 'jj',
     rhs = '<esc>',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'back to normal mode from insert mode',
     },
   },
@@ -147,9 +157,9 @@ local mappings = {
     lhs = '<leader>w;',
     rhs = ':w<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[w]ri[t]e',
+      silent = false,
+      desc = 'write',
     },
   },
   {
@@ -157,9 +167,9 @@ local mappings = {
     lhs = '<leader>q;',
     rhs = ':q<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[q][u]it',
+      silent = false,
+      desc = 'quit',
     },
   },
   {
@@ -167,8 +177,8 @@ local mappings = {
     lhs = '<c-h>',
     rhs = '<c-w>h',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'move focus to the left window',
     },
   },
@@ -177,8 +187,8 @@ local mappings = {
     lhs = '<c-j>',
     rhs = '<c-w>j',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'move focus to the window below',
     },
   },
@@ -187,8 +197,8 @@ local mappings = {
     lhs = '<c-k>',
     rhs = '<c-w>k',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'move focus to the window above',
     },
   },
@@ -197,8 +207,8 @@ local mappings = {
     lhs = '<c-l>',
     rhs = '<c-w>l',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'move focus to the right window',
     },
   },
@@ -207,9 +217,9 @@ local mappings = {
     lhs = '<leader>s-',
     rhs = ':sp<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]plit window [h]orizontally',
+      silent = false,
+      desc = 'split window horizontally',
     },
   },
   {
@@ -217,9 +227,9 @@ local mappings = {
     lhs = [[<leader>s\]],
     rhs = ':vs<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]plit window [v]erticaly',
+      silent = false,
+      desc = 'split window verticaly',
     },
   },
   {
@@ -227,8 +237,8 @@ local mappings = {
     lhs = '<c-left>',
     rhs = '<c-w>>',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'increase window width',
     },
   },
@@ -237,8 +247,8 @@ local mappings = {
     lhs = '<c-down>',
     rhs = '<c-w>-',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'decrease window height',
     },
   },
@@ -247,8 +257,8 @@ local mappings = {
     lhs = '<c-up>',
     rhs = '<c-w>+',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'increase window height',
     },
   },
@@ -257,8 +267,8 @@ local mappings = {
     lhs = '<c-right>',
     rhs = '<c-w><',
     opt = {
-      silent = false,
       noremap = true,
+      silent = false,
       desc = 'decrease window width',
     },
   },
@@ -267,9 +277,9 @@ local mappings = {
     lhs = '<leader>gs',
     rhs = ':0G<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[g]it [s]tatus',
+      silent = false,
+      desc = 'git status',
     },
   },
   {
@@ -277,9 +287,9 @@ local mappings = {
     lhs = '<localleader>tu',
     rhs = '<esc>mmbgUiw`ma',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[t]o [u]pper case',
+      silent = false,
+      desc = 'to upper case',
     },
   },
   {
@@ -287,9 +297,9 @@ local mappings = {
     lhs = '<localleader>tl',
     rhs = '<esc>mmbguiw`ma',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[t]o [l]ower case',
+      silent = false,
+      desc = 'to lower case',
     },
   },
   {
@@ -297,9 +307,9 @@ local mappings = {
     lhs = '<localleader>cc',
     rhs = '<esc>mmb~`ma',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[c]amel [c]ase',
+      silent = false,
+      desc = 'camel case',
     },
   },
   {
@@ -307,9 +317,9 @@ local mappings = {
     lhs = '<leader>ht',
     rhs = ':tab h ',
     opt = {
-      silent = false,
       noremap = true,
-      desc = 'open [h]elp in another [t]ab',
+      silent = false,
+      desc = 'open help in another tab',
     },
   },
   {
@@ -317,9 +327,9 @@ local mappings = {
     lhs = '<leader>mp',
     rhs = ':tab Man ',
     opt = {
-      silent = false,
       noremap = true,
-      desc = 'open [m]an [p]age in another tab',
+      silent = false,
+      desc = 'open man page in another tab',
     },
   },
   {
@@ -327,31 +337,9 @@ local mappings = {
     lhs = '<leader>cd',
     rhs = [[:%s@\<D\([aeo]s\?\)\>@d\1@g<cr>]],
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[c]hange the capitalization of [d][aeo]s?',
-    },
-  },
-  {
-    mod = 'n',
-    lhs = '<leader>ls',
-    rhs = function()
-      pcall(require('lazy').sync)
-    end,
-    opt = {
       silent = false,
-      noremap = true,
-      desc = '[l]azy [s]ync',
-    },
-  },
-  {
-    mod = 'n',
-    lhs = '<leader>ma',
-    rhs = ':Mason<cr>',
-    opt = {
-      silent = false,
-      noremap = true,
-      desc = '[m][a]son',
+      desc = 'change the capitalization of daeos?',
     },
   },
   {
@@ -359,9 +347,9 @@ local mappings = {
     lhs = '<leader>sb',
     rhs = ':e ~/.local/share/references/zotero.bib<cr>',
     opt = {
-      silent = false,
       noremap = true,
-      desc = '[s]earch [b]ibliography',
+      silent = false,
+      desc = 'search bibliography',
     },
   },
 }
