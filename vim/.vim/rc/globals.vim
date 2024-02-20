@@ -366,6 +366,16 @@ function GetStudentsInfoFromSIGAA() abort
   sil g/^usuario:/d
 endfunction
 
+function RemoveGraphicalAccents() abort
+  sil %s/[àáâã]/a/ge
+  sil %s/[éê]/e/ge
+  sil %s/í/i/ge
+  sil %s/[óôõ]/o/ge
+  sil %s/ú/u/ge
+  sil %s/ç/c/ge
+  sil %s/\t/ /ge
+endfunction
+
 function PracticeDayOnePrepareClasses() abort
   let l:head = [
         \  '\\begin{table}[H]',
