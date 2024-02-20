@@ -278,10 +278,7 @@ endfunction
 
 function ChooseBuiltinColorschemeAtRandom() abort
   let s:colorscheme = [
-        \  'blue',
-        \  'darkblue',
         \  'default',
-        \  'delek',
         \  'desert',
         \  'elflord',
         \  'evening',
@@ -289,16 +286,12 @@ function ChooseBuiltinColorschemeAtRandom() abort
         \  'industry',
         \  'koehler',
         \  'lunaperche',
-        \  'morning',
         \  'murphy',
         \  'pablo',
-        \  'peachpuff',
         \  'quiet',
         \  'ron',
-        \  'shine',
         \  'slate',
         \  'torte',
-        \  'zellner',
         \]
   let s:number_of_colorschemes = len(s:colorscheme)
   let s:seed = srand()
