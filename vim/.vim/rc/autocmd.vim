@@ -15,6 +15,7 @@ augroup keybindings_for_building_latex_documents
   autocmd FileType tex nnoremap <leader>mb :make bib<cr>
   autocmd FileType tex nnoremap <leader>mc :make clean<cr>
   autocmd FileType tex nnoremap <leader>mf :make final<cr>
+  autocmd FileType tex inoremap <leader>gc :call GetBibTeXCitationKeys()<cr>
 augroup END
 
 augroup remove_trailing_spaces_on_every_save

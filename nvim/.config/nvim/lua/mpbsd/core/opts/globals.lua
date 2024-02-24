@@ -36,6 +36,23 @@ M.vim_create_autocmd = function(autocmds_table)
   end
 end
 
+-- M.test = function()
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local lang = 'bibtex'
+--   local parser = vim.treesitter.get_parser(bufnr, lang)
+--   local tree = parser:parse()[1]
+--   local query_str = [[
+--   ((entry
+--     ty: (entry_type) @type)
+--    (#match? @type "article"))
+--   ]]
+--   local query = vim.treesitter.query.parse(lang, query_str)
+--   for id, node in query:iter_captures(tree:root(), bufnr) do
+--     print(id)
+--     print(vim.inspect(node))
+--   end
+-- end
+
 M.language_servers = {
   -- servers {{{
   bashls = {

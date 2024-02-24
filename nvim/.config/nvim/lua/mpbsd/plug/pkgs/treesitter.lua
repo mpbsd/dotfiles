@@ -106,6 +106,7 @@ return {
       },
     })
     globals.vim_keymap_set({
+      -- keymaps {{{
       {
         mod = { 'n', 'x', 'o' },
         lhs = ';',
@@ -142,6 +143,7 @@ return {
         rhs = rept_move.builtin_T,
         opt = {}
       },
+      -- }}}
     })
   end
 }

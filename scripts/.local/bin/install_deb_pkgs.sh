@@ -96,6 +96,7 @@ declare -a CORE_UTILS=(
   neofetch
   plocate
   qpdf
+  redshift
   ripgrep
   sdcv
   silversearcher-ag
