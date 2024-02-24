@@ -344,7 +344,7 @@ local mappings = {
   },
   {
     mod = 'n',
-    lhs = '<leader>sb',
+    lhs = '<leader>eb',
     rhs = ':e ~/.local/share/references/zotero.bib<cr>',
     opt = {
       noremap = true,
