@@ -218,7 +218,7 @@ function MyStatusLine() abort
   let l:stl = []
   for sec in ['lhs', 'mid', 'rhs']
     for obj in section[sec]
-      call add(l:stl, obj['cmd'])
+      cal add(l:stl, obj['cmd'])
     endfor
   endfor
   return join(l:stl)
@@ -394,6 +394,22 @@ function PracticeDayOnePrepareClasses() abort
   Tab /\(&\|\\\\\)
   sil exe l:substitute_cmd_head
   sil exe l:substitute_cmd_tail
+endfunction
+
+function GetBibTeXCitationKeys() abort
+  let l:bfile = expand('~/.local/share/references/zotero.bib')
+  let l:query = ':vimgrep' . ' ' . '/^@\(article\|book\)/j' . ' ' . l:bfile
+  let l:qflst = []
+  let l:subst = {
+        \  'lhs': '@\(article\|book\){\([A-Za-z0-9]\+\),',
+        \  'rhs': '\\cite{\2}',
+        \}
+  sil exe l:query
+  for key in getqflist()
+    let l:ctkey = substitute(key.text, l:subst['lhs'], l:subst['rhs'], 'i')
+    cal add(l:qflst, l:ctkey)
+  endfor
+  return l:qflst
 endfunction
 
 let g:tex_flavor = 'latex'

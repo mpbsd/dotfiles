@@ -214,6 +214,7 @@ iabbrev lancar lançar
 iabbrev latex LaTeX
 iabbrev logaritmicas logarítmicas
 iabbrev macarrao macarrão
+iabbrev magica mágica
 iabbrev mamae mamãe
 iabbrev maquina máquina
 iabbrev matematica matemática
@@ -283,6 +284,7 @@ iabbrev possivel possível
 iabbrev potencia potência
 iabbrev preco preço
 iabbrev preferencias preferências
+iabbrev presenca presença
 iabbrev primaria primária
 iabbrev primario primário
 iabbrev principios princípios
@@ -309,6 +311,7 @@ iabbrev referencias referências
 iabbrev regiao região
 iabbrev relacao relação
 iabbrev relacoes relações
+iabbrev relatorios relatórios
 iabbrev repositorios repositórios
 iabbrev representacao representação
 iabbrev restricao restrição
@@ -327,6 +330,7 @@ iabbrev sequencia sequência
 iabbrev serie série
 iabbrev sessao sessão
 iabbrev simetrica simétrica
+iabbrev situacao situação
 iabbrev sobrejecao sobrejeção
 iabbrev sobrejecoes sobrejeções
 iabbrev solucao solução
@@ -367,7 +371,3 @@ iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
 iabbrev xicara xícara
-iabbrev magica mágica
-iabbrev relatorios relatórios
-iabbrev presenca presença
-iabbrev situacao situação
