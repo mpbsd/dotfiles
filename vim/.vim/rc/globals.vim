@@ -292,6 +292,7 @@ function ChooseBuiltinColorschemeAtRandom() abort
         \  'ron',
         \  'slate',
         \  'torte',
+        \  'seoul256',
         \]
   let s:number_of_colorschemes = len(s:colorscheme)
   let s:seed = srand()
@@ -402,7 +403,7 @@ function GetBibTeXCitationKeys() abort
   let l:qflst = []
   let l:subst = {
         \  'lhs': '@\(article\|book\){\([A-Za-z0-9]\+\),',
-        \  'rhs': '\\cite{\2}',
+        \  'rhs': '\2',
         \}
   sil exe l:query
   for key in getqflist()

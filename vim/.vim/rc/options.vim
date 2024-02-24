@@ -26,7 +26,7 @@ let s:options = [
       \  'spelllang=en_us,pt_br',
       \  'spellsuggest=fast,10',
       \  'path+=**',
-      \  'listchars=tab:<->,nbsp:_,trail:.',
+      \  'listchars=trail:.,tab:>-,extends:>,precedes:<,nbsp:-',
       \  'list',
       \]
 " }}}
