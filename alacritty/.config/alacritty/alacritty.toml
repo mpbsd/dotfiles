@@ -569,31 +569,35 @@ y = 8
 x = 255
 y = 420
 
-# Colors (Nord)
+# Colors (PaperColor - Dark)
 
 # Default colors
 [colors.primary]
-background = '#2E3440'
-foreground = '#D8DEE9'
+background = '#1c1c1c'
+foreground = '#808080'
+
+[colors.cursor]
+text = '#1c1c1c'
+cursor = '#808080'
 
 # Normal colors
 [colors.normal]
-black   = '#3B4252'
-red     = '#BF616A'
-green   = '#A3BE8C'
-yellow  = '#EBCB8B'
-blue    = '#81A1C1'
-magenta = '#B48EAD'
-cyan    = '#88C0D0'
-white   = '#E5E9F0'
+black   = '#1c1c1c'
+red     = '#af005f'
+green   = '#5faf00'
+yellow  = '#d7af5f'
+blue    = '#5fafd7'
+magenta = '#808080'
+cyan    = '#d7875f'
+white   = '#d0d0d0'
 
 # Bright colors
 [colors.bright]
-black   = '#4C566A'
-red     = '#BF616A'
-green   = '#A3BE8C'
-yellow  = '#EBCB8B'
-blue    = '#81A1C1'
-magenta = '#B48EAD'
-cyan    = '#8FBCBB'
-white   = '#ECEFF4'
+black   = '#585858'
+red     = '#5faf5f'
+green   = '#afd700'
+yellow  = '#af87d7'
+blue    = '#ffaf00'
+magenta = '#ffaf00'
+cyan    = '#00afaf'
+white   = '#5f8787'
