@@ -223,26 +223,31 @@ function MyStatusLine() abort
   return join(l:stl)
 endfunction
 
-function SpecialCharactersHandler() abort
+function HandlerForSpecialCharacters() abort
   let l:cword = expand('<cword>')
   let l:pword = expand('<cword>')
-  let l:pword = substitute(l:pword, 'à', 'a', 'gi')
-  let l:pword = substitute(l:pword, 'á', 'a', 'gi')
-  let l:pword = substitute(l:pword, 'â', 'a', 'gi')
-  let l:pword = substitute(l:pword, 'ã', 'a', 'gi')
-  let l:pword = substitute(l:pword, 'é', 'e', 'gi')
-  let l:pword = substitute(l:pword, 'ê', 'e', 'gi')
-  let l:pword = substitute(l:pword, 'í', 'i', 'gi')
-  let l:pword = substitute(l:pword, 'ó', 'o', 'gi')
-  let l:pword = substitute(l:pword, 'ô', 'o', 'gi')
-  let l:pword = substitute(l:pword, 'õ', 'o', 'gi')
-  let l:pword = substitute(l:pword, 'ú', 'u', 'gi')
-  let l:pword = substitute(l:pword, 'ç', 'c', 'gi')
+  let l:subst = {
+        \  'à': 'a',
+        \  'á': 'a',
+        \  'â': 'a',
+        \  'ã': 'a',
+        \  'é': 'e',
+        \  'ê': 'e',
+        \  'í': 'i',
+        \  'ó': 'o',
+        \  'ô': 'o',
+        \  'õ': 'o',
+        \  'ú': 'u',
+        \  'ç': 'c',
+        \}
+  for [lhs, rhs] in items(l:subst)
+    let l:pword = substitute(l:pword, lhs, rhs, 'gi')
+  endfor
   return printf("%s %s %s", 'iabbrev' , l:pword , l:cword)
 endfunction
 
 function AddWordUnderCursorToMyAbbreviationsList() abort
-  let l:abbrv = SpecialCharactersHandler()
+  let l:abbrv = HandlerForSpecialCharacters()
   call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
@@ -263,8 +268,7 @@ endfunction
 
 function SubsCWordWithRegZeroWhileRetainingCursorPos() abort
   let l:pos = getpos('.')
-  let l:cmd = printf("1,$s/%s/%s/g", expand('<cword>'), getreg('0'))
-  execute l:cmd
+  execute printf("1,$s/%s/%s/g", expand('<cword>'), getreg('0'))
   call setpos('.', l:pos)
 endfunction
 

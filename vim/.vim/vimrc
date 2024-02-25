@@ -8,9 +8,9 @@ let s:rc_files = [
       \  'globals',
       \  'options',
       \  'keymaps',
+      \  'guiopts',
       \  'plugins',
       \  'autocmd',
-      \  'guiopts',
       \]
 
 for rc_file in s:rc_files
