@@ -1,5 +1,18 @@
 " general options {{{
 let s:options = {
+      \  'grpx': {
+      \    'T': '-',
+      \    'b': '-',
+      \    'd': '+',
+      \    'l': '-',
+      \    'm': '-',
+      \    'r': '-',
+      \  },
+      \  'misc': {
+      \    't_Co': 256,
+      \    'guiheadroom': 0,
+      \    'guifont': 'Hack\ Nerd\ Font\ Mono\ 14',
+      \  },
       \  'term': {
       \    'numberwidth': 6,
       \    'colorcolumn': 80,
@@ -7,39 +20,22 @@ let s:options = {
       \    'statusline': '%!MyStatusLine()',
       \    'fillchars': 'vert:\|,fold:.,foldsep:\|',
       \  },
-      \  'grpx': {
-      \    'bool': {
-      \        'd': '+',
-      \        'T': '-',
-      \        'b': '-',
-      \        'l': '-',
-      \        'm': '-',
-      \        'r': '-',
-      \    },
-      \    'misc': {
-      \        't_Co': 256,
-      \        'guiheadroom': 0,
-      \        'guifont': 'Hack\ Nerd\ Font\ Mono\ 14',
-      \    },
-      \  },
       \}
 " }}}
 
-for [key, val] in items(s:options['term'])
-  execute printf("set %s=%s", key, val)
-endfor
+function AssignmentOperation(categ, lhs, rhs) abort
+  if a:categ ==# 'grpx'
+    let l:assignment = printf("set guioptions %s=%s", a:rhs, a:lhs)
+  else
+    let l:assignment = printf("set %s=%s", a:lhs, a:rhs)
+  endif
+  return l:assignment
+endfunction
 
-if has('gui_running')
-  for category in keys(s:options['grpx'])
-    for [key, val] in items(s:options['grpx'][category])
-      if category ==# 'bool'
-        let s:cmd = printf("set guioptions %s=%s", val, key)
-      elseif category ==# 'misc'
-        let s:cmd = printf("set %s=%s", key, val)
-      endif
-      execute s:cmd
-    endfor
+for categ in keys(s:options)
+  for [lhs, rhs] in items(s:options[categ])
+    execute AssignmentOperation(categ, lhs, rhs)
   endfor
-endif
+endfor
 
 call ChooseColorschemeAtRandom()

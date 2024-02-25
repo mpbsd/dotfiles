@@ -19,7 +19,6 @@ let s:options = [
       \  'hidden',
       \  'undofile',
       \  'lazyredraw',
-      \  'showcmd',
       \  'encoding=utf8',
       \  'secure',
       \  'noshowmode',
