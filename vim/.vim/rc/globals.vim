@@ -1,14 +1,50 @@
-function VimKeymapSet(keymaps) abort
+let g:tex_flavor = 'latex'
+
+let s:table_of_equivalent_characters = {
+      \  'à': 'a',
+      \  'á': 'a',
+      \  'â': 'a',
+      \  'ã': 'a',
+      \  'é': 'e',
+      \  'ê': 'e',
+      \  'í': 'i',
+      \  'ó': 'o',
+      \  'ô': 'o',
+      \  'õ': 'o',
+      \  'ú': 'u',
+      \  'ç': 'c',
+      \}
+
+function VimSetOption(categ, lhs, rhs) abort
+  if a:categ ==# 'bool'
+    execute printf("set %s", (a:rhs == v:true) ? a:lhs : ('no' . a:lhs))
+  elseif a:categ ==# 'grpx'
+    execute printf("set guioptions %s=%s", a:rhs, a:lhs)
+  else
+    execute printf("set %s=%s", a:lhs, a:rhs)
+  endif
+endfunction
+
+function VimSetOptions(options) abort
+  for categ in keys(a:options)
+    for [lhs, rhs] in items(a:options[categ])
+      call VimSetOption(categ, lhs, rhs)
+    endfor
+  endfor
+endfunction
+
+function VimSetKeymap(mod, lhs, rhs) abort
   let l:noremap = {
         \  'normal': 'nnoremap',
         \  'insert': 'inoremap',
         \  'visual': 'vnoremap',
         \}
+  execute printf("%s %s %s", l:noremap[a:mod], a:lhs, a:rhs)
+endfunction
+
+function VimSetKeymaps(keymaps) abort
   for keymap in a:keymaps
-    let l:mod = keymap['mod']
-    let l:lhs = keymap['lhs']
-    let l:rhs = keymap['rhs']
-    execute printf("%s %s %s", l:noremap[l:mod], l:lhs, l:rhs)
+    call VimSetKeymap(keymap['mod'], keymap['lhs'], keymap['rhs'])
   endfor
 endfunction
 
@@ -223,24 +259,16 @@ function MyStatusLine() abort
   return join(l:stl)
 endfunction
 
+function RemoveGraphicalAccents() abort
+  for [lhs, rhs] in items(s:table_of_equivalent_characters)
+    silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
+  endfor
+endfunction
+
 function HandlerForSpecialCharacters() abort
   let l:cword = expand('<cword>')
   let l:pword = expand('<cword>')
-  let l:subst = {
-        \  'à': 'a',
-        \  'á': 'a',
-        \  'â': 'a',
-        \  'ã': 'a',
-        \  'é': 'e',
-        \  'ê': 'e',
-        \  'í': 'i',
-        \  'ó': 'o',
-        \  'ô': 'o',
-        \  'õ': 'o',
-        \  'ú': 'u',
-        \  'ç': 'c',
-        \}
-  for [lhs, rhs] in items(l:subst)
+  for [lhs, rhs] in items(s:table_of_equivalent_characters)
     let l:pword = substitute(l:pword, lhs, rhs, 'gi')
   endfor
   return printf("%s %s %s", 'iabbrev' , l:pword , l:cword)
@@ -294,7 +322,7 @@ function GetBibTeXCitationKeys() abort
   echo l:qflst
 endfunction
 
-function ChooseColorschemeAtRandom() abort
+function VimChooseColorscheme() abort
   let s:colorscheme = [
         \  'default',
         \  'desert',
@@ -336,20 +364,6 @@ function CSVDisciplines() abort
   g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
   %s/\([^;]\) \([0-9]\{1,3}[MTN][0-9]\{1,3}\)$/\1 ; \2/e
   %Tab /;
-endfunction
-
-function RemoveGraphicalAccents() abort
-  let l:patterns = {
-        \ '[àáâã]': 'a',
-        \ '[éê]':   'e',
-        \ 'í':      'i',
-        \ '[óôõ]':  'o',
-        \ 'ú':      'u',
-        \ 'ç':      'c',
-        \}
-  for [pattern, value] in items(l:patterns)
-    execute printf("1,$s/%s/%s/ge", pattern, value)
-  endfor
 endfunction
 
 function GetStudentsInfoFromSIGAA() abort
@@ -412,20 +426,3 @@ function PracticeDayOnePrepareClasses() abort
   execute l:substitute_cmd_head
   execute l:substitute_cmd_tail
 endfunction
-
-let g:tex_flavor = 'latex'
-
-let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']
-let g:UltiSnipsExpandTrigger       = '<tab>'
-let g:UltiSnipsJumpForwardTrigger  = '<c-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
-let g:UltiSnipsEditSplit           = 'tabdo'
-
-let s:wiki1 = {
-      \  'path': '~/.local/share/vimwiki/wiki1/',
-      \  'index': 'index',
-      \  'syntax': 'default',
-      \  'ext': '.wiki',
-      \}
-
-let g:vimwiki_list = [s:wiki1]

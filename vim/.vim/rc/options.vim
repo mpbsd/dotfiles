@@ -1,36 +1,56 @@
-" general options {{{
-let s:options = [
-      \  'number',
-      \  'relativenumber',
-      \  'cursorline',
-      \  'cursorcolumn',
-      \  'tabstop=2',
-      \  'shiftwidth=2',
-      \  'expandtab',
-      \  'autoindent',
-      \  'smartindent',
-      \  'linebreak',
-      \  'nojoinspaces',
-      \  'splitright',
-      \  'splitbelow',
-      \  'magic',
-      \  'ignorecase',
-      \  'smartcase',
-      \  'hidden',
-      \  'undofile',
-      \  'lazyredraw',
-      \  'encoding=utf8',
-      \  'secure',
-      \  'noshowmode',
-      \  'dict=~/.vim/spell/words.dict',
-      \  'spelllang=en_us,pt_br',
-      \  'spellsuggest=fast,15',
-      \  'path+=**',
-      \  'listchars=trail:.,tab:<->,extends:>,precedes:<,nbsp:-',
-      \  'list',
-      \]
+" s:options {{{
+let s:options = {
+      \  'bool': {
+      \    'number': v:true,
+      \    'relativenumber': v:true,
+      \    'cursorline': v:true,
+      \    'cursorcolumn': v:true,
+      \    'expandtab': v:true,
+      \    'autoindent': v:true,
+      \    'smartindent': v:true,
+      \    'linebreak': v:true,
+      \    'nojoinspaces': v:true,
+      \    'splitright': v:true,
+      \    'splitbelow': v:true,
+      \    'magic': v:true,
+      \    'ignorecase': v:true,
+      \    'smartcase': v:true,
+      \    'hidden': v:true,
+      \    'undofile': v:true,
+      \    'lazyredraw': v:true,
+      \    'secure': v:true,
+      \    'noshowmode': v:true,
+      \    'list': v:true,
+      \  },
+      \  'grpx': {
+      \    'T': '-',
+      \    'b': '-',
+      \    'd': '+',
+      \    'l': '-',
+      \    'm': '-',
+      \    'r': '-',
+      \  },
+      \  'misc': {
+      \    't_Co': 256,
+      \    'guiheadroom': 0,
+      \    'guifont': 'Hack\ Nerd\ Font\ Mono\ 14',
+      \  },
+      \  'term': {
+      \    'background': 'dark',
+      \    'colorcolumn': 80,
+      \    'encoding': 'utf8',
+      \    'fillchars': 'vert:\|,fold:.,foldsep:\|',
+      \    'listchars': 'trail:.,tab:<->,extends:>,precedes:<,nbsp:-',
+      \    'numberwidth': 6,
+      \    'tabstop': 2,
+      \    'shiftwidth': 2,
+      \    'spelllang': 'en_us,pt_br',
+      \    'spellsuggest': 'fast,15',
+      \    'dict': '~/.vim/spell/words.dict',
+      \    'statusline': '%!MyStatusLine()',
+      \  },
+      \}
 " }}}
 
-for option in s:options
-  execute printf("set %s", option)
-endfor
+call VimSetOptions(s:options)
+call VimChooseColorscheme()

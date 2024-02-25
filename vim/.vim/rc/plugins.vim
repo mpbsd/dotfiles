@@ -27,3 +27,18 @@ Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 call plug#end()
+
+let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']
+let g:UltiSnipsExpandTrigger       = '<tab>'
+let g:UltiSnipsJumpForwardTrigger  = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+let g:UltiSnipsEditSplit           = 'tabdo'
+
+let s:wiki1 = {
+      \  'path': '~/.local/share/vimwiki/wiki1/',
+      \  'index': 'index',
+      \  'syntax': 'default',
+      \  'ext': '.wiki',
+      \}
+
+let g:vimwiki_list = [s:wiki1]

@@ -1,4 +1,4 @@
-" keymaps {{{
+" s:keymaps {{{
 let s:keymaps = [
       \  {
       \    'mod': 'normal',
@@ -47,18 +47,6 @@ let s:keymaps = [
       \    'lhs': '<leader>sgb',
       \    'rhs': ':source ~/.vim/rc/globals.vim<cr>',
       \    'des': 'source global resources',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>eui',
-      \    'rhs': ':edit ~/.vim/rc/guiopts.vim<cr>',
-      \    'des': 'edit guioptions',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>sui',
-      \    'rhs': ':source ~/.vim/rc/guiopts.vim<cr>',
-      \    'des': 'source guioptions',
       \  },
       \  {
       \    'mod': 'normal',
@@ -399,4 +387,4 @@ let s:keymaps = [
       \]
 " }}}
 
-call VimKeymapSet(s:keymaps)
+call VimSetKeymaps(s:keymaps)

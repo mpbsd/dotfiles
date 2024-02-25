@@ -8,7 +8,6 @@ let s:rc_files = [
       \  'globals',
       \  'options',
       \  'keymaps',
-      \  'guiopts',
       \  'plugins',
       \  'autocmd',
       \]
