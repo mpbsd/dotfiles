@@ -5,7 +5,7 @@ let s:options = {
       \    'colorcolumn': 80,
       \    'background': 'dark',
       \    'statusline': '%!MyStatusLine()',
-      \    'fillchars': "vert:\\|,fold:.,foldsep:\\|",
+      \    'fillchars': 'vert:\|,fold:.,foldsep:\|',
       \  },
       \  'grpx': {
       \    'bool': {
@@ -19,28 +19,27 @@ let s:options = {
       \    'misc': {
       \        't_Co': 256,
       \        'guiheadroom': 0,
-      \        'guifont': "JetBrainsMono\\ Nerd\\ Font\\ Mono\\ 16",
+      \        'guifont': 'Hack\ Nerd\ Font\ Mono\ 14',
       \    },
       \  },
       \}
 " }}}
 
 for [key, val] in items(s:options['term'])
-  let s:cmd = 'set' . ' ' . key . '=' . val
-  exe s:cmd
+  execute printf("set %s=%s", key, val)
 endfor
 
 if has('gui_running')
   for category in keys(s:options['grpx'])
     for [key, val] in items(s:options['grpx'][category])
       if category ==# 'bool'
-        let s:cmd = 'set guioptions' . val . '=' . key
+        let s:cmd = printf("set guioptions %s=%s", val, key)
       elseif category ==# 'misc'
-        let s:cmd = 'set' . ' ' . key . '=' . val
+        let s:cmd = printf("set %s=%s", key, val)
       endif
-      exe s:cmd
+      execute s:cmd
     endfor
   endfor
 endif
 
-sil cal ChooseBuiltinColorschemeAtRandom()
+call ChooseColorschemeAtRandom()

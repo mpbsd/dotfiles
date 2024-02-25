@@ -24,14 +24,13 @@ let s:options = [
       \  'noshowmode',
       \  'dict=~/.vim/spell/words.dict',
       \  'spelllang=en_us,pt_br',
-      \  'spellsuggest=fast,10',
+      \  'spellsuggest=fast,15',
       \  'path+=**',
-      \  'listchars=trail:.,tab:>-,extends:>,precedes:<,nbsp:-',
+      \  'listchars=trail:.,tab:<->,extends:>,precedes:<,nbsp:-',
       \  'list',
       \]
 " }}}
 
 for option in s:options
-  let s:cmd = 'set' . ' ' . option
-  sil exe s:cmd
+  execute printf("set %s", option)
 endfor

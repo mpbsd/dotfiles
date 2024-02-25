@@ -1,9 +1,9 @@
 let mapleader      = ' '
 let maplocalleader = ','
 
-let s:rc_files_dir = expand('~/.vim/rc/')
+let s:rc_files_dir = expand('~/.vim/rc')
 
-let s:rc_filenames = [
+let s:rc_files = [
       \  'caching',
       \  'globals',
       \  'options',
@@ -13,8 +13,7 @@ let s:rc_filenames = [
       \  'guiopts',
       \]
 
-for rc_file in s:rc_filenames
-  let s:f = s:rc_files_dir . rc_file . '.vim'
-  let s:c = 'source' . ' ' . s:f
-  exe s:c
+for rc_file in s:rc_files
+  let s:file = printf("%s/%s.vim", s:rc_files_dir, rc_file)
+  execute printf("source %s", s:file)
 endfor

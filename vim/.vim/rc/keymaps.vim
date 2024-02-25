@@ -388,7 +388,7 @@ let s:keymaps = [
       \    'mod': 'normal',
       \    'lhs': '<leader>gis',
       \    'rhs': ':call GetStudentsInfoFromSIGAA()<cr>',
-      \    'des': 'get student''s info from sigaa',
+      \    'des': 'get students info from sigaa',
       \  },
       \  {
       \    'mod': 'normal',
@@ -399,4 +399,4 @@ let s:keymaps = [
       \]
 " }}}
 
-sil cal VimKeymapSet(s:keymaps)
+call VimKeymapSet(s:keymaps)

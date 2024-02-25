@@ -8,8 +8,7 @@ function VimKeymapSet(keymaps) abort
     let l:mod = keymap['mod']
     let l:lhs = keymap['lhs']
     let l:rhs = keymap['rhs']
-    let l:cmd = l:noremap[l:mod] . ' ' . l:lhs . ' ' . l:rhs
-    exe l:cmd
+    execute printf("%s %s %s", l:noremap[l:mod], l:lhs, l:rhs)
   endfor
 endfunction
 
@@ -218,7 +217,7 @@ function MyStatusLine() abort
   let l:stl = []
   for sec in ['lhs', 'mid', 'rhs']
     for obj in section[sec]
-      cal add(l:stl, obj['cmd'])
+      call add(l:stl, obj['cmd'])
     endfor
   endfor
   return join(l:stl)
@@ -239,35 +238,34 @@ function SpecialCharactersHandler() abort
   let l:pword = substitute(l:pword, 'õ', 'o', 'gi')
   let l:pword = substitute(l:pword, 'ú', 'u', 'gi')
   let l:pword = substitute(l:pword, 'ç', 'c', 'gi')
-  let l:abbrv = 'iabbrev' . ' ' . l:pword . ' ' . l:cword
-  return l:abbrv
+  return printf("%s %s %s", 'iabbrev' , l:pword , l:cword)
 endfunction
 
 function AddWordUnderCursorToMyAbbreviationsList() abort
   let l:abbrv = SpecialCharactersHandler()
-  cal writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
-  echo 'Added' . ' ' . l:abbrv . ' ' . 'to ~/.vim/spell/words.abbr'
+  call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
+  echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
 
 function AddWordUnderCursorToMyWordsList() abort
   let l:cword = expand('<cword>')
-  cal writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
-  echo 'Added' . ' ' . l:cword . ' ' . 'to ~/.vim/spell/words.dict'
+  call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
+  echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
 endfunction
 
 function RmTrailingSpaces() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
-  sil %s/\s\+$//e
-  cal setpos('.', l:pos)
-  cal setreg('/', l:reg)
+  %s/\s\+$//e
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
 endfunction
 
 function SubsCWordWithRegZeroWhileRetainingCursorPos() abort
   let l:pos = getpos('.')
-  let l:cmd = '%s/' . expand('<cword>') . '/' . getreg('0') . '/g'
-  sil exe l:cmd
-  cal setpos('.', l:pos)
+  let l:cmd = printf("1,$s/%s/%s/g", expand('<cword>'), getreg('0'))
+  execute l:cmd
+  call setpos('.', l:pos)
 endfunction
 
 function InstallMissingPlugins() abort
@@ -276,7 +274,23 @@ function InstallMissingPlugins() abort
   endif
 endfunction
 
-function ChooseBuiltinColorschemeAtRandom() abort
+function GetBibTeXCitationKeys() abort
+  let l:bfile = expand('~/.local/share/references/zotero.bib')
+  let l:query = printf(":vimgrep /^@/j %s", l:bfile)
+  let l:qflst = []
+  let l:subst = {
+        \  'lhs': '^@[^{]\+{\([A-Za-z0-9]\+\),$',
+        \  'rhs': '\1',
+        \}
+  execute l:query
+  for key in getqflist()
+    let l:ctkey = substitute(key.text, l:subst['lhs'], l:subst['rhs'], 'i')
+    call add(l:qflst, l:ctkey)
+  endfor
+  echo l:qflst
+endfunction
+
+function ChooseColorschemeAtRandom() abort
   let s:colorscheme = [
         \  'default',
         \  'desert',
@@ -297,28 +311,41 @@ function ChooseBuiltinColorschemeAtRandom() abort
   let s:number_of_colorschemes = len(s:colorscheme)
   let s:seed = srand()
   let s:choice = rand(s:seed) % s:number_of_colorschemes
-  let s:cmd = 'colorscheme' . ' ' . s:colorscheme[s:choice]
-  exe s:cmd
+  execute printf("colorscheme %s", s:colorscheme[s:choice])
 endfunction
 
 function CSVDisciplines() abort
-  sil %s/–/-/ge
-  sil %s/\s\+/ /g
-  sil %s/^ //g
-  sil %s/[0-9]\{1,3}[MTN][0-9]\{1,3}/&\r/g
-  sil g/^\(\s*\|MANHÃ\|TARDE\|NOITE\)$/d
-  sil g/^DISCIPLINAS/d
-  sil %s/^ //g
-  sil %s/\s*-\s*/ ; /g
+  %s/–/-/ge
+  %s/\s\+/ /g
+  %s/^ //g
+  %s/[0-9]\{1,3}[MTN][0-9]\{1,3}/&\r/g
+  g/^\(\s*\|MANHÃ\|TARDE\|NOITE\)$/d
+  g/^DISCIPLINAS/d
+  %s/^ //g
+  %s/\s*-\s*/ ; /g
   let @q = '/^campus aparecidajma/^campus colemarkmb:''a,''bs/^/Aparecida ; /'
-  sil exe 'norm @q'
+  execute 'norm @q'
   let @q = '/^campus colemarjma/^campus samambaiakmb:''a,''bs/^/Colemar ; /'
-  sil exe 'norm @q'
+  execute 'norm @q'
   let @q = '/^campus samambaiajma:''a,$s/^/Samambaia ; /'
-  sil exe 'norm @q'
-  sil g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
-  sil %s/\([^;]\) \([0-9]\{1,3}[MTN][0-9]\{1,3}\)$/\1 ; \2/e
+  execute 'norm @q'
+  g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
+  %s/\([^;]\) \([0-9]\{1,3}[MTN][0-9]\{1,3}\)$/\1 ; \2/e
   %Tab /;
+endfunction
+
+function RemoveGraphicalAccents() abort
+  let l:patterns = {
+        \ '[àáâã]': 'a',
+        \ '[éê]':   'e',
+        \ 'í':      'i',
+        \ '[óôõ]':  'o',
+        \ 'ú':      'u',
+        \ 'ç':      'c',
+        \}
+  for [pattern, value] in items(l:patterns)
+    execute printf("1,$s/%s/%s/ge", pattern, value)
+  endfor
 endfunction
 
 function GetStudentsInfoFromSIGAA() abort
@@ -339,36 +366,21 @@ function GetStudentsInfoFromSIGAA() abort
         \]
   let l:reg_stdnt = join(l:regex)
   let l:sub_stdnt = join(l:subst, '\r\t')
-  let l:sub = '%s/\v' . l:reg_stdnt . '/' . l:sub_stdnt . '/'
-  sil exe 'normal ggVGu'
-  sil %s/[àáâã]/a/ge
-  sil %s/[éê]/e/ge
-  sil %s/í/i/ge
-  sil %s/[óôõ]/o/ge
-  sil %s/ú/u/ge
-  sil %s/ç/c/ge
-  sil %s/\t/ /ge
+  let l:sub = printf("1,$s/\v%s/%s/", l:reg_stdnt, l:sub_stdnt)
+  execute 'normal ggVGu'
+  call RemoveGraphicalAccents()
   %s/\vusuario (off|on)-line no sigaa/\r/g
   g!/\((perfil)\|\(matricula\|curso\|usuario\|e-mail\):\)/d
   g/(perfil)/j
   g/curso:/j
   g/matricula:/j
   g/usuario:/j
-  sil exe l:sub
-  sil %s/\s\+",/",/ge
-  sil %s/\s\+$//e
-  sil g/^usuario:/d
+  execute l:sub
+  %s/\s\+",/",/ge
+  %s/\s\+$//e
+  g/^usuario:/d
 endfunction
 
-function RemoveGraphicalAccents() abort
-  sil %s/[àáâã]/a/ge
-  sil %s/[éê]/e/ge
-  sil %s/í/i/ge
-  sil %s/[óôõ]/o/ge
-  sil %s/ú/u/ge
-  sil %s/ç/c/ge
-  sil %s/\t/ /ge
-endfunction
 
 function PracticeDayOnePrepareClasses() abort
   let l:head = [
@@ -378,39 +390,23 @@ function PracticeDayOnePrepareClasses() abort
         \]
   let l:tail = [
         \  '\r\\end{tabular}',
-        \  '\\caption{Standard Normal Distribution Function}',
+        \  '\\caption{Standard Normal Distribution function}',
         \  '\\label{tbl:standard-normal-distribution-function}',
         \  '\\end{table}'
         \]
   let l:payload_head = join(l:head, '\r')
   let l:payload_tail = join(l:tail, '\r')
-  let l:substitute_cmd_head = '0s/^/' . l:payload_head . '/'
-  let l:substitute_cmd_tail = '$s/$/' . l:payload_tail . '/'
-  sil %s/\s\+/ /g
-  sil g!/\.\d\{2,}/d
-  sil %s/ \.0\(\d\)\>/ \& 0\.0\100/g
-  sil %s/ \.\(\d\)\>/ 0\.\1/
-  sil %s/ \.\(\d\{4}\)/ \& 0\.\1/g
-  sil g/0\.\d\+/s/$/\\\\/
+  let l:substitute_cmd_head = printf("0s/^/%s/", l:payload_head)
+  let l:substitute_cmd_tail = printf("$s/$/%s/", l:payload_tail)
+  %s/\s\+/ /g
+  g!/\.\d\{2,}/d
+  %s/ \.0\(\d\)\>/ \& 0\.0\100/g
+  %s/ \.\(\d\)\>/ 0\.\1/
+  %s/ \.\(\d\{4}\)/ \& 0\.\1/g
+  g/0\.\d\+/s/$/\\\\/
   Tab /\(&\|\\\\\)
-  sil exe l:substitute_cmd_head
-  sil exe l:substitute_cmd_tail
-endfunction
-
-function GetBibTeXCitationKeys() abort
-  let l:bfile = expand('~/.local/share/references/zotero.bib')
-  let l:query = ':vimgrep' . ' ' . '/^@\(article\|book\)/j' . ' ' . l:bfile
-  let l:qflst = []
-  let l:subst = {
-        \  'lhs': '@\(article\|book\){\([A-Za-z0-9]\+\),',
-        \  'rhs': '\2',
-        \}
-  sil exe l:query
-  for key in getqflist()
-    let l:ctkey = substitute(key.text, l:subst['lhs'], l:subst['rhs'], 'i')
-    cal add(l:qflst, l:ctkey)
-  endfor
-  return l:qflst
+  execute l:substitute_cmd_head
+  execute l:substitute_cmd_tail
 endfunction
 
 let g:tex_flavor = 'latex'
