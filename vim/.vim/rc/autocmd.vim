@@ -1,32 +1,3 @@
-" s:keymaps {{{
-let s:keymaps = [
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>mk',
-      \    'rhs': 'make<cr>',
-      \    'des': 'compile the draft version of the root document',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>mb',
-      \    'rhs': 'make bib<cr>',
-      \    'des': 'compile the bibliography',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>mc',
-      \    'rhs': 'make clean<cr>',
-      \    'des': 'clean auxiliary files',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>mf',
-      \    'rhs': 'make final<cr>',
-      \    'des': 'compile the final version of the root document',
-      \  },
-      \]
-" }}}
-
 " s:autocmds {{{
 let s:autocmds = [
       \  {
@@ -72,6 +43,12 @@ let s:autocmds = [
       \    'action': '1,$sort u'
       \  },
       \  {
+      \    'augroup': 'set_keybindings_for_building_latex_docs_with_make',
+      \    'events': 'FileType',
+      \    'pattern': 'tex',
+      \    'action': ':call VimSetKeymapsForBuildingLaTeXDocumentsWithMake()'
+      \  },
+      \  {
       \    'augroup': 'install_missing_plugins',
       \    'events': 'VimEnter',
       \    'pattern': '*',
@@ -81,11 +58,3 @@ let s:autocmds = [
 " }}}
 
 call VimSetAutocmds(s:autocmds)
-
-
-      " \  {
-      " \    'augroup': 'latex_keybindings_for_building_documents',
-      " \    'events': 'FileType',
-      " \    'pattern': 'tex',
-      " \    'action': ':call VimSetKeymaps(s:keymaps)'
-      " \  },

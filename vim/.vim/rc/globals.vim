@@ -48,6 +48,38 @@ function VimSetKeymaps(keymaps) abort
   endfor
 endfunction
 
+function VimSetKeymapsForBuildingLaTeXDocumentsWithMake() abort
+  " s:keymaps {{{
+  let l:keymaps = [
+        \  {
+        \    'mod': 'normal',
+        \    'lhs': '<leader>mk',
+        \    'rhs': ':make<cr>',
+        \    'des': 'compile the draft version of the root document',
+        \  },
+        \  {
+        \    'mod': 'normal',
+        \    'lhs': '<leader>mb',
+        \    'rhs': ':make bib<cr>',
+        \    'des': 'compile the bibliography',
+        \  },
+        \  {
+        \    'mod': 'normal',
+        \    'lhs': '<leader>mc',
+        \    'rhs': ':make clean<cr>',
+        \    'des': 'clean auxiliary files',
+        \  },
+        \  {
+        \    'mod': 'normal',
+        \    'lhs': '<leader>mf',
+        \    'rhs': ':make final<cr>',
+        \    'des': 'compile the final version of the root document',
+        \  },
+        \]
+  " }}}
+  call VimSetKeymaps(l:keymaps)
+endfunction
+
 function VimSetAnAutocmd(augroup, events, pattern, action) abort
   execut printf("augroup %s", a:augroup)
   autocmd!
