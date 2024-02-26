@@ -200,14 +200,14 @@ function VimModeStatusline(mode) abort
   endif
 endfunction
 
-" function VimGitBranchNameStatusline() abort
-"   let l:branch = trim(system('git branch --show-current 2>/dev/null'))
-"   if strlen(l:branch) > 0
-"     return l:branch
-"   else
-"     return ''
-"   endif
-" endfunction
+function VimGetGitBranchName() abort
+  let l:branch = trim(system('git branch --show-current 2>/dev/null'))
+  if strlen(l:branch) > 0
+    echo l:branch
+  else
+    echo 'none'
+  endif
+endfunction
 
 function VimSetMyStatusline() abort
   let l:bufnr = '[%n]'
