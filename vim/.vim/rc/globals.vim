@@ -48,7 +48,20 @@ function VimSetKeymaps(keymaps) abort
   endfor
 endfunction
 
-function VimSetMode(mode) abort
+function VimSetAnAutocmd(augroup, events, pattern, action) abort
+  execut printf("augroup %s", a:augroup)
+  autocmd!
+  execute printf("autocmd %s %s %s", a:events, a:pattern, a:action)
+  augroup END
+endfunction
+
+function VimSetAutocmds(autocmds) abort
+  for X in a:autocmds
+    call VimSetAnAutocmd(X['augroup'], X['events'], X['pattern'], X['action'])
+  endfor
+endfunction
+
+function VimGetMode(mode) abort
   " mode {{{
   let l:MODE = {
         \  'n': {
@@ -201,7 +214,7 @@ function VimSetMode(mode) abort
 endfunction
 
 function VimEchoGitBranch() abort
-  let l:branch = trim(system('git branch --show-current 2>/dev/null'))
+  let l:branch = system('git branch --show-current 2>/dev/null')
   if strlen(l:branch) > 0
     echo l:branch
   else
@@ -211,7 +224,7 @@ endfunction
 
 function VimSetStatusline() abort
   let l:bufnr = '[%n]'
-  let l:mode = '%{VimSetMode(mode())}'
+  let l:mode = '%{VimGetMode(mode())}'
   let l:filename_tail = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='

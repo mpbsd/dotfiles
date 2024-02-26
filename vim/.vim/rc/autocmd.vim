@@ -1,39 +1,91 @@
-augroup set_foldmethod_based_on_the_filetype
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
+" s:keymaps {{{
+let s:keymaps = [
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>mk',
+      \    'rhs': 'make<cr>',
+      \    'des': 'compile the draft version of the root document',
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>mb',
+      \    'rhs': 'make bib<cr>',
+      \    'des': 'compile the bibliography',
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>mc',
+      \    'rhs': 'make clean<cr>',
+      \    'des': 'clean auxiliary files',
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>mf',
+      \    'rhs': 'make final<cr>',
+      \    'des': 'compile the final version of the root document',
+      \  },
+      \]
+" }}}
 
-augroup autoload_foldings
-  autocmd!
-  autocmd BufWinLeave *.c,*.h,*.py,*.sh,*.tex mkview
-  autocmd BufWinEnter *.c,*.h,*.py,*.sh,*.tex silent! loadview
-augroup END
+" s:autocmds {{{
+let s:autocmds = [
+      \  {
+      \    'augroup': 'set_marker_foldmethod_based_on_filetype',
+      \    'events': 'FileType',
+      \    'pattern': 'vim',
+      \    'action': 'setlocal foldmethod=marker'
+      \  },
+      \  {
+      \    'augroup': 'remove_trailing_spaces',
+      \    'events': 'BufWritePre',
+      \    'pattern': '*.lua,*.py,*.sh,*.tex,*.txt,*.vim',
+      \    'action': ':call VimRemoveTrailingSpacesFromCurrentBuffer()'
+      \  },
+      \  {
+      \    'augroup': 'autosave_views',
+      \    'events': 'BufWinLeave',
+      \    'pattern': '*.c,*.h,*.py,*.sh,*.tex,*.vim',
+      \    'action': 'mkview'
+      \  },
+      \  {
+      \    'augroup': 'autoload_views',
+      \    'events': 'BufWinEnter',
+      \    'pattern': '*.c,*.h,*.py,*.sh,*.tex,*.vim',
+      \    'action': 'silent! loadview'
+      \  },
+      \  {
+      \    'augroup': 'autoload_iabbrevs_based_on_filetype',
+      \    'events': 'FileType',
+      \    'pattern': 'mail,markdown,tex,text,vimwiki',
+      \    'action': 'source ~/.vim/spell/words.abbr'
+      \  },
+      \  {
+      \    'augroup': 'enable_spelling_when_writing_emails',
+      \    'events': 'FileType',
+      \    'pattern': 'mail',
+      \    'action': 'setlocal spell'
+      \  },
+      \  {
+      \    'augroup': 'remove_duplicates_from_my_curated_lists_of_words',
+      \    'events': 'BufWinEnter',
+      \    'pattern': 'words.abbr,words.dict',
+      \    'action': '1,$sort u'
+      \  },
+      \  {
+      \    'augroup': 'install_missing_plugins',
+      \    'events': 'VimEnter',
+      \    'pattern': '*',
+      \    'action': ':call InstallMissingPlugins()'
+      \  },
+      \]
+" }}}
 
-augroup keybindings_for_building_latex_documents
-  autocmd!
-  autocmd FileType tex nnoremap <leader>mk :make<cr>
-  autocmd FileType tex nnoremap <leader>mb :make bib<cr>
-  autocmd FileType tex nnoremap <leader>mc :make clean<cr>
-  autocmd FileType tex nnoremap <leader>mf :make final<cr>
-augroup END
+call VimSetAutocmds(s:autocmds)
 
-augroup remove_trailing_spaces_on_every_save
-  autocmd!
-  autocmd BufWritePre *.lua,*.py,*.sh,*.tex,*.txt,*.vim :call VimRemoveSpecialCharsFromCurrentBuffer()
-augroup END
 
-augroup load_abbreviations_based_on_the_filetype
-  autocmd!
-  autocmd FileType mail setlocal spell
-  autocmd FileType mail,markdown,tex,text,vimwiki source ~/.vim/spell/words.abbr
-augroup END
-
-augroup remove_duplicates_from_my_wording_lists
-  autocmd!
-  autocmd BufWinEnter words.abbr,words.dict :%sort u
-augroup END
-
-augroup install_missing_plugins
-  autocmd!
-  autocmd VimEnter * :call InstallMissingPlugins()
-augroup END
+      " \  {
+      " \    'augroup': 'latex_keybindings_for_building_documents',
+      " \    'events': 'FileType',
+      " \    'pattern': 'tex',
+      " \    'action': ':call VimSetKeymaps(s:keymaps)'
+      " \  },
