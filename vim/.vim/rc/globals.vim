@@ -48,215 +48,193 @@ function VimSetKeymaps(keymaps) abort
   endfor
 endfunction
 
-function ShowVimMode() abort
+function VimModeStatusline(mode) abort
   " mode {{{
-  let l:vim_mode = {
+  let l:MODE = {
         \  'n': {
-        \    'mode': 'NORMAL',
-        \    'desc': 'Normal'
+        \    'mod': 'NORMAL',
+        \    'dscr': 'Normal'
         \  },
         \  'no': {
-        \    'mode': 'O-PENDING',
-        \    'desc': 'Operator-pending'
+        \    'mod': 'O-PENDING',
+        \    'dscr': 'Operator-pending'
         \  },
         \  'nov': {
-        \    'mode': 'O-PENDING',
-        \    'desc': 'Operator-pending (forced characterwise |o_v|)'
+        \    'mod': 'O-PENDING',
+        \    'dscr': 'Operator-pending (forced characterwise |o_v|)'
         \  },
         \  'noV': {
-        \    'mode': 'O-PENDING',
-        \    'desc': 'Operator-pending (forced linewise |o_V|)'
+        \    'mod': 'O-PENDING',
+        \    'dscr': 'Operator-pending (forced linewise |o_V|)'
         \  },
         \  'noCTRL-V': {
-        \    'mode': 'O-PENDING',
-        \    'desc': 'Operator-pending (forced blockwise |o_CTRL-V|)'
+        \    'mod': 'O-PENDING',
+        \    'dscr': 'Operator-pending (forced blockwise |o_CTRL-V|)'
         \  },
         \  'niI': {
-        \    'mode': 'NORMAL',
-        \    'desc': 'Normal using |i_CTRL-O| in |Insert-mode|'
+        \    'mod': 'NORMAL',
+        \    'dscr': 'Normal using |i_CTRL-O| in |Insert-mode|'
         \  },
         \  'niR': {
-        \    'mode': 'NORMAL',
-        \    'desc': 'Normal using |i_CTRL-O| in |Replace-mode|'
+        \    'mod': 'NORMAL',
+        \    'dscr': 'Normal using |i_CTRL-O| in |Replace-mode|'
         \  },
         \  'niV': {
-        \    'mode': 'NORMAL',
-        \    'desc': 'Normal using |i_CTRL-O| in |Virtual-Replace-mode|'
+        \    'mod': 'NORMAL',
+        \    'dscr': 'Normal using |i_CTRL-O| in |Virtual-Replace-mode|'
         \  },
         \  'nt': {
-        \    'mode': 'TERMINAL',
-        \    'desc': 'Terminal-Normal (insert goes to Terminal-Job mode)'
+        \    'mod': 'TERMINAL',
+        \    'dscr': 'Terminal-Normal (insert goes to Terminal-Job mode)'
         \  },
         \  'v': {
-        \    'mode': 'VISUAL',
-        \    'desc': 'Visual by character'
+        \    'mod': 'VISUAL',
+        \    'dscr': 'Visual by character'
         \  },
         \  'vs': {
-        \    'mode': 'VISUAL',
-        \    'desc': 'Visual by character using |v_CTRL-O| in Select mode'
+        \    'mod': 'VISUAL',
+        \    'dscr': 'Visual by character using |v_CTRL-O| in Select mode'
         \  },
         \  'V': {
-        \    'mode': 'VISUAL',
-        \    'desc': 'Visual by line'
+        \    'mod': 'VISUAL',
+        \    'dscr': 'Visual by line'
         \  },
         \  'Vs': {
-        \    'mode': 'VISUAL',
-        \    'desc': 'Visual by line using |v_CTRL-O| in Select mode'
+        \    'mod': 'VISUAL',
+        \    'dscr': 'Visual by line using |v_CTRL-O| in Select mode'
         \  },
         \  'CTRL-V': {
-        \    'mode': 'VISUAL',
-        \    'desc': 'Visual blockwise'
+        \    'mod': 'VISUAL',
+        \    'dscr': 'Visual blockwise'
         \  },
         \  'CTRL-Vs': {
-        \    'mode': 'VISUAL',
-        \    'desc': 'Visual blockwise using |v_CTRL-O| in Select mode'
+        \    'mod': 'VISUAL',
+        \    'dscr': 'Visual blockwise using |v_CTRL-O| in Select mode'
         \  },
         \  's': {
-        \    'mode': 'SELECT',
-        \    'desc': 'Select by character'
+        \    'mod': 'SELECT',
+        \    'dscr': 'Select by character'
         \  },
         \  'S': {
-        \    'mode': 'SELECT',
-        \    'desc': 'Select by line'
+        \    'mod': 'SELECT',
+        \    'dscr': 'Select by line'
         \  },
         \  'CTRL-S': {
-        \    'mode': 'SELECT',
-        \    'desc': 'Select blockwise'
+        \    'mod': 'SELECT',
+        \    'dscr': 'Select blockwise'
         \  },
         \  'i': {
-        \    'mode': 'INSERT',
-        \    'desc': 'Insert'
+        \    'mod': 'INSERT',
+        \    'dscr': 'Insert'
         \  },
         \  'ic': {
-        \    'mode': 'INSERT',
-        \    'desc': 'Insert mode completion |compl-generic|'
+        \    'mod': 'INSERT',
+        \    'dscr': 'Insert mode completion |compl-generic|'
         \  },
         \  'ix': {
-        \    'mode': 'INSERT',
-        \    'desc': 'Insert mode |i_CTRL-X| completion'
+        \    'mod': 'INSERT',
+        \    'dscr': 'Insert mode |i_CTRL-X| completion'
         \  },
         \  'R': {
-        \    'mode': 'REPLACE',
-        \    'desc': 'Replace |R|'
+        \    'mod': 'REPLACE',
+        \    'dscr': 'Replace |R|'
         \  },
         \  'Rc': {
-        \    'mode': 'REPLACE',
-        \    'desc': 'Replace mode completion |compl-generic|'
+        \    'mod': 'REPLACE',
+        \    'dscr': 'Replace mode completion |compl-generic|'
         \  },
         \  'Rx': {
-        \    'mode': 'REPLACE',
-        \    'desc': 'Replace mode |i_CTRL-X| completion'
+        \    'mod': 'REPLACE',
+        \    'dscr': 'Replace mode |i_CTRL-X| completion'
         \  },
         \  'Rv': {
-        \    'mode': 'REPLACE',
-        \    'desc': 'Virtual Replace |gR|'
+        \    'mod': 'VIRTUAL',
+        \    'dscr': 'Virtual Replace |gR|'
         \  },
         \  'Rvc': {
-        \    'mode': 'REPLACE',
-        \    'desc': 'Virtual Replace mode completion |compl-generic|'
+        \    'mod': 'VIRTUAL',
+        \    'dscr': 'Virtual Replace mode completion |compl-generic|'
         \  },
         \  'Rvx': {
-        \    'mode': 'REPLACE',
-        \    'desc': 'Virtual Replace mode |i_CTRL-X| completion'
+        \    'mod': 'VIRTUAL',
+        \    'dscr': 'Virtual Replace mode |i_CTRL-X| completion'
         \  },
         \  'c': {
-        \    'mode': 'COMMAND',
-        \    'desc': 'Command-line editing'
+        \    'mod': 'COMMAND',
+        \    'dscr': 'Command-line editing'
         \  },
         \  'cv': {
-        \    'mode': 'EX',
-        \    'desc': 'Vim Ex mode |gQ|'
+        \    'mod': 'EX',
+        \    'dscr': 'Vim Ex mode |gQ|'
         \  },
         \  'ce': {
-        \    'mode': 'EX',
-        \    'desc': 'Normal Ex mode |Q|'
+        \    'mod': 'NORMAL',
+        \    'dscr': 'Normal Ex mode |Q|'
         \  },
         \  'r': {
-        \    'mode': 'PROMPT',
-        \    'desc': 'Hit-enter prompt'
+        \    'mod': 'PROMPT',
+        \    'dscr': 'Hit-enter prompt'
         \  },
         \  'rm': {
-        \    'mode': 'PROMPT',
-        \    'desc': 'The -- more -- prompt'
+        \    'mod': 'PROMPT',
+        \    'dscr': 'The -- more -- prompt'
         \  },
         \  'r?': {
-        \    'mode': 'CONFIRM',
-        \    'desc': 'A |:confirm| query of some sort'
+        \    'mod': 'CONFIRM',
+        \    'dscr': 'A |:confirm| query of some sort'
         \  },
         \  '!': {
-        \    'mode': 'SHELL',
-        \    'desc': 'Shell or external command is executing'
+        \    'mod': 'SHELL',
+        \    'dscr': 'Shell or external command is executing'
         \  },
         \  't': {
-        \    'mode': 'TERMINAL',
-        \    'desc': 'Terminal-Job mode: keys go to the job'
+        \    'mod': 'TERMINAL',
+        \    'dscr': 'Terminal-Job mode: keys go to the job'
         \  },
         \}
   " }}}
-  let l:mod = mode()
-  if has_key(l:vim_mode, l:mod)
-    return l:vim_mode[l:mod]['mode']
+  if has_key(l:MODE, a:mode)
+    return l:MODE[a:mode]['mod']
+  else
+    return 'UNKNOWN'
   endif
 endfunction
 
-function MyStatusLine() abort
-  " options {{{
-  let l:section = {
-        \  'lhs': [
-        \    {
-        \      'cmd': '[%n]',
-        \      'des': 'buffer number',
-        \    },
-        \    {
-        \      'cmd': '%{ShowVimMode()}',
-        \      'des': 'current mode',
-        \    },
-        \    {
-        \      'cmd': '%t',
-        \      'des': 'tail of the filename in the buffer',
-        \    },
-        \    {
-        \      'cmd': '%m',
-        \      'des': 'modified flag',
-        \    },
-        \  ],
-        \  'mid': [
-        \    {
-        \      'cmd': '%=',
-        \      'des': 'lhs/rhs separator',
-        \    },
-        \  ],
-        \  'rhs': [
-        \    {
-        \      'cmd': '%{&fenc}',
-        \      'des': 'file encoding',
-        \    },
-        \    {
-        \      'cmd': '%{&ff}',
-        \      'des': 'file format',
-        \    },
-        \    {
-        \      'cmd': '%Y',
-        \      'des': 'type of file in the buffer',
-        \    },
-        \    {
-        \      'cmd': '%P',
-        \      'des': 'percentage through file of displayed window',
-        \    },
-        \    {
-        \      'cmd': '(%06l:%06c)',
-        \      'des': 'line and column numbers',
-        \    },
-        \  ],
-        \}
-  " }}}
-  let l:stl = []
-  for sec in ['lhs', 'mid', 'rhs']
-    for obj in section[sec]
-      call add(l:stl, obj['cmd'])
-    endfor
-  endfor
-  return join(l:stl)
+function VimGitBranchNameStatusline() abort
+  let l:branch_name = FugitiveStatusline()
+  if strlen(l:branch_name) > 0
+    return substitute(l:branch_name, '\[git(\([^)]\+\))\]', '\1', 'i')
+  else
+    return ''
+  endif
+endfunction
+
+function VimSetMyStatusline() abort
+  let l:bufnr = '[%n]'
+  let l:mode = '%{VimModeStatusline(mode())}'
+  let l:filename_tail = '%t'
+  let l:modified_flag = '%m'
+  let l:lhs_rhs_separator = '%='
+  let l:git_branch_name = '%{VimGitBranchNameStatusline()}'
+  let l:encoding = '%{&fenc}'
+  let l:file_format = '%{&ff}'
+  let l:file_type = '%Y'
+  let l:percentage_through_file = '%P'
+  let l:line_and_column_numbers = '(%06l:%06c)'
+  let l:statusline = join([
+        \ l:bufnr,
+        \ l:mode,
+        \ l:filename_tail,
+        \ l:modified_flag,
+        \ l:lhs_rhs_separator,
+        \ l:git_branch_name,
+        \ l:encoding,
+        \ l:file_format,
+        \ l:file_type,
+        \ l:percentage_through_file,
+        \ l:line_and_column_numbers
+        \])
+  return l:statusline
 endfunction
 
 function RemoveGraphicalAccents() abort
