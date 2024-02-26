@@ -201,9 +201,9 @@ function VimModeStatusline(mode) abort
 endfunction
 
 function VimGitBranchNameStatusline() abort
-  let l:branch_name = FugitiveStatusline()
-  if strlen(l:branch_name) > 0
-    return substitute(l:branch_name, '\[git(\([^)]\+\))\]', '\1', 'i')
+  let l:branch = trim(system('git branch --show-current 2>/dev/null'))
+  if strlen(l:branch) > 0
+    return l:branch
   else
     return ''
   endif
