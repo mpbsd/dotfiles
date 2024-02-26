@@ -13,6 +13,5 @@ let s:rc_files = [
       \]
 
 for rc_file in s:rc_files
-  let s:file = printf("%s/%s.vim", s:rc_files_dir, rc_file)
-  execute printf("source %s", s:file)
+  execute printf("source %s/%s.vim", s:rc_files_dir, rc_file)
 endfor

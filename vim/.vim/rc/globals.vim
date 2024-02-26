@@ -15,7 +15,7 @@ let s:table_of_equivalent_characters = {
       \  'ç': 'c',
       \}
 
-function VimSetOption(categ, lhs, rhs) abort
+function VimSetAnOption(categ, lhs, rhs) abort
   if a:categ ==# 'bool'
     execute printf("set %s", (a:rhs == v:true) ? a:lhs : ('no' . a:lhs))
   elseif a:categ ==# 'grpx'
@@ -28,12 +28,12 @@ endfunction
 function VimSetOptions(options) abort
   for categ in keys(a:options)
     for [lhs, rhs] in items(a:options[categ])
-      call VimSetOption(categ, lhs, rhs)
+      call VimSetAnOption(categ, lhs, rhs)
     endfor
   endfor
 endfunction
 
-function VimSetKeymap(mod, lhs, rhs) abort
+function VimSetAKeymap(mod, lhs, rhs) abort
   let l:noremap = {
         \  'normal': 'nnoremap',
         \  'insert': 'inoremap',
@@ -44,7 +44,7 @@ endfunction
 
 function VimSetKeymaps(keymaps) abort
   for keymap in a:keymaps
-    call VimSetKeymap(keymap['mod'], keymap['lhs'], keymap['rhs'])
+    call VimSetAKeymap(keymap['mod'], keymap['lhs'], keymap['rhs'])
   endfor
 endfunction
 
@@ -338,7 +338,6 @@ function VimChooseColorscheme() abort
         \  'ron',
         \  'slate',
         \  'torte',
-        \  'seoul256',
         \]
   let s:number_of_colorschemes = len(s:colorscheme)
   let s:seed = srand()
