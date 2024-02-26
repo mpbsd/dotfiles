@@ -1,4 +1,4 @@
-let mapleader      = ' '
+let mapleader = ' '
 let maplocalleader = ','
 
 let s:rc_files_dir = expand('~/.vim/rc')

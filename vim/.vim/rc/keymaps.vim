@@ -183,13 +183,13 @@ let s:keymaps = [
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ab',
-      \    'rhs': ':call AddWordUnderCursorToMyAbbreviationsList()<cr>',
+      \    'rhs': ':call VimAddCurrentWordToMyListOfAbbreviations()<cr>',
       \    'des': 'add the word under the cursor to my abbreviations list',
       \  },
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>aw',
-      \    'rhs': ':call AddWordUnderCursorToMyWordsList()<cr>',
+      \    'rhs': ':call VimAddCurrentWordToMyListOfWords()<cr>',
       \    'des': 'add the word under the cursor to my words list',
       \  },
       \  {

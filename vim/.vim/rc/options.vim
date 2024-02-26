@@ -47,10 +47,10 @@ let s:options = {
       \    'spelllang': 'en_us,pt_br',
       \    'spellsuggest': 'fast,15',
       \    'dict': '~/.vim/spell/words.dict',
-      \    'statusline': '%!VimSetMyStatusline()',
+      \    'statusline': '%!VimSetStatusline()',
       \  },
       \}
 " }}}
 
 call VimSetOptions(s:options)
-call VimChooseColorscheme()
+call VimSetColorscheme()

@@ -48,7 +48,7 @@ function VimSetKeymaps(keymaps) abort
   endfor
 endfunction
 
-function VimModeStatusline(mode) abort
+function VimSetMode(mode) abort
   " mode {{{
   let l:MODE = {
         \  'n': {
@@ -200,7 +200,7 @@ function VimModeStatusline(mode) abort
   endif
 endfunction
 
-function VimGetGitBranchName() abort
+function VimEchoGitBranch() abort
   let l:branch = trim(system('git branch --show-current 2>/dev/null'))
   if strlen(l:branch) > 0
     echo l:branch
@@ -209,9 +209,9 @@ function VimGetGitBranchName() abort
   endif
 endfunction
 
-function VimSetMyStatusline() abort
+function VimSetStatusline() abort
   let l:bufnr = '[%n]'
-  let l:mode = '%{VimModeStatusline(mode())}'
+  let l:mode = '%{VimSetMode(mode())}'
   let l:filename_tail = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='
@@ -235,13 +235,34 @@ function VimSetMyStatusline() abort
   return l:statusline
 endfunction
 
-function RemoveGraphicalAccents() abort
+function VimSetColorscheme() abort
+  let l:colorscheme = [
+        \  'default',
+        \  'desert',
+        \  'elflord',
+        \  'evening',
+        \  'habamax',
+        \  'industry',
+        \  'koehler',
+        \  'lunaperche',
+        \  'murphy',
+        \  'pablo',
+        \  'quiet',
+        \  'ron',
+        \  'slate',
+        \  'torte',
+        \]
+  let l:choice = rand(srand()) % len(l:colorscheme)
+  execute printf("colorscheme %s", l:colorscheme[l:choice])
+endfunction
+
+function VimRemoveSpecialCharsFromCurrentBuffer() abort
   for [lhs, rhs] in items(s:table_of_equivalent_characters)
     silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
   endfor
 endfunction
 
-function HandlerForSpecialCharacters() abort
+function VimRemoveSpecialCharsFromCurrentWord() abort
   let l:cword = expand('<cword>')
   let l:pword = expand('<cword>')
   for [lhs, rhs] in items(s:table_of_equivalent_characters)
@@ -250,22 +271,22 @@ function HandlerForSpecialCharacters() abort
   return printf("%s %s %s", 'iabbrev' , l:pword , l:cword)
 endfunction
 
-function AddWordUnderCursorToMyAbbreviationsList() abort
-  let l:abbrv = HandlerForSpecialCharacters()
+function VimAddCurrentWordToMyListOfAbbreviations() abort
+  let l:abbrv = VimRemoveSpecialCharsFromCurrentWord()
   call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
 
-function AddWordUnderCursorToMyWordsList() abort
+function VimAddCurrentWordToMyListOfWords() abort
   let l:cword = expand('<cword>')
   call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
   echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
 endfunction
 
-function RmTrailingSpaces() abort
+function VimRemoveTrailingSpacesFromCurrentBuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
-  %s/\s\+$//e
+  1,$s/\s\+$//e
   call setpos('.', l:pos)
   call setreg('/', l:reg)
 endfunction
@@ -296,29 +317,6 @@ function GetBibTeXCitationKeys() abort
     call add(l:qflst, l:ctkey)
   endfor
   echo l:qflst
-endfunction
-
-function VimChooseColorscheme() abort
-  let s:colorscheme = [
-        \  'default',
-        \  'desert',
-        \  'elflord',
-        \  'evening',
-        \  'habamax',
-        \  'industry',
-        \  'koehler',
-        \  'lunaperche',
-        \  'murphy',
-        \  'pablo',
-        \  'quiet',
-        \  'ron',
-        \  'slate',
-        \  'torte',
-        \]
-  let s:number_of_colorschemes = len(s:colorscheme)
-  let s:seed = srand()
-  let s:choice = rand(s:seed) % s:number_of_colorschemes
-  execute printf("colorscheme %s", s:colorscheme[s:choice])
 endfunction
 
 function CSVDisciplines() abort
@@ -361,7 +359,7 @@ function GetStudentsInfoFromSIGAA() abort
   let l:sub_stdnt = join(l:subst, '\r\t')
   let l:sub = printf("1,$s/\v%s/%s/", l:reg_stdnt, l:sub_stdnt)
   execute 'normal ggVGu'
-  call RemoveGraphicalAccents()
+  call VimRemoveSpecialCharsFromCurrentBuffer()
   %s/\vusuario (off|on)-line no sigaa/\r/g
   g!/\((perfil)\|\(matricula\|curso\|usuario\|e-mail\):\)/d
   g/(perfil)/j
