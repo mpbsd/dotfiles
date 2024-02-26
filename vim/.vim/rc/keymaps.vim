@@ -344,8 +344,8 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>rga',
-      \    'rhs': ':call RemoveGraphicalAccents()<cr>',
+      \    'lhs': '<leader>rsc',
+      \    'rhs': ':call VimRemoveSpecialCharsFromCurrentBuffer()<cr>',
       \    'des': 'remove graphical accents from the current buffer',
       \  },
       \  {

@@ -355,4 +355,4 @@ local mappings = {
 }
 -- }}}
 
-globals.vim_keymap_set(mappings)
+globals.nvim_set_keymaps(mappings)

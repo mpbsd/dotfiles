@@ -260,8 +260,8 @@ function VimSetStatusline() abort
   let l:filename_tail = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='
-  let l:encoding = '%{&fenc}'
-  let l:file_format = '%{&ff}'
+  let l:fileencoding = '%{&fileencoding}'
+  let l:fileformat = '%{&fileformat}'
   let l:file_type = '%Y'
   let l:percentage_through_file = '%P'
   let l:line_and_column_numbers = '(%06l:%06c)'
@@ -271,8 +271,8 @@ function VimSetStatusline() abort
         \ l:filename_tail,
         \ l:modified_flag,
         \ l:lhs_rhs_separator,
-        \ l:encoding,
-        \ l:file_format,
+        \ l:fileencoding,
+        \ l:fileformat,
         \ l:file_type,
         \ l:percentage_through_file,
         \ l:line_and_column_numbers
@@ -302,9 +302,13 @@ function VimSetColorscheme() abort
 endfunction
 
 function VimRemoveSpecialCharsFromCurrentBuffer() abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
   for [lhs, rhs] in items(s:table_of_equivalent_characters)
     silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
   endfor
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
 endfunction
 
 function VimRemoveSpecialCharsFromCurrentWord() abort

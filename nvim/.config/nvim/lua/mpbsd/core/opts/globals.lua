@@ -1,18 +1,14 @@
 local M = {}
 
-M.vim_keymap_set = function(mappings_table)
-  for _, mapping in pairs(mappings_table) do
-    local mod = mapping['mod']
-    local lhs = mapping['lhs']
-    local rhs = mapping['rhs']
-    local opt = mapping['opt']
-    vim.keymap.set(mod, lhs, rhs, opt)
+M.nvim_set_keymaps = function(table_of_mappings)
+  for _, map in pairs(table_of_mappings) do
+    vim.keymap.set(map['mod'], map['lhs'], map['rhs'], map['opt'])
   end
 end
 
-M.vim_create_augroup = function(autocmds_table)
+M.vim_create_augroup = function(table_of_autocmds)
   local augroup = {}
-  for _, autocmd in pairs(autocmds_table) do
+  for _, autocmd in pairs(table_of_autocmds) do
     local opts = autocmd['opts']
     if opts['group'] ~= nil then
       augroup['group'] = vim.api.nvim_create_augroup(
@@ -24,9 +20,9 @@ M.vim_create_augroup = function(autocmds_table)
   return augroup
 end
 
-M.vim_create_autocmd = function(autocmds_table)
-  local augroup = M.vim_create_augroup(autocmds_table)
-  for _, autocmd in pairs(autocmds_table) do
+M.vim_create_autocmd = function(table_of_autocmds)
+  local augroup = M.vim_create_augroup(table_of_autocmds)
+  for _, autocmd in pairs(table_of_autocmds) do
     local event = autocmd['event']
     local opts = autocmd['opts']
     if opts['group'] ~= nil then
@@ -91,7 +87,7 @@ M.adapters = {
 
 M.on_attach = function()
   local telescope_builtin = require('telescope.builtin')
-  M.vim_keymap_set({
+  M.nvim_set_keymaps({
     -- keymaps {{{
     {
       mod = 'n',

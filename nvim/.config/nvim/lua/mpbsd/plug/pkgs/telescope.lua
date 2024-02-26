@@ -32,7 +32,7 @@ return {
       },
     })
     telescope.load_extension('fzf')
-    globals.vim_keymap_set({
+    globals.nvim_set_keymaps({
       -- keymaps {{{
       {
         mod = 'n',

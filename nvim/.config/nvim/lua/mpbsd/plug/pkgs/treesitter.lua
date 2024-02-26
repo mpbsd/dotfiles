@@ -105,7 +105,7 @@ return {
         },
       },
     })
-    globals.vim_keymap_set({
+    globals.nvim_set_keymaps({
       -- keymaps {{{
       {
         mod = { 'n', 'x', 'o' },
