@@ -200,14 +200,14 @@ function VimModeStatusline(mode) abort
   endif
 endfunction
 
-function VimGitBranchNameStatusline() abort
-  let l:branch = trim(system('git branch --show-current 2>/dev/null'))
-  if strlen(l:branch) > 0
-    return l:branch
-  else
-    return ''
-  endif
-endfunction
+" function VimGitBranchNameStatusline() abort
+"   let l:branch = trim(system('git branch --show-current 2>/dev/null'))
+"   if strlen(l:branch) > 0
+"     return l:branch
+"   else
+"     return ''
+"   endif
+" endfunction
 
 function VimSetMyStatusline() abort
   let l:bufnr = '[%n]'
@@ -215,7 +215,6 @@ function VimSetMyStatusline() abort
   let l:filename_tail = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='
-  let l:git_branch_name = '%{VimGitBranchNameStatusline()}'
   let l:encoding = '%{&fenc}'
   let l:file_format = '%{&ff}'
   let l:file_type = '%Y'
@@ -227,7 +226,6 @@ function VimSetMyStatusline() abort
         \ l:filename_tail,
         \ l:modified_flag,
         \ l:lhs_rhs_separator,
-        \ l:git_branch_name,
         \ l:encoding,
         \ l:file_format,
         \ l:file_type,
