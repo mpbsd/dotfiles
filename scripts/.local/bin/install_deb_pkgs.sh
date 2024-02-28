@@ -99,6 +99,7 @@ declare -a CORE_UTILS=(
   redshift
   ripgrep
   sdcv
+  shellcheck
   silversearcher-ag
   thefuck
   tmux

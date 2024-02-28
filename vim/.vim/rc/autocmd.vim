@@ -3,7 +3,7 @@ let s:autocmds = [
       \  {
       \    'augroup': 'set_marker_foldmethod_based_on_filetype',
       \    'events': 'FileType',
-      \    'pattern': 'vim',
+      \    'pattern': 'sh,vim',
       \    'action': 'setlocal foldmethod=marker'
       \  },
       \  {

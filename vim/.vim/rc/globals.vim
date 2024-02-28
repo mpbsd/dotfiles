@@ -1,4 +1,6 @@
 let g:tex_flavor = 'latex'
+let g:bash_is_sh = 1
+let g:is_bash = 1
 
 let s:table_of_equivalent_characters = {
       \  'à': 'a',
@@ -74,6 +76,12 @@ function VimSetKeymapsForBuildingLaTeXDocumentsWithMake() abort
         \    'lhs': '<leader>mf',
         \    'rhs': ':make final<cr>',
         \    'des': 'compile the final version of the root document',
+        \  },
+        \  {
+        \    'mod': 'normal',
+        \    'lhs': '<leader>bc',
+        \    'rhs': ':call VimGetBibTeXCitationKeys()<cr>',
+        \    'des': 'get bibtex citation keys',
         \  },
         \]
   " }}}
@@ -282,20 +290,10 @@ endfunction
 
 function VimSetColorscheme() abort
   let l:colorscheme = [
-        \  'default',
-        \  'desert',
-        \  'elflord',
-        \  'evening',
         \  'habamax',
-        \  'industry',
-        \  'koehler',
         \  'lunaperche',
-        \  'murphy',
-        \  'pablo',
         \  'quiet',
-        \  'ron',
         \  'slate',
-        \  'torte',
         \]
   let l:choice = rand(srand()) % len(l:colorscheme)
   execute printf("colorscheme %s", l:colorscheme[l:choice])
@@ -354,18 +352,9 @@ endfunction
 
 function VimGetBibTeXCitationKeys() abort
   let l:bfile = expand('~/.local/share/references/zotero.bib')
-  let l:query = printf(":vimgrep /^@/j %s", l:bfile)
-  let l:qflst = []
-  let l:subst = {
-        \  'lhs': '^@[^{]\+{\([A-Za-z0-9]\+\),$',
-        \  'rhs': '\1',
-        \}
-  execute l:query
-  for key in getqflist()
-    let l:ctkey = substitute(key.text, l:subst['lhs'], l:subst['rhs'], 'i')
-    call add(l:qflst, l:ctkey)
-  endfor
-  call setqflist(l:qflst, 'a')
+  execute printf(":vimgrep /^@/j %s", l:bfile)
+  copen
+  wincmd k
 endfunction
 
 function CSVDisciplines() abort

@@ -150,6 +150,10 @@ closing = enclosing[type][size]["closing"]
 snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
+snippet 'cite' "make a citation" rA
+\cite{$1}$0
+endsnippet
+
 snippet ';(in|owns|subset|contains)' "relationship" rA
 `!p snip.rv = "\\" + match.group(1)`{$1}$0
 endsnippet
