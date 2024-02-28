@@ -352,7 +352,7 @@ function InstallMissingPlugins() abort
   endif
 endfunction
 
-function GetBibTeXCitationKeys() abort
+function VimGetBibTeXCitationKeys() abort
   let l:bfile = expand('~/.local/share/references/zotero.bib')
   let l:query = printf(":vimgrep /^@/j %s", l:bfile)
   let l:qflst = []
@@ -365,7 +365,7 @@ function GetBibTeXCitationKeys() abort
     let l:ctkey = substitute(key.text, l:subst['lhs'], l:subst['rhs'], 'i')
     call add(l:qflst, l:ctkey)
   endfor
-  echo l:qflst
+  call setqflist(l:qflst, 'a')
 endfunction
 
 function CSVDisciplines() abort

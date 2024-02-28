@@ -45,7 +45,7 @@ let s:options = {
       \    'tabstop': 2,
       \    'shiftwidth': 2,
       \    'spelllang': 'en_us,pt_br',
-      \    'spellsuggest': 'fast,15',
+      \    'spellsuggest': 'fast,10',
       \    'dict': '~/.vim/spell/words.dict',
       \    'statusline': '%!VimSetStatusline()',
       \  },

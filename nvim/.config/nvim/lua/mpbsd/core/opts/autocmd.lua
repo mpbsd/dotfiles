@@ -21,4 +21,4 @@ local autocmds = {
 }
 -- }}}
 
-globals.vim_create_autocmd(autocmds)
+globals.nvim_create_autocmd(autocmds)

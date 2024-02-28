@@ -6,7 +6,7 @@ M.nvim_set_keymaps = function(table_of_mappings)
   end
 end
 
-M.vim_create_augroup = function(table_of_autocmds)
+M.nvim_create_augroup = function(table_of_autocmds)
   local augroup = {}
   for _, autocmd in pairs(table_of_autocmds) do
     local opts = autocmd['opts']
@@ -20,8 +20,8 @@ M.vim_create_augroup = function(table_of_autocmds)
   return augroup
 end
 
-M.vim_create_autocmd = function(table_of_autocmds)
-  local augroup = M.vim_create_augroup(table_of_autocmds)
+M.nvim_create_autocmd = function(table_of_autocmds)
+  local augroup = M.nvim_create_augroup(table_of_autocmds)
   for _, autocmd in pairs(table_of_autocmds) do
     local event = autocmd['event']
     local opts = autocmd['opts']
