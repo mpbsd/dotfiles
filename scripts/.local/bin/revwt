@@ -8,7 +8,7 @@ if [ -n "${TABLET_ID}" ]
 then
   xsetwacom --set "${TABLET_ID}" Rotate half
 else
-  echo "No Wacom tablets found."
+  echo "No Wacom tablets found"
 fi
 
 exit 0

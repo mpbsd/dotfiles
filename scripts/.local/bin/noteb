@@ -3,16 +3,14 @@
 
 ROOT_DIR="${HOME}/.local/share/references"
 BIBFILE="${ROOT_DIR}/zotero.bib"
-
-
-[ -d "$ROOT_DIR" ] || exit 2
-[ -f "$BIBFILE" ] || exit 3
-
-
 OS="$(uname -s)"
 
 
-KEY="$(sed -n '/^@/p' "$BIBFILE" | sed 's/\(^@[^{]\+{\|,$\)//g' | fzf)"
+[ -d "$ROOT_DIR" ] || exit 3
+[ -f "$BIBFILE" ]  || exit 4
+
+
+KEY="$(sed -n '/^@/p' "$BIBFILE" | sed 's/\(^@[^{]\+{\|,$\)//g' | dmenu -i)"
 
 
 if [ "$OS" = 'Linux' ]

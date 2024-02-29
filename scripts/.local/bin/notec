@@ -5,7 +5,7 @@ ROOT_DIR="${HOME}/templates/latex/github/classnotes"
 ROOT_JSON_FILE="${ROOT_DIR}/chp/index.json"
 
 
-[ -d "$ROOT_DIR" ] || exit 3
+[ -d "$ROOT_DIR" ]       || exit 3
 [ -f "$ROOT_JSON_FILE" ] || exit 4
 
 
@@ -29,12 +29,17 @@ ID=$(GET_ID "$DISCIPLINE")
 
 
 TGT_DIR="${ROOT_DIR}/chp/${ID}/sec"
-TGT_JSON_FILE="${TGT_DIR}/${DATE}.json"
-TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
 
 
-touch "${TGT_JSON_FILE}"
-touch "${TGT_TEX_FILE}"
+if [ -d "$TGT_DIR" ]
+then
+  TGT_JSON_FILE="${TGT_DIR}/${DATE}.json"
+  TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
+  touch "${TGT_JSON_FILE}"
+  touch "${TGT_TEX_FILE}"
+else
+  exit 5
+fi
 
 
 exit 0
