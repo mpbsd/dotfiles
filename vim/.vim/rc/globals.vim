@@ -437,3 +437,41 @@ function PracticeDayOnePrepareClasses() abort
   execute l:substitute_cmd_head
   execute l:substitute_cmd_tail
 endfunction
+
+function VimFormatMyBibTeXFile() abort
+  let l:re = {
+        \  'key': {
+        \    'tgt': '^@.*[0-9]\{4},$',
+        \    'lhs': '{\([a-z]\+\)\(\([A-Z][a-z]\+\)\+\)\([0-9]\{4}\),$',
+        \    'rhs': '{\1\4\2,'
+        \  },
+        \  'unwanted_fields': [
+        \    'abstract',
+        \    'annotation',
+        \    'archiveprefix',
+        \    'copyright',
+        \    'edition',
+        \    'eprint',
+        \    'eprinttype',
+        \    'file',
+        \    'keywords',
+        \    'langid',
+        \    'lccn',
+        \    'month',
+        \    'number',
+        \    'pages',
+        \    'primaryclass',
+        \    'shorttitle',
+        \    'urldate',
+        \    'volume',
+        \  ],
+        \}
+      let l:key_target = l:re['key']['tgt']
+      let l:key_before = l:re['key']['lhs']
+      let l:key_after  = l:re['key']['rhs']
+      sil exe printf("g/%s/s/%s/%s/", l:key_target, l:key_before, l:key_after)
+      sil exe printf("g/\\(%s\\) \\+=/d", join(l:re['unwanted_fields'], '\|'))
+      let @q = '/^@j:Tab /=/,$\n^}x'
+      sil exe 'norm 1000@q'
+endfunction
+

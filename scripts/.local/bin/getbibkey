@@ -1,16 +1,24 @@
 #!/bin/bash
 
 
-BIBFILE="${HOME}/.local/share/references/zotero.bib"
+ROOT_DIR="${HOME}/.local/share/references"
+BIBFILE="${ROOT_DIR}/zotero.bib"
 
 
-get_keys() {
-  KEY="$(sed -n '/^@/p' "$BIBFILE" | sed 's/\(^@[^{]\+{\|,$\)//g' | fzf)"
+[ -d "$ROOT_DIR" ] || exit 2
+[ -f "$BIBFILE" ] || exit 3
+
+
+OS="$(uname -s)"
+
+
+KEY="$(sed -n '/^@/p' "$BIBFILE" | sed 's/\(^@[^{]\+{\|,$\)//g' | fzf)"
+
+
+if [ "$OS" = 'Linux' ]
+then
   echo -n "$KEY" | xclip -selection clipboard
-}
-
-
-get_keys
+fi
 
 
 exit 0
