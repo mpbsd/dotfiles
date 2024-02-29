@@ -1,0 +1,44 @@
+#!/bin/bash
+
+
+ROOT_DIR="${HOME}/templates/latex/github/classnotes"
+ROOT_JSON_FILE="${ROOT_DIR}/chp/index.json"
+
+
+[ -d "$ROOT_DIR" ]       || exit 3
+[ -f "$ROOT_JSON_FILE" ] || exit 4
+
+
+GET_ID() {
+  i=0
+  ID=$(jq ".[0$i].id" < "$ROOT_JSON_FILE")
+  NAME=$(jq ".[0$i].name" < "$ROOT_JSON_FILE")
+  while [ "$NAME" != "$1" ]
+  do
+    ((++i))
+    ID=$(jq ".[0$i].id" < "$ROOT_JSON_FILE")
+    NAME=$(jq ".[0$i].name" < "$ROOT_JSON_FILE")
+  done
+  echo "0$((++i))"
+}
+
+
+DATE="$(date +'%Y%m%d')"
+DISCIPLINE="$(jq '.[].name' < "$ROOT_JSON_FILE" | fzf)"
+ID=$(GET_ID "$DISCIPLINE")
+
+
+TGT_DIR="${ROOT_DIR}/chp/${ID}/sec"
+
+
+if [ -d "$TGT_DIR" ]
+then
+  TGT_JSON_FILE="${TGT_DIR}/${DATE}.json"
+  TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
+  vim -O "${TGT_JSON_FILE}" "${TGT_TEX_FILE}"
+else
+  exit 5
+fi
+
+
+exit 0

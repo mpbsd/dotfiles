@@ -101,7 +101,7 @@ function VimSetAutocmds(autocmds) abort
   endfor
 endfunction
 
-function VimGetMode(mode) abort
+function VimGetCurrentMode(mode) abort
   " mode {{{
   let l:MODE = {
         \  'n': {
@@ -264,7 +264,7 @@ endfunction
 
 function VimSetStatusline() abort
   let l:bufnr = '[%n]'
-  let l:mode = '%{VimGetMode(mode())}'
+  let l:mode = '%{VimGetCurrentMode(mode())}'
   let l:filename_tail = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='
@@ -292,7 +292,6 @@ function VimSetColorscheme() abort
   let l:colorscheme = [
         \  'habamax',
         \  'lunaperche',
-        \  'quiet',
         \  'slate',
         \]
   let l:choice = rand(srand()) % len(l:colorscheme)
@@ -344,7 +343,7 @@ function SubsCWordWithRegZeroWhileRetainingCursorPos() abort
   call setpos('.', l:pos)
 endfunction
 
-function InstallMissingPlugins() abort
+function VimInstallMissingPlugins() abort
   if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     PlugInstall --sync
   endif

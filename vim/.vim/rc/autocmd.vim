@@ -52,7 +52,7 @@ let s:autocmds = [
       \    'augroup': 'install_missing_plugins',
       \    'events': 'VimEnter',
       \    'pattern': '*',
-      \    'action': ':call InstallMissingPlugins()'
+      \    'action': ':call VimInstallMissingPlugins()'
       \  },
       \]
 " }}}
