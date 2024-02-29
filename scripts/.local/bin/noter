@@ -2,7 +2,7 @@
 
 
 ROOT_DIR="${HOME}/.local/share/references"
-BIBFILE="${ROOT_DIR}/zotero.bib"
+BIBFILE="${ROOT_DIR}/main.bib"
 OS="$(uname -s)"
 
 

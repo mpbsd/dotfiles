@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-ROOT_DIR="${HOME}/templates/latex/github/classnotes"
+ROOT_DIR="${HOME}/templates/latex/github/cnotes"
 ROOT_JSON_FILE="${ROOT_DIR}/chp/index.json"
 
 
@@ -35,8 +35,14 @@ if [ -d "$TGT_DIR" ]
 then
   TGT_JSON_FILE="${TGT_DIR}/${DATE}.json"
   TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
-  touch "${TGT_JSON_FILE}"
-  touch "${TGT_TEX_FILE}"
+  if [ -f "$TGT_JSON_FILE" ] && [ -f "$TGT_TEX_FILE" ]
+  then
+    vim -O "$TGT_TEX_FILE" "$TGT_JSON_FILE"
+  else
+    touch "${TGT_JSON_FILE}"
+    touch "${TGT_TEX_FILE}"
+    vim -O "$TGT_JSON_FILE" "$TGT_TEX_FILE"
+  fi
 else
   exit 5
 fi
