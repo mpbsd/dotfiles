@@ -23,22 +23,20 @@ GET_ID() {
 }
 
 
-DATE="$(date +'%Y%m%d')"
 DISCIPLINE="$(jq '.[].name' < "$ROOT_JSON_FILE" | fzf)"
 ID=$(GET_ID "$DISCIPLINE")
-
-
 TGT_DIR="${ROOT_DIR}/chp/${ID}/sec"
+DATE="$(date +'%Y%m%d')"
 TGT_JSON_FILE="${TGT_DIR}/${DATE}.json"
 TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
 
 
-if [ -f "$TGT_JSON_FILE" ] && [ -f "$TGT_TEX_FILE" ]
-then
-  vim -O "${TGT_TEX_FILE}" "${TGT_JSON_FILE}"
-else
-  exit 5
-fi
+[ -d "$TGT_DIR" ]       || exit 5
+[ -f "$TGT_JSON_FILE" ] || exit 6
+[ -f "$TGT_TEX_FILE" ]  || exit 7
+
+
+vim -O "${TGT_TEX_FILE}" "${TGT_JSON_FILE}"
 
 
 exit 0

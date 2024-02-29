@@ -23,28 +23,39 @@ GET_ID() {
 }
 
 
-DATE="$(date +'%Y%m%d')"
 DISCIPLINE="$(jq '.[].name' < "$ROOT_JSON_FILE" | fzf)"
 ID=$(GET_ID "$DISCIPLINE")
 
 
-TGT_DIR="${ROOT_DIR}/chp/${ID}/sec"
+LOC_DIR="${ROOT_DIR}/chp/${ID}"
+LOC_JSON_FILE="${LOC_DIR}/index.json"
+LOC_TEX_FILE="${LOC_DIR}/index.tex"
 
 
-if [ -d "$TGT_DIR" ]
+[ -d "$LOC_DIR" ]       || exit 5
+[ -f "$LOC_JSON_FILE" ] || exit 6
+[ -f "$LOC_TEX_FILE" ]  || exit 7
+
+
+TGT_DIR="${LOC_DIR}/sec"
+
+
+[ -d "$TGT_DIR" ] || exit 8
+
+
+DATE="$(date +'%Y%m%d')"
+TGT_JSON_FILE="${TGT_DIR}/${DATE}.json"
+TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
+
+
+if [ -f "$TGT_JSON_FILE" ] && [ -f "$TGT_TEX_FILE" ]
 then
-  TGT_JSON_FILE="${TGT_DIR}/${DATE}.json"
-  TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
-  if [ -f "$TGT_JSON_FILE" ] && [ -f "$TGT_TEX_FILE" ]
-  then
-    vim -O "$TGT_TEX_FILE" "$TGT_JSON_FILE"
-  else
-    touch "${TGT_JSON_FILE}"
-    touch "${TGT_TEX_FILE}"
-    vim -O "$TGT_JSON_FILE" "$TGT_TEX_FILE"
-  fi
+  vim -O "$TGT_TEX_FILE" "$TGT_JSON_FILE"
 else
-  exit 5
+  touch "${TGT_JSON_FILE}"
+  touch "${TGT_TEX_FILE}"
+  echo "\\input{chp/${ID}/sec/${DATE}.tex}" >> "$LOC_TEX_FILE"
+  vim -O "$TGT_JSON_FILE" "$TGT_TEX_FILE"
 fi
 
 
