@@ -1,0 +1,49 @@
+#!/bin/bash
+
+
+ROOT_DIR="${HOME}/templates/latex/github/cnotes"
+ROOT_JSON_FILE="${ROOT_DIR}/chp/index.json"
+
+
+[ -d "$ROOT_DIR" ]       || exit 3
+[ -f "$ROOT_JSON_FILE" ] || exit 4
+
+
+DISCIPLINE() {
+  CHOICE=$(jq '.[] | "\(.id)> \(.disciplina)"' < "$ROOT_JSON_FILE" | fzf)
+  echo "$CHOICE"
+}
+
+
+ID=$(DISCIPLINE | sed 's/^"\([0-9]\{2\}\)>.*/\1/g')
+LOC_DIR="${ROOT_DIR}/chp/${ID}/sec"
+
+
+[ -d "$LOC_DIR" ] || exit 5
+
+
+LOC_DIR_TEX_FILES=$(find "$LOC_DIR" -type f -name "*.tex")
+
+
+[ -z "$LOC_DIR_TEX_FILES" ] && exit 6
+
+
+TWO_MOST_RECENT_ONES=$(echo "$LOC_DIR_TEX_FILES" | jq -Rs 'split("\n")[-3:-1]')
+
+
+TGT_FILE="${ROOT_DIR}/what.tex"
+
+
+[ -f "$TGT_FILE" ] && rm -rf "$TGT_FILE"
+
+
+touch "$TGT_FILE"
+
+
+for TEX_FILE in $(echo "$TWO_MOST_RECENT_ONES" | jq -r '.[]')
+do
+  printf '\input{%s}\n' "${TEX_FILE//$ROOT_DIR\//}" >> "$TGT_FILE"
+done
+
+
+exit 0

@@ -9,24 +9,13 @@ ROOT_JSON_FILE="${ROOT_DIR}/chp/index.json"
 [ -f "$ROOT_JSON_FILE" ] || exit 4
 
 
-GET_ID() {
-  i=0
-  ID=$(jq ".[0$i].id" < "$ROOT_JSON_FILE")
-  NAME=$(jq ".[0$i].name" < "$ROOT_JSON_FILE")
-  while [ "$NAME" != "$1" ]
-  do
-    ((++i))
-    ID=$(jq ".[0$i].id" < "$ROOT_JSON_FILE")
-    NAME=$(jq ".[0$i].name" < "$ROOT_JSON_FILE")
-  done
-  echo "0$((++i))"
+DISCIPLINE() {
+  CHOICE=$(jq '.[] | "\(.id)> \(.disciplina)"' < "$ROOT_JSON_FILE" | fzf)
+  echo "$CHOICE"
 }
 
 
-DISCIPLINE="$(jq '.[].name' < "$ROOT_JSON_FILE" | fzf)"
-ID=$(GET_ID "$DISCIPLINE")
-
-
+ID=$(DISCIPLINE | sed 's/^"\([0-9]\{2\}\)>.*/\1/g')
 LOC_DIR="${ROOT_DIR}/chp/${ID}"
 LOC_JSON_FILE="${LOC_DIR}/index.json"
 LOC_TEX_FILE="${LOC_DIR}/index.tex"
@@ -54,7 +43,7 @@ then
 else
   touch "${TGT_JSON_FILE}"
   touch "${TGT_TEX_FILE}"
-  echo "\\input{chp/${ID}/sec/${DATE}.tex}" >> "$LOC_TEX_FILE"
+  printf '\n\input{chp/%s/sec/%s.tex}' "${ID}" "${DATE}" >> "$LOC_TEX_FILE"
   vim -O "$TGT_JSON_FILE" "$TGT_TEX_FILE"
 fi
 
