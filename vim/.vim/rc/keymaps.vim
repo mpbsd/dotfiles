@@ -375,7 +375,7 @@ let s:keymaps = [
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>gis',
-      \    'rhs': ':call GetStudentsInfoFromSIGAA()<cr>',
+      \    'rhs': ':call VimGetStudentsInfoFromSIGAA()<cr>',
       \    'des': 'get students info from sigaa',
       \  },
       \  {

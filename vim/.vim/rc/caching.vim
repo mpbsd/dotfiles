@@ -11,8 +11,8 @@ let g:netrw_home=s:cache_dir
 let s:dirs = {
       \  'backupdir': 'bdir',
       \  'directory': 'sdir',
-      \  'undodir': 'udir',
-      \  'viewdir': 'vdir',
+      \  'undodir':   'udir',
+      \  'viewdir':   'vdir',
       \}
 
 for [lhs, rhs] in items(s:dirs)

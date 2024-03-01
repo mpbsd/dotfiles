@@ -356,87 +356,6 @@ function VimGetBibTeXCitationKeys() abort
   wincmd k
 endfunction
 
-function CSVDisciplines() abort
-  %s/–/-/ge
-  %s/\s\+/ /g
-  %s/^ //g
-  %s/[0-9]\{1,3}[MTN][0-9]\{1,3}/&\r/g
-  g/^\(\s*\|MANHÃ\|TARDE\|NOITE\)$/d
-  g/^DISCIPLINAS/d
-  %s/^ //g
-  %s/\s*-\s*/ ; /g
-  let @q = '/^campus aparecidajma/^campus colemarkmb:''a,''bs/^/Aparecida ; /'
-  execute 'norm @q'
-  let @q = '/^campus colemarjma/^campus samambaiakmb:''a,''bs/^/Colemar ; /'
-  execute 'norm @q'
-  let @q = '/^campus samambaiajma:''a,$s/^/Samambaia ; /'
-  execute 'norm @q'
-  g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
-  %s/\([^;]\) \([0-9]\{1,3}[MTN][0-9]\{1,3}\)$/\1 ; \2/e
-  %Tab /;
-endfunction
-
-function GetStudentsInfoFromSIGAA() abort
-  let l:regex = [
-        \  '^ +([a-z ]+) +\(perfil\)',
-        \  'curso: ([a-z ]+)',
-        \  'matricula: ([0-9]{9})',
-        \  'usuario: ([a-z0-9_.]+)',
-        \  'e-mail: ([a-z0-9_.@]+) enviar mensagem',
-        \]
-  let l:subst = [
-        \  '"\3": {',
-        \  '"fname": "\1",',
-        \  '"gradc": "\2",',
-        \  '"uname": "\4",',
-        \  '"email": "\5",',
-        \  '"grade": {"E1": 0.0,"E2": 0.0,"E3": 0.0},\r},',
-        \]
-  let l:reg_stdnt = join(l:regex)
-  let l:sub_stdnt = join(l:subst, '\r\t')
-  let l:sub = printf("1,$s/\v%s/%s/", l:reg_stdnt, l:sub_stdnt)
-  execute 'normal ggVGu'
-  call VimRemoveSpecialCharsFromCurrentBuffer()
-  %s/\vusuario (off|on)-line no sigaa/\r/g
-  g!/\((perfil)\|\(matricula\|curso\|usuario\|e-mail\):\)/d
-  g/(perfil)/j
-  g/curso:/j
-  g/matricula:/j
-  g/usuario:/j
-  execute l:sub
-  %s/\s\+",/",/ge
-  %s/\s\+$//e
-  g/^usuario:/d
-endfunction
-
-
-function PracticeDayOnePrepareClasses() abort
-  let l:head = [
-        \  '\\begin{table}[H]',
-        \  '\\centering',
-        \  '\\begin{tabular}{ccccccccccc}\r',
-        \]
-  let l:tail = [
-        \  '\r\\end{tabular}',
-        \  '\\caption{Standard Normal Distribution function}',
-        \  '\\label{tbl:standard-normal-distribution-function}',
-        \  '\\end{table}'
-        \]
-  let l:payload_head = join(l:head, '\r')
-  let l:payload_tail = join(l:tail, '\r')
-  let l:substitute_cmd_head = printf("0s/^/%s/", l:payload_head)
-  let l:substitute_cmd_tail = printf("$s/$/%s/", l:payload_tail)
-  %s/\s\+/ /g
-  g!/\.\d\{2,}/d
-  %s/ \.0\(\d\)\>/ \& 0\.0\100/g
-  %s/ \.\(\d\)\>/ 0\.\1/
-  %s/ \.\(\d\{4}\)/ \& 0\.\1/g
-  g/0\.\d\+/s/$/\\\\/
-  Tab /\(&\|\\\\\)
-  execute l:substitute_cmd_head
-  execute l:substitute_cmd_tail
-endfunction
-
 function VimFormatMyBibTeXFile() abort
   let l:re = {
         \  'key': {
@@ -474,3 +393,106 @@ function VimFormatMyBibTeXFile() abort
       sil exe 'norm 1000@q'
 endfunction
 
+function CSVDisciplines() abort
+  %s/–/-/ge
+  %s/\s\+/ /g
+  %s/^ //g
+  %s/[0-9]\{1,3}[MTN][0-9]\{1,3}/&\r/g
+  g/^\(\s*\|MANHÃ\|TARDE\|NOITE\)$/d
+  g/^DISCIPLINAS/d
+  %s/^ //g
+  %s/\s*-\s*/ ; /g
+  let @q = '/^campus aparecidajma/^campus colemarkmb:''a,''bs/^/Aparecida ; /'
+  execute 'norm @q'
+  let @q = '/^campus colemarjma/^campus samambaiakmb:''a,''bs/^/Colemar ; /'
+  execute 'norm @q'
+  let @q = '/^campus samambaiajma:''a,$s/^/Samambaia ; /'
+  execute 'norm @q'
+  g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
+  %s/\([^;]\) \([0-9]\{1,3}[MTN][0-9]\{1,3}\)$/\1 ; \2/e
+  %Tab /;
+endfunction
+
+function VimGetStudentsInfoFromSIGAA() abort
+  let l:get_rid_of_devils_white_space = '1,$s/\t/ /g'
+  let l:swap_chars_with_their_lower_case_equivalents = 'norm ggVGu'
+  let l:tgt_lines = [
+        \ '(perfil)$',
+        \ '^(curso):',
+        \ '^matricula:',
+        \ '^usuario:',
+        \ '^e-mail:'
+        \]
+  let l:remove_other = printf("g!/\\(%s\\)/d", join(l:tgt_lines, '\|'))
+  let l:sub_break = {
+        \ 'lhs': 'usuario \(on\|off\)-line no sigaa',
+        \ 'rhs': '\r'
+        \}
+  let l:sub_fname = {
+        \ 'lhs': '^ \<\([a-z ]\+\)\> (perfil)$',
+        \ 'rhs': '"fname": "\1",'
+        \}
+  let l:sub_rgstr = {
+        \ 'lhs': '^matricula: \([0-9]\{9\}\)',
+        \ 'rhs': '"\1": {'
+        \}
+  let l:sub_uname = {
+        \ 'lhs': '^usuario: \([a-z0-9_.]\+\)$',
+        \ 'rhs': '"uname": "\1",'
+        \}
+  let l:sub_email = {
+        \ 'lhs': '^e-mail: \([a-z0-9_.@]\+\) enviar mensagem *',
+        \ 'rhs': '"email": "\1",\r"grade": {"E1": 0, "E2": 0, "E3": 0}\r},',
+        \}
+  let l:sub_swapl = {
+        \ 'lhs': '^\("fname": "[^"]\+",\)$\n^\("[0-9]\{9\}": {\)$',
+        \ 'rhs': '\2\r\1'
+        \}
+  let l:remove_header = '1,/^e-mail: [a-z0-9_.@]\+$\n^\s*$\n^"[0-9]\{9\}":/d'
+  let l:remove_empty_lines = 'g/^\s*$/d'
+  let l:add_header = '1s/^/student = {\r'
+  let l:add_footer = '$s/$/\r}/'
+  let l:format = 'norm gg=G'
+  sil exe l:get_rid_of_devils_white_space
+  sil exe l:swap_chars_with_their_lower_case_equivalents
+  call VimRemoveSpecialCharsFromCurrentBuffer()
+  sil exe l:remove_other
+  sil exe printf("1,$s/%s/%s/", l:sub_break['lhs'], l:sub_break['rhs'])
+  sil exe printf("1,$s/%s/%s/", l:sub_fname['lhs'], l:sub_fname['rhs'])
+  sil exe printf("1,$s/%s/%s/", l:sub_rgstr['lhs'], l:sub_rgstr['rhs'])
+  sil exe printf("1,$s/%s/%s/", l:sub_uname['lhs'], l:sub_uname['rhs'])
+  sil exe printf("1,$s/%s/%s/", l:sub_email['lhs'], l:sub_email['rhs'])
+  sil exe printf("1,$s/%s/%s/", l:sub_swapl['lhs'], l:sub_swapl['rhs'])
+  sil exe l:remove_header
+  sil exe l:remove_empty_lines
+  sil exe l:add_header
+  sil exe l:add_footer
+  sil exe l:format
+endfunction
+
+function PracticeDayOnePrepareClasses() abort
+  let l:head = [
+        \  '\\begin{table}[H]',
+        \  '\\centering',
+        \  '\\begin{tabular}{ccccccccccc}\r',
+        \]
+  let l:tail = [
+        \  '\r\\end{tabular}',
+        \  '\\caption{Standard Normal Distribution function}',
+        \  '\\label{tbl:standard-normal-distribution-function}',
+        \  '\\end{table}'
+        \]
+  let l:payload_head = join(l:head, '\r')
+  let l:payload_tail = join(l:tail, '\r')
+  let l:substitute_cmd_head = printf("0s/^/%s/", l:payload_head)
+  let l:substitute_cmd_tail = printf("$s/$/%s/", l:payload_tail)
+  %s/\s\+/ /g
+  g!/\.\d\{2,}/d
+  %s/ \.0\(\d\)\>/ \& 0\.0\100/g
+  %s/ \.\(\d\)\>/ 0\.\1/
+  %s/ \.\(\d\{4}\)/ \& 0\.\1/g
+  g/0\.\d\+/s/$/\\\\/
+  Tab /\(&\|\\\\\)
+  execute l:substitute_cmd_head
+  execute l:substitute_cmd_tail
+endfunction
