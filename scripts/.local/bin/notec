@@ -43,7 +43,7 @@ then
 else
   touch "${TGT_JSON_FILE}"
   touch "${TGT_TEX_FILE}"
-  printf '\n\input{chp/%s/sec/%s.tex}' "${ID}" "${DATE}" >> "$LOC_TEX_FILE"
+  printf '\input{%s}' "${TGT_TEX_FILE/#$ROOT_DIR\//}" >> "$LOC_TEX_FILE"
   vim -O "$TGT_JSON_FILE" "$TGT_TEX_FILE"
 fi
 

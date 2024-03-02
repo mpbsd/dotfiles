@@ -341,9 +341,9 @@ endfunction
 function VimRemoveTrailingSpacesFromCurrentBuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
-  1,$s/\s\+$//e
-  call setpos('.', l:pos)
-  call setreg('/', l:reg)
+  sil 1,$s/\s\+$//e
+  cal setpos('.', l:pos)
+  cal setreg('/', l:reg)
 endfunction
 
 function SubsCWordWithRegZeroWhileRetainingCursorPos() abort
@@ -476,11 +476,11 @@ function PracticeDayOnePrepareClasses() abort
   let l:payload_tail = join(l:tail, '\r')
   let l:substitute_cmd_head = printf("0s/^/%s/", l:payload_head)
   let l:substitute_cmd_tail = printf("$s/$/%s/", l:payload_tail)
-  1,$s/\s\+/ /g
+  sil 1,$s/\s\+/ /g
   g!/\.\d\{2,}/d
-  1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
-  1,$s/ \.\(\d\)\>/ 0\.\1/
-  1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
+  sil 1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
+  sil 1,$s/ \.\(\d\)\>/ 0\.\1/
+  sil 1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
   g/0\.\d\+/s/$/\\\\/
   Tab /\(&\|\\\\\)
   exe l:substitute_cmd_head
