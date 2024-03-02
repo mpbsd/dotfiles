@@ -1,7 +1,6 @@
 let g:tex_flavor = 'latex'
-let g:bash_is_sh = 1
-let g:is_bash = 1
 
+" table of equivalent chars {{{
 let s:table_of_equivalent_characters = {
       \  'à': 'a',
       \  'á': 'a',
@@ -16,6 +15,13 @@ let s:table_of_equivalent_characters = {
       \  'ú': 'u',
       \  'ç': 'c',
       \}
+" }}}
+
+" table of equivalent chars for non ascii {{{
+let s:table_of_equivalent_non_ascii_chars = {
+      \  '–': '-',
+      \}
+" }}}
 
 function VimSetAnOption(categ, lhs, rhs) abort
   if a:categ ==# 'bool'
@@ -274,16 +280,16 @@ function VimSetStatusline() abort
   let l:percentage_through_file = '%P'
   let l:line_and_column_numbers = '(%06l:%06c)'
   let l:statusline = join([
-        \ l:bufnr,
-        \ l:mode,
-        \ l:filename_tail,
-        \ l:modified_flag,
-        \ l:lhs_rhs_separator,
-        \ l:fileencoding,
-        \ l:fileformat,
-        \ l:file_type,
-        \ l:percentage_through_file,
-        \ l:line_and_column_numbers
+        \  l:bufnr,
+        \  l:mode,
+        \  l:filename_tail,
+        \  l:modified_flag,
+        \  l:lhs_rhs_separator,
+        \  l:fileencoding,
+        \  l:fileformat,
+        \  l:file_type,
+        \  l:percentage_through_file,
+        \  l:line_and_column_numbers
         \])
   return l:statusline
 endfunction
@@ -302,6 +308,9 @@ function VimRemoveSpecialCharsFromCurrentBuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   for [lhs, rhs] in items(s:table_of_equivalent_characters)
+    silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
+  endfor
+  for [lhs, rhs] in items(s:table_of_equivalent_non_ascii_chars)
     silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
   endfor
   call setpos('.', l:pos)
@@ -390,54 +399,56 @@ function VimFormatMyBibTeXFile() abort
       sil exe printf("g/%s/s/%s/%s/", l:key_target, l:key_before, l:key_after)
       sil exe printf("g/\\(%s\\) \\+=/d", join(l:re['unwanted_fields'], '\|'))
       let @q = '/^@j:Tab /=/,$\n^}x'
-      sil exe 'norm 1000@q'
+      sil exe 'norm 120@q'
 endfunction
 
-function CSVDisciplines() abort
-  %s/–/-/ge
-  %s/\s\+/ /g
-  %s/^ //g
-  %s/[0-9]\{1,3}[MTN][0-9]\{1,3}/&\r/g
-  g/^\(\s*\|MANHÃ\|TARDE\|NOITE\)$/d
-  g/^DISCIPLINAS/d
-  %s/^ //g
-  %s/\s*-\s*/ ; /g
-  let @q = '/^campus aparecidajma/^campus colemarkmb:''a,''bs/^/Aparecida ; /'
-  execute 'norm @q'
-  let @q = '/^campus colemarjma/^campus samambaiakmb:''a,''bs/^/Colemar ; /'
-  execute 'norm @q'
-  let @q = '/^campus samambaiajma:''a,$s/^/Samambaia ; /'
-  execute 'norm @q'
-  g/^CAMPUS \(APARECIDA\|COLEMAR\|SAMAMBAIA\)$/d
-  %s/\([^;]\) \([0-9]\{1,3}[MTN][0-9]\{1,3}\)$/\1 ; \2/e
-  %Tab /;
+function VimCreateCSVFileWithDisciplines() abort
+  norm ggVGu
+  call VimRemoveSpecialCharsFromCurrentBuffer()
+  sil 1,$s/ \+/ /g
+  sil 1,$s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
+  sil 1,$s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
+  sil 1,$s/\(^\s\+\|\s\+$\)//ge
+  sil g/^$/d
+  sil g/^\(disciplinas de externas\|manha\|tarde\|noite\)/d
+  let l:macro = [
+        \  '/^campus aparecida',
+        \  'ma/^campus colemar',
+        \  'mb/^campus samambaia',
+        \  'mc`addV`bk:s/^/campus aparecida - /',
+        \  '`bddV`ck:s/^/campus colemar - /',
+        \  '`cddVG:s/^/campus samambaia - /'
+        \]
+  let @q = join(l:macro, '')
+  sil exe 'norm @q'
+  sil 1,$s/-/;/g
 endfunction
 
-function VimGetStudentsInfoFromSIGAA() abort
+function VimParseStudentsInfo() abort
   let l:re = {
-        \  'lhs': {
-        \    0: '\v(enviar mensagem|usuario (on|off)-line no sigaa)',
-        \    1: '\v^ ([a-z ]+) \(perfil\)$',
-        \    2: '\v^curso: ([a-z ]+)$',
-        \    3: '\v^matricula: ([0-9]{9})$',
-        \    4: '\v^usuario: ([a-z0-9_.]+)$',
-        \    5: '\v^e-mail: ([a-z0-9_.@]+)$',
-        \    6: '\v"fname": "([^"]+)",\n"gradc": "([^"]+)",\n"(\d{9})"',
-        \  },
-        \  'rhs': {
-        \    0: '\r',
-        \    1: '"fname": "\1",',
-        \    2: '"gradc": "\1",',
-        \    3: '"\1"',
-        \    4: '"uname": "\1",',
-        \    5: '"email": "\1",\r},',
-        \    6: '"\3": {\r"fname": "\1",\r"gradc": "\2",',
-        \  },
+        \  'lhs': [
+        \    '\v(enviar mensagem|usuario (on|off)-line no sigaa)',
+        \    '\v^ ([a-z ]+) \(perfil\)$',
+        \    '\v^curso: ([a-z ]+)$',
+        \    '\v^matricula: ([0-9]{9})$',
+        \    '\v^usuario: ([a-z0-9_.]+)$',
+        \    '\v^e-mail: ([a-z0-9_.@]+)$',
+        \    '\v"fname": "([^"]+)",\n"gradc": "([^"]+)",\n"(\d{9})"',
+        \  ],
+        \  'rhs': [
+        \    '\r',
+        \    '"fname": "\1",',
+        \    '"gradc": "\1",',
+        \    '"\1"',
+        \    '"uname": "\1",',
+        \    '"email": "\1",\r},',
+        \    '"\3": {\r"fname": "\1",\r"gradc": "\2",',
+        \  ],
         \}
   norm ggVGu
   call VimRemoveSpecialCharsFromCurrentBuffer()
   sil exe printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
-  sil g!/\v(\(perfil\)|(curso|matricula|usuario|e-mail):)/d
+  sil g!/\v(\(perfil\)$|(curso|matricula|usuario|e-mail):)/d
   sil 1,$s/\s\+$//e
   sil exe printf("1,$s/%s/%s/", l:re['lhs'][1], l:re['rhs'][1])
   sil exe printf("1,$s/%s/%s/", l:re['lhs'][2], l:re['rhs'][2])
@@ -465,13 +476,13 @@ function PracticeDayOnePrepareClasses() abort
   let l:payload_tail = join(l:tail, '\r')
   let l:substitute_cmd_head = printf("0s/^/%s/", l:payload_head)
   let l:substitute_cmd_tail = printf("$s/$/%s/", l:payload_tail)
-  %s/\s\+/ /g
+  1,$s/\s\+/ /g
   g!/\.\d\{2,}/d
-  %s/ \.0\(\d\)\>/ \& 0\.0\100/g
-  %s/ \.\(\d\)\>/ 0\.\1/
-  %s/ \.\(\d\{4}\)/ \& 0\.\1/g
+  1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
+  1,$s/ \.\(\d\)\>/ 0\.\1/
+  1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
   g/0\.\d\+/s/$/\\\\/
   Tab /\(&\|\\\\\)
-  execute l:substitute_cmd_head
-  execute l:substitute_cmd_tail
+  exe l:substitute_cmd_head
+  exe l:substitute_cmd_tail
 endfunction
