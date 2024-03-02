@@ -414,60 +414,39 @@ function CSVDisciplines() abort
 endfunction
 
 function VimGetStudentsInfoFromSIGAA() abort
-  let l:get_rid_of_devils_white_space = '1,$s/\t/ /g'
-  let l:swap_chars_with_their_lower_case_equivalents = 'norm ggVGu'
-  let l:tgt_lines = [
-        \ '(perfil)$',
-        \ '^(curso):',
-        \ '^matricula:',
-        \ '^usuario:',
-        \ '^e-mail:'
-        \]
-  let l:remove_other = printf("g!/\\(%s\\)/d", join(l:tgt_lines, '\|'))
-  let l:sub_break = {
-        \ 'lhs': 'usuario \(on\|off\)-line no sigaa',
-        \ 'rhs': '\r'
+  let l:re = {
+        \  'lhs': {
+        \    0: '\v(enviar mensagem|usuario (on|off)-line no sigaa)',
+        \    1: '\v^ ([a-z ]+) \(perfil\)$',
+        \    2: '\v^curso: ([a-z ]+)$',
+        \    3: '\v^matricula: ([0-9]{9})$',
+        \    4: '\v^usuario: ([a-z0-9_.]+)$',
+        \    5: '\v^e-mail: ([a-z0-9_.@]+)$',
+        \    6: '\v"fname": "([^"]+)",\n"gradc": "([^"]+)",\n"(\d{9})"',
+        \  },
+        \  'rhs': {
+        \    0: '\r',
+        \    1: '"fname": "\1",',
+        \    2: '"gradc": "\1",',
+        \    3: '"\1"',
+        \    4: '"uname": "\1",',
+        \    5: '"email": "\1",\r},',
+        \    6: '"\3": {\r"fname": "\1",\r"gradc": "\2",',
+        \  },
         \}
-  let l:sub_fname = {
-        \ 'lhs': '^ \<\([a-z ]\+\)\> (perfil)$',
-        \ 'rhs': '"fname": "\1",'
-        \}
-  let l:sub_rgstr = {
-        \ 'lhs': '^matricula: \([0-9]\{9\}\)',
-        \ 'rhs': '"\1": {'
-        \}
-  let l:sub_uname = {
-        \ 'lhs': '^usuario: \([a-z0-9_.]\+\)$',
-        \ 'rhs': '"uname": "\1",'
-        \}
-  let l:sub_email = {
-        \ 'lhs': '^e-mail: \([a-z0-9_.@]\+\) enviar mensagem *',
-        \ 'rhs': '"email": "\1",\r"grade": {"E1": 0, "E2": 0, "E3": 0}\r},',
-        \}
-  let l:sub_swapl = {
-        \ 'lhs': '^\("fname": "[^"]\+",\)$\n^\("[0-9]\{9\}": {\)$',
-        \ 'rhs': '\2\r\1'
-        \}
-  let l:remove_header = '1,/^e-mail: [a-z0-9_.@]\+$\n^\s*$\n^"[0-9]\{9\}":/d'
-  let l:remove_empty_lines = 'g/^\s*$/d'
-  let l:add_header = '1s/^/student = {\r'
-  let l:add_footer = '$s/$/\r}/'
-  let l:format = 'norm gg=G'
-  sil exe l:get_rid_of_devils_white_space
-  sil exe l:swap_chars_with_their_lower_case_equivalents
+  norm ggVGu
   call VimRemoveSpecialCharsFromCurrentBuffer()
-  sil exe l:remove_other
-  sil exe printf("1,$s/%s/%s/", l:sub_break['lhs'], l:sub_break['rhs'])
-  sil exe printf("1,$s/%s/%s/", l:sub_fname['lhs'], l:sub_fname['rhs'])
-  sil exe printf("1,$s/%s/%s/", l:sub_rgstr['lhs'], l:sub_rgstr['rhs'])
-  sil exe printf("1,$s/%s/%s/", l:sub_uname['lhs'], l:sub_uname['rhs'])
-  sil exe printf("1,$s/%s/%s/", l:sub_email['lhs'], l:sub_email['rhs'])
-  sil exe printf("1,$s/%s/%s/", l:sub_swapl['lhs'], l:sub_swapl['rhs'])
-  sil exe l:remove_header
-  sil exe l:remove_empty_lines
-  sil exe l:add_header
-  sil exe l:add_footer
-  sil exe l:format
+  sil exe printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
+  sil g!/\v(\(perfil\)|(curso|matricula|usuario|e-mail):)/d
+  sil 1,$s/\s\+$//e
+  sil exe printf("1,$s/%s/%s/", l:re['lhs'][1], l:re['rhs'][1])
+  sil exe printf("1,$s/%s/%s/", l:re['lhs'][2], l:re['rhs'][2])
+  sil exe printf("1,$s/%s/%s/", l:re['lhs'][3], l:re['rhs'][3])
+  sil exe printf("1,$s/%s/%s/", l:re['lhs'][4], l:re['rhs'][4])
+  sil exe printf("1,$s/%s/%s/", l:re['lhs'][5], l:re['rhs'][5])
+  sil exe printf("1,$s/%s/%s/", l:re['lhs'][6], l:re['rhs'][6])
+  sil g/"email"/s/$/\r"grade": {"E1": 0, "E2": 0, "E3": 0},/
+  sil norm ggc/^"\d\{9}student = {Go}gg=G
 endfunction
 
 function PracticeDayOnePrepareClasses() abort
