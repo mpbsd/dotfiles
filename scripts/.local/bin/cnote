@@ -56,14 +56,14 @@ TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
 
 WHAT_TO_COMPILE()
 {
-  WHAT_FILE="${ROOT_DIR}/what.tex"
-  [ -f "$WHAT_FILE" ] && rm -rf "$WHAT_FILE"
-  printf '\part{%s}\n' "$NAME" > "$WHAT_FILE"
+  DATA_FILE="${ROOT_DIR}/data.tex"
+  [ -f "$DATA_FILE" ] && rm -rf "$DATA_FILE"
+  printf '\part{%s}\n' "$NAME" > "$DATA_FILE"
   TEX_FILES=$(find "$TGT_DIR" -type f -name "*.tex" | sort)
   TWO_MOST_RECENT_NOTES=$(echo "$TEX_FILES" | jq -Rs 'split("\n")[-3:-1]')
   for TEX_FILE in $(echo "$TWO_MOST_RECENT_NOTES" | jq -r '.[]')
   do
-    printf '\n\input{%s}' "${TEX_FILE/#${ROOT_DIR}\//}" >> "$WHAT_FILE"
+    printf '\n\input{%s}' "${TEX_FILE/#${ROOT_DIR}\//}" >> "$DATA_FILE"
   done
 }
 
@@ -74,14 +74,15 @@ case "$1" in
     touch "$TGT_JSON_FILE" "$TGT_TEX_FILE"
     printf '\n\input{%s}' "${TGT_TEX_FILE/#${ROOT_DIR}\//}" >> "$LOC_TEX_FILE"
     vim -O "$TGT_JSON_FILE" "$TGT_TEX_FILE"
-    WHAT_TO_COMPILE
     ;;
   -e|--edit)
     [ -f "$TGT_JSON_FILE" ] && [ -f "$TGT_TEX_FILE" ] || exit 19
     vim -O "$TGT_TEX_FILE" "$TGT_JSON_FILE"
-    WHAT_TO_COMPILE
     ;;
 esac
+
+
+WHAT_TO_COMPILE
 
 
 exit 0
