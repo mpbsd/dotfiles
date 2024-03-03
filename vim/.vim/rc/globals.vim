@@ -472,17 +472,13 @@ function PracticeDayOnePrepareClasses() abort
         \  '\\label{tbl:standard-normal-distribution-function}',
         \  '\\end{table}'
         \]
-  let l:payload_head = join(l:head, '\r')
-  let l:payload_tail = join(l:tail, '\r')
-  let l:substitute_cmd_head = printf("0s/^/%s/", l:payload_head)
-  let l:substitute_cmd_tail = printf("$s/$/%s/", l:payload_tail)
   sil 1,$s/\s\+/ /g
-  g!/\.\d\{2,}/d
+  sil g!/\.\d\{2,}/d
   sil 1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
   sil 1,$s/ \.\(\d\)\>/ 0\.\1/
   sil 1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
-  g/0\.\d\+/s/$/\\\\/
+  sil g/0\.\d\+/s/$/\\\\/
   Tab /\(&\|\\\\\)
-  exe l:substitute_cmd_head
-  exe l:substitute_cmd_tail
+  sil exe printf("0s/^/%s/", join(l:head, '\r'))
+  sil exe printf("$s/$/%s/", join(l:tail, '\r'))
 endfunction
