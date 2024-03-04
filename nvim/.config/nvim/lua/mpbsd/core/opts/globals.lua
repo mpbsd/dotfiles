@@ -287,10 +287,15 @@ M.on_attach = function()
   })
 end
 
-if vim.fn.has('nvim-0.9.5') then
-  M.vim_uv = vim.loop
-else
+M.nvim_version = function()
+  local V = vim.version()
+  return string.format("nvim-%s.%s.%s", V.major, V.minor, V.patch)
+end
+
+if M.nvim_version() == 'nvim-0.10.0' then
   M.vim_uv = vim.uv
+else
+  M.vim_uv = vim.loop
 end
 
 return M
