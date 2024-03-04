@@ -380,8 +380,8 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>gis',
-      \    'rhs': ':call VimGetStudentsInfoFromSIGAA()<cr>',
+      \    'lhs': '<leader>psi',
+      \    'rhs': ':call VimParseStudentsInfo()<cr>',
       \    'des': 'get students info from sigaa',
       \  },
       \  {

@@ -25,18 +25,18 @@ let s:table_of_equivalent_non_ascii_chars = {
 
 function VimSetAnOption(categ, lhs, rhs) abort
   if a:categ ==# 'bool'
-    execute printf("set %s", (a:rhs == v:true) ? a:lhs : ('no' . a:lhs))
+    exe printf("set %s", (a:rhs == v:true) ? a:lhs : ('no' . a:lhs))
   elseif a:categ ==# 'grpx'
-    execute printf("set guioptions %s=%s", a:rhs, a:lhs)
+    exe printf("set guioptions %s=%s", a:rhs, a:lhs)
   else
-    execute printf("set %s=%s", a:lhs, a:rhs)
+    exe printf("set %s=%s", a:lhs, a:rhs)
   endif
 endfunction
 
 function VimSetOptions(options) abort
   for categ in keys(a:options)
     for [lhs, rhs] in items(a:options[categ])
-      call VimSetAnOption(categ, lhs, rhs)
+      cal VimSetAnOption(categ, lhs, rhs)
     endfor
   endfor
 endfunction
@@ -47,12 +47,12 @@ function VimSetAKeymap(mod, lhs, rhs) abort
         \  'insert': 'inoremap',
         \  'visual': 'vnoremap',
         \}
-  execute printf("%s %s %s", l:noremap[a:mod], a:lhs, a:rhs)
+  exe printf("%s %s %s", l:noremap[a:mod], a:lhs, a:rhs)
 endfunction
 
 function VimSetKeymaps(keymaps) abort
   for keymap in a:keymaps
-    call VimSetAKeymap(keymap['mod'], keymap['lhs'], keymap['rhs'])
+    cal VimSetAKeymap(keymap['mod'], keymap['lhs'], keymap['rhs'])
   endfor
 endfunction
 
@@ -86,24 +86,24 @@ function VimSetKeymapsForBuildingLaTeXDocumentsWithMake() abort
         \  {
         \    'mod': 'normal',
         \    'lhs': '<leader>bc',
-        \    'rhs': ':call VimGetBibTeXCitationKeys()<cr>',
+        \    'rhs': ':cal VimGetBibTeXCitationKeys()<cr>',
         \    'des': 'get bibtex citation keys',
         \  },
         \]
   " }}}
-  call VimSetKeymaps(l:keymaps)
+  cal VimSetKeymaps(l:keymaps)
 endfunction
 
 function VimSetAnAutocmd(augroup, events, pattern, action) abort
-  execut printf("augroup %s", a:augroup)
+  exe printf("augroup %s", a:augroup)
   autocmd!
-  execute printf("autocmd %s %s %s", a:events, a:pattern, a:action)
+  exe printf("autocmd %s %s %s", a:events, a:pattern, a:action)
   augroup END
 endfunction
 
 function VimSetAutocmds(autocmds) abort
   for X in a:autocmds
-    call VimSetAnAutocmd(X['augroup'], X['events'], X['pattern'], X['action'])
+    cal VimSetAnAutocmd(X['augroup'], X['events'], X['pattern'], X['action'])
   endfor
 endfunction
 
@@ -301,20 +301,20 @@ function VimSetColorscheme() abort
         \  'slate',
         \]
   let l:choice = rand(srand()) % len(l:colorscheme)
-  execute printf("colorscheme %s", l:colorscheme[l:choice])
+  exe printf("colorscheme %s", l:colorscheme[l:choice])
 endfunction
 
 function VimRemoveSpecialCharsFromCurrentBuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   for [lhs, rhs] in items(s:table_of_equivalent_characters)
-    silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
+    sil exe printf("1,$s/%s/%s/ge", lhs, rhs)
   endfor
   for [lhs, rhs] in items(s:table_of_equivalent_non_ascii_chars)
-    silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
+    sil exe printf("1,$s/%s/%s/ge", lhs, rhs)
   endfor
-  call setpos('.', l:pos)
-  call setreg('/', l:reg)
+  cal setpos('.', l:pos)
+  cal setreg('/', l:reg)
 endfunction
 
 function VimRemoveSpecialCharsFromCurrentWord() abort
@@ -328,13 +328,13 @@ endfunction
 
 function VimAddCurrentWordToMyListOfAbbreviations() abort
   let l:abbrv = VimRemoveSpecialCharsFromCurrentWord()
-  call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
+  cal writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
 
 function VimAddCurrentWordToMyListOfWords() abort
   let l:cword = expand('<cword>')
-  call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
+  cal writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
   echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
 endfunction
 
@@ -348,8 +348,8 @@ endfunction
 
 function SubsCWordWithRegZeroWhileRetainingCursorPos() abort
   let l:pos = getpos('.')
-  execute printf("1,$s/%s/%s/g", expand('<cword>'), getreg('0'))
-  call setpos('.', l:pos)
+  exe printf("1,$s/%s/%s/g", expand('<cword>'), getreg('0'))
+  cal setpos('.', l:pos)
 endfunction
 
 function VimInstallMissingPlugins() abort
@@ -360,7 +360,7 @@ endfunction
 
 function VimGetBibTeXCitationKeys() abort
   let l:bfile = expand('~/.local/share/references/zotero.bib')
-  execute printf(":vimgrep /^@/j %s", l:bfile)
+  exe printf(":vimgrep /^@/j %s", l:bfile)
   copen
   wincmd k
 endfunction
@@ -403,8 +403,8 @@ function VimFormatMyBibTeXFile() abort
 endfunction
 
 function VimCreateCSVFileWithDisciplines() abort
-  norm ggVGu
-  call VimRemoveSpecialCharsFromCurrentBuffer()
+  sil exe 'norm ggVGu'
+  cal VimRemoveSpecialCharsFromCurrentBuffer()
   sil 1,$s/ \+/ /g
   sil 1,$s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
   sil 1,$s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
@@ -422,6 +422,7 @@ function VimCreateCSVFileWithDisciplines() abort
   let @q = join(l:macro, '')
   sil exe 'norm @q'
   sil 1,$s/-/;/g
+  sil exe 'Tab /;'
 endfunction
 
 function VimParseStudentsInfo() abort
@@ -445,8 +446,8 @@ function VimParseStudentsInfo() abort
         \    '"\3": {\r"fname": "\1",\r"gradc": "\2",',
         \  ],
         \}
-  norm ggVGu
-  call VimRemoveSpecialCharsFromCurrentBuffer()
+  sil exe 'norm ggVGu'
+  cal VimRemoveSpecialCharsFromCurrentBuffer()
   sil exe printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
   sil g!/\v(\(perfil\)$|(curso|matricula|usuario|e-mail):)/d
   sil 1,$s/\s\+$//e
@@ -457,7 +458,8 @@ function VimParseStudentsInfo() abort
   sil exe printf("1,$s/%s/%s/", l:re['lhs'][5], l:re['rhs'][5])
   sil exe printf("1,$s/%s/%s/", l:re['lhs'][6], l:re['rhs'][6])
   sil g/"email"/s/$/\r"grade": {"E1": 0, "E2": 0, "E3": 0},/
-  sil norm ggc/^"\d\{9}student = {Go}gg=G
+  sil exe 'norm ggc/^"\d\{9}student = {Go}gg=G'
+  sil g/^\s*$/d
 endfunction
 
 function PracticeDayOnePrepareClasses() abort
@@ -473,12 +475,12 @@ function PracticeDayOnePrepareClasses() abort
         \  '\\end{table}'
         \]
   sil 1,$s/\s\+/ /g
-  sil g!/\.\d\{2,}/d
+  sil exe 'norm g!/\.\d\{2,}/d'
   sil 1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
   sil 1,$s/ \.\(\d\)\>/ 0\.\1/
   sil 1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
-  sil g/0\.\d\+/s/$/\\\\/
-  Tab /\(&\|\\\\\)
+  sil exe 'norm g/0\.\d\+/s/$/\\\\/'
+  sil exe 'Tab /\(&\|\\\\\)'
   sil exe printf("0s/^/%s/", join(l:head, '\r'))
   sil exe printf("$s/$/%s/", join(l:tail, '\r'))
 endfunction
