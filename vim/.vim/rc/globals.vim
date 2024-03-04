@@ -312,7 +312,7 @@ endfunction
 function VimRemoveNonASCIICharsFromCurrentWord(cword) abort
   let l:pword = a:cword
   for [lhs, rhs] in items(s:table_of_equivalent_non_ascii_characters)
-    let l:pword = substitute(l:pword, lhs, rhs, 'gi')
+    let l:pword = substitute(l:pword, lhs, rhs, 'gie')
   endfor
   return printf("%s %s %s", 'iabbrev' , l:pword , a:cword)
 endfunction

@@ -111,6 +111,16 @@ return {
       },
       {
         mod = 'n',
+        lhs = '<leader>sn',
+        rhs = function()
+          builtin.find_files({ cwd = vim.fn.stdpath('config') })
+        end,
+        opt = {
+          desc = '[S]earch [N]eovim Files',
+        }
+      },
+      {
+        mod = 'n',
         lhs = '<leader>sw',
         rhs = builtin.grep_string,
         opt = {
