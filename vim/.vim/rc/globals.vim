@@ -309,7 +309,7 @@ function VimRemoveNonASCIICharsFromCurrentBuffer() abort
   cal setreg('/', l:reg)
 endfunction
 
-function VimRemoveSpecialCharsFromCurrentWord(cword) abort
+function VimRemoveNonASCIICharsFromCurrentWord(cword) abort
   let l:pword = a:cword
   for [lhs, rhs] in items(s:table_of_equivalent_non_ascii_characters)
     let l:pword = substitute(l:pword, lhs, rhs, 'gi')
@@ -318,7 +318,7 @@ function VimRemoveSpecialCharsFromCurrentWord(cword) abort
 endfunction
 
 function VimAddCurrentWordToMyListOfAbbreviations() abort
-  let l:abbrv = VimRemoveSpecialCharsFromCurrentWord(expand('<cword>'))
+  let l:abbrv = VimRemoveNonASCIICharsFromCurrentWord(expand('<cword>'))
   cal writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
@@ -401,8 +401,8 @@ function VimCreateCSVFileWithDisciplines() abort
   sil 1,$s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
   sil 1,$s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
   sil 1,$s/\(^\s\+\|\s\+$\)//ge
-  sil g/^$/d
-  sil g/^\(disciplinas de externas\|manha\|tarde\|noite\)/d
+  sil exe 'g/^$/d'
+  sil exe 'g/^\(disciplinas de externas\|manha\|tarde\|noite\)/d'
   let l:macro = [
         \  '/^campus aparecida',
         \  'ma/^campus colemar',
@@ -451,7 +451,7 @@ function VimParseStudentsInfo() abort
   sil exe printf("1,$s/%s/%s/", l:re['lhs'][6], l:re['rhs'][6])
   sil g/"email"/s/$/\r"grade": {"E1": 0, "E2": 0, "E3": 0},/
   sil exe 'norm ggc/^"\d\{9}student = {Go}gg=G'
-  sil g/^\s*$/d
+  sil exe 'g/^\s*$/d'
 endfunction
 
 function PracticeDayOnePrepareClasses() abort
@@ -467,11 +467,11 @@ function PracticeDayOnePrepareClasses() abort
         \  '\\end{table}'
         \]
   sil 1,$s/\s\+/ /g
-  sil exe 'norm g!/\.\d\{2,}/d'
+  sil exe 'g!/\.\d\{2,}/d'
   sil 1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
   sil 1,$s/ \.\(\d\)\>/ 0\.\1/
   sil 1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
-  sil exe 'norm g/0\.\d\+/s/$/\\\\/'
+  sil exe 'g/0\.\d\+/s/$/\\\\/'
   sil exe 'Tab /\(&\|\\\\\)'
   sil exe printf("0s/^/%s/", join(l:head, '\r'))
   sil exe printf("$s/$/%s/", join(l:tail, '\r'))
