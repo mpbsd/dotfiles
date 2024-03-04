@@ -486,7 +486,7 @@ endfunction
 function PracticeDayOneCatalogue() abort
   sil exe 'norm ggd/<tbody>'
   sil exe 'norm Gd?<\/tbody>'
-  sil 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(tbody\|p\|strong\)>\|\[AR\]\)//ge
+  sil 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(p\|strong\|tbody\)>\|\[AR\]\)//ge
   sil 1,$s/<\(t[dhr]\)[^>]\+>/<\1>/g
   sil 1,$s/<a[^>]\+>\([^<]\+\)\(<br \/>\)\?<\/a>/\1/g
   sil 1,$s/\([0-9]\{2\}CBM\|MON\|NMAT\|PM\)-\([0-9]\{2\}\)/\1\2/g
