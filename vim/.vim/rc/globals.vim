@@ -454,30 +454,7 @@ function VimParseStudentsInfo() abort
   sil exe 'g/^\s*$/d'
 endfunction
 
-function PracticeDayOnePrepareClasses() abort
-  let l:head = [
-        \  '\\begin{table}[H]',
-        \  '\\centering',
-        \  '\\begin{tabular}{ccccccccccc}\r',
-        \]
-  let l:tail = [
-        \  '\r\\end{tabular}',
-        \  '\\caption{Standard Normal Distribution function}',
-        \  '\\label{tbl:standard-normal-distribution-function}',
-        \  '\\end{table}'
-        \]
-  sil 1,$s/\s\+/ /g
-  sil exe 'g!/\.\d\{2,}/d'
-  sil 1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
-  sil 1,$s/ \.\(\d\)\>/ 0\.\1/
-  sil 1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
-  sil exe 'g/0\.\d\+/s/$/\\\\/'
-  sil exe 'Tab /\(&\|\\\\\)'
-  sil exe printf("0s/^/%s/", join(l:head, '\r'))
-  sil exe printf("$s/$/%s/", join(l:tail, '\r'))
-endfunction
-
-function PracticeDayOneCatalogue() abort
+function VimCreateCatalogue() abort
   sil exe 'norm ggd/<tbody>'
   sil exe 'norm Gd?<\/tbody>'
   sil 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(p\|strong\|tbody\)>\|\[AR\]\)//ge
@@ -504,4 +481,27 @@ function PracticeDayOneCatalogue() abort
   sil 1s/^/[/
   sil $s/,$/\r]/
   sil 1,$s/ \+",$/",/
+endfunction
+
+function PracticeDayOnePrepareClasses() abort
+  let l:head = [
+        \  '\\begin{table}[H]',
+        \  '\\centering',
+        \  '\\begin{tabular}{ccccccccccc}\r',
+        \]
+  let l:tail = [
+        \  '\r\\end{tabular}',
+        \  '\\caption{Standard Normal Distribution function}',
+        \  '\\label{tbl:standard-normal-distribution-function}',
+        \  '\\end{table}'
+        \]
+  sil 1,$s/\s\+/ /g
+  sil exe 'g!/\.\d\{2,}/d'
+  sil 1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
+  sil 1,$s/ \.\(\d\)\>/ 0\.\1/
+  sil 1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
+  sil exe 'g/0\.\d\+/s/$/\\\\/'
+  sil exe 'Tab /\(&\|\\\\\)'
+  sil exe printf("0s/^/%s/", join(l:head, '\r'))
+  sil exe printf("$s/$/%s/", join(l:tail, '\r'))
 endfunction
