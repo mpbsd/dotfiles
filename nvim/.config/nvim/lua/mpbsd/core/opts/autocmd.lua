@@ -6,7 +6,7 @@ local autocmds = {
     event = { 'BufWritePre' },
     opts = {
       pattern = { '*.c', '*.h', '*.lua', '*.py', '*.sh', '*.tex' },
-      command = [[%s/\s\+$//ge]],
+      command = [[1,$s/\s\+$//ge]],
       group = 'remove_trailing_spaces',
     },
   },

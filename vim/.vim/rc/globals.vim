@@ -337,12 +337,6 @@ function VimRemoveTrailingSpacesFromCurrentBuffer() abort
   cal setreg('/', l:reg)
 endfunction
 
-function SubsCWordWithRegZeroWhileRetainingCursorPos() abort
-  let l:pos = getpos('.')
-  exe printf("1,$s/%s/%s/g", expand('<cword>'), getreg('0'))
-  cal setpos('.', l:pos)
-endfunction
-
 function VimInstallMissingPlugins() abort
   if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     PlugInstall --sync

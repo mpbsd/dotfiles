@@ -2,7 +2,7 @@
 let s:keymaps = [
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>rc',
+      \    'lhs': '<leader>sv',
       \    'rhs': ':FZF ~/.vim<cr>',
       \    'des': 'Search Vim files',
       \  },
@@ -191,12 +191,6 @@ let s:keymaps = [
       \    'lhs': '<localleader>cc',
       \    'rhs': '<esc>mmb~`ma',
       \    'des': 'camel case',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>rw',
-      \    'rhs': ':call SubsCWordWithRegZeroWhileRetainingCursorPos()<cr>',
-      \    'des': 'replace word',
       \  },
       \  {
       \    'mod': 'normal',
