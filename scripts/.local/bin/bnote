@@ -1,13 +1,13 @@
 #!/bin/bash
 
 
-ROOT_DIR="${HOME}/.local/share/references"
-BIBFILE="${ROOT_DIR}/main.bib"
+ROOTDIR="${HOME}/.local/share/references"
+BIBFILE="${ROOTDIR}/main.bib"
 OS="$(uname -s)"
 
 
-[ -d "$ROOT_DIR" ] || exit 3
-[ -f "$BIBFILE" ]  || exit 4
+[ -d "$ROOTDIR" ] || exit 3
+[ -f "$BIBFILE" ] || exit 4
 
 
 KEYS="$(sed -n '/^@/p' "$BIBFILE" | sed 's/\(^@[^{]\+{\|,$\)//g')"

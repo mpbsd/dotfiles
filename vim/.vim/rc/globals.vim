@@ -482,3 +482,31 @@ function PracticeDayOnePrepareClasses() abort
   sil exe printf("0s/^/%s/", join(l:head, '\r'))
   sil exe printf("$s/$/%s/", join(l:tail, '\r'))
 endfunction
+
+function PracticeDayOneCatalogue() abort
+  sil exe 'norm ggd/<tbody>'
+  sil exe 'norm Gd?<\/tbody>'
+  sil 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(tbody\|p\|strong\)>\|\[AR\]\)//ge
+  sil 1,$s/<\(t[dhr]\)[^>]\+>/<\1>/g
+  sil 1,$s/<a[^>]\+>\([^<]\+\)\(<br \/>\)\?<\/a>/\1/g
+  sil 1,$s/\([0-9]\{2\}CBM\|MON\|NMAT\|PM\)-\([0-9]\{2\}\)/\1\2/g
+  let @q = '/^<trV/^<\/tr>$J^ci<++'
+  sil! exe 'norm 1000@q'
+  sil 1,$s/\(^<++> <t[dhr]>\|<\/t[dhr]> <\/t[dhr]>$\)//g
+  sil 1,$s/<\/t[dhr]> <t[dhr]>/;/g
+  sil 1,$s/&#8217;/'/ge
+  sil 1,$s/&#8211;/-/ge
+  sil 1,$s/\(^ \+\| \+$\)//ge
+  let l:re = {
+        \  'lhs': '^\([^;]\+\);\([^;]\+\);\([^;]\+\);\(.*\)$',
+        \  'rhs': [
+        \    '"collection": "\1",',
+        \    '"title": "\2",',
+        \    '"author": "\3",',
+        \    '"year": "\4"',
+        \  ]
+        \}
+  sil exe printf("1,$s/%s/{%s},/", l:re['lhs'], join(l:re['rhs']))
+  sil 1s/^/[/
+  sil $s/$/]/
+endfunction
