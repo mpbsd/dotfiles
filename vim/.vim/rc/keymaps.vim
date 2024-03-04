@@ -351,7 +351,7 @@ let s:keymaps = [
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>rsc',
-      \    'rhs': ':call VimRemoveSpecialCharsFromCurrentBuffer()<cr>',
+      \    'rhs': ':call VimRemoveNonASCIICharsFromCurrentBuffer()<cr>',
       \    'des': 'remove graphical accents from the current buffer',
       \  },
       \  {

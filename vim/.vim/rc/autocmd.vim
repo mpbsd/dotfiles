@@ -46,7 +46,7 @@ let s:autocmds = [
       \    'augroup': 'set_keybindings_for_building_latex_docs_with_make',
       \    'events': 'FileType',
       \    'pattern': 'tex',
-      \    'action': ':call VimSetKeymapsForBuildingLaTeXDocumentsWithMake()'
+      \    'action': ':call VimSetLaTeXKeymaps()'
       \  },
       \  {
       \    'augroup': 'install_missing_plugins',

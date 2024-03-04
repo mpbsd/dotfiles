@@ -1,7 +1,7 @@
 let g:tex_flavor = 'latex'
 
-" table of equivalent chars {{{
-let s:table_of_equivalent_characters = {
+" table of equivalent non ascii chars {{{
+let s:table_of_equivalent_non_ascii_characters = {
       \  'à': 'a',
       \  'á': 'a',
       \  'â': 'a',
@@ -14,11 +14,6 @@ let s:table_of_equivalent_characters = {
       \  'õ': 'o',
       \  'ú': 'u',
       \  'ç': 'c',
-      \}
-" }}}
-
-" table of equivalent chars for non ascii {{{
-let s:table_of_equivalent_non_ascii_chars = {
       \  '–': '-',
       \}
 " }}}
@@ -51,12 +46,12 @@ function VimSetAKeymap(mod, lhs, rhs) abort
 endfunction
 
 function VimSetKeymaps(keymaps) abort
-  for keymap in a:keymaps
-    cal VimSetAKeymap(keymap['mod'], keymap['lhs'], keymap['rhs'])
+  for X in a:keymaps
+    cal VimSetAKeymap(X['mod'], X['lhs'], X['rhs'])
   endfor
 endfunction
 
-function VimSetKeymapsForBuildingLaTeXDocumentsWithMake() abort
+function VimSetLaTeXKeymaps() abort
   " s:keymaps {{{
   let l:keymaps = [
         \  {
@@ -304,30 +299,26 @@ function VimSetColorscheme() abort
   exe printf("colorscheme %s", l:colorscheme[l:choice])
 endfunction
 
-function VimRemoveSpecialCharsFromCurrentBuffer() abort
+function VimRemoveNonASCIICharsFromCurrentBuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
-  for [lhs, rhs] in items(s:table_of_equivalent_characters)
-    sil exe printf("1,$s/%s/%s/ge", lhs, rhs)
-  endfor
-  for [lhs, rhs] in items(s:table_of_equivalent_non_ascii_chars)
+  for [lhs, rhs] in items(s:table_of_equivalent_non_ascii_characters)
     sil exe printf("1,$s/%s/%s/ge", lhs, rhs)
   endfor
   cal setpos('.', l:pos)
   cal setreg('/', l:reg)
 endfunction
 
-function VimRemoveSpecialCharsFromCurrentWord() abort
-  let l:cword = expand('<cword>')
-  let l:pword = expand('<cword>')
-  for [lhs, rhs] in items(s:table_of_equivalent_characters)
+function VimRemoveSpecialCharsFromCurrentWord(cword) abort
+  let l:pword = a:cword
+  for [lhs, rhs] in items(s:table_of_equivalent_non_ascii_characters)
     let l:pword = substitute(l:pword, lhs, rhs, 'gi')
   endfor
-  return printf("%s %s %s", 'iabbrev' , l:pword , l:cword)
+  return printf("%s %s %s", 'iabbrev' , l:pword , a:cword)
 endfunction
 
 function VimAddCurrentWordToMyListOfAbbreviations() abort
-  let l:abbrv = VimRemoveSpecialCharsFromCurrentWord()
+  let l:abbrv = VimRemoveSpecialCharsFromCurrentWord(expand('<cword>'))
   cal writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
@@ -355,6 +346,7 @@ endfunction
 function VimInstallMissingPlugins() abort
   if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     PlugInstall --sync
+    wincmd q
   endif
 endfunction
 
@@ -404,7 +396,7 @@ endfunction
 
 function VimCreateCSVFileWithDisciplines() abort
   sil exe 'norm ggVGu'
-  cal VimRemoveSpecialCharsFromCurrentBuffer()
+  cal VimRemoveNonASCIICharsFromCurrentBuffer()
   sil 1,$s/ \+/ /g
   sil 1,$s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
   sil 1,$s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
@@ -447,7 +439,7 @@ function VimParseStudentsInfo() abort
         \  ],
         \}
   sil exe 'norm ggVGu'
-  cal VimRemoveSpecialCharsFromCurrentBuffer()
+  cal VimRemoveNonASCIICharsFromCurrentBuffer()
   sil exe printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
   sil g!/\v(\(perfil\)$|(curso|matricula|usuario|e-mail):)/d
   sil 1,$s/\s\+$//e
