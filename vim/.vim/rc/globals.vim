@@ -500,13 +500,14 @@ function PracticeDayOneCatalogue() abort
   let l:re = {
         \  'lhs': '^\([^;]\+\);\([^;]\+\);\([^;]\+\);\(.*\)$',
         \  'rhs': [
-        \    '"collection": "\1",',
+        \    '{\r"collection": "\1",',
         \    '"title": "\2",',
         \    '"author": "\3",',
-        \    '"year": "\4"',
+        \    '"year": "\4"\r}',
         \  ]
         \}
-  sil exe printf("1,$s/%s/{%s},/", l:re['lhs'], join(l:re['rhs']))
+  sil exe printf("1,$s/%s/%s,/", l:re['lhs'], join(l:re['rhs'], '\r'))
   sil 1s/^/[/
-  sil $s/$/]/
+  sil $s/,$/\r]/
+  sil 1,$s/ \+",$/",/
 endfunction
