@@ -113,6 +113,7 @@ iabbrev descontinuos descontínuos
 iabbrev desejavel desejável
 iabbrev deveriamos deveríamos
 iabbrev diarreia diarréia
+iabbrev didatico didático
 iabbrev diferenciaveis diferenciáveis
 iabbrev diferenciavel diferenciável
 iabbrev dimensao dimensão
@@ -170,6 +171,7 @@ iabbrev formula fórmula
 iabbrev formulario formulário
 iabbrev fracionario fracionário
 iabbrev fracoes frações
+iabbrev frances francês
 iabbrev funcao função
 iabbrev funcoes funções
 iabbrev goiania Goiânia
@@ -194,6 +196,7 @@ iabbrev inducao indução
 iabbrev infimo ínfimo
 iabbrev informacao informação
 iabbrev informacoes informacoes
+iabbrev ingles inglês
 iabbrev iniciassemos iniciássemos
 iabbrev inicio início
 iabbrev inscricoes inscrições
@@ -282,6 +285,7 @@ iabbrev pivotacao pivotação
 iabbrev poderiamos poderíamos
 iabbrev polinomio polinômio
 iabbrev populacao população
+iabbrev portugues português
 iabbrev possivel possível
 iabbrev potencia potência
 iabbrev preco preço
