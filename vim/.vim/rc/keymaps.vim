@@ -116,18 +116,6 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>eab',
-      \    'rhs': ':edit ~/.vim/spell/words.abbr<cr>',
-      \    'des': 'edit abbreviations',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>ewo',
-      \    'rhs': ':edit ~/.vim/spell/words.dict<cr>',
-      \    'des': 'edit words',
-      \  },
-      \  {
-      \    'mod': 'normal',
       \    'lhs': '<leader>pi',
       \    'rhs': ':PlugInstall<cr>',
       \    'des': 'plug iinstall',

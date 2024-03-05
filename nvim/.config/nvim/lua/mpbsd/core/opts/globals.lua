@@ -68,7 +68,7 @@ M.language_servers = {
     settings = {},
   },
   texlab = {
-    filetypes = { 'plaintex', 'bib' },
+    filetypes = { 'tex', 'bib' },
     settings = {},
   },
   vimls = {
