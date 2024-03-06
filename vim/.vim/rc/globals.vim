@@ -360,6 +360,7 @@ function VimFormatMyBibTeXFile() abort
         \  },
         \  'unwanted_fields': [
         \    'abstract',
+        \    'address',
         \    'annotation',
         \    'archiveprefix',
         \    'copyright',
@@ -384,7 +385,7 @@ function VimFormatMyBibTeXFile() abort
       let l:key_after  = l:re['key']['rhs']
       sil exe printf("g/%s/s/%s/%s/", l:key_target, l:key_before, l:key_after)
       sil exe printf("g/\\(%s\\) \\+=/d", join(l:re['unwanted_fields'], '\|'))
-      let @q = '/^@j:Tab /=/,$\n^}x'
+      let @q = '/^@j:Tab /='
       sil exe 'norm 120@q'
 endfunction
 

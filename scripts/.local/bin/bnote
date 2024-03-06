@@ -1,6 +1,14 @@
 #!/bin/bash
 
 
+# CREF() {
+#   curl -s "https://api.crossref.org/works/${1}/transform/application/x-bibtex"
+# }
+
+
+# CREF '10.1007/s00209-017-1915-y' | sed 's@\([A-Za-z]\+\)\s*=@\n\1=@g'
+
+
 ROOTDIR="${HOME}/.local/share/references"
 BIBFILE="${ROOTDIR}/main.bib"
 OS="$(uname -s)"
