@@ -80,7 +80,7 @@ function VimSetLaTeXKeymaps() abort
         \  },
         \  {
         \    'mod': 'normal',
-        \    'lhs': '<leader>bc',
+        \    'lhs': '<leader>gb',
         \    'rhs': ':cal VimGetBibTeXCitationKeys()<cr>',
         \    'des': 'get bibtex citation keys',
         \  },
@@ -317,13 +317,13 @@ function VimRemoveNonASCIICharsFromCurrentWord(cword) abort
   return printf("%s %s %s", 'iabbrev' , l:pword , a:cword)
 endfunction
 
-function VimAddCurrentWordToMyListOfAbbreviations() abort
+function VimAddCurrentWordToTheAbbreviationsList() abort
   let l:abbrv = VimRemoveNonASCIICharsFromCurrentWord(expand('<cword>'))
   cal writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
 
-function VimAddCurrentWordToMyListOfWords() abort
+function VimAddCurrentWordToTheWordsList() abort
   let l:cword = expand('<cword>')
   cal writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
   echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
@@ -448,7 +448,7 @@ function VimParseStudentsInfo() abort
   sil exe 'g/^\s*$/d'
 endfunction
 
-function VimCreateCatalogue() abort
+function VimCreateCatalogueForMe() abort
   sil exe 'norm ggd/<tbody>'
   sil exe 'norm Gd?<\/tbody>'
   sil 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(p\|strong\|tbody\)>\|\[AR\]\)//ge
