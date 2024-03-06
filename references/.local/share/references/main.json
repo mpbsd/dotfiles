@@ -54,8 +54,8 @@
   },
   {
     "type": "book",
-    "key": "berry2017Latex2EUnofficial",
-    "title": "Latex 2E: An Unofficial Reference Manual",
+    "key": "berry2017LaTeX2EManual",
+    "title": "LaTeX 2E: An Unofficial Reference Manual",
     "author": "Berry, Karl and Gilmore, Stephen and Martinsen, Torsten",
     "year": "2017",
     "publisher": "12th Media Services",
@@ -63,8 +63,8 @@
   },
   {
     "type": "book",
-    "key": "besse2008EinsteinManifoldsReprint",
-    "title": "Einstein Manifolds: Reprint of the 1987 Edition, with 22 Figures",
+    "key": "besse2008EinsteinManifolds",
+    "title": "Einstein Manifolds",
     "author": "Besse, A. L.",
     "year": "2008",
     "publisher": "Springer",
@@ -72,7 +72,7 @@
   },
   {
     "type": "book",
-    "key": "bredon1972IntroductionCompactTransformation",
+    "key": "bredon1972CompactTransformationGroups",
     "title": "Introduction to Compact Transformation Groups",
     "author": "Bredon, Glen E",
     "year": "1972",
@@ -129,8 +129,9 @@
     "key": "dajczer2021ClassEinsteinSubmanifolds",
     "title": "A Class of Einstein Submanifolds of Euclidean Space",
     "author": "Dajczer, M. and Onti, C.-R. and Vlachos, Th",
-    "year": "2021",
-    "journal": "arXiv:2103.00224"
+    "year": "2022",
+    "journal": "The Journal of Geometric Analysis",
+    "doi": "10.1007/s12220-021-00804-z"
   },
   {
     "type": "book",
@@ -170,7 +171,7 @@
   },
   {
     "type": "article",
-    "key": "galazgarciaCohomogeneityOneTopological2018",
+    "key": "garcia2018CohomogeneityOneTopological",
     "title": "Cohomogeneity One Topological Manifolds Revisited",
     "author": "Galaz-García, Fernando and Zarei, Masoumeh",
     "year": "2018",
@@ -226,7 +227,7 @@
     "type": "book",
     "key": "kargapolov1979FundamentalsTheoryGroups",
     "title": "Fundamentals of the theory of groups",
-    "author": "Kargapolov, M. I. and Merzliakov, I︠U︡ I.",
+    "author": "Kargapolov, M. I. and Merzljakov, J. I.",
     "year": "1979",
     "publisher": "Springer-Verlag",
     "isbn": "978-0-387-90396-5"
@@ -269,8 +270,8 @@
   },
   {
     "type": "book",
-    "key": "lamport1994LATEXDocumentPreparation",
-    "title": "LATEX: A Document Preparation System: User's Guide and Reference Manual",
+    "key": "lamport1994LaTeXDocumentPreparation",
+    "title": "LaTeX: A Document Preparation System: User's Guide and Reference Manual",
     "author": "Lamport, Leslie",
     "year": "1994",
     "publisher": "Addison-Wesley Pub. Co",
@@ -354,7 +355,8 @@
     "title": "Metrics without Isometries Are Generic",
     "author": "Mounoud, Pierre",
     "year": "2014",
-    "journal": "arXiv:1403.0182"
+    "journal": "Monatshefte für Mathematik",
+    "doi": "10.1007/s00605-014-0614-6"
   },
   {
     "type": "book",
@@ -501,11 +503,12 @@
     "doi": "10.1016/j.jmaa.2018.12.044"
   },
   {
-    "type": "misc",
+    "type": "article",
     "key": "zhang2008CompletenessGradientRicci",
     "title": "On the Completeness of Gradient Ricci Solitons",
     "author": "Zhang, Zhu-Hong",
     "year": "2008",
-    "publisher": "arXiv"
+    "publisher": "arXiv",
+    "doi": "10.48550/arXiv.0807.1581"
   }
 ]
