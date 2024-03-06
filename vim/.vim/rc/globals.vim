@@ -345,10 +345,9 @@ function VimInstallMissingPlugins() abort
 endfunction
 
 function VimGetBibTeXCitationKeys() abort
-  let l:bfile = expand('~/.local/share/references/zotero.bib')
-  exe printf(":vimgrep /^@/j %s", l:bfile)
-  copen
-  wincmd k
+  " This functions depends on TPope's vim-dadbod
+  let l:bibfile = expand('~/.local/share/references/zotero.db')
+  sil exe printf("DB sqlite:%s select key, year, title from ref", l:bibfile)
 endfunction
 
 function VimFormatMyBibTeXFile() abort
