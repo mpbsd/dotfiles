@@ -350,6 +350,12 @@ function VimGetBibTeXCitationKeys() abort
   sil exe printf("DB sqlite:%s select key, year, title from ref", l:bibfile)
 endfunction
 
+function VimQueryBibTeXDatabase(query) abort
+  " This functions depends on TPope's vim-dadbod
+  let l:bibfile = expand('~/.local/share/references/zotero.db')
+  sil exe printf("DB sqlite:%s select * from ref where %s", l:bibfile, a:query)
+endfunction
+
 function VimFormatMyBibTeXFile() abort
   let l:re = {
         \  'key': {
