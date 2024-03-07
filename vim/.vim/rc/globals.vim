@@ -346,14 +346,14 @@ endfunction
 
 function VimGetBibTeXCitationKeys() abort
   " This functions depends on TPope's vim-dadbod
-  let l:bibfile = expand('~/.local/share/references/zotero.db')
-  sil exe printf("DB sqlite:%s select key, year, title from ref", l:bibfile)
+  let l:db = expand('~/.local/share/references/zotero.db')
+  sil exe printf("DB sqlite:%s select key, year, title from ref", l:db)
 endfunction
 
 function VimQueryBibTeXDatabase(query) abort
   " This functions depends on TPope's vim-dadbod
-  let l:bibfile = expand('~/.local/share/references/zotero.db')
-  sil exe printf("DB sqlite:%s select * from ref where %s", l:bibfile, a:query)
+  let l:db = expand('~/.local/share/references/zotero.db')
+  sil exe printf("DB sqlite:%s select * from ref where %s", l:db, a:query)
 endfunction
 
 function VimFormatMyBibTeXFile() abort

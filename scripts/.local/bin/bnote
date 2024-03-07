@@ -18,16 +18,14 @@ OS="$(uname -s)"
 [ -f "$BIBFILE" ] || exit 4
 
 
-KEYS="$(sed -n '/^@/p' "$BIBFILE" | sed 's/\(^@[^{]\+{\|,$\)//g')"
+KEY="$(sed -n '/^@/p' "$BIBFILE" | sed 's/\(^@[^{]\+{\|,$\)//g' | fzf)"
 
 
 if [ "$OS" = 'Linux' ]
 then
-  KEY=$(echo "$KEYS" | dmenu -i)
   echo -n "$KEY" | xclip -selection clipboard
 elif [ "$OS" = 'Darwin' ]
 then
-  KEY=$(echo "$KEYS" | fzf)
   echo -n "$KEY" | pbcopy
 fi
 
