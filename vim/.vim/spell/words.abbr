@@ -80,6 +80,7 @@ iabbrev concluimos concluímos
 iabbrev conclusao conclusão
 iabbrev condicao condição
 iabbrev condicoes condições
+iabbrev conexao conexão
 iabbrev confianca confiança
 iabbrev confusao confusão
 iabbrev conheco conheço
@@ -232,6 +233,7 @@ iabbrev mencao menção
 iabbrev mensuraveis mensuráveis
 iabbrev mensuravel mensurável
 iabbrev metodo método
+iabbrev metrica métrica
 iabbrev metrico métrico
 iabbrev metricos métricos
 iabbrev metrizavel metrizável

@@ -394,6 +394,16 @@ function VimFormatMyBibTeXFile() abort
       sil exe 'norm 120@q'
 endfunction
 
+function VimDrawBoxAroundLaTeXCode() abort
+  let l:pieces = [
+        \ 'vip:s/$/%/',
+        \ '{o%€ýaa-€ýa78.s%€ýayy}P ;Tab /%$',
+        \ 'vip:s/ \%€kb€kb%/%/g€kb',
+        \]
+  let @q = join(l:pieces, '')
+  sil exe 'norm @q'
+endfunction
+
 function VimCreateCSVFileWithDisciplines() abort
   sil exe 'norm ggVGu'
   cal VimRemoveNonASCIICharsFromCurrentBuffer()

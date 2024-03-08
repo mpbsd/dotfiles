@@ -254,6 +254,12 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
+      \    'lhs': '<leader>dba',
+      \    'rhs': ':call VimDrawBoxAroundLaTeXCode()<cr>',
+      \    'des': 'draw a visual delimiter around LaTeX code',
+      \  },
+      \  {
+      \    'mod': 'normal',
       \    'lhs': '<leader>cc',
       \    'rhs': ':%s@\\<D\\([aeo]s\\?\\)\\>@d\\1@g<cr>',
       \    'des': 'change the capitalization of daeos?',
