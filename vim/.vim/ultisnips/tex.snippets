@@ -1,7 +1,3 @@
-snippet ';;' "backslash" rA
-\
-endsnippet
-
 snippet ';im' "inline math mode" rA
 \(${1:${VISUAL}}\)$0
 endsnippet
@@ -12,66 +8,49 @@ snippet ';dm' "display math mode" rA
 \]$0
 endsnippet
 
-snippet ';fr' "fraction" rA
-\frac{$1}{$2}$0
-endsnippet
-
-snippet '([_^])\1' "su(per|b)script" rA
-`!p snip.rv = match.group(1)`{${1:${VISUAL}}}$0
-endsnippet
-
-snippet '([DFGJLPSUWXY]|v[efjkprs]|[abdefghijklmnpqrstuwxyz])`' "alphabet" rA
+snippet '([DGLWFPYSJUX]|[abqdehgiklmnwfpyrstjuxz]|v[efrj])`' "greek alphabet" rA
 `!p
 alphabet = {
-	"D" : r"\Delta",
-	"F" : r"\Phi",
-	"G" : r"\Gamma",
-	"J" : r"\Theta",
-	"L" : r"\Lambda",
-	"P" : r"\Pi",
-	"S" : r"\Sigma",
-	"U" : r"\Upsilon",
-	"W" : r"\Omega",
-	"X" : r"\Xi",
-	"Y" : r"\Psi",
-	"ve": r"\varepsilon",
-	"vf": r"\varphi",
-	"vj": r"\vartheta",
-	"vk": r"\varkappa",
-	"vp": r"\varpi",
-	"vr": r"\varrho",
-	"vs": r"\varsigma",
-	"a" : r"\alpha",
-	"b" : r"\beta",
-	"d" : r"\delta",
-	"e" : r"\epsilon",
-	"f" : r"\phi",
-	"g" : r"\gamma",
-	"h" : r"\eta",
-	"i" : r"\iota",
-	"j" : r"\theta",
-	"k" : r"\kappa",
-	"l" : r"\lambda",
-	"m" : r"\mu",
-	"n" : r"\nu",
-	"p" : r"\pi",
-	"q" : r"\chi",
-	"r" : r"\rho",
-	"s" : r"\sigma",
-	"t" : r"\tau",
-	"u" : r"\upsilon",
-	"w" : r"\omega",
-	"x" : r"\xi",
-	"y" : r"\psi",
-	"z" : r"\zeta",
+  "D" : r"\Delta",
+  "G" : r"\Gamma",
+  "L" : r"\Lambda",
+  "W" : r"\Omega",
+  "F" : r"\Phi",
+  "P" : r"\Pi",
+  "Y" : r"\Psi",
+  "S" : r"\Sigma",
+  "J" : r"\Theta",
+  "U" : r"\Upsilon",
+  "X" : r"\Xi",
+  "a" : r"\alpha",
+  "b" : r"\beta",
+  "q" : r"\chi",
+  "d" : r"\delta",
+  "e" : r"\epsilon",
+  "h" : r"\eta",
+  "g" : r"\gamma",
+  "i" : r"\iota",
+  "k" : r"\kappa",
+  "l" : r"\lambda",
+  "m" : r"\mu",
+  "n" : r"\nu",
+  "w" : r"\omega",
+  "f" : r"\phi",
+  "p" : r"\pi",
+  "y" : r"\psi",
+  "r" : r"\rho",
+  "s" : r"\sigma",
+  "t" : r"\tau",
+  "j" : r"\theta",
+  "u" : r"\upsilon",
+  "x" : r"\xi",
+  "z" : r"\zeta",
+  "ve": r"\varepsilon",
+  "vf": r"\varphi",
+  "vr": r"\varrho",
+  "vj": r"\vartheta",
 }
 snip.rv = alphabet[match.group(1)]
-`$0
-endsnippet
-
-snippet ';(bb|cal|scr|frak)([a-z])' "math font" rA
-`!p
-snip.rv = "\math" + match.group(1) + "{" + match.group(2).upper() + "}"
 `$0
 endsnippet
 
@@ -136,21 +115,45 @@ closing = enclosing[type][size]["closing"]
 snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
+snippet ';fr' "fraction" rA
+\frac{$1}{$2}$0
+endsnippet
+
+snippet '([_^])\1' "su(per|b)script" rA
+`!p snip.rv = match.group(1)`{${1:${VISUAL}}}$0
+endsnippet
+
 snippet ';(in|owns|subset|contains)' "relationship" rA
 `!p snip.rv = "\\" + match.group(1)`{$1}$0
 endsnippet
 
-snippet '([a-z]);`' "capitalize" rA
-`!p snip.rv = match.group(1).upper()`$0
+snippet ';env' "environment" rA
+\begin{$1}
+	$2
+\end{$1}$0
 endsnippet
 
-snippet '^(chp|s{1,3}ec) (.*)$' "splitting document into logical parts" r
+snippet ';eq ([a-z ]+);' "equation environment" rA
+\begin{equation}\label{eq:`!p snip.rv = match.group(1).replace(' ', '-')`}
+	$2
+\end{equation}$0
+endsnippet
+
+snippet ';array' "array environment" rA
+\[
+	\begin{array}{$2}
+		$1
+	\end{array}
+\]$0
+endsnippet
+
+snippet '^(chp|s{1,3}ec) ([\S ]+)$' "headers" r
 `!p
 division = {
 	"chp"  : r"\chapter",
-  "sec"  : r"\section",
-  "ssec" : r"\subsection",
-  "sssec": r"\subsubsection",
+	"sec"  : r"\section",
+	"ssec" : r"\subsection",
+	"sssec": r"\subsubsection",
 }
 type = match.group(1)
 name = match.group(2)
@@ -158,20 +161,6 @@ sec_title = division[type] + "{" + name + "}"
 sec_label = r"\label{" + type + ":" + name.lower().replace(" ", "-") + "}"
 snip.rv = sec_title + sec_label + "\n\n"
 `$0
-endsnippet
-
-snippet ';env' "environment" rA
-\begin{$1}
-  $2
-\end{$1}
-$0
-endsnippet
-
-snippet ';eq' "equation environment" rA
-\begin{equation}\label{eq:$1}
-	$2
-\end{equation}
-$0
 endsnippet
 
 snippet 'sum;([^;]+);([^;]+);([^;]+);' "summation over an index" rA
@@ -183,343 +172,3 @@ snip.rv = r"\sum_{" + index_var + r"=" + lower_ind + r"}^{" + upper_ind + r"}"
 `$0
 endsnippet
 
-snippet '^cmds$' "My set of default cmds" rA
-% \usepackage{\mathtools}
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\integers}{\mathbb{Z}}                                             %
-\newcommand{\naturals}{\mathbb{N}}                                             %
-\newcommand{\rationals}{\mathbb{Q}}                                            %
-\newcommand{\reals}{\mathbb{R}}                                                %
-\newcommand{\complexfield}{\mathbb{C}}                                         %
-\newcommand{\polynomialring}[2]{{#1}[{#2}]}                                    %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}                                  %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\norm}{d()}{                                               %
-  \IfValueTF{#1}{                                                              %
-    {\lVert{#1}\rVert}                                                         %
-  }{                                                                           %
-    {\lVert{\cdot}\rVert}                                                      %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-% RIEMANNIAN GEOMETRY                                                          %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\smoothfunctions}[1]{{{C^{\infty}}{\left({#1}\right)}}}            %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\vectorfields}[1]{{{\mathfrak{X}^{\infty}}{\left({#1}\right)}}}    %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\diffeomorphisms}[1]{{{D^{\infty}}{\left({#1}\right)}}}            %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\riemannianmetrics}[1]{{{\mathcal{M}^{\infty}}{\left({#1}\right)}}}%
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\scalarfield}{m d<>}{                                      %
-  \IfValueTF{#2}{                                                              %
-    {{#1}{\left({#2}\right)}}                                                  %
-  }{                                                                           %
-    {#1}                                                                       %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\diffscalarfield}{m d<> d()}{                              %
-  \IfValueTF{#2}{                                                              %
-    \IfValueTF{#3}{                                                            %
-      {{d{#1}_{#2}}{\left({#3}\right)}}                                        %
-    }{                                                                         %
-      {d{#1}_{#2}}                                                             %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#3}{                                                            %
-      {{d{#1}}{\left({#3}\right)}}                                             %
-    }{                                                                         %
-      {d{#1}}                                                                  %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\gradientfield}{m d<> d()}{                                %
-  \IfValueTF{#2}{                                                              %
-    \IfValueTF{#3}{                                                            %
-      {{\nabla{#1}}_{#2}{\left({#3}\right)}}                                   %
-    }{                                                                         %
-      {{\nabla{#1}}_{#2}}                                                      %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#3}{                                                            %
-      {{\nabla{#1}}{\left({#3}\right)}}                                        %
-    }{                                                                         %
-      {\nabla{#1}}                                                             %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\hesseform}{m d<> d() d[]}{                                %
-  \IfValueTF{#2}{                                                              %
-    \IfValueTF{#3}{                                                            %
-      \IfValueTF{#4}{                                                          %
-        {{{\nabla{d{#1}}}_{#2}}{\left({#3},{#4}\right)}}                       %
-      }{                                                                       %
-        {{{\nabla{d{#1}}}_{#2}}{\left({#3},{\cdot}\right)}}                    %
-      }                                                                        %
-    }{                                                                         %
-      \IfValueTF{#4}{                                                          %
-        {{{\nabla{d{#1}}}_{#2}}{\left({\cdot},{#4}\right)}}                    %
-      }{                                                                       %
-        {{\nabla{d{#1}}}_{#2}}                                                 %
-      }                                                                        %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#3}{                                                            %
-      \IfValueTF{#4}{                                                          %
-        {{\nabla{d{#1}}}{\left({#3},{#4}\right)}}                              %
-      }{                                                                       %
-        {{\nabla{d{#1}}}{\left({#3},{\cdot}\right)}}                           %
-      }                                                                        %
-    }{                                                                         %
-      \IfValueTF{#4}{                                                          %
-        {{\nabla{d{#1}}}{\left({\cdot},{#4}\right)}}                           %
-      }{                                                                       %
-        {\nabla{d{#1}}}                                                        %
-      }                                                                        %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\laplacebeltramioperator}[1]{{\Delta{#1}}}                         %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\driftedlaplacian}[2]{{\Delta_{#2}{#1}}}                           %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\restrictedlaplacian}[1]{{\Delta^{\prime}{#1}}}                    %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\vectorfield}{m d<> d()}{                                  %
-  \IfValueTF{#2}{                                                              %
-    \IfValueTF{#3}{                                                            %
-      {{{#1}_{#2}}{\left({#3}\right)}}                                         %
-    }{                                                                         %
-      {{#1}_{#2}}                                                              %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#3}{                                                            %
-      {{#1}{\left({#3}\right)}}                                                %
-    }{                                                                         %
-      {#1}                                                                     %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\ddx}{m d<> d()}{                                          %
-  \IfValueTF{#2}{                                                              %
-    \IfValueTF{#3}{                                                            %
-      {\left.{\frac{\partial{#3}}{\partial{x^{#1}}}}\right|_{#2}}              %
-    }{                                                                         %
-      {\left.{\frac{\partial}{\partial{x^{#1}}}}\right|_{#2}}                  %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#3}{                                                            %
-      {\frac{\partial{#3}}{\partial{x^{#1}}}}                                  %
-    }{                                                                         %
-      {\frac{\partial}{\partial{x^{#1}}}}                                      %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\dx}{m d<> d()}{                                           %
-  \IfValueTF{#2}{                                                              %
-    \IfValueTF{#3}{                                                            %
-      {dx^{#1}_{#2}{\left({#3}\right)}}                                        %
-    }{                                                                         %
-      {dx^{#1}_{#2}}                                                           %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#3}{                                                            %
-      {dx^{#1}{\left({#3}\right)}}                                             %
-    }{                                                                         %
-      {dx^{#1}}                                                                %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\riemannianmetric}{d<> d() d[]}{                           %
-  \IfValueTF{#1}{                                                              %
-    \IfValueTF{#2}{                                                            %
-      \IfValueTF{#3}{                                                          %
-        {{\left\langle{{#2},{#3}}\right\rangle}_{#1}}                          %
-      }{                                                                       %
-        {{\left\langle{{#2},{\cdot}}\right\rangle}_{#1}}                       %
-      }                                                                        %
-    }{                                                                         %
-      \IfValueTF{#3}{                                                          %
-        {{\left\langle{{\cdot},{#3}}\right\rangle}_{#1}}                       %
-      }{                                                                       %
-        {{\left\langle{{\cdot},{\cdot}}\right\rangle}_{#1}}                    %
-      }                                                                        %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#2}{                                                            %
-      \IfValueTF{#3}{                                                          %
-        {\left\langle{{#2},{#3}}\right\rangle}                                 %
-      }{                                                                       %
-        {\left\langle{{#2},{\cdot}}\right\rangle}                              %
-      }                                                                        %
-    }{                                                                         %
-      \IfValueTF{#3}{                                                          %
-        {\left\langle{{\cdot},{#3}}\right\rangle}                              %
-      }{                                                                       %
-        {\left\langle{{\cdot},{\cdot}}\right\rangle}                           %
-      }                                                                        %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\riemannianconnection}{d() d[]}{                           %
-  \IfValueTF{#1}{                                                              %
-    \IfValueTF{#2}{                                                            %
-      {\nabla_{#1}{#2}}                                                        %
-    }{                                                                         %
-      {\nabla_{#1}}                                                            %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#2}{                                                            %
-      {\nabla{#2}}                                                             %
-    }{                                                                         %
-      {\nabla}                                                                 %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-\newcommand{\christoffelsymbol}[3]{{\Gamma_{{#1}{#2}}^{#3}}}                   %
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\curvaturetensor}{m m d()}{                                %
-  \IfValueTF{#3}{                                                              %
-    {{Rm}{\left({{#1},{#2}}\right)}{#3}}                                       %
-  }{                                                                           %
-    {{Rm}{\left({{#1},{#2}}\right)}}                                           %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\ricctensor}{d() d[]}{                                     %
-  \IfValueTF{#1}{                                                              %
-    \IfValueTF{#2}{                                                            %
-      {{Rc}{\left({{#1},{#2}}\right)}}                                         %
-    }{                                                                         %
-      {{Rc}{\left({{#1},{\cdot}}\right)}}                                      %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#2}{                                                            %
-      {{Rc}{\left({{\cdot},{#2}}\right)}}                                      %
-    }{                                                                         %
-      {Rc}                                                                     %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\scalarcurvature}{m d<>}{                                  %
-  \IfValueTF{#2}{                                                              %
-    {{R}{\left({#2}\right)}}                                                   %
-  }{                                                                           %
-    {R}                                                                        %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\hypersurface}{M}
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\ambientspace}{\bar{M}}
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\ambientcurvaturetensor}{m m d()}{                         %
-  \IfValueTF{#3}{                                                              %
-    {{\bar{R}m}{\left({{#1},{#2}}\right)}{#3}}                                 %
-  }{                                                                           %
-    {{\bar{R}m}{\left({{#1},{#2}}\right)}}                                     %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\ambientricctensor}{d() d[]}{                              %
-  \IfValueTF{#1}{                                                              %
-    \IfValueTF{#2}{                                                            %
-      {{\bar{R}c}{\left({{#1},{#2}}\right)}}                                   %
-    }{                                                                         %
-      {{\bar{R}c}{\left({{#1},{\cdot}}\right)}}                                %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#2}{                                                            %
-      {{\bar{R}c}{\left({{\cdot},{#2}}\right)}}                                %
-    }{                                                                         %
-      {\bar{R}c}                                                               %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\ambientscalarcurvature}{m d<>}{                           %
-  \IfValueTF{#2}{                                                              %
-    {{\bar{R}}{\left({#2}\right)}}                                             %
-  }{                                                                           %
-    {\bar{R}}                                                                  %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\newcommand{\trace}[1]{{\text{trace}{\left({#1}\right)}}}                      %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\secondfundamentalform}{d() d[]}{                          %
-  \IfValueTF{#1}{                                                              %
-    \IfValueTF{#2}{                                                            %
-      {{II}{\left({{#1},{#2}}\right)}}                                         %
-    }{                                                                         %
-      {{II}{\left({{#1},{\cdot}}\right)}}                                      %
-    }                                                                          %
-  }{                                                                           %
-    \IfValueTF{#2}{                                                            %
-      {{II}{\left({{\cdot},{#2}}\right)}}                                      %
-    }{                                                                         %
-      {II}                                                                     %
-    }                                                                          %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\shapeoperator}{d()}{                                      %
-  \IfValueTF{#1}{                                                              %
-    {{A}{\left({#1}\right)}}                                                   %
-  }{                                                                           %
-    {A}                                                                        %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-\NewDocumentCommand{\squaredshapeoperator}{d()}{                               %
-  \IfValueTF{#1}{                                                              %
-    {{A}^{2}{\left({#1}\right)}}                                               %
-  }{                                                                           %
-    {A}^{2}                                                                    %
-  }                                                                            %
-}                                                                              %
-%------------------------------------------------------------------------------%
-endsnippet

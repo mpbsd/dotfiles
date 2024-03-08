@@ -6,6 +6,7 @@ let s:table_of_equivalent_non_ascii_characters = {
       \  'Ã¡': 'a',
       \  'Ã¢': 'a',
       \  'Ã£': 'a',
+      \  'Ã§': 'c',
       \  'Ã©': 'e',
       \  'Ãª': 'e',
       \  'Ã­': 'i',
@@ -13,8 +14,6 @@ let s:table_of_equivalent_non_ascii_characters = {
       \  'Ã´': 'o',
       \  'Ãµ': 'o',
       \  'Ãº': 'u',
-      \  'Ã§': 'c',
-      \  'â€“': '-',
       \}
 " }}}
 
@@ -392,16 +391,6 @@ function VimFormatMyBibTeXFile() abort
       sil exe printf("g/\\(%s\\) \\+=/d", join(l:re['unwanted_fields'], '\|'))
       let @q = '/^@j:Tab /='
       sil exe 'norm 120@q'
-endfunction
-
-function VimDrawBoxAroundLaTeXCode() abort
-  let l:pieces = [
-        \ 'vip:s/$/%/',
-        \ '{o%€ýaa-€ýa78.s%€ýayy}P ;Tab /%$',
-        \ 'vip:s/ \%€kb€kb%/%/g€kb',
-        \]
-  let @q = join(l:pieces, '')
-  sil exe 'norm @q'
 endfunction
 
 function VimCreateCSVFileWithDisciplines() abort
