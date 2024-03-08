@@ -10,47 +10,47 @@ snip.rv = opening
 `${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
-snippet '([DGLWFPYSJUX]|[abqdehgiklmnwfpyrstjuxz]|v[efrj])`' "greek alphabet" rA
+snippet '([DFGJLPSUWXY]|[abdefghijklmnpqrstuwxyz]|v[efjr])`' "greek alphabet" rA
 `!p
 alphabet = {
   "D" : r"\Delta",
-  "G" : r"\Gamma",
-  "L" : r"\Lambda",
-  "W" : r"\Omega",
   "F" : r"\Phi",
-  "P" : r"\Pi",
-  "Y" : r"\Psi",
-  "S" : r"\Sigma",
+  "G" : r"\Gamma",
   "J" : r"\Theta",
+  "L" : r"\Lambda",
+  "P" : r"\Pi",
+  "S" : r"\Sigma",
   "U" : r"\Upsilon",
+  "W" : r"\Omega",
   "X" : r"\Xi",
+  "Y" : r"\Psi",
   "a" : r"\alpha",
   "b" : r"\beta",
-  "q" : r"\chi",
   "d" : r"\delta",
   "e" : r"\epsilon",
-  "h" : r"\eta",
+  "f" : r"\phi",
   "g" : r"\gamma",
+  "h" : r"\eta",
   "i" : r"\iota",
+  "j" : r"\theta",
   "k" : r"\kappa",
   "l" : r"\lambda",
   "m" : r"\mu",
   "n" : r"\nu",
-  "w" : r"\omega",
-  "f" : r"\phi",
   "p" : r"\pi",
-  "y" : r"\psi",
+  "q" : r"\chi",
   "r" : r"\rho",
   "s" : r"\sigma",
   "t" : r"\tau",
-  "j" : r"\theta",
   "u" : r"\upsilon",
+  "w" : r"\omega",
   "x" : r"\xi",
+  "y" : r"\psi",
   "z" : r"\zeta",
   "ve": r"\varepsilon",
   "vf": r"\varphi",
-  "vr": r"\varrho",
   "vj": r"\vartheta",
+  "vr": r"\varrho",
 }
 snip.rv = alphabet[match.group(1)]
 `$0
@@ -117,20 +117,40 @@ closing = enclosing[type][size]["closing"]
 snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
-snippet ';ns([nzqrc])' "numeric sets" rA
+snippet 'set([^;]+);([^;]+);' "define a set by property" rA
 `!p
-numeric_set = {
+elements = match.group(1)
+property = match.group(2)
+snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
+`$0
+endsnippet
+
+snippet '([lg][te])' "comparisons" rA
+`!p
+relation = {
+  "lt": r"<",
+  "gt": r">",
+  "le": r"\leqslant",
+  "ge": r"\geqslant",
+}
+snip.rv = r" " + relation[match.group(1)] + r" "
+`$0
+endsnippet
+
+snippet 'ns([nzqrc])' "numeric sets" rA
+`!p
+numericset = {
 	"n": r"\mathbb{N}",
 	"z": r"\mathbb{Z}",
 	"q": r"\mathbb{Q}",
 	"r": r"\mathbb{R}",
 	"c": r"\mathbb{C}",
 }
-snip.rv = match.group(1)
+snip.rv = numericset[match.group(1)]
 `$0
 endsnippet
 
-snippet ';sf([ehs])([^;]+);' "space forms" rA
+snippet 'sf([ehs])([^;]+);' "space forms" rA
 `!p
 model = {
 	"e": r"\mathbb{R}",
