@@ -1,8 +1,9 @@
-snippet '( )?;`im' "inline math mode" rA
+snippet '(\S)?;([^`]+)?`im' "inline math mode" rA
 `!p
-opening = r" \( " if match.group(1) is None else r"\( "
+opening = r"\( " if match.group(1) is None else match.group(1) + r" \( "
 closing = r" \)"
-snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
+content = snip.v.text if match.group(2) is None else match.group(2)
+snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
 endsnippet
 
 snippet '(^\s*)?;([^`]+)?`dm' "display math mode" rA
@@ -212,12 +213,26 @@ snip.rv = sec_title + sec_label + "\n\n"
 `$0
 endsnippet
 
-snippet 'sum;([^;]+);([^;]+);([^;]+);' "summation over an index" rA
+snippet ';(([^,]+),([^,]+),([^`]+))?`tup' "tuples" rA
 `!p
-index_var = match.group(1)
-lower_ind = match.group(2)
-upper_ind = match.group(3)
-snip.rv = r"\sum_{" + index_var + r"=" + lower_ind + r"}^{" + upper_ind + r"}"
+if match.group(1):
+	v = match.group(2)  # variable
+	l = match.group(4)  # lower
+	u = match.group(3)  # upper
+	snip.rv = rf"({v}_{{l}},\ldots,{v}_{{u}})"
+else:
+	snip.rv = r"(x_{1},\ldots,x_{n})"
+`
+endsnippet
+
+snippet ';(([^,]+),([^,]+),([^,]+),([^`]+))?`sum' "summation over an index" rA
+`!p
+if match.group(1):
+	v = match.group(1)  # variable
+	l = match.group(2)  # lower
+	u = match.group(3)  # upper
+	s = match.group(4)  # summand
+	snip.rv = rf"\sum_{{v}={l}}^{{u}}{s}"
 `$0
 endsnippet
 
