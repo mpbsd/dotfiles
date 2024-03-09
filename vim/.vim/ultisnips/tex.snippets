@@ -1,8 +1,12 @@
-snippet ';im' "inline math mode" rA
-\(${1:${VISUAL}}\)$0
+snippet '( )?;`im' "inline math mode" rA
+`!p
+opening = r" \( " if match.group(1) is None else r"\( "
+closing = r" \)"
+snip.rv = opening
+`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
-snippet '(^)?;dm' "display math mode" rA
+snippet '(^)?;`dm' "display math mode" rA
 `!p
 opening = "\n" + r"\[" + "\n\t" if match.group(1) is None else r"\[" + "\n\t"
 closing = "\n" + r"\]"
@@ -10,134 +14,102 @@ snip.rv = opening
 `${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
-snippet '([DFGJLPSUWXY]|[abdefghijklmnpqrstuwxyz]|v[efjr])`' "greek alphabet" rA
+snippet ';(c[dfgjlpsuwxy]|l[abdefghijklmnpqrstuwxyz]|v[efjr])`gl' "alphabet" rA
 `!p
 alphabet = {
-  "D" : r"\Delta",
-  "F" : r"\Phi",
-  "G" : r"\Gamma",
-  "J" : r"\Theta",
-  "L" : r"\Lambda",
-  "P" : r"\Pi",
-  "S" : r"\Sigma",
-  "U" : r"\Upsilon",
-  "W" : r"\Omega",
-  "X" : r"\Xi",
-  "Y" : r"\Psi",
-  "a" : r"\alpha",
-  "b" : r"\beta",
-  "d" : r"\delta",
-  "e" : r"\epsilon",
-  "f" : r"\phi",
-  "g" : r"\gamma",
-  "h" : r"\eta",
-  "i" : r"\iota",
-  "j" : r"\theta",
-  "k" : r"\kappa",
-  "l" : r"\lambda",
-  "m" : r"\mu",
-  "n" : r"\nu",
-  "p" : r"\pi",
-  "q" : r"\chi",
-  "r" : r"\rho",
-  "s" : r"\sigma",
-  "t" : r"\tau",
-  "u" : r"\upsilon",
-  "w" : r"\omega",
-  "x" : r"\xi",
-  "y" : r"\psi",
-  "z" : r"\zeta",
-  "ve": r"\varepsilon",
-  "vf": r"\varphi",
-  "vj": r"\vartheta",
-  "vr": r"\varrho",
+	"cd": r"\Delta",
+	"cf": r"\Phi",
+	"cg": r"\Gamma",
+	"cj": r"\Theta",
+	"cl": r"\Lambda",
+	"cp": r"\Pi",
+	"cs": r"\Sigma",
+	"cu": r"\Upsilon",
+	"cw": r"\Omega",
+	"cx": r"\Xi",
+	"cy": r"\Psi",
+	"la": r"\alpha",
+	"lb": r"\beta",
+	"ld": r"\delta",
+	"le": r"\epsilon",
+	"lf": r"\phi",
+	"lg": r"\gamma",
+	"lh": r"\eta",
+	"li": r"\iota",
+	"lj": r"\theta",
+	"lk": r"\kappa",
+	"ll": r"\lambda",
+	"lm": r"\mu",
+	"ln": r"\nu",
+	"lp": r"\pi",
+	"lq": r"\chi",
+	"lr": r"\rho",
+	"ls": r"\sigma",
+	"lt": r"\tau",
+	"lu": r"\upsilon",
+	"lw": r"\omega",
+	"lx": r"\xi",
+	"ly": r"\psi",
+	"lz": r"\zeta",
+	"ve": r"\varepsilon",
+	"vf": r"\varphi",
+	"vj": r"\vartheta",
+	"vr": r"\varrho",
 }
 snip.rv = alphabet[match.group(1)]
 `$0
 endsnippet
 
-snippet ';e([bs])([abcp])' "enclosings" rA
+snippet ';([bs])([abcp])`enc' "enclosings" rA
 `!p
 enclosing = {
-	"angle": {
-		"big": {
+	"a": {
+		"b": {
 			"opening": r"\left\langle{",
 			"closing": r"}\right\rangle",
 		},
-		"small": {
+		"s": {
 			"opening": r"\langle{",
 			"closing": r"}\rangle",
 		},
 	},
-	"square_bracket": {
-		"big": {
+	"b": {
+		"b": {
 			"opening": r"\left[",
 			"closing": r"\right]",
 		},
-		"small": {
+		"s": {
 			"opening": r"[",
 			"closing": r"]",
 		},
 	},
-	"curly_brace": {
-		"big": {
+	"c": {
+		"b": {
 			"opening": r"\left\{",
 			"closing": r"\right\}",
 		},
-		"small": {
+		"s": {
 			"opening": r"{",
 			"closing": r"}",
 		},
 	},
-	"parenthesis": {
-		"big": {
+	"p": {
+		"b": {
 			"opening": r"\left(",
 			"closing": r"\right)",
 		},
-		"small": {
+		"s": {
 			"opening": r"(",
 			"closing": r")",
 		},
 	},
 }
-if match.group(1) == "b":
-	size = "big"
-else:
-	size = "small"
-if match.group(2) == "a":
-	type = "angle"
-elif match.group(2) == "b":
-	type = "square_bracket"
-elif match.group(2) == "c":
-	type = "curly_brace"
-else:
-	type = "parenthesis"
-opening = enclosing[type][size]["opening"]
-closing = enclosing[type][size]["closing"]
+opening = enclosing[match.group(2)][match.group(1)]["opening"]
+closing = enclosing[match.group(2)][match.group(1)]["closing"]
 snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
-snippet 'set([^;]+);([^;]+);' "define a set by property" rA
-`!p
-elements = match.group(1)
-property = match.group(2)
-snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
-`$0
-endsnippet
-
-snippet '([lg][te])' "comparisons" rA
-`!p
-relation = {
-  "lt": r"<",
-  "gt": r">",
-  "le": r"\leqslant",
-  "ge": r"\geqslant",
-}
-snip.rv = r" " + relation[match.group(1)] + r" "
-`$0
-endsnippet
-
-snippet 'ns([nzqrc])' "numeric sets" rA
+snippet ';([nzqrc])`set' "numeric sets" rA
 `!p
 numericset = {
 	"n": r"\mathbb{N}",
@@ -150,7 +122,15 @@ snip.rv = numericset[match.group(1)]
 `$0
 endsnippet
 
-snippet 'sf([ehs])([^;]+);' "space forms" rA
+snippet ';([^,]+),([^`]+)`set' "set by property" rA
+`!p
+elements = match.group(1)
+property = match.group(2)
+snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
+`$0
+endsnippet
+
+snippet ';([ehs])([^`]+)`spf' "space forms" rA
 `!p
 model = {
 	"e": r"\mathbb{R}",
@@ -163,12 +143,25 @@ snip.rv = spaceform + r"^{" + dimension + r"}"
 `$0
 endsnippet
 
-snippet ';fr' "fraction" rA
-\frac{$1}{$2}$0
+snippet ';([lg][te])([^`]+)`cmp' "comparisons" rA
+`!p
+relation = {
+  "lt": r"<",
+  "gt": r">",
+  "le": r"\leqslant",
+  "ge": r"\geqslant",
+}
+quantity = match.group(2)
+snip.rv = r" " + relation[match.group(1)] + r" " + quantity
+`$0
 endsnippet
 
-snippet '([_^])\1' "su(per|b)script" rA
-`!p snip.rv = match.group(1)`{${1:${VISUAL}}}$0
+snippet ';([^`]+)`su([bp])' "su(per|b)script" rA
+`!p
+thing = match.group(1)
+index = r"_" if match.group(2) == "b" else r"^"
+snip.rv = index + r"{" + thing + r"}"
+`$0
 endsnippet
 
 snippet ';(in|owns|subset|contains)' "relationship" rA
