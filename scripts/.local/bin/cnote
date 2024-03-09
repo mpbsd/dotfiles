@@ -1,0 +1,88 @@
+#!/bin/bash
+################################################################################
+# exit code                                                                    #
+################################################################################
+# 10: wrong number of arguments                                                #
+# 11: root dir doesn't exist                                                   #
+# 12: root json file doesn't exist                                             #
+# 13: root tex file doesn't exist                                              #
+# 14: local dir doesn't exist                                                  #
+# 15: local json file doesn't exist                                            #
+# 16: local tex file doesn't exist                                             #
+# 17: target dir doesn't exist                                                 #
+# 18: attempt to create target files (json,tex) that already exist             #
+# 19: attempt to open target files (json,tex) that don't exist yet             #
+################################################################################
+
+
+[ "$#" -eq 1 ] || exit 10
+
+
+ROOT_DIR="${HOME}/templates/latex/github/cnotes"
+ROOT_JSON_FILE="${ROOT_DIR}/tex/index.json"
+ROOT_TEX_FILE="${ROOT_DIR}/tex/index.tex"
+
+
+[ -d "${ROOT_DIR}" ]       || exit 11
+[ -f "${ROOT_JSON_FILE}" ] || exit 12
+[ -f "${ROOT_TEX_FILE}" ]  || exit 13
+
+
+DISCIPLINE=$(jq '.[] | "\(.id): \(.disciplina)"' < "$ROOT_JSON_FILE" | fzf)
+
+
+ID=$(echo "$DISCIPLINE" | sed 's/"\([0-9]\{2\}\): [^"]\+"/\1/')
+NAME=$(echo "$DISCIPLINE" | sed 's/"[0-9]\{2\}: \([^"]\+\)"/\1/')
+
+
+LOC_DIR="${ROOT_DIR}/tex/${ID}"
+LOC_JSON_FILE="${LOC_DIR}/index.json"
+LOC_TEX_FILE="${LOC_DIR}/index.tex"
+
+
+[ -d "${LOC_DIR}" ]       || exit 14
+[ -f "${LOC_JSON_FILE}" ] || exit 15
+[ -f "${LOC_TEX_FILE}" ]  || exit 16
+
+
+TGT_DIR="${LOC_DIR}/note"
+DATE="$(date +%Y%m%d)"
+TGT_JSON_FILE="${TGT_DIR}/${DATE}.json"
+TGT_TEX_FILE="${TGT_DIR}/${DATE}.tex"
+
+
+[ -d "${TGT_DIR}" ] || exit 17
+
+
+WHAT_TO_COMPILE()
+{
+  DATA_FILE="${ROOT_DIR}/data.tex"
+  [ -f "$DATA_FILE" ] && rm -rf "$DATA_FILE"
+  printf '\part{%s}\n' "$NAME" > "$DATA_FILE"
+  TEX_FILES=$(find "$TGT_DIR" -type f -name "*.tex" | sort)
+  TWO_MOST_RECENT_NOTES=$(echo "$TEX_FILES" | jq -Rs 'split("\n")[-3:-1]')
+  for TEX_FILE in $(echo "$TWO_MOST_RECENT_NOTES" | jq -r '.[]')
+  do
+    printf '\n\input{%s}' "${TEX_FILE/#${ROOT_DIR}\//}" >> "$DATA_FILE"
+  done
+}
+
+
+case "$1" in
+  -c|--create)
+    [ -f "$TGT_JSON_FILE" ] && [ -f "$TGT_TEX_FILE" ] && exit 18
+    touch "$TGT_JSON_FILE" "$TGT_TEX_FILE"
+    printf '\n\input{%s}' "${TGT_TEX_FILE/#${ROOT_DIR}\//}" >> "$LOC_TEX_FILE"
+    vim -O "$TGT_JSON_FILE" "$TGT_TEX_FILE"
+    ;;
+  -e|--edit)
+    [ -f "$TGT_JSON_FILE" ] && [ -f "$TGT_TEX_FILE" ] || exit 19
+    vim -O "$TGT_TEX_FILE" "$TGT_JSON_FILE"
+    ;;
+esac
+
+
+WHAT_TO_COMPILE
+
+
+exit 0

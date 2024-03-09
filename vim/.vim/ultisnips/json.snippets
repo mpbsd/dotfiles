@@ -1,0 +1,15 @@
+snippet '^md' "metadata for classnotes" rA
+`!p from datetime import datetime
+date = datetime.now().strftime("%a %d %b %Y")
+`{
+  "metadata": {
+    "topic": "$1",
+    "date": "${2:`!p snip.rv = date`}"
+  },
+  "reference": {
+    "title": "$3",
+    "author": "$4",
+    "citation_key": "$5"
+  }$0
+}
+endsnippet

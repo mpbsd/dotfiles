@@ -1,7 +1,8 @@
 local options = {
-  var = {
+  glo = {
+    -- options {{{
     cmd = vim.g,
-    opt = {
+    cfg = {
       mapleader = ' ',
       maplocalleader = ',',
       tex_flavor = 'latex',
@@ -10,10 +11,12 @@ local options = {
       node_host_prog = '/usr/bin/npm',
       python3_host_prog = '/usr/bin/python3',
     }
+    -- }}}
   },
-  cfg = {
+  opt = {
+    -- options {{{
     cmd = vim.opt,
-    opt = {
+    cfg = {
       number = true,
       relativenumber = true,
       numberwidth = 6,
@@ -36,19 +39,22 @@ local options = {
       spelllang = { 'en_us', 'pt_br' },
       spellsuggest = { 'fast', '10' },
     }
+    -- }}}
   },
   env = {
+    -- options {{{
     cmd = vim.env,
-    opt = {
+    cfg = {
       SHELL = '/usr/bin/bash',
     }
-  },
+    -- }}}
+  }
 }
 
 for section, _ in pairs(options) do
   local cmd = options[section]['cmd']
-  local opt = options[section]['opt']
-  for lhs, rhs in pairs(opt) do
+  local cfg = options[section]['cfg']
+  for lhs, rhs in pairs(cfg) do
     cmd[lhs] = rhs
   end
 end

@@ -1,22 +1,24 @@
-let s:cache_dir = expand('~/.cache/vim/')
+let s:cache_dir = expand('~/.cache/vim')
 
 if !isdirectory(s:cache_dir)
-  let s:cmd = '!mkdir -p' . ' ' . s:cache_dir
-  sil! exe s:cmd
+  sil exe printf("!mkdir -p %s", s:cache_dir)
 endif
+
+exe printf("set vif=%s/.viminfo", s:cache_dir)
 
 let g:netrw_home=s:cache_dir
 
-let s:dirs = {'bdir': 'bdir', 'dir': 'sdir', 'udir': 'udir', 'vdir': 'vdir'}
+let s:dirs = {
+      \  'backupdir': 'bdir',
+      \  'directory': 'sdir',
+      \  'undodir': 'udir',
+      \  'viewdir': 'vdir',
+      \}
 
-for [key, val] in items(s:dirs)
-  let s:dir = s:cache_dir . val
-  let s:cmd = 'set' . ' ' . key . '=' . s:dir
+for [lhs, rhs] in items(s:dirs)
+  let s:dir = printf("%s/%s", s:cache_dir, rhs)
   if !isdirectory(s:dir)
-    let s:mkd = '!mkdir -p' . ' ' . s:dir
-    sil! exe s:mkd
+    sil exe printf("!mkdir -p %s", s:dir)
   endif
-  exe s:cmd
+  exe printf("set %s=%s", lhs, s:dir)
 endfor
-
-set vif=~/.cache/vim/.viminfo

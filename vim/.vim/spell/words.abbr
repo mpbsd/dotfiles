@@ -80,6 +80,7 @@ iabbrev concluimos concluímos
 iabbrev conclusao conclusão
 iabbrev condicao condição
 iabbrev condicoes condições
+iabbrev conexao conexão
 iabbrev confianca confiança
 iabbrev confusao confusão
 iabbrev conheco conheço
@@ -112,6 +113,8 @@ iabbrev derivavel derivável
 iabbrev descontinuos descontínuos
 iabbrev desejavel desejável
 iabbrev deveriamos deveríamos
+iabbrev diarreia diarréia
+iabbrev didatico didático
 iabbrev diferenciaveis diferenciáveis
 iabbrev diferenciavel diferenciável
 iabbrev dimensao dimensão
@@ -169,6 +172,7 @@ iabbrev formula fórmula
 iabbrev formulario formulário
 iabbrev fracionario fracionário
 iabbrev fracoes frações
+iabbrev frances francês
 iabbrev funcao função
 iabbrev funcoes funções
 iabbrev goiania Goiânia
@@ -193,6 +197,8 @@ iabbrev inducao indução
 iabbrev infimo ínfimo
 iabbrev informacao informação
 iabbrev informacoes informacoes
+iabbrev ingles inglês
+iabbrev iniciassemos iniciássemos
 iabbrev inicio início
 iabbrev inscricoes inscrições
 iabbrev instalacao instalação
@@ -227,6 +233,7 @@ iabbrev mencao menção
 iabbrev mensuraveis mensuráveis
 iabbrev mensuravel mensurável
 iabbrev metodo método
+iabbrev metrica métrica
 iabbrev metrico métrico
 iabbrev metricos métricos
 iabbrev metrizavel metrizável
@@ -280,6 +287,7 @@ iabbrev pivotacao pivotação
 iabbrev poderiamos poderíamos
 iabbrev polinomio polinômio
 iabbrev populacao população
+iabbrev portugues português
 iabbrev possivel possível
 iabbrev potencia potência
 iabbrev preco preço
@@ -288,6 +296,7 @@ iabbrev presenca presença
 iabbrev primaria primária
 iabbrev primario primário
 iabbrev principios princípios
+iabbrev probatorio probatório
 iabbrev programacao programação
 iabbrev progressao progressão
 iabbrev projecao projeção
@@ -305,6 +314,7 @@ iabbrev questoes questões
 iabbrev raciocinio raciocínio
 iabbrev raizes raízes
 iabbrev razao razão
+iabbrev realizacao realização
 iabbrev recem recém
 iabbrev refaca refaça
 iabbrev referencias referências

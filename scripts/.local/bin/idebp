@@ -99,6 +99,7 @@ declare -a CORE_UTILS=(
   redshift
   ripgrep
   sdcv
+  shellcheck
   silversearcher-ag
   thefuck
   tmux
@@ -173,7 +174,6 @@ declare -a QMK=(
   dfu-util
 )
 # }}}
-
 # LIST OF PACKAGES {{{
 PKGS=(
   "${TEXT_EDITORS[@]}"
@@ -212,7 +212,7 @@ do
       echo 'Proceeding with package installation.'
       if echo "$PKG" | grep -qF ':amd64'
       then
-        LIB="${PKG//:amd64/}"
+        LIB="${PKG/%:amd64/}"
         sudo apt install -y "$LIB"
       else
         sudo apt install -y "$PKG"

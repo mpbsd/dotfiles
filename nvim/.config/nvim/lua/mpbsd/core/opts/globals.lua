@@ -1,18 +1,14 @@
 local M = {}
 
-M.vim_keymap_set = function(mappings_table)
-  for _, mapping in pairs(mappings_table) do
-    local mod = mapping['mod']
-    local lhs = mapping['lhs']
-    local rhs = mapping['rhs']
-    local opt = mapping['opt']
-    vim.keymap.set(mod, lhs, rhs, opt)
+M.nvim_set_keymaps = function(table_of_mappings)
+  for _, map in pairs(table_of_mappings) do
+    vim.keymap.set(map['mod'], map['lhs'], map['rhs'], map['opt'])
   end
 end
 
-M.vim_create_augroup = function(autocmds_table)
+M.nvim_create_augroup = function(table_of_autocmds)
   local augroup = {}
-  for _, autocmd in pairs(autocmds_table) do
+  for _, autocmd in pairs(table_of_autocmds) do
     local opts = autocmd['opts']
     if opts['group'] ~= nil then
       augroup['group'] = vim.api.nvim_create_augroup(
@@ -24,9 +20,9 @@ M.vim_create_augroup = function(autocmds_table)
   return augroup
 end
 
-M.vim_create_autocmd = function(autocmds_table)
-  local augroup = M.vim_create_augroup(autocmds_table)
-  for _, autocmd in pairs(autocmds_table) do
+M.nvim_create_autocmd = function(table_of_autocmds)
+  local augroup = M.nvim_create_augroup(table_of_autocmds)
+  for _, autocmd in pairs(table_of_autocmds) do
     local event = autocmd['event']
     local opts = autocmd['opts']
     if opts['group'] ~= nil then
@@ -35,23 +31,6 @@ M.vim_create_autocmd = function(autocmds_table)
     vim.api.nvim_create_autocmd(event, opts)
   end
 end
-
--- M.test = function()
---   local bufnr = vim.api.nvim_get_current_buf()
---   local lang = 'bibtex'
---   local parser = vim.treesitter.get_parser(bufnr, lang)
---   local tree = parser:parse()[1]
---   local query_str = [[
---   ((entry
---     ty: (entry_type) @type)
---    (#match? @type "article"))
---   ]]
---   local query = vim.treesitter.query.parse(lang, query_str)
---   for id, node in query:iter_captures(tree:root(), bufnr) do
---     print(id)
---     print(vim.inspect(node))
---   end
--- end
 
 M.language_servers = {
   -- servers {{{
@@ -89,7 +68,7 @@ M.language_servers = {
     settings = {},
   },
   texlab = {
-    filetypes = { 'plaintex', 'bib' },
+    filetypes = { 'tex', 'bib' },
     settings = {},
   },
   vimls = {
@@ -108,7 +87,7 @@ M.adapters = {
 
 M.on_attach = function()
   local telescope_builtin = require('telescope.builtin')
-  M.vim_keymap_set({
+  M.nvim_set_keymaps({
     -- keymaps {{{
     {
       mod = 'n',
@@ -308,10 +287,15 @@ M.on_attach = function()
   })
 end
 
-if vim.fn.has('nvim-0.9.5') then
-  M.vim_uv = vim.loop
-else
+M.nvim_version = function()
+  local V = vim.version()
+  return string.format("nvim-%s.%s.%s", V.major, V.minor, V.patch)
+end
+
+if M.nvim_version() == 'nvim-0.10.0' then
   M.vim_uv = vim.uv
+else
+  M.vim_uv = vim.loop
 end
 
 return M

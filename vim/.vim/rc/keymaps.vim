@@ -1,100 +1,10 @@
-" keymaps {{{
+" s:keymaps {{{
 let s:keymaps = [
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>erc',
-      \    'rhs': ':edit ~/.vim/vimrc<cr>',
-      \    'des': 'edit vimrc',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>src',
-      \    'rhs': ':source ~/.vim/vimrc<cr>',
-      \    'des': 'source vimrc',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>eac',
-      \    'rhs': ':edit ~/.vim/rc/autocmd.vim<cr>',
-      \    'des': 'edit autocommands',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>sac',
-      \    'rhs': ':source ~/.vim/rc/autocmd.vim<cr>',
-      \    'des': 'source autocommands',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>eca',
-      \    'rhs': ':edit ~/.vim/rc/caching.vim<cr>',
-      \    'des': 'edit caching',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>sca',
-      \    'rhs': ':source ~/.vim/rc/caching.vim<cr>',
-      \    'des': 'source caching',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>egb',
-      \    'rhs': ':edit ~/.vim/rc/globals.vim<cr>',
-      \    'des': 'edit global resources',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>sgb',
-      \    'rhs': ':source ~/.vim/rc/globals.vim<cr>',
-      \    'des': 'source global resources',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>eui',
-      \    'rhs': ':edit ~/.vim/rc/guiopts.vim<cr>',
-      \    'des': 'edit guioptions',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>sui',
-      \    'rhs': ':source ~/.vim/rc/guiopts.vim<cr>',
-      \    'des': 'source guioptions',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>ekm',
-      \    'rhs': ':edit ~/.vim/rc/keymaps.vim<cr>',
-      \    'des': 'edit keymaps',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>skm',
-      \    'rhs': ':source ~/.vim/rc/keymaps.vim<cr>',
-      \    'des': 'source keymaps',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>eop',
-      \    'rhs': ':edit ~/.vim/rc/options.vim<cr>',
-      \    'des': 'edit options',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>sop',
-      \    'rhs': ':source ~/.vim/rc/options.vim<cr>',
-      \    'des': 'source options',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>epg',
-      \    'rhs': ':edit ~/.vim/rc/plugins.vim<cr>',
-      \    'des': 'edit plugins',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>spg',
-      \    'rhs': ':source ~/.vim/rc/plugins.vim<cr>',
-      \    'des': 'source plugins',
+      \    'lhs': '<leader>sv',
+      \    'rhs': ':FZF ~/.vim<cr>',
+      \    'des': 'Search Vim files',
       \  },
       \  {
       \    'mod': 'normal',
@@ -195,26 +105,14 @@ let s:keymaps = [
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>ab',
-      \    'rhs': ':call AddWordUnderCursorToMyAbbreviationsList()<cr>',
+      \    'rhs': ':call VimAddCurrentWordToTheAbbreviationsList()<cr>',
       \    'des': 'add the word under the cursor to my abbreviations list',
       \  },
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>aw',
-      \    'rhs': ':call AddWordUnderCursorToMyWordsList()<cr>',
+      \    'rhs': ':call VimAddCurrentWordToTheWordsList()<cr>',
       \    'des': 'add the word under the cursor to my words list',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>eab',
-      \    'rhs': ':edit ~/.vim/spell/words.abbr<cr>',
-      \    'des': 'edit abbreviations',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>ewo',
-      \    'rhs': ':edit ~/.vim/spell/words.dict<cr>',
-      \    'des': 'edit words',
       \  },
       \  {
       \    'mod': 'normal',
@@ -284,12 +182,6 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>rw',
-      \    'rhs': ':call SubsCWordWithRegZeroWhileRetainingCursorPos()<cr>',
-      \    'des': 'replace word',
-      \  },
-      \  {
-      \    'mod': 'normal',
       \    'lhs': '<leader>sf',
       \    'rhs': ':FZF<cr>',
       \    'des': 'search file',
@@ -338,12 +230,6 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>c6',
-      \    'rhs': ':colorscheme seoul256<cr>',
-      \    'des': 'colorscheme seoul256',
-      \  },
-      \  {
-      \    'mod': 'normal',
       \    'lhs': '<leader>cs',
       \    'rhs': ':colorscheme slate<cr>',
       \    'des': 'colorscheme slate',
@@ -356,9 +242,21 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>rga',
-      \    'rhs': ':call RemoveGraphicalAccents()<cr>',
+      \    'lhs': '<leader>so',
+      \    'rhs': ':source %<cr>',
+      \    'des': 'source this file',
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>rsc',
+      \    'rhs': ':call VimRemoveNonASCIICharsFromCurrentBuffer()<cr>',
       \    'des': 'remove graphical accents from the current buffer',
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>dba',
+      \    'rhs': ':call VimDrawBoxAroundLaTeXCode()<cr>',
+      \    'des': 'draw a visual delimiter around LaTeX code',
       \  },
       \  {
       \    'mod': 'normal',
@@ -386,9 +284,9 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>gis',
-      \    'rhs': ':call GetStudentsInfoFromSIGAA()<cr>',
-      \    'des': 'get student''s info from sigaa',
+      \    'lhs': '<leader>psi',
+      \    'rhs': ':call VimParseStudentsInfo()<cr>',
+      \    'des': 'get students info from sigaa',
       \  },
       \  {
       \    'mod': 'normal',
@@ -399,4 +297,4 @@ let s:keymaps = [
       \]
 " }}}
 
-sil cal VimKeymapSet(s:keymaps)
+call VimSetKeymaps(s:keymaps)

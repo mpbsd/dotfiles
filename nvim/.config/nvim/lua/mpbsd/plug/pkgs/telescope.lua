@@ -1,5 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
+  event = 'VimEnter',
+  branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
     {
@@ -32,7 +34,7 @@ return {
       },
     })
     telescope.load_extension('fzf')
-    globals.vim_keymap_set({
+    globals.nvim_set_keymaps({
       -- keymaps {{{
       {
         mod = 'n',
@@ -107,6 +109,16 @@ return {
         rhs = builtin.help_tags,
         opt = {
           desc = '[S]earch [H]elp',
+        }
+      },
+      {
+        mod = 'n',
+        lhs = '<leader>sn',
+        rhs = function()
+          builtin.find_files({ cwd = vim.fn.stdpath('config') })
+        end,
+        opt = {
+          desc = '[S]earch [N]eovim Files',
         }
       },
       {

@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS ref(
+  type TEXT NOT NULL,
+  key TEXT NOT NULL,
+  title TEXT NOT NULL,
+  author TEXT NOT NULL,
+  periodic TEXT NOT NULL,
+  year INTEGER NOT NULL,
+  id TEXT NOT NULL UNIQUE,
+  PRIMARY KEY(key)
+);

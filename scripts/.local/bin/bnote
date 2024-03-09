@@ -1,0 +1,33 @@
+#!/bin/bash
+
+
+# CREF() {
+#   curl -s "https://api.crossref.org/works/${1}/transform/application/x-bibtex"
+# }
+
+
+# CREF '10.1007/s00209-017-1915-y' | sed 's@\([A-Za-z]\+\)\s*=@\n\1=@g'
+
+
+ROOTDIR="${HOME}/.local/share/references"
+BIBFILE="${ROOTDIR}/main.bib"
+OS="$(uname -s)"
+
+
+[ -d "$ROOTDIR" ] || exit 3
+[ -f "$BIBFILE" ] || exit 4
+
+
+KEY="$(sed -n '/^@/p' "$BIBFILE" | sed 's/\(^@[^{]\+{\|,$\)//g' | fzf)"
+
+
+if [ "$OS" = 'Linux' ]
+then
+  echo -n "$KEY" | xclip -selection clipboard
+elif [ "$OS" = 'Darwin' ]
+then
+  echo -n "$KEY" | pbcopy
+fi
+
+
+exit 0

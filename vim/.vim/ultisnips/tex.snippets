@@ -1,170 +1,209 @@
-snippet ';;' "backslash" rA
-\
+snippet '(\S)?;([^`]+)?`im' "inline math mode" rA
+`!p
+opening = r"\( " if match.group(1) is None else match.group(1) + r" \( "
+closing = r" \)"
+content = snip.v.text if match.group(2) is None else match.group(2)
+snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
 endsnippet
 
-snippet ';im' "inline math mode" rA
-\(${1:${VISUAL}}\)$0
+snippet '(^\s*)?;([^`]+)?`dm' "display math mode" rA
+`!p
+if snip.c == "":
+	nspc = int(vim.eval("indent('.')"))
+	ntab = 2
+	if match.group(1) is None:
+		opening = "\n" + nspc*" " + r"\[" + "\n" + (nspc + ntab)*" "
+		closing = "\n" + nspc*" " + r"\]"
+	else:
+		opening = r"\[" + "\n" + ntab*" "
+		closing = "\n" + r"\]"
+	content = snip.v.text if match.group(2) is None else match.group(2)
+	snip.rv = opening
+`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
 endsnippet
 
-snippet ';dm' "display math mode" rA
-\[
-	${1:${VISUAL}}
-\]$0
-endsnippet
-
-snippet ';fr' "fraction" rA
-\frac{$1}{$2}$0
-endsnippet
-
-snippet '([_^])\1' "su(per|b)script" rA
-`!p snip.rv = match.group(1)`{${1:${VISUAL}}}$0
-endsnippet
-
-snippet '([GDLFPYSJUXW])`' "upper case greek letter" rA
+snippet ';(c[dfgjlpsuwxy]|l[abdefghijklmnpqrstuwxyz]|v[efjr])`' "alphabet" rA
 `!p
 alphabet = {
-	"G" : r"\Gamma",
-	"D" : r"\Delta",
-	"L" : r"\Lambda",
-	"F" : r"\Phi",
-	"P" : r"\Pi",
-	"Y" : r"\Psi",
-	"S" : r"\Sigma",
-	"J" : r"\Theta",
-	"U" : r"\Upsilon",
-	"X" : r"\Xi",
-	"W" : r"\Omega",
-}
-snip.rv = alphabet[match.group(1)]
-`
-endsnippet
-
-snippet '([abgdezhjiklmnxprstufqyw])`' "lower case greek letter" rA
-`!p
-alphabet = {
-  "a" : r"\alpha",
-  "b" : r"\beta",
-  "g" : r"\gamma",
-  "d" : r"\delta",
-  "e" : r"\epsilon",
-  "z" : r"\zeta",
-  "h" : r"\eta",
-  "j" : r"\theta",
-  "i" : r"\iota",
-  "k" : r"\kappa",
-  "l" : r"\lambda",
-  "m" : r"\mu",
-  "n" : r"\nu",
-  "x" : r"\xi",
-  "p" : r"\pi",
-  "r" : r"\rho",
-  "s" : r"\sigma",
-  "t" : r"\tau",
-  "u" : r"\upsilon",
-  "f" : r"\phi",
-  "q" : r"\chi",
-  "y" : r"\psi",
-  "w" : r"\omega",
-}
-snip.rv = alphabet[match.group(1)]
-`
-endsnippet
-
-snippet '(v[ekfprsj])`' "variant font greek letter" rA
-`!p
-alphabet = {
+	"cd": r"\Delta",
+	"cf": r"\Phi",
+	"cg": r"\Gamma",
+	"cj": r"\Theta",
+	"cl": r"\Lambda",
+	"cp": r"\Pi",
+	"cs": r"\Sigma",
+	"cu": r"\Upsilon",
+	"cw": r"\Omega",
+	"cx": r"\Xi",
+	"cy": r"\Psi",
+	"la": r"\alpha",
+	"lb": r"\beta",
+	"ld": r"\delta",
+	"le": r"\epsilon",
+	"lf": r"\phi",
+	"lg": r"\gamma",
+	"lh": r"\eta",
+	"li": r"\iota",
+	"lj": r"\theta",
+	"lk": r"\kappa",
+	"ll": r"\lambda",
+	"lm": r"\mu",
+	"ln": r"\nu",
+	"lp": r"\pi",
+	"lq": r"\chi",
+	"lr": r"\rho",
+	"ls": r"\sigma",
+	"lt": r"\tau",
+	"lu": r"\upsilon",
+	"lw": r"\omega",
+	"lx": r"\xi",
+	"ly": r"\psi",
+	"lz": r"\zeta",
 	"ve": r"\varepsilon",
-	"vk": r"\varkappa",
 	"vf": r"\varphi",
-	"vp": r"\varpi",
-	"vr": r"\varrho",
-	"vs": r"\varsigma",
 	"vj": r"\vartheta",
+	"vr": r"\varrho",
 }
 snip.rv = alphabet[match.group(1)]
-`
+`$0
 endsnippet
 
-snippet ';(bb|cal|scr|frak)([a-z])' "math font" rA
-`!p snip.rv = "\math" + match.group(1) + "{" + match.group(2).upper() + "}"`
-endsnippet
-
-snippet ';e([bs])([abcp])' "enclosing" rA
+snippet ';([bs])([abcp])([^`]+)?`enc' "enclosings" rA
 `!p
 enclosing = {
-	"angle": {
-	  "big": {
-		  "opening": r"\left\langle{",
+	"a": {
+		"b": {
+			"opening": r"\left\langle{",
 			"closing": r"}\right\rangle",
 		},
-		"small": {
-		  "opening": r"\langle{",
+		"s": {
+			"opening": r"\langle{",
 			"closing": r"}\rangle",
 		},
 	},
-	"square_bracket": {
-		"big": {
+	"b": {
+		"b": {
 			"opening": r"\left[",
 			"closing": r"\right]",
 		},
-		"small": {
-		  "opening": r"[",
+		"s": {
+			"opening": r"[",
 			"closing": r"]",
 		},
 	},
-	"curly_brace": {
-		"big": {
+	"c": {
+		"b": {
 			"opening": r"\left\{",
 			"closing": r"\right\}",
 		},
-		"small": {
-		  "opening": r"{",
+		"s": {
+			"opening": r"{",
 			"closing": r"}",
 		},
 	},
-	"parenthesis": {
-		"big": {
+	"p": {
+		"b": {
 			"opening": r"\left(",
 			"closing": r"\right)",
 		},
-		"small": {
-		  "opening": r"(",
+		"s": {
+			"opening": r"(",
 			"closing": r")",
 		},
 	},
 }
-if match.group(1) == "b":
-	size = "big"
-else:
-	size = "small"
-if match.group(2) == "a":
-  type = "angle"
-elif match.group(2) == "b":
-	type = "square_bracket"
-elif match.group(2) == "c":
-	type = "curly_brace"
-else:
-	type = "parenthesis"
-opening = enclosing[type][size]["opening"]
-closing = enclosing[type][size]["closing"]
-snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
+opening = enclosing[match.group(2)][match.group(1)]["opening"]
+closing = enclosing[match.group(2)][match.group(1)]["closing"]
+content = snip.v.text if match.group(3) is None else match.group(3)
+snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+endsnippet
+
+snippet ';([nzqrc])`set' "numeric sets" rA
+`!p
+numericset = {
+	"n": r"\mathbb{N}",
+	"z": r"\mathbb{Z}",
+	"q": r"\mathbb{Q}",
+	"r": r"\mathbb{R}",
+	"c": r"\mathbb{C}",
+}
+snip.rv = numericset[match.group(1)]
+`$0
+endsnippet
+
+snippet ';([^,]+),([^`]+)`set' "set by property" rA
+`!p
+elements = match.group(1)
+property = match.group(2)
+snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
+`$0
+endsnippet
+
+snippet ';([ehs])([^`]+)`spf' "space forms" rA
+`!p
+model = {
+	"e": r"\mathbb{R}",
+	"h": r"\mathbb{H}",
+	"s": r"\mathbb{S}",
+}
+spaceform = model[match.group(1)]
+dimension = match.group(2)
+snip.rv = spaceform + r"^{" + dimension + r"}"
+`$0
+endsnippet
+
+snippet ';([lg][te])([^`]+)?`cmp' "comparisons" rA
+`!p
+relation = {
+  "lt": r"<",
+  "gt": r">",
+  "le": r"\leqslant",
+  "ge": r"\geqslant",
+}
+quantity = snip.v.text if match.group(2) is None else match.group(2)
+snip.rv = r" " + relation[match.group(1)] + r" " + quantity
+`$0
+endsnippet
+
+snippet ';([^`]+)`su([bp])' "su(per|b)script" rA
+`!p
+thing = match.group(1)
+index = r"_" if match.group(2) == "b" else r"^"
+snip.rv = index + r"{" + thing + r"}"
+`$0
 endsnippet
 
 snippet ';(in|owns|subset|contains)' "relationship" rA
 `!p snip.rv = "\\" + match.group(1)`{$1}$0
 endsnippet
 
-snippet '([a-z]);`' "capitalize" rA
-`!p snip.rv = match.group(1).upper()`
+snippet ';env' "environment" rA
+\begin{$1}
+	$2
+\end{$1}$0
 endsnippet
 
-snippet '^(chp|s{1,3}ec) (.*)$' "splitting document into logical parts" r
+snippet ';eq ([a-z ]+);' "equation environment" rA
+\begin{equation}\label{eq:`!p snip.rv = match.group(1).replace(' ', '-')`}
+	$2
+\end{equation}$0
+endsnippet
+
+snippet ';array' "array environment" rA
+\[
+	\begin{array}{$2}
+		$1
+	\end{array}
+\]$0
+endsnippet
+
+snippet '^(chp|s{1,3}ec) ([A-Za-z ]+)$' "headers" r
 `!p
 division = {
 	"chp"  : r"\chapter",
-  "sec"  : r"\section",
-  "ssec" : r"\subsection",
-  "sssec": r"\subsubsection",
+	"sec"  : r"\section",
+	"ssec" : r"\subsection",
+	"sssec": r"\subsubsection",
 }
 type = match.group(1)
 name = match.group(2)
@@ -174,423 +213,103 @@ snip.rv = sec_title + sec_label + "\n\n"
 `$0
 endsnippet
 
-snippet ';beg' "environment" rA
-\begin{$1}
-  $2
-\end{$1}
-$0
-endsnippet
-
-snippet '^;eq' "equation environment" rA
-\begin{equation}\label{eq:$1}
-	$2
-\end{equation}
-$0
-endsnippet
-
-snippet 'sum;([^;]+);([^;]+);([^;]+);' "summation over an index" rA
+snippet ';(([^,]+),([^,]+),([^`]+))?`tup' "tuples" rA
 `!p
-index_var = match.group(1)
-lower_ind = match.group(2)
-upper_ind = match.group(3)
-snip.rv = r"\sum_{" + index_var + r"=" + lower_ind + r"}^{" + upper_ind + r"}"
+if match.group(1):
+	v = match.group(2)  # variable
+	l = match.group(4)  # lower
+	u = match.group(3)  # upper
+	snip.rv = rf"({v}_{{l}},\ldots,{v}_{{u}})"
+else:
+	snip.rv = r"(x_{1},\ldots,x_{n})"
+`
+endsnippet
+
+snippet ';(([^,]+),([^,]+),([^,]+),([^`]+))?`sum' "summation over an index" rA
+`!p
+if match.group(1):
+	v = match.group(1)  # variable
+	l = match.group(2)  # lower
+	u = match.group(3)  # upper
+	s = match.group(4)  # summand
+	snip.rv = rf"\sum_{{v}={l}}^{{u}}{s}"
 `$0
 endsnippet
 
-snippet '^my cmds$' "My set of default cmds" rA
-%----------------------------------------------------------------------------------%
-% RIEMANNIAN GEOMETRY                                                              %
-%----------------------------------------------------------------------------------%
-% \riemannianMetric{ vector_field_1, vector_field_2 }                              %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\riemannianMetric}{d [] d ()}{                                 %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \textup{g}{\left({{#1},{#2}}\right)}                                         %
-    }{                                                                             %
-      \textup{g}{\left({{#1},{\cdot}}\right)}                                      %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \textup{g}{\left({{\cdot},{#2}}\right)}                                      %
-    }{                                                                             %
-      \textup{g}                                                                   %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\newcommand{\trace}[1]{\textup{trace}{\left({#1}\right)}}                          %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\riemannianConnection}{d [] d()}{                              %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \nabla_{#1}{#2}                                                              %
-    }{                                                                             %
-      \nabla_{#1}                                                                  %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \nabla{#2}                                                                   %
-    }{                                                                             %
-      \nabla                                                                       %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\curvatureTensor}{m m d ()}{                                   %
-  \IfValueTF{#3}{                                                                  %
-    \textup{Rm}{\left({#1},{#2}\right){#3}}                                        %
-  }{                                                                               %
-    \textup{Rm}{\left({#1},{#2}\right)}                                            %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\ricciTensor}{d [] d ()}{                                      %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \textup{Rc}{\left({#1},{#2}\right)}                                          %
-    }{                                                                             %
-      \textup{Rc}{\left({#1},{\cdot}\right)}                                       %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \textup{Rc}{\left({\cdot},{#2}\right)}                                       %
-    }{                                                                             %
-      \textup{Rc}                                                                  %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\vectorRicciTensor}{d ()}{                                     %
-  \IfValueTF{#1}{                                                                  %
-    \mathbb{R}\textup{c}{\left({#1}\right)}                                        %
-  }{                                                                               %
-    \mathbb{R}\textup{c}                                                           %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\newcommand{\scalarCurvature}{\textup{R}}                                          %
-%----------------------------------------------------------------------------------%
-% Isometric Immersions                                                             %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\ambientMetric}{d [] d ()}{                                    %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \textup{g}{\left({{#1},{#2}}\right)}                                         %
-    }{                                                                             %
-      \textup{g}{\left({{#1},{\cdot}}\right)}                                      %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \textup{g}{\left({{\cdot},{#2}}\right)}                                      %
-    }{                                                                             %
-      \textup{g}                                                                   %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\ambientRiemannianConnection}{d [] d()}{                       %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \bar{\nabla}_{#1}{#2}                                                        %
-    }{                                                                             %
-      \bar{\nabla}_{#1}                                                            %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \bar{\nabla}{#2}                                                             %
-    }{                                                                             %
-      \bar{\nabla}                                                                 %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\ambientCurvatureTensor}{m m d ()}{                            %
-  \IfValueTF{#3}{                                                                  %
-    \bar{\textup{R}}\textup{m}{\left({#1},{#2}\right){#3}}                         %
-  }{                                                                               %
-    \bar{\textup{R}}\textup{m}{\left({#1},{#2}\right)}                             %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\ambientRicciTensor}{d [] d ()}{                               %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \bar{\textup{R}}\textup{c}{\left({#1},{#2}\right)}                           %
-    }{                                                                             %
-      \bar{\textup{R}}\textup{c}{\left({#1},{\cdot}\right)}                        %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \bar{\textup{R}}\textup{c}{\left({\cdot},{#2}\right)}                        %
-    }{                                                                             %
-      \bar{\textup{R}}\textup{c}                                                   %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\ambientVectorRicciTensor}{d ()}{                              %
-  \IfValueTF{#1}{                                                                  %
-    \bar{\mathbb{R}}\textup{c}{\left({#1}\right)}                                  %
-  }{                                                                               %
-    \bar{\mathbb{R}}\textup{c}                                                     %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\newcommand{\ambientScalarCurvature}{\bar{\textup{R}}}                             %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\secondFundamentalForm}{d [] d ()}{                            %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \textup{h}{\left({#1},{#2}\right)}                                           %
-    }{                                                                             %
-      \textup{h}{\left({#1},{\cdot}\right)}                                        %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \textup{h}{\left({\cdot},{#2}\right)}                                        %
-    }{                                                                             %
-      \textup{h}                                                                   %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\shapeOperator}{d ()}{                                         %
-  \IfValueTF{#1}{                                                                  %
-    \textup{A}{\left({#1}\right)}                                                  %
-  }{                                                                               %
-    \textup{A}                                                                     %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\squaredShapeOperator}{d ()}{                                  %
-  \IfValueTF{#1}{                                                                  %
-    {\textup{A}^{2}}{\left({#1}\right)}                                            %
-  }{                                                                               %
-    {\textup{A}^{2}}                                                               %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-%                                                                                  %
-%----------------------------------------------------------------------------------%
-% DIFFERENTIAL OPERATORS                                                           %
-%----------------------------------------------------------------------------------%
-% \grad                                                                            %
-%----------------------------------------------------------------------------------%
-\newcommand{\grad}[1]{\textup{grad}{\left({#1}\right)}}                            %
-%----------------------------------------------------------------------------------%
-% \hess                                                                            %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-% - \hess{f}          --> \textup{Hess}\left(f\right)                              %
-% - \hess{f}[X]       --> \textup{Hess}{\left(f\right)\left(X,{\cdot}\right)}      %
-% - \hess{f}(Y)       --> \textup{Hess}{\left(f\right)\left({\cdot},Y\right)}      %
-% - \hess{f}[X](Y)    --> \textup{Hess}{\left(f\right)\left(X,Y\right)}            %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\hess}{m d [] d ()}{                                           %
-  \IfValueTF{#2}{                                                                  %
-    \IfValueTF{#3}{                                                                %
-      \textup{Hess}{\left({#1}\right)}{\left({#2},{#3}\right)}                     %
-    }{                                                                             %
-      \textup{Hess}{\left({#1}\right)}{\left({#2},{\cdot}\right)}                  %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#3}{                                                                %
-      \textup{Hess}{\left({#1}\right)}{\left({\cdot},{#3}\right)}                  %
-    }{                                                                             %
-      \textup{Hess}{\left({#1}\right)}                                             %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \lapl                                                                            %
-%----------------------------------------------------------------------------------%
-\newcommand{\lapl}[1]{\Delta{#1}}                                                  %
-%----------------------------------------------------------------------------------%
-% \driftedLapl                                                                     %
-%----------------------------------------------------------------------------------%
-\newcommand{\diftedLapl}[2]{\Delta_{#1}{#2}}                                       %
-%----------------------------------------------------------------------------------%
-% \restrictedLapl                                                                  %
-%----------------------------------------------------------------------------------%
-\newcommand{\restrictedLapl}[1]{\Delta^{\prime}{#1}}                               %
-%----------------------------------------------------------------------------------%
-%----------------------------------------------------------------------------------%
-% FUNCTION SPACES                                                                  %
-%----------------------------------------------------------------------------------%
-% \algebraOfSmoothFunctions                                                        %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \algebraOfSmoothFunctions    --> C^{\infty}                                   %
-%  - \algebraOfSmoothFunctions(M) --> C^{\infty}{\left(M\right)}                   %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\algebraOfSmoothFunctions}{d ()}{                              %
-  \IfValueTF{#1}{                                                                  %
-    C^{\infty}{\left({#1}\right)}                                                  %
-  }{                                                                               %
-    C^{\infty}                                                                     %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \lieAlgebraOfSmoothVectorFields                                                  %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \lieAlgebraOfSmoothVectorFields    --> \mathfrak{X}^{\infty}                  %
-%  - \lieAlgebraOfSmoothVectorFields(M) --> \mathfrak{X}^{\infty}{\left(M\right)}  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\lieAlgebraOfSmoothVectorFields}{d ()}{                        %
-  \IfValueTF{#1}{                                                                  %
-    \mathfrak{X}^{\infty}{\left({#1}\right)}                                       %
-  }{                                                                               %
-    \mathfrak{X}^{\infty}                                                          %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \diffeomorphismsGroup                                                            %
-%----------------------------------------------------------------------------------%
-% Examples:                                                                        %
-%----------------------------------------------------------------------------------%
-%  - \diffeomorphismsGroup    --> \mathcal{D}                                      %
-%  - \diffeomorphismsGroup(M) --> \mathcal{D}\left(M\right)                        %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\diffeomorphismsGroup}{d ()}{                                  %
-  \IfValueTF{#1}{                                                                  %
-    \mathcal{D}{\left({#1}\right)}                                                 %
-  }{                                                                               %
-    \mathcal{D}                                                                    %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\spaceOfRiemannianMetrics}{d ()}{                              %
-  \IfValueTF{#1}{                                                                  %
-    \mathcal{M}{\left({#1}\right)}                                                 %
-  }{                                                                               %
-    \mathcal{M}                                                                    %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% COORDINATE SYSTEMS                                                               %
-%----------------------------------------------------------------------------------%
-\newcommand{\px}[1]{\partial_{x^{#1}}}                                             %
-%----------------------------------------------------------------------------------%
-\newcommand{\dx}[1]{dx^{#1}}                                                       %
-%----------------------------------------------------------------------------------%
-\newcommand{\christoffelSymbol}[3]{\Gamma_{{#1}{#2}}^{#3}}                         %
-%----------------------------------------------------------------------------------%
-%----------------------------------------------------------------------------------%
-% NUMERICAL SETS                                                                   %
-%----------------------------------------------------------------------------------%
-\newcommand{\naturals}{\mathbb{N}}                                                 %
-\newcommand{\integers}{\mathbb{Z}}                                                 %
-\newcommand{\rationals}{\mathbb{Q}}                                                %
-\newcommand{\reals}{\mathbb{R}}                                                    %
-\newcommand{\complexfield}{\mathbb{C}}                                             %
-%----------------------------------------------------------------------------------%
-% Absolute value                                                                   %
-%----------------------------------------------------------------------------------%
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}                                        %
-%----------------------------------------------------------------------------------%
-% Norm                                                                             %
-%----------------------------------------------------------------------------------%
-%  - \norm    --> \lvert{\cdot}\rvert                                              %
-%  - \norm(x) --> \lvert{x}\rvert                                                  %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\norm}{d ()}{                                                  %
-  \IfValueTF{#1}{                                                                  %
-    \lVert{#1}\rVert                                                               %
-  }{                                                                               %
-    \lVert{\cdot}\lVert                                                            %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% \innerproduct{ vector_1, vector_2 }                                              %
-%----------------------------------------------------------------------------------%
-\NewDocumentCommand{\innerproduct}{d [] d ()}{                                     %
-  \IfValueTF{#1}{                                                                  %
-    \IfValueTF{#2}{                                                                %
-      \langle{{#1},{#2}}\rangle                                                    %
-    }{                                                                             %
-      \langle{{#1},{\cdot}}\rangle                                                 %
-    }                                                                              %
-  }{                                                                               %
-    \IfValueTF{#2}{                                                                %
-      \langle{{\cdot},{#2}}\rangle                                                 %
-    }{                                                                             %
-      \langle{{\cdot},{\cdot}}\rangle                                              %
-    }                                                                              %
-  }                                                                                %
-}                                                                                  %
-%----------------------------------------------------------------------------------%
-% Spaces of constant sectional curvature                                           %
-%----------------------------------------------------------------------------------%
-\newcommand{\euclideanspace}[1]{\mathbb{R}^{#1}}                                   %
-\newcommand{\hyperbolicspace}[1]{\mathbb{H}^{#1}}                                  %
-\newcommand{\roundsphere}[1]{\mathbb{S}^{#1}}                                      %
-%----------------------------------------------------------------------------------%
-%----------------------------------------------------------------------------------%
-\newcommand{\ambientSpace}{\bar{M}}                                                %
-%----------------------------------------------------------------------------------%
-\newcommand{\hypersurface}{M}                                                      %
-%----------------------------------------------------------------------------------%
-endsnippet
-
-snippet ';vf([a-z])' "Tangent Vector field" rA
+snippet ';ck' "citation key" rA
 `!p
-snip.rv = r"\tangField{" + match.group(1).upper() + r"}"
-`$0
-endsnippet
-
-snippet ';of([a-z0-9])' "Orthonormal frame" rA
-`!p
-snip.rv = r"\orthoFrame{" + match.group(1) + r"}"
-`$0
-endsnippet
-
-snippet ';om([a-z0-9])' "Orthonormal frame in flat metric" rA
-`!p
-snip.rv = r"\orthoFrameFlatMetr{" + match.group(1) + r"}"
-`$0
-endsnippet
-
-snippet ';so' "Shape operator" rA
-\shapeOp$0
-endsnippet
-
-snippet ';sm' "Shape operator in flat space" rA
-\shapeOpFlatMetr$0
-endsnippet
-
-snippet ';cf' "Conformal factor" rA
-\conformalFactor$0
-endsnippet
-
-snippet ';gcf' "Gradient field of the conformal factor" rA
-\grad{\conformalFactor}$0
-endsnippet
-
-snippet ';hcf' "Hessian form of the conformal factor" rA
-\hess{\conformalFactor}$0
-endsnippet
-
-snippet ';rm' "Riemannian Metric" rA
-\riemMetr[$1]($2)$0
-endsnippet
-
-snippet ';rc' "Riemannian Connection" rA
-\riemConn[$1]($2)$0
-endsnippet
-
-snippet ';fc' "Flat Connection" rA
-\flatConn[$1]($2)$0
-endsnippet
-
-snippet ';ip' "Inner Product" rA
-\innerProd[$1]($2)$0
-endsnippet
-
-snippet ';gsf' "Gradient Scalar Function" rA
-\gradScalFuncFlatMetric{$1}$0
+def get_citation_key(t):
+	from pathlib import Path
+	citkeys = [
+		"avila2022Analise",
+		"barboza2018Invariant",
+		"barboza2020Rigidity",
+		"barry2021Probabilidade",
+		"bartle1976Elements",
+		"bartle2011Introduction",
+		"berry2017LaTeX2",
+		"besse2008EinsteinManifolds",
+		"bredon1972TransformationGroups",
+		"cao1994RicciCurvature",
+		"carmo1992RG",
+		"carmo2018DG",
+		"chacon2014ProGit",
+		"choquet2009GeneralRelativity",
+		"dajczer2021EinsteinSubmanifolds",
+		"dicks1989GroupsGraphs",
+		"dugundji1989Topology",
+		"einstein2005Relativity",
+		"figueiredo2008AnaliseI",
+		"garcia2018CohomogeneityOne",
+		"halasi2012Expansiveness",
+		"hawking2008LargeScale",
+		"herstein2010Topics",
+		"ilic2018MasteringVim",
+		"iwaniec2001GeometricTheory",
+		"kargapolov1979Fundamentals",
+		"kelley2017Topology",
+		"kobayashi1972TransformationGroups",
+		"kobayashi1981Flatness",
+		"kuhnel2015DifferentialGeometry",
+		"lamport1994LaTeX",
+		"landau1975ClassicalFields",
+		"lee2012SmoothManifolds",
+		"lima2020EspacosMetricos",
+		"lima2021AnaliseVolUm",
+		"lima2021ElementosTopologia",
+		"magalhaes2011Probabilidade",
+		"magnus1976Combinatorial",
+		"mounoud2003Properties",
+		"mounoud2014Isometries",
+		"munkres2000Topology",
+		"neil2015PracticalVim",
+		"nomizu1969Formula",
+		"oneill1983SemiRiemannian",
+		"pugh2015Analysis",
+		"robinson1996Groups",
+		"ross2009Statistics",
+		"ross2010Probability",
+		"rotman1995Groups",
+		"rudin2017Principles",
+		"segal1983Polycyclic",
+		"simons1968MinimalVarieties",
+		"srivastava1998BorelSets",
+		"tenenblatketi2022Introducao",
+		"tokura2019WarpedProduct",
+		"tokura2022Finslerian",
+		"zhang2008RicciSolitons",
+	]
+	bibfile = Path("~/.local/share/references/main.bib").expanduser()
+	if bibfile.exists() and bibfile.is_file():
+		citkeys = []
+		reckeys = re.compile(r"@(?:article|book){([A-Za-z0-9]+),")
+		with open(bibfile, "r") as stream:
+			citkeys = reckeys.findall(stream.read())
+	if t:
+		citkeys = [ m[len(t):] for m in citkeys if m.startswith(t) ]
+	if len(citkeys) == 1:
+		return citkeys[0]
+	else:
+		return ", ".join(citkeys)
+`$1`!p snip.rv = get_citation_key(t[1])`
 endsnippet

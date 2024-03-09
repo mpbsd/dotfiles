@@ -17,7 +17,7 @@ return {
     luasnip_loaders_from_lua.load({
       paths = '~/.config/nvim/lua/mpbsd/snip/'
     })
-    globals.vim_keymap_set({
+    globals.nvim_set_keymaps({
       -- keymaps {{{
       {
         mod = 'i',
