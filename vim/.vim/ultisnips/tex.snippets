@@ -2,19 +2,26 @@ snippet '( )?;`im' "inline math mode" rA
 `!p
 opening = r" \( " if match.group(1) is None else r"\( "
 closing = r" \)"
-snip.rv = opening
-`${1:${VISUAL}}`!p snip.rv = closing`$0
+snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
-snippet '(^)?;`dm' "display math mode" rA
+snippet '(^\s*)?;([^`]+)?`dm' "display math mode" rA
 `!p
-opening = "\n" + r"\[" + "\n\t" if match.group(1) is None else r"\[" + "\n\t"
-closing = "\n" + r"\]"
-snip.rv = opening
-`${1:${VISUAL}}`!p snip.rv = closing`$0
+if snip.c == "":
+	nspc = int(vim.eval("indent('.')"))
+	ntab = 2
+	if match.group(1) is None:
+		opening = "\n" + nspc*" " + r"\[" + "\n" + (nspc + ntab)*" "
+		closing = "\n" + nspc*" " + r"\]"
+	else:
+		opening = r"\[" + "\n" + ntab*" "
+		closing = "\n" + r"\]"
+	content = snip.v.text if match.group(2) is None else match.group(2)
+	snip.rv = opening
+`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
 endsnippet
 
-snippet ';(c[dfgjlpsuwxy]|l[abdefghijklmnpqrstuwxyz]|v[efjr])`gl' "alphabet" rA
+snippet ';(c[dfgjlpsuwxy]|l[abdefghijklmnpqrstuwxyz]|v[efjr])`' "alphabet" rA
 `!p
 alphabet = {
 	"cd": r"\Delta",
@@ -60,7 +67,7 @@ snip.rv = alphabet[match.group(1)]
 `$0
 endsnippet
 
-snippet ';([bs])([abcp])`enc' "enclosings" rA
+snippet ';([bs])([abcp])([^`]+)?`enc' "enclosings" rA
 `!p
 enclosing = {
 	"a": {
@@ -106,7 +113,8 @@ enclosing = {
 }
 opening = enclosing[match.group(2)][match.group(1)]["opening"]
 closing = enclosing[match.group(2)][match.group(1)]["closing"]
-snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
+content = snip.v.text if match.group(3) is None else match.group(3)
+snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
 endsnippet
 
 snippet ';([nzqrc])`set' "numeric sets" rA
@@ -143,7 +151,7 @@ snip.rv = spaceform + r"^{" + dimension + r"}"
 `$0
 endsnippet
 
-snippet ';([lg][te])([^`]+)`cmp' "comparisons" rA
+snippet ';([lg][te])([^`]+)?`cmp' "comparisons" rA
 `!p
 relation = {
   "lt": r"<",
@@ -151,7 +159,7 @@ relation = {
   "le": r"\leqslant",
   "ge": r"\geqslant",
 }
-quantity = match.group(2)
+quantity = snip.v.text if match.group(2) is None else match.group(2)
 snip.rv = r" " + relation[match.group(1)] + r" " + quantity
 `$0
 endsnippet
@@ -213,4 +221,80 @@ snip.rv = r"\sum_{" + index_var + r"=" + lower_ind + r"}^{" + upper_ind + r"}"
 `$0
 endsnippet
 
-
+snippet ';ck' "citation key" rA
+`!p
+def get_citation_key(t):
+	from pathlib import Path
+	citkeys = [
+		"avila2022Analise",
+		"barboza2018Invariant",
+		"barboza2020Rigidity",
+		"barry2021Probabilidade",
+		"bartle1976Elements",
+		"bartle2011Introduction",
+		"berry2017LaTeX2",
+		"besse2008EinsteinManifolds",
+		"bredon1972TransformationGroups",
+		"cao1994RicciCurvature",
+		"carmo1992RG",
+		"carmo2018DG",
+		"chacon2014ProGit",
+		"choquet2009GeneralRelativity",
+		"dajczer2021EinsteinSubmanifolds",
+		"dicks1989GroupsGraphs",
+		"dugundji1989Topology",
+		"einstein2005Relativity",
+		"figueiredo2008AnaliseI",
+		"garcia2018CohomogeneityOne",
+		"halasi2012Expansiveness",
+		"hawking2008LargeScale",
+		"herstein2010Topics",
+		"ilic2018MasteringVim",
+		"iwaniec2001GeometricTheory",
+		"kargapolov1979Fundamentals",
+		"kelley2017Topology",
+		"kobayashi1972TransformationGroups",
+		"kobayashi1981Flatness",
+		"kuhnel2015DifferentialGeometry",
+		"lamport1994LaTeX",
+		"landau1975ClassicalFields",
+		"lee2012SmoothManifolds",
+		"lima2020EspacosMetricos",
+		"lima2021AnaliseVolUm",
+		"lima2021ElementosTopologia",
+		"magalhaes2011Probabilidade",
+		"magnus1976Combinatorial",
+		"mounoud2003Properties",
+		"mounoud2014Isometries",
+		"munkres2000Topology",
+		"neil2015PracticalVim",
+		"nomizu1969Formula",
+		"oneill1983SemiRiemannian",
+		"pugh2015Analysis",
+		"robinson1996Groups",
+		"ross2009Statistics",
+		"ross2010Probability",
+		"rotman1995Groups",
+		"rudin2017Principles",
+		"segal1983Polycyclic",
+		"simons1968MinimalVarieties",
+		"srivastava1998BorelSets",
+		"tenenblatketi2022Introducao",
+		"tokura2019WarpedProduct",
+		"tokura2022Finslerian",
+		"zhang2008RicciSolitons",
+	]
+	bibfile = Path("~/.local/share/references/main.bib").expanduser()
+	if bibfile.exists() and bibfile.is_file():
+		citkeys = []
+		reckeys = re.compile(r"@(?:article|book){([A-Za-z0-9]+),")
+		with open(bibfile, "r") as stream:
+			citkeys = reckeys.findall(stream.read())
+	if t:
+		citkeys = [ m[len(t):] for m in citkeys if m.startswith(t) ]
+	if len(citkeys) == 1:
+		return citkeys[0]
+	else:
+		return ", ".join(citkeys)
+`$1`!p snip.rv = get_citation_key(t[1])`
+endsnippet
