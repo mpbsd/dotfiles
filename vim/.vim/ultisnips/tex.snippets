@@ -1,12 +1,12 @@
-snippet '(\S)?;([^`]+)?`im' "inline math mode" rA
+snippet '(\S)?;([^;`]+)?`im' "inline math mode" rA
 `!p
-opening = r"\( " if match.group(1) is None else match.group(1) + r" \( "
-closing = r" \)"
+opening = r"$ " if match.group(1) is None else match.group(1) + r" $ "
+closing = r" $"
 content = snip.v.text if match.group(2) is None else match.group(2)
 snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
 endsnippet
 
-snippet '(^\s*)?;([^`]+)?`dm' "display math mode" rA
+snippet '(^\s*)?;([^;`]+)?`dm' "display math mode" rA
 `!p
 if snip.c == "":
 	nspc = int(vim.eval("indent('.')"))
@@ -68,7 +68,7 @@ snip.rv = alphabet[match.group(1)]
 `$0
 endsnippet
 
-snippet ';([bs])([abcp])([^`]+)?`enc' "enclosings" rA
+snippet 's;([^;`]+)?`([bs])([abcp])' "surroundings" rA
 `!p
 enclosing = {
 	"a": {
@@ -112,26 +112,26 @@ enclosing = {
 		},
 	},
 }
-opening = enclosing[match.group(2)][match.group(1)]["opening"]
-closing = enclosing[match.group(2)][match.group(1)]["closing"]
-content = snip.v.text if match.group(3) is None else match.group(3)
-snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+opening = enclosing[match.group(3)][match.group(2)]["opening"]
+closing = enclosing[match.group(3)][match.group(2)]["closing"]
+content = snip.v.text if match.group(1) is None else match.group(1)
+snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`
 endsnippet
 
-snippet ';([nzqrc])`set' "numeric sets" rA
+snippet '`([nzqrc]{2})' "numeric sets" rA
 `!p
 numericset = {
-	"n": r"\mathbb{N}",
-	"z": r"\mathbb{Z}",
-	"q": r"\mathbb{Q}",
-	"r": r"\mathbb{R}",
-	"c": r"\mathbb{C}",
+	"nn": r"\mathbb{N}",
+	"zz": r"\mathbb{Z}",
+	"qq": r"\mathbb{Q}",
+	"rr": r"\mathbb{R}",
+	"cc": r"\mathbb{C}",
 }
 snip.rv = numericset[match.group(1)]
 `$0
 endsnippet
 
-snippet ';([^,]+),([^`]+)`set' "set by property" rA
+snippet 'set ([^;]+) st ([^`]+)`' "specifying a set by property" rA
 `!p
 elements = match.group(1)
 property = match.group(2)
@@ -139,41 +139,53 @@ snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
 `$0
 endsnippet
 
-snippet ';([ehs])([^`]+)`spf' "space forms" rA
+snippet ';([ehs]{2})([^`]+)`' "space forms" ra
 `!p
 model = {
-	"e": r"\mathbb{R}",
-	"h": r"\mathbb{H}",
-	"s": r"\mathbb{S}",
+	"ee": r"\mathbb{R}",
+	"hh": r"\mathbb{H}",
+	"ss": r"\mathbb{S}",
 }
 spaceform = model[match.group(1)]
 dimension = match.group(2)
 snip.rv = spaceform + r"^{" + dimension + r"}"
-`$0
+`
 endsnippet
 
-snippet ';([lg][te])([^`]+)?`cmp' "comparisons" rA
+snippet 'cmp;([^;\s]+) ([lg][et]) ([^\s;]+);' "comparissons" rA
 `!p
-relation = {
-  "lt": r"<",
-  "gt": r">",
-  "le": r"\leqslant",
-  "ge": r"\geqslant",
+REL = {
+	"le": r"\leqslant",
+	"lt": r"<",
+	"ge": r"\geqslant",
+	"gt": r">",
 }
-quantity = snip.v.text if match.group(2) is None else match.group(2)
-snip.rv = r" " + relation[match.group(1)] + r" " + quantity
-`$0
+lhs = match.group(1)
+rel = REL[match.group(2)]
+rhs = match.group(3)
+snip.rv = lhs + " " + rel + " " + rhs
+`
 endsnippet
 
-snippet ';([^`]+)`su([bp])' "su(per|b)script" rA
+snippet 'fr;(\S+) ([^\s;]+);' "fractions" rA
 `!p
-thing = match.group(1)
-index = r"_" if match.group(2) == "b" else r"^"
-snip.rv = index + r"{" + thing + r"}"
+num = match.group(1)
+den = match.group(2)
+snip.rv = r"\frac{" + num + r"}{" + den + r"}"
+`
+endsnippet
+
+snippet 'su([bp]);([^;`]+)`' "su(per|b)script" rA
+`!p
+index = {
+	"b": r"_",
+	"p": r"^",
+}
+snip.rv = index[match.group(1)] + r"{" + match.group(2) + r"}"
 `$0
 endsnippet
 
-snippet ';(in|owns|subset|contains)' "relationship" rA
+snippet 'rel;(in|owns|subset|contains)' "relationship" rA
 `!p snip.rv = "\\" + match.group(1)`{$1}$0
 endsnippet
 
@@ -181,12 +193,6 @@ snippet ';env' "environment" rA
 \begin{$1}
 	$2
 \end{$1}$0
-endsnippet
-
-snippet ';eq ([a-z ]+);' "equation environment" rA
-\begin{equation}\label{eq:`!p snip.rv = match.group(1).replace(' ', '-')`}
-	$2
-\end{equation}$0
 endsnippet
 
 snippet ';array' "array environment" rA
@@ -213,7 +219,7 @@ snip.rv = sec_title + sec_label + "\n\n"
 `$0
 endsnippet
 
-snippet ';(([^,]+),([^,]+),([^`]+))?`tup' "tuples" rA
+snippet ';(([^,]+),([^,]+),([^;`]+))?`tup' "tuples" rA
 `!p
 if match.group(1):
 	v = match.group(2)  # variable
@@ -225,15 +231,31 @@ else:
 `
 endsnippet
 
-snippet ';(([^,]+),([^,]+),([^,]+),([^`]+))?`sum' "summation over an index" rA
+snippet ';(([^,]+),([^,]+),([^,]+),([^;`]+))?`sum' "summation over an index" rA
 `!p
 if match.group(1):
-	v = match.group(1)  # variable
-	l = match.group(2)  # lower
-	u = match.group(3)  # upper
-	s = match.group(4)  # summand
-	snip.rv = rf"\sum_{{v}={l}}^{{u}}{s}"
+	v = match.group(2)  # variable
+	l = match.group(3)  # lower
+	u = match.group(4)  # upper
+	s = match.group(5)  # summand
+	snip.rv = r"\sum_{" + v + r"=" + l + r"}^{" + u + r"}" + s
 `$0
+endsnippet
+
+snippet skel "skeleton" bA
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\innerprod}{\left\langle}{\right\rangle}
+
+\begin{document}
+
+\end{document}
 endsnippet
 
 snippet ';ck' "citation key" rA
