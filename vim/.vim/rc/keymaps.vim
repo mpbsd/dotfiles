@@ -253,10 +253,10 @@ let s:keymaps = [
       \    'des': 'remove graphical accents from the current buffer',
       \  },
       \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>dba',
-      \    'rhs': ':call VimDrawBoxAroundLaTeXCode()<cr>',
-      \    'des': 'draw a visual delimiter around LaTeX code',
+      \    'mod': 'insert',
+      \    'lhs': 'jj',
+      \    'rhs': '<esc>',
+      \    'des': 'back to normal mode',
       \  },
       \  {
       \    'mod': 'normal',
