@@ -458,6 +458,12 @@ function VimParseStudentsInfo() abort
   sil exe 'g/^\s*$/d'
 endfunction
 
+function VimEditLogbook(code) abort
+  let l:logbook = "~/templates/python/classes/pkgs/discipline/%s/logbook.py"
+  sil exe printf(":e %s", printf(l:logbook, a:code))
+  sil exe printf("/%s", system("date +'%Y-%m-%d'"))
+endfunction
+
 function VimCreateCatalogueForMe() abort
   sil exe 'norm ggd/<tbody>'
   sil exe 'norm Gd?<\/tbody>'
