@@ -248,15 +248,27 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>rsc',
+      \    'lhs': '<leader>rnac',
       \    'rhs': ':call VimRemoveNonASCIICharsFromCurrentBuffer()<cr>',
       \    'des': 'remove graphical accents from the current buffer',
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>dba',
-      \    'rhs': ':call VimDrawBoxAroundLaTeXCode()<cr>',
-      \    'des': 'draw a visual delimiter around LaTeX code',
+      \    'lhs': '<leader>e388',
+      \    'rhs': ':call VimEditLogbook("IME0388")<cr>',
+      \    'des': 'Edit IME0388 logbook file',
+      \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>e415',
+      \    'rhs': ':call VimEditLogbook("IME0415")<cr>',
+      \    'des': 'Edit IME0415 logbook file',
+      \  },
+      \  {
+      \    'mod': 'insert',
+      \    'lhs': 'jj',
+      \    'rhs': '<esc>',
+      \    'des': 'back to normal mode',
       \  },
       \  {
       \    'mod': 'normal',

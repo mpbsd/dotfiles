@@ -417,9 +417,14 @@ function VimCreateCSVFileWithDisciplines() abort
 endfunction
 
 function VimParseStudentsInfo() abort
+  let l:st = [
+        \  'visualizar parecer sobre necessidade educacional especial do aluno',
+        \  'enviar mensagem',
+        \  'usuario (on|off)-line no sigaa',
+        \]
   let l:re = {
         \  'lhs': [
-        \    '\v(enviar mensagem|usuario (on|off)-line no sigaa)',
+        \    printf("\\v(%s|%s|%s)", l:st[0], l:st[1], l:st[2]),
         \    '\v^ ([a-z ]+) \(perfil\)$',
         \    '\v^curso: ([a-z ]+)$',
         \    '\v^matricula: ([0-9]{9})$',
@@ -451,6 +456,12 @@ function VimParseStudentsInfo() abort
   sil g/"email"/s/$/\r"grade": {"E1": 0, "E2": 0, "E3": 0},/
   sil exe 'norm ggc/^"\d\{9}student = {Go}gg=G'
   sil exe 'g/^\s*$/d'
+endfunction
+
+function VimEditLogbook(code) abort
+  let l:logbook = "~/templates/python/classes/pkgs/discipline/%s/logbook.py"
+  sil exe printf(":e %s", printf(l:logbook, a:code))
+  sil exe printf("/%s", system("date +'%Y-%m-%d'"))
 endfunction
 
 function VimCreateCatalogueForMe() abort
