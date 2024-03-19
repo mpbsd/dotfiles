@@ -12,6 +12,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
 " Plug 'junegunn/seoul256.vim'
+" Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
 " Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'
@@ -30,8 +31,8 @@ call plug#end()
 
 let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']
 let g:UltiSnipsExpandTrigger       = '<tab>'
-let g:UltiSnipsJumpForwardTrigger  = '<c-n>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
+let g:UltiSnipsJumpForwardTrigger  = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 let g:UltiSnipsEditSplit           = 'tabdo'
 
 let s:wiki1 = {
