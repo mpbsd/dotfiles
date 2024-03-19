@@ -18,7 +18,7 @@
 [ "$#" -eq 1 ] || exit 10
 
 
-ROOT_DIR="${HOME}/templates/latex/github/cnotes"
+ROOT_DIR="${HOME}/templates/latex/cnotes"
 ROOT_JSON_FILE="${ROOT_DIR}/tex/index.json"
 ROOT_TEX_FILE="${ROOT_DIR}/tex/index.tex"
 

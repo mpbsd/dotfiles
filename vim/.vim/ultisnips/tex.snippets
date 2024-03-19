@@ -1,27 +1,3 @@
-snippet '(\S)?;([^;`]+)?`im' "inline math mode" rA
-`!p
-opening = r"$ " if match.group(1) is None else match.group(1) + r" $ "
-closing = r" $"
-content = snip.v.text if match.group(2) is None else match.group(2)
-snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
-endsnippet
-
-snippet '(^\s*)?;([^;`]+)?`dm' "display math mode" rA
-`!p
-if snip.c == "":
-	nspc = int(vim.eval("indent('.')"))
-	ntab = 2
-	if match.group(1) is None:
-		opening = "\n" + nspc*" " + r"\[" + "\n" + (nspc + ntab)*" "
-		closing = "\n" + nspc*" " + r"\]"
-	else:
-		opening = r"\[" + "\n" + ntab*" "
-		closing = "\n" + r"\]"
-	content = snip.v.text if match.group(2) is None else match.group(2)
-	snip.rv = opening
-`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
-endsnippet
-
 snippet ';(c[dfgjlpsuwxy]|l[abdefghijklmnpqrstuwxyz]|v[efjr])`' "alphabet" rA
 `!p
 alphabet = {
@@ -68,7 +44,31 @@ snip.rv = alphabet[match.group(1)]
 `$0
 endsnippet
 
-snippet 's;([^;`]+)?`([bs])([abcp])' "surroundings" rA
+snippet '(\S)?im;([^;`]+)?`' "inline math mode" rA
+`!p
+opening = r"$ " if match.group(1) is None else match.group(1) + r" $ "
+closing = r" $"
+content = snip.v.text if match.group(2) is None else match.group(2)
+snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+endsnippet
+
+snippet '(^\s*)?dm;([^;`]+)?`' "display math mode" rA
+`!p
+if snip.c == "":
+	nspc = int(vim.eval("indent('.')"))
+	ntab = 2
+	if match.group(1) is None:
+		opening = "\n" + nspc*" " + r"\[" + "\n" + (nspc + ntab)*" "
+		closing = "\n" + nspc*" " + r"\]"
+	else:
+		opening = r"\[" + "\n" + ntab*" "
+		closing = "\n" + r"\]"
+	content = snip.v.text if match.group(2) is None else match.group(2)
+	snip.rv = opening
+`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+endsnippet
+
+snippet 'sur;([^;`]+)?`([bs])([abcp])' "surroundings" rA
 `!p
 enclosing = {
 	"a": {
@@ -131,7 +131,7 @@ snip.rv = numericset[match.group(1)]
 `$0
 endsnippet
 
-snippet 'set ([^;]+) st ([^`]+)`' "specifying a set by property" rA
+snippet 'set;([^;]+);([^`]+)`' "specifying a set by property" rA
 `!p
 elements = match.group(1)
 property = match.group(2)
@@ -139,7 +139,7 @@ snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
 `$0
 endsnippet
 
-snippet ';([ehs]{2})([^`]+)`' "space forms" ra
+snippet 'spf;([ehs]{2})([^`]+)`' "space forms" ra
 `!p
 model = {
 	"ee": r"\mathbb{R}",
@@ -219,7 +219,7 @@ snip.rv = sec_title + sec_label + "\n\n"
 `$0
 endsnippet
 
-snippet ';(([^,]+),([^,]+),([^;`]+))?`tup' "tuples" rA
+snippet 'tup;(([^,]+),([^,]+),([^;`]+))?`' "tuples" rA
 `!p
 if match.group(1):
 	v = match.group(2)  # variable
@@ -231,7 +231,7 @@ else:
 `
 endsnippet
 
-snippet ';(([^,]+),([^,]+),([^,]+),([^;`]+))?`sum' "summation over an index" rA
+snippet 'sum;(([^,]+),([^,]+),([^,]+),([^;`]+))?`' "summation over an index" rA
 `!p
 if match.group(1):
 	v = match.group(2)  # variable
