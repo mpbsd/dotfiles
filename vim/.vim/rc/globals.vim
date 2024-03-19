@@ -460,8 +460,8 @@ endfunction
 
 function VimEditLogbook(code) abort
   let l:logbook = "~/templates/python/classes/pkgs/discipline/%s/logbook.py"
-  sil exe printf(":e %s", printf(l:logbook, a:code))
-  sil exe printf("/%s", system("date +'%Y-%m-%d'"))
+  let l:date = system("date +'%Y-%m-%d'")
+  sil exe printf(":e +/%s %s", l:date, printf(l:logbook, a:code))
 endfunction
 
 function VimCreateCatalogueForMe() abort
