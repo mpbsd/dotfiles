@@ -1,40 +1,40 @@
 snippet '([DFGJLPSUWXY]|[abdefghijklmnpqrstuwxyz]|v[efjr])`' "alphabet" rA
 `!p
 alphabet = {
-	"D": r"\Delta",
-	"F": r"\Phi",
-	"G": r"\Gamma",
-	"J": r"\Theta",
-	"L": r"\Lambda",
-	"P": r"\Pi",
-	"S": r"\Sigma",
-	"U": r"\Upsilon",
-	"W": r"\Omega",
-	"X": r"\Xi",
-	"Y": r"\Psi",
-	"a": r"\alpha",
-	"b": r"\beta",
-	"d": r"\delta",
-	"e": r"\epsilon",
-	"f": r"\phi",
-	"g": r"\gamma",
-	"h": r"\eta",
-	"i": r"\iota",
-	"j": r"\theta",
-	"k": r"\kappa",
-	"l": r"\lambda",
-	"m": r"\mu",
-	"n": r"\nu",
-	"p": r"\pi",
-	"q": r"\chi",
-	"r": r"\rho",
-	"s": r"\sigma",
-	"t": r"\tau",
-	"u": r"\upsilon",
-	"w": r"\omega",
-	"x": r"\xi",
-	"y": r"\psi",
-	"z": r"\zeta",
+	"D" : r"\Delta",
+	"F" : r"\Phi",
+	"G" : r"\Gamma",
+	"J" : r"\Theta",
+	"L" : r"\Lambda",
+	"P" : r"\Pi",
+	"S" : r"\Sigma",
+	"U" : r"\Upsilon",
+	"W" : r"\Omega",
+	"X" : r"\Xi",
+	"Y" : r"\Psi",
+	"a" : r"\alpha",
+	"b" : r"\beta",
+	"d" : r"\delta",
+	"e" : r"\epsilon",
+	"f" : r"\phi",
+	"g" : r"\gamma",
+	"h" : r"\eta",
+	"i" : r"\iota",
+	"j" : r"\theta",
+	"k" : r"\kappa",
+	"l" : r"\lambda",
+	"m" : r"\mu",
+	"n" : r"\nu",
+	"p" : r"\pi",
+	"q" : r"\chi",
+	"r" : r"\rho",
+	"s" : r"\sigma",
+	"t" : r"\tau",
+	"u" : r"\upsilon",
+	"w" : r"\omega",
+	"x" : r"\xi",
+	"y" : r"\psi",
+	"z" : r"\zeta",
 	"ve": r"\varepsilon",
 	"vf": r"\varphi",
 	"vj": r"\vartheta",
@@ -44,28 +44,39 @@ snip.rv = alphabet[match.group(1)]
 `$0
 endsnippet
 
-snippet '(\S)?im;([^;`]+)?`' "inline math mode" rA
+snippet '(n|z|q|r|c|e|h|s)\1([^;]+)?;' "important sets" rA
 `!p
-opening = r"$ " if match.group(1) is None else match.group(1) + r" $ "
-closing = r" $"
-content = snip.v.text if match.group(2) is None else match.group(2)
-snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+set = {
+	"n": r"\mathbb{N}",
+	"z": r"\mathbb{Z}",
+	"q": r"\mathbb{Q}",
+	"r": r"\mathbb{R}",
+	"c": r"\mathbb{C}",
+	"e": r"\mathbb{R}",
+	"h": r"\mathbb{H}",
+	"s": r"\mathbb{S}",
+}
+if match.group(2):
+	snip.rv = set[match.group(1)] + r"^{" + match.group(2) + r"}"
+else:
+	snip.rv = set[match.group(1)]
+`$0
 endsnippet
 
-snippet '(^\s*)?dm;([^;`]+)?`' "display math mode" rA
+snippet '(\S)?;im' "inline math mode" rA
 `!p
-if snip.c == "":
-	nspc = int(vim.eval("indent('.')"))
-	ntab = 2
-	if match.group(1) is None:
-		opening = "\n" + nspc*" " + r"\[" + "\n" + (nspc + ntab)*" "
-		closing = "\n" + nspc*" " + r"\]"
-	else:
-		opening = r"\[" + "\n" + ntab*" "
-		closing = "\n" + r"\]"
-	content = snip.v.text if match.group(2) is None else match.group(2)
-	snip.rv = opening
-`${1:`!p snip.rv = content`}`!p snip.rv = closing`$0
+if match.group(1):
+	snip.rv = match.group(1) + " "
+`\(${1:${VISUAL}}\)$0
+endsnippet
+
+snippet '(^\s*)?;dm' "display math mode" rA
+`!p
+if match.group(1) is None:
+	snip.rv = "\n"
+`\[
+	${1:${VISUAL}}
+\]$0
 endsnippet
 
 snippet 'sur;([^;`]+)?`([bs])([abcp])' "surroundings" rA
@@ -118,18 +129,6 @@ content = snip.v.text if match.group(1) is None else match.group(1)
 snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`
 endsnippet
 
-snippet '`([nzqrc]{2})' "numeric sets" rA
-`!p
-numericset = {
-	"nn": r"\mathbb{N}",
-	"zz": r"\mathbb{Z}",
-	"qq": r"\mathbb{Q}",
-	"rr": r"\mathbb{R}",
-	"cc": r"\mathbb{C}",
-}
-snip.rv = numericset[match.group(1)]
-`$0
-endsnippet
 
 snippet 'set;([^;]+);([^`]+)`' "specifying a set by property" rA
 `!p
@@ -137,19 +136,6 @@ elements = match.group(1)
 property = match.group(2)
 snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
 `$0
-endsnippet
-
-snippet 'spf;([ehs]{2})([^`]+)`' "space forms" ra
-`!p
-model = {
-	"ee": r"\mathbb{R}",
-	"hh": r"\mathbb{H}",
-	"ss": r"\mathbb{S}",
-}
-spaceform = model[match.group(1)]
-dimension = match.group(2)
-snip.rv = spaceform + r"^{" + dimension + r"}"
-`
 endsnippet
 
 snippet 'cmp;([^;\s]+) ([lg][et]) ([^\s;]+);' "comparissons" rA
