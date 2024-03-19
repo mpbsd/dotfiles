@@ -459,9 +459,9 @@ function VimParseStudentsInfo() abort
 endfunction
 
 function VimEditLogbook(code) abort
-  let l:logbook = "~/templates/python/classes/pkgs/discipline/%s/logbook.py"
   let l:date = system("date +'%Y-%m-%d'")
-  sil exe printf(":e +/%s %s", l:date, printf(l:logbook, a:code))
+  let l:file = "~/templates/python/classes/pkgs/discipline/%s/logbook.py"
+  sil exe printf(":e +/%s %s", l:date, expand(printf(l:file, a:code)))
 endfunction
 
 function VimCreateCatalogueForMe() abort
