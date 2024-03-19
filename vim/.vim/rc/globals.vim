@@ -50,7 +50,7 @@ function VimSetKeymaps(keymaps) abort
   endfor
 endfunction
 
-function VimSetLaTeXKeymaps() abort
+function VimSetTeXMaps() abort
   " s:keymaps {{{
   let l:keymaps = [
         \  {
@@ -265,7 +265,7 @@ endfunction
 function VimSetStatusline() abort
   let l:bufnr = '[%n]'
   let l:mode = '%{VimGetCurrentMode(mode())}'
-  let l:filename_tail = '%t'
+  let l:tail_of_filename = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='
   let l:fileencoding = '%{&fileencoding}'
@@ -273,18 +273,19 @@ function VimSetStatusline() abort
   let l:file_type = '%Y'
   let l:percentage_through_file = '%P'
   let l:line_and_column_numbers = '(%06l:%06c)'
-  let l:statusline = join([
+  let l:statusline = printf(
+        \  "%s %s %s %s %s %s %s %s %s %s",
         \  l:bufnr,
         \  l:mode,
-        \  l:filename_tail,
+        \  l:tail_of_filename,
         \  l:modified_flag,
         \  l:lhs_rhs_separator,
         \  l:fileencoding,
         \  l:fileformat,
         \  l:file_type,
         \  l:percentage_through_file,
-        \  l:line_and_column_numbers
-        \])
+        \  l:line_and_column_numbers,
+        \)
   return l:statusline
 endfunction
 
@@ -293,6 +294,7 @@ function VimSetColorscheme() abort
         \  'habamax',
         \  'lunaperche',
         \  'slate',
+        \  'quiet',
         \]
   let l:choice = rand(srand()) % len(l:colorscheme)
   exe printf("colorscheme %s", l:colorscheme[l:choice])
