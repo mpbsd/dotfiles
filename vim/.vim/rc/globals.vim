@@ -88,6 +88,13 @@ function VimSetTeXMaps() abort
   cal VimSetKeymaps(l:keymaps)
 endfunction
 
+function VimAutoFormatTeXCodeOnEverySave() abort
+  let l:pos = getpos('.')
+  sil exe 'norm gg=G'
+  cal setpos('.', l:pos)
+  sil exe 'norm zz'
+endfunction
+
 function VimSetAnAutocmd(augroup, events, pattern, action) abort
   exe printf("augroup %s", a:augroup)
   autocmd!
