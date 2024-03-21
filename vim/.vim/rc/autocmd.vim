@@ -49,6 +49,12 @@ let s:autocmds = [
       \    'action': ':call VimSetTeXMaps()'
       \  },
       \  {
+      \    'augroup': 'autoformat_tex_code_on_every_save',
+      \    'events': 'BufWritePre',
+      \    'pattern': '*.tex',
+      \    'action': ':call VimAutoFormatTeXCodeOnEverySave()'
+      \  },
+      \  {
       \    'augroup': 'install_missing_plugins',
       \    'events': 'VimEnter',
       \    'pattern': '*',
