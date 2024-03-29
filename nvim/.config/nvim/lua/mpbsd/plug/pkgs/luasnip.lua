@@ -6,16 +6,16 @@ return {
     local luasnip = require('luasnip')
     local luasnip_loaders_from_lua = require('luasnip.loaders.from_lua')
     local globals = require('mpbsd.core.opts.globals')
-    luasnip.setup({  -- {{{
+    luasnip.setup({ -- {{{
       enable_autosnippets  = true,
       history              = true,
       store_selection_keys = '<tab>',
       updateevents         = 'TextChanged,TextChangedI',
-    })  -- }}}
-    luasnip_loaders_from_lua.load({  -- {{{
+    })                              -- }}}
+    luasnip_loaders_from_lua.load({ -- {{{
       paths = '~/.config/nvim/lua/mpbsd/snip/'
-    })  -- }}}
-    globals.nvim_set_keymaps({  -- {{{
+    })                              -- }}}
+    globals.nvim_set_keymaps({      -- {{{
       {
         mod = 'i',
         lhs = '<tab>',
@@ -46,6 +46,6 @@ return {
           desc = 'Jump to the previous node',
         }
       }
-    })  -- }}}
+    }) -- }}}
   end
 }

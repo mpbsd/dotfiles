@@ -105,7 +105,7 @@ return {
         },
       },
     })
-    globals.nvim_set_keymaps({  -- {{{
+    globals.nvim_set_keymaps({ -- {{{
       {
         mod = { 'n', 'x', 'o' },
         lhs = ';',
@@ -142,6 +142,6 @@ return {
         rhs = rept_move.builtin_T,
         opt = {}
       },
-    })  -- }}}
+    }) -- }}}
   end
 }
