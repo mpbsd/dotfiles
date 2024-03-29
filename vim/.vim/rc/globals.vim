@@ -352,14 +352,46 @@ function VimInstallMissingPlugins() abort
   endif
 endfunction
 
+function VimParseTransactions() abort
+  let l:re = {
+        \  'date': [
+        \    '\(0[1-9]\|[12][0-9]\|3[01]\)',
+        \    '\(0[1-9]\|1[012]\)',
+        \    '\(20\(2[4-9]\|[3-9][0-9]\)\)'
+        \  ],
+        \  'time': '\([01][0-9]\|2[0-3]\):\([0-5][0-9]\)',
+        \  'delete_these_lines': [
+        \    '\(n° documento',
+        \    'saldo anterior',
+        \    '00/00/0000',
+        \    'saldo do dia',
+        \    's a l d o\)',
+        \  ],
+        \}
+  sil exe 'norm guip'
+  cal VimRemoveNonASCIICharsFromCurrentBuffer()
+  sil exe printf("1,$s@%s@%s@", join(l:re['date'], '/'), '\3-\2-\1')
+  sil exe printf("g@%s@d", join(l:re['delete_these_lines'], '\|'))
+  sil 1,$s/\.//g
+  sil 1,$s/\(-\?\d\+\),\(\d\{2}\)/\1\.\2/
+  sil 1,$s/,"\d\+",/,/
+  sil 1,$s/"recebimento de proventos"/"income"/
+  sil 1,$s/"compra com cartao"/"expenses:debit"/
+  sil 1,$s/"pix - enviado"/"expenses:pix"/
+  sil 1,$s/"pagto cartao credito"/"liability:credit_card"/
+  sil 1,$s/"pagto energia eletrica"/"liability:electricity"/
+  sil 1,$s/"pagamento fatura de agua"/"liability:water"/
+  sil g/"adufg"/s/"debito autorizado"/"liability:health_care"/
+endfunction
+
 function VimGetBibTeXCitationKeys() abort
-  " This functions depends on TPope's vim-dadbod
+  " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
   sil exe printf("DB sqlite:%s select key, year, title from ref", l:db)
 endfunction
 
 function VimQueryBibTeXDatabase(query) abort
-  " This functions depends on TPope's vim-dadbod
+  " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
   sil exe printf("DB sqlite:%s select * from ref where %s", l:db, a:query)
 endfunction

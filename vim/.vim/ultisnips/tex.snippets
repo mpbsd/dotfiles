@@ -14,7 +14,7 @@ if match.group(1) is None:
 \]$0
 endsnippet
 
-snippet '([DFGJLPSUWXY]|[abdefghijklmnpqrstuwxyz]|v[efjr])`' "alphabet" rA
+snippet ';gl([DFGJLPSUWXY]|[abdefghijklmnpqrstuwxyz]|v[efjr])`' "alphabet" rA
 `!p
 alphabet = {
 	"D" : r"\Delta",
@@ -60,7 +60,7 @@ snip.rv = alphabet[match.group(1)]
 `$0
 endsnippet
 
-snippet '(n|z|q|r|c|e|h|s)\1([^;]+)?;' "important sets" rA
+snippet ';num(n|z|q|r|c)\1([^;]+)?;' "numerical sets" rA
 `!p
 set = {
 	"n": r"\mathbb{N}",
@@ -68,9 +68,6 @@ set = {
 	"q": r"\mathbb{Q}",
 	"r": r"\mathbb{R}",
 	"c": r"\mathbb{C}",
-	"e": r"\mathbb{R}",
-	"h": r"\mathbb{H}",
-	"s": r"\mathbb{S}",
 }
 if match.group(2):
 	snip.rv = set[match.group(1)] + r"^{" + match.group(2) + r"}"
@@ -79,7 +76,34 @@ else:
 `$0
 endsnippet
 
-snippet 'sur;([^;`]+)?`([bs])([abcp])' "surroundings" rA
+snippet ';spf(e|h|s)\1([^;]+);' "space forms" rA
+`!p
+set = {
+	"e": r"\mathbb{R}",
+	"h": r"\mathbb{H}",
+	"s": r"\mathbb{S}",
+}
+snip.rv = set[match.group(1)] + r"^{" + match.group(2) + r"}"
+`
+endsnippet
+
+snippet ';set([^;]+);([^;]+);' "set by property" rA
+`!p
+elements = match.group(1)
+property = match.group(2)
+snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
+`
+endsnippet
+
+snippet ';fr([^;]+);([^;]+);' "fractions" rA
+`!p
+num = match.group(1)
+den = match.group(2)
+snip.rv = r"\frac{" + num + r"}{" + den + r"}"
+`
+endsnippet
+
+snippet ';sur([^;]+);([bs])([abcp])' "surroundings" rA
 `!p
 enclosing = {
 	"a": {
@@ -126,19 +150,10 @@ enclosing = {
 opening = enclosing[match.group(3)][match.group(2)]["opening"]
 closing = enclosing[match.group(3)][match.group(2)]["closing"]
 content = snip.v.text if match.group(1) is None else match.group(1)
-snip.rv = opening`${1:`!p snip.rv = content`}`!p snip.rv = closing`
+snip.rv = opening + content + closing`
 endsnippet
 
-
-snippet 'set;([^;]+);([^`]+)`' "specifying a set by property" rA
-`!p
-elements = match.group(1)
-property = match.group(2)
-snip.rv = r"\left\{" + elements + r":" + property + r"\right\}"
-`$0
-endsnippet
-
-snippet 'cmp;([^;\s]+) ([lg][et]) ([^\s;]+);' "comparissons" rA
+snippet ';cmp([^;]+);([lg][et]);([^\s`]+)`' "comparissons" rA
 `!p
 REL = {
 	"le": r"\leqslant",
@@ -149,19 +164,11 @@ REL = {
 lhs = match.group(1)
 rel = REL[match.group(2)]
 rhs = match.group(3)
-snip.rv = lhs + " " + rel + " " + rhs
+snip.rv = "{" + lhs + "}" + rel + "{" + rhs + "}"
 `
 endsnippet
 
-snippet 'fr;(\S+) ([^\s;]+);' "fractions" rA
-`!p
-num = match.group(1)
-den = match.group(2)
-snip.rv = r"\frac{" + num + r"}{" + den + r"}"
-`
-endsnippet
-
-snippet 'su([bp]);([^;`]+)`' "su(per|b)script" rA
+snippet ';su([bp])([^;]+);' "su(per|b)script" rA
 `!p
 index = {
 	"b": r"_",
@@ -171,8 +178,24 @@ snip.rv = index[match.group(1)] + r"{" + match.group(2) + r"}"
 `$0
 endsnippet
 
-snippet 'rel;(in|owns|subset|contains)' "relationship" rA
-`!p snip.rv = "\\" + match.group(1)`{$1}$0
+snippet ';rel(in|owns|subset|contains)([^;]+);' "relationship" rA
+`!p snip.rv = r"\%s{%s}" % (match.group(1), match.group(2))`
+endsnippet
+
+snippet '^(def|pro|lem|thm|cor|rmk)' "environment with labels" rA
+`!p
+ENV = {
+	"def": "definition",
+	"pro": "proposition",
+	"lem": "lemma",
+	"thm": "theorem",
+	"cor": "corollary",
+	"rmk": "remark",
+}
+env = ENV[match.group(1)]
+`\begin{`!p snip.rv = env`}\label{`!p snip.rv = match.group(1)`:$1}
+  $2
+\end{`!p snip.rv = env`}$0
 endsnippet
 
 snippet ';env' "environment" rA
@@ -205,19 +228,18 @@ snip.rv = sec_title + sec_label + "\n\n"
 `$0
 endsnippet
 
-snippet 'tup;(([^,]+),([^,]+),([^;`]+))?`' "tuples" rA
+snippet ';tup([^;]+);([^;]+);([^;]+);' "tuples" rA
 `!p
-if match.group(1):
-	v = match.group(2)  # variable
-	l = match.group(4)  # lower
-	u = match.group(3)  # upper
-	snip.rv = rf"({v}_{{l}},\ldots,{v}_{{u}})"
-else:
-	snip.rv = r"(x_{1},\ldots,x_{n})"
+v = match.group(1)
+l = match.group(2)
+u = match.group(3)
+o = r"\left("
+c = r"\right)"
+snip.rv = o + v + r"_{" + l + r"},\ldots," + v + r"_{" + u + r"}" + c
 `
 endsnippet
 
-snippet 'sum;(([^,]+),([^,]+),([^,]+),([^;`]+))?`' "summation over an index" rA
+snippet ';sum([^,]+),([^,]+),([^,]+);' "summation over an index" rA
 `!p
 if match.group(1):
 	v = match.group(2)  # variable
