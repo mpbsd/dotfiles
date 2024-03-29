@@ -1,6 +1,5 @@
 local options = {
-  glo = {
-    -- options {{{
+  glo = {  -- {{{
     cmd = vim.g,
     cfg = {
       mapleader = ' ',
@@ -10,11 +9,9 @@ local options = {
       loaded_ruby_provider = 0,
       node_host_prog = '/usr/bin/npm',
       python3_host_prog = '/usr/bin/python3',
-    }
-    -- }}}
+    }  -- }}}
   },
-  opt = {
-    -- options {{{
+  opt = {  -- {{{
     cmd = vim.opt,
     cfg = {
       number = true,
@@ -38,16 +35,13 @@ local options = {
       termguicolors = true,
       spelllang = { 'en_us', 'pt_br' },
       spellsuggest = { 'fast', '10' },
-    }
-    -- }}}
+    }  -- }}}
   },
-  env = {
-    -- options {{{
+  env = {  -- {{{
     cmd = vim.env,
     cfg = {
       SHELL = '/usr/bin/bash',
-    }
-    -- }}}
+    }  -- }}}
   }
 }
 

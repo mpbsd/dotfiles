@@ -1,7 +1,6 @@
 local globals = require('mpbsd.core.opts.globals')
 
--- autocmds {{{
-local autocmds = {
+local autocmds = {  -- {{{
   {
     event = { 'BufWritePre' },
     opts = {
@@ -18,7 +17,6 @@ local autocmds = {
       group = 'marker_foldmethod',
     },
   },
-}
--- }}}
+}  -- }}}
 
 globals.nvim_create_autocmd(autocmds)

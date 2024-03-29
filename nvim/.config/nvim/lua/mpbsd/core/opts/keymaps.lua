@@ -1,7 +1,6 @@
 local globals = require('mpbsd.core.opts.globals')
 
--- mappings {{{
-local mappings = {
+local mappings = {  -- {{{
   {
     mod = { 'n', 'v' },
     lhs = '<leader>;',
@@ -222,7 +221,6 @@ local mappings = {
       desc = 'search bibliography',
     },
   },
-}
--- }}}
+}  -- }}}
 
 globals.nvim_set_keymaps(mappings)

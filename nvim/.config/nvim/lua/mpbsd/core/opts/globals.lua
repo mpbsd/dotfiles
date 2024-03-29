@@ -32,8 +32,7 @@ M.nvim_create_autocmd = function(table_of_autocmds)
   end
 end
 
-M.language_servers = {
-  -- servers {{{
+M.language_servers = {  -- {{{
   bashls = {
     filetypes = { 'sh' },
     settings = {},
@@ -75,20 +74,16 @@ M.language_servers = {
     filetypes = { 'vim' },
     settings = {},
   },
-  -- }}}
-}
+}  -- }}}
 
-M.adapters = {
-  -- debuggers {{{
+M.adapters = {  -- {{{
   'cppdbg',
   'python',
-  -- }}}
-}
+}  -- }}}
 
 M.on_attach = function()
   local telescope_builtin = require('telescope.builtin')
-  M.nvim_set_keymaps({
-    -- keymaps {{{
+  M.nvim_set_keymaps({  -- {{{
     {
       mod = 'n',
       lhs = '<leader>df',
@@ -283,8 +278,7 @@ M.on_attach = function()
         desc = '[F]ormat current [B]uffer with LSP',
       }
     },
-    -- }}}
-  })
+  })  -- }}}
 end
 
 M.nvim_version = function()

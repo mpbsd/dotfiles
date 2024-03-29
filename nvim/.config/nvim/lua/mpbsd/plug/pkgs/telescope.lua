@@ -34,8 +34,7 @@ return {
       },
     })
     telescope.load_extension('fzf')
-    globals.nvim_set_keymaps({
-      -- keymaps {{{
+    globals.nvim_set_keymaps({  -- {{{
       {
         mod = 'n',
         lhs = '<leader>?',
@@ -161,7 +160,6 @@ return {
           desc = '[S]earch [K]eymaps',
         }
       },
-      -- }}}
-    })
+    })  -- }}}
   end
 }

@@ -15,8 +15,7 @@ return {
       handlers = {},
       ensure_installed = globals.adapters,
     })
-    dapui.setup({
-      -- ui settings {{{
+    dapui.setup({  -- {{{
       controls = {
         element = 'repl',
         enabled = true,
@@ -95,11 +94,9 @@ return {
       render = {
         indent = 1,
         max_value_lines = 100
-      }
-      -- }}}
+      }  -- }}}
     })
-    globals.nvim_set_keymaps({
-      -- keymaps {{{
+    globals.nvim_set_keymaps({  -- {{{
       {
         mod = 'n',
         lhs = '<F6>',
@@ -157,8 +154,7 @@ return {
         opt = {
           desc = 'Set Breakpoint',
         }
-      },
-      -- }}}
+      },  -- }}}
     })
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
