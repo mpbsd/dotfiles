@@ -1,29 +1,23 @@
-snippet '^(def|pro|lem|thm|cor|rmk)' "environment with labels" rA
+snippet '^(cor|def|lem|prop|rmk|thm)' "environment with labels" rA
 `!p
 ENV = {
-	"def": "definition",
-	"pro": "proposition",
-	"lem": "lemma",
-	"thm": "theorem",
 	"cor": "corollary",
+	"def": "definition",
+	"lem": "lemma",
+	"prop": "proposition",
 	"rmk": "remark",
+	"thm": "theorem",
 }
 env = ENV[match.group(1)]
 `\begin{`!p snip.rv = env`}\label{`!p snip.rv = match.group(1)`:$1}
-  $2
+	$2
 \end{`!p snip.rv = env`}$0
 endsnippet
 
-snippet ';env' "environment" rA
-\begin{$1}
-	$2
-\end{$1}$0
-endsnippet
-
-snippet ';array' "array environment" rA
-\[
-	\begin{array}{$2}
-		$1
-	\end{array}
-\]$0
+snippet '^eq ([^\s;]+);' "equation environment" rA
+`!p
+label = re.sub(r" ", r"-", match.group(1))
+`\begin{equation}\label{eq:`!p snip.rv = label`}
+	$1
+\end{equation}$0
 endsnippet

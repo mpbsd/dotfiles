@@ -29,7 +29,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
 call plug#end()
 
-let g:UltiSnipsSnippetDirectories  = [$HOME . '.vim/ultisnips']
+let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']
 let g:UltiSnipsExpandTrigger       = '<tab>'
 let g:UltiSnipsJumpForwardTrigger  = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
