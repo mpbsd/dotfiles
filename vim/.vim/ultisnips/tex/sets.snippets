@@ -1,0 +1,27 @@
+snippet ';set' "set by property" rA
+\left\{${1:elements}:${2:property}\right\}$0
+endsnippet
+
+snippet '(N|Z|Q|R|C)\1' "numerical sets" rA
+`!p
+set = {
+	"N": r"\mathbb{N}",
+	"Z": r"\mathbb{Z}",
+	"Q": r"\mathbb{Q}",
+	"R": r"\mathbb{R}",
+	"C": r"\mathbb{C}",
+}
+snip.rv = set[match.group(1)]
+`
+endsnippet
+
+snippet '(E|H|S)\1' "space forms" rA
+`!p
+set = {
+	"E": r"\mathbb{R}",
+	"H": r"\mathbb{H}",
+	"S": r"\mathbb{S}",
+}
+snip.rv = set[match.group(1)]
+`
+endsnippet

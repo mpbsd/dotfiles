@@ -1,0 +1,15 @@
+snippet '(\S)?;im' "inline math mode" rA
+`!p
+if match.group(1):
+	snip.rv = match.group(1) + " "
+`\(${1:${VISUAL}}\)$0
+endsnippet
+
+snippet '(^\s*)?;dm' "display math mode" rA
+`!p
+if match.group(1) is None:
+	snip.rv = "\n"
+`\[
+	${1:${VISUAL}}
+\]$0
+endsnippet

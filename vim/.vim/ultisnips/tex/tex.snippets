@@ -1,0 +1,44 @@
+snippet '^usep(ackage)?' "usepackage" rA
+\usepackage$0
+endsnippet
+
+snippet '^inp(ut)?' "input" rA
+\input{$1}$0
+endsnippet
+
+snippet ';su([bp])([^;]+);' "su(per|b)script" rA
+`!p
+index = {
+	"b": r"_",
+	"p": r"^",
+}
+snip.rv = index[match.group(1)] + r"{" + match.group(2) + r"}"
+`$0
+endsnippet
+
+snippet '^(chp|s{1,3}ec) ([A-Za-z ]+)$' "headers" r
+`!p
+division = {
+	"chp"  : r"\chapter",
+	"sec"  : r"\section",
+	"ssec" : r"\subsection",
+	"sssec": r"\subsubsection",
+}
+type = match.group(1)
+name = match.group(2)
+sec_title = division[type] + "{" + name + "}"
+sec_label = r"\label{" + type + ":" + name.lower().replace(" ", "-") + "}"
+snip.rv = sec_title + sec_label + "\n\n"
+`$0
+endsnippet
+
+snippet ';tup([^;]+);([^;]+);([^;]+);' "tuples" rA
+`!p
+v = match.group(1)
+l = match.group(2)
+u = match.group(3)
+o = r"\left("
+c = r"\right)"
+snip.rv = o + v + r"_{" + l + r"},\ldots," + v + r"_{" + u + r"}" + c
+`
+endsnippet

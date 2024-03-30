@@ -1,0 +1,38 @@
+snippet ';frac' "fractions" rA
+\frac{${1:num}}{${2:den}}$0
+endsnippet
+
+snippet ';fund' "function declaration" rA
+${1:function name}:{${2:function domain}}\to{${3:counter domain}}$0
+endsnippet
+
+snippet ';funa' "function action" rA
+${1:function name}\left({${2:function argument}}\right) = $0
+endsnippet
+
+snippet ';cmp([^;]+);([lg][et]);([^\s`]+)`' "comparissons" rA
+`!p
+REL = {
+	"le": r"\leqslant",
+	"lt": r"<",
+	"ge": r"\geqslant",
+	"gt": r">",
+}
+lhs = match.group(1)
+rel = REL[match.group(2)]
+rhs = match.group(3)
+snip.rv = "{" + lhs + "}" + rel + "{" + rhs + "}"
+`
+endsnippet
+
+snippet ';prod' "prodming over an index" rA
+\prod_{${1:index variable}=${2:lower index}}^{${3:upper index}}$0
+endsnippet
+
+snippet ';summ' "summing over an index" rA
+\sum_{${1:index variable}=${2:lower index}}^{${3:upper index}}$0
+endsnippet
+
+snippet ';(in|owns|subset|contains)([^;]+);' "relationship" rA
+`!p snip.rv = r"\%s{%s}" % (match.group(1), match.group(2))`
+endsnippet

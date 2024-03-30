@@ -1,0 +1,49 @@
+snippet 'sur([^;]+);([bs])([abcp])' "surroundings" rA
+`!p
+enclosing = {
+	"a": {
+		"b": {
+			"opening": r"\left\langle{",
+			"closing": r"}\right\rangle",
+		},
+		"s": {
+			"opening": r"\langle{",
+			"closing": r"}\rangle",
+		},
+	},
+	"b": {
+		"b": {
+			"opening": r"\left[",
+			"closing": r"\right]",
+		},
+		"s": {
+			"opening": r"[",
+			"closing": r"]",
+		},
+	},
+	"c": {
+		"b": {
+			"opening": r"\left\{",
+			"closing": r"\right\}",
+		},
+		"s": {
+			"opening": r"{",
+			"closing": r"}",
+		},
+	},
+	"p": {
+		"b": {
+			"opening": r"\left(",
+			"closing": r"\right)",
+		},
+		"s": {
+			"opening": r"(",
+			"closing": r")",
+		},
+	},
+}
+opening = enclosing[match.group(3)][match.group(2)]["opening"]
+closing = enclosing[match.group(3)][match.group(2)]["closing"]
+content = snip.v.text if match.group(1) is None else match.group(1)
+snip.rv = opening + content + closing`
+endsnippet
