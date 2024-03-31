@@ -557,7 +557,7 @@ function PracticeDayOnePrepareClasses() abort
   sil exe printf("$s/$/%s/", join(l:tail, '\r'))
 endfunction
 
-function VimCreateMultiplicationTable() abort
+function VimPrintMultiplicationTable() abort
   for i in range(1, 10)
     if i % 3 == 1 && i != 10
       put='\begin{multicols}{3}'
