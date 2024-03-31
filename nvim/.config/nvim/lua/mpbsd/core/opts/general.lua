@@ -33,7 +33,7 @@ local options = {
       path = { '**' },
       joinspaces = false,
       termguicolors = true,
-      spelllang = { 'en_us', 'pt_br' },
+      spelllang = { 'en_us', 'pt_br', 'de_de' },
       spellsuggest = { 'fast', '10' },
     }     -- }}}
   },

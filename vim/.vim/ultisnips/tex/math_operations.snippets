@@ -1,16 +1,24 @@
-snippet ';frac' "fractions" rA
+snippet ';fr' "fractions" rA
 \frac{${1:num}}{${2:den}}$0
 endsnippet
 
-snippet ';fund' "function declaration" rA
-${1:function name}:{${2:function domain}}\to{${3:counter domain}}$0
+snippet ';fd' "function declaration" rA
+${1:f}:{${2:A}}\to{${3:B}}$0
 endsnippet
 
-snippet ';funa' "function action" rA
-${1:function name}\left({${2:function argument}}\right) = $0
+snippet ';fx' "evaluate f on x" rA
+${1:f}{\left(${2:x}\right)}$0
 endsnippet
 
-snippet ';cmp([gl][et])' "comparissons" rA
+snippet ';ax' "the action of f on x" rA
+${1:f}{\left(${2:x}\right)} = $0
+endsnippet
+
+snippet ';mt' "mapsto" rA
+{${1:x}}\mapsto{${2:f(x)}}
+endsnippet
+
+snippet ';([gl][et])' "comparissons" rA
 `!p
 cmp = {
 	"ge": r"\geqslant",
@@ -30,6 +38,6 @@ snippet ';summ' "summing over an index" rA
 \sum_{${1:index variable}=${2:lower index}}^{${3:upper index}}$0
 endsnippet
 
-snippet ';(in|owns|subset|contains)([^;]+);' "relationship" rA
-`!p snip.rv = r"\%s{%s}" % (match.group(1), match.group(2))`
+snippet ';(in|owns|subset|contains)' "relationship" rA
+{${1:1st element}}`!p snip.rv = r"\" + match.group(1)`{${2:2nd element}}$0
 endsnippet

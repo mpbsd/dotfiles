@@ -1,20 +1,14 @@
-snippet '^eq ([^\s;]+);' "equation environment" rA
-`!p
-label = re.sub(r" ", r"-", match.group(1))
-`\begin{equation}\label{eq:`!p snip.rv = label`}
-	$1
-\end{equation}$0
-endsnippet
-
-snippet '^(cor|def|lem|prop|rmk|thm)' "environment with labels" rA
+snippet '^(cor|def|eq|ex|lem|prop|rmk|thm)' "labeled environments" rA
 `!p
 ENV = {
-	"cor": "corollary",
-	"def": "definition",
-	"lem": "lemma",
+	"cor" : "corollary",
+	"def" : "definition",
+	"eq"  : "equation",
+	"ex"  : "example",
+	"lem" : "lemma",
 	"prop": "proposition",
-	"rmk": "remark",
-	"thm": "theorem",
+	"rmk" : "remark",
+	"thm" : "theorem",
 }
 env = ENV[match.group(1)]
 `\begin{`!p snip.rv = env`}\label{`!p snip.rv = match.group(1)`:$1}

@@ -1,4 +1,4 @@
-snippet 'sur([^\s;]+);([bs])([abcp])' "surroundings" rA
+snippet ';([bs])([abcp])' "surroundings" rA
 `!p
 enclosing = {
 	"a": {
@@ -42,8 +42,7 @@ enclosing = {
 		},
 	},
 }
-opening = enclosing[match.group(3)][match.group(2)]["opening"]
-closing = enclosing[match.group(3)][match.group(2)]["closing"]
-content = snip.v.text if match.group(1) is None else match.group(1)
-snip.rv = opening + content + closing`
+opening = enclosing[match.group(2)][match.group(1)]["opening"]
+closing = enclosing[match.group(2)][match.group(1)]["closing"]
+snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
