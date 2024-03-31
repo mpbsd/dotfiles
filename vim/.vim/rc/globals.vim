@@ -556,3 +556,36 @@ function PracticeDayOnePrepareClasses() abort
   sil exe printf("0s/^/%s/", join(l:head, '\r'))
   sil exe printf("$s/$/%s/", join(l:tail, '\r'))
 endfunction
+
+function VimCreateMultiplicationTable() abort
+  for i in range(1, 10)
+    if i % 3 == 1 && i != 10
+      put='\begin{multicols}{3}'
+    elseif i == 10
+      put=' '
+      put='\newpage'
+      put=' '
+      put='\begin{multicols}{3}'
+    endif
+    put='\['
+    put='\begin{array}{rrrrr}'
+    for j in range(1, 10)
+      if j != 10
+        put=i . ' & \textup{x} & ' . j . ' & = & ' . i*j . ' \\'
+      else
+        put=i . ' & \textup{x} & ' . j . ' & = & ' . i*j
+      endif
+    endfor
+    put='\end{array}'
+    put='\]'
+    if (i % 3 == 1 && i != 10 || i % 3 == 2)
+      put='\\'
+    elseif i % 3 == 0
+      put='\end{multicols}'
+    else
+      put='\\'
+      put='\\'
+      put='\end{multicols}'
+    endif
+  endfor
+endfunction

@@ -1,3 +1,11 @@
+snippet '^eq ([^\s;]+);' "equation environment" rA
+`!p
+label = re.sub(r" ", r"-", match.group(1))
+`\begin{equation}\label{eq:`!p snip.rv = label`}
+	$1
+\end{equation}$0
+endsnippet
+
 snippet '^(cor|def|lem|prop|rmk|thm)' "environment with labels" rA
 `!p
 ENV = {
@@ -12,12 +20,4 @@ env = ENV[match.group(1)]
 `\begin{`!p snip.rv = env`}\label{`!p snip.rv = match.group(1)`:$1}
 	$2
 \end{`!p snip.rv = env`}$0
-endsnippet
-
-snippet '^eq ([^\s;]+);' "equation environment" rA
-`!p
-label = re.sub(r" ", r"-", match.group(1))
-`\begin{equation}\label{eq:`!p snip.rv = label`}
-	$1
-\end{equation}$0
 endsnippet

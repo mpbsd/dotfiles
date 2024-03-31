@@ -10,19 +10,16 @@ snippet ';funa' "function action" rA
 ${1:function name}\left({${2:function argument}}\right) = $0
 endsnippet
 
-snippet ';cmp([^;]+);([lg][et]);([^\s`]+)`' "comparissons" rA
+snippet ';cmp([gl][et])' "comparissons" rA
 `!p
-REL = {
-	"le": r"\leqslant",
-	"lt": r"<",
+cmp = {
 	"ge": r"\geqslant",
 	"gt": r">",
+	"le": r"\leqslant",
+	"lt": r"<",
 }
-lhs = match.group(1)
-rel = REL[match.group(2)]
-rhs = match.group(3)
-snip.rv = "{" + lhs + "}" + rel + "{" + rhs + "}"
-`
+opr = cmp[match.group(1)]
+`{${1:1rst element}}`!p snip.rv = opr`{${2:2nd element}}$0
 endsnippet
 
 snippet ';prod' "prodming over an index" rA
