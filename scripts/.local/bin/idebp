@@ -129,6 +129,7 @@ declare -a LATEX=(
 declare -a IMAGE=(
   gimp
   inkscape
+  xournalpp
 )
 # }}}
 # BROWSER {{{
