@@ -303,7 +303,7 @@ let s:keymaps = [
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>pd1pc',
-      \    'rhs': ':call PracticeDayOnePrepareClasses()<cr>',
+      \    'rhs': ':call VimHelpMePrepareMyClassNotes()<cr>',
       \    'des': 'practice day 1 prepare classes',
       \  },
       \]

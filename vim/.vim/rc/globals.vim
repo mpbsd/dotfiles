@@ -534,7 +534,7 @@ function VimCreateCatalogueForMe() abort
   sil 1,$s/ \+",$/",/
 endfunction
 
-function PracticeDayOnePrepareClasses() abort
+function VimHelpMePrepareMyClassNotes() abort
   let l:head = [
         \  '\\begin{table}[H]',
         \  '\\centering',
