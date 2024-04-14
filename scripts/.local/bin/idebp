@@ -98,6 +98,7 @@ declare -a CORE_UTILS=(
   qpdf
   redshift
   ripgrep
+  scrot
   sdcv
   shellcheck
   silversearcher-ag
