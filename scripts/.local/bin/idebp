@@ -87,6 +87,7 @@ declare -a CORE_UTILS=(
   bat
   curl
   fd-find
+  fswatch
   fzf
   groff
   gtypist
