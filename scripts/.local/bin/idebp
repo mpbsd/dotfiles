@@ -94,6 +94,7 @@ declare -a CORE_UTILS=(
   ledger
   lf
   neofetch
+  nmap
   plocate
   qpdf
   redshift
