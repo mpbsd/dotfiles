@@ -290,21 +290,9 @@ let s:keymaps = [
       \  },
       \  {
       \    'mod': 'normal',
-      \    'lhs': '<leader>cd',
-      \    'rhs': ':call CSVDisciplines()<cr>',
-      \    'des': 'create a CSV out of a TXT file with all disciplines',
-      \  },
-      \  {
-      \    'mod': 'normal',
       \    'lhs': '<leader>psi',
       \    'rhs': ':call VimParseStudentsInfo()<cr>',
-      \    'des': 'get students info from sigaa',
-      \  },
-      \  {
-      \    'mod': 'normal',
-      \    'lhs': '<leader>pd1pc',
-      \    'rhs': ':call VimHelpMePrepareMyClassNotes()<cr>',
-      \    'des': 'practice day 1 prepare classes',
+      \    'des': 'create a CSV out of a TXT file with all disciplines',
       \  },
       \]
 " }}}

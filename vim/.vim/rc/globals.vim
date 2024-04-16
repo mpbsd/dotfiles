@@ -352,38 +352,6 @@ function VimInstallMissingPlugins() abort
   endif
 endfunction
 
-function VimParseTransactions() abort
-  let l:re = {
-        \  'date': [
-        \    '\(0[1-9]\|[12][0-9]\|3[01]\)',
-        \    '\(0[1-9]\|1[012]\)',
-        \    '\(20\(2[4-9]\|[3-9][0-9]\)\)'
-        \  ],
-        \  'time': '\([01][0-9]\|2[0-3]\):\([0-5][0-9]\)',
-        \  'delete_these_lines': [
-        \    '\(n° documento',
-        \    'saldo anterior',
-        \    '00/00/0000',
-        \    'saldo do dia',
-        \    's a l d o\)',
-        \  ],
-        \}
-  sil exe 'norm guip'
-  cal VimRemoveNonASCIICharsFromCurrentBuffer()
-  sil exe printf("1,$s@%s@%s@", join(l:re['date'], '/'), '\3-\2-\1')
-  sil exe printf("g@%s@d", join(l:re['delete_these_lines'], '\|'))
-  sil 1,$s/\.//g
-  sil 1,$s/\(-\?\d\+\),\(\d\{2}\)/\1\.\2/
-  sil 1,$s/,"\d\+",/,/
-  sil 1,$s/"recebimento de proventos"/"income"/
-  sil 1,$s/"compra com cartao"/"expenses:debit"/
-  sil 1,$s/"pix - enviado"/"expenses:pix"/
-  sil 1,$s/"pagto cartao credito"/"liability:credit_card"/
-  sil 1,$s/"pagto energia eletrica"/"liability:electricity"/
-  sil 1,$s/"pagamento fatura de agua"/"liability:water"/
-  sil g/"adufg"/s/"debito autorizado"/"liability:health_care"/
-endfunction
-
 function VimGetBibTeXCitationKeys() abort
   " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
@@ -532,60 +500,4 @@ function VimCreateCatalogueForMe() abort
   sil 1s/^/[/
   sil $s/,$/\r]/
   sil 1,$s/ \+",$/",/
-endfunction
-
-function VimHelpMePrepareMyClassNotes() abort
-  let l:head = [
-        \  '\\begin{table}[H]',
-        \  '\\centering',
-        \  '\\begin{tabular}{ccccccccccc}\r',
-        \]
-  let l:tail = [
-        \  '\r\\end{tabular}',
-        \  '\\caption{Standard Normal Distribution function}',
-        \  '\\label{tbl:standard-normal-distribution-function}',
-        \  '\\end{table}'
-        \]
-  sil 1,$s/\s\+/ /g
-  sil exe 'g!/\.\d\{2,}/d'
-  sil 1,$s/ \.0\(\d\)\>/ \& 0\.0\100/g
-  sil 1,$s/ \.\(\d\)\>/ 0\.\1/
-  sil 1,$s/ \.\(\d\{4}\)/ \& 0\.\1/g
-  sil exe 'g/0\.\d\+/s/$/\\\\/'
-  sil exe 'Tab /\(&\|\\\\\)'
-  sil exe printf("0s/^/%s/", join(l:head, '\r'))
-  sil exe printf("$s/$/%s/", join(l:tail, '\r'))
-endfunction
-
-function VimPrintMultiplicationTable() abort
-  for i in range(1, 10)
-    if i % 3 == 1 && i != 10
-      put='\begin{multicols}{3}'
-    elseif i == 10
-      put=' '
-      put='\newpage'
-      put=' '
-      put='\begin{multicols}{3}'
-    endif
-    put='\['
-    put='\begin{array}{rrrrr}'
-    for j in range(1, 10)
-      if j != 10
-        put=i . ' & \textup{x} & ' . j . ' & = & ' . i*j . ' \\'
-      else
-        put=i . ' & \textup{x} & ' . j . ' & = & ' . i*j
-      endif
-    endfor
-    put='\end{array}'
-    put='\]'
-    if (i % 3 == 1 && i != 10 || i % 3 == 2)
-      put='\\'
-    elseif i % 3 == 0
-      put='\end{multicols}'
-    else
-      put='\\'
-      put='\\'
-      put='\end{multicols}'
-    endif
-  endfor
 endfunction
