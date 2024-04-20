@@ -501,3 +501,24 @@ function VimCreateCatalogueForMe() abort
   sil $s/,$/\r]/
   sil 1,$s/ \+",$/",/
 endfunction
+
+function VimParseEEEsInfo() abort
+  sil exe 'norm ggd/abiel costa macedo<\/span>'
+  sil exe 'norm /wcedro@ufg.brjdG'
+  sil %s/<[^>]\+>//g
+  sil %s/Lattes: \?/\rLattes:/
+  sil g/^\s*$/d
+  sil g/^p.gina pessoal:/d
+  sil %s@http://lattes.cnpq.br/@@
+  sil %s/Telefone:(62) 3521-\d\{4}//
+  sil %s/^Sala:\(\d\{3}\)/"office": "\1",/
+  sil g/^Forma..o/s/ \?- \?/ - /
+  sil %s/^Forma..o: \(.*\)/"school": "\1",
+  sil %s/^.rea de atua..o: \(.*\)/"field": "\1",/
+  sil %s/^E-mail: \([^@]\+\)@ufg.br/"email": "\1@ufg.br"/
+  255s/^Lattes/3206466156270217/
+  447s/^Lattes/9663485072140551/
+  " sil 1s/^/{\r/
+  " sil $s/,$/\r}/
+  " sil exe 'norm gg=G'
+endfunction

@@ -9,7 +9,7 @@ let s:autocmds = [
       \  {
       \    'augroup': 'remove_trailing_spaces',
       \    'events': 'BufWritePre',
-      \    'pattern': '*.lua,*.py,*.sh,*.tex,*.txt,*.vim',
+      \    'pattern': '*.json,*.lua,*.py,*.sh,*.tex,*.txt,*.vim',
       \    'action': ':call VimRemoveTrailingSpacesFromCurrentBuffer()'
       \  },
       \  {
