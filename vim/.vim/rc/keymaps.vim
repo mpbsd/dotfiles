@@ -294,6 +294,12 @@ let s:keymaps = [
       \    'rhs': ':call VimParseStudentsInfo()<cr>',
       \    'des': 'create a CSV out of a TXT file with all disciplines',
       \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>pei',
+      \    'rhs': ':call VimParseEEEsInfo()<cr>',
+      \    'des': 'create a JSON out of a HTML file with employees info',
+      \  },
       \]
 " }}}
 

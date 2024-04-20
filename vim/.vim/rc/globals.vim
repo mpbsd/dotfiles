@@ -503,22 +503,30 @@ function VimCreateCatalogueForMe() abort
 endfunction
 
 function VimParseEEEsInfo() abort
+  sil exe 'norm ggVGu'
+  call VimRemoveNonASCIICharsFromCurrentBuffer()
   sil exe 'norm ggd/abiel costa macedo<\/span>'
   sil exe 'norm /wcedro@ufg.brjdG'
-  sil %s/<[^>]\+>//g
-  sil %s/Lattes: \?/\rLattes:/
-  sil g/^\s*$/d
-  sil g/^p.gina pessoal:/d
-  sil %s@http://lattes.cnpq.br/@@
-  sil %s/Telefone:(62) 3521-\d\{4}//
-  sil %s/^Sala:\(\d\{3}\)/"office": "\1",/
-  sil g/^Forma..o/s/ \?- \?/ - /
-  sil %s/^Forma..o: \(.*\)/"school": "\1",
-  sil %s/^.rea de atua..o: \(.*\)/"field": "\1",/
-  sil %s/^E-mail: \([^@]\+\)@ufg.br/"email": "\1@ufg.br"/
-  255s/^Lattes/3206466156270217/
-  447s/^Lattes/9663485072140551/
-  " sil 1s/^/{\r/
-  " sil $s/,$/\r}/
-  " sil exe 'norm gg=G'
+  sil 1,$s/<[^>]\+>//g
+  sil 1,$s/telefone:(62) 3521-\d\{4}//
+  sil 1,$s/\(sala\|formacao\|area de atuacao\|lattes\|pagina pessoal\|e-mail\):/\r\1:/g
+  sil g/\(^\s*$\|pagina pessoal\)/d
+  sil 1,$s@http://lattes.cnpq.br/@@
+  sil 1,$s/sala: *\(\d\{3\}\)/"office": "\1",/
+  sil 356s/sala: */"office": "121",/
+  sil 475s/$/\r"office": "000",/
+  sil 1,$s/formacao: *\(.*\) */"school": "\1",/
+  sil 1,$s/area de atuacao: *\(.*\) */"field": "\1",/
+  sil 1,$s/lattes: *\(\d\{16\}\) */"\1": {/
+  sil 257s/lattes: lattes/"3206466156270217": {/
+  sil 449s/lattes: lattes/"9663485072140551": {/
+  sil 1,$s/e-mail: *\(.*\)/"email": "\1"/
+  sil g/^[a-z]/s/\v(^|$)/"/g
+  sil g!/:/s/^/"fname": /
+  sil g/fname/s/$/,/
+  let @q = '/\d\{16\}:.m-5/^"emailo},€ýa'
+  sil exe 'norm 87@q'
+  sil 1s/^/{\r/
+  sil $s/,$/\r}/
+  sil exe 'norm gg=G'
 endfunction
