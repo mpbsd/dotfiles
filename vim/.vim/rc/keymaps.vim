@@ -297,7 +297,7 @@ let s:keymaps = [
       \  {
       \    'mod': 'normal',
       \    'lhs': '<leader>pei',
-      \    'rhs': ':call VimParseEEEsInfo()<cr>',
+      \    'rhs': ':call VimParseEeesInfo()<cr>',
       \    'des': 'create a JSON out of a HTML file with employees info',
       \  },
       \]

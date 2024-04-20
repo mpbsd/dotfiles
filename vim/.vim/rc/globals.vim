@@ -502,7 +502,7 @@ function VimCreateCatalogueForMe() abort
   sil 1,$s/ \+",$/",/
 endfunction
 
-function VimParseEEEsInfo() abort
+function VimParseEeesInfo() abort
   sil exe 'norm ggVGu'
   call VimRemoveNonASCIICharsFromCurrentBuffer()
   sil exe 'norm ggd/abiel costa macedo<\/span>'
