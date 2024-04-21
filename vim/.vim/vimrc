@@ -15,3 +15,5 @@ let s:rc_files = [
 for rc_file in s:rc_files
   execute printf("source %s/%s.vim", s:rc_files_dir, rc_file)
 endfor
+
+" vim: set fileencoding=utf-8:

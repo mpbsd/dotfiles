@@ -524,9 +524,11 @@ function VimParseEeesInfo() abort
   sil g/^[a-z]/s/\v(^|$)/"/g
   sil g!/:/s/^/"fname": /
   sil g/fname/s/$/,/
-  let @q = '/\d\{16\}:.m-5/^"emailo},€ýa'
+  let @q = '/\d\{16\}:.m-5/emailo},€ýa'
   sil exe 'norm 87@q'
   sil 1s/^/{\r/
   sil $s/,$/\r}/
   sil exe 'norm gg=G'
 endfunction
+
+" vim: set fileencoding=utf-8:
