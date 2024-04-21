@@ -304,4 +304,5 @@ let s:keymaps = [
 " }}}
 
 call VimSetKeymaps(s:keymaps)
+
 " vim: set fileencoding=utf-8:

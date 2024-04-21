@@ -32,50 +32,6 @@ M.nvim_create_autocmd = function(table_of_autocmds)
   end
 end
 
-M.language_servers = { -- {{{
-  bashls = {
-    filetypes = { 'sh' },
-    settings = {},
-  },
-  clangd = {
-    filetypes = { 'c', 'h' },
-    settings = {},
-  },
-  lua_ls = {
-    filetypes = { 'lua' },
-    settings = {
-      Lua = {
-        runtime = {
-          version = 'LuaJIT',
-        },
-        diagnostics = {
-          disable = { 'missing-field', 'undefined-field' },
-          globals = { 'vim' },
-        },
-        workspace = {
-          checkThirdParty = false,
-          library = vim.api.nvim_get_runtime_file('', true),
-        },
-        telemetry = {
-          enable = false,
-        },
-      },
-    },
-  },
-  pylsp = {
-    filetypes = { 'python' },
-    settings = {},
-  },
-  texlab = {
-    filetypes = { 'tex', 'bib' },
-    settings = {},
-  },
-  vimls = {
-    filetypes = { 'vim' },
-    settings = {},
-  },
-}              -- }}}
-
 M.adapters = { -- {{{
   'cppdbg',
   'python',
