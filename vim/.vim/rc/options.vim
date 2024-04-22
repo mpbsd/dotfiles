@@ -21,6 +21,7 @@ let s:options = {
       \    'secure': v:true,
       \    'noshowmode': v:true,
       \    'list': v:true,
+      \    'modeline': v:true,
       \  },
       \  'grpx': {
       \    'T': '-',
