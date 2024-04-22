@@ -87,6 +87,7 @@ declare -a CORE_UTILS=(
   bat
   curl
   fd-find
+  # fswatch
   fzf
   groff
   gtypist
@@ -163,6 +164,11 @@ declare -a SUCKLESS_SOFTWARE=(
   libharfbuzz-dev:amd64
 )
 # }}}
+# WINDOW MAKER {{{
+declare -a WINDOWMAKER=(
+  wmaker
+)
+# }}}
 # ZSA_WALLY {{{
 declare -a ZSA_WALLY=(
   libusb-1.0-0-dev:amd64
@@ -197,6 +203,7 @@ PKGS=(
   "${BROWSER[@]}"
   "${NEOVIM_BUILD_REQUIREMENTS[@]}"
   "${SUCKLESS_SOFTWARE[@]}"
+  "${WINDOWMAKER[@]}"
   "${ZSA_WALLY[@]}"
   "${QMK[@]}"
 )
