@@ -294,7 +294,15 @@ let s:keymaps = [
       \    'rhs': ':call VimParseStudentsInfo()<cr>',
       \    'des': 'create a CSV out of a TXT file with all disciplines',
       \  },
+      \  {
+      \    'mod': 'normal',
+      \    'lhs': '<leader>pei',
+      \    'rhs': ':call VimParseEeesInfo()<cr>',
+      \    'des': 'create a JSON out of a HTML file with employees info',
+      \  },
       \]
 " }}}
 
 call VimSetKeymaps(s:keymaps)
+
+" vim: set fileencoding=utf-8:

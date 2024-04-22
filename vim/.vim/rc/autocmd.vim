@@ -9,7 +9,7 @@ let s:autocmds = [
       \  {
       \    'augroup': 'remove_trailing_spaces',
       \    'events': 'BufWritePre',
-      \    'pattern': '*.lua,*.py,*.sh,*.tex,*.txt,*.vim',
+      \    'pattern': '*.json,*.lua,*.py,*.sh,*.tex,*.txt,*.vim',
       \    'action': ':call VimRemoveTrailingSpacesFromCurrentBuffer()'
       \  },
       \  {
@@ -64,3 +64,5 @@ let s:autocmds = [
 " }}}
 
 call VimSetAutocmds(s:autocmds)
+
+" vim: set fileencoding=utf-8:

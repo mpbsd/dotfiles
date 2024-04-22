@@ -1,0 +1,310 @@
+snippet ';([bs])([abcp])' "surroundings" rA
+`!p
+enclosing = {
+	"a": {
+		"b": {
+			"opening": r"\left\langle{",
+			"closing": r"}\right\rangle",
+		},
+		"s": {
+			"opening": r"\langle{",
+			"closing": r"}\rangle",
+		},
+	},
+	"b": {
+		"b": {
+			"opening": r"\left[",
+			"closing": r"\right]",
+		},
+		"s": {
+			"opening": r"[",
+			"closing": r"]",
+		},
+	},
+	"c": {
+		"b": {
+			"opening": r"\left\{",
+			"closing": r"\right\}",
+		},
+		"s": {
+			"opening": r"{",
+			"closing": r"}",
+		},
+	},
+	"p": {
+		"b": {
+			"opening": r"\left(",
+			"closing": r"\right)",
+		},
+		"s": {
+			"opening": r"(",
+			"closing": r")",
+		},
+	},
+}
+opening = enclosing[match.group(2)][match.group(1)]["opening"]
+closing = enclosing[match.group(2)][match.group(1)]["closing"]
+snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
+endsnippet
+
+snippet '^(cor|def|eq|ex|lem|prop|rmk|thm)' "labeled environments" rA
+`!p
+ENV = {
+	"cor" : "corollary",
+	"def" : "definition",
+	"eq"  : "equation",
+	"ex"  : "example",
+	"lem" : "lemma",
+	"prop": "proposition",
+	"rmk" : "remark",
+	"thm" : "theorem",
+}
+env = ENV[match.group(1)]
+`\begin{`!p snip.rv = env`}\label{`!p snip.rv = match.group(1)`:$1}
+	$2
+\end{`!p snip.rv = env`}$0
+endsnippet
+
+snippet '^proof' "environment for proofs" rA
+\begin{proof}
+$0
+\end{proof}
+endsnippet
+
+snippet '^usep' "load package" rA
+\usepackage{${1:package}}$0
+endsnippet
+
+snippet '^useo' "load package with options" rA
+\usepackage[${1:options}]{${2:package}}$0
+endsnippet
+
+snippet '^inp(ut)?' "input" rA
+\input{$1}$0
+endsnippet
+
+snippet '([_^])\1' "su(per|b)scripts" rA
+`!p snip.rv = match.group(1)`{${1:${VISUAL}}}$0
+endsnippet
+
+snippet '^(chp|s{1,3}ec) ([A-Za-z ]+)$' "headers" r
+`!p
+division = {
+	"chp"  : r"\chapter",
+	"sec"  : r"\section",
+	"ssec" : r"\subsection",
+	"sssec": r"\subsubsection",
+}
+type = match.group(1)
+name = match.group(2)
+sec_title = division[type] + "{" + name + "}"
+sec_label = r"\label{" + type + ":" + name.lower().replace(" ", "-") + "}"
+snip.rv = sec_title + sec_label + "\n\n"
+`$0
+endsnippet
+
+snippet 'ntup([^;]+);' "n-tuples" rA
+`!p
+varname = match.group(1)
+snip.rv = r"\left({%s}_{1},\ldots,{%s}_{n}\right)" % (varname, varname)
+`
+endsnippet
+
+snippet '([abgdezhjiklmnxoprstufqyw])`' "lower case greek alphabet" rA
+`!p
+alphabet = {
+  "a": r"\alpha",
+  "b": r"\beta",
+  "g": r"\gamma",
+  "d": r"\delta",
+  "e": r"\epsilon",
+  "z": r"\zeta",
+  "h": r"\eta",
+  "j": r"\theta",
+  "i": r"\iota",
+  "k": r"\kappa",
+  "l": r"\lambda",
+  "m": r"\mu",
+  "n": r"\nu",
+  "x": r"\xi",
+  "o": r"o",
+  "p": r"\pi",
+  "r": r"\rho",
+  "s": r"\sigma",
+  "t": r"\tau",
+  "u": r"\upsilon",
+  "f": r"\phi",
+  "q": r"\chi",
+  "y": r"\psi",
+  "w": r"\omega",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+snippet '([ABGDEZHJIKLMNXOPRSTUFQYW])`' "upper case greek alphabet" rA
+`!p
+alphabet = {
+  "A": r"\Alpha",
+  "B": r"\Beta",
+  "G": r"\Gamma",
+  "D": r"\Delta",
+  "E": r"\Epsilon",
+  "Z": r"\Zeta",
+  "H": r"\Eta",
+  "J": r"\Theta",
+  "I": r"\Iota",
+  "K": r"\Kappa",
+  "L": r"\Lambda",
+  "M": r"\Mu",
+  "N": r"\Nu",
+  "X": r"\Xi",
+  "O": r"\Omicron",
+  "P": r"\Pi",
+  "R": r"\Rho",
+  "S": r"\Sigma",
+  "T": r"\Tau",
+  "U": r"\Upsilon",
+  "F": r"\Phi",
+  "Q": r"\Chi",
+  "Y": r"\Psi",
+  "W": r"\Omega",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+snippet 'v([ejfprs])`' "variant case of greek letters" rA
+`!p
+alphabet = {
+  "e": r"\varepsilon",
+  "j": r"\vartheta",
+  "f": r"\varphi",
+  "p": r"\varpi",
+  "r": r"\varrho",
+  "s": r"\varsigma",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+snippet '^ucgl' "upper case greek letters" rA
+\DeclareMathSymbol{\Alpha}{\mathalpha}{operators}{"41}
+\DeclareMathSymbol{\Beta}{\mathalpha}{operators}{"42}
+\DeclareMathSymbol{\Epsilon}{\mathalpha}{operators}{"45}
+\DeclareMathSymbol{\Zeta}{\mathalpha}{operators}{"5A}
+\DeclareMathSymbol{\Eta}{\mathalpha}{operators}{"48}
+\DeclareMathSymbol{\Iota}{\mathalpha}{operators}{"49}
+\DeclareMathSymbol{\Kappa}{\mathalpha}{operators}{"4B}
+\DeclareMathSymbol{\Mu}{\mathalpha}{operators}{"4D}
+\DeclareMathSymbol{\Nu}{\mathalpha}{operators}{"4E}
+\DeclareMathSymbol{\Omicron}{\mathalpha}{operators}{"4F}
+\DeclareMathSymbol{\Rho}{\mathalpha}{operators}{"50}
+\DeclareMathSymbol{\Tau}{\mathalpha}{operators}{"54}
+\DeclareMathSymbol{\Chi}{\mathalpha}{operators}{"58}
+\DeclareMathSymbol{\omicron}{\mathord}{letters}{"6F}
+endsnippet
+
+snippet '(\S)?;im' "inline math mode" rA
+`!p
+if match.group(1):
+	snip.rv = match.group(1) + " "
+`\(${1:${VISUAL}}\)$0
+endsnippet
+
+snippet '(^\s*)?;dm' "display math mode" rA
+`!p
+if match.group(1) is None:
+	snip.rv = "\n"
+`\[
+	${1:${VISUAL}}
+\]$0
+endsnippet
+
+snippet ';fr' "fractions" rA
+\frac{${1:num}}{${2:den}}$0
+endsnippet
+
+snippet ';fd' "function declaration" rA
+${1:f}:{${2:A}}\to{${3:B}}$0
+endsnippet
+
+snippet ';fx' "evaluate f on x" rA
+${1:f}{\left(${2:x}\right)}$0
+endsnippet
+
+snippet ';ax' "the action of f on x" rA
+${1:f}{\left(${2:x}\right)} = $0
+endsnippet
+
+snippet ';mt' "mapsto" rA
+{${1:x}}\mapsto{${2:f(x)}}
+endsnippet
+
+snippet ';([gl][et])' "comparissons" rA
+`!p
+cmp = {
+	"ge": r"\geqslant",
+	"gt": r">",
+	"le": r"\leqslant",
+	"lt": r"<",
+}
+opr = cmp[match.group(1)]
+`{${1:1rst element}}`!p snip.rv = opr`{${2:2nd element}}$0
+endsnippet
+
+snippet ';prod' "prodming over an index" rA
+\prod_{${1:index variable}=${2:lower index}}^{${3:upper index}}$0
+endsnippet
+
+snippet ';summ' "summing over an index" rA
+\sum_{${1:index variable}=${2:lower index}}^{${3:upper index}}$0
+endsnippet
+
+snippet ';(in|owns|subset|contains)' "relationship" rA
+{${1:1st element}}`!p snip.rv = "\\" + match.group(1)`{${2:2nd element}}$0
+endsnippet
+
+snippet ';set' "set by property" rA
+\left\{${1:elements}:${2:property}\right\}$0
+endsnippet
+
+snippet '(N|Z|Q|R|C)\1' "numerical sets" rA
+`!p
+set = {
+	"N": r"\mathbb{N}",
+	"Z": r"\mathbb{Z}",
+	"Q": r"\mathbb{Q}",
+	"R": r"\mathbb{R}",
+	"C": r"\mathbb{C}",
+}
+snip.rv = set[match.group(1)]
+`
+endsnippet
+
+snippet '(E|H|S)\1' "space forms" rA
+`!p
+set = {
+	"E": r"\mathbb{R}",
+	"H": r"\mathbb{H}",
+	"S": r"\mathbb{S}",
+}
+snip.rv = set[match.group(1)]
+`
+endsnippet
+
+snippet skel "skeleton" bA
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\innerprod}{\left\langle}{\right\rangle}
+
+\begin{document}
+
+\end{document}
+endsnippet

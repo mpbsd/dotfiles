@@ -22,3 +22,5 @@ for [lhs, rhs] in items(s:dirs)
   endif
   exe printf("set %s=%s", lhs, s:dir)
 endfor
+
+" vim: set fileencoding=utf-8:
