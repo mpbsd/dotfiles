@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ADDRESS='https://github.com/ryanoasis/nerd-fonts/releases/download'
-VERSION='v3.1.1'
+VERSION='v3.2.1'
 
 FNTDIR="${HOME}/.local/share/fonts"
 TMPDIR="${HOME}/downloads/nerdfonts"
@@ -11,70 +11,73 @@ TMPDIR="${HOME}/downloads/nerdfonts"
 
 # FONTLIST {{{
 declare -a FONTSLIST=(
-  0xProto
-  3270
-  Agave
-  AnonymousPro
-  Arimo
-  AurulentSansMono
-  BigBlueTerminal
-  BitstreamVeraSansMono
-  CascadiaCode
-  CascadiaMono
-  CodeNewRoman
-  ComicShannsMono
-  CommitMono
-  Cousine
-  D2Coding
-  DaddyTimeMono
-  DejaVuSansMono
-  DroidSansMono
-  EnvyCodeR
-  FantasqueSansMono
-  FiraCode
-  FiraMono
-  GeistMono
-  Go-Mono
-  Gohu
-  Hack
-  Hasklig
-  HeavyData
-  Hermit
-  iA-Writer
-  IBMPlexMono
-  Inconsolata
-  InconsolataGo
-  InconsolataLGC
-  IntelOneMono
-  Iosevka
-  IosevkaTerm
-  IosevkaTermSlab
-  JetBrainsMono
-  Lekton
-  LiberationMono
-  Lilex
-  MartianMono
-  Meslo
-  Monaspace
-  Monofur
-  Monoid
-  Mononoki
-  MPlus
-  NerdFontsSymbolsOnly
-  Noto
-  OpenDyslexic
-  Overpass
-  ProFont
-  ProggyClean
-  RobotoMono
-  ShareTechMono
-  SourceCodePro
-  SpaceMono
-  Terminus
-  Tinos
-  Ubuntu
-  UbuntuMono
-  VictorMono
+    0xProto
+    3270
+    Agave
+    AnonymousPro
+    Arimo
+    AurulentSansMono
+    BigBlueTerminal
+    BitstreamVeraSansMono
+    CascadiaCode
+    CascadiaMono
+    CodeNewRoman
+    ComicShannsMono
+    CommitMono
+    Cousine
+    D2Coding
+    DaddyTimeMono
+    DejaVuSansMono
+    DroidSansMono
+    EnvyCodeR
+    FantasqueSansMono
+    FiraCode
+    FiraMono
+    GeistMono
+    Go-Mono
+    Gohu
+    Hack
+    Hasklig
+    HeavyData
+    Hermit
+    iA-Writer
+    IBMPlexMono
+    Inconsolata
+    InconsolataGo
+    InconsolataLGC
+    IntelOneMono
+    Iosevka
+    IosevkaTerm
+    IosevkaTermSlab
+    JetBrainsMono
+    Lekton
+    LiberationMono
+    Lilex
+    MartianMono
+    Meslo
+    Monaspace
+    Monofur
+    Monoid
+    Mononoki
+    MPlus
+    NerdFontsSymbolsOnly
+    Noto
+    OpenDyslexic
+    Overpass
+    ProFont
+    ProggyClean
+    Recursive
+    RobotoMono
+    ShareTechMono
+    SourceCodePro
+    SpaceMono
+    Terminus
+    Tinos
+    Ubuntu
+    UbuntuMono
+    UbuntuSans
+    VictorMono
+    ZedMono
 )
 # }}}
 
