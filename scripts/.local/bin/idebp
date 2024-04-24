@@ -83,11 +83,11 @@ declare -a BLOGGING=(
 # }}}
 # UTILS {{{
 declare -a CORE_UTILS=(
+  # fswatch
   9base
   bat
   curl
   fd-find
-  # fswatch
   fzf
   groff
   gtypist
@@ -106,6 +106,7 @@ declare -a CORE_UTILS=(
   silversearcher-ag
   thefuck
   tmux
+  zathura
 )
 # }}}
 # SHELL {{{
@@ -125,7 +126,7 @@ declare -a TERMINAL_CLIENTS=(
 # LATEX {{{
 declare -a LATEX=(
   texlive-full
-  zathura
+  texmaker
 )
 # }}}
 # IMAGE {{{
@@ -167,6 +168,7 @@ declare -a SUCKLESS_SOFTWARE=(
 # WINDOW MAKER {{{
 declare -a WINDOWMAKER=(
   wmaker
+  wmtime
 )
 # }}}
 # ZSA_WALLY {{{
