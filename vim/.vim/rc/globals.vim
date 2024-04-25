@@ -506,8 +506,7 @@ function VimParseEeesInfo() abort
   sil g/^[a-z]/s/\v(^|$)/"/g
   sil g!/:/s/^/"fname": /
   sil g/fname/s/$/,/
-  let @q = '/"\d\{16\}": {\n"email": ;.m-55jo},<fd>a'
-  sil exe 'norm 100@q'
+  sil %s/\(^"fname": .*\)\n\("office": .*\)\n\("school": .*\)\n\("field": .*\)\n\("\d\{16\}": {\)\n\("email": .*\)/\5\r\1\r\2\r\3\r\4\r\6\r},/
   sil 1s/^/{\r/
   sil $s/,$/\r}/
   sil exe 'norm gg=G'
