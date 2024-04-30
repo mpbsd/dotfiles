@@ -258,7 +258,7 @@ function VimSetStatusline() abort
   let l:tail_of_filename = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='
-  let l:fileencoding = '%{&fileencoding}'
+  let l:fenc = '%{&fileencoding}'
   let l:fileformat = '%{&fileformat}'
   let l:file_type = '%Y'
   let l:percentage_through_file = '%P'
@@ -270,7 +270,7 @@ function VimSetStatusline() abort
         \  l:tail_of_filename,
         \  l:modified_flag,
         \  l:lhs_rhs_separator,
-        \  l:fileencoding,
+        \  l:fenc,
         \  l:fileformat,
         \  l:file_type,
         \  l:percentage_through_file,
@@ -512,4 +512,4 @@ function VimParseEeesInfo() abort
   sil exe 'norm gg=G'
 endfunction
 
-" vim: set fileencoding=utf-8:
+" vim: set fenc=utf8:

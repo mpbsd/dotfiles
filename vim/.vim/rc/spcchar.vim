@@ -16,4 +16,4 @@ function TableOfEquivalentNonAsciiCharacters() abort
   return l:table_of_equivalent_chars
 endfunction
 
-" vim: set fileencoding=utf-8:
+" vim: set fenc=utf8:

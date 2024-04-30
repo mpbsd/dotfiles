@@ -59,4 +59,4 @@ let s:autocmds = [
 
 call VimSetAutocmds(s:autocmds)
 
-" vim: set fileencoding=utf-8:
+" vim: set fenc=utf8:

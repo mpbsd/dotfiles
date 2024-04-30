@@ -12,7 +12,6 @@ Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
 " Plug 'junegunn/seoul256.vim'
-" Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
 " Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'
@@ -44,4 +43,4 @@ let s:wiki1 = {
 
 let g:vimwiki_list = [s:wiki1]
 
-" vim: set fileencoding=utf-8:
+" vim: set fenc=utf8:
