@@ -56,4 +56,4 @@ let s:options = {
 call VimSetOptions(s:options)
 call VimSetColorscheme()
 
-" vim: set fileencoding=utf-8:
+" vim: set fenc=utf8:

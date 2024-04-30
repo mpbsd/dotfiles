@@ -3,7 +3,7 @@ let s:autocmds = [
       \  {
       \    'augroup': 'set_marker_foldmethod_based_on_filetype',
       \    'events': 'FileType',
-      \    'pattern': 'sh,vim',
+      \    'pattern': 'python,sh,vim',
       \    'action': 'setlocal foldmethod=marker'
       \  },
       \  {
@@ -59,4 +59,4 @@ let s:autocmds = [
 
 call VimSetAutocmds(s:autocmds)
 
-" vim: set fileencoding=utf-8:
+" vim: set fenc=utf8:

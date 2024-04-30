@@ -44,4 +44,4 @@ let s:wiki1 = {
 
 let g:vimwiki_list = [s:wiki1]
 
-" vim: set fileencoding=utf-8:
+" vim: set fenc=utf8:

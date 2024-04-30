@@ -305,4 +305,4 @@ let s:keymaps = [
 
 call VimSetKeymaps(s:keymaps)
 
-" vim: set fileencoding=utf-8:
+" vim: set fenc=utf8:
