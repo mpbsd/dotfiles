@@ -4,7 +4,9 @@ function VimSetAnOption(categ, lhs, rhs) abort
   if a:categ ==# 'bool'
     exe printf("set %s", (a:rhs == v:true) ? a:lhs : ('no' . a:lhs))
   elseif a:categ ==# 'grpx'
-    exe printf("set guioptions %s=%s", a:rhs, a:lhs)
+    if has("gui_running")
+      exe printf("set guioptions %s=%s", a:rhs, a:lhs)
+    endif
   else
     exe printf("set %s=%s", a:lhs, a:rhs)
   endif
