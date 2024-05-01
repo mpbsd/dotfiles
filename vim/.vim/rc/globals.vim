@@ -73,13 +73,6 @@ function VimSetTeXMaps() abort
   cal VimSetKeymaps(l:keymaps)
 endfunction
 
-function VimAutoFormatTeXCodeOnEverySave() abort
-  let l:pos = getpos('.')
-  sil exe 'norm gg=G'
-  cal setpos('.', l:pos)
-  sil exe 'norm zz'
-endfunction
-
 function VimSetAnAutocmd(augroup, events, pattern, action) abort
   exe printf("augroup %s", a:augroup)
   autocmd!
@@ -257,19 +250,19 @@ endfunction
 function VimSetStatusline() abort
   let l:bufnr = '[%n]'
   let l:mode = '%{VimGetCurrentMode(mode())}'
-  let l:tail_of_filename = '%t'
+  let l:filename_tail = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='
   let l:fenc = '%{&fileencoding}'
   let l:fileformat = '%{&fileformat}'
   let l:file_type = '%Y'
   let l:percentage_through_file = '%P'
-  let l:line_and_column_numbers = '(%06l:%06c)'
+  let l:line_and_column_numbers = '%06l:%06c'
   let l:statusline = printf(
         \  "%s %s %s %s %s %s %s %s %s %s",
         \  l:bufnr,
         \  l:mode,
-        \  l:tail_of_filename,
+        \  l:filename_tail,
         \  l:modified_flag,
         \  l:lhs_rhs_separator,
         \  l:fenc,
