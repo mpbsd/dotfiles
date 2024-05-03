@@ -107,6 +107,7 @@ declare -a CORE_UTILS=(
   thefuck
   tmux
   zathura
+  zathura-djvu
 )
 # }}}
 # SHELL {{{
