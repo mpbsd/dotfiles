@@ -172,7 +172,6 @@ declare -a WINDOWMAKER=(
   wmcpuload
   wmmemload
   wmnd
-  wmfsm
 )
 # }}}
 # ZSA_WALLY {{{

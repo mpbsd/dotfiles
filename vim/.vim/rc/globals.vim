@@ -1,21 +1,21 @@
 let g:tex_flavor = 'latex'
 
-function VimSetAnOption(categ, lhs, rhs) abort
-  if a:categ ==# 'bool'
-    exe printf("set %s", (a:rhs == v:true) ? a:lhs : ('no' . a:lhs))
-  elseif a:categ ==# 'grpx'
+function VimSetAnOption(ctg, lhs, rhs) abort
+  if a:ctg ==# 'bool'
+    execute printf("set %s", (a:rhs == v:true) ? a:lhs : ('no' . a:lhs))
+  elseif a:ctg ==# 'grpx'
     if has("gui_running")
-      exe printf("set guioptions %s=%s", a:rhs, a:lhs)
+      execute printf("set guioptions %s=%s", a:rhs, a:lhs)
     endif
   else
-    exe printf("set %s=%s", a:lhs, a:rhs)
+    execute printf("set %s=%s", a:lhs, a:rhs)
   endif
 endfunction
 
 function VimSetOptions(options) abort
-  for categ in keys(a:options)
-    for [lhs, rhs] in items(a:options[categ])
-      cal VimSetAnOption(categ, lhs, rhs)
+  for ctg in keys(a:options)
+    for [lhs, rhs] in items(a:options[ctg])
+      call VimSetAnOption(ctg, lhs, rhs)
     endfor
   endfor
 endfunction
@@ -26,12 +26,12 @@ function VimSetAKeymap(mod, lhs, rhs) abort
         \  'insert': 'inoremap',
         \  'visual': 'vnoremap',
         \}
-  exe printf("%s %s %s", l:noremap[a:mod], a:lhs, a:rhs)
+  execute printf("%s %s %s", l:noremap[a:mod], a:lhs, a:rhs)
 endfunction
 
 function VimSetKeymaps(keymaps) abort
   for X in a:keymaps
-    cal VimSetAKeymap(X['mod'], X['lhs'], X['rhs'])
+    call VimSetAKeymap(X['mod'], X['lhs'], X['rhs'])
   endfor
 endfunction
 
@@ -65,24 +65,24 @@ function VimSetTeXMaps() abort
         \  {
         \    'mod': 'normal',
         \    'lhs': '<leader>gb',
-        \    'rhs': ':cal VimGetBibTeXCitationKeys()<cr>',
+        \    'rhs': ':call VimGetBibTeXCitationKeys()<cr>',
         \    'des': 'get bibtex citation keys',
         \  },
         \]
   " }}}
-  cal VimSetKeymaps(l:keymaps)
+  call VimSetKeymaps(l:keymaps)
 endfunction
 
 function VimSetAnAutocmd(augroup, events, pattern, action) abort
-  exe printf("augroup %s", a:augroup)
+  execute printf("augroup %s", a:augroup)
   autocmd!
-  exe printf("autocmd %s %s %s", a:events, a:pattern, a:action)
+  execute printf("autocmd %s %s %s", a:events, a:pattern, a:action)
   augroup END
 endfunction
 
 function VimSetAutocmds(autocmds) abort
   for X in a:autocmds
-    cal VimSetAnAutocmd(X['augroup'], X['events'], X['pattern'], X['action'])
+    call VimSetAnAutocmd(X['augroup'], X['events'], X['pattern'], X['action'])
   endfor
 endfunction
 
@@ -281,17 +281,17 @@ function VimSetColorscheme() abort
         \  'slate',
         \]
   let l:choice = rand(srand()) % len(l:colorscheme)
-  exe printf("colorscheme %s", l:colorscheme[l:choice])
+  execute printf("colorscheme %s", l:colorscheme[l:choice])
 endfunction
 
 function VimRemoveNonASCIICharsFromCurrentBuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   for [lhs, rhs] in items(TableOfEquivalentNonAsciiCharacters())
-    sil exe printf("1,$s/%s/%s/ge", lhs, rhs)
+    silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
   endfor
-  cal setpos('.', l:pos)
-  cal setreg('/', l:reg)
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
 endfunction
 
 function VimRemoveNonASCIICharsFromCurrentWord(cword) abort
@@ -304,22 +304,22 @@ endfunction
 
 function VimAddCurrentWordToTheAbbreviationsList() abort
   let l:abbrv = VimRemoveNonASCIICharsFromCurrentWord(expand('<cword>'))
-  cal writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
+  call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
 
 function VimAddCurrentWordToTheWordsList() abort
   let l:cword = expand('<cword>')
-  cal writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
+  call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
   echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
 endfunction
 
 function VimRemoveTrailingSpacesFromCurrentBuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
-  sil 1,$s/\s\+$//e
-  cal setpos('.', l:pos)
-  cal setreg('/', l:reg)
+  silent 1,$s/\s\+$//e
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
 endfunction
 
 function VimInstallMissingPlugins() abort
@@ -332,13 +332,13 @@ endfunction
 function VimGetBibTeXCitationKeys() abort
   " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
-  sil exe printf("DB sqlite:%s select key, year, title from ref", l:db)
+  silent execute printf("DB sqlite:%s select key, year, title from ref", l:db)
 endfunction
 
 function VimQueryBibTeXDatabase(query) abort
   " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
-  sil exe printf("DB sqlite:%s select * from ref where %s", l:db, a:query)
+  silent execute printf("DB sqlite:%s select * from ref where %s", l:db, a:query)
 endfunction
 
 function VimFormatMyBibTeXFile() abort
@@ -373,21 +373,21 @@ function VimFormatMyBibTeXFile() abort
       let l:key_target = l:re['key']['tgt']
       let l:key_before = l:re['key']['lhs']
       let l:key_after  = l:re['key']['rhs']
-      sil exe printf("g/%s/s/%s/%s/", l:key_target, l:key_before, l:key_after)
-      sil exe printf("g/\\(%s\\) \\+=/d", join(l:re['unwanted_fields'], '\|'))
+      silent execute printf("g/%s/s/%s/%s/", l:key_target, l:key_before, l:key_after)
+      silent execute printf("g/\\(%s\\) \\+=/d", join(l:re['unwanted_fields'], '\|'))
       let @q = '/^@j:Tab /='
-      sil exe 'norm 120@q'
+      silent execute 'norm 120@q'
 endfunction
 
 function VimCreateCSVFileWithDisciplines() abort
-  sil exe 'norm ggVGu'
-  cal VimRemoveNonASCIICharsFromCurrentBuffer()
-  sil 1,$s/ \+/ /g
-  sil 1,$s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
-  sil 1,$s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
-  sil 1,$s/\(^\s\+\|\s\+$\)//ge
-  sil exe 'g/^$/d'
-  sil exe 'g/^\(disciplinas de externas\|manha\|tarde\|noite\)/d'
+  silent execute 'norm ggVGu'
+  call VimRemoveNonASCIICharsFromCurrentBuffer()
+  silent 1,$s/ \+/ /g
+  silent 1,$s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
+  silent 1,$s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
+  silent 1,$s/\(^\s\+\|\s\+$\)//ge
+  silent execute 'g/^$/d'
+  silent execute 'g/^\(disciplinas de externas\|manha\|tarde\|noite\)/d'
   let l:macro = [
         \  '/^campus aparecida',
         \  'ma/^campus colemar',
@@ -397,9 +397,9 @@ function VimCreateCSVFileWithDisciplines() abort
         \  '`cddVG:s/^/campus samambaia - /'
         \]
   let @q = join(l:macro, '')
-  sil exe 'norm @q'
-  sil 1,$s/-/;/g
-  sil exe 'Tab /;'
+  silent execute 'norm @q'
+  silent 1,$s/-/;/g
+  silent execute 'Tab /;'
 endfunction
 
 function VimParseStudentsInfo() abort
@@ -428,42 +428,42 @@ function VimParseStudentsInfo() abort
         \    '"\3": {\r"fname": "\1",\r"gradc": "\2",',
         \  ],
         \}
-  sil exe 'norm ggVGu'
-  cal VimRemoveNonASCIICharsFromCurrentBuffer()
-  sil exe printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
-  sil g!/\v(\(perfil\)$|(curso|matricula|usuario|e-mail):)/d
-  sil 1,$s/\s\+$//e
-  sil exe printf("1,$s/%s/%s/", l:re['lhs'][1], l:re['rhs'][1])
-  sil exe printf("1,$s/%s/%s/", l:re['lhs'][2], l:re['rhs'][2])
-  sil exe printf("1,$s/%s/%s/", l:re['lhs'][3], l:re['rhs'][3])
-  sil exe printf("1,$s/%s/%s/", l:re['lhs'][4], l:re['rhs'][4])
-  sil exe printf("1,$s/%s/%s/", l:re['lhs'][5], l:re['rhs'][5])
-  sil exe printf("1,$s/%s/%s/", l:re['lhs'][6], l:re['rhs'][6])
-  sil g/"email"/s/$/\r"grade": {"E1": 0, "E2": 0, "E3": 0},/
-  sil exe 'norm ggc/^"\d\{9}student = {Go}gg=G'
-  sil exe 'g/^\s*$/d'
+  silent execute 'norm ggVGu'
+  call VimRemoveNonASCIICharsFromCurrentBuffer()
+  silent execute printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
+  silent g!/\v(\(perfil\)$|(curso|matricula|usuario|e-mail):)/d
+  silent 1,$s/\s\+$//e
+  silent execute printf("1,$s/%s/%s/", l:re['lhs'][1], l:re['rhs'][1])
+  silent execute printf("1,$s/%s/%s/", l:re['lhs'][2], l:re['rhs'][2])
+  silent execute printf("1,$s/%s/%s/", l:re['lhs'][3], l:re['rhs'][3])
+  silent execute printf("1,$s/%s/%s/", l:re['lhs'][4], l:re['rhs'][4])
+  silent execute printf("1,$s/%s/%s/", l:re['lhs'][5], l:re['rhs'][5])
+  silent execute printf("1,$s/%s/%s/", l:re['lhs'][6], l:re['rhs'][6])
+  silent g/"email"/s/$/\r"grade": {"E1": 0, "E2": 0, "E3": 0},/
+  silent execute 'norm ggc/^"\d\{9}student = {Go}gg=G'
+  silent execute 'g/^\s*$/d'
 endfunction
 
 function VimEditLogbook(code) abort
   let l:date = system("date +'%Y-%m-%d'")
   let l:file = "~/templates/python/classes/pkgs/discipline/%s/logbook.py"
-  sil exe printf(":e +/%s %s", l:date, expand(printf(l:file, a:code)))
+  silent execute printf(":e +/%s %s", l:date, expand(printf(l:file, a:code)))
 endfunction
 
 function VimCreateCatalogueForMe() abort
-  sil exe 'norm ggd/<tbody>'
-  sil exe 'norm Gd?<\/tbody>'
-  sil 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(p\|strong\|tbody\)>\|\[AR\]\)//ge
-  sil 1,$s/<\(t[dhr]\)[^>]\+>/<\1>/g
-  sil 1,$s/<a[^>]\+>\([^<]\+\)\(<br \/>\)\?<\/a>/\1/g
-  sil 1,$s/\([0-9]\{2\}CBM\|MON\|NMAT\|PM\)-\([0-9]\{2\}\)/\1\2/g
+  silent execute 'norm ggd/<tbody>'
+  silent execute 'norm Gd?<\/tbody>'
+  silent 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(p\|strong\|tbody\)>\|\[AR\]\)//ge
+  silent 1,$s/<\(t[dhr]\)[^>]\+>/<\1>/g
+  silent 1,$s/<a[^>]\+>\([^<]\+\)\(<br \/>\)\?<\/a>/\1/g
+  silent 1,$s/\([0-9]\{2\}CBM\|MON\|NMAT\|PM\)-\([0-9]\{2\}\)/\1\2/g
   let @q = '/^<trV/^<\/tr>$J^ci<++'
-  sil! exe 'norm 1000@q'
-  sil 1,$s/\(^<++> <t[dhr]>\|<\/t[dhr]> <\/t[dhr]>$\)//g
-  sil 1,$s/<\/t[dhr]> <t[dhr]>/;/g
-  sil 1,$s/&#8217;/'/ge
-  sil 1,$s/&#8211;/-/ge
-  sil 1,$s/\(^ \+\| \+$\)//ge
+  silent! execute 'norm 1000@q'
+  silent 1,$s/\(^<++> <t[dhr]>\|<\/t[dhr]> <\/t[dhr]>$\)//g
+  silent 1,$s/<\/t[dhr]> <t[dhr]>/;/g
+  silent 1,$s/&#8217;/'/ge
+  silent 1,$s/&#8211;/-/ge
+  silent 1,$s/\(^ \+\| \+$\)//ge
   let l:re = {
         \  'lhs': '^\([^;]\+\);\([^;]\+\);\([^;]\+\);\(.*\)$',
         \  'rhs': [
@@ -473,38 +473,38 @@ function VimCreateCatalogueForMe() abort
         \    '"year": "\4"\r}',
         \  ]
         \}
-  sil exe printf("1,$s/%s/%s,/", l:re['lhs'], join(l:re['rhs'], '\r'))
-  sil 1s/^/[/
-  sil $s/,$/\r]/
-  sil 1,$s/ \+",$/",/
+  silent execute printf("1,$s/%s/%s,/", l:re['lhs'], join(l:re['rhs'], '\r'))
+  silent 1s/^/[/
+  silent $s/,$/\r]/
+  silent 1,$s/ \+",$/",/
 endfunction
 
 function VimParseEeesInfo() abort
-  sil exe 'norm ggVGu'
+  silent execute 'norm ggVGu'
   call VimRemoveNonASCIICharsFromCurrentBuffer()
-  sil exe 'norm ggd/abiel costa macedo<\/span>'
-  sil exe 'norm /wcedro@ufg.brjdG'
-  sil 1,$s/<[^>]\+>//g
-  sil 1,$s/telefone:(62) 3521-\d\{4}//
-  sil 1,$s/\(sala\|formacao\|area de atuacao\|lattes\|pagina pessoal\|e-mail\):/\r\1:/g
-  sil g/\(^\s*$\|pagina pessoal\)/d
-  sil 1,$s@http://lattes.cnpq.br/@@
-  sil 1,$s/sala: *\(\d\{3\}\)/"office": "\1",/
-  sil 356s/sala: */"office": "121",/
-  sil 475s/$/\r"office": "000",/
-  sil 1,$s/formacao: *\(.*\) */"school": "\1",/
-  sil 1,$s/area de atuacao: *\(.*\) */"field": "\1",/
-  sil 1,$s/lattes: *\(\d\{16\}\) */"\1": {/
-  sil 257s/lattes: lattes/"3206466156270217": {/
-  sil 449s/lattes: lattes/"9663485072140551": {/
-  sil 1,$s/e-mail: *\(.*\)/"email": "\1"/
-  sil g/^[a-z]/s/\v(^|$)/"/g
-  sil g!/:/s/^/"fname": /
-  sil g/fname/s/$/,/
-  sil %s/\(^"fname": .*\)\n\("office": .*\)\n\("school": .*\)\n\("field": .*\)\n\("\d\{16\}": {\)\n\("email": .*\)/\5\r\1\r\2\r\3\r\4\r\6\r},/
-  sil 1s/^/{\r/
-  sil $s/,$/\r}/
-  sil exe 'norm gg=G'
+  silent execute 'norm ggd/abiel costa macedo<\/span>'
+  silent execute 'norm /wcedro@ufg.brjdG'
+  silent 1,$s/<[^>]\+>//g
+  silent 1,$s/telefone:(62) 3521-\d\{4}//
+  silent 1,$s/\(sala\|formacao\|area de atuacao\|lattes\|pagina pessoal\|e-mail\):/\r\1:/g
+  silent g/\(^\s*$\|pagina pessoal\)/d
+  silent 1,$s@http://lattes.cnpq.br/@@
+  silent 1,$s/sala: *\(\d\{3\}\)/"office": "\1",/
+  silent 356s/sala: */"office": "121",/
+  silent 475s/$/\r"office": "000",/
+  silent 1,$s/formacao: *\(.*\) */"school": "\1",/
+  silent 1,$s/area de atuacao: *\(.*\) */"field": "\1",/
+  silent 1,$s/lattes: *\(\d\{16\}\) */"\1": {/
+  silent 257s/lattes: lattes/"3206466156270217": {/
+  silent 449s/lattes: lattes/"9663485072140551": {/
+  silent 1,$s/e-mail: *\(.*\)/"email": "\1"/
+  silent g/^[a-z]/s/\v(^|$)/"/g
+  silent g!/:/s/^/"fname": /
+  silent g/fname/s/$/,/
+  silent %s/\(^"fname": .*\)\n\("office": .*\)\n\("school": .*\)\n\("field": .*\)\n\("\d\{16\}": {\)\n\("email": .*\)/\5\r\1\r\2\r\3\r\4\r\6\r},/
+  silent 1s/^/{\r/
+  silent $s/,$/\r}/
+  silent execute 'norm gg=G'
 endfunction
 
 " vim: set fenc=utf8:
