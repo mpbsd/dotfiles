@@ -20,13 +20,6 @@ function VimAddCurrentWordToTheWordsList() abort
   echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
 endfunction
 
-function VimInstallMissingPlugins() abort
-  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-    PlugInstall --sync
-    wincmd q
-  endif
-endfunction
-
 function VimGetBibTeXCitationKeys() abort
   " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
