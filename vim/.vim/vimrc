@@ -7,14 +7,11 @@ let s:rc_files = [
       \  'caching',
       \  'spcchar',
       \  'globals',
-      \  'options',
-      \  'keymaps',
       \  'plugins',
-      \  'autocmd',
       \]
 
 for rc_file in s:rc_files
   execute printf("source %s/%s.vim", s:rc_files_dir, rc_file)
 endfor
 
-" vim: set fenc=utf8:
+" vim: set fileencoding=utf8: "

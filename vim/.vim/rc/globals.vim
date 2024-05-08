@@ -1,91 +1,5 @@
 let g:tex_flavor = 'latex'
 
-function VimSetAnOption(ctg, lhs, rhs) abort
-  if a:ctg ==# 'bool'
-    execute printf("set %s", (a:rhs == v:true) ? a:lhs : ('no' . a:lhs))
-  elseif a:ctg ==# 'grpx'
-    if has("gui_running")
-      execute printf("set guioptions %s=%s", a:rhs, a:lhs)
-    endif
-  else
-    execute printf("set %s=%s", a:lhs, a:rhs)
-  endif
-endfunction
-
-function VimSetOptions(options) abort
-  for ctg in keys(a:options)
-    for [lhs, rhs] in items(a:options[ctg])
-      call VimSetAnOption(ctg, lhs, rhs)
-    endfor
-  endfor
-endfunction
-
-function VimSetAKeymap(mod, lhs, rhs) abort
-  let l:noremap = {
-        \  'normal': 'nnoremap',
-        \  'insert': 'inoremap',
-        \  'visual': 'vnoremap',
-        \}
-  execute printf("%s %s %s", l:noremap[a:mod], a:lhs, a:rhs)
-endfunction
-
-function VimSetKeymaps(keymaps) abort
-  for X in a:keymaps
-    call VimSetAKeymap(X['mod'], X['lhs'], X['rhs'])
-  endfor
-endfunction
-
-function VimSetTeXMaps() abort
-  " s:keymaps {{{
-  let l:keymaps = [
-        \  {
-        \    'mod': 'normal',
-        \    'lhs': '<leader>mk',
-        \    'rhs': ':make<cr>',
-        \    'des': 'compile the draft version of the root document',
-        \  },
-        \  {
-        \    'mod': 'normal',
-        \    'lhs': '<leader>mb',
-        \    'rhs': ':make bib<cr>',
-        \    'des': 'compile the bibliography',
-        \  },
-        \  {
-        \    'mod': 'normal',
-        \    'lhs': '<leader>mc',
-        \    'rhs': ':make clean<cr>',
-        \    'des': 'clean auxiliary files',
-        \  },
-        \  {
-        \    'mod': 'normal',
-        \    'lhs': '<leader>mf',
-        \    'rhs': ':make final<cr>',
-        \    'des': 'compile the final version of the root document',
-        \  },
-        \  {
-        \    'mod': 'normal',
-        \    'lhs': '<leader>gb',
-        \    'rhs': ':call VimGetBibTeXCitationKeys()<cr>',
-        \    'des': 'get bibtex citation keys',
-        \  },
-        \]
-  " }}}
-  call VimSetKeymaps(l:keymaps)
-endfunction
-
-function VimSetAnAutocmd(augroup, events, pattern, action) abort
-  execute printf("augroup %s", a:augroup)
-  autocmd!
-  execute printf("autocmd %s %s %s", a:events, a:pattern, a:action)
-  augroup END
-endfunction
-
-function VimSetAutocmds(autocmds) abort
-  for X in a:autocmds
-    call VimSetAnAutocmd(X['augroup'], X['events'], X['pattern'], X['action'])
-  endfor
-endfunction
-
 function VimGetCurrentMode(mode) abort
   " mode {{{
   let l:MODE = {
@@ -253,7 +167,7 @@ function VimSetStatusline() abort
   let l:filename_tail = '%t'
   let l:modified_flag = '%m'
   let l:lhs_rhs_separator = '%='
-  let l:fenc = '%{&fileencoding}'
+  let l:fileencoding = '%{&fileencoding}'
   let l:fileformat = '%{&fileformat}'
   let l:file_type = '%Y'
   let l:percentage_through_file = '%P'
@@ -265,23 +179,13 @@ function VimSetStatusline() abort
         \  l:filename_tail,
         \  l:modified_flag,
         \  l:lhs_rhs_separator,
-        \  l:fenc,
+        \  l:fileencoding,
         \  l:fileformat,
         \  l:file_type,
         \  l:percentage_through_file,
         \  l:line_and_column_numbers,
         \)
   return l:statusline
-endfunction
-
-function VimSetColorscheme() abort
-  let l:colorscheme = [
-        \  'habamax',
-        \  'lunaperche',
-        \  'slate',
-        \]
-  let l:choice = rand(srand()) % len(l:colorscheme)
-  execute printf("colorscheme %s", l:colorscheme[l:choice])
 endfunction
 
 function VimRemoveNonASCIICharsFromCurrentBuffer() abort
@@ -507,4 +411,4 @@ function VimParseEeesInfo() abort
   silent execute 'norm gg=G'
 endfunction
 
-" vim: set fenc=utf8:
+" vim: set fileencoding=utf8: "

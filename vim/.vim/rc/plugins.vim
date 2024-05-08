@@ -6,6 +6,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'mpbsd/vim-options'
+Plug 'mpbsd/vim-keymaps'
+Plug 'mpbsd/vim-autocmd'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -43,4 +46,4 @@ let s:wiki1 = {
 
 let g:vimwiki_list = [s:wiki1]
 
-" vim: set fenc=utf8:
+" vim: set fileencoding=utf8: "
