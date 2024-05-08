@@ -178,4 +178,4 @@ function VimParseEeesInfo() abort
   silent execute 'norm gg=G'
 endfunction
 
-" vim: set fileencoding=utf8: "
+" vim: set fileencoding=utf-8: "
