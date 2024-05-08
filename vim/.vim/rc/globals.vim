@@ -1,15 +1,5 @@
 let g:tex_flavor = 'latex'
 
-function VimRemoveNonASCIICharsFromCurrentBuffer() abort
-  let l:pos = getpos('.')
-  let l:reg = getreg('/')
-  for [lhs, rhs] in items(TableOfEquivalentNonAsciiCharacters())
-    silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
-  endfor
-  call setpos('.', l:pos)
-  call setreg('/', l:reg)
-endfunction
-
 function VimRemoveNonASCIICharsFromCurrentWord(cword) abort
   let l:pword = a:cword
   for [lhs, rhs] in items(TableOfEquivalentNonAsciiCharacters())
@@ -28,14 +18,6 @@ function VimAddCurrentWordToTheWordsList() abort
   let l:cword = expand('<cword>')
   call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
   echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
-endfunction
-
-function VimRemoveTrailingSpacesFromCurrentBuffer() abort
-  let l:pos = getpos('.')
-  let l:reg = getreg('/')
-  silent 1,$s/\s\+$//e
-  call setpos('.', l:pos)
-  call setreg('/', l:reg)
 endfunction
 
 function VimInstallMissingPlugins() abort

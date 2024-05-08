@@ -4,8 +4,6 @@ let maplocalleader = ','
 let s:rc_files_dir = expand('~/.vim/rc')
 
 let s:rc_files = [
-      \  'caching',
-      \  'spcchar',
       \  'globals',
       \  'plugins',
       \]

@@ -6,9 +6,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'mpbsd/vim-caching'
 Plug 'mpbsd/vim-options'
 Plug 'mpbsd/vim-keymaps'
 Plug 'mpbsd/vim-autocmd'
+Plug 'mpbsd/vim-spcchar'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
