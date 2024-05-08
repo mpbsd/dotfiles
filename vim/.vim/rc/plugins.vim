@@ -10,7 +10,7 @@ Plug 'mpbsd/vim-caching'
 Plug 'mpbsd/vim-options'
 Plug 'mpbsd/vim-keymaps'
 Plug 'mpbsd/vim-autocmd'
-Plug 'mpbsd/vim-spcchar'
+Plug 'mpbsd/vim-myspell'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

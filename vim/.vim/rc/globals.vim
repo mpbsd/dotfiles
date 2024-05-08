@@ -1,25 +1,5 @@
 let g:tex_flavor = 'latex'
 
-function VimRemoveNonASCIICharsFromCurrentWord(cword) abort
-  let l:pword = a:cword
-  for [lhs, rhs] in items(TableOfEquivalentNonAsciiCharacters())
-    let l:pword = substitute(l:pword, lhs, rhs, 'gie')
-  endfor
-  return printf("%s %s %s", 'iabbrev' , l:pword , a:cword)
-endfunction
-
-function VimAddCurrentWordToTheAbbreviationsList() abort
-  let l:abbrv = VimRemoveNonASCIICharsFromCurrentWord(expand('<cword>'))
-  call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
-  echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
-endfunction
-
-function VimAddCurrentWordToTheWordsList() abort
-  let l:cword = expand('<cword>')
-  call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
-  echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
-endfunction
-
 function VimGetBibTeXCitationKeys() abort
   " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
