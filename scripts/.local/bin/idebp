@@ -66,6 +66,11 @@ declare -a FUN_AND_GAMES=(
   stockfish
 )
 # }}}
+# FIRMWARE {{{
+declare -a FIRMWARE=(
+  firmware-realtek
+)
+# }}}
 # SECURITY {{{
 declare -a SECURITY=(
   pass
@@ -199,6 +204,7 @@ PKGS=(
   "${MAIL_CHAT_AND_NEWS[@]}"
   "${SYSTEM_MAINTENANCE[@]}"
   "${FUN_AND_GAMES[@]}"
+  "${FIRMWARE[@]}"
   "${SECURITY[@]}"
   "${BLOGGING[@]}"
   "${CORE_UTILS[@]}"
