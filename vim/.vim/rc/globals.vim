@@ -1,6 +1,22 @@
 let g:mapleader = ' '
 let g:maplocalleader = ','
+let g:netrw_banner = 0
+let g:netrw_list_hide = '^\..*'
 let g:tex_flavor = 'latex'
+let g:abolish_save_file = expand('~/.vim/spell/words.abbr')
+let g:UltiSnipsSnippetDirectories  = [expand('~/.vim/ultisnips')]
+let g:UltiSnipsExpandTrigger       = '<Tab>'
+let g:UltiSnipsJumpForwardTrigger  = '<C-J>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-K>'
+let g:UltiSnipsEditSplit           = 'tabdo'
+let g:vimwiki_list = [
+      \  {
+      \    'path': '~/.local/share/vimwiki/wiki1/',
+      \    'index': 'index',
+      \    'syntax': 'default',
+      \    'ext': '.wiki',
+      \  }
+      \]
 
 function globals#vim_choose_a_colorscheme_for_me(variant) abort
   " options {{{
@@ -114,7 +130,7 @@ function globals#table_of_ascii_equivalent_characters() abort
   return l:ascii_equivalent_chars
 endfunction
 
-function globals#vim_remove_non_aSCIIChars_from_current_buffer() abort
+function globals#vim_rm_non_ascii_chars_from_current_buffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   for [lhs, rhs] in items(globals#table_of_ascii_equivalent_characters())
@@ -196,11 +212,11 @@ endfunction
 
 function globals#vim_create_csv_file_with_disciplines() abort
   silent execute 'norm ggVGu'
-  call VimRemoveNonASCIICharsFromCurrentBuffer()
-  silent 1,$s/ \+/ /g
-  silent 1,$s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
-  silent 1,$s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
-  silent 1,$s/\(^\s\+\|\s\+$\)//ge
+  call globals#vim_rm_non_ascii_chars_from_current_buffer()
+  silent %s/ \+/ /g
+  silent %s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
+  silent %s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
+  silent %s/\(^\s\+\|\s\+$\)//ge
   silent execute 'g/^$/d'
   silent execute 'g/^\(disciplinas de externas\|manha\|tarde\|noite\)/d'
   let l:macro = [
@@ -213,7 +229,7 @@ function globals#vim_create_csv_file_with_disciplines() abort
         \]
   let @q = join(l:macro, '')
   silent execute 'norm @q'
-  silent 1,$s/-/;/g
+  silent %s/-/;/g
   silent execute 'Tab /;'
 endfunction
 
@@ -244,7 +260,7 @@ function globals#vim_parse_students_info() abort
         \  ],
         \}
   silent execute 'norm ggVGu'
-  call VimRemoveNonASCIICharsFromCurrentBuffer()
+  call globals#vim_rm_non_ascii_chars_from_current_buffer()
   silent execute printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
   silent g!/\v(\(perfil\)$|(curso|matricula|usuario|e-mail):)/d
   silent 1,$s/\s\+$//e
@@ -301,7 +317,7 @@ endfunction
 
 function globals#vim_parse_eees_info() abort
   silent execute 'norm ggVGu'
-  call VimRemoveNonASCIICharsFromCurrentBuffer()
+  call globals#vim_rm_non_ascii_chars_from_current_buffer()
   silent execute 'norm ggd/abiel costa macedo<\/span>'
   silent execute 'norm /wcedro@ufg.brjdG'
   silent 1,$s/<[^>]\+>//g

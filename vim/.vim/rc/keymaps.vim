@@ -26,6 +26,8 @@ nnoremap <Leader>qa :qa<CR>
 nnoremap <Leader>s- :sp<CR>
 nnoremap <Leader>s\ :vs<CR>
 
+nnoremap - :Ex<CR>
+
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
@@ -48,7 +50,7 @@ nnoremap <Leader>mk :make<CR>
 nnoremap <Leader>mb :make bib<CR>
 nnoremap <Leader>mc :make clean<CR>
 nnoremap <Leader>mf :make final<CR>
-nnoremap <Leader>gb :call globals#vim_get_BibTeX_citation_keys_()<CR>
+nnoremap <Leader>gb :call globals#vim_get_BibTeX_citation_keys()<CR>
 
 nnoremap <Leader>ab :call globals#vim_add_current_word_to_the_abbrevs_list()<CR>
 nnoremap <Leader>aw :call globals#vim_add_current_word_to_the_words_list()<CR>
