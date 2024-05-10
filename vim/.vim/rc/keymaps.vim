@@ -5,13 +5,15 @@ if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
 
-nnoremap Y y$
-
+nnoremap <Leader>sb :Buffers<CR>
 nnoremap <Leader>sf :FZF<CR>
 nnoremap <Leader>sg :Ag<CR>
-nnoremap <Leader>sc :FZF ~/.vim<CR>
+nnoremap <Leader>sm :Maps<CR>
+nnoremap <Leader>sv :FZF ~/.vim<CR>
 
-inoremap jj <esc>
+nnoremap Y y$
+
+nnoremap - :Ex<CR>
 
 nnoremap <Leader>; :
 
@@ -25,8 +27,6 @@ nnoremap <Leader>qa :qa<CR>
 
 nnoremap <Leader>s- :sp<CR>
 nnoremap <Leader>s\ :vs<CR>
-
-nnoremap - :Ex<CR>
 
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j

@@ -4,11 +4,11 @@ let g:netrw_banner = 0
 let g:netrw_list_hide = '^\..*'
 let g:tex_flavor = 'latex'
 let g:abolish_save_file = expand('~/.vim/spell/words.abbr')
-let g:UltiSnipsSnippetDirectories  = [expand('~/.vim/ultisnips')]
-let g:UltiSnipsExpandTrigger       = '<Tab>'
-let g:UltiSnipsJumpForwardTrigger  = '<C-J>'
+let g:UltiSnipsSnippetDirectories = [expand('~/.vim/ultisnips')]
+let g:UltiSnipsExpandTrigger = '<Tab>'
+let g:UltiSnipsJumpForwardTrigger = '<C-J>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-K>'
-let g:UltiSnipsEditSplit           = 'tabdo'
+let g:UltiSnipsEditSplit = 'tabdo'
 let g:vimwiki_list = [
       \  {
       \    'path': '~/.local/share/vimwiki/wiki1/',

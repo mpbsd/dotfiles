@@ -3,10 +3,10 @@ augroup set_foldmethod_to_marker_for_these_filetypes
   autocmd FileType python,sh,vim setlocal foldmethod=marker
 augroup END
 
-" augroup get_rid_of_trailing_spaces
-"   autocmd!
-"   autocmd BufWritePre *.json,*.lua,*.py,*.sh,*.tex,*.txt,*.vim :call VimRemoveTrailingSpacesFromCurrentBuffer()
-" augroup END
+augroup get_rid_of_trailing_spaces
+  autocmd!
+  autocmd BufWritePre *.json,*.lua,*.py,*.sh,*.tex,*.txt,*.vim :call globals#vim_rm_trailing_spaces_from_cbuffer()
+augroup END
 
 augroup get_iabbrevs_for_these_filetypes
   autocmd!
