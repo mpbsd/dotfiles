@@ -1,15 +1,497 @@
+" disable compatibility with Vi
+set nocompatible
+
+" how backspace works at start of line
+set backspace=indent,eol,start
+
+" autocommands that match with the value of this option will be executed
+filetype plugin indent on
+
+" enables Vim to show parts of the text in another font or color
+syntax enable
+
+" take indent for new line from previous line
+set autoindent
+
+" automatically read file when changed outside of Vim
+set autoread
+
+" don't ring the bell for any reason
+set belloff=all
+
+" columns to highlight
+set colorcolumn=80
+
+" patterns that can start a comment line
+set comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-,fb:•
+
+" template for comments; used for fold marker
+set commentstring=
+
+" specify how Insert mode completion works
+set complete=.,w,b,u,t
+
+" highlight the screen column of the cursor
+set cursorcolumn
+
+" highlight the screen line of the cursor
+set cursorline
+
+" pattern to be used to find a macro definition
+set define=
+
+" i_CTRL-X_CTRL-K will autocomplete with the words it finds in these files
+set dict=~/.vim/spell/words.dict
+
+" list of flags for how to display text
+set display=lastline
+
+" encoding used internally
+set encoding=utf-8
+
+" use spaces when <Tab> is inserted
+set expandtab
+
+" characters to use for displaying special items
+set fillchars=vert:│,fold:·,foldsep:│
+
+" how automatic formatting is to be done
+set formatoptions=tcqj
+
+" don't invoke fsync() after file write
+set nofsync
+
+" don't unload buffer when it is abandoned
+set hidden
+
+" number of command-lines that are remembered
+set history=10000
+
+" highlight matches with last search pattern
+set hlsearch
+
+" ignore case in search patterns
+set ignorecase
+
+" pattern to be used to find an include file
+set include=
+
+" highlight match while typing search pattern
+set incsearch
+
+" don't insert two spaces after a period with a join command
+set nojoinspaces
+
+" don't apply langmap to mapped characters
+set nolangremap
+
+" tells when last window has status lines
+set laststatus=2
+
+" don't redraw while executing macros
+set lazyredraw
+
+" characters for displaying in list mode
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+
+" changes special characters in search patterns
+set magic
+
+" enable the use of mouse clicks
+set mouse=nvi
+
+" changes meaning of mouse buttons
+set mousemodel=popup_setpos
+
+" number formats recognized for CTRL-A command
+set nrformats=bin,hex
+
+" print the line number in front of each line
+set number
+
+" number of columns used for the line number
+set numberwidth=6
+
+" list of directories searched with 'gf' et.al.
+set path=.,,
+
+" show relative line number in front of each line
+set relativenumber
+
+" minimum nr. of lines above and below cursor
+set scrolloff=1
+
+" secure mode for reading vimrc in current dir
+set secure
+
+" options for :mksession
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+
+" number of spaces to use for (auto)indent step
+set shiftwidth=2
+
+" list of flags, reduce length of messages
+set shortmess=ltToOCF
+
+" show (partial) command in the last line of the screen
+set showcmd
+
+" don't show the mode() on the last line
+set noshowmode
+
+" minimum number of columns to scroll horizontally
+set sidescroll=1
+
+" minimum number of columns to the left and right sides of the cursor
+set sidescrolloff=2
+
+" let upper case letters inhibit the ignorecase option
+set smartcase
+
+" Do smart autoindenting when starting a new line.
+set smartindent
+
+" use shiftwidth when inserting <Tab>
+set smarttab
+
+" languages to do spell checking for
+set spelllang=en_us,pt_br,de_de
+
+" methods used to suggest spelling corrections
+set spellsuggest=fast,15
+
+" new window from split is below the current one
+set splitbelow
+
+" new window is put right of the current one
+set splitright
+
+" if possible, keep the cursor in the same column when moving vertically
+set nostartofline
+
+" sets behavior when switching to another buffer
+set switchbuf=uselast
+
+" number of colors
+set t_Co=256
+
+" maximum number of tab pages for -p and 'tab all'
+set tabpagemax=50
+
+" number of spaces that <Tab> in file counts for
+set tabstop=2
+
+" list of file names used by the tag command
+set tags=./tags;,tags
+
+" maximum width of text that is being inserted
+set textwidth=80
+
+" time out on mappings and key codes
+set timeout
+
+" time out on mappings
+set ttimeout
+
+" time out time for key codes in milliseconds
+set ttimeoutlen=50
+
+" indicates a fast terminal connection
+set ttyfast
+
+" save undo information in a file
+set undofile
+
+" specifies what to save for :mkview
+set viewoptions=folds,cursor,curdir
+
+" use viminfofile upon startup and exiting
+set viminfo=!,'100,<50,s10,h
+
+" use menu for command line completion
+set wildmenu
+
+" specifies how command line completion is done
+set wildoptions=pum,tagfile
+
+" read Ex commands from {file} in each directory given by runtimepath/packpath
+runtime macros/matchit.vim
+runtime ftplugin/man.vim
+
 let mapleader = ' '
 let maplocalleader = ','
+
+let s:cache_dir = expand('~/.cache/vim')
+
+if !isdirectory(s:cache_dir)
+  silent execute printf("!mkdir -p %s", s:cache_dir)
+endif
+
+execute printf("set viminfofile=%s/.viminfo", s:cache_dir)
+
+let g:netrw_home=s:cache_dir
+
+let s:dirs = {
+      \  'backupdir': 'bdir',
+      \  'directory': 'sdir',
+      \  'undodir'  : 'udir',
+      \  'viewdir'  : 'vdir',
+      \}
+
+for [lhs, rhs] in items(s:dirs)
+  let s:dir = printf("%s/%s", s:cache_dir, rhs)
+  if !isdirectory(s:dir)
+    silent execute printf("!mkdir -p %s", s:dir)
+  endif
+  execute printf("set %s=%s", lhs, s:dir)
+endfor
+
+function! s:VimChooseAColorschemeForMe(variant) abort
+  let l:options = {
+        \  'dark': [
+        \    'habamax',
+        \    'lunaperche',
+        \    'slate',
+        \  ],
+        \  'light': [
+        \    'morning',
+        \    'shine',
+        \    'zellner',
+        \  ],
+        \}
+  if has_key(l:options, a:variant)
+    let l:choice = rand(srand()) % len(l:options[a:variant])
+    execute printf("set background=%s", a:variant)
+    execute printf("colorscheme %s", l:options[a:variant][l:choice])
+  else
+    set background=dark
+    colorscheme habamax
+  endif
+endfunction
+
+call s:VimChooseAColorschemeForMe('dark')
+
+function! VimDisplayCurrentMode(mode) abort
+  " MODE {{{1
+  let l:MODE = {
+        \  'n'    : 'NORMAL',
+        \  'no'   : 'O-PENDING',
+        \  'nov'  : 'O-PENDING',
+        \  'noV'  : 'O-PENDING',
+        \  'no' : 'O-PENDING',
+        \  'niI'  : 'NORMAL',
+        \  'niR'  : 'NORMAL',
+        \  'niV'  : 'NORMAL',
+        \  'nt'   : 'NORMAL',
+        \  'v'    : 'VISUAL',
+        \  'vs'   : 'VISUAL',
+        \  'V'    : 'V-LINE',
+        \  'Vs'   : 'V-LINE',
+        \  ''   : 'V-BLOCK',
+        \  's'  : 'V-BLOCK',
+        \  's'    : 'SELECT',
+        \  'S'    : 'S-LINE',
+        \  ''   : 'S-BLOCK',
+        \  'i'    : 'INSERT',
+        \  'ic'   : 'INSERT',
+        \  'ix'   : 'INSERT',
+        \  'R'    : 'REPLACE',
+        \  'Rc'   : 'REPLACE',
+        \  'Rx'   : 'REPLACE',
+        \  'Rv'   : 'V-REPLACE',
+        \  'Rvc'  : 'V-REPLACE',
+        \  'Rvx'  : 'V-REPLACE',
+        \  'c'    : 'COMMAND',
+        \  'cv'   : 'EX',
+        \  'ce'   : 'EX',
+        \  'r'    : 'PROMPT',
+        \  'rm'   : 'MORE',
+        \  'r?'   : 'CONFIRM',
+        \  '!'    : 'SHELL',
+        \  't'    : 'TERMINAL',
+        \}
+  " }}}
+  if has_key(l:MODE, a:mode)
+    return l:MODE[a:mode]
+  endif
+endfunction
+
+function! VimSetMyStatusline() abort
+  let l:components = [
+        \  '[%n]',
+        \  '%{VimDisplayCurrentMode(mode())}',
+        \  '%t',
+        \  '%m',
+        \  '%=',
+        \  '%{&fileencoding}',
+        \  '%{&fileformat}',
+        \  '%Y',
+        \  '%P',
+        \  '%06l:%06c'
+        \]
+  return join(l:components)
+endfunction
+
+set statusline=%!VimSetMyStatusline()
+if has("gui_running")
+  set guioptions-=T
+  set guioptions-=b
+  set guioptions+=d
+  set guioptions-=l
+  set guioptions-=m
+  set guioptions-=r
+  set guifont=Hack\ Nerd\ Font\ Mono\ 14
+  set guiheadroom=0
+endif
+
+if empty(mapcheck('<C-U>', 'i'))
+  inoremap <C-U> <C-G>u<C-U>
+endif
+if empty(mapcheck('<C-W>', 'i'))
+  inoremap <C-W> <C-G>u<C-W>
+endif
+
+nnoremap Y y$
+
+nnoremap <Leader>sf :FZF<CR>
+nnoremap <Leader>sg :Ag<CR>
+nnoremap <Leader>sc :FZF ~/.vim<CR>
+
+inoremap jj <esc>
+
+nnoremap <Leader>; :
+
+nnoremap <Leader>w; :w<CR>
+nnoremap <Leader>wa :wa<CR>
+
+nnoremap <Leader>so :so %<CR>
+
+nnoremap <Leader>q; :q<CR>
+nnoremap <Leader>qa :qa<CR>
+
+nnoremap <Leader>s- :sp<CR>
+nnoremap <Leader>s\ :vs<CR>
+
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+
+nnoremap <C-Left>  <C-W>>
+nnoremap <C-Down>  <C-W>-
+nnoremap <C-Up>    <C-W>+
+nnoremap <C-Right> <C-W><
+
+inoremap <localleader>tu <esc>mmbgUiw`ma
+inoremap <localleader>tl <esc>mmbguiw`ma
+inoremap <localleader>cc <esc>mmb~`ma
+
+nnoremap <Leader>ch :colorscheme habamax<CR>
+nnoremap <Leader>cl :colorscheme lunaperche<CR>
+nnoremap <Leader>cs :colorscheme slate<CR>
+
+nnoremap <Leader>mk :make<CR>
+nnoremap <Leader>mb :make bib<CR>
+nnoremap <Leader>mc :make clean<CR>
+nnoremap <Leader>mf :make final<CR>
+nnoremap <Leader>gb :call VimGetBibTeXCitationKeys()<CR>
+
+nnoremap <Leader>ab :call VimAddCurrentWordToTheAbbreviationsList()<CR>
+nnoremap <Leader>aw :call VimAddCurrentWordToTheWordsList()<CR>
+
+nnoremap <Leader>psi :call VimParseStudentsInfo()<CR>
+nnoremap <Leader>pei :call VimParseEeesInfo()<CR>
+
+nnoremap <Leader>388 :call VimEditLogbook("IME0388")<CR>
+nnoremap <Leader>415 :call VimEditLogbook("IME0415")<CR>
+
+nnoremap <Leader>pi :PlugInstall<CR>
+nnoremap <Leader>pd :PlugUpdate<CR>
+nnoremap <Leader>pg :PlugUpgrade<CR>
+nnoremap <Leader>pc :PlugClean<CR>
+
+nnoremap <Leader>0g :0G<CR>
+
+nnoremap <Leader>ue :UltiSnipsEdit<CR>
+
+augroup set_foldmethod_to_marker_for_these_filetypes
+  autocmd!
+  autocmd FileType python,sh,vim setlocal foldmethod=marker
+augroup END
+
+augroup get_rid_of_trailing_spaces
+  autocmd!
+  autocmd BufWritePre *.json,*.lua,*.py,*.sh,*.tex,*.txt,*.vim :call VimRemoveTrailingSpacesFromCurrentBuffer()
+augroup END
+
+augroup get_iabbrevs_for_these_filetypes
+  autocmd!
+  autocmd FileType mail,markdown,tex,text,vimwiki source ~/.vim/spell/words.abbr
+augroup END
+
+augroup point_out_misspelled_words_in_mails_and_tex_files
+  autocmd!
+  autocmd FileType mail,tex setlocal spell
+augroup END
+
+augroup remove_duplicate_words
+  autocmd!
+  autocmd BufWinEnter words.abbr,words.dict %sort u
+augroup END
+
+let s:github_repo = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let s:install_cmd = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:github_repo
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute s:install_cmd
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'godlygeek/tabular'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/seoul256.vim'
+Plug 'sirver/ultisnips'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-characterize'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vimwiki/vimwiki'
+Plug 'wellle/targets.vim'
+call plug#end()
+
+if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  PlugInstall --sync | wincmd q
+endif
+
+let g:abolish_save_file = expand('~/.vim/spell/words.abbr')
+
+let g:UltiSnipsSnippetDirectories  = ['~/.vim/ultisnips']
+let g:UltiSnipsExpandTrigger       = '<Tab>'
+let g:UltiSnipsJumpForwardTrigger  = '<C-J>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-K>'
+let g:UltiSnipsEditSplit           = 'tabdo'
+
+let s:wiki1 = {
+      \  'path': '~/.local/share/vimwiki/wiki1/',
+      \  'index': 'index',
+      \  'syntax': 'default',
+      \  'ext': '.wiki',
+      \}
+let g:vimwiki_list = [s:wiki1]
 
 let s:rc_files_dir = expand('~/.vim/rc')
 
 let s:rc_files = [
-      \  'caching',
-      \  'options',
-      \  'keymaps',
       \  'globals',
-      \  'autocmd',
-      \  'plugins',
       \]
 
 for rc_file in s:rc_files
