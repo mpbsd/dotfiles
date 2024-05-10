@@ -4,12 +4,14 @@ let maplocalleader = ','
 let s:rc_files_dir = expand('~/.vim/rc')
 
 let s:rc_files = [
+      \  'caching',
+      \  'options',
+      \  'keymaps',
       \  'globals',
+      \  'autocmd',
       \  'plugins',
       \]
 
 for rc_file in s:rc_files
   execute printf("source %s/%s.vim", s:rc_files_dir, rc_file)
 endfor
-
-" vim: set fileencoding=utf-8: "

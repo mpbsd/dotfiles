@@ -121,6 +121,11 @@ function VimEditLogbook(code) abort
   silent execute printf(":e +/%s %s", l:date, expand(printf(l:file, a:code)))
 endfunction
 
+function VimCreateCatalog() abort
+  execute 'norm ggd/<tbody>'
+  execute 'norm /<\/tbody>jdG'
+endfunction
+
 function VimCreateCatalogueForMe() abort
   silent execute 'norm ggd/<tbody>'
   silent execute 'norm Gd?<\/tbody>'
@@ -177,5 +182,3 @@ function VimParseEeesInfo() abort
   silent $s/,$/\r}/
   silent execute 'norm gg=G'
 endfunction
-
-" vim: set fileencoding=utf-8: "
