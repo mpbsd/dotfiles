@@ -52,8 +52,8 @@ nnoremap <Leader>mc :make clean<CR>
 nnoremap <Leader>mf :make final<CR>
 nnoremap <Leader>gb :call globals#vim_get_BibTeX_citation_keys()<CR>
 
-nnoremap <Leader>ab :call globals#vim_add_current_word_to_the_abbrevs_list()<CR>
-nnoremap <Leader>aw :call globals#vim_add_current_word_to_the_words_list()<CR>
+nnoremap <Leader>ab :call globals#vim_add_cword_to_words_abbr()<CR>
+nnoremap <Leader>aw :call globals#vim_add_cword_to_words_dict()<CR>
 
 nnoremap <Leader>psi :call globals#vim_parse_students_info()<CR>
 nnoremap <Leader>pei :call globals#vim_parse_eees_info()<CR>

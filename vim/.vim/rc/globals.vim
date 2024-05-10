@@ -15,7 +15,7 @@ let g:vimwiki_list = [
       \    'index': 'index',
       \    'syntax': 'default',
       \    'ext': '.wiki',
-      \  }
+      \  },
       \]
 
 function globals#vim_choose_a_colorscheme_for_me(variant) abort
@@ -104,7 +104,7 @@ function globals#vim_set_my_statusline() abort
   return join(l:components)
 endfunction
 
-function globals#vim_remove_trailing_spaces_from_current_buffer() abort
+function globals#vim_rm_trailing_spaces_from_cbuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   silent %s/\s\+$//e
@@ -130,7 +130,7 @@ function globals#table_of_ascii_equivalent_characters() abort
   return l:ascii_equivalent_chars
 endfunction
 
-function globals#vim_rm_non_ascii_chars_from_current_buffer() abort
+function globals#vim_rm_non_ascii_chars_from_cbuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   for [lhs, rhs] in items(globals#table_of_ascii_equivalent_characters())
@@ -148,13 +148,13 @@ function globals#vim_rm_non_ascii_chars_from_cword(cword) abort
   return printf("%s %s %s", 'iabbrev' , l:pword , a:cword)
 endfunction
 
-function globals#vim_add_current_word_to_the_abbrevs_list() abort
+function globals#vim_add_cword_to_words_abbr() abort
   let l:abbrv = globals#vim_rm_non_ascii_chars_from_cword(expand('<cword>'))
   call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
   echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
 endfunction
 
-function globals#vim_add_current_word_to_the_words_list() abort
+function globals#vim_add_cword_to_words_dict() abort
   let l:cword = expand('<cword>')
   call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
   echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
@@ -212,7 +212,7 @@ endfunction
 
 function globals#vim_create_csv_file_with_disciplines() abort
   silent execute 'norm ggVGu'
-  call globals#vim_rm_non_ascii_chars_from_current_buffer()
+  call globals#vim_rm_non_ascii_chars_from_cbuffer()
   silent %s/ \+/ /g
   silent %s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
   silent %s/[2-6]\{1,3\}[mtn][1-6]\{1,3\}/&\r/g
@@ -260,7 +260,7 @@ function globals#vim_parse_students_info() abort
         \  ],
         \}
   silent execute 'norm ggVGu'
-  call globals#vim_rm_non_ascii_chars_from_current_buffer()
+  call globals#vim_rm_non_ascii_chars_from_cbuffer()
   silent execute printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
   silent g!/\v(\(perfil\)$|(curso|matricula|usuario|e-mail):)/d
   silent 1,$s/\s\+$//e
@@ -317,7 +317,7 @@ endfunction
 
 function globals#vim_parse_eees_info() abort
   silent execute 'norm ggVGu'
-  call globals#vim_rm_non_ascii_chars_from_current_buffer()
+  call globals#vim_rm_non_ascii_chars_from_cbuffer()
   silent execute 'norm ggd/abiel costa macedo<\/span>'
   silent execute 'norm /wcedro@ufg.brjdG'
   silent 1,$s/<[^>]\+>//g
