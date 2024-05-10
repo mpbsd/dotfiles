@@ -1,18 +1,162 @@
+let g:mapleader = ' '
+let g:maplocalleader = ','
 let g:tex_flavor = 'latex'
 
-function VimGetBibTeXCitationKeys() abort
+function globals#vim_choose_a_colorscheme_for_me(variant) abort
+  " options {{{
+  let l:options = {
+        \  'dark': [
+        \    'habamax',
+        \    'lunaperche',
+        \    'slate',
+        \  ],
+        \  'light': [
+        \    'morning',
+        \    'shine',
+        \    'zellner',
+        \  ],
+        \}
+  " }}}
+  if has_key(l:options, a:variant)
+    let l:choice = rand(srand()) % len(l:options[a:variant])
+    execute printf("set background=%s", a:variant)
+    execute printf("colorscheme %s", l:options[a:variant][l:choice])
+  else
+    set background=dark
+    colorscheme habamax
+  endif
+endfunction
+
+function globals#vim_display_current_mode(mode) abort
+  " MODE {{{1
+  let l:MODE = {
+        \  'n'    : 'NORMAL',
+        \  'no'   : 'O-PENDING',
+        \  'nov'  : 'O-PENDING',
+        \  'noV'  : 'O-PENDING',
+        \  'no' : 'O-PENDING',
+        \  'niI'  : 'NORMAL',
+        \  'niR'  : 'NORMAL',
+        \  'niV'  : 'NORMAL',
+        \  'nt'   : 'NORMAL',
+        \  'v'    : 'VISUAL',
+        \  'vs'   : 'VISUAL',
+        \  'V'    : 'V-LINE',
+        \  'Vs'   : 'V-LINE',
+        \  ''   : 'V-BLOCK',
+        \  's'  : 'V-BLOCK',
+        \  's'    : 'SELECT',
+        \  'S'    : 'S-LINE',
+        \  ''   : 'S-BLOCK',
+        \  'i'    : 'INSERT',
+        \  'ic'   : 'INSERT',
+        \  'ix'   : 'INSERT',
+        \  'R'    : 'REPLACE',
+        \  'Rc'   : 'REPLACE',
+        \  'Rx'   : 'REPLACE',
+        \  'Rv'   : 'V-REPLACE',
+        \  'Rvc'  : 'V-REPLACE',
+        \  'Rvx'  : 'V-REPLACE',
+        \  'c'    : 'COMMAND',
+        \  'cv'   : 'EX',
+        \  'ce'   : 'EX',
+        \  'r'    : 'PROMPT',
+        \  'rm'   : 'MORE',
+        \  'r?'   : 'CONFIRM',
+        \  '!'    : 'SHELL',
+        \  't'    : 'TERMINAL',
+        \}
+  " }}}
+  if has_key(l:MODE, a:mode)
+    return l:MODE[a:mode]
+  endif
+endfunction
+
+function globals#vim_set_my_statusline() abort
+  let l:components = [
+        \  '[%n]',
+        \  '%{globals#vim_display_current_mode(mode())}',
+        \  '%t',
+        \  '%m',
+        \  '%=',
+        \  '%{&fileencoding}',
+        \  '%{&fileformat}',
+        \  '%Y',
+        \  '%P',
+        \  '%06l:%06c'
+        \]
+  return join(l:components)
+endfunction
+
+function globals#vim_remove_trailing_spaces_from_current_buffer() abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
+  silent %s/\s\+$//e
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
+endfunction
+
+function globals#table_of_ascii_equivalent_characters() abort
+  let l:ascii_equivalent_chars = {
+        \  'à': 'a',
+        \  'á': 'a',
+        \  'â': 'a',
+        \  'ã': 'a',
+        \  'ç': 'c',
+        \  'é': 'e',
+        \  'ê': 'e',
+        \  'í': 'i',
+        \  'ó': 'o',
+        \  'ô': 'o',
+        \  'õ': 'o',
+        \  'ú': 'u',
+        \}
+  return l:ascii_equivalent_chars
+endfunction
+
+function globals#vim_remove_non_aSCIIChars_from_current_buffer() abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
+  for [lhs, rhs] in items(globals#table_of_ascii_equivalent_characters())
+    silent execute printf("1,$s/%s/%s/ge", lhs, rhs)
+  endfor
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
+endfunction
+
+function globals#vim_rm_non_ascii_chars_from_cword(cword) abort
+  let l:pword = a:cword
+  for [lhs, rhs] in items(globals#table_of_ascii_equivalent_characters())
+    let l:pword = substitute(l:pword, lhs, rhs, 'gie')
+  endfor
+  return printf("%s %s %s", 'iabbrev' , l:pword , a:cword)
+endfunction
+
+function globals#vim_add_current_word_to_the_abbrevs_list() abort
+  let l:abbrv = globals#vim_rm_non_ascii_chars_from_cword(expand('<cword>'))
+  call writefile([l:abbrv], expand('~/.vim/spell/words.abbr'), 'a')
+  echo printf("%s %s %s", 'Added', l:abbrv, 'to ~/.vim/spell/words.abbr')
+endfunction
+
+function globals#vim_add_current_word_to_the_words_list() abort
+  let l:cword = expand('<cword>')
+  call writefile([l:cword], expand('~/.vim/spell/words.dict'), 'a')
+  echo printf("%s %s %s", 'Added', l:cword, 'to ~/.vim/spell/words.dict')
+endfunction
+
+function globals#vim_get_BibTeX_citation_keys() abort
   " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
   silent execute printf("DB sqlite:%s select key, year, title from ref", l:db)
 endfunction
 
-function VimQueryBibTeXDatabase(query) abort
+function globals#vim_query_BibTeX_database(query) abort
   " This function depends on TPope's vim-dadbod
   let l:db = expand('~/.local/share/references/zotero.db')
   silent execute printf("DB sqlite:%s select * from ref where %s", l:db, a:query)
 endfunction
 
-function VimFormatMyBibTeXFile() abort
+function globals#vim_format_my_BibTeX_file() abort
   let l:re = {
         \  'key': {
         \    'tgt': '^@.*[0-9]\{4},$',
@@ -50,7 +194,7 @@ function VimFormatMyBibTeXFile() abort
       silent execute 'norm 120@q'
 endfunction
 
-function VimCreateCSVFileWithDisciplines() abort
+function globals#vim_create_csv_file_with_disciplines() abort
   silent execute 'norm ggVGu'
   call VimRemoveNonASCIICharsFromCurrentBuffer()
   silent 1,$s/ \+/ /g
@@ -73,7 +217,7 @@ function VimCreateCSVFileWithDisciplines() abort
   silent execute 'Tab /;'
 endfunction
 
-function VimParseStudentsInfo() abort
+function globals#vim_parse_students_info() abort
   let l:st = [
         \  'visualizar parecer sobre necessidade educacional especial do aluno',
         \  'enviar mensagem',
@@ -115,18 +259,18 @@ function VimParseStudentsInfo() abort
   silent execute 'g/^\s*$/d'
 endfunction
 
-function VimEditLogbook(code) abort
+function globals#vim_edit_logbook(code) abort
   let l:date = system("date +'%Y-%m-%d'")
   let l:file = "~/templates/python/classes/pkgs/discipline/%s/logbook.py"
   silent execute printf(":e +/%s %s", l:date, expand(printf(l:file, a:code)))
 endfunction
 
-function VimCreateCatalog() abort
+function globals#vim_create_catalog() abort
   execute 'norm ggd/<tbody>'
   execute 'norm /<\/tbody>jdG'
 endfunction
 
-function VimCreateCatalogueForMe() abort
+function globals#vim_create_catalogue_for_me() abort
   silent execute 'norm ggd/<tbody>'
   silent execute 'norm Gd?<\/tbody>'
   silent 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(p\|strong\|tbody\)>\|\[AR\]\)//ge
@@ -155,7 +299,7 @@ function VimCreateCatalogueForMe() abort
   silent 1,$s/ \+",$/",/
 endfunction
 
-function VimParseEeesInfo() abort
+function globals#vim_parse_eees_info() abort
   silent execute 'norm ggVGu'
   call VimRemoveNonASCIICharsFromCurrentBuffer()
   silent execute 'norm ggd/abiel costa macedo<\/span>'
