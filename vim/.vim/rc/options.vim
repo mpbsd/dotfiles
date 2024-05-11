@@ -118,7 +118,10 @@ set path=.,,
 " show relative line number in front of each line
 set relativenumber
 
-" minimum nr. of lines above and below cursor
+" show the line and column number of the cursor position, separated by a comma
+set noruler
+
+" minimum number of lines above and below cursor
 set scrolloff=1
 
 " secure mode for reading vimrc in current dir

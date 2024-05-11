@@ -6,10 +6,10 @@ if empty(mapcheck('<C-W>', 'i'))
 endif
 
 nnoremap <Leader>sb :Buffers<CR>
-nnoremap <Leader>sf :FZF<CR>
+nnoremap <Leader>sc :Files ~/.vim<CR>
+nnoremap <Leader>sf :Files<CR>
 nnoremap <Leader>sg :Ag<CR>
 nnoremap <Leader>sm :Maps<CR>
-nnoremap <Leader>sv :FZF ~/.vim<CR>
 
 nnoremap Y y$
 
