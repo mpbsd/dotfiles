@@ -13,6 +13,8 @@ nnoremap <Leader>sm :Maps<CR>
 
 nnoremap Y y$
 
+inoremap jj <Esc>
+
 nnoremap - :Ex<CR>
 
 nnoremap <Leader>; :

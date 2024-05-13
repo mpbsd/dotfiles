@@ -143,7 +143,7 @@ local mappings = { -- {{{
   },
   {
     mod = 'n',
-    lhs = '<leader>gs',
+    lhs = '<leader>0g',
     rhs = ':0G<cr>',
     opt = {
       noremap = true,

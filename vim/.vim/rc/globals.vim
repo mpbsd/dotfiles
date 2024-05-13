@@ -286,35 +286,6 @@ function globals#vim_create_catalog() abort
   execute 'norm /<\/tbody>jdG'
 endfunction
 
-function globals#vim_create_catalogue_for_me() abort
-  silent execute 'norm ggd/<tbody>'
-  silent execute 'norm Gd?<\/tbody>'
-  silent 1,$s/\(<sup><u>o<\/u><\/sup> *\|<\/\?\(p\|strong\|tbody\)>\|\[AR\]\)//ge
-  silent 1,$s/<\(t[dhr]\)[^>]\+>/<\1>/g
-  silent 1,$s/<a[^>]\+>\([^<]\+\)\(<br \/>\)\?<\/a>/\1/g
-  silent 1,$s/\([0-9]\{2\}CBM\|MON\|NMAT\|PM\)-\([0-9]\{2\}\)/\1\2/g
-  let @q = '/^<trV/^<\/tr>$J^ci<++'
-  silent! execute 'norm 1000@q'
-  silent 1,$s/\(^<++> <t[dhr]>\|<\/t[dhr]> <\/t[dhr]>$\)//g
-  silent 1,$s/<\/t[dhr]> <t[dhr]>/;/g
-  silent 1,$s/&#8217;/'/ge
-  silent 1,$s/&#8211;/-/ge
-  silent 1,$s/\(^ \+\| \+$\)//ge
-  let l:re = {
-        \  'lhs': '^\([^;]\+\);\([^;]\+\);\([^;]\+\);\(.*\)$',
-        \  'rhs': [
-        \    '{\r"collection": "\1",',
-        \    '"title": "\2",',
-        \    '"author": "\3",',
-        \    '"year": "\4"\r}',
-        \  ]
-        \}
-  silent execute printf("1,$s/%s/%s,/", l:re['lhs'], join(l:re['rhs'], '\r'))
-  silent 1s/^/[/
-  silent $s/,$/\r]/
-  silent 1,$s/ \+",$/",/
-endfunction
-
 function globals#vim_parse_eees_info() abort
   silent execute 'norm ggVGu'
   call globals#vim_rm_non_ascii_chars_from_cbuffer()
