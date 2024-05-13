@@ -11,9 +11,12 @@ nnoremap <Leader>sf :Files<CR>
 nnoremap <Leader>sg :Ag<CR>
 nnoremap <Leader>sm :Maps<CR>
 
+nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
+
 nnoremap Y y$
 
 inoremap jj <Esc>
+inoremap jk <Esc>
 
 nnoremap - :Ex<CR>
 

@@ -42,10 +42,23 @@ fi
 source "${HOME}/.config/zsh/zsh_aliases"
 
 # prompt
-if [ "$(uname -s)" = 'Linux' ]
-then
-  eval "$(starship init zsh)"
-elif [ "$(uname -s)" = 'Darwin' ]
-then
-  eval "$(starship init zsh)"
-fi
+parse_git_dirty() {
+  git_status="$(git status 2>/dev/null)"
+  [[ "$git_status" =~ "Changes to be committed:" ]] && echo -n "%F{green}·%f"
+  [[ "$git_status" =~ "Changes not staged for commit:" ]] && echo -n "%F{yellow}·%f"
+  [[ "$git_status" =~ "Untracked files:" ]] && echo -n "%F{red}·%f"
+}
+autoload -Uz promptinit; promptinit
+setopt prompt_subst
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git*' formats ' (%F{254}%b%F{245})'
+prompt_mytheme_setup() {
+  NEWLINE=$'\n'
+  PS1="%n@%m %~ ${vcs_info_msg_0_} $(parse_git_dirty) ${NEWLINE}> "
+}
+
+prompt_themes+=( mytheme )
+
+prompt mytheme
+# eval "$(starship init zsh)"
