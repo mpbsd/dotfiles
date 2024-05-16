@@ -2,7 +2,7 @@ autoload -Uz promptinit; promptinit
 
 function precmd() {
   B=`git branch --show-current 2>/dev/null`
-  D=`pwd`
+  D="$(pwd | sed s@${HOME}@\~@)"
   [[ -n "${B}" ]] && L="${D} (${B})" || L="${D}"
   R="`whoami`@`uname -n`"
   S="$(( $COLUMNS - ${#L} - 1 ))"
