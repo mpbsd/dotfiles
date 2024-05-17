@@ -42,10 +42,4 @@ M.nvim_version = function()
   return string.format("nvim-%s.%s.%s", V.major, V.minor, V.patch)
 end
 
-if M.nvim_version() == 'nvim-0.10.0' then
-  M.vim_uv = vim.uv
-else
-  M.vim_uv = vim.loop
-end
-
 return M

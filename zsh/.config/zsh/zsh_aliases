@@ -65,7 +65,4 @@ alias sqlite3="sqlite3 --init ${HOME}/.config/sqlite3/sqliterc"
 alias ..='cd ..'
 alias ...='cd ../..'
 
-alias gd="change_directory"
-alias gf="change_file"
-
 alias purgeable="dpkg -l | sed -n '/^ii/!p' | tail +6"

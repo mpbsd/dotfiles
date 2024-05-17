@@ -41,5 +41,5 @@ fi
 # aliases
 source "${HOME}/.config/zsh/zsh_aliases"
 
-# prompt
-source "${HOME}/.config/zsh/rc/prompt.zsh"
+# starship prompt
+eval "$(starship init zsh)"

@@ -1,7 +1,7 @@
 let g:mapleader = ' '
 let g:maplocalleader = ','
 let g:netrw_banner = 0
-let g:netrw_list_hide = '^\..*'
+" let g:netrw_list_hide = '^\..*'
 let g:tex_flavor = 'latex'
 let g:abolish_save_file = expand('~/.vim/spell/words.abbr')
 let g:UltiSnipsSnippetDirectories = [expand('~/.vim/ultisnips')]
