@@ -12,6 +12,16 @@ local mappings = { -- {{{
     },
   },
   {
+    mod = 'n',
+    lhs = '-',
+    rhs = ':Ex<CR>',
+    opt = {
+      noremap = true,
+      silent = false,
+      desc = 'Open the current file\'s directory in Netrw',
+    },
+  },
+  {
     mod = 'i',
     lhs = 'jj',
     rhs = '<esc>',

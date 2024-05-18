@@ -32,11 +32,6 @@ M.nvim_create_autocmd = function(table_of_autocmds)
   end
 end
 
-M.adapters = { -- {{{
-  'cppdbg',
-  'python',
-} -- }}}
-
 M.nvim_version = function()
   local V = vim.version()
   return string.format("nvim-%s.%s.%s", V.major, V.minor, V.patch)

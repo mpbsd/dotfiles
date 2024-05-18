@@ -7,7 +7,6 @@ return {
   'tpope/vim-repeat',
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
-  'tpope/vim-vinegar',
   {
     'vimwiki/vimwiki',
     init = function()

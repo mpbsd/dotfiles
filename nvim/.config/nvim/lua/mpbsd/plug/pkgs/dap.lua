@@ -13,7 +13,10 @@ return {
     mason_nvim_dap.setup({
       automatic_setup = true,
       handlers = {},
-      ensure_installed = globals.adapters,
+      ensure_installed = {
+        'cppdbg',
+        'python',
+      },
     })
     dapui.setup({ -- {{{
       controls = {
