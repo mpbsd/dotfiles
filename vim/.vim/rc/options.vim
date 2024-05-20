@@ -232,6 +232,6 @@ if has("gui_running")
   set guioptions-=l
   set guioptions-=m
   set guioptions-=r
-  set guifont=Hack\ Nerd\ Font\ Mono\ 14
+  set guifont=JetBrainsMono\ Nerd\ Font\ 12
   set guiheadroom=0
 endif

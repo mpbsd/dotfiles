@@ -176,7 +176,7 @@ declare -a SUCKLESS_SOFTWARE=(
 # WINDOW MAKER {{{
 declare -a WINDOWMAKER=(
   wmaker
-  wmtime
+  wmclockmon
   wmcpuload
   wmmemload
   wmnd
