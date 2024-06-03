@@ -17,6 +17,7 @@ nnoremap Y y$
 
 inoremap jj <Esc>
 inoremap jk <Esc>
+inoremap kk <Esc>
 
 nnoremap - :Ex<CR>
 
