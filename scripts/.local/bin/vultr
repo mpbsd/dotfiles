@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-ssh mpbsd@vultr "mysqldump -u mpbsd -h localhost omeg > ~/backup_omeg.sql"
-scp mpbsd@vultr:~/backup_omeg.sql ~/documents/omeg/vultr
+DATETIME="$(date '+%Y%m%d%H%M')"
+
+ssh vultr "mysqldump -u mpbsd -h localhost omeg > ~/BACKUP_OMEG_${DATETIME}.sql"
+scp vultr:~/BACKUP_OMEG_"${DATETIME}".sql ~/documents/omeg/vultr
 
 exit 0

@@ -13,23 +13,16 @@ alias xu='shred -xu'
 
 # {{{ git
 alias gadd='git add'
-alias gbra='git branch '
-alias gbrr='git branch -r'
+alias gcde='git checkout dev'
+alias gcma='git checkout main'
+alias gcmt='git commit -a'
 alias giff='git diff'
+alias glgo='git log --graph --oneline --decorate'
 alias glog='git log'
 alias glpo='git log --pretty="oneline"'
-alias glgo='git log --graph --oneline --decorate'
-alias gcmm='git commit'
-alias gout='git checkout '
-alias grmt='git remote'
-alias grms='git remote show'
 alias gsts='git status'
-alias gtdl='git tag --delete'
-alias gtdo='git tag --delete origin'
 alias gull='git pull'
-alias gulo='git pull origin'
 alias gush='git push'
-alias guso='git push origin'
 # }}}
 
 # htop
