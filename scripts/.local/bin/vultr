@@ -2,7 +2,7 @@
 
 DATETIME="$(date '+%Y%m%d%H%M')"
 
-ssh vultr "mysqldump -u mpbsd -h localhost omeg > ~/BACKUP_OMEG_${DATETIME}.sql"
+ssh vultr "mariadb-dump -u mpbsd -h localhost omeg > ~/BACKUP_OMEG_${DATETIME}.sql"
 scp vultr:~/BACKUP_OMEG_"${DATETIME}".sql ~/documents/omeg/vultr
 
 exit 0
