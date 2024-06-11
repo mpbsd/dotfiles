@@ -204,6 +204,7 @@ iabbrev informacoes informações
 iabbrev ingles inglês
 iabbrev iniciassemos iniciássemos
 iabbrev inicio início
+iabbrev inscricao inscrição
 iabbrev inscricoes inscrições
 iabbrev instalacao instalação
 iabbrev instituicao instituição
@@ -231,6 +232,7 @@ iabbrev matematica matemática
 iabbrev matematico matemático
 iabbrev matematicos matemáticos
 iabbrev maximos máximos
+iabbrev media média
 iabbrev medico médico
 iabbrev medio médio
 iabbrev mencao menção
@@ -311,6 +313,7 @@ iabbrev proporcao proporção
 iabbrev proporcoes proporções
 iabbrev proposicao proposição
 iabbrev proprias próprias
+iabbrev proxima próxima
 iabbrev proximo próximo
 iabbrev publicacao publicação
 iabbrev quadratica quadrática
@@ -387,4 +390,4 @@ iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
 iabbrev xicara xícara
-iabbrev media média
+iabbrev titulo título

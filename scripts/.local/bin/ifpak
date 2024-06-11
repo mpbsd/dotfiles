@@ -4,7 +4,6 @@
 FLATPAK_REPO='https://flathub.org/repo/flathub.flatpakrepo'
 
 
-# install the flatpak package {{{
 if dpkg -l | grep -qE '\<flatpak\>'
 then
   echo "The 'flatpak' package is already installed."
@@ -19,14 +18,13 @@ else
     sudo flatpak remote-add --if-not-exists flathub "${FLATPAK_REPO}"
   fi
 fi
-# }}}
 
 
-declare -a FLATPAKS=(# {{{
+declare -a FLATPAKS=(
   com.brave.Browser
   com.spotify.Client
   org.zotero.Zotero
-)# }}}
+)
 
 
 for FLATPAK in "${FLATPAKS[@]}"
