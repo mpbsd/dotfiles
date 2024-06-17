@@ -121,25 +121,25 @@ return {
       {
         mod = { 'n', 'x', 'o' },
         lhs = 'f',
-        rhs = rept_move.builtin_f,
+        rhs = rept_move.builtin_f_expr,
         opt = {}
       },
       {
         mod = { 'n', 'x', 'o' },
         lhs = 'F',
-        rhs = rept_move.builtin_F,
+        rhs = rept_move.builtin_F_expr,
         opt = {}
       },
       {
         mod = { 'n', 'x', 'o' },
         lhs = 't',
-        rhs = rept_move.builtin_t,
+        rhs = rept_move.builtin_t_expr,
         opt = {}
       },
       {
         mod = { 'n', 'x', 'o' },
         lhs = 'T',
-        rhs = rept_move.builtin_T,
+        rhs = rept_move.builtin_T_expr,
         opt = {}
       },
     }) -- }}}
