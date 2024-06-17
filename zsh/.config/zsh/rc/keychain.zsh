@@ -4,4 +4,10 @@ then
   [ -z "${HOSTNAME}" ] && HOSTNAME=`uname -n`
   [ -f ${HOME}/.keychain/${HOSTNAME}-sh ] && . ${HOME}/.keychain/${HOSTNAME}-sh
   [ -f ${HOME}/.keychain/${HOSTNAME}-sh-gpg ] && . ${HOME}/.keychain/${HOSTNAME}-sh-gpg
+elif [ "$(uname -s)" = 'Darwin' ]
+then
+  keychain --nogui bitbucket github vultr
+  [ -z "${HOSTNAME}" ] && HOSTNAME=`uname -n`
+  [ -f ${HOME}/.keychain/${HOSTNAME}-sh ] && . ${HOME}/.keychain/${HOSTNAME}-sh
+  [ -f ${HOME}/.keychain/${HOSTNAME}-sh-gpg ] && . ${HOME}/.keychain/${HOSTNAME}-sh-gpg
 fi

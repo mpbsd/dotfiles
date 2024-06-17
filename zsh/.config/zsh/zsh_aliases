@@ -2,7 +2,13 @@ alias -s txt=vim
 alias -s ods=localc
 
 # cat
-alias cat='batcat'
+if [ "$(uname -s)" = 'Linux' ]
+then
+  alias cat='batcat'
+elif [ "$(uname -s)" = 'Darwin' ]
+then
+  alias cat='bat'
+fi
 
 # {{{ file management
 alias cp='cp -iv'
