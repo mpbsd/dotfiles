@@ -188,7 +188,7 @@ set tabstop=2
 set tags=./tags;,tags
 
 " maximum width of text that is being inserted
-set textwidth=80
+set textwidth=0
 
 " time out on mappings and key codes
 set timeout
