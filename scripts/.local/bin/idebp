@@ -107,6 +107,7 @@ declare -a CORE_UTILS=(
   qpdf
   redshift
   ripgrep
+  sc
   scrot
   sdcv
   shellcheck
