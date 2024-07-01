@@ -25,15 +25,17 @@
 #                                                                              #
 ################################################################################
 
-ISOURL='https://cdimage.debian.org/debian-cd/current/amd64/iso-cd'
-DEBIAN='debian-12.6.0-amd64-netinst.iso'
-SHASUM='SHA512SUMS'
-SHASGN='SHA512SUMS.sign'
-TARGET='/dev/sdb'
+URL='https://cdimage.debian.org/debian-cd/current/amd64/iso-cd'
+ISO='debian-12.6.0-amd64-netinst.iso'
+SUM='SHA512SUMS'
+SGN='SHA512SUMS.sign'
+DIR="${HOME}/downloads/debian"
+TGT='/dev/sdb'
 
-[ -f "${HOME}/downloads/${SHASUM}" ] || wget "${ISOURL}/${SHASUM}" -O "${HOME}/downloads/${SHASUM}"
-[ -f "${HOME}/downloads/${SHASGN}" ] || wget "${ISOURL}/${SHASGN}" -O "${HOME}/downloads/${SHASGN}"
-[ -f "${HOME}/downloads/${DEBIAN}" ] || wget "${ISOURL}/${DEBIAN}" -O "${HOME}/downloads/${DEBIAN}"
+[ -d "${DIR}" ]        || mkdir -p "$DIR"
+[ -f "${DIR}/${SUM}" ] || wget "${URL}/${SUM}" -O "${DIR}/${SUM}"
+[ -f "${DIR}/${SGN}" ] || wget "${URL}/${SGN}" -O "${DIR}/${SGN}"
+[ -f "${DIR}/${ISO}" ] || wget "${URL}/${ISO}" -O "${DIR}/${ISO}"
 
 if [ -z "$(gpg -k | sed -n '/988021A964E6EA7D/p')" ]
 then
@@ -45,17 +47,17 @@ then
   gpg --keyserver keyring.debian.org --recv-keys DA87E80D6294BE9B
 fi
 
-gpg --verify "${HOME}/downloads/${SHASGN}" "${HOME}/downloads/${SHASUM}"
-sha512sum -c --ignore-missing "${HOME}/downloads/${SHASUM}"
+gpg --verify "${DIR}/${SGN}" "${DIR}/${SUM}"
+sha512sum -c --ignore-missing "${DIR}/${SUM}"
 
 echo -n 'Do you want to create an installation media for debian 12 amd64? '
-echo -n "All data on the target USB device $TARGET will be destroyed. "
+echo -n "All data on the target USB device $TGT will be destroyed. "
 echo -n '(y/N) '
 read -r ANSWER
 
 if [ "$ANSWER" = 'y' ]
 then
-  sudo dd if="${HOME}/downloads/${DEBIAN}" of="$TARGET" bs=16M status=progress oflag=sync
+  sudo dd if="${DIR}/${ISO}" of="$TGT" bs=16M status=progress oflag=sync
 fi
 
 exit 0
