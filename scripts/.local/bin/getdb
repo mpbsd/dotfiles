@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+################################################################################
+# Author:                                                                      #
+#                                                                              #
+#   Marcelo Barboza <salve.barboza@pm.me>                                      #
+#                                                                              #
+# Dependencies:                                                                #
+#                                                                              #
+#   - bash                                                                     #
+#   - dd                                                                       #
+#   - gpg                                                                      #
+#   - sed                                                                      #
+#   - sha512sum                                                                #
+#   - wget                                                                     #
+#                                                                              #
+# Purpose:                                                                     #
+#                                                                              #
+#   - Download amd64-netinst.iso from Debian GNU/Linux                         #
+#   - Verify both the authenticity and the integrity of the downloaded iso     #
+#   - Create an USB installation media (target device defaults to /dev/sdb)    #
+#                                                                              #
+# Last changed:                                                                #
+#                                                                              #
+#   Goiânia, 09 de junho de 2024                                               #
+#                                                                              #
+################################################################################
+
+URL='https://cdimage.debian.org/debian-cd/current/amd64/iso-cd'
+ISO='debian-12.6.0-amd64-netinst.iso'
+SUM='SHA512SUMS'
+SGN='SHA512SUMS.sign'
+DIR="${HOME}/downloads/debian"
+TGT='/dev/sdb'
+
+[ -d "${DIR}" ]        || mkdir -p "$DIR"
+[ -f "${DIR}/${SUM}" ] || wget "${URL}/${SUM}" -O "${DIR}/${SUM}"
+[ -f "${DIR}/${SGN}" ] || wget "${URL}/${SGN}" -O "${DIR}/${SGN}"
+[ -f "${DIR}/${ISO}" ] || wget "${URL}/${ISO}" -O "${DIR}/${ISO}"
+
+if [ -z "$(gpg -k | sed -n '/988021A964E6EA7D/p')" ]
+then
+  gpg --keyserver keyring.debian.org --recv-keys 988021A964E6EA7D
+fi
+
+if [ -z "$(gpg -k | sed -n '/DA87E80D6294BE9B/p')" ]
+then
+  gpg --keyserver keyring.debian.org --recv-keys DA87E80D6294BE9B
+fi
+
+gpg --verify "${DIR}/${SGN}" "${DIR}/${SUM}"
+sha512sum -c --ignore-missing "${DIR}/${SUM}"
+
+echo -n 'Do you want to create an installation media for debian 12 amd64? '
+echo -n "All data on the target USB device $TGT will be destroyed. "
+echo -n '(y/N) '
+read -r ANSWER
+
+if [ "$ANSWER" = 'y' ]
+then
+  sudo dd if="${DIR}/${ISO}" of="$TGT" bs=16M status=progress oflag=sync
+fi
+
+exit 0

@@ -180,6 +180,7 @@ declare -a WINDOWMAKER=(
   wmclockmon
   wmcpuload
   wmmemload
+  wmacpi
   wmnd
 )
 # }}}
