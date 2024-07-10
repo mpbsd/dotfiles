@@ -40,7 +40,6 @@ declare -a DATABASE=(
   sqlite3-doc
   mariadb-server
   mariadb-client
-  # recutils
 )
 # }}}
 # MAIL_CHAT_AND_NEWS {{{
@@ -90,7 +89,6 @@ declare -a BLOGGING=(
 # }}}
 # UTILS {{{
 declare -a CORE_UTILS=(
-  # fswatch
   9base
   bat
   curl
