@@ -32,6 +32,12 @@ declare -a PYTHON_DEVELOPMENT=(
   python3-pip
 )
 # }}}
+# LUA_DEVELOPMENT {{{
+declare -a LUA_DEVELOPMENT=(
+  lua5.1
+  luarocks
+)
+# }}}
 # DATABASE {{{
 declare -a DATABASE=(
   postgresql
@@ -202,6 +208,7 @@ PKGS=(
   "${C_DEVELOPMENT[@]}"
   "${NODEJS_DEVELOPMENT[@]}"
   "${PYTHON_DEVELOPMENT[@]}"
+  "${LUA_DEVELOPMENT[@]}"
   "${DATABASE[@]}"
   "${MAIL_CHAT_AND_NEWS[@]}"
   "${SYSTEM_MAINTENANCE[@]}"
