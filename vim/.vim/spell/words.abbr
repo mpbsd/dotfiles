@@ -119,6 +119,7 @@ iabbrev diarreia diarréia
 iabbrev didatico didático
 iabbrev diferenciaveis diferenciáveis
 iabbrev diferenciavel diferenciável
+iabbrev digitos dígitos
 iabbrev dimensao dimensão
 iabbrev dimensoes dimensões
 iabbrev dinamicos dinâmicos
@@ -364,6 +365,7 @@ iabbrev superficie superfície
 iabbrev superficies superfícies
 iabbrev tambem também
 iabbrev tecnica técnica
+iabbrev titulo título
 iabbrev topologica topológica
 iabbrev topologicos topológicos
 iabbrev torcao torção
@@ -390,4 +392,3 @@ iabbrev vizinhanca vizinhança
 iabbrev voce você
 iabbrev voces vocês
 iabbrev xicara xícara
-iabbrev titulo título
