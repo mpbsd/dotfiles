@@ -12,6 +12,26 @@ local mappings = { -- {{{
     },
   },
   {
+    mod = { 'n' },
+    lhs = '<C-d>',
+    rhs = '<C-d>zz',
+    opt = {
+      noremap = true,
+      silent = false,
+      desc = 'go down by half of a page and keep cursor centralized',
+    },
+  },
+  {
+    mod = { 'n' },
+    lhs = '<C-u>',
+    rhs = '<C-u>zz',
+    opt = {
+      noremap = true,
+      silent = false,
+      desc = 'go up by half of a page and keep the cursor centralized',
+    },
+  },
+  {
     mod = 'n',
     lhs = '-',
     rhs = ':Ex<CR>',

@@ -19,6 +19,9 @@ inoremap jj <Esc>
 inoremap jk <Esc>
 inoremap kk <Esc>
 
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
 nnoremap - :Ex<CR>
 
 nnoremap <Leader>; :
