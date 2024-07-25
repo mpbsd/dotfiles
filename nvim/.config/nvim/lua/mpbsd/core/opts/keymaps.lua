@@ -33,6 +33,26 @@ local mappings = { -- {{{
   },
   {
     mod = 'n',
+    lhs = '<c-d>',
+    rhs = '<c-d>zz',
+    opt = {
+      noremap = true,
+      silent = false,
+      desc = 'go down by half of a page while keeping the cursor centralized',
+    },
+  },
+  {
+    mod = 'n',
+    lhs = '<c-u>',
+    rhs = '<c-u>zz',
+    opt = {
+      noremap = true,
+      silent = false,
+      desc = 'go up by half of a page while keeping the cursor centralized',
+    },
+  },
+  {
+    mod = 'n',
     lhs = '<leader>w;',
     rhs = ':w<cr>',
     opt = {

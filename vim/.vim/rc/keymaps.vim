@@ -15,6 +15,9 @@ nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
 
 nnoremap Y y$
 
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
 inoremap jj <Esc>
 inoremap jk <Esc>
 inoremap kk <Esc>
