@@ -79,3 +79,6 @@ nnoremap <Leader>pc :PlugClean<CR>
 nnoremap <Leader>0g :0G<CR>
 
 nnoremap <Leader>ue :UltiSnipsEdit<CR>
+
+nnoremap <Leader>atc :call globals#vim_format_cpfnrs_for_me('add_punct')<CR>
+nnoremap <Leader>rfc :call globals#vim_format_cpfnrs_for_me('rm_punct')<CR>

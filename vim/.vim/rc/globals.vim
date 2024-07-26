@@ -311,3 +311,13 @@ function globals#vim_parse_eees_info() abort
   silent $s/,$/\r}/
   silent execute 'norm gg=G'
 endfunction
+
+function globals#vim_format_cpfnrs_for_me(opt) abort
+  let l:pattern = '\<\(\d\{3}\)\.\?\(\d\{3}\)\.\?\(\d\{3}\)-\?\(\d\{2}\)\>'
+  if a:opt ==# 'add_punct'
+    let l:substitution = '\1.\2.\3-\4'
+  elseif a:opt ==# 'rm_punct'
+    let l:substitution = '\1\2\3\4'
+  endif
+  silent execute printf("1,$s/%s/%s/g", l:pattern, l:substitution)
+endfunction
