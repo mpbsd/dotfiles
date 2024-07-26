@@ -2,16 +2,6 @@ local globals = require('mpbsd.core.opts.globals')
 
 local mappings = { -- {{{
   {
-    mod = { 'n', 'v' },
-    lhs = '<leader>;',
-    rhs = ':',
-    opt = {
-      noremap = true,
-      silent = false,
-      desc = 'get into command mode without hitting the shift key',
-    },
-  },
-  {
     mod = { 'n' },
     lhs = '<C-d>',
     rhs = '<C-d>zz',
@@ -29,6 +19,16 @@ local mappings = { -- {{{
       noremap = true,
       silent = false,
       desc = 'go up by half of a page and keep the cursor centralized',
+    },
+  },
+  {
+    mod = { 'n', 'v' },
+    lhs = '<leader>;',
+    rhs = ':',
+    opt = {
+      noremap = true,
+      silent = false,
+      desc = 'get into command mode without hitting the shift key',
     },
   },
   {
