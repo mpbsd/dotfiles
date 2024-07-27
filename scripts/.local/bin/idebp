@@ -130,6 +130,7 @@ declare -a CORE_UTILS=(
   hub
   ledger
   lf
+  ncdu
   neofetch
   nmap
   plocate
