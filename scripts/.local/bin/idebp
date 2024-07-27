@@ -3,6 +3,31 @@
 # author: marcelo barboza <salve.barboza@pm.me>
 # date: 2024-01-11
 
+# INSTALL FUNCTION {{{
+function install() {
+  PKG="$1"
+  if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s\+/p")" ]
+  then
+    echo "Found: ${PKG}"
+  else
+    echo -n "Package ${PKG} not found. Would you like to install it? (y/N) "
+    read -r ANSWER
+    if [ "${ANSWER}" = 'y' ]
+    then
+      echo 'Proceeding with package installation.'
+      if echo "$PKG" | grep -qF ':amd64'
+      then
+        LIB="${PKG/%:amd64/}"
+        sudo apt install -y "$LIB"
+      else
+        sudo apt install -y "$PKG"
+      fi
+      echo 'Done.'
+    fi
+  fi
+}
+# }}}
+
 # TEXT_EDITORS {{{
 declare -a TEXT_EDITORS=(
   vim-nox
@@ -232,25 +257,7 @@ PKGS=(
 
 for PKG in "${PKGS[@]}"
 do
-  if [ -n "$(dpkg -l | sed -n "/^ii\s\+\<${PKG}\>\s\+/p")" ]
-  then
-    echo "Found: ${PKG}"
-  else
-    echo "Package ${PKG} not found. Would you like to install it? (y/N)"
-    read -r ANSWER
-    if [ "${ANSWER}" = 'y' ]
-    then
-      echo 'Proceeding with package installation.'
-      if echo "$PKG" | grep -qF ':amd64'
-      then
-        LIB="${PKG/%:amd64/}"
-        sudo apt install -y "$LIB"
-      else
-        sudo apt install -y "$PKG"
-      fi
-      echo 'Done.'
-    fi
-  fi
+  install "$PKG"
 done
 
 exit 0
