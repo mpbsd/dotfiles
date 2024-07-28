@@ -17,26 +17,12 @@ source "${HOME}/.config/zsh/rc/vimode.zsh"
 source "${HOME}/.config/zsh/rc/keychain.zsh"
 
 # syntax-highlighting and autosuggestions
-if [ "$(uname -s)" = 'Linux' ]
-then
-  source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-  source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-elif [ "$(uname -s)" = 'Darwin' ]
-then
-  source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-  source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fi
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # FZF
-if [ "$(uname -s)" = 'Linux' ]
-then
-  source "/usr/share/doc/fzf/examples/completion.zsh"
-  source "/usr/share/doc/fzf/examples/key-bindings.zsh"
-elif [ "$(uname -s)" = 'Darwin' ]
-then
-  source "/usr/local/opt/fzf/shell/completion.zsh"
-  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
-fi
+source "/usr/share/fzf/completion.zsh"
+source "/usr/share/fzf/key-bindings.zsh"
 
 # aliases
 source "${HOME}/.config/zsh/zsh_aliases"
