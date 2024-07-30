@@ -80,5 +80,7 @@ nnoremap <Leader>0g :0G<CR>
 
 nnoremap <Leader>ue :UltiSnipsEdit<CR>
 
+nnoremap <Leader>fdt :call globals#vim_format_dates_for_me()<CR>
+
 nnoremap <Leader>atc :call globals#vim_format_cpfnrs_for_me('add_punct')<CR>
 nnoremap <Leader>rfc :call globals#vim_format_cpfnrs_for_me('rm_punct')<CR>
