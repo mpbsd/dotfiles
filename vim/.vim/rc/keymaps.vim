@@ -54,6 +54,7 @@ inoremap <localleader>cc <esc>mmb~`ma
 nnoremap <Leader>ch :colorscheme habamax<CR>
 nnoremap <Leader>cl :colorscheme lunaperche<CR>
 nnoremap <Leader>cp :colorscheme pablo<CR>
+nnoremap <Leader>cr :colorscheme retrobox<CR>
 nnoremap <Leader>cs :colorscheme slate<CR>
 
 nnoremap <Leader>mk :make<CR>
