@@ -1,0 +1,189 @@
+snippet im "inline math" wA
+$${1:${VISUAL}}$$0
+endsnippet
+
+snippet dm "display math" wA
+\[
+  ${1:${VISUAL}}
+\]$0
+endsnippet
+
+snippet fn "function" w
+${1:f}{\left(${2:x}\right)}$0
+endsnippet
+
+snippet '([_^]){2}' "su(b|per)script 1" rA
+`!p snip.rv = match.group(1)`{$1}$0
+endsnippet
+
+snippet sum "sum" w
+\sum_{i=${1:1}}^{${2:n}}$0
+endsnippet
+
+snippet prod "prod" w
+\prod_{i=${1:1}}^{${2:n}}$0
+endsnippet
+
+snippet 2r "square root" w
+\sqrt{$1}$0
+endsnippet
+
+snippet nr "nth root" w
+\sqrt[${1:2}]{$2}$0
+endsnippet
+
+snippet '(?<=\^)-1' "inverse" rA
+{-1}
+endsnippet
+
+snippet AA "for all" wA
+\forall
+endsnippet
+
+snippet EE "exists" wA
+\exists
+endsnippet
+
+snippet set "set by property" w
+\left\\{
+  ${1:elements}
+	:
+	${2:property}
+\right\\}
+endsnippet
+
+snippet '([<>])=' "(less|greater) than, or equal to" rA
+`!p snip.rv = r"\leqslant" if match.group(1) == "<" else r"\geqslant"`{$1}$0
+endsnippet
+
+snippet NN "naturals" wA
+\mathbb{N}
+endsnippet
+
+snippet ZZ "integers" wA
+\mathbb{Z}
+endsnippet
+
+snippet QQ "rationals" wA
+\mathbb{Q}
+endsnippet
+
+snippet RR "reals" wA
+\mathbb{R}
+endsnippet
+
+snippet CC "complex field" wA
+\mathbb{C}
+endsnippet
+
+snippet Mn "n-dimensional manifold" wA
+M^{n}
+endsnippet
+
+snippet env "general purpose environment" bA
+\begin{$1}
+  $2
+\end{$1}$0
+endsnippet
+
+snippet def "definition" bA
+\begin{definition}
+  $1
+\end{definition}$0
+endsnippet
+
+snippet lem "lemma" bA
+\begin{lemma}
+  $1
+\end{lemma}$0
+endsnippet
+
+snippet prop "proposition" bA
+\begin{proposition}
+  $1
+\end{proposition}$0
+endsnippet
+
+snippet thm "theorem" bA
+\begin{theorem}
+  $1
+\end{theorem}$0
+endsnippet
+
+snippet cor "corollary" bA
+\begin{corollary}
+  $1
+\end{corollary}$0
+endsnippet
+
+snippet rmk "remark" bA
+\begin{remark}
+  $1
+\end{remark}$0
+endsnippet
+
+snippet '^\s*item' "itemize" r
+\begin{itemize}
+  \item
+    $1
+\end{itemize}
+endsnippet
+
+snippet '^\s*enum' "enumerate" r
+\begin{enumerate}
+  \item
+    $1
+\end{enumerate}$0
+endsnippet
+
+snippet '^\s*desc' "description" r
+\begin{description}
+  \item[$1]
+    $2
+\end{description}$0
+endsnippet
+
+snippet atmpl "article template" bA
+\documentclass[a4paper,12pt,leqno]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+$0
+
+\end{document}
+
+endsnippet
+
+snippet btmpl "beamer template" bA
+\documentclass[a4paper,12pt,leqno]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{$1}
+\author{$2}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+$0
+
+\end{document}
+endsnippet
+
+snippet frame "frame" bA
+\begin{frame}
+  $1
+\end{frame}$0
+endsnippet

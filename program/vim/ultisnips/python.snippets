@@ -1,0 +1,47 @@
+snippet '^head' "a header for python files" rA
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+$0
+endsnippet
+
+snippet '^main' "main function" brA
+def main():
+	$0
+
+
+if __name__ == "__main__":
+	main()
+endsnippet
+
+snippet ';q([sd])' "(single|double) quotes" rA
+`!p
+quotation_mark = {
+	"s": "'",
+	"d": "\"",
+}
+type = match.group(1)
+quote = quotation_mark[type]
+snip.rv = quote`$1`!p snip.rv = quote`$0
+endsnippet
+
+snippet ';e([bcp])' "enclosings" rA
+`!p
+enclosing = {
+	"b": {
+		"opening": "[",
+		"closing": "]",
+	},
+	"c": {
+		"opening": "{",
+		"closing": "}",
+	},
+	"p": {
+		"opening": "(",
+		"closing": ")",
+	},
+}
+type = match.group(1)
+opening = enclosing[type]["opening"]
+closing = enclosing[type]["closing"]
+snip.rv = opening`$1`!p snip.rv = closing`$0
+endsnippet

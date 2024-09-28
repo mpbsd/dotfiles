@@ -1,0 +1,68 @@
+snippet latex "A bare bones makefile for tex projects" bA
+TEX_ENGINE = xelatex
+BIB_ENGINE = bibtex
+OPR_SYSTEM = $(shell uname -s)
+
+ifeq ($(OPR_SYSTEM), Darwin)
+	DOC_VIEWER = open -a Preview
+else
+	DOC_VIEWER = zathura
+endif
+
+draft:
+	$(TEX_ENGINE) main
+	$(TEX_ENGINE) main
+	$(DOC_VIEWER) main.pdf
+
+final:
+	$(TEX_ENGINE) main
+	$(BIB_ENGINE) main
+	$(TEX_ENGINE) main
+	$(TEX_ENGINE) main
+	$(DOC_VIEWER) main.pdf
+
+clean:
+	find . -type f -name main.aux -delete
+	find . -type f -name main.bbl -delete
+	find . -type f -name main.blg -delete
+	find . -type f -name main.log -delete
+	find . -type f -name main.out -delete
+	find . -type f -name main.pdf -delete
+	find . -type f -name main.spl -delete
+
+.PHONY: draft final clean
+endsnippet
+
+snippet clang "c language" bA
+CC     = cc
+CFLAGS = -g -W -Wall -Wextra -Wpedantic -std=c89
+CLIBS  = -lc
+
+$0
+
+clean:
+	find bin -type f -name "*.o" -delete
+
+.PHONY: clean
+endsnippet
+
+snippet python "A bare bones makefile for python projects" bA
+build:
+	python3 -m pkgs.core
+
+black:
+	isort pkgs/core.py
+	black -l 79 pkgs/core.py
+
+clean:
+	find . -type d -name __pycache__ | xargs rm -rf
+
+ready:
+	python3 -m venv venv; \
+	. venv/bin/activate; \
+	pip install -U pip; \
+	pip install -r requirements.txt; \
+	deactivate
+
+.PHONY: build black clean ready
+endsnippet

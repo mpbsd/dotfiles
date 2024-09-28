@@ -1,0 +1,16 @@
+snippet meta "metadata for classnotes" bA
+`!p
+from datetime import datetime
+date = datetime.now().strftime("%Y-%m-%d")
+`{
+  "metadata": {
+    "topic": "$1",
+    "date": "${2:`!p snip.rv = date`}"
+  },
+  "reference": {
+    "title": "$3",
+    "author": "$4",
+    "key": "$5"
+  }$0
+}
+endsnippet
