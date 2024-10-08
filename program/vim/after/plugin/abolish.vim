@@ -23,3 +23,5 @@ Abolish sec{ao,oes} seç{ão,ões}
 Abolish sequencia{,s} sequência{,s}
 Abolish soluc{ao,oes} soluç{ão,ões}
 Abolish vizinhanca{,s} vizinhança{,s}
+Abolish sehrie{,s} série{,s}
+Abolish harmonica{,s} harmônica{,s}

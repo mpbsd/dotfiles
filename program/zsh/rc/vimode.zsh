@@ -42,3 +42,22 @@ bindkey -M vicmd '^a' incarg
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd '^e' edit-command-line
+
+# change cursor based on vi (insert|normal) modes
+function zle-keymap-select () {
+  case "$KEYMAP" in
+    vicmd)
+      echo -ne '\e[5 q'
+      ;;
+    viins|main)
+      echo -ne '\e[1 q'
+      ;;
+  esac
+}
+
+function zle-line-init() {
+  zle -K viins
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init

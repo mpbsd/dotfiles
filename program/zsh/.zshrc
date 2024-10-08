@@ -27,10 +27,13 @@ source "/usr/share/doc/fzf/examples/key-bindings.zsh"
 # aliases
 source "${HOME}/.config/zsh/zsh_aliases"
 
-# starship prompt
-autoload -Uz compinit promptinit
-compinit
-promptinit
+# zsh prompt
 
-# This will set the default prompt to the walters theme
-prompt redhat
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats "(%b) %m%u%c"
+precmd() { vcs_info }
+
+setopt PROMPT_SUBST
+PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_}
+> '

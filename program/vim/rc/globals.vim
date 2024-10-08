@@ -13,6 +13,7 @@ function globals#vim_choose_a_colorscheme_for_me(variant) abort
   " options {{{
   let l:options = {
         \  'dark': [
+        \    'desert',
         \    'habamax',
         \    'lunaperche',
         \    'pablo',
