@@ -91,7 +91,7 @@ function globals#vim_set_my_statusline() abort
         \  '%{&fileformat}',
         \  '%Y',
         \  '%P',
-        \  '%06l:%06c'
+        \  '(%06l:%06c)'
         \]
   return join(l:components)
 endfunction

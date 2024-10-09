@@ -218,7 +218,9 @@ set wildoptions=pum,tagfile
 runtime macros/matchit.vim
 runtime ftplugin/man.vim
 
-call globals#vim_choose_a_colorscheme_for_me('dark')
+" call globals#vim_choose_a_colorscheme_for_me('dark')
+set background=dark
+colorscheme quiet
 
 set statusline=%!globals#vim_set_my_statusline()
 

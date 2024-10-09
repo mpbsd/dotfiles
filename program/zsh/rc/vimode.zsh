@@ -43,7 +43,7 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd '^e' edit-command-line
 
-# change cursor based on vi (insert|normal) modes
+# set the cursor based on vi (insert|normal) modes
 function zle-keymap-select () {
   case "$KEYMAP" in
     vicmd)
