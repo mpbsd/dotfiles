@@ -6,4 +6,4 @@ precmd() { vcs_info }
 setopt PROMPT_SUBST
 PROMPT='
 ${PWD/#$HOME/~} ${vcs_info_msg_0_}
-> '
+$ '
