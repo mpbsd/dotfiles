@@ -3,6 +3,25 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats "%F{red}%u%f%F{yellow}%c%f (%F{magenta}%b%f)"
 precmd() { vcs_info }
 
+function prompt-length() {
+  emulate -L zsh
+  local -i COLUMNS=${2:-COLUMNS}
+  local -i x y=${#1} m
+  if (( y ))
+  then
+    while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
+      x=y
+      (( y *= 2 ))
+    done
+    while (( y > x + 1 ))
+    do
+      (( m = x + (y - x) / 2 ))
+      (( ${${(%):-$1%$m(l.x.y)}[-1]} = m ))
+    done
+  fi
+  typeset -g REPLY=$x
+}
+
 function fill-line() {
   emulate -L zsh
   prompt-length $1
@@ -10,7 +29,8 @@ function fill-line() {
   prompt-length $2 9999
   local -i r_len=REPLY
   local -i pad_len=$((COLUMNS - l_len - r_len - ${ZLE_RPROMPT_INDENT:-1}))
-  if (( pad_len < 1 )); then
+  if (( pad_len < 1 ))
+  then
     # Not enough space for the right part. Drop it.
     typeset -g REPLY=$1
   else
