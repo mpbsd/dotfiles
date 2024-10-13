@@ -3,73 +3,6 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats "%F{red}%u%f%F{yellow}%c%f (%F{magenta}%b%f)"
 precmd() { vcs_info }
 
-# Example of two-line ZSH prompt with four components.
-#
-#   top-left                         top-right
-#   bottom-left                   bottom-right
-#
-# Components can be customized by editing set-prompt function.
-#
-# Installation:
-#
-#   (cd && curl -fsSLO https://gist.githubusercontent.com/romkatv/2a107ef9314f0d5f76563725b42f7cab/raw/two-line-prompt.zsh)
-#   echo 'source ~/two-line-prompt.zsh' >>~/.zshrc
-#
-# Accompanying article:
-# https://www.reddit.com/r/zsh/comments/cgbm24/multiline_prompt_the_missing_ingredient/
-#
-# This is only an example. If you are looking for a good ZSH prompt,
-# try https://github.com/romkatv/powerlevel10k/.
-
-# Usage: prompt-length TEXT [COLUMNS]
-#
-# If you run `print -P TEXT`, how many characters will be printed
-# on the last line?
-#
-# Or, equivalently, if you set PROMPT=TEXT with prompt_subst
-# option unset, on which column will the cursor be?
-#
-# The second argument specifies terminal width. Defaults to the
-# real terminal width.
-#
-# The result is stored in REPLY.
-#
-# Assumes that `%{%}` and `%G` don't lie.
-#
-# Examples:
-#
-#   prompt-length ''            => 0
-#   prompt-length 'abc'         => 3
-#   prompt-length $'abc\nxy'    => 2
-#   prompt-length '❎'          => 2
-#   prompt-length $'\t'         => 8
-#   prompt-length $'\u274E'     => 2
-#   prompt-length '%F{red}abc'  => 3
-#   prompt-length $'%{a\b%Gb%}' => 1
-#   prompt-length '%D'          => 8
-#   prompt-length '%1(l..ab)'   => 2
-#   prompt-length '%(!.a.)'     => 1 if root, 0 if not
-function prompt-length() {
-  emulate -L zsh
-  local -i COLUMNS=${2:-COLUMNS}
-  local -i x y=${#1} m
-  if (( y )); then
-    while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
-      x=y
-      (( y *= 2 ))
-    done
-    while (( y > x + 1 )); do
-      (( m = x + (y - x) / 2 ))
-      (( ${${(%):-$1%$m(l.x.y)}[-1]} = m ))
-    done
-  fi
-  typeset -g REPLY=$x
-}
-
-# Usage: fill-line LEFT RIGHT
-#
-# Sets REPLY to LEFT<spaces>RIGHT with enough spaces in
-# the middle to fill a terminal line.
 function fill-line() {
   emulate -L zsh
   prompt-length $1
@@ -86,21 +19,12 @@ function fill-line() {
   fi
 }
 
-# Sets PROMPT and RPROMPT.
-#
 # Requires: prompt_percent and no_prompt_subst.
 function set-prompt() {
   emulate -L zsh
   local git_branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
   git_branch=${git_branch//\%/%%}  # escape '%'
 
-  # ~/foo/bar                     master
-  # % █                            10:51
-  #
-  # Top left:      Blue current directory.
-  # Top right:     Green Git branch.
-  # Bottom left:   '#' if root, '%' if not; green on success, red on error.
-  # Bottom right:  Yellow current time.
   local top_left=$'\n''%F{cyan}%~%f'
   local top_right="${vcs_info_msg_0_}"
   local bottom_left='%F{green}❯%f%F{yellow}❯%f%F{red}❯%f '
