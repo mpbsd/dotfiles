@@ -305,7 +305,18 @@ function globals#vim_format_cpfnrs_for_me(opt) abort
 endfunction
 
 function globals#vim_format_dates_for_me() abort
-  let l:P = '\(0[1-9]\|[12][0-9]\|3[01]\)[/-]\(0[1-9]\|1[012]\)[/-]\([0-9]\{2,4\}\)'
-  let l:S = '\3-\2-\1'
-  silent execute printf("1,$s@%s@%s@g", l:P, l:S)
+  let l:d = '\(0\\?[1-9]\|[12][0-9]\|3[01]\)'
+  let l:y = '\([0-9]\{2,4\}\)'
+  silent execute printf("1,$s@%s de janeiro de %s@\\1-01-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de fevereiro de %s@\\1-02-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de março de %s@\\1-03-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de abril de %s@\\1-04-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de maio de %s@\\1-05-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de junho de %s@\\1-06-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de julho de %s@\\1-07-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de agosto de %s@\\1-08-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de setembro de %s@\\1-09-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de outubro de %s@\\1-10-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de novembro de %s@\\1-11-\\2@ge", l:d, l:y)
+  silent execute printf("1,$s@%s de dezembro de %s@\\1-12-\\2@ge", l:d, l:y)
 endfunction

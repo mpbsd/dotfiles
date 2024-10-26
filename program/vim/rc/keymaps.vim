@@ -72,3 +72,8 @@ nnoremap <Leader>pei :call globals#vim_parse_eees_info()<CR>
 
 nnoremap <Leader>356 :call globals#vim_edit_logbook('IME0356')<CR>
 nnoremap <Leader>065 :call globals#vim_edit_logbook('IME0065')<CR>
+
+nnoremap <Leader>vfd :call globals#vim_format_dates_for_me()<CR>
+
+nnoremap <Leader>eog :!eog data/<cWORD><CR>
+nnoremap <Leader>tef :.m$<CR>
