@@ -1,3 +1,71 @@
+snippet '`([abgdezhjiklmnxprstufcyw])' "small case greek letters" rA
+`!p
+alphabet = {
+	"a": r"\alpha",
+	"b": r"\beta",
+	"g": r"\gamma",
+	"d": r"\delta",
+	"e": r"\epsilon",
+	"z": r"\zeta",
+	"h": r"\eta",
+	"j": r"\theta",
+	"i": r"\iota",
+	"k": r"\kappa",
+	"l": r"\lambda",
+	"m": r"\mu",
+	"n": r"\nu",
+	"x": r"\xi",
+	"p": r"\pi",
+	"r": r"\rho",
+	"s": r"\sigma",
+	"t": r"\tau",
+	"u": r"\upsilon",
+	"f": r"\phi",
+	"c": r"\chi",
+	"y": r"\psi",
+	"w": r"\omega",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+snippet '`([GDJLXPSUFYW])' "upper case greek letters" rA
+`!p
+Alphabet = {
+	"G": r"\Gamma",
+	"D": r"\Delta",
+	"J": r"\Theta",
+	"L": r"\Lambda",
+	"X": r"\Xi",
+	"P": r"\Pi",
+	"S": r"\Sigma",
+	"U": r"\Upsilon",
+	"F": r"\Phi",
+	"Y": r"\Psi",
+	"W": r"\Omega",
+}
+snip.rv = Alphabet[match.group(1)]
+`
+endsnippet
+
+snippet '`v([jpfres])' "greek letters" rA
+`!p
+alphabet = {
+	"e": r"\varepsilon",
+	"j": r"\vartheta",
+	"p": r"\varpi",
+	"s": r"\varsigma",
+	"r": r"\varrho",
+	"f": r"\varphi",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+snippet '`/' "frac" rA
+\frac{$1}{$2}$0
+endsnippet
+
 snippet im "inline math" wA
 $${1:${VISUAL}}$$0
 endsnippet
@@ -12,16 +80,16 @@ snippet fn "function" w
 ${1:f}{\left(${2:x}\right)}$0
 endsnippet
 
-snippet '([_^]){2}' "su(b|per)script 1" rA
+snippet '([_^]){2}' "su(b|per)script" rA
 `!p snip.rv = match.group(1)`{$1}$0
 endsnippet
 
 snippet sum "sum" w
-\sum_{i=${1:1}}^{${2:n}}$0
+\sum_{${1:i}=${2:1}}^{${3:n}}$0
 endsnippet
 
 snippet prod "prod" w
-\prod_{i=${1:1}}^{${2:n}}$0
+\prod_{${1:i}=${2:1}}^{${3:n}}$0
 endsnippet
 
 snippet 2r "square root" w
