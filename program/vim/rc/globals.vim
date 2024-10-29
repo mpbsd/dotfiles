@@ -22,6 +22,7 @@ function globals#vim_choose_a_colorscheme_for_me(variant) abort
         \  ],
         \  'light': [
         \    'shine',
+        \    'zellner',
         \  ],
         \}
   " }}}
