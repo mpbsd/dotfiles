@@ -94,12 +94,6 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 " changes special characters in search patterns
 set magic
 
-" enable the use of mouse clicks
-" set mouse=nvi
-
-" changes meaning of mouse buttons
-" set mousemodel=popup_setpos
-
 " number formats recognized for CTRL-A command
 set nrformats=bin,hex
 
