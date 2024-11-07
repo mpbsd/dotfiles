@@ -31,7 +31,7 @@ endsnippet
 
 snippet '`([GDJLXPSUFYW])' "upper case greek letters" rA
 `!p
-Alphabet = {
+alphabet = {
 	"G": r"\Gamma",
 	"D": r"\Delta",
 	"J": r"\Theta",
@@ -44,11 +44,11 @@ Alphabet = {
 	"Y": r"\Psi",
 	"W": r"\Omega",
 }
-snip.rv = Alphabet[match.group(1)]
+snip.rv = alphabet[match.group(1)]
 `
 endsnippet
 
-snippet '`v([jpfres])' "greek letters" rA
+snippet '`v([jpfres])' "variant greek letters" rA
 `!p
 alphabet = {
 	"e": r"\varepsilon",
@@ -60,6 +60,10 @@ alphabet = {
 }
 snip.rv = alphabet[match.group(1)]
 `
+endsnippet
+
+snippet '`8' "infty" rA
+\infty
 endsnippet
 
 snippet '`/' "frac" rA
