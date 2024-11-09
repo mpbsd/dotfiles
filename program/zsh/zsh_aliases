@@ -46,7 +46,7 @@ then
 fi
 
 # python virtual environments
-alias ae='. venv/bin/activate'
+alias ae='. ~/.local/share/python3/bin/activate'
 alias de='deactivate'
 
 # sqlite

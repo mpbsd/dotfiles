@@ -11,4 +11,3 @@ local DIR='%F{cyan}%~%f'
 local CMD='%F{red}❯%f%F{yellow}❯%f%F{green}❯%f'
 
 PROMPT='${NLC}${DIR}${SPC}${vcs_info_msg_0_}${NLC}${CMD}${SPC}'
-RPROMPT='%F{yellow}%T %D%f'

@@ -48,6 +48,7 @@ nnoremap <Leader>ch :colorscheme habamax<CR>
 nnoremap <Leader>cl :colorscheme lunaperche<CR>
 nnoremap <Leader>cp :colorscheme pablo<CR>
 nnoremap <Leader>cs :colorscheme slate<CR>
+nnoremap <Leader>cd :colorscheme desert<CR>
 nnoremap <Leader>cq :colorscheme quiet<CR>
 
 nnoremap <Leader>mk :make<CR>
