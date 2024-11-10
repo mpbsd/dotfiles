@@ -6,8 +6,9 @@ precmd() { vcs_info }
 setopt prompt_subst
 
 local SPC=' '
-local NLC=$'\n'
+# local NLC=$'\n'
 local DIR='%F{cyan}%~%f'
 local CMD='%F{red}❯%f%F{yellow}❯%f%F{green}❯%f'
 
-PROMPT='${NLC}${DIR}${SPC}${vcs_info_msg_0_}${NLC}${CMD}${SPC}'
+PROMPT='${CMD}${SPC}'
+RPROMPT='${DIR}${SPC}${vcs_info_msg_0_}'
