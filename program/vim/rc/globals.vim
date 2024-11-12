@@ -156,8 +156,8 @@ endfunction
 function globals#vim_format_my_BibTeX_file() abort
   let l:re = {
         \  'key': {
-        \    'tgt': '^@.*[0-9]\{4},$',
-        \    'lhs': '{\([a-z]\+\)\(\([A-Z][a-z]\+\)\+\)\([0-9]\{4}\),$',
+        \    'tgt': '^@.*[0-9]\{4\},$',
+        \    'lhs': '{\([a-z]\+\)\(\([A-Z][a-z]\+\)\+\)\([0-9]\{4\}\),$',
         \    'rhs': '{\1\4\2,'
         \  },
         \  'unwanted_fields': [
@@ -192,7 +192,7 @@ function globals#vim_format_my_BibTeX_file() abort
 endfunction
 
 function globals#vim_create_csv_file_with_disciplines() abort
-  silent execute 'norm ggVGu'
+  silent execute 'norm ggguG'
   call globals#vim_rm_non_ascii_chars_from_cbuffer()
   silent %s/ \+/ /g
   silent %s/\<\([a-z]\+\)\> \<\([2-6]\{1,3\}[mtn][1-6]\{1,3\}\)\>/\1 - \2/ge
@@ -215,45 +215,22 @@ function globals#vim_create_csv_file_with_disciplines() abort
 endfunction
 
 function globals#vim_parse_students_info() abort
-  let l:st = [
-        \  'visualizar parecer sobre necessidade educacional especial do aluno',
-        \  'enviar mensagem',
-        \  'usuario (on|off)-line no sigaa',
-        \]
-  let l:re = {
-        \  'lhs': [
-        \    printf("\\v(%s|%s|%s)", l:st[0], l:st[1], l:st[2]),
-        \    '\v^ ([a-z ]+) \(perfil\)$',
-        \    '\v^curso: ([a-z ]+)$',
-        \    '\v^matricula: ([0-9]{9})$',
-        \    '\v^usuario: ([a-z0-9_.]+)$',
-        \    '\v^e-mail: ([a-z0-9_.@]+)$',
-        \    '\v"fname": "([^"]+)",\n"gradc": "([^"]+)",\n"(\d{9})"',
-        \  ],
-        \  'rhs': [
-        \    '\r',
-        \    '"fname": "\1",',
-        \    '"gradc": "\1",',
-        \    '"\1"',
-        \    '"uname": "\1",',
-        \    '"email": "\1",\r},',
-        \    '"\3": {\r"fname": "\1",\r"gradc": "\2",',
-        \  ],
-        \}
-  silent execute 'norm ggVGu'
+  silent execute 'norm ggguG'
   call globals#vim_rm_non_ascii_chars_from_cbuffer()
-  silent execute printf("1,$s/%s/%s/g", l:re['lhs'][0], l:re['rhs'][0])
-  silent g!/\v(\(perfil\)$|(curso|matricula|usuario|e-mail):)/d
-  silent 1,$s/\s\+$//e
-  silent execute printf("1,$s/%s/%s/", l:re['lhs'][1], l:re['rhs'][1])
-  silent execute printf("1,$s/%s/%s/", l:re['lhs'][2], l:re['rhs'][2])
-  silent execute printf("1,$s/%s/%s/", l:re['lhs'][3], l:re['rhs'][3])
-  silent execute printf("1,$s/%s/%s/", l:re['lhs'][4], l:re['rhs'][4])
-  silent execute printf("1,$s/%s/%s/", l:re['lhs'][5], l:re['rhs'][5])
-  silent execute printf("1,$s/%s/%s/", l:re['lhs'][6], l:re['rhs'][6])
-  silent g/"email"/s/$/\r"grade": {"E1": 0, "E2": 0, "E3": 0},/
-  silent execute 'norm ggc/^"\d\{9}student = {Go}gg=G'
-  silent execute 'g/^\s*$/d'
+  silent 1,$s/^\s\+//e
+  silent 1,$s/\(^\)\@\<!\[usuario \(off\|on\)-line no sigaa\]/\r&/ge
+  silent 1,$s/\s*enviar mensagem\s*//e
+  v/\((perfil)$\|^\(curso\|matricula\|usuario\|e-mail\):\)/d
+  g/^\(usuario: bezerra\|e-mail: bezerra@ufg.br\)$/d
+  let l:re = [
+        \ '^\[usuario \%(off\|on\)-line no sigaa\] \(.*\) (perfil)$',
+        \ '^curso: \(.*\)$',
+        \ '^matricula: \(.*\)$',
+        \ '^usuario: \(.*\)$',
+        \ '^e-mail: \(.*\)$',
+        \]
+  let l:su = '"\3": {"F": "\1", "G": "\2", "U": "\4", "E": "\5"},'
+  silent execute printf("1,$s@%s@%s@e", join(l:re, '\n'), l:su)
 endfunction
 
 function globals#vim_edit_logbook(code) abort
@@ -265,34 +242,6 @@ endfunction
 function globals#vim_create_catalog() abort
   execute 'norm ggd/<tbody>'
   execute 'norm /<\/tbody>jdG'
-endfunction
-
-function globals#vim_parse_eees_info() abort
-  silent execute 'norm ggVGu'
-  call globals#vim_rm_non_ascii_chars_from_cbuffer()
-  silent execute 'norm ggd/abiel costa macedo<\/span>'
-  silent execute 'norm /wcedro@ufg.brjdG'
-  silent 1,$s/<[^>]\+>//g
-  silent 1,$s/telefone:(62) 3521-\d\{4}//
-  silent 1,$s/\(sala\|formacao\|area de atuacao\|lattes\|pagina pessoal\|e-mail\):/\r\1:/g
-  silent g/\(^\s*$\|pagina pessoal\)/d
-  silent 1,$s@http://lattes.cnpq.br/@@
-  silent 1,$s/sala: *\(\d\{3\}\)/"office": "\1",/
-  silent 356s/sala: */"office": "121",/
-  silent 475s/$/\r"office": "000",/
-  silent 1,$s/formacao: *\(.*\) */"school": "\1",/
-  silent 1,$s/area de atuacao: *\(.*\) */"field": "\1",/
-  silent 1,$s/lattes: *\(\d\{16\}\) */"\1": {/
-  silent 257s/lattes: lattes/"3206466156270217": {/
-  silent 449s/lattes: lattes/"9663485072140551": {/
-  silent 1,$s/e-mail: *\(.*\)/"email": "\1"/
-  silent g/^[a-z]/s/\v(^|$)/"/g
-  silent g!/:/s/^/"fname": /
-  silent g/fname/s/$/,/
-  silent %s/\(^"fname": .*\)\n\("office": .*\)\n\("school": .*\)\n\("field": .*\)\n\("\d\{16\}": {\)\n\("email": .*\)/\5\r\1\r\2\r\3\r\4\r\6\r},/
-  silent 1s/^/{\r/
-  silent $s/,$/\r}/
-  silent execute 'norm gg=G'
 endfunction
 
 function globals#vim_format_cpfnrs_for_me(opt) abort

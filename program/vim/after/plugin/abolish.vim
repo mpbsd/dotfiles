@@ -16,6 +16,7 @@ Abolish goias goiás
 Abolish harmonica{,s} harmônica{,s}
 Abolish inscric{ao,oes} inscriç{ão,ões}
 Abolish matematica matemática
+Abolish matricula{,s} matrícula{,s}
 Abolish numerica{,s} numérica{,s}
 Abolish numerico{,s} numérico{,s}
 Abolish numero{,s} número{,s}
