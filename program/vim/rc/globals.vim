@@ -97,6 +97,11 @@ function globals#vim_set_my_statusline() abort
   return join(l:components)
 endfunction
 
+function globals#vim_open_help_in_vertical_split() abort
+  let l:search_for_help = input('Search for help: ')
+  execute printf(":vert help %s", l:search_for_help)
+endfunction
+
 function globals#vim_rm_trailing_spaces_from_cbuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')

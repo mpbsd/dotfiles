@@ -40,6 +40,9 @@ nnoremap <C-Down>  <C-W>-
 nnoremap <C-Up>    <C-W>+
 nnoremap <C-Right> <C-W><
 
+nnoremap <Leader>vh :call globals#vim_open_help_in_vertical_split()<CR>
+nnoremap <Leader>vt :vert term<CR>
+
 inoremap <localleader>tu <esc>mmbgUiw`ma
 inoremap <localleader>tl <esc>mmbguiw`ma
 inoremap <localleader>cc <esc>mmb~`ma

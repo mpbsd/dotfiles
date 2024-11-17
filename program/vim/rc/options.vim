@@ -76,6 +76,9 @@ set include=
 " highlight match while typing search pattern
 set incsearch
 
+" searches wrap around the end of the file
+set nowrapscan
+
 " don't insert two spaces after a period with a join command
 set nojoinspaces
 
@@ -208,7 +211,7 @@ set wildmenu
 " specifies how command line completion is done
 set wildoptions=pum,tagfile
 
-" read Ex commands from {file} in each directory given by runtimepath/packpath
+" read Ex commands from file in each directory given by runtimepath/packpath
 runtime macros/matchit.vim
 runtime ftplugin/man.vim
 
