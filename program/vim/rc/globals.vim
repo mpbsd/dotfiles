@@ -98,7 +98,7 @@ function globals#vim_set_my_statusline() abort
 endfunction
 
 function globals#vim_open_help_in_vertical_split() abort
-  let l:search_for_help = input('Search for help: ')
+  let l:search_for_help = input(':help ')
   execute printf(":vert help %s", l:search_for_help)
 endfunction
 

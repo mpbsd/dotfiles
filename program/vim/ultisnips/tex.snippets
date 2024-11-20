@@ -70,11 +70,11 @@ snippet '`/' "frac" rA
 \frac{$1}{$2}$0
 endsnippet
 
-snippet im "inline math" wA
+snippet '\$\$' "inline math" rA
 $${1:${VISUAL}}$$0
 endsnippet
 
-snippet dm "display math" wA
+snippet '\[\[' "display math" rA
 \[
   ${1:${VISUAL}}
 \]$0
@@ -109,11 +109,11 @@ snippet '(?<=\^)-1' "inverse" rA
 endsnippet
 
 snippet AA "for all" wA
-\forall
+\forall\,
 endsnippet
 
 snippet EE "exists" wA
-\exists
+\exists\,
 endsnippet
 
 snippet set "set by property" w

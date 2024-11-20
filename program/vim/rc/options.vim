@@ -76,9 +76,6 @@ set include=
 " highlight match while typing search pattern
 set incsearch
 
-" searches wrap around the end of the file
-set nowrapscan
-
 " don't insert two spaces after a period with a join command
 set nojoinspaces
 
