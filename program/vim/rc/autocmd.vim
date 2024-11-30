@@ -10,7 +10,7 @@ augroup END
 
 augroup nowrap_csv_file
   autocmd!
-  autocmd FileType csv,tex set nowrap
+  autocmd FileType csv set nowrap
 augroup END
 
 augroup get_rid_of_trailing_spaces
