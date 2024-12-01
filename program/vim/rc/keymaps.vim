@@ -81,3 +81,5 @@ nnoremap <Leader>vfd :call globals#vim_format_dates_for_me()<CR>
 
 nnoremap <Leader>eog :!eog data/<cWORD><CR>
 nnoremap <Leader>tef :.m$<CR>
+
+nnoremap <Leader>ccw :call globals#vim_capitalize_all_occurrences_of_cword_in_cbuffer(expand('<cword>'))<CR>

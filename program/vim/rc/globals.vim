@@ -110,6 +110,14 @@ function globals#vim_rm_trailing_spaces_from_cbuffer() abort
   call setreg('/', l:reg)
 endfunction
 
+function globals#vim_capitalize_all_occurrences_of_cword_in_cbuffer(cword) abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
+  silent execute printf("1,$s/%s/\\U&/g", a:cword)
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
+endfunction
+
 function globals#table_of_ascii_equivalent_characters() abort
   let l:ascii_equivalent_chars = {
         \  'à': 'a',
@@ -136,14 +144,6 @@ function globals#vim_rm_non_ascii_chars_from_cbuffer() abort
   endfor
   call setpos('.', l:pos)
   call setreg('/', l:reg)
-endfunction
-
-function globals#vim_rm_non_ascii_chars_from_cword(cword) abort
-  let l:pword = a:cword
-  for [lhs, rhs] in items(globals#table_of_ascii_equivalent_characters())
-    let l:pword = substitute(l:pword, lhs, rhs, 'gie')
-  endfor
-  return printf("%s %s %s", 'iabbrev' , l:pword , a:cword)
 endfunction
 
 function globals#vim_get_BibTeX_citation_keys() abort
