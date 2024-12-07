@@ -110,10 +110,28 @@ function globals#vim_rm_trailing_spaces_from_cbuffer() abort
   call setreg('/', l:reg)
 endfunction
 
-function globals#vim_capitalize_all_occurrences_of_cword_in_cbuffer(cword) abort
+function globals#vim_upper_all_occurrences_of_cword_in_cbuffer(cword) abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
-  silent execute printf("1,$s/%s/\\U&/g", a:cword)
+  silent execute printf("1,$s/\\<%s\\>/\\U&/g", a:cword)
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
+endfunction
+
+function globals#vim_lower_all_occurrences_of_cword_in_cbuffer(cword) abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
+  silent execute printf("1,$s/\\<%s\\>/\\L&/g", a:cword)
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
+endfunction
+
+function globals#vim_camel_case_current_sentence() abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
+  s/\<\w/\u&/g
+  s/\<D\([aeo]s\?\)\>/d\1/ge
+  s/\<E\>/e/ge
   call setpos('.', l:pos)
   call setreg('/', l:reg)
 endfunction
@@ -220,22 +238,31 @@ function globals#vim_create_csv_file_with_disciplines() abort
 endfunction
 
 function globals#vim_parse_students_info() abort
-  silent execute 'norm ggguG'
+  execute 'normal ggguG'
   call globals#vim_rm_non_ascii_chars_from_cbuffer()
-  silent 1,$s/^\s\+//e
-  silent 1,$s/\(^\)\@\<!\[usuario \(off\|on\)-line no sigaa\]/\r&/ge
-  silent 1,$s/\s*enviar mensagem\s*//e
-  v/\((perfil)$\|^\(curso\|matricula\|usuario\|e-mail\):\)/d
-  g/^\(usuario: bezerra\|e-mail: bezerra@ufg.br\)$/d
-  let l:re = [
-        \ '^\[usuario \%(off\|on\)-line no sigaa\] \(.*\) (perfil)$',
-        \ '^curso: \(.*\)$',
-        \ '^matricula: \(.*\)$',
-        \ '^usuario: \(.*\)$',
-        \ '^e-mail: \(.*\)$',
-        \]
-  let l:su = '"\3": {"F": "\1", "G": "\2", "U": "\4", "E": "\5"},'
-  silent execute printf("1,$s@%s@%s@e", join(l:re, '\n'), l:su)
+  silent %s/\%(^\)\@<!usuario \%(off\|on\)-line no sigaa/\r/g
+  silent %s/\(^\s\+\|\s\+$\)//ge
+  silent v/\%((perfil)$\|^\%(curso\|matricula\|usuario\|e-mail\):\)/d
+  silent %s/\s\+enviar mensagem$//
+  let l:re = {
+        \  'lhs': [
+        \    '^\(.*\) (perfil)',
+        \    'curso: \(.*\)',
+        \    'matricula: \(.*\)',
+        \    'usuario: \(.*\)',
+        \    'e-mail: \(.*\)$'
+        \  ],
+        \  'rhs': [
+        \    '"\3": {',
+        \    '"fname": "\1",',
+        \    '"gradc": "\2",',
+        \    '"uname": "\4",',
+        \    '"email": "\5",',
+        \    '"grade": {"P1": 0, "P2": 0, "P3": 0},',
+        \    '},'
+        \  ]
+        \}
+  silent execute printf("%%s/%s/%s/", join(l:re['lhs'], '$\n^'), join(l:re['rhs'], '\r'))
 endfunction
 
 function globals#vim_edit_logbook(code) abort

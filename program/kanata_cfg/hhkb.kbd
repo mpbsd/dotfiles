@@ -1,0 +1,45 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defvar
+  tap-time  275
+  hold-time 275
+)
+
+(defalias
+  a (tap-hold $tap-time $hold-time a lctl)
+  s (tap-hold $tap-time $hold-time s lmet)
+  d (tap-hold $tap-time $hold-time d lalt)
+  f (tap-hold $tap-time $hold-time f lsft)
+  j (tap-hold $tap-time $hold-time j rsft)
+  k (tap-hold $tap-time $hold-time k ralt)
+  l (tap-hold $tap-time $hold-time l rmet)
+  ; (tap-hold $tap-time $hold-time ; rctl)
+
+  SPC (tap-hold $tap-time $hold-time spc (layer-while-held aux))
+)
+
+(defsrc
+   esc    1    2    3    4    5    6    7    8    9    0    -    =    \    grv
+   tab    q    w    e    r    t    y    u    i    o    p    [    ]    bspc
+  lctl    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft    z    x    c    v    b    n    m    ,    .    / rsft
+          lmet lalt            spc           ralt rmet
+)
+
+(deflayer qwerty
+   esc    1    2    3    4    5    6    7    8    9    0    -    =    \    grv
+   tab    q    w    e    r    t    y    u    i    o    p    [    ]    bspc
+   esc   @a   @s   @d   @f    g    h   @j   @k   @l   @;    ' ret
+  lsft    z    x    c    v    b    n    m    ,    .    / rsft
+       lctl lalt           @SPC           ralt rctl
+)
+
+(deflayer aux
+     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12    _    _
+     _    _    _    _    _    _    _    _    _    _    _    _    _    _
+     _    _    _    _    _    _  lft down   up rght    _    _    _
+     _    _    _    _    _    _    _    _    _    _    _    _
+          _    _              _              _    _
+)

@@ -72,14 +72,12 @@ nnoremap <Leader>ue :UltiSnipsEdit<CR>
 nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
 
 nnoremap <Leader>psi :call globals#vim_parse_students_info()<CR>
-nnoremap <Leader>pei :call globals#vim_parse_eees_info()<CR>
-
-nnoremap <Leader>356 :call globals#vim_edit_logbook('IME0356')<CR>
-nnoremap <Leader>065 :call globals#vim_edit_logbook('IME0065')<CR>
 
 nnoremap <Leader>vfd :call globals#vim_format_dates_for_me()<CR>
 
 nnoremap <Leader>eog :!eog data/<cWORD><CR>
 nnoremap <Leader>tef :.m$<CR>
 
-nnoremap <Leader>ccw :call globals#vim_capitalize_all_occurrences_of_cword_in_cbuffer(expand('<cword>'))<CR>
+nnoremap <Leader>ucw :call globals#vim_upper_all_occurrences_of_cword_in_cbuffer(expand('<cword>'))<CR>
+nnoremap <Leader>lcw :call globals#vim_lower_all_occurrences_of_cword_in_cbuffer(expand('<cword>'))<CR>
+nnoremap <Leader>ccs :call globals#vim_camel_case_current_sentence()<CR>
