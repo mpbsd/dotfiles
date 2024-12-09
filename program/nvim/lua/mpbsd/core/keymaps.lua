@@ -9,9 +9,8 @@ local KEY = {
     ["<leader>rco"] = ":e ~/.config/nvim/lua/mpbsd/core/options.lua<CR>",
     ["<leader>rcg"] = ":e ~/.config/nvim/lua/mpbsd/core/globals.lua<CR>",
     ["<leader>rck"] = ":e ~/.config/nvim/lua/mpbsd/core/keymaps.lua<CR>",
-    ["<leader>rcp"] = ":e ~/.config/nvim/lua/mpbsd/plug<CR>",
+    ["<leader>rcp"] = ":e ~/.config/nvim/lua/mpbsd/pkgs<CR>",
     ["<leader>rcs"] = ":so %<CR>",
-    ["<leader>nhl"] = ":nohl<CR>",
   },
 }
 
