@@ -97,9 +97,9 @@ function globals#vim_set_my_statusline() abort
   return join(l:components)
 endfunction
 
-function globals#vim_open_help_in_vertical_split() abort
+function globals#vim_open_help_in_a_new_tab() abort
   let l:search_for_help = input(':help ')
-  execute printf(":vert help %s", l:search_for_help)
+  execute printf(":tab help %s", l:search_for_help)
 endfunction
 
 function globals#vim_rm_trailing_spaces_from_cbuffer() abort
@@ -293,4 +293,10 @@ function globals#vim_format_dates_for_me() abort
   let l:p = l:d . '[/-]' . l:m . '[/-]' . l:y
   let l:s = '\3\2\1'
   silent execute printf("1,$s@%s@%s@ge", l:p, l:s)
+endfunction
+
+function globals#vim_format_choices() abort
+  silent %s/\(\[\|), \)/\1\r/g
+  silent g/^(/s/^/  /
+  silent %s/)\]/)\r\],/
 endfunction
