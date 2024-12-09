@@ -1,16 +1,17 @@
 local KEY = {
+  ["i"] = {
+    ["<localleader>tu"] = "<esc>mmBgUiW`ma",
+    ["<localleader>tl"] = "<esc>mmBguiW`ma",
+    ["<localleader>cc"] = "<esc>mmB~`ma",
+  },
   ["n"] = {
     ["<leader>rci"] = ":e ~/.config/nvim/init.lua<CR>",
     ["<leader>rco"] = ":e ~/.config/nvim/lua/mpbsd/core/options.lua<CR>",
     ["<leader>rcg"] = ":e ~/.config/nvim/lua/mpbsd/core/globals.lua<CR>",
     ["<leader>rck"] = ":e ~/.config/nvim/lua/mpbsd/core/keymaps.lua<CR>",
+    ["<leader>rcp"] = ":e ~/.config/nvim/lua/mpbsd/plug<CR>",
     ["<leader>rcs"] = ":so %<CR>",
     ["<leader>nhl"] = ":nohl<CR>",
-  },
-  ["i"] = {
-    ["<localleader>tu"] = "<esc>mmBgUiW`ma",
-    ["<localleader>tl"] = "<esc>mmBguiW`ma",
-    ["<localleader>cc"] = "<esc>mmB~`ma",
   },
 }
 
