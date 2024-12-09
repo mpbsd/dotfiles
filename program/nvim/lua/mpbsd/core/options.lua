@@ -1,12 +1,17 @@
 local OPT = {
+  -- C {{{
   ["C"] = {
     colorscheme = "retrobox",
   },
+  -- }}}
+  -- G {{{
   ["G"] = {
     mapleader = " ",
     maplocalleader = ",",
     python3_host_prog = "/usr/bin/python3",
   },
+  -- }}}
+  -- O {{{
   ["O"] = {
     tabstop = 2,
     shiftwidth = 2,
@@ -21,9 +26,10 @@ local OPT = {
     textwidth = 80,
     clipboard = "unnamedplus",
   },
+  -- }}}
 }
 
-local setopt = function(OPT)
+setopt = function(OPT)
   for sec, _ in pairs(OPT) do
     for lhs, rhs in pairs(OPT[sec]) do
       if sec == "C" then
