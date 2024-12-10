@@ -43,9 +43,9 @@ nnoremap <C-Right> <C-W><
 nnoremap <Leader>vh :call globals#vim_open_help_in_a_new_tab()<CR>
 nnoremap <Leader>vt :vert term<CR>
 
-inoremap <localleader>tu <esc>mmBgUiw`ma
-inoremap <localleader>tl <esc>mmBguiw`ma
-inoremap <localleader>cc <esc>mmB~`ma
+inoremap <localleader>tu <esc>mmbgUiw`ma
+inoremap <localleader>tl <esc>mmbguiw`ma
+inoremap <localleader>cc <esc>mmb~`ma
 
 nnoremap <Leader>ch :colorscheme habamax<CR>
 nnoremap <Leader>cl :colorscheme lunaperche<CR>
