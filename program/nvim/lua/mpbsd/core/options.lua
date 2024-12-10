@@ -21,9 +21,12 @@ local OPT = {
     relativenumber = true,
     ignorecase = true,
     smartcase = true,
+    incsearch = true,
     cursorline = true,
     colorcolumn = "80",
     textwidth = 80,
+    splitright = true,
+    splitbelow = true,
     clipboard = "unnamedplus",
   },
   -- }}}

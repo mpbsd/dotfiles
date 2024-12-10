@@ -1,4 +1,7 @@
 return {
-  "tpope/vim-surround",
+  "tpope/vim-abolish",
+  "tpope/vim-dadbod",
+  "tpope/vim-fugitive",
   "tpope/vim-repeat",
+  "tpope/vim-surround",
 }

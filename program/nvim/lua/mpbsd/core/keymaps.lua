@@ -1,32 +1,14 @@
-local KEY = {
-  -- insert {{{
-  ["i"] = {
-    ["<localleader>tu"] = "<esc>mmBgUiW`ma",
-    ["<localleader>tl"] = "<esc>mmBguiW`ma",
-    ["<localleader>cc"] = "<esc>mmB~`ma",
-  },
-  -- }}}
-  -- normal {{{
-  ["n"] = {
-    ["<leader>rci"] = ":e ~/.config/nvim/init.lua<CR>",
-    ["<leader>rco"] = ":e ~/.config/nvim/lua/mpbsd/core/options.lua<CR>",
-    ["<leader>rck"] = ":e ~/.config/nvim/lua/mpbsd/core/keymaps.lua<CR>",
-    ["<leader>rca"] = ":e ~/.config/nvim/lua/mpbsd/core/autocmd.lua<CR>",
-    ["<leader>rcg"] = ":e ~/.config/nvim/lua/mpbsd/core/globals.lua<CR>",
-    ["<leader>rcp"] = ":e ~/.config/nvim/lua/mpbsd/pkgs<CR>",
-    ["<leader>rcs"] = ":so %<CR>",
-  },
-  -- }}}
+vim.keymap.set(
+"n",
+"<leader>vfd",
+function()
+  vim.cmd([[ %s/\<\(0[1-9]\|[12][0-9]\|3[01]\)[/-]\(0[1-9]\|1[012]\)[/-]\([0-9]\{4\}\)\>/\3\2\1/g ]])
+end,
+{
+  noremap = true,
+  silent = true,
+  desc = "Let Vim do the hard work!"
 }
+)
 
-local OPT = { noremap = true, silent = true }
-
-setkey = function(KEY, OPT)
-  for mod, _ in pairs(KEY) do
-    for lhs, rhs in pairs(KEY[mod]) do
-      vim.keymap.set(mod, lhs, rhs, OPT)
-    end
-  end
-end
-
-setkey(KEY, OPT)
+vim.keymap.set("n", "<leader>0g", ":0G<CR>", { noremap = true, silent = true })
