@@ -97,15 +97,41 @@ function globals#vim_set_my_statusline() abort
   return join(l:components)
 endfunction
 
-function globals#vim_open_help_in_vertical_split() abort
+function globals#vim_open_help_in_a_new_tab() abort
   let l:search_for_help = input(':help ')
-  execute printf(":vert help %s", l:search_for_help)
+  execute printf(":tab help %s", l:search_for_help)
 endfunction
 
 function globals#vim_rm_trailing_spaces_from_cbuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   silent %s/\s\+$//e
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
+endfunction
+
+function globals#vim_upper_all_occurrences_of_cword_in_cbuffer(cword) abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
+  silent execute printf("1,$s/\\<%s\\>/\\U&/g", a:cword)
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
+endfunction
+
+function globals#vim_lower_all_occurrences_of_cword_in_cbuffer(cword) abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
+  silent execute printf("1,$s/\\<%s\\>/\\L&/g", a:cword)
+  call setpos('.', l:pos)
+  call setreg('/', l:reg)
+endfunction
+
+function globals#vim_camel_case_current_sentence() abort
+  let l:pos = getpos('.')
+  let l:reg = getreg('/')
+  s/\<\w/\u&/g
+  s/\<D\([aeo]s\?\)\>/d\1/ge
+  s/\<E\>/e/ge
   call setpos('.', l:pos)
   call setreg('/', l:reg)
 endfunction
@@ -136,14 +162,6 @@ function globals#vim_rm_non_ascii_chars_from_cbuffer() abort
   endfor
   call setpos('.', l:pos)
   call setreg('/', l:reg)
-endfunction
-
-function globals#vim_rm_non_ascii_chars_from_cword(cword) abort
-  let l:pword = a:cword
-  for [lhs, rhs] in items(globals#table_of_ascii_equivalent_characters())
-    let l:pword = substitute(l:pword, lhs, rhs, 'gie')
-  endfor
-  return printf("%s %s %s", 'iabbrev' , l:pword , a:cword)
 endfunction
 
 function globals#vim_get_BibTeX_citation_keys() abort
@@ -220,22 +238,31 @@ function globals#vim_create_csv_file_with_disciplines() abort
 endfunction
 
 function globals#vim_parse_students_info() abort
-  silent execute 'norm ggguG'
+  execute 'normal ggguG'
   call globals#vim_rm_non_ascii_chars_from_cbuffer()
-  silent 1,$s/^\s\+//e
-  silent 1,$s/\(^\)\@\<!\[usuario \(off\|on\)-line no sigaa\]/\r&/ge
-  silent 1,$s/\s*enviar mensagem\s*//e
-  v/\((perfil)$\|^\(curso\|matricula\|usuario\|e-mail\):\)/d
-  g/^\(usuario: bezerra\|e-mail: bezerra@ufg.br\)$/d
-  let l:re = [
-        \ '^\[usuario \%(off\|on\)-line no sigaa\] \(.*\) (perfil)$',
-        \ '^curso: \(.*\)$',
-        \ '^matricula: \(.*\)$',
-        \ '^usuario: \(.*\)$',
-        \ '^e-mail: \(.*\)$',
-        \]
-  let l:su = '"\3": {"F": "\1", "G": "\2", "U": "\4", "E": "\5"},'
-  silent execute printf("1,$s@%s@%s@e", join(l:re, '\n'), l:su)
+  silent %s/\%(^\)\@<!usuario \%(off\|on\)-line no sigaa/\r/g
+  silent %s/\(^\s\+\|\s\+$\)//ge
+  silent v/\%((perfil)$\|^\%(curso\|matricula\|usuario\|e-mail\):\)/d
+  silent %s/\s\+enviar mensagem$//
+  let l:re = {
+        \  'lhs': [
+        \    '^\(.*\) (perfil)',
+        \    'curso: \(.*\)',
+        \    'matricula: \(.*\)',
+        \    'usuario: \(.*\)',
+        \    'e-mail: \(.*\)$'
+        \  ],
+        \  'rhs': [
+        \    '"\3": {',
+        \    '"fname": "\1",',
+        \    '"gradc": "\2",',
+        \    '"uname": "\4",',
+        \    '"email": "\5",',
+        \    '"grade": {"P1": 0, "P2": 0, "P3": 0},',
+        \    '},'
+        \  ]
+        \}
+  silent execute printf("%%s/%s/%s/", join(l:re['lhs'], '$\n^'), join(l:re['rhs'], '\r'))
 endfunction
 
 function globals#vim_edit_logbook(code) abort
@@ -266,4 +293,10 @@ function globals#vim_format_dates_for_me() abort
   let l:p = l:d . '[/-]' . l:m . '[/-]' . l:y
   let l:s = '\3\2\1'
   silent execute printf("1,$s@%s@%s@ge", l:p, l:s)
+endfunction
+
+function globals#vim_format_choices() abort
+  silent %s/\(\[\|), \)/\1\r/g
+  silent g/^(/s/^/  /
+  silent %s/)\]/)\r\],/
 endfunction

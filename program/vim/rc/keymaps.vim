@@ -40,12 +40,12 @@ nnoremap <C-Down>  <C-W>-
 nnoremap <C-Up>    <C-W>+
 nnoremap <C-Right> <C-W><
 
-nnoremap <Leader>vh :call globals#vim_open_help_in_vertical_split()<CR>
+nnoremap <Leader>vh :call globals#vim_open_help_in_a_new_tab()<CR>
 nnoremap <Leader>vt :vert term<CR>
 
-inoremap <localleader>tu <esc>mmbgUiw`ma
-inoremap <localleader>tl <esc>mmbguiw`ma
-inoremap <localleader>cc <esc>mmb~`ma
+inoremap <localleader>tu <esc>mmBgUiw`ma
+inoremap <localleader>tl <esc>mmBguiw`ma
+inoremap <localleader>cc <esc>mmB~`ma
 
 nnoremap <Leader>ch :colorscheme habamax<CR>
 nnoremap <Leader>cl :colorscheme lunaperche<CR>
@@ -72,12 +72,14 @@ nnoremap <Leader>ue :UltiSnipsEdit<CR>
 nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
 
 nnoremap <Leader>psi :call globals#vim_parse_students_info()<CR>
-nnoremap <Leader>pei :call globals#vim_parse_eees_info()<CR>
-
-nnoremap <Leader>356 :call globals#vim_edit_logbook('IME0356')<CR>
-nnoremap <Leader>065 :call globals#vim_edit_logbook('IME0065')<CR>
 
 nnoremap <Leader>vfd :call globals#vim_format_dates_for_me()<CR>
 
 nnoremap <Leader>eog :!eog data/<cWORD><CR>
 nnoremap <Leader>tef :.m$<CR>
+
+nnoremap <Leader>ucw :call globals#vim_upper_all_occurrences_of_cword_in_cbuffer(expand('<cword>'))<CR>
+nnoremap <Leader>lcw :call globals#vim_lower_all_occurrences_of_cword_in_cbuffer(expand('<cword>'))<CR>
+nnoremap <Leader>ccs :call globals#vim_camel_case_current_sentence()<CR>
+
+nnoremap <Leader>vfc :call globals#vim_format_choices()<CR>
