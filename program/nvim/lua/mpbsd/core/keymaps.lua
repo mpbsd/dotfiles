@@ -11,4 +11,7 @@ end,
 }
 )
 
+vim.keymap.set("n", "<leader><leader>w", ":w<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader><leader>q", ":q<CR>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>0g", ":0G<CR>", { noremap = true, silent = true })
