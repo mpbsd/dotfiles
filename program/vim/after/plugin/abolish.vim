@@ -8,14 +8,18 @@ Abolish binaria{,s} binária{,s}
 Abolish calculo{,s} cálculo{,s}
 Abolish capitulo{,s} capítulo{,s}
 Abolish ciencia{,s} ciência{,s}
+Abolish colec{ao,oes} coleç{ão,ões}
 Abolish composic{ao,oes} composiç{ão,ões}
 Abolish computacao computação
 Abolish condic{ao,oes} condiç{ão,ões}
 Abolish conjugac{ao,oes} conjugaç{ão,ões}
+Abolish contem contém
 Abolish convergencia convergência
 Abolish correc{ao,oes} correç{ão,ões}
 Abolish definic{ao,oes} definiç{ão,ões}
 Abolish demonstra{ao,oes} demonstraç{ão,ões}
+Abolish diferenca diferença
+Abolish divisive{l,eis} divisíve{l,eis}
 Abolish edic{ao,oes} ediç{ão,ões}
 Abolish eh{,s} é{,s}
 Abolish entao então
@@ -37,6 +41,7 @@ Abolish olimpiada{,s} olimpíada{,s}
 Abolish operac{ao,oes} operaç{ão,ões}
 Abolish permutac{ao,oes} permutaç{ão,ões}
 Abolish potencia{,s} potência{,s}
+Abolish proposic{ao,oes} proposiç{ão,ões}
 Abolish proposi{ao,oes} proposiç{ão,ões}
 Abolish propri{a,o} própri{a,o}
 Abolish quimica química
