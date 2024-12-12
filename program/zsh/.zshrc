@@ -33,8 +33,8 @@ source "${HOME}/.config/zsh/zsh_aliases"
 # bindings
 source "${HOME}/.config/zsh/rc/bindings.zsh"
 
-# a little bit of fun
-# if [ -x /usr/games/fortune -a -x /usr/games/cowsay ]
-# then
-#   fortune | cowsay
-# fi
+# add a little bit of fun
+if [ -x /usr/games/fortune -a -x /usr/games/cowsay ]
+then
+  fortune | cowsay | lolcat
+fi
