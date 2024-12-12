@@ -46,7 +46,9 @@ return {
 
     vim.keymap.set("n", "<leader>mp", telescope_builtin.man_pages, { noremap = true, silent = true })
 
-    vim.keymap.set("n", "<leader>en", function() telescope_builtin.find_files({ cwd = "~/.config/nvim/lua/mpbsd" }) end, { noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>en", function()
+      telescope_builtin.find_files({ cwd = "~/.config/nvim/lua/mpbsd" })
+    end, { noremap = true, silent = true })
 
   end
 }

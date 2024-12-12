@@ -7,6 +7,7 @@ vim.api.nvim_create_autocmd(
     pattern = {
       "lua",
       "python",
+      "sh",
     },
     command = [[setlocal foldmethod=marker]]
   }
