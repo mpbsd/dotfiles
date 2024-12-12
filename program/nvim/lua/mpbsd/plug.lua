@@ -18,6 +18,12 @@ require("lazy").setup({
     {
       import = "mpbsd.pkgs"
     },
+    {
+      import = "mpbsd.pkgs.language_server_protocol"
+    },
+    {
+      import = "mpbsd.pkgs.tree_sitter"
+    },
   },
   checker = {
     enabled = false,
@@ -25,5 +31,5 @@ require("lazy").setup({
   },
   change_detection = {
     notify = false,
-  }
+  },
 })

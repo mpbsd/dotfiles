@@ -8,7 +8,7 @@ local OPT = {
   ["G"] = {
     mapleader = " ",
     maplocalleader = ",",
-    python3_host_prog = "/usr/bin/python3",
+    python3_host_prog = "~/.local/share/python3/bin/python3",
   },
   -- }}}
   -- O {{{
@@ -32,7 +32,7 @@ local OPT = {
   -- }}}
 }
 
-setopt = function(OPT)
+local setopt = function(OPT)
   for sec, _ in pairs(OPT) do
     for lhs, rhs in pairs(OPT[sec]) do
       if sec == "C" then
