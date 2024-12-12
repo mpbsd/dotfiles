@@ -25,9 +25,10 @@ return {
   },
   config = function()
     -- See `:help cmp`
-    local cmp = require "cmp"
-    local luasnip = require "luasnip"
-    luasnip.config.setup({})
+    local cmp = require("cmp")
+    local luasnip = require("luasnip")
+
+    luasnip.config.setup()
 
     cmp.setup({
       snippet = {
@@ -35,7 +36,9 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
-      completion = { completeopt = "menu,menuone,noinsert" },
+      completion = {
+        completeopt = "menu,menuone,noinsert"
+      },
 
       mapping = cmp.mapping.preset.insert({
         ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -53,7 +56,7 @@ return {
         -- Manually trigger a completion from nvim-cmp.
         --  Generally you don"t need this, because nvim-cmp will display
         --  completions whenever it has completion options available.
-        ["<C-Space>"] = cmp.mapping.complete({}),
+        ["<C-Space>"] = cmp.mapping.complete(),
 
         ["<C-l>"] = cmp.mapping(function()
           if luasnip.expand_or_locally_jumpable() then

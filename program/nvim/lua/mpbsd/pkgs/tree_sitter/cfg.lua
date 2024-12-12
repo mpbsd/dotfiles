@@ -13,7 +13,8 @@ return {
         "vimdoc",
         "query",
         "markdown",
-        "markdown_inline"
+        "markdown_inline",
+        "latex",
       },
 
       sync_install = false,
@@ -37,5 +38,6 @@ return {
         additional_vim_regex_highlighting = false,
       },
     })
+
   end
 }
