@@ -16,13 +16,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     {
-      import = "mpbsd.pkgs"
+      import = "mpbsd.plug"
     },
     {
-      import = "mpbsd.pkgs.language_server_protocol"
+      import = "mpbsd.plug.language_server_protocol"
     },
     {
-      import = "mpbsd.pkgs.tree_sitter"
+      import = "mpbsd.plug.tree_sitter"
     },
   },
   checker = {

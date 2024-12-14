@@ -7,3 +7,15 @@ vim.api.nvim_create_autocmd("FileType", {
 	},
 	command = [[setlocal foldmethod=marker]],
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = vim.api.nvim_create_augroup("GetRidOfTrailingSpaces", { clear = true }),
+	pattern = {
+		"lua",
+		"python",
+		"sh",
+		"c",
+		"h",
+	},
+	command = [[%s/\s\+$//e]],
+})

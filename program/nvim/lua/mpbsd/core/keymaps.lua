@@ -9,4 +9,9 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>s\\", ":vsplit<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>s-", ":split<CR>", { noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>wth", "<C-w>t<C-w>H", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>wtk", "<C-w>t<C-w>K", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>0g", ":0G<CR>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>lv", ":Lazy<CR>", { noremap = true, silent = true })
