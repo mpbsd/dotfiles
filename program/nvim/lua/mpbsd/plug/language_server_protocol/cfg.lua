@@ -1,17 +1,12 @@
 return {
 	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		{
-			"williamboman/mason.nvim",
-			config = true,
-		},
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		"hrsh7th/cmp-nvim-lsp",
 		{
 			"j-hui/fidget.nvim",
 			opts = {},
 		},
-		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -103,54 +98,27 @@ return {
 		--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-		local servers = {
-			clangd = {},
-			lua_ls = {
-				-- cmd = {...},
-				-- filetypes = { ...},
-				-- capabilities = {},
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
+
+		mason_lspconfig.setup_handlers({
+			function(server_name)
+				lspconfig[server_name].setup({
+					capabilities = capabilities,
+				})
+			end,
+			["lua_ls"] = function()
+				lspconfig["lua_ls"].setup({
+					lua_ls = {
+						settings = {
+							Lua = {
+								completion = {
+									callSnippet = "Replace",
+								},
+								diagnostics = { disable = { "missing-fields" } },
+							},
 						},
-						diagnostics = { disable = { "missing-fields" } },
 					},
-				},
-			},
-			pyright = {},
-			texlab = {},
-		}
-
-		-- Ensure the servers and tools above are installed
-		--  To check the current status of installed tools and/or manually install
-		--  other tools, you can run
-		--    :Mason
-		--
-		--  You can press `g?` for help in this menu.
-		mason.setup()
-
-		-- You can add other tools here that you want Mason to install
-		-- for you, so that they are available from within Neovim.
-		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"black",
-			"isort",
-			"stylua",
-		})
-
-		mason_tool_installer.setup({
-			ensure_installed = ensure_installed,
-		})
-
-		mason_lspconfig.setup({
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					lspconfig[server_name].setup(server)
-				end,
-			},
+				})
+			end,
 		})
 	end,
 }
