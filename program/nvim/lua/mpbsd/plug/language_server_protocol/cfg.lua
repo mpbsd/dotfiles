@@ -1,17 +1,27 @@
 return {
 	"neovim/nvim-lspconfig",
+	event = {
+		"BufReadPre",
+		"BufNewFile",
+	},
 	dependencies = {
-		{
-			"williamboman/mason.nvim",
-			config = true,
-		},
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{
 			"j-hui/fidget.nvim",
 			opts = {},
 		},
 		"hrsh7th/cmp-nvim-lsp",
+		{
+			"folke/lazydev.nvim",
+			ft = "lua",
+			opts = {
+				library = {
+					{
+						path = "luvit-meta/library",
+						words = { "vim%.uv" },
+					},
+				},
+			},
+		},
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -70,14 +80,14 @@ return {
 		})
 
 		-- Change diagnostic symbols in the sign column (gutter)
-		-- if vim.g.have_nerd_font then
-		--   local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
-		--   local diagnostic_signs = {}
-		--   for type, icon in pairs(signs) do
-		--     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-		--   end
-		--   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-		-- end
+		if vim.g.have_nerd_font then
+			local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+			local diagnostic_signs = {}
+			for type, icon in pairs(signs) do
+				diagnostic_signs[vim.diagnostic.severity[type]] = icon
+			end
+			vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+		end
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
