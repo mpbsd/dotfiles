@@ -8,6 +8,8 @@ return {
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
+		local LSP = require("mpbsd.core.globals").LSP
+		local FORMATTER = require("mpbsd.core.globals").FORMATTER
 
 		mason.setup({
 			ui = {
@@ -19,21 +21,8 @@ return {
 			},
 		})
 
-		mason_lspconfig.setup({
-			ensure_installed = {
-				"clangd",
-				"lua_ls",
-				"pyright",
-				"texlab",
-			},
-		})
+		mason_lspconfig.setup({ ensure_installed = vim.tbl_keys(LSP) })
 
-		mason_tool_installer.setup({
-			ensure_installed = {
-				"black",
-				"isort",
-				"stylua",
-			},
-		})
+		mason_tool_installer.setup({ ensure_installed = FORMATTER })
 	end,
 }
