@@ -8,7 +8,11 @@ local OPT = {
 	["G"] = {
 		mapleader = " ",
 		maplocalleader = ",",
-		python3_host_prog = "~/.local/share/python3/bin/python3",
+		tex_flavor = "latex",
+		loaded_node_provider = 0,
+		loaded_perl_provider = 0,
+		loaded_python3_provider = 0,
+		loaded_ruby_provider = 0,
 	},
 	-- }}}
 	-- O {{{

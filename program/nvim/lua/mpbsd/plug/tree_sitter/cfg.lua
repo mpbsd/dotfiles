@@ -8,22 +8,21 @@ return {
 			ensure_installed = {
 				"bash",
 				"c",
+				"json",
+				"latex",
 				"lua",
-				"vim",
-				"vimdoc",
-				"query",
 				"markdown",
 				"markdown_inline",
-				"latex",
+				"query",
+				"vim",
+				"vimdoc",
 			},
 
 			sync_install = false,
 
-			auto_install = true,
+			auto_install = false,
 
 			ignore_install = { "javascript" },
-
-			-- parser_install_dir = "/some/path/to/store/parsers",
 
 			highlight = {
 				enable = true,
