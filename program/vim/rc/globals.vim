@@ -82,6 +82,7 @@ function globals#vim_display_current_mode(mode) abort
 endfunction
 
 function globals#vim_set_my_statusline() abort
+  " components {{{
   let l:components = [
         \  '[%n]',
         \  '%{globals#vim_display_current_mode(mode())}',
@@ -94,6 +95,7 @@ function globals#vim_set_my_statusline() abort
         \  '%P',
         \  '(%06l:%06c)'
         \]
+  " }}}
   return join(l:components)
 endfunction
 
@@ -137,6 +139,7 @@ function globals#vim_camel_case_current_sentence() abort
 endfunction
 
 function globals#table_of_ascii_equivalent_characters() abort
+  " ascii_equivalent_chars {{{
   let l:ascii_equivalent_chars = {
         \  'à': 'a',
         \  'á': 'a',
@@ -151,6 +154,7 @@ function globals#table_of_ascii_equivalent_characters() abort
         \  'õ': 'o',
         \  'ú': 'u',
         \}
+  " }}}
   return l:ascii_equivalent_chars
 endfunction
 

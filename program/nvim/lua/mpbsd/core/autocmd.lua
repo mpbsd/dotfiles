@@ -32,3 +32,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	command = [[%s/\s\+$//e]],
 	desc = "Remove trailing white spaces on every save based on the filetype",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("LaTeXEditingMadeEasy", { clear = true }),
+	pattern = { "tex" },
+	callback = function()
+		vim.o.wrap = true
+		vim.o.textwidth = 260
+		vim.o.colorcolumn = "260"
+		vim.keymap.set("n", "<leader>mk", ":make<CR>", { noremap = true, silent = true })
+	end,
+	desc = "",
+})

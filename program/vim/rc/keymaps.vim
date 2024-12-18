@@ -83,3 +83,5 @@ nnoremap <Leader>lcw :call globals#vim_lower_all_occurrences_of_cword_in_cbuffer
 nnoremap <Leader>ccs :call globals#vim_camel_case_current_sentence()<CR>
 
 nnoremap <Leader>vfc :call globals#vim_format_choices()<CR>
+
+nnoremap <Leader>vcd :call globals#vim_create_csv_file_with_disciplines()<CR>

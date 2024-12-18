@@ -14,6 +14,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	rocks = {
+		enabled = false,
+	},
 	spec = {
 		{
 			import = "mpbsd.plug",

@@ -1,6 +1,7 @@
 Abolish aa{,s} à{,s}
 Abolish ac{ao,oes} aç{ão,ões}
 Abolish ah{,s} á{,s}
+Abolish area{,s} área{,s}
 Abolish atraves através
 Abolish ausencia{,s} ausência{,s}
 Abolish betania betânia
@@ -45,6 +46,7 @@ Abolish proposic{ao,oes} proposiç{ão,ões}
 Abolish proposi{ao,oes} proposiç{ão,ões}
 Abolish propri{a,o} própri{a,o}
 Abolish quimica química
+Abolish regi{ao,oes} regi{ão,ões}
 Abolish rela{ao,oes} relaç{ão,ões}
 Abolish sao são
 Abolish sec{ao,oes} seç{ão,ões}
