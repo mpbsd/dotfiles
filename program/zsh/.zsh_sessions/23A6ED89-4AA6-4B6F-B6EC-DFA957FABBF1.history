@@ -1,0 +1,1000 @@
+psql the-x-files
+mariadb -u marcelo -p omeg
+vi
+mariadb -u marcelo -p omeg
+mariadb -u marcelo -p omeg
+pass -c u/ufgnet
+pass otp -c u/ufgnet
+ll
+cd Downloads
+ll
+vi 2022.csv 2023.csv
+cd
+tmux
+vi ~/.zshenv
+tmux
+tmux
+brew update
+brew outdated
+brew autoremove --dry-run
+brew cleanup
+clear
+vi ~/Downloads/*.csv
+vi ~/Downloads/{2023,2022}.csv
+ll
+mariadb -u marcelo -p omeg
+find /usr/local -type f -name 'deborah.csv'
+ls -lah /usr/local/var
+ls -lah /usr/local/var/mysql
+find /usr/local -type f -name 'deborah.csv'
+ls -lah /usr/local/var/mysql/omeg
+mv "$(find /usr/local -type f -name 'deborah.csv')" ~/Downloads/2024.csv
+vi Downloads/2024.csv 
+ll
+vi Downloads/{2022,2023,2024}.csv
+mkdir -p ~/Downloads/Debora
+mv ~/Downloads/202{2,3,4}.csv ~/Downloads/Debora
+ll Downloads
+vi Downloads/Debora 
+vi Downloads/Debora/*.csv
+ll
+brew search ripgrep
+brew search bat
+brew info bat
+brew install bat
+brew info ripgrep
+brew intall ripgrep
+brew install ripgrep
+bat Downloads/Debora/2022.csv 
+vi Downloads/Debora/*.csv
+tmux
+ping -c 3 google.com
+tmux
+man shutdown
+sudo shutdown -h now
+man fprintf
+man fclose
+make
+man -f fgetc
+man fgetc
+man putchar
+brew update
+brew outdated
+brew autoremove --dry-run
+brew cleanup
+brew doctor
+ping -c 3 google.com
+clear
+lf
+builtin cd -- /Users/marcelo/projects/powerset
+giff
+git restore makefile
+gsts
+vi .gitignore
+gsts
+giff src/main.c
+vi
+vi
+..
+ll
+cd shellscripts
+ll
+gsts
+cd
+emoji
+cd ~/projects
+ll
+mkdir -p learning_c
+cd learning
+cd learning_c
+mkdir -p bin src
+vi .gitignore makefile
+ll
+vi src/main.c
+make
+./bin/main
+ll
+cat helloworld.txt
+ll
+./bin/main
+cat helloworld.txt
+vi src/main.c
+make
+./bin/main
+cat helloworld.txt
+rm helloworld.txt
+vi src/main.c
+vi helloworld.txt
+vi 
+make
+vi
+make
+./bin/main
+ll
+mvim 
+ll
+man -f regex
+man perlre
+man -k regex
+man regex
+vi src/main.c
+cd
+mariadb -u marcelo -p omeg -e "select taxnr, fname, email from professor"
+vi projects/SQL/query.sql 
+mariadb -u marcelo -p omeg -e "SELECT s.cpfnr, s.fname, e.roll FROM student AS s, enrollment AS e WHERE ( s.cpfnr = e.cpfnr AND e.year = 2024 AND e.taxnr NOT IN ( 00000000191, 09876891693, 10591598647, 70554943115, 72800984104, 99846757000));"
+vi projects/SQL/query.sql 
+bash projects/SQL/query.sh 
+bash -n projects/SQL/query.sh 
+shellcheck projects/SQL/query.sh 
+bash projects/SQL/query.sh 
+bat Downloads/colorize_c.sed 
+rm -rf Downloads/colorize_c.sed 
+ls -lah Downloads
+brew search coreutils
+brew info coreutils
+brew info micro
+ll
+lf
+tmux
+vi ~/Downloads/deborah/*.csv
+mv Downloads/Debora Downloads/deborah
+zip -r ~/Downloads/debora.zip ~/Downloads/deborah 
+lf
+tmux
+brew update
+mutt
+ll
+mv Downloads/debora.zip Downloads/deborah.zip 
+ls -l Downloads
+ll
+brew update
+brew outdated
+brew autoremove --dry-run
+clear
+fastfetch
+whereis coreutils
+brew info coreutils
+clear
+fastfetch
+mutt
+mutt
+mutt
+ll
+brew update 
+brew outdated
+brew autoremove --dry-run
+brew cleanup
+brew doctor
+mutt
+ll
+bc
+lf
+rm -rf ~/impa.html
+lf
+rm -rf ~/Document
+ll
+lf
+clear
+builtin cd -- /Users/marcelo/projects
+mkdir learning_shell
+cd learning_shell
+ll
+vi sendmail
+shellcheck sendmail
+chmod sendmail
+chmod 700 sendmail
+vi sendmail
+shellcheck sendmail
+vi sendmail
+shellcheck sendmail
+vi sendmail
+shellcheck sendmail
+./sendmail
+ll
+vi sendmail
+ll
+cd
+builtin cd -- /Users/marcelo/projects/dotfiles
+gsts
+vi
+cd
+vi
+vi test.tex
+ll
+rm test.tex
+ll
+tmux
+ll
+vi
+clear
+tmux
+brew update
+brew outdated
+brew upgrade
+brew autoremove --dry-run
+brew cleanup
+clear
+lf
+rm -rf ~/Downloads/{deborah,deborah.zip}
+ll Downloads
+rm -rf ~/Downloads/{data.csv,dump.csv,main.tex}
+ll Downloads
+tmux
+builtin cd -- /Users/marcelo/Downloads/exclude_duplicates
+make ready
+builtin cd -- /Users/marcelo/Downloads/exclude_duplicates
+ae
+make
+make
+make
+make black
+make black
+make
+ll
+mkdir brew
+make
+make black
+make
+make
+cat brew/keep.csv
+cat brew/discard.csv
+de
+bc
+ll
+shellcheck split.sh
+chmod 700 split.sh
+./split.sh
+shellcheck split.sh
+./split.sh
+shellcheck split.sh
+./split.sh
+builtin cd -- /Users/marcelo/Downloads/60Anos
+ll
+cat licenciatura.csv
+pass -c u/ufgnet
+pass -c u/ufgnet
+pass otp -c u/ufgnet
+ll
+cd Downloads
+ll
+unzip drive-download-20241031T130330Z-001.zip
+ll
+vi formandos1.csv
+vi duplicate.csv formandos1.csv
+ll
+mkdir -p exclude_duplicates
+cd exclude_duplicates
+mkdir -p pkgs
+vi makefile requirements.txt
+mkdir data
+cp ../{formandos1.csv,duplicate.csv} data/
+mv data/formandos1.csv data/set1.csv
+mv data/duplicate.csv set2.csv
+tree
+mv set2.csv data/
+tree
+vi pkgs/core.py
+vi pkgs/core.py
+ll
+vi pkgs/core.py
+vi pkgs/core.py
+vi pkgs/core.py
+vi pkgs/core.py
+vi pkgs/core.py
+make clean
+vi brew/{keep,discard}.csv
+vi brew/{keep,discard}.csv
+vi brew/keep.csv
+ll
+make clean
+vi brew/keep.csv
+..
+ll
+mkdir -p 60Anos
+cp exclude_duplicates/brew/keep.csv 60Anos/licenciatura.csv
+ll
+cd 60Anos
+ll
+vi licenciatura.csv
+ll
+mkdir -p split
+cat licenciatura.csv
+cat licenciatura.csv | cut -d ";" -f 4
+ll
+mv split data
+vi split.sh
+ls data
+cat data/1970.csv
+vi split.sh
+ls -l data
+vi split.sh
+ll
+ll
+vi data/*.csv
+vi licenciatura.csv
+vi data/*.csv
+ll
+vi licenciatura.csv
+ll
+ll
+vi licenciatura.csv
+ll
+rm -rf data/*.csv
+./split.sh
+ll data
+vi data/*.csv
+ls data
+ll
+vi split.sh
+ll
+ll
+ll
+..
+ll
+open -a Preview PAUTA_N1.pdf
+ll
+cd
+ll
+ls Downloads
+ls Downloads/60Anos
+echo 'eis aqui, meu jovem.' | mutt -s '60 anos licenciatura: 2024-10-31' -a Downloads/60Anos/bacharelado.csv -a Downloads/60Anos/licenciatura.csv -a Downloads/60Anos/split.sh -- bezerra@ufg.br
+tmux
+brew update
+brew outdated
+brew upgrade
+brew outdated
+brew cleanup
+brew autoremove --dry-run
+brew doctor
+mutt
+brew update && brew outdated
+brew upgrade
+brew autoremove --dry-run
+brew autoremove
+brew cleanup
+brew doctor
+sudo rm -rf /Library/Developer/CommandLineTools
+sudo xcode-select --install
+brew cleanup
+brew autoremove --dry-run
+brew doctor
+clear
+tmux
+tmux
+tmux
+find ~/.local -type d -name alacritty
+find ~/.local/share -type d -name alacritty
+brew update && brew outdated
+ll
+cd projects
+ll
+cd learning_c
+ll
+make
+ll
+./bin/main
+vi src/main.c 
+make
+./bin/main
+ll
+ll
+cat helloworld.txt
+clear
+fastfetch
+gtypist
+gtypist
+brew search gtypist
+brew info gtypist
+brew install gtypist
+brew search vi
+brew search nvi
+brew search neatvi
+brew info neatvi
+clear
+ll
+cd
+ll
+ll projects
+whereis cargo
+brew search cargo
+vi ~/.zshenv
+clear
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+ll
+ls -lah
+vi ~/.zshenv
+sed -n '/cargo/p' ~/.zshenv
+ag 'cargo/env' **
+ll
+ll
+vi ~/.zshenv
+cargo install alacritty
+alacritty
+find /usr/local -type d -name alacritty
+tmux
+ll
+find /usr/local -type d -name alacritty
+find ~/.local/share -type d -name alacritty
+find /usr/local -type f -name alacrity.toml
+find /usr/local -type f -name "*alacritty*"
+find /usr/local -type d -name "*alacritty*"
+find ~/.local/share -type d -name "*alacritty*"
+vi /Users/marcelo/.local/share/cargo/registry/src/index.crates.io-6f17d22bba15001f/alacritty_config-0.2.2
+builtin cd -- /Users/marcelo/projects/dotfiles
+gsts
+git restore program/vim
+gsts
+git restore program/zsh
+git pull
+git branch
+tmux
+ll
+tmux
+find /usr/local -type f -name "zsh-syntax-highlighting.zsh"
+tmux
+tmux
+cd ~/projects/dotfiles
+gsts
+gsts
+bit branch
+git branch
+git branch macos
+git checkout macos
+git branch
+ll
+vi program/zsh/.zsherc
+vi program/zsh/.zshrc
+ll
+cd ~/projects/dotfiles
+gsts
+cd
+setdf -u mac
+setdf -i mac
+tmux
+echo $(brew --prefix)
+find /usr/local -type f -name "zsh-syntax-highlighting.*"
+vi
+tmux
+tmux
+clear
+alacritty
+ll
+tmux
+tmux
+cd ~/projects/dotfiles
+ll
+gsts
+mkdir -p program/alacritty
+touch program/alacritty/alacritty.toml
+vi program/alacritty/alacritty.toml
+ls
+cd
+vi ~/projects/shellscripts/scripts/setdf
+vi ~/projects/dotfiles/program/alacritty/alacritty.toml
+cd ~/projects/shellscripts
+gsts
+make uninstall
+make install
+cd
+ls -lah ~/.config
+setdf
+vi ~/projects/shellscripts/scripts/setdf
+shellcheck ~/projects/shellscripts/scripts/setdf
+setdf 
+setdf -u mac
+setdf -i mac
+ls -lah ~/.config
+alacritty
+vi ~/projects/dotfiles/program/alacritty/alacritty.toml
+alacritty
+brew list
+vi ~/.config/alacritty/alacritty.toml
+vi
+vi
+fc-list | grep -F 'JetBrains'
+alacritty
+alacritty
+alacritty
+alacritty
+fc-list
+fc-list | grep -F 'JetBrains"
+fc-list | grep -F 'JetBrains'
+vi ~/projects/dotfiles/program/alacritty/alacritty.toml
+tmux
+tmux
+alacritty
+vi
+alacritty
+vi
+alacritty
+vi
+vi ~/projects/dotfiles/program/zsh/.zshrc
+brew info fzf
+find /usr/local -type f -name completion.zsh
+vi
+ll /usr/local/
+ll /usr/local/opt/zsh
+ll /usr/local/opt/
+ll /usr/local/opt/fzf
+ll /usr/local/opt/fzf/
+ll /usr/local/opt/fzf/shell
+vi
+ll
+tmux
+alacritty
+alacritty
+brew update
+brew autoremove --dry-run
+brew cleanup
+brew doctor
+tmux ls
+tmux
+alacritty
+tmux
+vi
+vi ~/.config/alacritty/alacritty.toml
+tmux
+ll
+alacritty
+alacritty
+alacritty
+brew search alacritty
+brew install --cask alacritty
+brew cleanup
+brew autoremove --dry-run
+tmux
+alacritty
+tmux
+brew update
+brew autoremove --dry-run
+brew cleanup
+brew doctor
+vi
+fastfetch
+vi
+alacrity
+tmux
+vvi
+vi
+who
+tmux
+echo $TERM
+tmux
+tmux
+clear
+tmux
+tmux
+tmux
+whoami
+ll
+vi
+ll
+vi ~/.config/tmux/tmux.conf
+clear
+tmux
+fastfetch
+fastfetch
+clear
+vi
+clear
+brew update && brew outdated
+brew autoremove --dry-run
+brew cleanup
+tmux
+mutt
+w3m ime.ufg.br
+ll
+vi 31769-docentes-efetivos
+rm 31769-docentes-efetivos
+ll
+clear
+ll
+vi
+brew update && brew outdated 
+brew cleanup
+brew autoremove --dry-run
+gtypist
+fastfetch
+vi
+clear
+ll
+rm test.txt
+ll
+ll
+brew update && brew outdated
+brew autoremove --dry-run
+vim
+vi ~/Downloads/test.tex
+clear
+fastfetch
+brew autoremove --dry-run
+mutt
+clear
+clear
+clear
+fastfetch
+tmux
+brew --prefix
+find $(brew --prefix) -type f -name completion.zsh
+find $(brew --prefix) -type f -name key-bindings.zsh
+ls $(brew --prefix)/opt/fzf/shell
+fastfetch
+ll
+lf
+vi ~/projects/dotfiles/program/zsh/.zshrc
+brew update
+brew outdated
+brew upgrade
+brew autoremove --dry-run
+brew cleanup
+brew doctor
+clear
+fastfetch
+tmux
+vim
+tmux
+cargo install --list
+cargo uninstall alacritty
+ls -lah ~/.local/share/cargo
+ls -lah ~/.local/share/cargo/bin
+ls -lah ~/.local/share/cargo/registry
+ls -lah ~/.local/share/cargo/registry/cache
+ls -lah ~/.local/share/cargo/registry/index
+ls -lah ~/.local/share/cargo/registry/src
+brew update
+cargo remove alacritty
+tmux
+shellcheck split.sh
+./split.sh
+./split.sh
+./split.sh
+shellcheck split.sh
+bash -n split.sh
+./split.sh
+ll
+psql -l
+psql the-x-files
+mariadb -u marcelo -p omeg
+clear
+cd Downloads
+ll
+lf
+cd 60Anos
+ll
+vi licenciatura.csv
+vi bacharelado.csv
+vi bacharelado.csv licenciatura.csv
+ll
+ll data
+ll
+vi split.sh
+rm -rf data/*.csv
+ll data
+shellcheck split.sh
+cat licenciatura.csv
+bash -n split.sh
+./split.sh
+ll
+ll data
+vi split.sh
+./split.sh
+ll data
+vi data/*.csv
+ll
+rm -rf data/*.csv
+vi split.sh
+./split.sh
+vi data/1966.csv
+vi split.sh
+rm -rf data/*.csv
+./split.sh
+cat data/1966.csv
+ll data/
+vi data/2024.csv
+vi data/2024.csv
+vi split.sh
+shellcheck split.sh
+vi split.sh
+shellcheck split.sh
+vi split.sh
+vi split.sh
+shellcheck split.sh
+bash -n split.sh
+./split.sh
+vi split.sh
+shellcheck split.sh
+bash -n split.sh
+ll data
+rm -rf data/*.csv
+ll
+./split.sh
+vi split.sh
+shellcheck split.sh
+rm -rf data/*.csv
+./split.sh
+ll
+ls data
+vi data/1966.csv 
+vi split.sh
+shellcheck split.sh
+./split.sh
+vi licenciatura.csv
+shellcheck split.sh
+./split.sh
+vi split.sh
+sed -n '/; 1966\(0[1-9]\|1[0-2]\)\(0[1-9]\|[12][0-9]\|3[01]\)\($\)\@!/p' licenciatura.csv
+sed -n '/; 1966\(0[1-9]\|1[0-2]\)\(0[1-9]\|[12][0-9]\|3[01]\)\($\)\@!/p' < licenciatura.csv
+cat licenciatura.csv | sed -n '/; 1966\(0[1-9]\|1[0-2]\)\(0[1-9]\|[12][0-9]\|3[01]\)\($\)\@!/p'
+cat licenciatura.csv
+cat licenciatura.csv | sed -n '/; 1966\(0[1-9]\|1[0-2]\)\(0[1-9]\|[12][0-9]\|3[01]\)/p'
+vi licenciatura.csv
+./split.sh
+./split.sh
+./split.sh | sed -n '/\<2023/p'
+vi split.sh
+vi split.sh
+./split.sh
+vi split.sh
+shellcheck split.sh
+ls data
+rm -rf data/*.csv
+ll
+./split.sh
+ll data
+vi data/1966.csv 
+vi licenciatura.csv
+rm -rf data/*.csv
+./split.sh
+vi data/*.csv
+ll
+ll
+..
+ll
+lf
+mutt
+clear
+ll
+cd
+tmux
+cd projects
+ll
+ll
+cd
+lf
+ssh vultr
+pass m/mariadb
+pass v/vultr
+cd projects
+ll
+git clone git@github.com:mpbsd/seminars-certificates
+cd seminars-certificates
+ll
+vi pkgs/data.json
+vi main.tex
+vi makefile
+make ready
+ae
+make
+ll
+mkdir pdf
+make
+de
+open -a Preview pdf/cert_2024_11_05.pdf
+vi main.tex
+ae
+make
+de
+open -a Preview pdf/cert_2024_11_05.pdf
+cd
+pass otp -c g/govbr
+pass g
+pass s
+pass -c g/govbr
+echo 'Eis aqui, meu jovem' | mutt -s 'certificado seminario 2024-11-05' -a Downloads/cert_2024_11_05_assinado.pdf -- williantokura@ufgd.edu.br
+ll
+brew update
+brew outdated
+brew upgrade
+brew autoremove --dry-run
+brew cleanup
+brew doctor
+ls -lah ~/.ssh
+ssh vultr
+clear
+tmux
+vi
+vi
+lf
+tmux
+ll
+echo 'eis aqui, meu jovem' | mutt -s 'minha configuracao atual do alacritty' -a ~/.config/alacritty/alacritty.toml -- marcelobbarboza@gmail.com
+mutt
+echo 'eis aqui, meu jovem' | mutt -s 'minha configuracao atual do alacritty' -a ~/.config/alacritty/alacritty.toml -- marcelobbarboza@gmail.com
+clear
+pass -c u/ufgnet
+znote -c
+tmux
+lf
+brew update
+brew outdated
+brew upgrade
+brew cleanup
+brew autoremove --dry-run
+emoji
+clear
+vi
+vi
+cleqr
+clear
+tmux
+cd projects/dotfiles
+gsts
+vi .gitignore
+vi
+..
+cd
+cd ~/projects/shellscripts
+gsts
+vi
+git diff
+gsts
+git restore scripts/setdf
+gull
+..
+ll
+cd reserved
+gull
+cd ../dotfiles
+gsts
+..
+..
+setdf -u all 
+cd projects
+mv dotfiles macos_dotfiles
+ll
+git clone git@github.com:mpbsd/dotfiles 
+ll
+cd shellscripts
+gull
+make install
+cd
+ls -lh ~/.config/
+cd ~/projects/shellscripts/
+vi makefile
+ls scripts
+vi scripts/setdf
+pwd
+make uninstall
+make install
+ls ~/.config
+vi makefile
+ll
+vi scripts/setdf
+ls scripts/
+cd ../dotfiles
+ll
+ll program
+ll alacritty
+ls -lh program/alacritty
+ll
+tmux
+vi ~/.config/alacritty/alacritty.toml
+cd ~/projects/dotfiles
+ll
+ls -lah program/alacritty
+cd ../shellscripts
+ll
+vi scripts/setdf
+ll
+ll
+vi scripts
+cd
+setdf -i alacritty
+ls ~/.config
+vi ~/.config/zsh/.zshrc ~/projects/dotfiles/program/zsh/.zshrc
+tmux
+tmux
+vi .config/alacritty/alacritty.toml 
+ll
+clear
+cd ~/projects/
+ll
+git clone git@github.com:mpbsd/impa-publications
+cd impa-publications
+ll
+ls ~/.config
+tmux
+tmux
+cd ~/projects/dotfiles
+gull
+gsts
+git diff program/zsh/.zshrc
+cd ../reserved
+gull
+cd ../shellscripts
+gull
+cd
+find ~ -type d -name venv
+find ~/projects -type d -name venv 
+find ~/projects -type d -name venv -delete
+ls -lah ~/projects/seminars-certificates
+rm -rf ~/projects/seminars-certificates/venv 
+find ~/projects -type d -name venv
+brew update && brew outdated
+clear
+tmux
+vi .config/alacritty/alacritty.toml 
+tmux
+tmux
+which python3
+mypie -i
+ls -lh ~/.local/share
+python3 -m venv ~/.local/share/python3
+alias ae
+ae
+mypie -i
+de
+clear
+brew update
+brew outdated
+brew upgrade
+brew cleanup
+brew autoremove --dry-run
+clear
+brew doctor
+ls -lah ~/.local/share/
+mypie -i
+ls -lah ~/.local/share
+vi .local/bin/mypie 
+which python3
+cd ~/projects/shellscripts
+gull
+git branch
+git branch macos
+git branch
+git checkout macos
+which python3
+ls
+which python3
+vi scripts/mypie
+ll
+pwd
+cd
+vi
+tmux
+brew update
+vi
+ll
+cd ~/projects
+ll
+cd impa-publications
+gull
+ll
+cat requirements.txt
+tmux
+brew update 
+brew outdated
+brew upgrade
+brew cleanup
+brew autoremove --dry-run
+brew doctor
+clear
+vi
+ll
+emoji
+vi .config/alacritty/alacritty.toml 
+ll
+vi
+brew update
+brew outdated
+brew upgrade
+brew autoremove --dry-run
+brew cleanup
+vi
+vi projects/dotfiles/program/alacritty/alacritty.toml 
+who
+who
+whoami
+clear
+tmux
+tmux
