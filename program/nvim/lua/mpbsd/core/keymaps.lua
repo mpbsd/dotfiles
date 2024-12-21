@@ -1,6 +1,15 @@
 vim.keymap.set("n", "<leader><leader>w", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader><leader>q", ":q<CR>", { noremap = true, silent = true })
 
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-N>", { noremap = true, silent = true })
+vim.keymap.set("n", "<localleader>st", function()
+	vim.cmd.new()
+	vim.cmd.wincmd("J")
+	vim.api.nvim_win_set_height(0, 12)
+	vim.wo.winfixheight = true
+	vim.cmd.term()
+end, { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader><leader>x", ":source %<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>x", ":.lua<CR>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>x", ":lua<CR>", { noremap = true, silent = true })
