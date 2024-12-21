@@ -31,6 +31,7 @@ local OPT = {
 		textwidth = 80,
 		splitright = true,
 		splitbelow = true,
+		lazyredraw = true,
 		clipboard = "unnamedplus",
 	},
 	-- }}}

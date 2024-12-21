@@ -300,7 +300,7 @@ function globals#vim_format_dates_for_me() abort
 endfunction
 
 function globals#vim_format_choices() abort
-  silent %s/\(\[\|), \)/\1\r/g
-  silent g/^(/s/^/  /
-  silent %s/)\]/)\r\],/
+  silent %s/\[(/\[\r\t(/
+  silent %s/), (/),\r\t(/g
+  silent %s/)\]/)\r\]/
 endfunction
