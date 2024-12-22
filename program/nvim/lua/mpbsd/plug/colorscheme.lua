@@ -1,8 +1,8 @@
 return {
-	"EdenEast/nightfox.nvim",
-	lazy = false,
+	"catppuccin/nvim",
+	name = "catppucin",
 	priority = 1000,
 	config = function()
-		vim.cmd("colorscheme terafox")
+		vim.cmd("colorscheme catppuccin-mocha")
 	end,
 }
