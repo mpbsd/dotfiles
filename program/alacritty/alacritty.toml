@@ -30,34 +30,77 @@ padding.y = 10
 normal.family = "JetBrainsMono Nerd Font"
 size = 12.0
 
-# Colors (Solarized Dark)
+# Nightfox Alacritty Colors
+## name: terafox
+## upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/terafox/alacritty.toml
 
-# Default colors
 [colors.primary]
-background = '#002b36'
-foreground = '#839496'
+background = "#152528"
+foreground = "#e6eaea"
+dim_foreground = "#cbd9d8"
+bright_foreground = "#eaeeee"
 
-# Normal colors
+[colors.cursor]
+text = "#e6eaea"
+cursor = "#cbd9d8"
+
+[colors.vi_mode_cursor]
+text = "#e6eaea"
+cursor = "#a1cdd8"
+
+[colors.search.matches]
+foreground = "#e6eaea"
+background = "#425e5e"
+
+[colors.search.focused_match]
+foreground = "#e6eaea"
+background = "#7aa4a1"
+
+[colors.footer_bar]
+foreground = "#e6eaea"
+background = "#254147"
+
+[colors.hints.start]
+foreground = "#e6eaea"
+background = "#ff8349"
+
+[colors.hints.end]
+foreground = "#e6eaea"
+background = "#254147"
+
+[colors.selection]
+text = "#e6eaea"
+background = "#293e40"
+
 [colors.normal]
-black   = '#073642'
-red     = '#dc322f'
-green   = '#859900'
-yellow  = '#b58900'
-blue    = '#268bd2'
-magenta = '#d33682'
-cyan    = '#2aa198'
-white   = '#eee8d5'
+black = "#2f3239"
+red = "#e85c51"
+green = "#7aa4a1"
+yellow = "#fda47f"
+blue = "#5a93aa"
+magenta = "#ad5c7c"
+cyan = "#a1cdd8"
+white = "#ebebeb"
 
-# Bright colors
 [colors.bright]
-black   = '#002b36'
-red     = '#cb4b16'
-green   = '#586e75'
-yellow  = '#657b83'
-blue    = '#839496'
-magenta = '#6c71c4'
-cyan    = '#93a1a1'
-white   = '#fdf6e3'
+black = "#4e5157"
+red = "#eb746b"
+green = "#8eb2af"
+yellow = "#fdb292"
+blue = "#73a3b7"
+magenta = "#b97490"
+cyan = "#afd4de"
+white = "#eeeeee"
+
+[colors.dim]
+black = "#282a30"
+red = "#c54e45"
+green = "#688b89"
+yellow = "#d78b6c"
+blue = "#4d7d90"
+magenta = "#934e69"
+cyan = "#89aeb8"
+white = "#c8c8c8"
 
 # Tip: for inspiration, look for values in the source code files of your favorite VS Code themes, and use the color picker in
 # Google to test colors before setting a value, or simply using an editor such as VS Code where colors are displayed in a 

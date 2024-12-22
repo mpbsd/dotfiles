@@ -32,6 +32,7 @@ local OPT = {
 		splitright = true,
 		splitbelow = true,
 		clipboard = "unnamedplus",
+		spelllang = "en_us",
 	},
 	-- }}}
 }

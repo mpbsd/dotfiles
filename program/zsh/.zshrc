@@ -36,5 +36,5 @@ source "${HOME}/.config/zsh/rc/bindings.zsh"
 # add a little bit of fun
 if [ -x /usr/games/fortune -a -x /usr/games/cowsay ]
 then
-  fortune | cowsay | lolcat
+  fortune | cowsay -f tux | lolcat
 fi
