@@ -23,7 +23,7 @@ source "${HOME}/.config/zsh/rc/keychain.zsh"
 source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#a8a8a8'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
 
 # FZF
 source "/usr/share/doc/fzf/examples/completion.zsh"
