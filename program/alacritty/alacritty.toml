@@ -30,80 +30,31 @@ padding.y = 10
 normal.family = "JetBrainsMono Nerd Font Mono"
 size = 12.0
 
-# catppuccin-mocha colorscheme
+# Colors (Solarized Dark)
 
+# Default colors
 [colors.primary]
-background = '#1E1E2E' # base
-foreground = '#CDD6F4' # text
-# Bright and dim foreground colors
-dim_foreground = '#CDD6F4' # text
-bright_foreground = '#CDD6F4' # text
-
-# Cursor colors
-[colors.cursor]
-text = '#1E1E2E' # base
-cursor = '#F5E0DC' # rosewater
-
-[colors.vi_mode_cursor]
-text = '#1E1E2E' # base
-cursor = '#B4BEFE' # lavender
-
-# Search colors
-[colors.search.matches]
-foreground = '#1E1E2E' # base
-background = '#A6ADC8' # subtext0
-
-[colors.search.focused_match]
-foreground = '#1E1E2E' # base
-background = '#A6E3A1' # green
-
-[colors.footer_bar]
-foreground = '#1E1E2E' # base
-background = '#A6ADC8' # subtext0
-
-# Keyboard regex hints
-[colors.hints.start]
-foreground = '#1E1E2E' # base
-background = '#F9E2AF' # yellow
-
-[colors.hints.end]
-foreground = '#1E1E2E' # base
-background = '#A6ADC8' # subtext0
-
-# Selection colors
-[colors.selection]
-text = '#1E1E2E' # base
-background = '#F5E0DC' # rosewater
+background = '#002b36'
+foreground = '#839496'
 
 # Normal colors
 [colors.normal]
-black = '#45475A' # surface1
-red = '#F38BA8' # red
-green = '#A6E3A1' # green
-yellow = '#F9E2AF' # yellow
-blue = '#89B4FA' # blue
-magenta = '#F5C2E7' # pink
-cyan = '#94E2D5' # teal
-white = '#BAC2DE' # subtext1
+black   = '#073642'
+red     = '#dc322f'
+green   = '#859900'
+yellow  = '#b58900'
+blue    = '#268bd2'
+magenta = '#d33682'
+cyan    = '#2aa198'
+white   = '#eee8d5'
 
 # Bright colors
 [colors.bright]
-black = '#585B70' # surface2
-red = '#F38BA8' # red
-green = '#A6E3A1' # green
-yellow = '#F9E2AF' # yellow
-blue = '#89B4FA' # blue
-magenta = '#F5C2E7' # pink
-cyan = '#94E2D5' # teal
-white = '#A6ADC8' # subtext0
-
-# Dim colors
-[colors.dim]
-black = '#45475A' # surface1
-red = '#F38BA8' # red
-green = '#A6E3A1' # green
-yellow = '#F9E2AF' # yellow
-blue = '#89B4FA' # blue
-magenta = '#F5C2E7' # pink
-cyan = '#94E2D5' # teal
-white = '#BAC2DE' # subtext1
+black   = '#002b36'
+red     = '#cb4b16'
+green   = '#586e75'
+yellow  = '#657b83'
+blue    = '#839496'
+magenta = '#6c71c4'
+cyan    = '#93a1a1'
+white   = '#fdf6e3'
