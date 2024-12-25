@@ -27,6 +27,7 @@ local OPT = {
 		smartcase = true,
 		incsearch = true,
 		cursorline = true,
+		cursorcolumn = true,
 		colorcolumn = "80",
 		textwidth = 80,
 		splitright = true,

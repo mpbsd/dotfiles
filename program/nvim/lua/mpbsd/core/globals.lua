@@ -3,6 +3,7 @@ local M = {}
 -- Language Servers {{{
 M.LSP = {
 	clangd = {},
+	jsonls = {},
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -19,9 +20,10 @@ M.LSP = {
 -- }}}
 -- Formatters {{{
 M.FORMATTER = {
-	"stylua",
 	"black",
 	"isort",
+	"jq",
+	"stylua",
 }
 -- }}}
 

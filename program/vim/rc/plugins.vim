@@ -6,10 +6,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
 Plug 'sirver/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'

@@ -46,6 +46,7 @@ then
 fi
 
 # python virtual environments
+alias python=python3
 alias ae='. ~/.local/share/python3/bin/activate'
 alias de='deactivate'
 

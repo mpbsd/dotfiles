@@ -7,6 +7,7 @@ return {
 		treesitter.setup({
 			ensure_installed = {
 				"bash",
+				"bibtex",
 				"c",
 				"json",
 				"latex",
@@ -18,9 +19,9 @@ return {
 				"vimdoc",
 			},
 
-			sync_install = false,
+			sync_install = true,
 
-			auto_install = false,
+			auto_install = true,
 
 			ignore_install = { "javascript" },
 
