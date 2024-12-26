@@ -10,7 +10,10 @@ M.LSP = {
 				completion = {
 					callSnippet = "Replace",
 				},
-				diagnostics = { disable = { "missing-fields" } },
+				diagnostics = {
+					globals = { "snippet", "text_node" },
+					disable = { "missing-fields" },
+				},
 			},
 		},
 	},
