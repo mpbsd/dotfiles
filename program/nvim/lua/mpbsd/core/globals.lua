@@ -1,7 +1,9 @@
 local M = {}
 
+-- Language Servers {{{
 M.LSP = {
 	clangd = {},
+	jsonls = {},
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -15,11 +17,14 @@ M.LSP = {
 	pyright = {},
 	texlab = {},
 }
-
+-- }}}
+-- FORMATTERS {{{
 M.FORMATTER = {
-	"stylua",
 	"black",
+	"jq",
 	"isort",
+	"stylua",
 }
+-- }}}
 
 return M

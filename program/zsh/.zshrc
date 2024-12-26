@@ -50,5 +50,5 @@ source "${HOME}/.config/zsh/zsh_aliases"
 # a little bit of fun
 if [ -x /usr/local/bin/fortune -a -x /usr/local/bin/cowsay ]
 then
-  fortune | cowsay | lolcat
+  fortune | cowsay -f tux | lolcat
 fi
