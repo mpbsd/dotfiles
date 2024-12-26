@@ -2,7 +2,6 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
-		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
@@ -10,6 +9,12 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+
+		luasnip.config.set_config({
+			enable_autosnippets = true,
+			history = true,
+			updateevents = "TextChanged,TextChangedI",
+		})
 
 		cmp.setup({
 			snippet = {
@@ -28,15 +33,6 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
-				-- If you prefer more traditional completion keymaps,
-				-- you can uncomment the following lines
-				--["<CR>"] = cmp.mapping.confirm({ select = true }),
-				--["<Tab>"] = cmp.mapping.select_next_item(),
-				--["<S-Tab>"] = cmp.mapping.select_prev_item(),
-
-				-- Manually trigger a completion from nvim-cmp.
-				--  Generally you don"t need this, because nvim-cmp will display
-				--  completions whenever it has completion options available.
 				["<C-Space>"] = cmp.mapping.complete(),
 
 				["<C-l>"] = cmp.mapping(function()
