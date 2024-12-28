@@ -2,6 +2,7 @@ local M = {}
 
 -- Language Servers {{{
 M.LSP = {
+	bashls = {},
 	clangd = {},
 	jsonls = {},
 	lua_ls = {

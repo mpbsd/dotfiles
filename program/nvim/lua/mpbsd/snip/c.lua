@@ -1,19 +1,10 @@
 return {
-	s(
-		{
-			trig = "afor",
-			snippetType = "autosnippet",
-			regTrig = false,
-			wordTrig = false,
-			desc = "for loop",
-		},
-		fmta(
-			[[
-        for(<>=<>; <><>; ++<>) {
-          <>
-        }<>
-      ]],
-			{ i(1), i(2), rep(1), i(3), rep(1), i(4), i(0) }
-		)
-	),
+	s({
+		trig = "tern(ary|cond);",
+		snippetType = "autosnippet",
+		regTrig = true,
+		trigEngine = "ecma",
+		wordTrig = true,
+		desc = "Ternary conditional",
+	}, fmta([[(<>) ? <> : <>]], { i(1, "cond"), i(2, "then"), i(3, "false") })),
 }

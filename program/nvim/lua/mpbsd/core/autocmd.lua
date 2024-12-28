@@ -1,5 +1,9 @@
+local augroup = function(group_name)
+	return vim.api.nvim_create_augroup("mpbsd_" .. group_name, { clear = true })
+end
+
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = vim.api.nvim_create_augroup("hightlight-yank", { clear = true }),
+	group = augroup("highlight_on_yank"),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -7,7 +11,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("marker-foldmethod", { clear = true }),
+	group = augroup("set_marker_foldmethod"),
 	pattern = {
 		"c",
 		"h",
@@ -17,11 +21,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		"tex",
 	},
 	command = [[setlocal foldmethod=marker]],
-	desc = "Set foldmethod to marker based on the filetype",
+	desc = "Set foldmethod to marker for these filetypes",
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	group = vim.api.nvim_create_augroup("trailing-spaces", { clear = true }),
+	group = augroup("rm_trailing_spaces"),
 	pattern = {
 		"c",
 		"h",
@@ -30,17 +34,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		"sh",
 	},
 	command = [[%s/\s\+$//e]],
-	desc = "Remove trailing white spaces on every save based on the filetype",
+	desc = "Remove trailing white spaces for these filetypes",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("LaTeXEditingMadeEasy", { clear = true }),
+	group = augroup("awesome_LaTeXing"),
 	pattern = { "tex" },
 	callback = function()
-		vim.o.wrap = true
+		vim.o.wrap = false
 		vim.o.textwidth = 260
 		vim.o.colorcolumn = "260"
 		vim.keymap.set("n", "<leader>mk", ":make<CR>", { noremap = true, silent = true })
 	end,
-	desc = "",
+	desc = "Prepare Neovim for an awesome LaTeX experience",
 })

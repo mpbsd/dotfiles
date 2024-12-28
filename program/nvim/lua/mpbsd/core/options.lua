@@ -33,11 +33,14 @@ local OPT = {
 		splitright = true,
 		splitbelow = true,
 		clipboard = "unnamedplus",
-		spelllang = "en_us",
+		spelllang = "en_us,pt_br,de_de",
+		spellsuggest = "fast,15",
+		list = true,
 	},
 	-- }}}
 }
 
+-- function setopt {{{
 local setopt = function()
 	for sec, _ in pairs(OPT) do
 		for lhs, rhs in pairs(OPT[sec]) do
@@ -51,5 +54,6 @@ local setopt = function()
 		end
 	end
 end
+-- }}}
 
 setopt()

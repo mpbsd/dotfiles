@@ -14,7 +14,7 @@ return {
 		local format = require("luasnip.extras.fmt")
 		local loaders = require("luasnip.loaders.from_lua")
 
-		loaders.lazy_load({ paths = "~/.config/nvim/lua/mpbsd/snip" })
+		loaders.lazy_load({ paths = { "~/.config/nvim/lua/mpbsd/snip" } })
 
 		luasnip.snip_env = {
 			s = luasnip.snippet,

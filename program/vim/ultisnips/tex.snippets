@@ -1,261 +1,129 @@
-snippet '`([abgdezhjiklmnxprstufcyw])' "small case greek letters" rA
+snippet '`([luv])([abgdezhjiklmnxprstufcyw]|[GDJLXPSUFYW]|[jpfres])' "Greek Letters" rA
 `!p
 alphabet = {
-	"a": r"\alpha",
-	"b": r"\beta",
-	"g": r"\gamma",
-	"d": r"\delta",
-	"e": r"\epsilon",
-	"z": r"\zeta",
-	"h": r"\eta",
-	"j": r"\theta",
-	"i": r"\iota",
-	"k": r"\kappa",
-	"l": r"\lambda",
-	"m": r"\mu",
-	"n": r"\nu",
-	"x": r"\xi",
-	"p": r"\pi",
-	"r": r"\rho",
-	"s": r"\sigma",
-	"t": r"\tau",
-	"u": r"\upsilon",
-	"f": r"\phi",
-	"c": r"\chi",
-	"y": r"\psi",
-	"w": r"\omega",
+	"l": {
+		"a": r"\alpha",
+		"b": r"\beta",
+		"g": r"\gamma",
+		"d": r"\delta",
+		"e": r"\epsilon",
+		"z": r"\zeta",
+		"h": r"\eta",
+		"j": r"\theta",
+		"i": r"\iota",
+		"k": r"\kappa",
+		"l": r"\lambda",
+		"m": r"\mu",
+		"n": r"\nu",
+		"x": r"\xi",
+		"p": r"\pi",
+		"r": r"\rho",
+		"s": r"\sigma",
+		"t": r"\tau",
+		"u": r"\upsilon",
+		"f": r"\phi",
+		"c": r"\chi",
+		"y": r"\psi",
+		"w": r"\omega",
+	},
+	"u": {
+		"g": r"\Gamma",
+		"d": r"\Delta",
+		"j": r"\Theta",
+		"l": r"\Lambda",
+		"x": r"\Xi",
+		"p": r"\Pi",
+		"s": r"\Sigma",
+		"u": r"\Upsilon",
+		"f": r"\Phi",
+		"y": r"\Psi",
+		"w": r"\Omega",
+	},
+	"v": {
+		"e": r"\varepsilon",
+		"j": r"\vartheta",
+		"p": r"\varpi",
+		"s": r"\varsigma",
+		"r": r"\varrho",
+		"f": r"\varphi",
+	}
 }
-snip.rv = alphabet[match.group(1)]
+snip.rv = alphabet[match.group(1)][match.group(2)]
 `
 endsnippet
 
-snippet '`([GDJLXPSUFYW])' "upper case greek letters" rA
-`!p
-alphabet = {
-	"G": r"\Gamma",
-	"D": r"\Delta",
-	"J": r"\Theta",
-	"L": r"\Lambda",
-	"X": r"\Xi",
-	"P": r"\Pi",
-	"S": r"\Sigma",
-	"U": r"\Upsilon",
-	"F": r"\Phi",
-	"Y": r"\Psi",
-	"W": r"\Omega",
-}
-snip.rv = alphabet[match.group(1)]
-`
-endsnippet
-
-snippet '`v([jpfres])' "variant greek letters" rA
-`!p
-alphabet = {
-	"e": r"\varepsilon",
-	"j": r"\vartheta",
-	"p": r"\varpi",
-	"s": r"\varsigma",
-	"r": r"\varrho",
-	"f": r"\varphi",
-}
-snip.rv = alphabet[match.group(1)]
-`
-endsnippet
-
-snippet '`8' "infty" rA
-\infty
-endsnippet
-
-snippet '`/' "frac" rA
-\frac{$1}{$2}$0
-endsnippet
-
-snippet '\$\$' "inline math" rA
+snippet $$ "inline math" wA
 $${1:${VISUAL}}$$0
 endsnippet
 
-snippet '\[\[' "display math" rA
+snippet [[ "display math" wA
 \[
   ${1:${VISUAL}}
 \]$0
-endsnippet
-
-snippet fn "function" w
-${1:f}{\left(${2:x}\right)}$0
 endsnippet
 
 snippet '([_^]){2}' "su(b|per)script" rA
 `!p snip.rv = match.group(1)`{$1}$0
 endsnippet
 
-snippet sum "sum" w
-\sum_{${1:i}=${2:1}}^{${3:n}}$0
-endsnippet
-
-snippet prod "prod" w
-\prod_{${1:i}=${2:1}}^{${3:n}}$0
-endsnippet
-
-snippet 2r "square root" w
-\sqrt{$1}$0
-endsnippet
-
-snippet nr "nth root" w
-\sqrt[${1:2}]{$2}$0
-endsnippet
-
 snippet '(?<=\^)-1' "inverse" rA
 {-1}
 endsnippet
 
-snippet AA "for all" wA
-\forall\,
+snippet '`/' "Fraction 1" rA
+\frac{$1}{$2}$0
 endsnippet
 
-snippet EE "exists" wA
-\exists\,
+snippet 'fr@([^@]+)@([^@]+)@' "Fraction 2" r
+`!p
+num = match.group(1)
+den = match.group(2)
+snip.rv = r"\frac{" + num + r"}{" + den + r"}"`
 endsnippet
 
-snippet set "set by property" w
-\left\\{
-  ${1:elements}
-	:
-	${2:property}
-\right\\}
+snippet '\\([bs])([pbc])' "pairing" r
+`!p
+delimiter = {
+	r"p": {
+		"s": {
+			"opening": r"(",
+			"closing": r")",
+		},
+		"b": {
+			"opening": r"\left(",
+			"closing": r"\right)"
+		},
+	},
+	r"b": {
+		"s": {
+			"opening": r"[",
+			"closing": r"]",
+		},
+		"b": {
+			"opening": r"\left[",
+			"closing": r"\right]"
+		},
+	},
+	r"c": {
+		"s": {
+			"opening": r"{",
+			"closing": r"}",
+		},
+		"b": {
+			"opening": r"\left\{",
+			"closing": r"\right\}"
+		},
+	},
+}
+opening = delimiter[match.group(2)][match.group(1)]["opening"]
+closing = delimiter[match.group(2)][match.group(1)]["closing"]
+snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`
 endsnippet
 
-snippet '([<>])=' "(less|greater) than, or equal to" rA
-`!p snip.rv = r"\leqslant" if match.group(1) == "<" else r"\geqslant"`{$1}$0
+snippet '\\([nzqrc]){2}' "Numerical sets" rA
+\mathbb{`!p snip.rv = match.group(1).upper()`}
 endsnippet
 
-snippet NN "naturals" wA
-\mathbb{N}
-endsnippet
-
-snippet ZZ "integers" wA
-\mathbb{Z}
-endsnippet
-
-snippet QQ "rationals" wA
-\mathbb{Q}
-endsnippet
-
-snippet RR "reals" wA
-\mathbb{R}
-endsnippet
-
-snippet CC "complex field" wA
-\mathbb{C}
-endsnippet
-
-snippet Mn "n-dimensional manifold" wA
-M^{n}
-endsnippet
-
-snippet env "general purpose environment" bA
-\begin{$1}
-  $2
-\end{$1}$0
-endsnippet
-
-snippet def "definition" bA
-\begin{definition}
-  $1
-\end{definition}$0
-endsnippet
-
-snippet lem "lemma" bA
-\begin{lemma}
-  $1
-\end{lemma}$0
-endsnippet
-
-snippet prop "proposition" bA
-\begin{proposition}
-  $1
-\end{proposition}$0
-endsnippet
-
-snippet thm "theorem" bA
-\begin{theorem}
-  $1
-\end{theorem}$0
-endsnippet
-
-snippet cor "corollary" bA
-\begin{corollary}
-  $1
-\end{corollary}$0
-endsnippet
-
-snippet rmk "remark" bA
-\begin{remark}
-  $1
-\end{remark}$0
-endsnippet
-
-snippet '^\s*item' "itemize" r
-\begin{itemize}
-  \item
-    $1
-\end{itemize}
-endsnippet
-
-snippet '^\s*enum' "enumerate" r
-\begin{enumerate}
-  \item
-    $1
-\end{enumerate}$0
-endsnippet
-
-snippet '^\s*desc' "description" r
-\begin{description}
-  \item[$1]
-    $2
-\end{description}$0
-endsnippet
-
-snippet atmpl "article template" bA
-\documentclass[a4paper,12pt,leqno]{article}
-
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-
-\begin{document}
-
-$0
-
-\end{document}
-
-endsnippet
-
-snippet btmpl "beamer template" bA
-\documentclass[a4paper,12pt,leqno]{beamer}
-
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-
-\title{$1}
-\author{$2}
-\date{\today}
-
-\begin{document}
-
-\maketitle
-
-$0
-
-\end{document}
-endsnippet
-
-snippet frame "frame" bA
-\begin{frame}
-  $1
-\end{frame}$0
+snippet fx "Function" w
+${1:f}{\left(${2:x}\right)}
 endsnippet
