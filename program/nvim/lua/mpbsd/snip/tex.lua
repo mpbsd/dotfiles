@@ -1,7 +1,7 @@
 -- function: greek_letter {{{ 1
 local greek_letter = function(_, snip)
-	-- lower case {{{ 2
-	local lower_case = {
+	-- alphabet {{{ 2
+	local alphabet = {
 		a = [[\alpha]],
 		b = [[\beta]],
 		g = [[\gamma]],
@@ -25,52 +25,34 @@ local greek_letter = function(_, snip)
 		c = [[\chi]],
 		y = [[\psi]],
 		w = [[\omega]],
+		G = [[\Gamma]],
+		D = [[\Delta]],
+		J = [[\Theta]],
+		L = [[\Lambda]],
+		X = [[\Xi]],
+		P = [[\Pi]],
+		S = [[\Sigma]],
+		U = [[\Upsilon]],
+		F = [[\Phi]],
+		Y = [[\Psi]],
+		W = [[\Omega]],
+		ve = [[\varepsilon]],
+		vj = [[\vartheta]],
+		vp = [[\varpi]],
+		vs = [[\varsigma]],
+		vr = [[\varrho]],
+		vf = [[\varphi]],
 	}
 	-- }}}
-	-- upper case {{{ 2
-	local upper_case = {
-		g = [[\Gamma]],
-		d = [[\Delta]],
-		j = [[\Theta]],
-		l = [[\Lambda]],
-		x = [[\Xi]],
-		p = [[\Pi]],
-		s = [[\Sigma]],
-		u = [[\Upsilon]],
-		f = [[\Phi]],
-		y = [[\Psi]],
-		w = [[\Omega]],
-	}
-	-- }}}
-	-- variant {{{ 2
-	local variant = {
-		e = [[\varepsilon]],
-		j = [[\vartheta]],
-		p = [[\varpi]],
-		s = [[\varsigma]],
-		r = [[\varrho]],
-		f = [[\varphi]],
-	}
-	-- }}}
-	if snip.captures[1] == "l" then
-		if lower_case[snip.captures[2]] ~= nil then
-			return lower_case[snip.captures[2]]
-		end
-	elseif snip.captures[1] == "u" then
-		if upper_case[snip.captures[2]] ~= nil then
-			return upper_case[snip.captures[2]]
-		end
-	elseif snip.captures[1] == "v" then
-		if variant[snip.captures[2]] ~= nil then
-			return variant[snip.captures[2]]
-		end
+	if alphabet[snip.captures[1]] ~= nil then
+		return alphabet[snip.captures[1]]
 	end
 end
 -- }}}
 
 return {
 	s({
-		trig = "`([luv])([a-z])",
+		trig = "`([abgdezhjiklmnxprstufcyw]|[GDJLXPSUFYW]|v[ejpsrf])",
 		regTrig = true,
 		trigEngine = "ecma",
 		wordTrig = false,

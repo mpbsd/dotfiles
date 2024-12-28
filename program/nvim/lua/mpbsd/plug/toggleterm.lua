@@ -3,9 +3,11 @@ return {
 	version = "*",
 	config = function()
 		local toggleterm = require("toggleterm")
+
 		toggleterm.setup({
-			open_mapping = [[<C-\>]],
 			direction = "float",
+			open_mapping = [[<C-\>]],
+			close_on_exit = true,
 		})
 	end,
 }
