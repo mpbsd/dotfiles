@@ -48,3 +48,10 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 	desc = "Prepare Neovim for an awesome LaTeX experience",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = augroup("CSV"),
+	pattern = { "csv" },
+	command = [[set nowrap]],
+	desc = "Set nowrap for CSV files",
+})

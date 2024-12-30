@@ -1,6 +1,27 @@
 return {
+	s(
+		{
+			trig = "^main",
+			snippetType = "autosnippet",
+			regTrig = true,
+			trigEngine = "ecma",
+			wordTrig = true,
+			desc = "A Skeleton for a C program",
+		},
+		fmta(
+			[[
+      <>
+
+      int main(<>) {
+        <>
+        exit(EXIT_SUCCESS);
+      }
+      ]],
+			{ t({ "#include <stdio.h>", "#include <stdlib.h>" }), i(1, "void"), i(0) }
+		)
+	),
 	s({
-		trig = "tern(ary|cond);",
+		trig = "3-aryC",
 		snippetType = "autosnippet",
 		regTrig = true,
 		trigEngine = "ecma",

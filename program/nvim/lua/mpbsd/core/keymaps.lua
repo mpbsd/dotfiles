@@ -31,6 +31,10 @@ vim.keymap.set("n", "<leader>0g", ":0G<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>lv", ":Lazy<CR>", { noremap = true, silent = true })
 
 -- experimental
+keybind("n", "[b", ":bprev<CR>", "[P]revious [B]uffer")
+keybind("n", "]b", ":bnext<CR>", "[N]ext [B]uffer")
+
+keybind("n", "<leader>it", ":InspectTree<CR>", "[I]nspect [T]ree")
 
 vim.keymap.set("n", "<leader>vfc", function()
 	vim.cmd([[%s/), (/),\r\t(/g]])
