@@ -1,11 +1,10 @@
--- OPT {{{ 1
 local OPT = {
-	-- C {{{ 2
+	-- C {{{
 	["C"] = {
-		colorscheme = "retrobox",
+		"colorscheme retrobox",
 	},
 	-- }}}
-	-- G {{{ 2
+	-- G {{{
 	["G"] = {
 		mapleader = " ",
 		maplocalleader = ",",
@@ -16,7 +15,7 @@ local OPT = {
 		loaded_ruby_provider = 0,
 	},
 	-- }}}
-	-- O {{{ 2
+	-- O {{{
 	["O"] = {
 		tabstop = 2,
 		shiftwidth = 2,
@@ -34,22 +33,33 @@ local OPT = {
 		splitright = true,
 		splitbelow = true,
 		clipboard = "unnamedplus",
-		spelllang = "en_us,pt_br,de_de",
-		spellsuggest = "fast,15",
+		spelllang = { "en_us", "pt_br", "de_de" },
+		spellsuggest = { "fast", "15" },
 		list = true,
+		listchars = {
+			eol = "↴",
+			extends = ">",
+			lead = ".",
+			precedes = "<",
+			tab = "| ",
+			trail = "~",
+		},
 	},
 	-- }}}
 }
--- }}}
 
 for sec, _ in pairs(OPT) do
-	for lhs, rhs in pairs(OPT[sec]) do
-		if sec == "C" then
-			vim.cmd(lhs .. " " .. rhs)
-		elseif sec == "G" then
-			vim.g[lhs] = rhs
-		elseif sec == "O" then
-			vim.o[lhs] = rhs
+	if sec == "C" then
+		for _, cmd in ipairs(OPT[sec]) do
+			vim.cmd(cmd)
+		end
+	else
+		for lhs, rhs in pairs(OPT[sec]) do
+			if sec == "G" then
+				vim.g[lhs] = rhs
+			elseif sec == "O" then
+				vim.opt[lhs] = rhs
+			end
 		end
 	end
 end

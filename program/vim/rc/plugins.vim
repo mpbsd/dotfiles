@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
 Plug 'sirver/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-characterize'
@@ -24,8 +23,4 @@ call plug#end()
 
 if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   PlugInstall --sync | wincmd q
-endif
-
-if isdirectory(expand('~/.vim/plugged/gruvbox'))
-  colorscheme gruvbox
 endif
