@@ -21,11 +21,11 @@ return {
 		)
 	),
 	s({
-		trig = "3-aryC",
+		trig = "3naryc",
 		snippetType = "autosnippet",
 		regTrig = true,
 		trigEngine = "ecma",
 		wordTrig = true,
 		desc = "Ternary conditional",
-	}, fmta([[(<>) ? <> : <>]], { i(1, "cond"), i(2, "then"), i(3, "false") })),
+	}, fmta([[(<>) ? <> : <>;]], { i(1, "cond"), i(2, "then"), i(3, "false") })),
 }

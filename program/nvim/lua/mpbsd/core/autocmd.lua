@@ -7,11 +7,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
 	end,
-	desc = "Highlight whatever has been yanked",
+	desc = "Highlight whatever has just been yanked",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("set_marker_foldmethod"),
+	group = augroup("marker_foldmethod"),
 	pattern = {
 		"c",
 		"h",
@@ -21,11 +21,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		"tex",
 	},
 	command = [[setlocal foldmethod=marker]],
-	desc = "Set foldmethod to marker for these filetypes",
+	desc = "Set foldmethod to marker for these file types",
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	group = augroup("rm_trailing_spaces"),
+	group = augroup("remove_trailing_spaces"),
 	pattern = {
 		"c",
 		"h",
@@ -34,11 +34,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		"sh",
 	},
 	command = [[%s/\s\+$//e]],
-	desc = "Remove trailing white spaces for these filetypes",
+	desc = "Remove trailing white spaces for these file types",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("awesome_LaTeXing"),
+	group = augroup("LaTeXing"),
 	pattern = { "tex" },
 	callback = function()
 		vim.o.wrap = false
@@ -53,5 +53,5 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = augroup("CSV"),
 	pattern = { "csv" },
 	command = [[set nowrap]],
-	desc = "Set nowrap for CSV files",
+	desc = "Prepare Neovim for an awesome CSV experience",
 })

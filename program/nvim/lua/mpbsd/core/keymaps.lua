@@ -1,43 +1,36 @@
-local keybind = function(mode, lhs, rhs, desc)
+local keybinding = function(mode, lhs, rhs, desc)
 	vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
 end
 
-keybind("n", "<leader><leader>w", ":w<CR>", "[W]rite")
-keybind("n", "<leader><leader>q", ":q<CR>", "[Q]uit")
+keybinding("n", "<localleader>w", ":w<CR>", "[W]rite")
+keybinding("n", "<localleader>q", ":q<CR>", "[Q]uit")
 
-vim.keymap.set("i", "<localleader>cc", "<esc>mmb~`ma", { noremap = true, silent = true })
-vim.keymap.set("i", "<localleader>tu", "<esc>mmbgUiw`ma", { noremap = true, silent = true })
-vim.keymap.set("i", "<localleader>tl", "<esc>mmbguiw`ma", { noremap = true, silent = true })
+keybinding("n", [[<leader>s\]], ":vs<CR>", "[S]plit Vertically")
+keybinding("n", [[<leader>s-]], ":sp<CR>", "[S]plit Horizontally")
 
-vim.keymap.set("n", "<leader>s\\", ":vsplit<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>s-", ":split<CR>", { noremap = true, silent = true })
+keybinding("n", "<leader>wth", "<C-W>t<C-W>H")
+keybinding("n", "<leader>wtk", "<C-W>t<C-W>K")
 
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { noremap = true, silent = true })
+keybinding("n", "<C-H>", "<C-W><C-H>", "Move cursor to the Win on the left")
+keybinding("n", "<C-J>", "<C-W><C-J>", "Move cursor to the Win below")
+keybinding("n", "<C-K>", "<C-W><C-K>", "Move cursor to the Win above")
+keybinding("n", "<C-L>", "<C-W><C-L>", "Move cursor to the Win on the right")
 
-vim.keymap.set("n", "<leader>wth", "<C-w>t<C-w>H", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>wtk", "<C-w>t<C-w>K", { noremap = true, silent = true })
+keybinding("i", "<localleader>cc", "<esc>mmb~`ma", "[C]amel [C]ase")
+keybinding("i", "<localleader>tu", "<esc>mmbgUiw`ma", "[T]o [U]pper case")
+keybinding("i", "<localleader>tl", "<esc>mmbguiw`ma", "[T]o [L]ower case")
 
-vim.keymap.set("t", "<esc><esc>", "<C-\\><C-N>", { noremap = true, silent = true })
+keybinding("n", "<leader>0g", ":0G<CR>")
 
-vim.keymap.set("n", "<leader><leader>x", ":source %<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>x", ":.lua<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<leader>x", ":lua<CR>", { noremap = true, silent = true })
+keybinding("n", "<localleader>lz", ":Lazy<CR>", "[L]a[Z]y")
 
-vim.keymap.set("n", "<leader>0g", ":0G<CR>", { noremap = true, silent = true })
-
-vim.keymap.set("n", "<leader>lv", ":Lazy<CR>", { noremap = true, silent = true })
+keybinding("n", "[b", ":bprev<CR>", "[P]revious [B]uffer")
+keybinding("n", "]b", ":bnext<CR>", "[N]ext [B]uffer")
 
 -- experimental
-keybind("n", "[b", ":bprev<CR>", "[P]revious [B]uffer")
-keybind("n", "]b", ":bnext<CR>", "[N]ext [B]uffer")
 
-keybind("n", "<leader>it", ":InspectTree<CR>", "[I]nspect [T]ree")
+keybinding("n", "<localleader>x", ":so %<CR>", "E[x]ecute this file")
 
-vim.keymap.set("n", "<leader>vfc", function()
-	vim.cmd([[%s/), (/),\r\t(/g]])
-	vim.cmd([[%s/\[(/\[\r\t(/]])
-	vim.cmd([[%s/)\]/)\r\],/]])
-end, { noremap = true, silent = true })
+keybinding("n", "<localleader>pg", ":InspectTree<CR>", "[P]lay[G]round")
+
+keybinding("t", "<esc><esc>", [[<C-\><C-N>]], "Normal mode from Terminal-mode")

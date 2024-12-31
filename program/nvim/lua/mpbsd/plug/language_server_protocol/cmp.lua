@@ -27,20 +27,20 @@ return {
 			},
 
 			mapping = cmp.mapping.preset.insert({
-				["<C-n>"] = cmp.mapping.select_next_item(),
-				["<C-p>"] = cmp.mapping.select_prev_item(),
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-N>"] = cmp.mapping.select_next_item(),
+				["<C-P>"] = cmp.mapping.select_prev_item(),
+				["<C-B>"] = cmp.mapping.scroll_docs(-4),
+				["<C-F>"] = cmp.mapping.scroll_docs(4),
+				["<C-Y>"] = cmp.mapping.confirm({ select = true }),
 
 				["<C-Space>"] = cmp.mapping.complete(),
 
-				["<C-l>"] = cmp.mapping(function()
+				["<C-L>"] = cmp.mapping(function()
 					if luasnip.expand_or_locally_jumpable() then
 						luasnip.expand_or_jump()
 					end
 				end, { "i", "s" }),
-				["<C-h>"] = cmp.mapping(function()
+				["<C-H>"] = cmp.mapping(function()
 					if luasnip.locally_jumpable(-1) then
 						luasnip.jump(-1)
 					end

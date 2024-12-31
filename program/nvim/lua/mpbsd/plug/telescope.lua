@@ -17,8 +17,8 @@ return {
 			defaults = {
 				mappings = {
 					i = {
-						["<C-j>"] = telescope_actions.move_selection_next,
-						["<C-k>"] = telescope_actions.move_selection_previous,
+						["<C-J>"] = telescope_actions.move_selection_next,
+						["<C-K>"] = telescope_actions.move_selection_previous,
 					},
 				},
 			},
