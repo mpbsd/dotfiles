@@ -5,11 +5,11 @@ if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
 
-nnoremap <Leader>sb :Buffers<CR>
-nnoremap <Leader>sc :Files ~/.vim<CR>
-nnoremap <Leader>sf :Files<CR>
-nnoremap <Leader>sg :Ag<CR>
-nnoremap <Leader>sm :Maps<CR>
+nnoremap <LocalLeader>fb :Buffers<CR>
+nnoremap <LocalLeader>fc :Files ~/.vim<CR>
+nnoremap <LocalLeader>ff :Files<CR>
+nnoremap <LocalLeader>fg :Ag<CR>
+nnoremap <LocalLeader>fm :Maps<CR>
 
 nnoremap Y y$
 
@@ -20,20 +20,20 @@ nnoremap - :Ex<CR>
 
 nnoremap <Leader>; :
 
-nnoremap <Leader>ww :w<CR>
-nnoremap <Leader>wa :wa<CR>
-nnoremap <Leader>qq :q<CR>
-nnoremap <Leader>qa :qa<CR>
+nnoremap <LocalLeader>zw :w<CR>
+nnoremap <LocalLeader>wa :wa<CR>
+nnoremap <LocalLeader>zq :q<CR>
+nnoremap <LocalLeader>qa :qa<CR>
 
 nnoremap <Leader>so :so %<CR>
 
 nnoremap <Leader>s- :sp<CR>
 nnoremap <Leader>s\ :vs<CR>
 
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
 
 nnoremap <C-Left>  <C-W>>
 nnoremap <C-Down>  <C-W>-
@@ -43,9 +43,9 @@ nnoremap <C-Right> <C-W><
 nnoremap <Leader>vh :call globals#vim_open_help_in_a_new_tab()<CR>
 nnoremap <Leader>vt :vert term<CR>
 
-inoremap <localleader>tu <esc>mmbgUiw`ma
-inoremap <localleader>tl <esc>mmbguiw`ma
-inoremap <localleader>cc <esc>mmb~`ma
+inoremap <LocalLeader>tu <Esc>mmbgUiw`ma
+inoremap <LocalLeader>tl <Esc>mmbguiw`ma
+inoremap <LocalLeader>cc <Esc>mmb~`ma
 
 nnoremap <Leader>ch :colorscheme habamax<CR>
 nnoremap <Leader>cl :colorscheme lunaperche<CR>
@@ -53,12 +53,6 @@ nnoremap <Leader>cp :colorscheme pablo<CR>
 nnoremap <Leader>cs :colorscheme slate<CR>
 nnoremap <Leader>cd :colorscheme desert<CR>
 nnoremap <Leader>cq :colorscheme quiet<CR>
-
-nnoremap <Leader>mk :make<CR>
-nnoremap <Leader>mb :make bib<CR>
-nnoremap <Leader>mc :make clean<CR>
-nnoremap <Leader>mf :make final<CR>
-nnoremap <Leader>gb :call globals#vim_get_BibTeX_citation_keys()<CR>
 
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>pd :PlugUpdate<CR>

@@ -34,7 +34,7 @@ local OPT = {
 		splitbelow = true,
 		clipboard = "unnamedplus",
 		spelllang = { "en_us", "pt_br", "de_de" },
-		spellsuggest = { "fast", "15" },
+		spellsuggest = { "fast", "25" },
 		list = true,
 		listchars = {
 			eol = "↴",
@@ -44,6 +44,7 @@ local OPT = {
 			tab = "| ",
 			trail = "~",
 		},
+		startofline = true,
 	},
 	-- }}}
 }

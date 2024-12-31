@@ -1,9 +1,17 @@
 local keybinding = function(mode, lhs, rhs, desc)
-	vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+	vim.keymap.set(mode, lhs, rhs, { noremap = true, desc = desc })
 end
 
 keybinding("n", "<localleader>w", ":w<CR>", "[W]rite")
 keybinding("n", "<localleader>q", ":q<CR>", "[Q]uit")
+
+keybinding("n", "<leader>wa", ":wa<CR>", "[W]rite [A]ll")
+keybinding("n", "<leader>qa", ":qa<CR>", "[Q]uit [A]ll")
+
+keybinding("n", "<leader>zz", "ZZ<CR>", "ZZ")
+keybinding("n", "<leader>zq", "ZQ<CR>", "ZQ")
+
+keybinding("n", "<localleader>;", ":", "Ex mode")
 
 keybinding("n", [[<leader>s\]], ":vs<CR>", "[S]plit Vertically")
 keybinding("n", [[<leader>s-]], ":sp<CR>", "[S]plit Horizontally")
@@ -23,11 +31,14 @@ keybinding("i", "<localleader>tl", "<esc>mmbguiw`ma", "[T]o [L]ower case")
 keybinding("n", "<leader>0g", ":0G<CR>")
 
 keybinding("n", "<localleader>lz", ":Lazy<CR>", "[L]a[Z]y")
+keybinding("n", "<localleader>ms", ":Mason<CR>", "[M]a[S]y")
 
 keybinding("n", "[b", ":bprev<CR>", "[P]revious [B]uffer")
 keybinding("n", "]b", ":bnext<CR>", "[N]ext [B]uffer")
 
 -- experimental
+
+keybinding("n", "<localleader>ch", ":checkhealth<CR>", "[C]heck [H]ealth")
 
 keybinding("n", "<localleader>x", ":so %<CR>", "E[x]ecute this file")
 
