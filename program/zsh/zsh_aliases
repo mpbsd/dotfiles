@@ -1,0 +1,60 @@
+alias -s txt=vim
+alias -s ods=localc
+
+# cat
+if [ "$(uname -s)" = 'Linux' ]
+then
+  alias cat='batcat'
+  alias ed='/usr/lib/plan9/bin/ed'
+elif [ "$(uname -s)" = 'Darwin' ]
+then
+  alias cat='bat'
+fi
+
+# {{{ file management
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias xu='shred -xu'
+# }}}
+
+# {{{ git
+alias gadd='git add'
+alias gcde='git checkout dev'
+alias gcma='git checkout main'
+alias gcmt='git commit -a'
+alias giff='git diff'
+alias glgo='git log --graph --oneline --decorate'
+alias glog='git log'
+alias glpo='git log --pretty="oneline"'
+alias gsts='git status'
+alias gull='git pull'
+alias gush='git push'
+# }}}
+
+# ls
+if [ "$(uname -s)" = 'Linux' ]
+then
+  alias la='ls --color=auto -A'
+  alias ll='ls --color=auto -l'
+  alias ls='ls --color=auto'
+elif [ "$(uname -s)" = 'Darwin' ]
+then
+  alias la='ls -G -A'
+  alias ll='ls -G -l'
+  alias ls='ls -G'
+fi
+
+# python virtual environments
+alias python=python3
+alias ae='. ~/.local/share/python3/bin/activate'
+alias de='deactivate'
+
+# sqlite
+alias sqlite3="sqlite3 --init ${HOME}/.config/sqlite3/sqliterc"
+
+# change directory
+alias ..='cd ..'
+alias ...='cd ../..'
+
+alias purge="dpkg -l | sed -n '/^ii/!p' | tail +6"

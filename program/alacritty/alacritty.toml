@@ -1,0 +1,11 @@
+[window]
+decorations = "None"
+decorations_theme_variant = "Dark"
+dynamic_padding = true
+opacity = 1.0
+padding.x = 10
+padding.y = 10
+
+[font]
+normal.family = "JetBrainsMono Nerd Font Mono"
+size = 13.0

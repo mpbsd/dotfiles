@@ -1,0 +1,285 @@
+snippet '^article min' "Article: only the required fields" rA
+@article{$1,
+	author  = {$2},
+	title   = {$3},
+	journal = {$4},
+	year    = {$5}
+}$0
+endsnippet
+
+snippet '^article max' "Article: with all of the optional fields" rA
+@article{$1,
+	author  = {$2},
+	title   = {$3},
+	journal = {$4},
+	year    = {$5},
+	volume  = {$6},
+	number  = {$7},
+	pages   = {$8},
+	month   = {$9},
+	note    = {$10}
+}$0
+endsnippet
+
+snippet '^book min' "Book: only the required fields" rA
+@book{$1,
+	author    = {$2},
+	title     = {$3},
+	publisher = {$4},
+	year      = {$5}
+}$0
+endsnippet
+
+snippet '^book max' "Book: with all of the optional fields" rA
+@book{$1,
+	author    = {$2},
+	title     = {$3},
+	publisher = {$4},
+	year      = {$5},
+	volume    = {$6},
+	series    = {$7},
+	address   = {$8},
+	edition   = {$9},
+	month     = {$10},
+	note      = {$11}
+}$0
+endsnippet
+
+snippet '^booklet min' "Booklet: only the required fields" rA
+@book{$1,
+	title = {$2}
+}$0
+endsnippet
+
+snippet '^booklet max' "Booklet: with all of the optional fields" rA
+@book{$1,
+	title        = {$2},
+	author       = {$3},
+	howpublished = {$4},
+	address      = {$5},
+	month        = {$6},
+	year         = {$7},
+	note         = {$8}
+}$0
+endsnippet
+
+snippet '^inbook min' "In book: only the required fields" rA
+@inbook{$1,
+	author    = {$2},
+	title     = {$3},
+	chapter   = {$4},
+	publisher = {$5},
+	year      = {$6}
+}$0
+endsnippet
+
+snippet '^inbook max' "In book: with all of the optional fields" rA
+@inbook{$1,
+	author    = {$2},
+	title     = {$3},
+	chapter   = {$4},
+	publisher = {$5},
+	year      = {$6},
+	volume    = {$7},
+	series    = {$8},
+	type      = {$9},
+	address   = {$10},
+	edition   = {$11},
+	month     = {$12},
+	note      = {$13}
+}$0
+endsnippet
+
+snippet '^incollection min' "In collection: only the required fields" rA
+@incollection{$1,
+	author    = {$2},
+	title     = {$3},
+	booktitle = {$4},
+	publisher = {$5},
+	year      = {$6}
+}$0
+endsnippet
+
+snippet '^incollection max' "In collection: with all of the optional fields" rA
+@incollection{$1,
+	author    = {$2},
+	title     = {$3},
+	booktitle = {$4},
+	publisher = {$5},
+	year      = {$6},
+	editor    = {$7},
+	volume    = {$8},
+	series    = {$9},
+	type      = {$10},
+	chapter   = {$11},
+	pages     = {$12},
+	address   = {$13},
+	edition   = {$14},
+	month     = {$15},
+	note      = {$16}
+}$0
+endsnippet
+
+snippet '^inproceedings min' "In proceedings: only the required fields" rA
+@inproceedings{$1,
+	author    = {$2},
+	title     = {$3},
+	booktitle = {$4},
+	year      = {$5}
+}$0
+endsnippet
+
+snippet '^inproceedings max' "In proceedings: only the required fields" rA
+@inproceedings{$1,
+	author       = {$2},
+	title        = {$3},
+	booktitle    = {$4},
+	year         = {$5},
+	editor       = {$6},
+	volume       = {$7},
+	series       = {$8},
+	pages        = {$9},
+	address      = {$10},
+	month        = {$11},
+	organization = {$12},
+	publisher    = {$13},
+	note         = {$14}
+}$0
+endsnippet
+
+snippet '^manual min' "Manual: only the required fields" rA
+@manual{$1,
+	title = {$2}
+}$0
+endsnippet
+
+snippet '^manual max' "Manual: only the required fields" rA
+@manual{$1,
+	title        = {$2},
+	author       = {$3},
+	organization = {$4},
+	address      = {$5},
+	edition      = {$6},
+	month        = {$7},
+	year         = {$8},
+	note         = {$9}
+}$0
+endsnippet
+
+snippet '^master min' "Master thesis: only the required fields" rA
+@manual{$1,
+	author = {$1},
+	title  = {$2},
+	school = {$3},
+	year   = {$4}
+}$0
+endsnippet
+
+snippet '^master max' "Master thesis: only the required fields" rA
+@masterthesis{$1,
+	author  = {$2},
+	title   = {$3},
+	school  = {$4},
+	year    = {$5},
+	type    = {$6},
+	address = {$7},
+	month   = {$8},
+	note    = {$9}
+}$0
+endsnippet
+
+snippet '^misc' "Misc: for this one, all fields are optional" rA
+@misc{$1,
+	author       = {$2},
+	title        = {$3},
+	howpublished = {$4},
+	month        = {$5},
+	year         = {$6},
+	note         = {$7}
+}$0
+endsnippet
+
+snippet '^phd min' "PhD thesis: only the required fields" rA
+@manual{$1,
+	author      = {$1},
+	title       = {$2},
+	institution = {$3},
+	year        = {$4}
+}$0
+endsnippet
+
+snippet '^phd max' "PhD thesis: only the required fields" rA
+@masterthesis{$1,
+	author      = {$2},
+	title       = {$3},
+	institution = {$4},
+	year        = {$5},
+	type        = {$6},
+	address     = {$7},
+	month       = {$8},
+	note        = {$9}
+}$0
+endsnippet
+
+snippet '^proceedings min' "Proceedings: only the required fields" rA
+@proceedings{$1,
+	title = {$2},
+	year  = {$3}
+}$0
+endsnippet
+
+snippet '^proceedings min' "Proceedings: with all of the optional fields" rA
+@proceedings{$1,
+	title        = {$2},
+	year         = {$3},
+	editor       = {$4},
+	volume,      = {$5},
+	series       = {$6},
+	address      = {$7},
+	month        = {$8},
+	organization = {$9},
+	publisher    = {$10},
+	note         = {$11}
+}$0
+endsnippet
+
+snippet '^techreport min' "Technical report: only the required fields" rA
+@techreport{$1,
+	author      = {$2},
+	title       = {$3},
+	institution = {$4},
+	year        = {$5}
+}$0
+endsnippet
+
+snippet '^techreport max' "Technical report: with all of the optional fields" rA
+@techreport{$1,
+	author      = {$2},
+	title       = {$3},
+	institution = {$4},
+	year        = {$5},
+	type        = {$6},
+	number      = {$7},
+	address     = {$8},
+	month       = {$9},
+	note        = {$10}
+}$0
+endsnippet
+
+snippet '^unpublished min' "Unpublished: only the required fields" rA
+@unpublised{$1,
+	author = {$2},
+	title  = {$3},
+	note   = {$4}
+}$0
+endsnippet
+
+snippet '^unpublished max' "Unpublished: with all of the optional fields" rA
+@unpublised{$1,
+	author = {$2},
+	title  = {$3},
+	note   = {$4},
+	month  = {$5},
+	year   = {$6}
+}$0
+endsnippet

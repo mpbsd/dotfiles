@@ -1,0 +1,61 @@
+snippet paper "projections for a scientific paper" bA
+{
+  "makefile": {
+    "skeleton": "latex",
+    "type": "makefile"
+  },
+  "main.tex": {
+    "skeleton": "article",
+    "type": "article"
+  },
+  "sec/01.tex": {
+    "skeleton": "introduction",
+    "type": "introduction"
+  },
+  "sec/02.tex": {
+    "skeleton": "results",
+    "type": "results"
+  },
+  "sec/03.tex": {
+    "skeleton": "examples",
+    "type": "examples"
+  },
+  "sec/04.tex": {
+    "skeleton": "proofs",
+    "type": "proofs"
+  },
+  "ref/main.bib": {
+    "type": "bibliography"
+  }
+}
+endsnippet
+
+snippet python "projections for a small python project" bA
+{
+  "makefile": {
+    "skeleton": "python",
+    "type": "makefile"
+  },
+  "pkgs/core.py": {
+    "skeleton": "core",
+    "type": "core"
+  }
+}
+endsnippet
+
+snippet meta "metadata for classnotes" bA
+`!p
+from datetime import datetime
+date = datetime.now().strftime("%Y-%m-%d")
+`{
+  "metadata": {
+    "topic": "$1",
+    "date": "${2:`!p snip.rv = date`}"
+  },
+  "reference": {
+    "title": "$3",
+    "author": "$4",
+    "key": "$5"
+  }$0
+}
+endsnippet

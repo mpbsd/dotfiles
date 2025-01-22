@@ -1,0 +1,15 @@
+let s:rc_files_dir = expand('~/.vim/rc')
+
+let s:rc_files = [
+      \'globals',
+      \'caching',
+      \'options',
+      \'keymaps',
+      \'autocmd',
+      \'plugins',
+      \'configs',
+      \]
+
+for rc_file in s:rc_files
+  execute printf("source %s/%s.vim", s:rc_files_dir, rc_file)
+endfor

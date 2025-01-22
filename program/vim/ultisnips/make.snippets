@@ -1,0 +1,66 @@
+snippet _latex "LaTeX projects" bA
+TEX_ENGINE = xelatex
+BIB_ENGINE = bibtex
+OPR_SYSTEM = $(shell uname -s)
+
+ifeq ($(OPR_SYSTEM), Darwin)
+	DOC_VIEWER = open -a Preview
+else
+	DOC_VIEWER = zathura
+endif
+
+draft:
+	$(TEX_ENGINE) main
+	$(TEX_ENGINE) main
+	$(DOC_VIEWER) main.pdf
+
+final:
+	$(TEX_ENGINE) main
+	$(BIB_ENGINE) main
+	$(TEX_ENGINE) main
+	$(TEX_ENGINE) main
+	$(DOC_VIEWER) main.pdf
+
+clean:
+	find . -type f -name main.aux | xargs -rf
+	find . -type f -name main.blg | xargs -rf
+	find . -type f -name main.log | xargs -rf
+	find . -type f -name main.out | xargs -rf
+	find . -type f -name main.pdf | xargs -rf
+
+.PHONY: draft final clean
+endsnippet
+
+snippet _clang "C projects" bA
+CC     = cc
+CFLAGS = -g -W -Wall -Wextra -Wpedantic -std=c89
+CLIBS  = -lc
+
+$0
+
+clean:
+	find bin -type f -name "*.o" -delete
+
+.PHONY: clean
+endsnippet
+
+snippet _python "Python projects" bA
+build:
+	python3 -m pkgs.core
+
+black:
+	isort pkgs/core.py
+	black -l 79 pkgs/core.py
+
+clean:
+	find . -type d -name __pycache__ | xargs rm -rf
+
+ready:
+	python3 -m venv venv; \
+	. venv/bin/activate; \
+	pip install -U pip; \
+	pip install -r requirements.txt; \
+	deactivate
+
+.PHONY: build black clean ready
+endsnippet

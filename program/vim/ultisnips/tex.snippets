@@ -1,0 +1,530 @@
+global !p
+def in_math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def in_text():
+	return vim.eval('vimtex#syntax#in_mathzone()') != '1'
+
+def comment(): 
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
+	return x != '0' and y != '0'
+endglobal
+
+snippet _article "basic article template" bA
+\documentclass[a4paper,12pt]\{article\}
+
+\usepackage[T1]\{fontenc\}
+\usepakcage[english]\{babel\}
+\usepackage\{amsmath\}
+\usepackage\{amssymb\}
+\usepackage\{amsthm\}
+\usepackage\{enumerate\}
+\usepackage\{graphicx\}
+\usepackage\{float\}
+\usepackage\{hyperref\}
+\usepackage\{interval\}
+\usepackage\{mathtools\}
+\usepackage[table]\{xcolor\}
+
+\graphicspath\{\{./fig/\}\}
+\intervalconfig\{soft open fences\}
+
+\title\{an awesome title\}
+\author\{list of authors\}
+
+\begin\{document\}
+
+\maketitle
+
+% \input\{sec/01\}  % introduction
+% \input\{sec/02\}  % results
+% \input\{sec/03\}  % examples
+\input\{sec/04\}  % proofs
+$0
+
+\bibliographystyle\{plain\}
+\bibliography\{ref/main\}
+
+\end\{document\}
+endsnippet
+
+snippet opt "package with an option" bA
+\usepackage[${1:opt}]\{${2:pkg}\}$0
+endsnippet
+
+snippet pkg "package" bA
+\usepackage\{${1:pkg}\}$0
+endsnippet
+
+snippet mid "mid range set of packages" bA
+\usepackage[T1]\{fontenc\}
+\usepakcage[english]\{babel\}
+\usepackage\{amsmath\}
+\usepackage\{amssymb\}
+\usepackage\{amsthm\}
+\usepackage\{enumerate\}
+\usepackage\{graphicx\}
+\usepackage\{float\}
+\usepackage\{hyperref\}
+\usepackage\{interval\}
+\usepackage\{mathtools\}
+\usepackage[table]\{xcolor\}
+
+\graphicspath\{\{./fig/\}\}
+\intervalconfig\{soft open fences\}
+endsnippet
+
+snippet _introduction "introduction" bA
+\section\{Introduction\}\label\{sec:introduction\}
+
+$0
+endsnippet
+
+snippet _results "results" bA
+\section\{Main Results\}\label\{sec:results\}
+
+$0
+endsnippet
+
+snippet _examples "examples" bA
+\section\{Examples\}\label\{sec:examples\}
+
+$0
+endsnippet
+
+snippet _proofs "proofs" bA
+\section\{Proofs\}\label\{sec:proofs\}
+
+$0
+endsnippet
+
+snippet '^sec' "labeled section" rA
+\section\{${1:name}\}\label\{sec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
+
+$0
+endsnippet
+
+snippet '^subsec' "labeled subsection" rA
+\subsection\{${1:name}\}\label\{subsec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
+
+$0
+endsnippet
+
+snippet '^subsubsec' "labeled subsubsection" rA
+\subsubsection\{${1:name}\}\label\{subsubsec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
+
+$0
+endsnippet
+
+snippet abs "abstract" bA
+\begin\{abstract\}
+	$0
+\end\{abstract\}$0
+endsnippet
+
+snippet beg "generic" bA
+\begin\{$1\}
+	$2
+\end\{$1\}$0
+endsnippet
+
+snippet cor "corollary" bA
+\begin\{corollary}\label\{cor:$1\}
+  $2
+\end\{corollary\}$0
+endsnippet
+
+snippet def "definition" bA
+\begin\{definition}\label\{def:$1\}
+  $2
+\end\{definition\}$0
+endsnippet
+
+snippet des "description" bA
+\begin\{description\}
+	\item[$1] $2
+\end\{description\}$0
+endsnippet
+
+snippet enu "enumerate" bA
+\begin\{enumerate\}
+  \item $1
+\end\{enumerate\}$0
+endsnippet
+
+snippet equ "equation" bA
+\begin\{equation\}\label\{eq:$1\}
+  $2
+\end\{equation\}$0
+endsnippet
+
+snippet ite "itemize" bA
+\begin\{itemize\}
+	\item $1
+\end\{itemize\}$0
+endsnippet
+
+snippet lem "lemma" bA
+\begin\{lemma\}\label\{lem:$1\}
+  $2
+\end\{lemma\}$0
+endsnippet
+
+snippet pro "proposition" bA
+\begin\{proposition\}\label\{prop:$1\}
+  $2
+\end\{proposition\}$0
+endsnippet
+
+snippet rmk "remark" bA
+\begin\{remark\}\label\{rmk:$1\}
+  $2
+\end\{remark\}$0
+endsnippet
+
+snippet thm "theorem" bA
+\begin\{theorem}\label\{thm:$1\}
+  $2
+\end\{theorem\}$0
+endsnippet
+
+snippet tbl "table" bA
+\begin\{table\}[${1:htpb}]
+	\centering
+	\begin\{tabular\}\{${3:l}\}
+		$0
+	\end\{tabular\}
+	\caption\{${2:caption}\}
+	\label\{tbl:${2/(\w+)|(\W+)/(?2:_:\l$1)/g}\}
+\end\{table\}$0
+endsnippet
+
+context "in_text()"
+snippet $$ "inline math" wA
+\$${1:${VISUAL}}\$$0
+endsnippet
+
+context "in_text()"
+snippet [[ "display math" wA
+\[
+  ${1:${VISUAL}}
+\]$0
+endsnippet
+
+context "in_math()"
+snippet <= "less than or equal to" iA
+\{${1:x}\}\leqslant\{${2:y}\}$0
+endsnippet
+
+context "in_math()"
+snippet >= "greater than or equal to" iA
+\{${1:x}\}\geqslant\{${2:y}\}$0
+endsnippet
+
+context "in_math()"
+snippet ++ "sum" iA
+\sum_\{${1:i}=${2:0}\}^\{${3:n}\}$0
+endsnippet
+
+context "in_math()"
+snippet ** "product" iA
+\prod_\{${1:i}=${2:0}\}^\{${3:n}\}$0
+endsnippet
+
+context "in_math()"
+snippet // "fraction" iA
+\frac\{${1:x}\}\{${2:y}\}$0
+endsnippet
+
+context "in_math()"
+snippet '([_^])\1' "su(b|per)script" rA
+`!p snip.rv = match.group(1)`\{${1:${VISUAL}}\}$0
+endsnippet
+
+context "in_math()"
+snippet '(?<=\^)-1' "inverse" rA
+{-1}
+endsnippet
+
+context "in_math()"
+snippet fna "function action" iA
+\{\{${1:x}\}\mapsto\{${2:f(x)}\}\}$0
+endsnippet
+
+context "in_math()"
+snippet fnd "function definition" iA
+\{${1:f}\}:\{${2:A}\}\to\{${3:B}\},\quad\{\{${4:x}\}\mapsto\{${5:f(x)}\}\}$0
+endsnippet
+
+context "in_math()"
+snippet fnr "function reference" iA
+\{${1:f}\{\left(${2:x}\right)\}\}$0
+endsnippet
+
+context "in_math()"
+snippet '\\(a?(cos|sin|tan|sec|csc|cot)h?)' "trigonometric functions" rA
+`!p
+function = {
+	"cos": r"\cos",
+	"sin": r"\sin",
+	"tan": r"\tan",
+	"acos": r"\arccos",
+	"asin": r"\arcsin",
+	"atan": r"\arctan",
+	"sec": r"\sec",
+	"csc": r"\csc",
+	"cot": r"\cot",
+	"asec": r"\arcsec",
+	"acsc": r"\arccsc",
+	"acot": r"\arccot",
+	"cosh": r"\cosh",
+	"sinh": r"\sinh",
+	"tanh": r"\tanh",
+	"acosh": r"\arccosh",
+	"asinh": r"\arcsinh",
+	"atanh": r"\arctanh",
+	"sech": r"\sech",
+	"csch": r"\csch",
+	"coth": r"\coth",
+	"asech": r"\arcsech",
+	"acsch": r"\arccsch",
+	"acoth": r"\arccoth",
+}
+snip.rv = function[match.group(1)]
+`\{${1:x}\}$0
+endsnippet
+
+context "in_math()"
+snippet '\\(exp|log|ln)' "important functions" rA
+`!p
+function = {
+	"exp": r"e^",
+	"log": r"\log",
+	"ln": r"\ln",
+}
+snip.rv = function[match.group(1)]
+`\{${1:x}\}$0
+endsnippet
+
+context "in_math()"
+snippet '\\([nzqrc])\1' "numerical sets" rA
+\mathbb\{`!p snip.rv = match.group(1).upper()`\}
+endsnippet
+
+context "in_math()"
+snippet ;fa "for all" iA
+\forall\,\{${1:x}\}\in\{${2:A}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;te "there exists" iA
+\exists\,\{${1:x}\}\in\{${2:A}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;ee "belongs to" iA
+\{${1:x}\}\in\{${2:A}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';EE' "owns" rA
+\{${1:A}\}\owns\{${2:x}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;cc "subset" iA
+\{${1:A}\}\subset\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';CC' "supset" rA
+\{${1:A}\}\supset\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;uu "cup" iA
+\{${1:A}\}\cup\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';UU' "cup" rA
+\bigcup_\{${1:i\in\{I\}}\}${2:U_\{i\}}$0
+endsnippet
+
+context "in_math()"
+snippet ;nn "cap" iA
+\{${1:A}\}\cap\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';NN' "cap" rA
+\bigcap_\{${1:i\in\{I\}}\}${2:U_\{i\}}$0
+endsnippet
+
+context "in_math()"
+snippet ;xx "cartesian product" iA
+\{${1:A}\}\times\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';XX' "cartesian product" rA
+\prod_\{${1:i\in\{I\}}\}${2:U_\{i\}}$0
+endsnippet
+
+context "in_math()"
+snippet ;ac "absolute complement" iA
+^\{c\}
+endsnippet
+
+context "in_math()"
+snippet ;rc "relative completment" iA
+\{${1:A}\}\setminus\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;OO "empty set" iA
+\emptyset
+endsnippet
+
+context "in_math()"
+snippet oo "infty" iA
+\infty
+endsnippet
+
+context "in_math()"
+snippet '`([abgdezhjiklmnxprstufcyw])' "greek letters: part 1" rA
+`!p
+alphabet = {
+	"a": r"\alpha",
+	"b": r"\beta",
+	"g": r"\gamma",
+	"d": r"\delta",
+	"e": r"\epsilon",
+	"z": r"\zeta",
+	"h": r"\eta",
+	"j": r"\theta",
+	"i": r"\iota",
+	"k": r"\kappa",
+	"l": r"\lambda",
+	"m": r"\mu",
+	"n": r"\nu",
+	"x": r"\xi",
+	"p": r"\pi",
+	"r": r"\rho",
+	"s": r"\sigma",
+	"t": r"\tau",
+	"u": r"\upsilon",
+	"f": r"\phi",
+	"c": r"\chi",
+	"y": r"\psi",
+	"w": r"\omega",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+context "in_math()"
+snippet '`([GDJLXPSUFYW])' "greek letters: part 2" rA
+`!p
+alphabet = {
+	"G": r"\Gamma",
+	"D": r"\Delta",
+	"J": r"\Theta",
+	"L": r"\Lambda",
+	"X": r"\Xi",
+	"P": r"\Pi",
+	"S": r"\Sigma",
+	"U": r"\Upsilon",
+	"F": r"\Phi",
+	"Y": r"\Psi",
+	"W": r"\Omega",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+context "in_math()"
+snippet '`v([jpfres])' "greek letters: part 3" rA
+`!p
+alphabet = {
+	"e": r"\varepsilon",
+	"j": r"\vartheta",
+	"p": r"\varpi",
+	"s": r"\varsigma",
+	"r": r"\varrho",
+	"f": r"\varphi",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+snippet _conformal "custom commands for differential geometry" bA
+\newcommand{\X}[1]{\partial_{#1}}
+
+\newcommand{\flatMetr}[2]{g{\left({#1},{#2}\right)}}
+\newcommand{\flatConn}[2]{\nabla_{#1}{#2}}
+
+\newcommand{\riemMetr}[2]{\bar{g}{\left({#1},{#2}\right)}}
+\newcommand{\riemConn}[2]{\bar{\nabla}_{#1}{#2}}
+
+\newcommand{\curvTens}[2]{\bar{R}m\left({#1},{#2}\right)}
+\newcommand{\riccTens}[2]{\bar{R}c\left({#1},{#2}\right)}
+endsnippet
+
+context "in_math()"
+snippet mnf "n-dimensional riemannian manifold" iA
+\left(M^\{n\},g\right)
+endsnippet
+
+context "in_math()"
+snippet mng "n-dimensional riemannian manifold" iA
+\left(M^\{n\},\bar\{g\}\right)
+endsnippet
+
+context "in_math()"
+snippet asf "algebra of smooth real functions" iA
+C^\{\infty\}\{\left(${1:M^\{n\}}\right)\}$0
+endsnippet
+
+context "in_math()"
+snippet mvf "module of smooth vector fields" iA
+\mathfrak\{X\}^\{\infty\}\{\left(${1:M^\{n\}}\right)\}$0
+endsnippet
+
+context "in_math()"
+snippet 6xi "\partial_{}" iA
+\X\{${1:i}\}$0
+endsnippet
+
+context "in_math()"
+snippet dxi "dx_{}" iA
+dx_\{${1:i}\}$0
+endsnippet
+
+context "in_math()"
+snippet frm "(flat) riemannian metric" iA
+\flatMetr\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet flc "levi-civita connection" iA
+\flatConn\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet grm "riemannian metric" iA
+\riemMetr\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet glc "levi-civita connection" iA
+\riemConn\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet dmf "derivative of the modeling factor" iA
+\mathcal{G}
+endsnippet
