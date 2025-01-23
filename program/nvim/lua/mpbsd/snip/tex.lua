@@ -157,12 +157,12 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- package {{{
+	-- package without options {{{
 	s(
 		{
 			trig = "pkg",
 			snippetType = "autosnippet",
-			desc = "package",
+			desc = "package without options",
 		},
 		fmta(
 			[[
@@ -173,12 +173,12 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- mid range selection of packages {{{
+	-- mid range set of packages {{{
 	s(
 		{
 			trig = "mid",
 			snippetType = "autosnippet",
-			desc = "mid range selection of package",
+			desc = "mid range set of package",
 		},
 		t({
 			[[\usepackage[T1]{fontenc}]],
@@ -356,6 +356,24 @@ return {
       \begin{abstract}
         <>
       \end{abstract}
+      ]],
+			{ i(1) }
+		),
+		{ condition = conds.line_begin }
+	),
+	-- }}}
+	-- align {{{
+	s(
+		{
+			trig = "ali",
+			snippetType = "autosnippet",
+			desc = "align",
+		},
+		fmta(
+			[[
+      \begin{align}
+        <>
+      \end{align}
       ]],
 			{ i(1) }
 		),
