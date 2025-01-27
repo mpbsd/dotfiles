@@ -10,7 +10,6 @@ return {
 				"bibtex",
 				"c",
 				"json",
-				"latex",
 				"lua",
 				"markdown",
 				"markdown_inline",
@@ -21,7 +20,7 @@ return {
 
 			sync_install = true,
 			auto_install = true,
-			ignore_install = { "javascript" },
+			ignore_install = { "javascript", "latex" },
 
 			highlight = {
 				enable = true,

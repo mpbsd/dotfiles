@@ -57,7 +57,7 @@ local utils = {
 		return alphabet[snip.captures[1]]
 	end,
 	-- }}}
-	-- dynamic_matrix {{{
+	-- dynamic_matrix {{{2
 	dynamic_matrix = function(_, snip)
 		local rows = tonumber(snip.captures[2])
 		local cols = tonumber(snip.captures[3])
@@ -65,7 +65,7 @@ local utils = {
 		local indx = 1
 		for j = 1, rows do
 			for k = 1, cols do
-				table.insert(node, r(indx, "x_{" .. tostring(j) .. tostring(k) .. "}", i(1)))
+				table.insert(node, i(indx, "x_{" .. tostring(j) .. tostring(k) .. "}"))
 				if k < cols then
 					table.insert(node, t([[ & ]]))
 				else
@@ -79,6 +79,25 @@ local utils = {
 			end
 		end
 		return sn(nil, node)
+	end,
+	-- }}}
+	-- delimiters {{{2
+	delimiter = function(_, snip, user_args)
+		local D = {
+			p = {
+				lhs = "(",
+				rhs = ")",
+			},
+			b = {
+				lhs = "[",
+				rhs = "]",
+			},
+			c = {
+				lhs = [[\{]],
+				rhs = [[\}]],
+			},
+		}
+		return D[snip.captures[1]][user_args]
 	end,
 	-- }}}
 }
@@ -290,7 +309,7 @@ return {
 				t(""),
 				i(0),
 			},
-			{ condition = utils.in_text }
+			{ condition = utils.line_begin }
 		)
 	),
 	-- }}}
@@ -315,7 +334,7 @@ return {
 				t(""),
 				i(0),
 			},
-			{ condition = utils.in_text }
+			{ condition = utils.line_begin }
 		)
 	),
 	-- }}}
@@ -340,7 +359,7 @@ return {
 				t(""),
 				i(0),
 			},
-			{ condition = utils.in_text }
+			{ condition = utils.line_begin }
 		)
 	),
 	-- }}}
@@ -611,11 +630,10 @@ return {
 		},
 		fmta(
 			[[
-      $ <> $
+      $<>$
       ]],
 			{ i(1) }
-		),
-		{ condition = utils.in_text }
+		)
 	),
 	-- }}}
 	-- display math mode {{{
@@ -631,8 +649,7 @@ return {
         <>
       \]
       ]],
-			{ i(1) },
-			{ condition = utils.in_text }
+			{ i(1) }
 		)
 	),
 	-- }}}
@@ -1129,6 +1146,29 @@ return {
 		desc = "greek letters",
 	}, f(utils.greek_letter), { condition = utils.in_math }),
 	-- }}}
+	-- delimiters {{{
+	s(
+		{
+			trig = [[l([pbc])]],
+			regTrig = true,
+			trigEngine = "ecma",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			desc = "delimiters",
+		},
+		fmta(
+			[[
+      \left<><>\right<>
+      ]],
+			{
+				f(utils.delimiter, {}, { user_args = { "lhs" } }),
+				i(1),
+				f(utils.delimiter, {}, { user_args = { "rhs" } }),
+			}
+		),
+		{ condition = utils.in_math }
+	),
+	-- }}}
 	-- custom commands for differential geometry {{{
 	s(
 		{
@@ -1300,12 +1340,28 @@ return {
 		{ condition = utils.in_math }
 	),
 	-- }}}
-	-- derivative of the modeling factor {{{
+	-- modeling factor {{{
 	s({
-		trig = "dmf",
+		trig = "d0mf",
 		wordTrig = false,
 		snippetType = "autosnippet",
-		desc = "derivative of the modeling factor",
-	}, t([[\mathcal{G}]]), { condition = utils.in_math }),
+		desc = "modeling factor",
+	}, t([[\mathcal{G}_{0}]]), { condition = utils.in_math }),
+	-- }}}
+	-- first covariant derivative of the modeling factor {{{
+	s({
+		trig = "d1mf",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		desc = "first covariant derivative of the modeling factor",
+	}, t([[\mathcal{G}_{1}]]), { condition = utils.in_math }),
+	-- }}}
+	-- second covariant derivative of the modeling factor {{{
+	s({
+		trig = "d2mf",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		desc = "second covariant derivative of the modeling factor",
+	}, t([[\mathcal{G}_{2}]]), { condition = utils.in_math }),
 	-- }}}
 }

@@ -42,6 +42,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "tex" },
 	callback = function()
 		vim.o.spell = true
+		vim.g.textwidth = 256
 
 		vim.keymap.set("n", "<LocalLeader>1", ":Eintroduction<CR>", { noremap = true, silent = true })
 		vim.keymap.set("n", "<LocalLeader>2", ":Eresults<CR>", { noremap = true, silent = true })
