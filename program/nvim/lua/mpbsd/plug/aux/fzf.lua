@@ -39,14 +39,14 @@ return {
 
 		telescope.load_extension("fzf")
 
-		vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { noremap = true, silent = true })
-		vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, { noremap = true, silent = true })
-		vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { noremap = true, silent = true })
-		vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>ff", telescope_builtin.find_files, { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>fg", telescope_builtin.live_grep, { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>fb", telescope_builtin.buffers, { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>fh", telescope_builtin.help_tags, { noremap = true, silent = true })
 
-		vim.keymap.set("n", "<leader>fm", telescope_builtin.man_pages, { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>fm", telescope_builtin.man_pages, { noremap = true, silent = true })
 
-		vim.keymap.set("n", "<leader>en", function()
+		vim.keymap.set("n", "<Leader>en", function()
 			telescope_builtin.find_files({ cwd = "~/.config/nvim/lua/mpbsd" })
 		end, { noremap = true, silent = true })
 	end,

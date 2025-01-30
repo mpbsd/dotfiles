@@ -43,13 +43,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.o.spell = true
 		vim.g.textwidth = 256
-
-		vim.keymap.set("n", "<LocalLeader>1", ":Eintroduction<CR>", { noremap = true, silent = true })
-		vim.keymap.set("n", "<LocalLeader>2", ":Eresults<CR>", { noremap = true, silent = true })
-		vim.keymap.set("n", "<LocalLeader>3", ":Eexamples<CR>", { noremap = true, silent = true })
-		vim.keymap.set("n", "<LocalLeader>4", ":Eproofs<CR>", { noremap = true, silent = true })
-		vim.keymap.set("n", "<LocalLeader>5", ":Ebibliography<CR>", { noremap = true, silent = true })
-
 		vim.keymap.set("n", "<LocalLeader>d", ":Make draft<CR>", { noremap = true, silent = true })
 		vim.keymap.set("n", "<LocalLeader>f", ":Make final<CR>", { noremap = true, silent = true })
 		vim.keymap.set("n", "<LocalLeader>c", ":Make clean<CR>", { noremap = true, silent = true })

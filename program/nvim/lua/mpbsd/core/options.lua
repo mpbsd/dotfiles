@@ -48,6 +48,7 @@ local OPT = {
 		showmode = false,
 		startofline = true,
 		undofile = true,
+		completeopt = { "menu", "menuone", "noselect" },
 	},
 	-- }}}
 }

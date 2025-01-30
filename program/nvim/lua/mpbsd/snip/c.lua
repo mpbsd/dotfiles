@@ -1,3 +1,5 @@
+require("luasnip.session.snippet_collection").clear_snippets("c")
+
 return {
 	-- ternary operator {{{
 	s({

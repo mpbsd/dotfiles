@@ -1,3 +1,5 @@
+require("luasnip.session.snippet_collection").clear_snippets("tex")
+
 -- utils {{{1
 local utils = {
 	-- in_math {{{2
@@ -116,7 +118,7 @@ return {
       \documentclass[a4paper,12pt]{article}
       <>
       \usepackage[T1]{fontenc}
-      \usepakcage[english]{babel}
+      \usepackage[english]{babel}
       \usepackage{amsmath}
       \usepackage{amssymb}
       \usepackage{amsthm}
@@ -361,6 +363,29 @@ return {
 			},
 			{ condition = utils.line_begin }
 		)
+	),
+	-- }}}
+	-- delimiters {{{
+	s(
+		{
+			trig = [[d([pbc])]],
+			regTrig = true,
+			trigEngine = "ecma",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			desc = "delimiters",
+		},
+		fmta(
+			[[
+      \left<><>\right<>
+      ]],
+			{
+				f(utils.delimiter, {}, { user_args = { "lhs" } }),
+				i(1),
+				f(utils.delimiter, {}, { user_args = { "rhs" } }),
+			}
+		),
+		{ condition = utils.in_math }
 	),
 	-- }}}
 	-- abstract {{{
@@ -1130,8 +1155,7 @@ return {
 	-- infinity {{{
 	s({
 		trig = [[oo]],
-		regTrig = true,
-		trigEngine = "ecma",
+		wordTrig = false,
 		snippetType = "autosnippet",
 		desc = "infinity",
 	}, t([[\infty]]), { condition = utils.in_math }),
@@ -1145,29 +1169,6 @@ return {
 		snippetType = "autosnippet",
 		desc = "greek letters",
 	}, f(utils.greek_letter), { condition = utils.in_math }),
-	-- }}}
-	-- delimiters {{{
-	s(
-		{
-			trig = [[l([pbc])]],
-			regTrig = true,
-			trigEngine = "ecma",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			desc = "delimiters",
-		},
-		fmta(
-			[[
-      \left<><>\right<>
-      ]],
-			{
-				f(utils.delimiter, {}, { user_args = { "lhs" } }),
-				i(1),
-				f(utils.delimiter, {}, { user_args = { "rhs" } }),
-			}
-		),
-		{ condition = utils.in_math }
-	),
 	-- }}}
 	-- custom commands for differential geometry {{{
 	s(
@@ -1261,16 +1262,32 @@ return {
 			trig = "dxi",
 			wordTrig = false,
 			snippetType = "autosnippet",
-			desc = [[dx_{}]],
+			desc = [[dx^{}]],
 		},
 		fmta(
 			[[
-      dx_{<>}
+      dx^{<>}
       ]],
 			{ i(1, "i") }
 		),
 		{ condition = utils.in_math }
 	),
+	-- }}}
+	-- nabla 1 {{{
+	s({
+		trig = "nb1",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		desc = [[\nabla]],
+	}, t([[\nabla]]), { condition = utils.in_math }),
+	-- }}}
+	-- nabla 2 {{{
+	s({
+		trig = "nb2",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		desc = [[\nabla^{2}]],
+	}, t([[\nabla^{2}]]), { condition = utils.in_math }),
 	-- }}}
 	-- (flat) riemannian metric {{{
 	s(
