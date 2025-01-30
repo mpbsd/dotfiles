@@ -24,6 +24,13 @@
   J down
   K up
   L right
+
+  sad (macro s u d o spc a p t spc u p d a t e ret)
+  sag (macro s u d o spc a p t spc u p g r a d e ret)
+  saf (macro s u d o spc a p t spc min f spc i n s t a l l ret)
+  sar (macro s u d o spc a p t spc a u t o r e m o v e ret)
+  sac (macro s u d o spc a p t spc a u t o c l e a n ret)
+  sdb (macro s u d o spc u p d a t e d b ret)
 )
 
 (defsrc
@@ -32,7 +39,7 @@
    tab    q    w    e    r    t    y    u    i    o    p    [    ]    \   del    end  pgdn
   caps    a    s    d    f    g    h    j    k    l    ;    '  ret
   lsft    z    x    c    v    b    n    m    ,    .    / rsft                     up
-  lctl lmet lalt            spc           ralt rctl                      left   down right
+  lctl lmet lalt            spc           ralt menu rctl                 left   down right
 )
 
 (deflayer qwerty
@@ -41,14 +48,14 @@
    tab    q    w    e    r    t    y    u    i    o    p    [    ]    \     _      _     _
    esc   @a   @s   @d   @f    g    h   @j   @k   @l   @;    '  ret
   lsft    z    x    c    v    b    n    m    ,    .    / rsft                      _
-  lctl lmet lalt           @spc           ralt rctl                         _      _     _
+  lctl lmet lalt           @spc           ralt rmet rctl                    _      _     _
 )
 
 (deflayer aux
      _    _    _    _    _    _    _    _    _    _    _    _    _          _      _     _
-     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12    _     _      _     _
-     _    _    _    _    _    _    _    _    _    _    _    _    _    _     _      _     _
+     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12    _  @sad   @sag  @saf
+     _    _    _    _    _    _    _    _    _    _    _    _    _    _  @sar   @sac  @sdb
      _    _    _    _    _    _   @H   @J   @K   @L    _    _    _
      _    _    _    _    _    _    _    _    _    _    _    _                      _
-     _    _    _              _              _    _                         _      _     _
+     _    _    _              _              _    _    _                    _      _     _
 )
