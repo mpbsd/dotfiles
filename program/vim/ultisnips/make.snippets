@@ -22,11 +22,11 @@ final:
 	$(DOC_VIEWER) main.pdf
 
 clean:
-	find . -type f -name main.aux | xargs -rf
-	find . -type f -name main.blg | xargs -rf
-	find . -type f -name main.log | xargs -rf
-	find . -type f -name main.out | xargs -rf
-	find . -type f -name main.pdf | xargs -rf
+	find . -type f -name main.aux | xargs rm -rf
+	find . -type f -name main.blg | xargs rm -rf
+	find . -type f -name main.log | xargs rm -rf
+	find . -type f -name main.out | xargs rm -rf
+	find . -type f -name main.pdf | xargs rm -rf
 
 .PHONY: draft final clean
 endsnippet

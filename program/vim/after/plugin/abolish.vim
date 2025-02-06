@@ -57,3 +57,4 @@ Abolish tambem também
 Abolish ultimo{,s} último{,s}
 Abolish unico{,s} único{,s}
 Abolish vizinhanca{,s} vizinhança{,s}
+Abolish ate até

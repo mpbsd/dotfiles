@@ -197,13 +197,13 @@ return {
 	-- mid range set of packages {{{
 	s(
 		{
-			trig = "mid",
+			trig = "_mid",
 			snippetType = "autosnippet",
 			desc = "mid range set of package",
 		},
 		t({
 			[[\usepackage[T1]{fontenc}]],
-			[[\usepakcage[english]{babel}]],
+			[[\usepackage[english]{babel}]],
 			[[\usepackage{amsmath}]],
 			[[\usepackage{amssymb}]],
 			[[\usepackage{amsthm}]],
