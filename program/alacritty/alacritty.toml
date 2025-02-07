@@ -2,10 +2,10 @@
 decorations = "None"
 decorations_theme_variant = "Dark"
 dynamic_padding = true
-opacity = 0.8
-padding.x = 8
-padding.y = 8
+opacity = 0.9
+padding.x = 7
+padding.y = 7
 
 [font]
 normal.family = "BlexMono Nerd Font Mono"
-size = 16.0
+size = 14.0
