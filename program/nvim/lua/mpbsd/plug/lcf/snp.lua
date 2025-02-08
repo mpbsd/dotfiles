@@ -7,6 +7,7 @@ end
 
 return {
 	"L3MON4D3/LuaSnip",
+	lazy = true,
 	build = install_jsregexp(),
 	config = function()
 		local ls = require("luasnip")

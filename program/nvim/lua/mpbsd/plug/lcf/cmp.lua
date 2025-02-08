@@ -1,20 +1,16 @@
 return {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
+	event = { "InsertEnter" },
 	dependencies = {
+		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
-		"saadparwaiz1/cmp_luasnip",
-		"L3MON4D3/LuaSnip",
-		"onsails/lspkind.nvim",
 	},
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		local lspkind = require("lspkind")
-
-		lspkind.init({})
 
 		luasnip.config.set_config({
 			enable_autosnippets = true,
@@ -28,9 +24,7 @@ return {
 					luasnip.lsp_expand(args.body)
 				end,
 			},
-			-- completion = {
-			-- 	completeopt = "menu,menuone,noinsert",
-			-- },
+			completion = { completeopt = "menu,menuone,noinsert" },
 			mapping = cmp.mapping.preset.insert({
 				["<C-N>"] = cmp.mapping.select_next_item(),
 				["<C-P>"] = cmp.mapping.select_prev_item(),

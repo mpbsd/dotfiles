@@ -1,7 +1,7 @@
-local M = {}
+local G = {}
 
 -- Language Servers {{{
-M.LSP = {
+G.LSP = {
 	bashls = {},
 	clangd = {},
 	jsonls = {},
@@ -51,12 +51,18 @@ M.LSP = {
 }
 -- }}}
 -- Formatters {{{
-M.FMT = {
+G.FMT = {
 	"black",
 	"isort",
 	"jq",
 	"stylua",
 }
 -- }}}
+-- keymap {{{
+G.MAP = function(mod, lhs, rhs, dcr)
+	local opt = { noremap = true, silent = true, desc = dcr }
+	vim.keymap.set(mod, lhs, rhs, opt)
+end
+-- }}}
 
-return M
+return G

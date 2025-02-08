@@ -1,13 +1,13 @@
 local OPT = {
 	-- C {{{
 	["C"] = {
-		"colorscheme retrobox",
+		"colorscheme default",
 	},
 	-- }}}
 	-- G {{{
 	["G"] = {
-		mapleader = " ",
-		maplocalleader = ",",
+		mapleader = [[ ]],
+		maplocalleader = [[,]],
 		tex_flavor = "latex",
 		loaded_node_provider = 0,
 		loaded_perl_provider = 0,
