@@ -58,10 +58,14 @@ G.FMT = {
 	"stylua",
 }
 -- }}}
--- keymap {{{
-G.MAP = function(mod, lhs, rhs, dcr)
-	local opt = { noremap = true, silent = true, desc = dcr }
+-- Vim Keymap Set {{{
+G.VKS = function(mod, lhs, rhs, opt)
 	vim.keymap.set(mod, lhs, rhs, opt)
+end
+-- }}}
+-- Nvim Create Augroup {{{
+G.NCA = function(gr_name, gr_opts)
+	vim.api.nvim_create_augroup(gr_name, gr_opts)
 end
 -- }}}
 

@@ -53,7 +53,6 @@ local OPT = {
 	-- }}}
 }
 
--- set options {{{
 for sec, _ in pairs(OPT) do
 	if sec == "C" then
 		for _, cmd in pairs(OPT[sec]) do
@@ -69,4 +68,3 @@ for sec, _ in pairs(OPT) do
 		end
 	end
 end
--- }}}
