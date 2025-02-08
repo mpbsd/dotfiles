@@ -1,15 +1,17 @@
+-- install_jsregexp {{{
 local install_jsregexp = function()
 	if vim.fn.executable("make") == 0 then
 		return
 	end
 	return "make install_jsregexp"
 end
+-- }}}
 
 return {
 	"L3MON4D3/LuaSnip",
-	lazy = true,
 	build = install_jsregexp(),
 	config = function()
+		-- Luasnip {{{1
 		local ls = require("luasnip")
 		local s = ls.snippet
 		local sn = ls.snippet_node
@@ -38,9 +40,14 @@ return {
 		local ms = ls.multi_snippet
 		local k = require("luasnip.nodes.key_indexer").new_key
 		local loaders = require("luasnip.loaders.from_lua")
+		-- }}}
+		-- MAP {{{
+		local MAP = require("mpbsd.core.globals").MAP
+		-- }}}
 
 		loaders.lazy_load({ paths = { "~/.config/nvim/lua/mpbsd/snip" } })
 
+		-- snip_env {{{
 		ls.snip_env = {
 			ls = ls,
 			s = s,
@@ -70,9 +77,27 @@ return {
 			ms = ms,
 			k = k,
 		}
+		-- }}}
 
-		vim.keymap.set("n", "<LocalLeader>es", function()
-			require("luasnip.loaders").edit_snippet_files()
-		end, { noremap = true, silent = true })
+		-- KEY {{{1
+		local KEY = {
+			-- [E]dit [S]nippet {{{2
+			{
+				mod = "n",
+				lhs = "<LocalLeader>es",
+				rhs = function()
+					require("luasnip.loaders").edit_snippet_files()
+				end,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[E]dit [S]nippet",
+				},
+			},
+			-- }}}
+		}
+		-- }}}
+
+		MAP(KEY)
 	end,
 }

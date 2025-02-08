@@ -1,10 +1,17 @@
 local G = {}
 
--- Language Servers {{{
+-- Language Servers {{{1
 G.LSP = {
+	-- bashls {{{2
 	bashls = {},
+	-- }}}
+	-- clangd {{{2
 	clangd = {},
+	-- }}}
+	-- jsonls {{{2
 	jsonls = {},
+	-- }}}
+	-- lua_ls {{{2
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -46,8 +53,13 @@ G.LSP = {
 			},
 		},
 	},
+	-- }}}
+	-- pyright {{{2
 	pyright = {},
+	-- }}}
+	-- texlab {{{2
 	texlab = {},
+	-- }}}
 }
 -- }}}
 -- Formatters {{{
@@ -59,13 +71,15 @@ G.FMT = {
 }
 -- }}}
 -- Vim Keymap Set {{{
-G.VKS = function(mod, lhs, rhs, opt)
-	vim.keymap.set(mod, lhs, rhs, opt)
-end
--- }}}
--- Nvim Create Augroup {{{
-G.NCA = function(gr_name, gr_opts)
-	vim.api.nvim_create_augroup(gr_name, gr_opts)
+---@param KEY table
+G.MAP = function(KEY)
+	for _, kmp in pairs(KEY) do
+		local mod = kmp["mod"]
+		local lhs = kmp["lhs"]
+		local rhs = kmp["rhs"]
+		local opt = kmp["opt"]
+		vim.keymap.set(mod, lhs, rhs, opt)
+	end
 end
 -- }}}
 

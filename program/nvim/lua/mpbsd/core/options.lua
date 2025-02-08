@@ -32,7 +32,6 @@ local OPT = {
 		textwidth = 80,
 		splitright = true,
 		splitbelow = true,
-		clipboard = "unnamedplus",
 		spelllang = { "en_us", "pt_br", "de_de" },
 		spellsuggest = { "fast", "25" },
 		list = true,
@@ -48,7 +47,8 @@ local OPT = {
 		showmode = false,
 		startofline = true,
 		undofile = true,
-		completeopt = { "menu", "menuone", "noselect" },
+		clipboard = "unnamedplus",
+		lazyredraw = true,
 	},
 	-- }}}
 }

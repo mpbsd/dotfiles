@@ -10,6 +10,7 @@ return {
 	config = function()
 		local ts_config = require("nvim-treesitter.configs")
 		local ts_repeat = require("nvim-treesitter.textobjects.repeatable_move")
+		local MAP = require("mpbsd.core.globals").MAP
 
 		ts_config.setup({
 			textobjects = {
@@ -56,8 +57,12 @@ return {
 						query = "@class.outer",
 						desc = "Next class start",
 					},
-					["]o"] = "@loop.*",
-					-- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
+					["]o"] = {
+						query = {
+							"@loop.inner",
+							"@loop.outer",
+						},
+					},
 					["]s"] = {
 						query = "@local.scope",
 						query_group = "locals",
@@ -90,13 +95,69 @@ return {
 			},
 		})
 
-		vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat.repeat_last_move_next)
-		vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat.repeat_last_move_previous)
+		-- KEY {{{
+		local KEY = {
+			{
+				mod = { "n", "x", "o" },
+				lhs = ";",
+				rhs = ts_repeat.repeat_last_move_next,
+				opt = {
+					noremap = true,
+					silent = true,
+				},
+			},
+			{
+				mod = { "n", "x", "o" },
+				lhs = ",",
+				rhs = ts_repeat.repeat_last_move_previous,
+				opt = {
+					noremap = true,
+					silent = true,
+				},
+			},
+			{
+				mod = { "n", "x", "o" },
+				lhs = "f",
+				rhs = ts_repeat.builtin_f_expr,
+				opt = {
+					noremap = true,
+					silent = true,
+					expr = true,
+				},
+			},
+			{
+				mod = { "n", "x", "o" },
+				lhs = "F",
+				rhs = ts_repeat.builtin_F_expr,
+				opt = {
+					noremap = true,
+					silent = true,
+					expr = true,
+				},
+			},
+			{
+				mod = { "n", "x", "o" },
+				lhs = "t",
+				rhs = ts_repeat.builtin_t_expr,
+				opt = {
+					noremap = true,
+					silent = true,
+					expr = true,
+				},
+			},
+			{
+				mod = { "n", "x", "o" },
+				lhs = "T",
+				rhs = ts_repeat.builtin_T_expr,
+				opt = {
+					noremap = true,
+					silent = true,
+					expr = true,
+				},
+			},
+		}
+		-- }}}
 
-		-- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-		vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat.builtin_f_expr, { expr = true })
-		vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat.builtin_F_expr, { expr = true })
-		vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat.builtin_t_expr, { expr = true })
-		vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat.builtin_T_expr, { expr = true })
+		MAP(KEY)
 	end,
 }

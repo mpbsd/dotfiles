@@ -1,4 +1,4 @@
--- clear snippets {{{
+-- clear snippets {{{1
 require("luasnip.session.snippet_collection").clear_snippets("tex")
 -- }}}
 -- utils {{{1
@@ -16,48 +16,48 @@ local utils = {
 	-- greek_letter {{{2
 	greek_letter = function(_, snip)
 		local alphabet = {
-			a = [[\alpha]],
-			b = [[\beta]],
-			g = [[\gamma]],
-			d = [[\delta]],
-			e = [[\epsilon]],
-			z = [[\zeta]],
-			h = [[\eta]],
-			j = [[\theta]],
-			i = [[\iota]],
-			k = [[\kappa]],
-			l = [[\lambda]],
-			m = [[\mu]],
-			n = [[\nu]],
-			x = [[\xi]],
-			p = [[\pi]],
-			r = [[\rho]],
-			s = [[\sigma]],
-			t = [[\tau]],
-			u = [[\upsilon]],
-			f = [[\phi]],
-			c = [[\chi]],
-			y = [[\psi]],
-			w = [[\omega]],
-			G = [[\Gamma]],
-			D = [[\Delta]],
-			J = [[\Theta]],
-			L = [[\Lambda]],
-			X = [[\Xi]],
-			P = [[\Pi]],
-			S = [[\Sigma]],
-			U = [[\Upsilon]],
-			F = [[\Phi]],
-			Y = [[\Psi]],
-			W = [[\Omega]],
-			ve = [[\varepsilon]],
-			vj = [[\vartheta]],
-			vp = [[\varpi]],
-			vs = [[\varsigma]],
-			vr = [[\varrho]],
-			vf = [[\varphi]],
+			a = "alpha",
+			b = "beta",
+			g = "gamma",
+			d = "delta",
+			e = "epsilon",
+			z = "zeta",
+			h = "eta",
+			j = "theta",
+			i = "iota",
+			k = "kappa",
+			l = "lambda",
+			m = "mu",
+			n = "nu",
+			x = "xi",
+			p = "pi",
+			r = "rho",
+			s = "sigma",
+			t = "tau",
+			u = "upsilon",
+			f = "phi",
+			c = "chi",
+			y = "psi",
+			w = "omega",
+			G = "Gamma",
+			D = "Delta",
+			J = "Theta",
+			L = "Lambda",
+			X = "Xi",
+			P = "Pi",
+			S = "Sigma",
+			U = "Upsilon",
+			F = "Phi",
+			Y = "Psi",
+			W = "Omega",
+			ve = "varepsilon",
+			vj = "vartheta",
+			vp = "varpi",
+			vs = "varsigma",
+			vr = "varrho",
+			vf = "varphi",
 		}
-		return alphabet[snip.captures[1]]
+		return [[\]] .. alphabet[snip.captures[1]]
 	end,
 	-- }}}
 	-- dynamic_matrix {{{2
@@ -88,8 +88,8 @@ local utils = {
 	delimiter = function(_, snip, user_args)
 		local D = {
 			p = {
-				lhs = "(",
-				rhs = ")",
+				lhs = [[(]],
+				rhs = [[)]],
 			},
 			b = {
 				lhs = "[",
@@ -116,44 +116,44 @@ return {
 		},
 		fmta(
 			[[
-      \documentclass[a4paper,12pt]{article}
-      <>
-      \usepackage[T1]{fontenc}
-      \usepackage[english]{babel}
-      \usepackage{amsmath}
-      \usepackage{amssymb}
-      \usepackage{amsthm}
-      \usepackage{enumerate}
-      \usepackage{graphicx}
-      \usepackage{float}
-      \usepackage{hyperref}
-      \usepackage{interval}
-      \usepackage{mathtools}
-      \usepackage[table]{xcolor}
-      <>
-      \graphicspath{{./fig/}}
-      \intervalconfig{soft open fences}
-      <>
-      \title{an awesome title}
-      \author{list of authors}
-      <>
-      \begin{document}
-      <>
-      \maketitle
-      <>
-      % \input{sec/01}  % introduction
-      % \input{sec/02}  % results
-      % \input{sec/03}  % examples
-      \input{sec/04}  % proofs
-      <>
-      \bibliographystyle{plain}
-      \bibliography{ref/main}
-      \end{document}
-      ]],
+	     \documentclass[a4paper,12pt]{article}
+	     <>
+	     \usepackage[T1]{fontenc}
+	     \usepackage[english]{babel}
+	     \usepackage{amsmath}
+	     \usepackage{amssymb}
+	     \usepackage{amsthm}
+	     \usepackage{enumerate}
+	     \usepackage{graphicx}
+	     \usepackage{float}
+	     \usepackage{hyperref}
+	     \usepackage{interval}
+	     \usepackage{mathtools}
+	     \usepackage[table]{xcolor}
+	     <>
+	     \graphicspath{{./fig/}}
+	     \intervalconfig{soft open fences}
+	     <>
+	     \title{an awesome title}
+	     \author{list of authors}
+	     <>
+	     \begin{document}
+	     <>
+	     \maketitle
+	     <>
+	     % \input{sec/01}  % introduction
+	     % \input{sec/02}  % results
+	     % \input{sec/03}  % examples
+	     \input{sec/04}  % proofs
+	     <>
+	     \bibliographystyle{plain}
+	     \bibliography{ref/main}
+	     \end{document}
+			]],
 			{
 				t(""),
 				t(""),
-				c(1, { t(""), i(nil, "% commands?") }),
+				t(""),
 				t(""),
 				t(""),
 				t(""),
@@ -228,10 +228,10 @@ return {
 		},
 		fmta(
 			[[
-      \section{Introduction}\label{sec:introduction}
-      <>
-      <>
-      ]],
+	    \section{Introduction}\label{sec:introduction}
+	    <>
+	    <>
+			]],
 			{ t(""), i(0) }
 		),
 		{ condition = conds.line_begin }
@@ -246,10 +246,10 @@ return {
 		},
 		fmta(
 			[[
-      \section{Results}\label{sec:results}
-      <>
-      <>
-      ]],
+	    \section{Results}\label{sec:results}
+	    <>
+	    <>
+			]],
 			{ t(""), i(0) }
 		),
 		{ condition = conds.line_begin }
@@ -264,10 +264,10 @@ return {
 		},
 		fmta(
 			[[
-      \section{Examples}\label{sec:examples}
-      <>
-      <>
-      ]],
+	    \section{Examples}\label{sec:examples}
+	    <>
+	    <>
+			]],
 			{ t(""), i(0) }
 		),
 		{ condition = conds.line_begin }
@@ -282,10 +282,10 @@ return {
 		},
 		fmta(
 			[[
-      \section{Proofs}\label{sec:proofs}
-      <>
-      <>
-      ]],
+	    \section{Proofs}\label{sec:proofs}
+	    <>
+	    <>
+			]],
 			{ t(""), i(0) }
 		),
 		{ condition = conds.line_begin }
@@ -302,10 +302,10 @@ return {
 		},
 		fmta(
 			[[
-      \section{<>}\label{sec:<>}
-      <>
-      <>
-      ]],
+	    \section{<>}\label{sec:<>}
+	    <>
+	    <>
+			]],
 			{
 				i(1),
 				l(l._1:gsub("%W+", "_"):lower(), { 1 }),
@@ -327,10 +327,10 @@ return {
 		},
 		fmta(
 			[[
-      \subsection{<>}\label{subsec:<>}
-      <>
-      <>
-      ]],
+	    \subsection{<>}\label{subsec:<>}
+	    <>
+	    <>
+			]],
 			{
 				i(1),
 				l(l._1:gsub("%W+", "_"):lower(), { 1 }),
@@ -352,10 +352,10 @@ return {
 		},
 		fmta(
 			[[
-      \subsubsection{<>}\label{subsubsec:<>}
-      <>
-      <>
-      ]],
+	    \subsubsection{<>}\label{subsubsec:<>}
+	    <>
+	    <>
+			]],
 			{
 				i(1),
 				l(l._1:gsub("%W+", "_"):lower(), { 1 }),
@@ -378,8 +378,8 @@ return {
 		},
 		fmta(
 			[[
-      \left<><>\right<>
-      ]],
+	    \left<><>\right<>
+			]],
 			{
 				f(utils.delimiter, {}, { user_args = { "lhs" } }),
 				i(1),
@@ -398,10 +398,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{abstract}
-        <>
-      \end{abstract}
-      ]],
+	    \begin{abstract}
+	      <>
+	    \end{abstract}
+			]],
 			{ i(1) }
 		),
 		{ condition = conds.line_begin }
@@ -416,10 +416,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{align}
-        <>
-      \end{align}
-      ]],
+	    \begin{align}
+	      <>
+	    \end{align}
+			]],
 			{ i(1) }
 		),
 		{ condition = conds.line_begin }
@@ -434,10 +434,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{<>}
-        <>
-      \end{<>}
-      ]],
+	    \begin{<>}
+	      <>
+	    \end{<>}
+			]],
 			{ i(1), i(2), rep(1) }
 		),
 		{ condition = conds.line_begin }
@@ -452,10 +452,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{corollary}\label{cor:<>}
-        <>
-      \end{corollary}
-      ]],
+	    \begin{corollary}\label{cor:<>}
+	      <>
+	    \end{corollary}
+			]],
 			{ i(1), i(2) }
 		),
 		{ condition = conds.line_begin }
@@ -470,10 +470,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{definition}\label{def:<>}
-        <>
-      \end{definition}
-      ]],
+	    \begin{definition}\label{def:<>}
+	      <>
+	    \end{definition}
+			]],
 			{ i(1), i(2) }
 		),
 		{ condition = conds.line_begin }
@@ -488,10 +488,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{description}
-        \item[<>] <>
-      \end{description}
-      ]],
+	    \begin{description}
+	      \item[<>] <>
+	    \end{description}
+	    ]],
 			{ i(1), i(2) }
 		),
 		{ condition = conds.line_begin }
@@ -506,10 +506,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{enumerate}
-        \item <>
-      \end{enumerate}
-      ]],
+	    \begin{enumerate}
+	      \item <>
+	    \end{enumerate}
+	    ]],
 			{ i(1) }
 		),
 		{ condition = conds.line_begin }
@@ -524,10 +524,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{equation}\label{eq:<>}
-        <>
-      \end{equation}
-      ]],
+	    \begin{equation}\label{eq:<>}
+	      <>
+	    \end{equation}
+	    ]],
 			{ i(1), i(2) }
 		),
 		{ condition = conds.line_begin }
@@ -542,10 +542,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{itemize}
-        \item <>
-      \end{itemize}
-      ]],
+	    \begin{itemize}
+	      \item <>
+	    \end{itemize}
+	    ]],
 			{ i(1) }
 		),
 		{ condition = conds.line_begin }
@@ -560,10 +560,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{lemma}\label{lem:<>}
-        <>
-      \end{lemma}
-      ]],
+	    \begin{lemma}\label{lem:<>}
+	      <>
+	    \end{lemma}
+	    ]],
 			{ i(1), i(2) }
 		),
 		{ condition = conds.line_begin }
@@ -578,10 +578,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{proposition}\label{prop:<>}
-        <>
-      \end{proposition}
-      ]],
+	    \begin{proposition}\label{prop:<>}
+	      <>
+	    \end{proposition}
+	    ]],
 			{ i(1), i(2) }
 		),
 		{ condition = conds.line_begin }
@@ -596,10 +596,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{remark}\label{rmk:<>}
-        <>
-      \end{remark}
-      ]],
+	    \begin{remark}\label{rmk:<>}
+	      <>
+	    \end{remark}
+	    ]],
 			{ i(1), i(2) }
 		),
 		{ condition = conds.line_begin }
@@ -616,10 +616,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{<>}
-        <>
-      \end{<>}
-      ]],
+	    \begin{<>}
+	      <>
+	    \end{<>}
+	    ]],
 			{
 				l(l.CAPTURE1 .. "matrix", {}),
 				d(1, utils.dynamic_matrix),
@@ -638,10 +638,10 @@ return {
 		},
 		fmta(
 			[[
-      \begin{theorem}\label{thm:<>}
-        <>
-      \end{theorem}
-      ]],
+	    \begin{theorem}\label{thm:<>}
+	      <>
+	    \end{theorem}
+	    ]],
 			{ i(1), i(2) }
 		),
 		{ condition = conds.line_begin }
@@ -656,7 +656,7 @@ return {
 		},
 		fmta(
 			[[
-      $<>$
+        $<>$
       ]],
 			{ i(1) }
 		)
@@ -688,8 +688,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\leqslant{<>}
-      ]],
+	    {<>}\leqslant{<>}
+	    ]],
 			{ i(1, "x"), i(2, "y") }
 		),
 		{ condition = utils.in_math }
@@ -704,8 +704,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\geqslant{<>}
-      ]],
+	    {<>}\geqslant{<>}
+	    ]],
 			{ i(1, "x"), i(2, "y") }
 		),
 		{ condition = utils.in_math }
@@ -720,8 +720,8 @@ return {
 		},
 		fmta(
 			[[
-      \sum_{<>=<>}^{<>}<>
-      ]],
+	    \sum_{<>=<>}^{<>}<>
+	    ]],
 			{ i(1, "i"), i(2, "0"), i(3, "n-1"), i(4, "x_{i}") }
 		),
 		{ condition = utils.in_math }
@@ -736,8 +736,8 @@ return {
 		},
 		fmta(
 			[[
-      \prod_{<>=<>}^{<>}<>
-      ]],
+	    \prod_{<>=<>}^{<>}<>
+	    ]],
 			{ i(1, "i"), i(2, "0"), i(3, "n-1"), i(4, "x_{i}") }
 		),
 		{ condition = utils.in_math }
@@ -752,8 +752,8 @@ return {
 		},
 		fmta(
 			[[
-      \frac{<>}{<>}
-      ]],
+	    \frac{<>}{<>}
+	    ]],
 			{ i(1, "x"), i(2, "y") }
 		),
 		{ condition = utils.in_math }
@@ -771,8 +771,8 @@ return {
 		},
 		fmta(
 			[[
-      <>{<>}
-      ]],
+	    <>{<>}
+	    ]],
 			{
 				l(l.CAPTURE1, {}),
 				i(1),
@@ -800,8 +800,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\mapsto{<>}
-      ]],
+	    {<>}\mapsto{<>}
+	    ]],
 			{ i(1, "x"), i(2, "f(x)") }
 		),
 		{ condition = utils.in_math }
@@ -817,8 +817,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}:{<>}\to{<>},\quad{{<>}\mapsto{<>}}
-      ]],
+	    {<>}:{<>}\to{<>},\quad{{<>}\mapsto{<>}}
+	    ]],
 			{ i(1, "f"), i(2, "A"), i(3, "B"), i(4, "x"), i(5, "f(x)") }
 		),
 		{ condition = utils.in_math }
@@ -834,8 +834,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}{\left(<>\right)}
-      ]],
+	    {<>}{\left(<>\right)}
+	    ]],
 			{ i(1, "f"), i(2, "x") }
 		),
 		{ condition = utils.in_math }
@@ -848,13 +848,12 @@ return {
 			regTrig = true,
 			trigEngine = "ecma",
 			wordTrig = false,
-			snippetType = "autosnippet",
 			desc = "trigonometric, exponential, logarithmic and hyperbolic functions",
 		},
 		fmta(
 			[[
-      <>{\left(<>\right)}
-      ]],
+	    <>{\left(<>\right)}
+	    ]],
 			{
 				f(function(_, snip)
 					local fn = {
@@ -926,8 +925,8 @@ return {
 		},
 		fmta(
 			[[
-      \forall\,{<>}\in{<>}
-      ]],
+	    \forall\,{<>}\in{<>}
+	    ]],
 			{ i(1, "x"), i(2, "A") }
 		),
 		{ condition = utils.in_math }
@@ -943,8 +942,8 @@ return {
 		},
 		fmta(
 			[[
-      \exists\,{<>}\in{<>}
-      ]],
+	    \exists\,{<>}\in{<>}
+	    ]],
 			{ i(1, "x"), i(2, "A") }
 		),
 		{ condition = utils.in_math }
@@ -960,8 +959,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\in{<>}
-      ]],
+	    {<>}\in{<>}
+	    ]],
 			{ i(1, "x"), i(2, "A") }
 		),
 		{ condition = utils.in_math }
@@ -977,8 +976,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\owns{<>}
-      ]],
+	    {<>}\owns{<>}
+	    ]],
 			{ i(1, "A"), i(2, "x") }
 		),
 		{ condition = utils.in_math }
@@ -994,8 +993,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\subset{<>}
-      ]],
+	    {<>}\subset{<>}
+	    ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = utils.in_math }
@@ -1011,8 +1010,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\supset{<>}
-      ]],
+	    {<>}\supset{<>}
+	    ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = utils.in_math }
@@ -1028,8 +1027,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\cup{<>}
-      ]],
+	    {<>}\cup{<>}
+	    ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = utils.in_math }
@@ -1045,8 +1044,8 @@ return {
 		},
 		fmta(
 			[[
-      \bigcup_{<>}<>
-      ]],
+	    \bigcup_{<>}<>
+	    ]],
 			{ i(1, [[i\in{I}]]), i(2, [[U_{i}]]) }
 		),
 		{ condition = utils.in_math }
@@ -1062,8 +1061,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\cap{<>}
-      ]],
+	    {<>}\cap{<>}
+	    ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = utils.in_math }
@@ -1079,8 +1078,8 @@ return {
 		},
 		fmta(
 			[[
-      \bigcap_{<>}<>
-      ]],
+	    \bigcap_{<>}<>
+			]],
 			{ i(1, [[i\in{I}]]), i(2, [[U_{i}]]) }
 		),
 		{ condition = utils.in_math }
@@ -1096,8 +1095,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\times{<>}
-      ]],
+	    {<>}\times{<>}
+	    ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = utils.in_math }
@@ -1113,8 +1112,8 @@ return {
 		},
 		fmta(
 			[[
-      \prod_{<>}<>
-      ]],
+	    \prod_{<>}<>
+	    ]],
 			{ i(1, [[i\in{I}]]), i(2, [[U_{i}]]) }
 		),
 		{ condition = utils.in_math }
@@ -1130,8 +1129,8 @@ return {
 		},
 		fmta(
 			[[
-      {<>}\setminus{<>}
-      ]],
+	    {<>}\setminus{<>}
+	    ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = utils.in_math }
@@ -1161,6 +1160,15 @@ return {
 		desc = "infinity",
 	}, t([[\infty]]), { condition = utils.in_math }),
 	-- }}}
+	-- dots {{{
+	s({
+		trig = [[(?<!\\)([dlv]dots)]],
+		regTrig = true,
+		trigEngine = "ecma",
+		snippetType = "autosnippet",
+		desc = "dots",
+	}, l([[\]] .. l.CAPTURE1), { condition = conds.in_math }),
+	-- }}}
 	-- greek letters {{{
 	s({
 		trig = "`([abgdezhjiklmnxprstufcyw]|[GDJLXPSUFYW]|v[ejpsrf])",
@@ -1170,6 +1178,21 @@ return {
 		snippetType = "autosnippet",
 		desc = "greek letters",
 	}, f(utils.greek_letter), { condition = utils.in_math }),
+	-- }}}
+	-- {{{
+	s(
+		{
+			trig = [[(\S+).(bar|hat|overline)]],
+			regTrig = true,
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "bar, hat, overline",
+		},
+		f(function(_, snip)
+			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
+		end),
+		{ condition = conds.in_math }
+	),
 	-- }}}
 	-- custom commands for differential geometry {{{
 	s(
@@ -1188,6 +1211,34 @@ return {
 			[[\newcommand{\riccTens}[2]{\bar{R}c\left({#1},{#2}\right)}]],
 		}),
 		{ condition = conds.line_begin }
+	),
+	-- }}}
+	-- n-dimensional differentiable manifold {{{
+	s({
+		trig = "Mn",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		desc = "n-dimensional differentiable manifold",
+	}, { t("M^{n}") }, { condition = conds.in_math }),
+	-- }}}
+	-- n-dimensional, simply connected Riemannian space forms {{{
+	s(
+		{
+			trig = [[(?<=\\)([ehs])\1]],
+			regTrig = true,
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "n-dimensional, simply connected Riemannian space forms",
+		},
+		f(function(_, snip)
+			local M = {
+				["e"] = [[mathbb{E}]],
+				["h"] = [[mathbb{H}]],
+				["s"] = [[mathbb{S}]],
+			}
+			return M[snip.captures[1]] .. [[^{n}]]
+		end),
+		{ condition = conds.in_math }
 	),
 	-- }}}
 	-- n-dimensional riemannian manifold {{{
@@ -1216,8 +1267,8 @@ return {
 		},
 		fmta(
 			[[
-      C^{\infty}{\left(<>\right)}
-      ]],
+	    C^{\infty}{\left(<>\right)}
+	    ]],
 			{ i(1, [[M^{n}]]) }
 		),
 		{ condition = utils.in_math }
@@ -1233,8 +1284,8 @@ return {
 		},
 		fmta(
 			[[
-      \mathfrak{X}^{\infty}{\left(<>\right)}
-      ]],
+	    \mathfrak{X}^{\infty}{\left(<>\right)}
+	    ]],
 			{ i(1, [[M^{n}]]) }
 		),
 		{ condition = utils.in_math }
@@ -1250,8 +1301,8 @@ return {
 		},
 		fmta(
 			[[
-      \X{<>}
-      ]],
+	    \X{<>}
+	    ]],
 			{ i(1, "i") }
 		),
 		{ condition = utils.in_math }
@@ -1267,8 +1318,8 @@ return {
 		},
 		fmta(
 			[[
-      dx^{<>}
-      ]],
+	    dx^{<>}
+	    ]],
 			{ i(1, "i") }
 		),
 		{ condition = utils.in_math }
@@ -1300,8 +1351,8 @@ return {
 		},
 		fmta(
 			[[
-      \flatMetr{<>}{<>}
-      ]],
+	    \flatMetr{<>}{<>}
+	    ]],
 			{ i(1, "X"), i(2, "Y") }
 		),
 		{ condition = utils.in_math }
@@ -1317,8 +1368,8 @@ return {
 		},
 		fmta(
 			[[
-      \flatConn{<>}{<>}
-      ]],
+	    \flatConn{<>}{<>}
+	    ]],
 			{ i(1, "X"), i(2, "Y") }
 		),
 		{ condition = utils.in_math }
@@ -1334,8 +1385,8 @@ return {
 		},
 		fmta(
 			[[
-      \riemMetr{<>}{<>}
-      ]],
+	    \riemMetr{<>}{<>}
+	    ]],
 			{ i(1, "X"), i(2, "Y") }
 		),
 		{ condition = utils.in_math }
@@ -1351,8 +1402,8 @@ return {
 		},
 		fmta(
 			[[
-      \riemConn{<>}{<>}
-      ]],
+	    \riemConn{<>}{<>}
+	    ]],
 			{ i(1, "X"), i(2, "Y") }
 		),
 		{ condition = utils.in_math }

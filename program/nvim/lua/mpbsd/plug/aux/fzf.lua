@@ -12,7 +12,7 @@ return {
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 		local actions = require("telescope.actions")
-		local VKS = require("mpbsd.core.globals").VKS
+		local MAP = require("mpbsd.core.globals").MAP
 
 		telescope.setup({
 			defaults = {
@@ -41,17 +41,17 @@ return {
 
 		telescope.load_extension("fzf")
 
-		local cfg_nvim = function()
-			builtin.find_files({ cwd = "~/.config/nvim/lua/mpbsd" })
-		end
-
-		local KMP = {
+		local KEY = {
 			-- [F]ind [F]iles {{{
 			{
 				mod = "n",
 				lhs = "<Leader>ff",
 				rhs = builtin.find_files,
-				dcr = "[F]ind [F]iles",
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[F]ind [F]iles",
+				},
 			},
 			-- }}}
 			-- [L]ive [G]rep {{{
@@ -59,7 +59,11 @@ return {
 				mod = "n",
 				lhs = "<Leader>lg",
 				rhs = builtin.live_grep,
-				dcr = "[L]ive [G]rep",
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[L]ive [G]rep",
+				},
 			},
 			-- }}}
 			-- [F]ind [B]uffers {{{
@@ -67,7 +71,11 @@ return {
 				mod = "n",
 				lhs = "<Leader>fb",
 				rhs = builtin.buffers,
-				dcr = "[F]ind [B]uffers",
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[F]ind [B]uffers",
+				},
 			},
 			-- }}}
 			-- [F]ind [H]elp {{{
@@ -75,7 +83,11 @@ return {
 				mod = "n",
 				lhs = "<Leader>fh",
 				rhs = builtin.help_tags,
-				dcr = "[F]ind [H]elp",
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[F]ind [H]elp",
+				},
 			},
 			-- }}}
 			-- [M]an [P]age {{{
@@ -83,30 +95,29 @@ return {
 				mod = "n",
 				lhs = "<Leader>mp",
 				rhs = builtin.man_pages,
-				dcr = "[M]an [P]age",
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[M]an [P]age",
+				},
 			},
 			-- }}}
 			-- [C]onfigure [N]eovim {{{
 			{
 				mod = "n",
 				lhs = "<Leader>cn",
-				rhs = cfg_nvim,
-				dcr = "[E]dit [N]eovim",
+				rhs = function()
+					builtin.find_files({ cwd = "~/.config/nvim/lua/mpbsd" })
+				end,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[E]dit [N]eovim",
+				},
 			},
 			-- }}}
 		}
 
-		local OPT = function(dcr)
-			return { noremap = true, silent = true, desc = dcr }
-		end
-
-		for _, kmp in pairs(KMP) do
-			local mod = kmp["mod"]
-			local lhs = kmp["lhs"]
-			local rhs = kmp["rhs"]
-			local dcr = kmp["dcr"]
-			local opt = OPT(dcr)
-			VKS(mod, lhs, rhs, opt)
-		end
+		MAP(KEY)
 	end,
 }

@@ -1,9 +1,138 @@
+-- set_lsp_keybindings {{{1
+local set_lsp_keybindings = function(event)
+	local telescope = require("telescope.builtin")
+	local MAP = require("mpbsd.core.globals").MAP
+
+	-- KEY {{{2
+	local KEY = {
+		-- [C]ode [A]ction {{{3
+		{
+			mod = { "n", "x" },
+			lhs = "<leader>ca",
+			rhs = vim.lsp.buf.code_action,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[C]ode [A]ction",
+			},
+		},
+		-- }}}
+		-- [D]ocument [S]ymbols {{{3
+		{
+			mod = "n",
+			lhs = "<leader>ds",
+			rhs = telescope.lsp_document_symbols,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[D]ocument [S]ymbols",
+			},
+		},
+		-- }}}
+		-- [G]oto [D]eclaration {{{3
+		{
+			mod = "n",
+			lhs = "<leader>gD",
+			rhs = vim.lsp.buf.declaration,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[G]oto [D]eclaration",
+			},
+		},
+		-- }}}
+		-- [G]oto [D]efinition {{{3
+		{
+			mod = "n",
+			lhs = "<leader>gd",
+			rhs = telescope.lsp_definitions,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[G]oto [D]efinition",
+			},
+		},
+		-- }}}
+		-- [G]oto [I]mplementation {{{3
+		{
+			mod = "n",
+			lhs = "<leader>gI",
+			rhs = telescope.lsp_implementations,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[G]oto [I]mplementation",
+			},
+		},
+		-- }}}
+		-- [G]oto [R]eferences {{{3
+		{
+			mod = "n",
+			lhs = "<leader>gr",
+			rhs = telescope.lsp_references,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[G]oto [R]eferences",
+			},
+		},
+		-- }}}
+		-- [R]e[n]ame {{{3
+		{
+			mod = "n",
+			lhs = "<leader>rn",
+			rhs = vim.lsp.buf.rename,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[R]e[N]ame",
+			},
+		},
+		-- }}}
+		-- [T]ype [D]efinition {{{3
+		{
+			mod = "n",
+			lhs = "<leader>td",
+			rhs = telescope.lsp_type_definitions,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[T]ype [D]efinition",
+			},
+		},
+		-- }}}
+		-- [W]orkspace [S]ymbols {{{3
+		{
+			mod = "n",
+			lhs = "<leader>ws",
+			rhs = telescope.lsp_dynamic_workspace_symbols,
+			opt = {
+				buffer = event.buf,
+				noremap = true,
+				silent = true,
+				desc = "[W]orkspace [S]ymbols",
+			},
+		},
+		-- }}}
+	}
+	-- }}}
+
+	if vim.lsp.get_client_by_id(event.data.client_id) then
+		MAP(KEY)
+	end
+end
+-- }}}
+
 return {
 	"neovim/nvim-lspconfig",
-	event = {
-		"BufReadPre",
-		"BufNewFile",
-	},
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -27,189 +156,27 @@ return {
 		},
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		local mason_lspconfig = require("mason-lspconfig")
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
-			callback = function(event)
-				local telescope = require("telescope.builtin")
-				local VKS = require("mpbsd.core.globals").VKS
-				local NCA = require("mpbsd.core.globals").NCA
-
-				local toggle_inlay_hint = function()
-					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({
-						bufnr = event.buf,
-					}))
-				end
-
-				local K = {
-					-- [G]oto [D]efinition {{{
-					gd = {
-						mod = "n",
-						lhs = "<leader>gd",
-						rhs = telescope.lsp_definitions,
-						dcr = "[G]oto [D]efinition",
-					},
-					-- }}}
-					-- [G]oto [R]eferences {{{
-					gr = {
-						mod = "n",
-						lhs = "<leader>gr",
-						rhs = telescope.lsp_references,
-						dcr = "[G]oto [R]eferences",
-					},
-					-- }}}
-					-- [G]oto [I]mplementation {{{
-					gI = {
-						mod = "n",
-						lhs = "<leader>gI",
-						rhs = telescope.lsp_implementations,
-						dcr = "[G]oto [I]mplementation",
-					},
-					-- }}}
-					-- [T]ype [D]efinition {{{
-					td = {
-						mod = "n",
-						lhs = "<leader>td",
-						rhs = telescope.lsp_type_definitions,
-						dcr = "[T]ype [D]efinition",
-					},
-					-- }}}
-					-- [D]ocument [S]ymbols {{{
-					ds = {
-						mod = "n",
-						lhs = "<leader>ds",
-						rhs = telescope.lsp_document_symbols,
-						dcr = "[D]ocument [S]ymbols",
-					},
-					-- }}}
-					-- [W]orkspace [S]ymbols {{{
-					ws = {
-						mod = "n",
-						lhs = "<leader>ws",
-						rhs = telescope.lsp_dynamic_workspace_symbols,
-						dcr = "[W]orkspace [S]ymbols",
-					},
-					-- }}}
-					-- [R]e[n]ame {{{
-					rn = {
-						mod = "n",
-						lhs = "<leader>rn",
-						rhs = vim.lsp.buf.rename,
-						dcr = "[R]e[N]ame",
-					},
-					-- }}}
-					-- [C]ode [A]ction {{{
-					ca = {
-						mod = { "n", "x" },
-						lhs = "<leader>ca",
-						rhs = vim.lsp.buf.code_action,
-						dcr = "[C]ode [A]ction",
-					},
-					-- }}}
-					-- [G]oto [D]eclaration {{{
-					gD = {
-						mod = "n",
-						lhs = "<leader>gD",
-						rhs = vim.lsp.buf.declaration,
-						dcr = "[G]oto [D]eclaration",
-					},
-					-- }}}
-					-- [T]oggle Inlay [H]ints {{{
-					th = {
-						mod = "n",
-						lhs = "<leader>th",
-						rhs = toggle_inlay_hint,
-						dcr = "[T]oggle Inlay [H]ints",
-					},
-					-- }}}
-				}
-
-				local OPT = function(dcr)
-					local opt = {
-						buffer = event.buf,
-						noremap = true,
-						silent = true,
-						desc = "LSP: " .. dcr,
-					}
-					return opt
-				end
-
-				local edc = event.data.client_id
-				local vlg = vim.lsp.get_client_by_id(edc)
-
-				if vlg then
-					for label, keymap in pairs(K) do
-						local mod = keymap["mod"]
-						local lhs = keymap["lhs"]
-						local rhs = keymap["rhs"]
-						local dcr = keymap["dcr"]
-						local opt = OPT(dcr)
-
-						if label == "th" then
-							local ilh = vim.lsp.protocol.Methods.textDocument_inlayHint
-							local vsi = vlg.supports_method(ilh)
-							if vsi then
-								VKS(mod, lhs, rhs, opt)
-							end
-						else
-							VKS(mod, lhs, rhs, opt)
-						end
-					end
-
-					local dhl = vim.lsp.protocol.Methods.textDocument_documentHighlight
-					local shl = vlg.supports_method(dhl)
-
-					if shl then
-						local lsp_highlight = NCA("lsp-highlight", { clear = false })
-
-						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-							buffer = event.buf,
-							group = lsp_highlight,
-							callback = vim.lsp.buf.document_highlight,
-						})
-
-						vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-							buffer = event.buf,
-							group = lsp_highlight,
-							callback = vim.lsp.buf.clear_references,
-						})
-
-						vim.api.nvim_create_autocmd("LspDetach", {
-							group = NCA("lsp-detach", { clear = true }),
-							callback = function(event2)
-								vim.lsp.buf.clear_references()
-								vim.api.nvim_clear_autocmds({
-									buffer = event2.buf,
-									group = "lsp-highlight",
-								})
-							end,
-						})
-					end
-				end
-			end,
+			callback = set_lsp_keybindings,
+			desc = "LSP Keybindings",
 		})
-
-		-- Change diagnostic symbols in the sign column (gutter)
-		-- if vim.g.have_nerd_font then
-		-- 	local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
-		-- 	local diagnostic_signs = {}
-		-- 	for type, icon in pairs(signs) do
-		-- 		diagnostic_signs[vim.diagnostic.severity[type]] = icon
-		-- 	end
-		-- 	vim.diagnostic.config({ signs = { text = diagnostic_signs } })
-		-- end
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
 
 		mason_lspconfig.setup({
 			handlers = {
 				function(server_name)
+					local lspconfig = require("lspconfig")
 					local LSP = require("mpbsd.core.globals").LSP
 					local lsp = LSP[server_name] or {}
+					local capabilities = vim.tbl_deep_extend(
+						"force",
+						vim.lsp.protocol.make_client_capabilities(),
+						cmp_nvim_lsp.default_capabilities()
+					)
+
 					lsp.capabilities = vim.tbl_deep_extend("force", {}, capabilities, lsp.capabilities or {})
 					lspconfig[server_name].setup(lsp)
 				end,

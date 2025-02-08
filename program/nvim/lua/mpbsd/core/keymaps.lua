@@ -1,194 +1,275 @@
-local VKS = require("mpbsd.core.globals").VKS
-local KMP = {
-	-- Ex mode {{{
+-- MAP {{{1
+local MAP = require("mpbsd.core.globals").MAP
+-- }}}
+-- KEY {{{1
+local KEY = {
+	-- Ex mode {{{2
 	{
 		mod = "n",
 		lhs = "<Leader>;",
 		rhs = ":",
-		dcr = "Ex mode",
+		opt = {
+			noremap = true,
+			silent = false,
+			desc = "Ex mode",
+		},
 	},
 	-- }}}
-	-- [W]rite {{{
+	-- [W]rite {{{2
 	{
 		mod = "n",
 		lhs = "<LocalLeader>w",
 		rhs = "<Cmd>w<CR>",
-		dcr = "[W]rite",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[W]rite",
+		},
 	},
 	-- }}}
-	-- [Q]uit {{{
+	-- [Q]uit {{{2
 	{
 		mod = "n",
 		lhs = "<LocalLeader>q",
 		rhs = "<Cmd>q<CR>",
-		dcr = "[Q]uit",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[Q]uit",
+		},
 	},
 	-- }}}
-	-- [W]rite [A]ll {{{
+	-- [W]rite [A]ll {{{2
 	{
 		mod = "n",
 		lhs = "<Leader>wa",
 		rhs = "<Cmd>wa<CR>",
-		dcr = "[W]rite [A]ll",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[W]rite [A]ll",
+		},
 	},
 	-- }}}
-	-- [Q]uit [A]ll {{{
+	-- [Q]uit [A]ll {{{2
 	{
 		mod = "n",
 		lhs = "<Leader>qa",
 		rhs = "<Cmd>qa<CR>",
-		dcr = "[Q]uit [A]ll",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[Q]uit [A]ll",
+		},
 	},
 	-- }}}
-	-- ZZ {{{
+	-- ZZ {{{2
 	{
 		mod = "n",
 		lhs = "<Leader>zz",
 		rhs = "ZZ<CR>",
-		dcr = "ZZ",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "ZZ",
+		},
 	},
 	-- }}}
-	-- ZQ {{{
+	-- ZQ {{{2
 	{
 		mod = "n",
 		lhs = "<Leader>zq",
 		rhs = "ZQ<CR>",
-		dcr = "ZQ",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "ZQ",
+		},
 	},
 	-- }}}
-	-- [S]plit | {{{
+	-- [S]plit | {{{2
 	{
 		mod = "n",
 		lhs = [[<Leader>s\]],
 		rhs = "<Cmd>vs<CR>",
-		dcr = "[S]plit |",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[S]plit |",
+		},
 	},
 	-- }}}
-	-- [S]plit - {{{
+	-- [S]plit - {{{2
 	{
 		mod = "n",
 		lhs = [[<Leader>s-]],
 		rhs = "<Cmd>sp<CR>",
-		dcr = "[S]plit -",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[S]plit -",
+		},
 	},
 	-- }}}
-	-- Move cursor to the window on the left {{{
+	-- Move cursor to the window on the left {{{2
 	{
 
 		mod = "n",
 		lhs = "<C-H>",
 		rhs = "<C-W><C-H>",
-		dcr = "Move cursor to the window on the left",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Move cursor to the window on the left",
+		},
 	},
 	-- }}}
-	-- Move cursor to the window below {{{
+	-- Move cursor to the window below {{{2
 	{
 		mod = "n",
 		lhs = "<C-J>",
 		rhs = "<C-W><C-J>",
-		dcr = "Move cursor to the window below",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Move cursor to the window below",
+		},
 	},
 	-- }}}
-	-- Move cursor to the window above {{{
+	-- Move cursor to the window above {{{2
 	{
 		mod = "n",
 		lhs = "<C-K>",
 		rhs = "<C-W><C-K>",
-		dcr = "Move cursor to the window above",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Move cursor to the window above",
+		},
 	},
 	-- }}}
-	-- Move cursor to the window on the right {{{
+	-- Move cursor to the window on the right {{{2
 	{
 
 		mod = "n",
 		lhs = "<C-L>",
 		rhs = "<C-W><C-L>",
-		dcr = "Move cursor to the window on the right",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Move cursor to the window on the right",
+		},
 	},
 	-- }}}
-	-- Change window orientation {{{
+	-- Change window orientation {{{2
 	{
 		mod = "n",
-		lhs = "<Leader>wth",
+		lhs = "<Leader>th",
 		rhs = "<C-W>t<C-W>H",
-		dcr = "Change window orientation",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Change window orientation",
+		},
 	},
 	-- }}}
-	-- Change window orientation {{{
+	-- Change window orientation {{{2
 	{
 		mod = "n",
-		lhs = "<Leader>wtk",
+		lhs = "<Leader>tk",
 		rhs = "<C-W>t<C-W>K",
-		dcr = "Change window orientation",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Change window orientation",
+		},
 	},
 	-- }}}
-	-- [L]a[Z]y {{{
+	-- [L]a[Z]y {{{2
 	{
 		mod = "n",
 		lhs = "<Leader>lz",
 		rhs = "<Cmd>Lazy<CR>",
-		dcr = "[L]a[Z]y",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[L]a[Z]y",
+		},
 	},
 	-- }}}
-	-- [M]a[S]on {{{
+	-- [M]a[S]on {{{2
 	{
 		mod = "n",
 		lhs = "<Leader>ms",
 		rhs = "<Cmd>Mason<CR>",
-		dcr = "[M]a[S]on",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[M]a[S]on",
+		},
 	},
 	-- }}}
-	-- Fugitive: 0Git {{{
+	-- Fugitive {{{2
 	{
 		mod = "n",
 		lhs = "<Leader>0g",
 		rhs = "<Cmd>0G<CR>",
-		dcr = "Fugitive: 0Git",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Fugitive",
+		},
 	},
 	-- }}}
-	-- [C]heck [H]ealth {{{
+	-- [C]heck [H]ealth {{{2
 	{
 		mod = "n",
 		lhs = "<LocalLeader>ch",
 		rhs = "<Cmd>checkhealth<CR>",
-		dcr = "[C]heck [H]ealth",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[C]heck [H]ealth",
+		},
 	},
 	-- }}}
-	-- [C]amel [C]ase {{{
+	-- [C]amel [C]ase {{{2
 	{
 		mod = "i",
 		lhs = "<LocalLeader>cc",
 		rhs = "<esc>mmb~`ma",
-		dcr = "[C]amel [C]ase",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[C]amel [C]ase",
+		},
 	},
 	-- }}}
-	-- [T]o [U]pper case {{{
+	-- [T]o [U]pper case {{{2
 	{
 		mod = "i",
 		lhs = "<LocalLeader>tu",
 		rhs = "<esc>mmbgUiw`ma",
-		dcr = "[T]o [U]pper case",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[T]o [U]pper case",
+		},
 	},
 	-- }}}
-	-- [T]o [L]ower case {{{
+	-- [T]o [L]ower case {{{2
 	{
 		mod = "i",
 		lhs = "<LocalLeader>tl",
 		rhs = "<esc>mmbguiw`ma",
-		dcr = "[T]o [L]ower case",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[T]o [L]ower case",
+		},
 	},
 	-- }}}
 }
+-- }}}
 
-local OPT = function(dcr)
-	return { noremap = true, silent = true, desc = dcr }
-end
-
-for _, keymap in pairs(KMP) do
-	local mod = keymap["mod"]
-	local lhs = keymap["lhs"]
-	local rhs = keymap["rhs"]
-	local dcr = keymap["dcr"]
-	local opt = OPT(dcr)
-	VKS(mod, lhs, rhs, opt)
-end
+MAP(KEY)
