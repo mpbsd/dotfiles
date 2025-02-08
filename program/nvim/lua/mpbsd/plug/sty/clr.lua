@@ -1,46 +1,16 @@
 return {
 	{
-		"rebelot/kanagawa.nvim",
-		enable = true,
+		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = {
-			style = "lotus",
-		},
 		config = function()
-			local kanagawa = require("kanagawa")
+			local tokyonight = require("tokyonight")
 
-			kanagawa.setup({
-				compile = false,
-				undercurl = true,
-				commentStyle = { italic = true },
-				functionStyle = {},
-				keywordStyle = { italic = true },
-				statementStyle = { bold = true },
-				typeStyle = {},
-				transparent = false,
-				dimInactive = false,
-				terminalColors = true,
-				colors = {
-					palette = {},
-					theme = {
-						wave = {},
-						lotus = {},
-						dragon = {},
-						all = {},
-					},
-				},
-				overrides = function(colors)
-					return {}
-				end,
-				theme = "wave",
-				background = {
-					dark = "wave",
-					light = "lotus",
-				},
+			tokyonight.setup({
+				style = "night",
 			})
 
-			vim.cmd.colorscheme("kanagawa")
+			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
 }

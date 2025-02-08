@@ -127,28 +127,31 @@ return {
 					-- }}}
 				}
 
-				local opt = {
-					buffer = event.buf,
-					noremap = true,
-					silent = true,
-				}
+				local OPT = function(dcr)
+					local opt = {
+						buffer = event.buf,
+						noremap = true,
+						silent = true,
+						desc = "LSP: " .. dcr,
+					}
+					return opt
+				end
 
-				local evt_id = event.data.client_id
-				local lsp_id = vim.lsp.get_client_by_id(evt_id)
+				local edc = event.data.client_id
+				local vlg = vim.lsp.get_client_by_id(edc)
 
-				if lsp_id then
+				if vlg then
 					for label, keymap in pairs(K) do
 						local mod = keymap["mod"]
 						local lhs = keymap["lhs"]
 						local rhs = keymap["rhs"]
 						local dcr = keymap["dcr"]
-
-						opt["desc"] = "LSP: " .. dcr
+						local opt = OPT(dcr)
 
 						if label == "th" then
-							local lay_hint = vim.lsp.protocol.Methods.textDocument_inlayHint
-							local has_hint = lsp_id.supports_method(lay_hint)
-							if has_hint then
+							local ilh = vim.lsp.protocol.Methods.textDocument_inlayHint
+							local vsi = vlg.supports_method(ilh)
+							if vsi then
 								VKS(mod, lhs, rhs, opt)
 							end
 						else
@@ -156,10 +159,10 @@ return {
 						end
 					end
 
-					local doc_hl = vim.lsp.protocol.Methods.textDocument_documentHighlight
-					local sup_hl = lsp_id.supports_method(doc_hl)
+					local dhl = vim.lsp.protocol.Methods.textDocument_documentHighlight
+					local shl = vlg.supports_method(dhl)
 
-					if sup_hl then
+					if shl then
 						local lsp_highlight = NCA("lsp-highlight", { clear = false })
 
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {

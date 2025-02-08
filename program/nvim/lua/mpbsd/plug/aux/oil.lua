@@ -5,6 +5,7 @@ return {
 	},
 	config = function()
 		local oil = require("oil")
+		local VKS = require("mpbsd.core.globals").VKS
 
 		oil.setup({
 			columns = { "icon" },
@@ -13,6 +14,28 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { noremap = true, silent = true, desc = "Open parent directory" })
+		local K = {
+			-- Open parent directory {{{
+			{
+				mod = "n",
+				lhs = "-",
+				rhs = "<Cmd>Oil<CR>",
+				dcr = "Open parent directory",
+			},
+			-- }}}
+		}
+
+		local OPT = function(dcr)
+			return { noremap = true, silent = true, desc = dcr }
+		end
+
+		for _, keymap in pairs(K) do
+			local mod = keymap["mod"]
+			local lhs = keymap["lhs"]
+			local rhs = keymap["rhs"]
+			local dcr = keymap["dcr"]
+			local opt = OPT(dcr)
+			VKS(mod, lhs, rhs, opt)
+		end
 	end,
 }

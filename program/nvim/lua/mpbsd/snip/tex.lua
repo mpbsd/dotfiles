@@ -1,5 +1,6 @@
+-- clear snippets {{{
 require("luasnip.session.snippet_collection").clear_snippets("tex")
-
+-- }}}
 -- utils {{{1
 local utils = {
 	-- in_math {{{2

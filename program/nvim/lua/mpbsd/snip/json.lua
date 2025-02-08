@@ -1,4 +1,5 @@
 return {
+	-- LaTeX notes metadata {{{
 	s(
 		{
 			trig = "meta",
@@ -29,4 +30,5 @@ return {
 			{ condition = conds.line_begin }
 		)
 	),
+	-- }}}
 }

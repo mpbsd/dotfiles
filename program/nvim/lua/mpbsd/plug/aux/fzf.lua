@@ -10,18 +10,17 @@ return {
 	},
 	config = function()
 		local telescope = require("telescope")
-		local telescope_builtin = require("telescope.builtin")
-		local telescope_actions = require("telescope.actions")
+		local builtin = require("telescope.builtin")
+		local actions = require("telescope.actions")
+		local VKS = require("mpbsd.core.globals").VKS
 
 		telescope.setup({
 			defaults = {
 				mappings = {
-					n = {
-						["q"] = telescope_actions.close,
-					},
 					i = {
-						["<C-J>"] = telescope_actions.move_selection_next,
-						["<C-K>"] = telescope_actions.move_selection_previous,
+						["<Esc>"] = actions.close,
+						["<C-J>"] = actions.move_selection_next,
+						["<C-K>"] = actions.move_selection_previous,
 					},
 				},
 			},
@@ -42,15 +41,72 @@ return {
 
 		telescope.load_extension("fzf")
 
-		vim.keymap.set("n", "<Leader>ff", telescope_builtin.find_files, { noremap = true, silent = true })
-		vim.keymap.set("n", "<Leader>fg", telescope_builtin.live_grep, { noremap = true, silent = true })
-		vim.keymap.set("n", "<Leader>fb", telescope_builtin.buffers, { noremap = true, silent = true })
-		vim.keymap.set("n", "<Leader>fh", telescope_builtin.help_tags, { noremap = true, silent = true })
+		local cfg_nvim = function()
+			builtin.find_files({ cwd = "~/.config/nvim/lua/mpbsd" })
+		end
 
-		vim.keymap.set("n", "<Leader>fm", telescope_builtin.man_pages, { noremap = true, silent = true })
+		local KMP = {
+			-- [F]ind [F]iles {{{
+			{
+				mod = "n",
+				lhs = "<Leader>ff",
+				rhs = builtin.find_files,
+				dcr = "[F]ind [F]iles",
+			},
+			-- }}}
+			-- [L]ive [G]rep {{{
+			{
+				mod = "n",
+				lhs = "<Leader>lg",
+				rhs = builtin.live_grep,
+				dcr = "[L]ive [G]rep",
+			},
+			-- }}}
+			-- [F]ind [B]uffers {{{
+			{
+				mod = "n",
+				lhs = "<Leader>fb",
+				rhs = builtin.buffers,
+				dcr = "[F]ind [B]uffers",
+			},
+			-- }}}
+			-- [F]ind [H]elp {{{
+			{
+				mod = "n",
+				lhs = "<Leader>fh",
+				rhs = builtin.help_tags,
+				dcr = "[F]ind [H]elp",
+			},
+			-- }}}
+			-- [M]an [P]age {{{
+			{
+				mod = "n",
+				lhs = "<Leader>mp",
+				rhs = builtin.man_pages,
+				dcr = "[M]an [P]age",
+			},
+			-- }}}
+			-- [C]onfigure [N]eovim {{{
+			{
+				mod = "n",
+				lhs = "<Leader>cn",
+				rhs = cfg_nvim,
+				dcr = "[E]dit [N]eovim",
+			},
+			-- }}}
+		}
 
-		vim.keymap.set("n", "<Leader>en", function()
-			telescope_builtin.find_files({ cwd = "~/.config/nvim/lua/mpbsd" })
-		end, { noremap = true, silent = true })
+		local OPT = function(dcr)
+			return { noremap = true, silent = true, desc = dcr }
+		end
+
+		for _, kmp in pairs(KMP) do
+			local mod = kmp["mod"]
+			local lhs = kmp["lhs"]
+			local rhs = kmp["rhs"]
+			local dcr = kmp["dcr"]
+			local opt = OPT(dcr)
+			VKS(mod, lhs, rhs, opt)
+		end
 	end,
 }

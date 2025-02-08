@@ -1,9 +1,7 @@
-local augroup = function(group_name)
-	return vim.api.nvim_create_augroup("mpbsd_" .. group_name, { clear = true })
-end
+local NCA = require("mpbsd.core.globals").NCA
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = augroup("highlight_on_yank"),
+	group = NCA("highlight_on_yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -11,7 +9,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("marker_foldmethod"),
+	group = NCA("marker_foldmethod", { clear = true }),
 	pattern = {
 		"c",
 		"h",
@@ -25,7 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	group = augroup("remove_trailing_spaces"),
+	group = NCA("remove_trailing_spaces", { clear = true }),
 	pattern = {
 		"c",
 		"h",
@@ -38,7 +36,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("LaTeXing"),
+	group = NCA("LaTeXing", { clear = true }),
 	pattern = { "tex" },
 	callback = function()
 		vim.o.spell = true
@@ -51,7 +49,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("CSV"),
+	group = NCA("CSV", { clear = true }),
 	pattern = { "csv" },
 	command = [[set nowrap]],
 	desc = "Prepare Neovim for an awesome CSV experience",

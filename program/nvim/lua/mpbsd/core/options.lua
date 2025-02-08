@@ -53,16 +53,16 @@ local OPT = {
 	-- }}}
 }
 
-for sec, _ in pairs(OPT) do
-	if sec == "C" then
-		for _, cmd in pairs(OPT[sec]) do
+for ctg, _ in pairs(OPT) do
+	if ctg == "C" then
+		for _, cmd in pairs(OPT[ctg]) do
 			vim.cmd(cmd)
 		end
 	else
-		for lhs, rhs in pairs(OPT[sec]) do
-			if sec == "G" then
+		for lhs, rhs in pairs(OPT[ctg]) do
+			if ctg == "G" then
 				vim.g[lhs] = rhs
-			elseif sec == "O" then
+			elseif ctg == "O" then
 				vim.opt[lhs] = rhs
 			end
 		end

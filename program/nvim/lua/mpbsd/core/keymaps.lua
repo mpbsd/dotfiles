@@ -1,5 +1,5 @@
-local M = require("mpbsd.core.globals").VKS
-local K = {
+local VKS = require("mpbsd.core.globals").VKS
+local KMP = {
 	-- Ex mode {{{
 	{
 		mod = "n",
@@ -180,12 +180,15 @@ local K = {
 	-- }}}
 }
 
-local opt = { noremap = true, silent = true, desc = dcr }
+local OPT = function(dcr)
+	return { noremap = true, silent = true, desc = dcr }
+end
 
-for _, keymap in pairs(K) do
+for _, keymap in pairs(KMP) do
 	local mod = keymap["mod"]
 	local lhs = keymap["lhs"]
 	local rhs = keymap["rhs"]
 	local dcr = keymap["dcr"]
-	M(mod, lhs, rhs, opt)
+	local opt = OPT(dcr)
+	VKS(mod, lhs, rhs, opt)
 end
