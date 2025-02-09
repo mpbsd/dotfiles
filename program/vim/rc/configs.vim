@@ -8,7 +8,7 @@ if !empty(glob(s:b)) && !empty(glob(s:c))
   let g:airline_section_z = '%P (%06l:%06c)'
   let g:airline_extensions = ['branch', 'tabline']
   let g:airline#extensions#tabline#fnamemod = ':t:.'
-  let g:airline_theme = 'jellybeans'
+  let g:airline_theme = 'minimalist'
 endif
 
 if !empty(glob('~/.vim/plugged/ultisnips/plugin/UltiSnips.vim'))

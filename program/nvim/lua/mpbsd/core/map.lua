@@ -61,7 +61,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Move cursor to the window on the left {{{
+	-- Move cursor to the left window {{{
 	{
 
 		mod = "n",
@@ -70,7 +70,7 @@ local KEY = {
 		opt = {
 			noremap = true,
 			silent = true,
-			desc = "Move cursor to the window on the left",
+			desc = "Move cursor to the left window",
 		},
 	},
 	-- }}}
@@ -98,7 +98,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Move cursor to the window on the right {{{
+	-- Move cursor to the right window {{{
 	{
 
 		mod = "n",
@@ -107,31 +107,31 @@ local KEY = {
 		opt = {
 			noremap = true,
 			silent = true,
-			desc = "Move cursor to the window on the right",
+			desc = "Move cursor to the right window",
 		},
 	},
 	-- }}}
-	-- Change window orientation {{{
+	-- hsplit -> vsplit {{{
 	{
 		mod = "n",
-		lhs = "<Leader>th",
+		lhs = "<Leader>wth",
 		rhs = "<C-W>t<C-W>H",
 		opt = {
 			noremap = true,
 			silent = true,
-			desc = "Change window orientation",
+			desc = "hsplit -> vsplit",
 		},
 	},
 	-- }}}
-	-- Change window orientation {{{
+	-- vsplit -> hsplit {{{
 	{
 		mod = "n",
-		lhs = "<Leader>tk",
+		lhs = "<Leader>wtk",
 		rhs = "<C-W>t<C-W>K",
 		opt = {
 			noremap = true,
 			silent = true,
-			desc = "Change window orientation",
+			desc = "vsplit -> hsplit",
 		},
 	},
 	-- }}}

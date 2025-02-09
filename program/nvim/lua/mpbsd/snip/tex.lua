@@ -291,6 +291,31 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
+	-- labeled chapter {{{
+	s(
+		{
+			trig = [[^cha]],
+			regTrig = true,
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "labeled chapter",
+		},
+		fmta(
+			[[
+	    \chapter{<>}\label{chp:<>}
+	    <>
+	    <>
+			]],
+			{
+				i(1),
+				l(l._1:gsub("%W+", "_"):lower(), { 1 }),
+				t(""),
+				i(0),
+			},
+			{ condition = utils.line_begin }
+		)
+	),
+	-- }}}
 	-- labeled section {{{
 	s(
 		{
