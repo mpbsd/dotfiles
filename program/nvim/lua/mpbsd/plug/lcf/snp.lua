@@ -11,7 +11,6 @@ return {
 	"L3MON4D3/LuaSnip",
 	build = install_jsregexp(),
 	config = function()
-		-- Luasnip {{{1
 		local ls = require("luasnip")
 		local s = ls.snippet
 		local sn = ls.snippet_node
@@ -40,10 +39,7 @@ return {
 		local ms = ls.multi_snippet
 		local k = require("luasnip.nodes.key_indexer").new_key
 		local loaders = require("luasnip.loaders.from_lua")
-		-- }}}
-		-- MAP {{{
-		local MAP = require("mpbsd.core.globals").MAP
-		-- }}}
+		local MAP = require("mpbsd.core.glb").MAP
 
 		loaders.lazy_load({ paths = { "~/.config/nvim/lua/mpbsd/snip" } })
 
@@ -79,9 +75,8 @@ return {
 		}
 		-- }}}
 
-		-- KEY {{{1
 		local KEY = {
-			-- [E]dit [S]nippet {{{2
+			-- [E]dit [S]nippet {{{
 			{
 				mod = "n",
 				lhs = "<LocalLeader>es",
@@ -96,7 +91,6 @@ return {
 			},
 			-- }}}
 		}
-		-- }}}
 
 		MAP(KEY)
 	end,

@@ -1,3 +1,5 @@
+require("luasnip.session.snippet_collection").clear_snippets("python")
+
 return {
 	-- #!/usr/bin/env python3 {{{
 	s({
@@ -9,12 +11,19 @@ return {
 		t(""),
 	}, { condition = conds.line_begin }),
 	-- }}}
-	-- from {{{
+	-- import <> {{{
+	s({
+		trig = "_im",
+		snippetType = "autosnippet",
+		desc = "import <>",
+	}, { t("import"), i(1) }, { condition = conds.line_begin }),
+	-- }}}
+	-- from <> import <> {{{
 	s(
 		{
-			trig = "from",
+			trig = "_fr",
 			snippetType = "autosnippet",
-			desc = "from",
+			desc = "from <> import <>",
 		},
 		fmta(
 			[[
@@ -27,6 +36,20 @@ return {
 		),
 		{ condition = conds.line_begin }
 	),
+	-- }}}
+	-- from datetime import datetime {{{
+	s({
+		trig = "_dt",
+		snippetType = "autosnippet",
+		desc = "from datetime import datetime",
+	}, { t("from datetime import datetime") }, { condition = conds.line_begin }),
+	-- }}}
+	-- import re {{{
+	s({
+		trig = "_re",
+		snippetType = "autosnippet",
+		desc = "import re",
+	}, { t("import re") }, { condition = conds.line_begin }),
 	-- }}}
 	-- def main(): {{{
 	s(
@@ -72,6 +95,13 @@ return {
 		trig = "print",
 		snippetType = "autosnippet",
 		desc = "print()",
-	}, fmta([[print(<>)]], { i(1) }), { condition = conds.line_begin }),
+	}, fmta([[print("<>")]], { i(1) }), { condition = conds.line_begin }),
+	-- }}}
+	-- re.compile() {{{
+	s({
+		trig = "re.c",
+		snippetType = "autosnippet",
+		desc = "re.compile()",
+	}, fmta([[re.compile(r'<>')]], { i(1) })),
 	-- }}}
 }

@@ -1,8 +1,10 @@
+require("luasnip.session.snippet_collection").clear_snippets("json")
+
 return {
 	-- LaTeX notes metadata {{{
 	s(
 		{
-			trig = "meta",
+			trig = "_note",
 			snippetType = "autosnippet",
 			desc = "LaTeX notes metadata",
 		},

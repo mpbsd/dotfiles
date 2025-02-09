@@ -1,4 +1,4 @@
-require("mpbsd.core.globals")
-require("mpbsd.core.options")
-require("mpbsd.core.autocmd")
-require("mpbsd.core.keymaps")
+require("mpbsd.core.glb")
+require("mpbsd.core.opt")
+require("mpbsd.core.aug")
+require("mpbsd.core.map")

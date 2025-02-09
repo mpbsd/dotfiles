@@ -8,8 +8,8 @@ return {
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
-		local LSP = require("mpbsd.core.globals").LSP
-		local FMT = require("mpbsd.core.globals").FMT
+		local LSP = require("mpbsd.core.glb").LSP
+		local FMT = require("mpbsd.core.glb").FMT
 
 		mason.setup({
 			ui = {

@@ -10,7 +10,7 @@ return {
 	config = function()
 		local ts_config = require("nvim-treesitter.configs")
 		local ts_repeat = require("nvim-treesitter.textobjects.repeatable_move")
-		local MAP = require("mpbsd.core.globals").MAP
+		local MAP = require("mpbsd.core.glb").MAP
 
 		ts_config.setup({
 			textobjects = {
@@ -95,8 +95,8 @@ return {
 			},
 		})
 
-		-- KEY {{{
 		local KEY = {
+			-- {{{
 			{
 				mod = { "n", "x", "o" },
 				lhs = ";",
@@ -106,6 +106,8 @@ return {
 					silent = true,
 				},
 			},
+			-- }}}
+			-- {{{
 			{
 				mod = { "n", "x", "o" },
 				lhs = ",",
@@ -115,6 +117,8 @@ return {
 					silent = true,
 				},
 			},
+			-- }}}
+			-- {{{
 			{
 				mod = { "n", "x", "o" },
 				lhs = "f",
@@ -125,6 +129,8 @@ return {
 					expr = true,
 				},
 			},
+			-- }}}
+			-- {{{
 			{
 				mod = { "n", "x", "o" },
 				lhs = "F",
@@ -135,6 +141,8 @@ return {
 					expr = true,
 				},
 			},
+			-- }}}
+			-- {{{
 			{
 				mod = { "n", "x", "o" },
 				lhs = "t",
@@ -145,6 +153,8 @@ return {
 					expr = true,
 				},
 			},
+			-- }}}
+			-- {{{
 			{
 				mod = { "n", "x", "o" },
 				lhs = "T",
@@ -155,8 +165,8 @@ return {
 					expr = true,
 				},
 			},
+			-- }}}
 		}
-		-- }}}
 
 		MAP(KEY)
 	end,

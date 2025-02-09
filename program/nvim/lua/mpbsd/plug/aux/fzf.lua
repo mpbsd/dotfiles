@@ -12,7 +12,7 @@ return {
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 		local actions = require("telescope.actions")
-		local MAP = require("mpbsd.core.globals").MAP
+		local MAP = require("mpbsd.core.glb").MAP
 
 		telescope.setup({
 			defaults = {

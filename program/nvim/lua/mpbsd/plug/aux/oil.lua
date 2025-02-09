@@ -5,7 +5,7 @@ return {
 	},
 	config = function()
 		local oil = require("oil")
-		local MAP = require("mpbsd.core.globals").MAP
+		local MAP = require("mpbsd.core.glb").MAP
 
 		oil.setup({
 			columns = { "icon" },

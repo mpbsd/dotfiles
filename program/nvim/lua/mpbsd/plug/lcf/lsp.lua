@@ -1,11 +1,10 @@
 -- set_lsp_keybindings {{{1
 local set_lsp_keybindings = function(event)
 	local telescope = require("telescope.builtin")
-	local MAP = require("mpbsd.core.globals").MAP
+	local MAP = require("mpbsd.core.glb").MAP
 
-	-- KEY {{{2
 	local KEY = {
-		-- [C]ode [A]ction {{{3
+		-- [C]ode [A]ction {{{2
 		{
 			mod = { "n", "x" },
 			lhs = "<leader>ca",
@@ -18,7 +17,7 @@ local set_lsp_keybindings = function(event)
 			},
 		},
 		-- }}}
-		-- [D]ocument [S]ymbols {{{3
+		-- [D]ocument [S]ymbols {{{2
 		{
 			mod = "n",
 			lhs = "<leader>ds",
@@ -31,10 +30,10 @@ local set_lsp_keybindings = function(event)
 			},
 		},
 		-- }}}
-		-- [G]oto [D]eclaration {{{3
+		-- [G]oto [D]eclaration {{{2
 		{
 			mod = "n",
-			lhs = "<leader>gD",
+			lhs = "gD",
 			rhs = vim.lsp.buf.declaration,
 			opt = {
 				buffer = event.buf,
@@ -44,10 +43,10 @@ local set_lsp_keybindings = function(event)
 			},
 		},
 		-- }}}
-		-- [G]oto [D]efinition {{{3
+		-- [G]oto [D]efinition {{{2
 		{
 			mod = "n",
-			lhs = "<leader>gd",
+			lhs = "gd",
 			rhs = telescope.lsp_definitions,
 			opt = {
 				buffer = event.buf,
@@ -57,10 +56,10 @@ local set_lsp_keybindings = function(event)
 			},
 		},
 		-- }}}
-		-- [G]oto [I]mplementation {{{3
+		-- [G]oto [I]mplementation {{{2
 		{
 			mod = "n",
-			lhs = "<leader>gI",
+			lhs = "gI",
 			rhs = telescope.lsp_implementations,
 			opt = {
 				buffer = event.buf,
@@ -70,10 +69,10 @@ local set_lsp_keybindings = function(event)
 			},
 		},
 		-- }}}
-		-- [G]oto [R]eferences {{{3
+		-- [G]oto [R]eferences {{{2
 		{
 			mod = "n",
-			lhs = "<leader>gr",
+			lhs = "gr",
 			rhs = telescope.lsp_references,
 			opt = {
 				buffer = event.buf,
@@ -83,7 +82,7 @@ local set_lsp_keybindings = function(event)
 			},
 		},
 		-- }}}
-		-- [R]e[n]ame {{{3
+		-- [R]e[n]ame {{{2
 		{
 			mod = "n",
 			lhs = "<leader>rn",
@@ -96,10 +95,10 @@ local set_lsp_keybindings = function(event)
 			},
 		},
 		-- }}}
-		-- [T]ype [D]efinition {{{3
+		-- [T]ype [D]efinition {{{2
 		{
 			mod = "n",
-			lhs = "<leader>td",
+			lhs = "td",
 			rhs = telescope.lsp_type_definitions,
 			opt = {
 				buffer = event.buf,
@@ -109,7 +108,7 @@ local set_lsp_keybindings = function(event)
 			},
 		},
 		-- }}}
-		-- [W]orkspace [S]ymbols {{{3
+		-- [W]orkspace [S]ymbols {{{2
 		{
 			mod = "n",
 			lhs = "<leader>ws",
@@ -123,7 +122,6 @@ local set_lsp_keybindings = function(event)
 		},
 		-- }}}
 	}
-	-- }}}
 
 	if vim.lsp.get_client_by_id(event.data.client_id) then
 		MAP(KEY)
@@ -169,7 +167,7 @@ return {
 			handlers = {
 				function(server_name)
 					local lspconfig = require("lspconfig")
-					local LSP = require("mpbsd.core.globals").LSP
+					local LSP = require("mpbsd.core.glb").LSP
 					local lsp = LSP[server_name] or {}
 					local capabilities = vim.tbl_deep_extend(
 						"force",

@@ -1,9 +1,4 @@
 local OPT = {
-	-- C {{{
-	["C"] = {
-		"colorscheme default",
-	},
-	-- }}}
 	-- G {{{
 	["G"] = {
 		mapleader = [[ ]],
@@ -44,27 +39,21 @@ local OPT = {
 			tab = "│ ",
 			trail = "~",
 		},
-		showmode = false,
 		startofline = true,
 		undofile = true,
 		clipboard = "unnamedplus",
 		lazyredraw = true,
+		showmode = false,
 	},
 	-- }}}
 }
 
 for ctg, _ in pairs(OPT) do
-	if ctg == "C" then
-		for _, cmd in pairs(OPT[ctg]) do
-			vim.cmd(cmd)
-		end
-	else
-		for lhs, rhs in pairs(OPT[ctg]) do
-			if ctg == "G" then
-				vim.g[lhs] = rhs
-			elseif ctg == "O" then
-				vim.opt[lhs] = rhs
-			end
+	for lhs, rhs in pairs(OPT[ctg]) do
+		if ctg == "G" then
+			vim.g[lhs] = rhs
+		elseif ctg == "O" then
+			vim.opt[lhs] = rhs
 		end
 	end
 end

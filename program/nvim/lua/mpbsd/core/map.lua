@@ -1,9 +1,7 @@
--- MAP {{{1
-local MAP = require("mpbsd.core.globals").MAP
--- }}}
--- KEY {{{1
+local MAP = require("mpbsd.core.glb").MAP
+
 local KEY = {
-	-- Ex mode {{{2
+	-- Ex mode {{{
 	{
 		mod = "n",
 		lhs = "<Leader>;",
@@ -15,7 +13,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [W]rite {{{2
+	-- [W]rite {{{
 	{
 		mod = "n",
 		lhs = "<LocalLeader>w",
@@ -27,7 +25,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [Q]uit {{{2
+	-- [Q]uit {{{
 	{
 		mod = "n",
 		lhs = "<LocalLeader>q",
@@ -39,55 +37,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [W]rite [A]ll {{{2
-	{
-		mod = "n",
-		lhs = "<Leader>wa",
-		rhs = "<Cmd>wa<CR>",
-		opt = {
-			noremap = true,
-			silent = true,
-			desc = "[W]rite [A]ll",
-		},
-	},
-	-- }}}
-	-- [Q]uit [A]ll {{{2
-	{
-		mod = "n",
-		lhs = "<Leader>qa",
-		rhs = "<Cmd>qa<CR>",
-		opt = {
-			noremap = true,
-			silent = true,
-			desc = "[Q]uit [A]ll",
-		},
-	},
-	-- }}}
-	-- ZZ {{{2
-	{
-		mod = "n",
-		lhs = "<Leader>zz",
-		rhs = "ZZ<CR>",
-		opt = {
-			noremap = true,
-			silent = true,
-			desc = "ZZ",
-		},
-	},
-	-- }}}
-	-- ZQ {{{2
-	{
-		mod = "n",
-		lhs = "<Leader>zq",
-		rhs = "ZQ<CR>",
-		opt = {
-			noremap = true,
-			silent = true,
-			desc = "ZQ",
-		},
-	},
-	-- }}}
-	-- [S]plit | {{{2
+	-- [S]plit | {{{
 	{
 		mod = "n",
 		lhs = [[<Leader>s\]],
@@ -99,7 +49,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [S]plit - {{{2
+	-- [S]plit - {{{
 	{
 		mod = "n",
 		lhs = [[<Leader>s-]],
@@ -111,7 +61,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Move cursor to the window on the left {{{2
+	-- Move cursor to the window on the left {{{
 	{
 
 		mod = "n",
@@ -124,7 +74,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Move cursor to the window below {{{2
+	-- Move cursor to the window below {{{
 	{
 		mod = "n",
 		lhs = "<C-J>",
@@ -136,7 +86,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Move cursor to the window above {{{2
+	-- Move cursor to the window above {{{
 	{
 		mod = "n",
 		lhs = "<C-K>",
@@ -148,7 +98,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Move cursor to the window on the right {{{2
+	-- Move cursor to the window on the right {{{
 	{
 
 		mod = "n",
@@ -161,7 +111,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Change window orientation {{{2
+	-- Change window orientation {{{
 	{
 		mod = "n",
 		lhs = "<Leader>th",
@@ -173,7 +123,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Change window orientation {{{2
+	-- Change window orientation {{{
 	{
 		mod = "n",
 		lhs = "<Leader>tk",
@@ -185,7 +135,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [L]a[Z]y {{{2
+	-- [L]a[Z]y {{{
 	{
 		mod = "n",
 		lhs = "<Leader>lz",
@@ -197,7 +147,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [M]a[S]on {{{2
+	-- [M]a[S]on {{{
 	{
 		mod = "n",
 		lhs = "<Leader>ms",
@@ -209,7 +159,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Fugitive {{{2
+	-- Fugitive {{{
 	{
 		mod = "n",
 		lhs = "<Leader>0g",
@@ -221,7 +171,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [C]heck [H]ealth {{{2
+	-- [C]heck [H]ealth {{{
 	{
 		mod = "n",
 		lhs = "<LocalLeader>ch",
@@ -233,7 +183,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [C]amel [C]ase {{{2
+	-- [C]amel [C]ase {{{
 	{
 		mod = "i",
 		lhs = "<LocalLeader>cc",
@@ -245,7 +195,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [T]o [U]pper case {{{2
+	-- [T]o [U]pper case {{{
 	{
 		mod = "i",
 		lhs = "<LocalLeader>tu",
@@ -257,7 +207,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [T]o [L]ower case {{{2
+	-- [T]o [L]ower case {{{
 	{
 		mod = "i",
 		lhs = "<LocalLeader>tl",
@@ -270,6 +220,5 @@ local KEY = {
 	},
 	-- }}}
 }
--- }}}
 
 MAP(KEY)

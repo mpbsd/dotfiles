@@ -37,14 +37,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("LaTeXing", { clear = true }),
 	pattern = { "tex" },
 	callback = function()
-		local MAP = require("mpbsd.core.globals").MAP
+		local MAP = require("mpbsd.core.glb").MAP
 
 		vim.o.spell = true
 		vim.g.textwidth = 256
 
-		-- KEY {{{1
 		local KEY = {
-			-- LaTeX: Make draft {{{2
+			-- LaTeX: Make draft {{{
 			{
 				mod = "n",
 				lhs = "<LocalLeader>d",
@@ -56,7 +55,7 @@ vim.api.nvim_create_autocmd("FileType", {
 				},
 			},
 			-- }}}
-			-- LaTeX: Make final {{{2
+			-- LaTeX: Make final {{{
 			{
 				mod = "n",
 				lhs = "<LocalLeader>f",
@@ -68,7 +67,7 @@ vim.api.nvim_create_autocmd("FileType", {
 				},
 			},
 			-- }}}
-			-- LaTeX: Make clean {{{2
+			-- LaTeX: Make clean {{{
 			{
 				mod = "n",
 				lhs = "<LocalLeader>c",
@@ -81,7 +80,6 @@ vim.api.nvim_create_autocmd("FileType", {
 			},
 			-- }}}
 		}
-		-- }}}
 
 		MAP(KEY)
 	end,
