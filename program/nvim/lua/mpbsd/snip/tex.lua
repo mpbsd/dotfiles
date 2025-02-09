@@ -1179,14 +1179,28 @@ return {
 		desc = "greek letters",
 	}, f(utils.greek_letter), { condition = utils.in_math }),
 	-- }}}
-	-- {{{
+	-- bar, hat, overline and vector {{{
 	s(
 		{
-			trig = [[(\S+).(bar|hat|overline)]],
+			trig = [[(\S+).(bar|hat|overline|vec)]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
-			desc = "bar, hat, overline",
+			desc = "bar, hat, overline and vector",
+		},
+		f(function(_, snip)
+			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
+		end),
+		{ condition = conds.in_math }
+	),
+	-- absolute value, norm {{{
+	s(
+		{
+			trig = [[(\S+).(abs|norm)]],
+			regTrig = true,
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "bar, hat, overline and vector",
 		},
 		f(function(_, snip)
 			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
@@ -1221,7 +1235,7 @@ return {
 		desc = "n-dimensional differentiable manifold",
 	}, { t("M^{n}") }, { condition = conds.in_math }),
 	-- }}}
-	-- n-dimensional, simply connected Riemannian space forms {{{
+	-- n-dimensional, simply connected riemannian space forms {{{
 	s(
 		{
 			trig = [[(?<=\\)([ehs])\1]],
