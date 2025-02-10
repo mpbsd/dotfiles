@@ -111,6 +111,30 @@ local KEY = {
 		},
 	},
 	-- }}}
+	-- Show the next matched string at the center of screen {{{
+	{
+		mod = "n",
+		lhs = "n",
+		rhs = "nzz",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Show the next matched string at the center of screen",
+		},
+	},
+	-- }}}
+	-- Show the previous matched string at the center of screen {{{
+	{
+		mod = "n",
+		lhs = "N",
+		rhs = "Nzz",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "Show the previous matched string at the center of screen",
+		},
+	},
+	-- }}}
 	-- hsplit -> vsplit {{{
 	{
 		mod = "n",
