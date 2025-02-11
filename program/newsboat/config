@@ -1,0 +1,18 @@
+auto-reload         yes
+browser             firefox
+cleanup-on-quit     yes
+cleanup-on-quit     yes
+download-path       ~/download
+download-retries    10
+download-timeout    20
+history-limit       100
+max-downloads       10
+player              mpv
+refresh-on-startup  yes
+reload-time         10
+
+color  info                color243  default
+color  listnormal          color8    default
+color  listnormal_unread   color15   default
+color  listfocus           blue      default bold
+color  listfocus_unread    blue      color0

@@ -1,4 +1,4 @@
-nnoremap <Leader>ev :Files ~/.vim/rc<CR>
+nnoremap <Leader>cv :Files ~/.vim/rc<CR>
 nnoremap <Leader>fa :Files ~/.vim/after/plugin<CR>
 nnoremap <Leader>fp :Files ~/.vim/plugged<CR>
 nnoremap <Leader>fs :Snippets<CR>

@@ -95,7 +95,7 @@ return {
 		trig = "print",
 		snippetType = "autosnippet",
 		desc = "print()",
-	}, fmta([[print("<>")]], { i(1) }), { condition = conds.line_begin }),
+	}, fmta([[print(<>)]], { i(1) }), { condition = conds.line_begin }),
 	-- }}}
 	-- re.compile() {{{
 	s({
