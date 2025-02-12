@@ -1,5 +1,5 @@
 auto-reload         yes
-browser             firefox
+browser             "/usr/bin/w3m %u"
 cleanup-on-quit     yes
 cleanup-on-quit     yes
 download-path       ~/download
@@ -10,6 +10,11 @@ max-downloads       10
 player              mpv
 refresh-on-startup  yes
 reload-time         10
+
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
 
 color  info                color243  default
 color  listnormal          color8    default
