@@ -58,3 +58,4 @@ Abolish ultimo{,s} último{,s}
 Abolish unico{,s} único{,s}
 Abolish vizinhanca{,s} vizinhança{,s}
 Abolish ate até
+Abolish avaliac{ao,oes} avaliaç{ão,ões}

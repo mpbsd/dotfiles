@@ -243,10 +243,10 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [R]e[M]ove non ascii chars from the current buffer {{{
+	-- [D]e[C]ode buffer {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>rm",
+		lhs = "<LocalLeader>dc",
 		rhs = function()
 			EQUIVALENCE_TABLE = {
 				["à"] = "a",
@@ -265,7 +265,7 @@ local KEY = {
 			local pos = vim.fn.getpos(".")
 			local reg = vim.fn.getreg("/")
 			for lhs, rhs in pairs(EQUIVALENCE_TABLE) do
-				local subs_cmd = [[1,$s/]] .. lhs .. [[/]] .. rhs .. [[/ge]]
+				local subs_cmd = [[%s/]] .. lhs .. [[/]] .. rhs .. [[/ge]]
 				vim.cmd(subs_cmd)
 			end
 			vim.fn.setpos(".", pos)
@@ -274,25 +274,25 @@ local KEY = {
 		opt = {
 			noremap = true,
 			silent = true,
-			desc = "[R]e[M]ove non ascii chars from the current buffer",
+			desc = "[D]e[C]ode buffer",
 		},
 	},
 	-- }}}
-	-- [T]ri[M] trailing spaces from the current buffer {{{
+	-- [R]remove [T]railing spaces from the current buffer {{{
 	{
 		mod = "n",
 		lhs = "<LocalLeader>tm",
 		rhs = function()
 			local pos = vim.fn.getpos(".")
 			local reg = vim.fn.getreg("/")
-			vim.cmd([[1,$s/\s\+$//e]])
+			vim.cmd([[%s/\s\+$//e]])
 			vim.fn.setpos(".", pos)
 			vim.fn.setreg("/", reg)
 		end,
 		opt = {
 			noremap = true,
 			silent = true,
-			desc = "[T]ri[M] trailing spaces from the current buffer",
+			desc = "[R]emove [T]railing spaces from current buffer",
 		},
 	},
 	-- }}}
