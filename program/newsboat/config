@@ -1,4 +1,4 @@
-auto-reload         yes
+auto-reload         no
 browser             "/usr/bin/w3m %u"
 cleanup-on-quit     yes
 cleanup-on-quit     yes
