@@ -104,7 +104,7 @@ set nofsync
 set wildoptions=pum,tagfile
 
 set background=dark
-colorscheme lunaperche
+colorscheme habamax
 
 if has("gui_running")
   set guioptions-=T

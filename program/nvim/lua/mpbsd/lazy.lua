@@ -19,9 +19,6 @@ require("lazy").setup({
 	},
 	spec = {
 		{
-			import = "mpbsd.plug.aux", -- auxiliary
-		},
-		{
 			import = "mpbsd.plug.lcf", -- lsp, cmp and fmt
 		},
 		{
@@ -29,6 +26,9 @@ require("lazy").setup({
 		},
 		{
 			import = "mpbsd.plug.trs", -- tree-sitter
+		},
+		{
+			import = "mpbsd.plug.utl", -- utils
 		},
 		{
 			import = "mpbsd.plug.vim", -- vimscript plugins

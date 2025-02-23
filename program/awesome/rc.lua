@@ -1,8 +1,8 @@
--- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
--- pcall(require, "luarocks.loader")
+--[[
+    Awesome WM configuration
+    Marcelo Barboza
+--]]
 
--- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
@@ -58,7 +58,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "st"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -591,6 +591,4 @@ end)
 -- my additions to this config
 beautiful.useless_gap = 5
 
--- awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/pictures/wallpapers")
-awful.spawn.with_shell("picom")
-awful.spawn.with_shell("~/.local/share/cargo/bin/alacritty -e tmux")
+awful.spawn.with_shell("st -e tmux")

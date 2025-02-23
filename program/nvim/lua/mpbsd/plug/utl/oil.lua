@@ -9,6 +9,12 @@ return {
 
 		oil.setup({
 			columns = { "icon" },
+			keymaps = {
+				["<C-H>"] = false,
+				["<C-J>"] = false,
+				["<C-K>"] = false,
+				["<C-L>"] = false,
+			},
 			view_options = {
 				show_hidden = true,
 			},
@@ -24,6 +30,18 @@ return {
 					noremap = true,
 					silent = true,
 					desc = "Open parent directory",
+				},
+			},
+			-- }}}
+			-- Open parent directory in floating window {{{
+			{
+				mod = "n",
+				lhs = "<Leader>-",
+				rhs = require("oil").toggle_float,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "Open parent directory in floating window",
 				},
 			},
 			-- }}}
