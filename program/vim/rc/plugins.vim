@@ -1,9 +1,9 @@
-let s:a = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-let s:b = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:a
-let s:c = '~/.vim/autoload/plug.vim'
+let s:A = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let s:B = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:A
+let s:C = '~/.vim/autoload/plug.vim'
 
-if empty(glob(s:c))
-  silent execute s:b
+if empty(glob(s:C))
+  silent execute s:B
 endif
 
 call plug#begin('~/.vim/plugged')
