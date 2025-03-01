@@ -13,6 +13,9 @@ set cursorcolumn
 " highlight the screen line of the cursor
 set cursorline
 
+" Comma-separated list of settings for how 'cursorline' is displayed.
+set cursorlineopt=line
+
 " print the line number in front of each line
 set number
 
