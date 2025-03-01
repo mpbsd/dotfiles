@@ -1,11 +1,21 @@
 [window]
+
 decorations = "None"
-decorations_theme_variant = "Dark"
+decorations_theme_variant = "None"
+
+dimensions.columns = 128
+dimensions.lines = 32
+
 dynamic_padding = true
-opacity = 0.9
 padding.x = 7
 padding.y = 7
 
+opacity = 0.9
+
+position = "None"
+
 [font]
-normal.family = "BlexMono Nerd Font Mono"
+
+normal.family = "Lilex Nerd Font Mono"
+
 size = 14.0

@@ -5,7 +5,6 @@ let s:rc_files = [
       \'caching',
       \'options',
       \'keymaps',
-      \'autocmd',
       \'plugins',
       \'configs',
       \]

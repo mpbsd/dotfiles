@@ -89,33 +89,3 @@ function mpbsd#vim_format_my_BibTeX_file() abort
       let @q = '/^@j:Tab /='
       silent execute 'norm 120@q'
 endfunction
-
-augroup awesome_csv
-  autocmd!
-  autocmd FileType csv setlocal nowrap
-augroup END
-
-augroup awesome_emailing
-  autocmd!
-  autocmd FileType mail setlocal spell
-augroup END
-
-augroup set_foldmethod_to_marker_for_these_filetypes
-  autocmd!
-  autocmd FileType c,h,python,sh,vim setlocal foldmethod=marker
-augroup END
-
-augroup get_rid_of_trailing_spaces
-  autocmd!
-  let s:filetype = [
-        \'json',
-        \'lua',
-        \'py',
-        \'sh',
-        \'txt',
-        \'vim',
-        \]
-  for ft in s:filetype
-    autocmd BufWritePre '*.' . ft :call mpbsd#vim_rm_trailing_spaces_from_cbuffer()
-  endfor
-augroup END
