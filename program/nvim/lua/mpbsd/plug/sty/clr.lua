@@ -1,16 +1,10 @@
 return {
 	{
-		"folke/tokyonight.nvim",
+		"EdenEast/nightfox.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			local tokyonight = require("tokyonight")
-
-			tokyonight.setup({
-				style = "night",
-			})
-
-			vim.cmd.colorscheme("tokyonight")
+			vim.cmd.colorscheme("terafox")
 		end,
 	},
 }

@@ -11,7 +11,7 @@ if !empty(glob(s:A)) && !empty(glob(s:B))
   let g:airline#extensions#tabline#fnamemod = ':t:.'
   if !empty(glob(s:C))
     colorscheme solarized
-    let g:airline_theme = 'solarized'
+    let g:airline_theme = 'solarized_flood'
   else
     colorscheme habamax
     let g:airline_theme = 'minimalist'

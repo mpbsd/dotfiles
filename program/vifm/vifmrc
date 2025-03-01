@@ -1,2 +1,5 @@
 set number
 set relativenumber
+
+nnoremap ,w :w<CR>
+nnoremap ,q :q<CR>
