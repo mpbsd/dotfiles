@@ -1,19 +1,19 @@
-augroup awesome_csv
+augroup mpbsd_csv
   autocmd!
   autocmd FileType csv setlocal nowrap
 augroup END
 
-augroup awesome_emailing
+augroup mpbsd_emailing
   autocmd!
   autocmd FileType mail setlocal spell
 augroup END
 
-augroup set_foldmethod_to_marker_for_these_filetypes
+augroup mpbsd_fdm
   autocmd!
-  autocmd FileType c,h,python,sh,vim setlocal foldmethod=marker
+  autocmd FileType c,h,python,sh,tex,vim setlocal foldmethod=marker
 augroup END
 
-augroup remove_trailing_spaces_based_on_filetype
+augroup mpbsd_trailing_spaces
   autocmd!
   let s:filetype = [
         \'json',
@@ -29,7 +29,7 @@ augroup remove_trailing_spaces_based_on_filetype
   endfor
 augroup END
 
-augroup latex_editing_made_easy
+augroup mpbsd_latex
   autocmd!
   autocmd FileType tex {
     setlocal spell

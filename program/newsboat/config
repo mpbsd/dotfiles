@@ -16,8 +16,15 @@ bind-key j down
 bind-key k up
 bind-key l open
 
-color  info                color243  default
-color  listnormal          color8    default
-color  listnormal_unread   color15   default
-color  listfocus           blue      default bold
-color  listfocus_unread    blue      color0
+color background         default   default
+color listnormal         default   default
+color listnormal_unread  default   default
+color listfocus          black     yellow
+color listfocus_unread   black     yellow
+color info               default   black
+color article            default   default
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default

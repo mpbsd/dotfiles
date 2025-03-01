@@ -8,6 +8,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'altercation/vim-colors-solarized'
+
 Plug 'godlygeek/tabular'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

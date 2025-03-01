@@ -11,7 +11,7 @@ function! mpbsd#vim_search_for_help_in_new(sp_vs_tab) abort
 endfunction
 
 function! mpbsd#vim_find_help_cword(cword) abort
-  execute printf(":vert help %s", a:cword)
+  execute printf(":tab help %s", a:cword)
 endfunction
 
 function mpbsd#vim_rm_trailing_spaces_from_cbuffer() abort
