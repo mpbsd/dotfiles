@@ -13,13 +13,14 @@ augroup set_foldmethod_to_marker_for_these_filetypes
   autocmd FileType c,h,python,sh,vim setlocal foldmethod=marker
 augroup END
 
-augroup get_rid_of_trailing_spaces
+augroup remove_trailing_spaces_based_on_filetype
   autocmd!
   let s:filetype = [
         \'json',
         \'lua',
         \'py',
         \'sh',
+        \'tex',
         \'txt',
         \'vim',
         \]
@@ -42,6 +43,4 @@ augroup latex_editing_made_easy
     nnoremap <LocalLeader>d :Make final<CR>
     nnoremap <LocalLeader>c :Make clean<CR>
   }
-  autocmd BufWritePre *.tex :call mpbsd#vim_rm_trailing_spaces_from_cbuffer()
 augroup END
-

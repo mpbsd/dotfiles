@@ -10,10 +10,8 @@ nnoremap <Leader>fm :Maps<CR>
 
 nnoremap Y y$
 
-nnoremap <Leader>;w :w<CR>
-nnoremap <Leader>;q :q<CR>
-nnoremap <Leader>wa :wa<CR>
-nnoremap <Leader>qa :qa<CR>
+nnoremap <LocalLeader>w :w<CR>
+nnoremap <LocalLeader>q :q<CR>
 
 nnoremap <Leader>s- :sp<CR>
 nnoremap <Leader>s\ :vs<CR>

@@ -1,7 +1,7 @@
-let s:b = '~/.vim/plugged/vim-airline/plugin/airline.vim'
-let s:c = '~/.vim/plugged/vim-airline-themes/plugin/airline-themes.vim'
+let s:A = '~/.vim/plugged/vim-airline/plugin/airline.vim'
+let s:B = '~/.vim/plugged/vim-airline-themes/plugin/airline-themes.vim'
 
-if !empty(glob(s:b)) && !empty(glob(s:c))
+if !empty(glob(s:A)) && !empty(glob(s:B))
   let g:airline_symbols_ascii = 1
   let g:airline_section_c = '%t'
   let g:airline_section_y = '%{&fileencoding} %{&fileformat}'
