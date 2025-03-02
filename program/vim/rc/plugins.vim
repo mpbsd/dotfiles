@@ -1,8 +1,7 @@
 let s:A = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let s:B = '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs ' . s:A
-let s:C = '~/.vim/autoload/plug.vim'
 
-if empty(glob(s:C))
+if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute s:B
 endif
 

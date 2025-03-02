@@ -14,7 +14,7 @@ function! mpbsd#vim_find_help_cword(cword) abort
   execute printf(":tab help %s", a:cword)
 endfunction
 
-function mpbsd#vim_rm_trailing_spaces_from_cbuffer() abort
+function! mpbsd#vim_rm_trailing_spaces_from_cbuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   silent %s/\s\+$//e
@@ -22,7 +22,7 @@ function mpbsd#vim_rm_trailing_spaces_from_cbuffer() abort
   call setreg('/', l:reg)
 endfunction
 
-function mpbsd#table_of_ascii_equivalent_characters() abort
+function! mpbsd#table_of_ascii_equivalent_characters() abort
   " ascii_equivalent_chars {{{
   let l:ascii_equivalent_chars = {
         \  'à': 'a',
@@ -42,7 +42,7 @@ function mpbsd#table_of_ascii_equivalent_characters() abort
   return l:ascii_equivalent_chars
 endfunction
 
-function mpbsd#vim_rm_non_ascii_chars_from_cbuffer() abort
+function! mpbsd#vim_rm_non_ascii_chars_from_cbuffer() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   for [lhs, rhs] in items(mpbsd#table_of_ascii_equivalent_characters())
@@ -52,7 +52,7 @@ function mpbsd#vim_rm_non_ascii_chars_from_cbuffer() abort
   call setreg('/', l:reg)
 endfunction
 
-function mpbsd#vim_format_my_BibTeX_file() abort
+function! mpbsd#vim_format_my_BibTeX_file() abort
   let l:re = {
         \  'key': {
         \    'tgt': '^@.*[0-9]\{4\},$',

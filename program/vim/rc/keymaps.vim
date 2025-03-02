@@ -8,10 +8,12 @@ nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :Ag<CR>
 nnoremap <Leader>fm :Maps<CR>
 
-nnoremap Y y$
-
 nnoremap <LocalLeader>w :w<CR>
 nnoremap <LocalLeader>q :q<CR>
+
+nnoremap Y y$
+
+nnoremap <Leader>; :
 
 nnoremap <Leader>s- :sp<CR>
 nnoremap <Leader>s\ :vs<CR>
@@ -32,6 +34,9 @@ nnoremap <Leader>wtk <C-W>t<C-W>K
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
+nnoremap n nzz
+nnoremap N Nzz
+
 nnoremap <Leader>hs :call mpbsd#vim_search_for_help_in_new('s')<CR>
 nnoremap <Leader>hv :call mpbsd#vim_search_for_help_in_new('v')<CR>
 nnoremap <Leader>ht :call mpbsd#vim_search_for_help_in_new('t')<CR>
@@ -49,3 +54,5 @@ nnoremap <LocalLeader>es :UltiSnipsEdit<CR>
 nnoremap <LocalLeader>x :so %<CR>
 
 nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
+
+nnoremap <Leader>uid :-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)'<CR>

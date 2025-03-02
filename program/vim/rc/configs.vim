@@ -10,6 +10,16 @@ if !empty(glob(s:A)) && !empty(glob(s:B))
   let g:airline_extensions = ['branch', 'tabline']
   let g:airline#extensions#tabline#fnamemod = ':t:.'
   if !empty(glob(s:C))
+    let g:solarized_termcolors = 16
+    let g:solarized_termtrans  = 0
+    let g:solarized_degrade    = 0
+    let g:solarized_bold       = 1
+    let g:solarized_underline  = 0
+    let g:solarized_italic     = 1
+    let g:solarized_contrast   = 'normal'
+    let g:solarized_visibility = 'normal'
+    let g:solarized_hitrail    = 0
+    let g:solarized_menu       = 1
     colorscheme solarized
     let g:airline_theme = 'solarized'
   else

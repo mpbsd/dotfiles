@@ -13,7 +13,7 @@ set cursorcolumn
 " highlight the screen line of the cursor
 set cursorline
 
-" Comma-separated list of settings for how 'cursorline' is displayed.
+" comma-separated list of settings for how cursorline is displayed
 set cursorlineopt=line
 
 " print the line number in front of each line
@@ -62,7 +62,7 @@ set fillchars=fold:·,foldsep:│,vert:│
 set list
 
 " characters for displaying in list mode
-set listchars=eol:↴,extends:>,lead:.,multispace:.,nbsp:+,precedes:<,tab:│\ \,trail:~,nbsp:+
+set listchars=eol:↴,extends:>,lead:.,multispace:.,nbsp:+,precedes:<,tab:│\ \,trail:~
 
 " show (partial) command in the last line of the screen
 set noshowcmd

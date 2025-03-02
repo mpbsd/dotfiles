@@ -3,7 +3,7 @@ augroup mpbsd_csv
   autocmd FileType csv setlocal nowrap
 augroup END
 
-augroup mpbsd_emailing
+augroup mpbsd_mailing
   autocmd!
   autocmd FileType mail setlocal spell
 augroup END
@@ -29,11 +29,10 @@ augroup mpbsd_trailing_spaces
   endfor
 augroup END
 
-augroup mpbsd_latex
+augroup mpbsd_latexing
   autocmd!
   autocmd FileType tex {
     setlocal spell
-    setlocal foldmethod=marker
     nnoremap <LocalLeader>1 :Eintroduction<CR>
     nnoremap <LocalLeader>2 :Eresults<CR>
     nnoremap <LocalLeader>3 :Eexamples<CR>
