@@ -1,6 +1,5 @@
 function! snips#vim_try_insert_skeleton(skel) abort
   execute "normal! i_" . a:skel . "\<C-R>=UltiSnips#ExpandSnippet()\<CR>"
-
   if g:ulti_expand_res == 0
     silent! undo
   endif

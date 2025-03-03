@@ -5,6 +5,7 @@ nnoremap <Leader>fs :Snippets<CR>
 
 nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>gf :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
 nnoremap <Leader>fg :Ag<CR>
 nnoremap <Leader>fm :Maps<CR>
 

@@ -54,6 +54,18 @@ return {
 				},
 			},
 			-- }}}
+			-- [G]it [F]iles {{{
+			{
+				mod = "n",
+				lhs = "<Leader>gf",
+				rhs = builtin.git_files,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[G]it [F]iles",
+				},
+			},
+			-- }}}
 			-- [L]ive [G]rep {{{
 			{
 				mod = "n",

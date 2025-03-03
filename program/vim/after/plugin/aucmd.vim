@@ -10,34 +10,32 @@ augroup END
 
 augroup mpbsd_fdm
   autocmd!
-  autocmd FileType c,h,python,sh,tex,vim setlocal foldmethod=marker
+  autocmd FileType c      setlocal foldmethod=marker
+  autocmd FileType h      setlocal foldmethod=marker
+  autocmd FileType lua    setlocal foldmethod=marker
+  autocmd FileType python setlocal foldmethod=marker
+  autocmd FileType sh     setlocal foldmethod=marker
+  autocmd FileType tex    setlocal foldmethod=marker
+  autocmd FileType vim    setlocal foldmethod=marker
 augroup END
 
 augroup mpbsd_trailing_spaces
   autocmd!
-  let s:filetype = [
-        \'json',
-        \'lua',
-        \'py',
-        \'sh',
-        \'tex',
-        \'txt',
-        \'vim',
-        \]
-  for ft in s:filetype
-    autocmd BufWritePre '*.' . ft :call mpbsd#vim_rm_trailing_spaces_from_cbuffer()
-  endfor
+  autocmd BufWritePre *.c    :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.h    :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.json :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.lua  :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.py   :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.sh   :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.tex  :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.txt  :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.vim  :call mpbsd#rm_trailing_spaces()
 augroup END
 
 augroup mpbsd_latexing
   autocmd!
   autocmd FileType tex {
     setlocal spell
-    nnoremap <LocalLeader>1 :Eintroduction<CR>
-    nnoremap <LocalLeader>2 :Eresults<CR>
-    nnoremap <LocalLeader>3 :Eexamples<CR>
-    nnoremap <LocalLeader>4 :Eproofs<CR>
-    nnoremap <LocalLeader>5 :Ebibliography<CR>
     nnoremap <LocalLeader>f :Make draft<CR>
     nnoremap <LocalLeader>d :Make final<CR>
     nnoremap <LocalLeader>c :Make clean<CR>

@@ -248,7 +248,7 @@ local KEY = {
 		mod = "n",
 		lhs = "<LocalLeader>dc",
 		rhs = function()
-			EQUIVALENCE_TABLE = {
+			local EQUIVALENCE_TABLE = {
 				["à"] = "a",
 				["á"] = "a",
 				["â"] = "a",
@@ -293,6 +293,21 @@ local KEY = {
 			noremap = true,
 			silent = true,
 			desc = "[R]emove [T]railing spaces from current buffer",
+		},
+	},
+	-- }}}
+	-- generate a random alphanumeric pass phrase {{{
+	{
+		mod = "n",
+		lhs = "<Leader>uid",
+		rhs = function()
+			local hex = [[-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)']]
+			vim.cmd(hex)
+		end,
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "generate a random alphanumeric pass phrase",
 		},
 	},
 	-- }}}

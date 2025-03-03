@@ -14,7 +14,7 @@ function! mpbsd#vim_find_help_cword(cword) abort
   execute printf(":tab help %s", a:cword)
 endfunction
 
-function! mpbsd#vim_rm_trailing_spaces_from_cbuffer() abort
+function! mpbsd#rm_trailing_spaces() abort
   let l:pos = getpos('.')
   let l:reg = getreg('/')
   silent %s/\s\+$//e

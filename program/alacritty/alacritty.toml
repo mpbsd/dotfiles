@@ -16,9 +16,9 @@ position = "None"
 
 [font]
 
-normal.family = "Lilex Nerd Font Mono"
+normal.family = "JetBrainsMono Nerd Font"
 
-size = 14.0
+size = 13.0
 
 [colors.primary]
 
