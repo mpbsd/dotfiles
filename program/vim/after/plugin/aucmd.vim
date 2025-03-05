@@ -21,15 +21,15 @@ augroup END
 
 augroup mpbsd_trailing_spaces
   autocmd!
-  autocmd BufWritePre *.c    :call mpbsd#rm_trailing_spaces()
-  autocmd BufWritePre *.h    :call mpbsd#rm_trailing_spaces()
-  autocmd BufWritePre *.json :call mpbsd#rm_trailing_spaces()
-  autocmd BufWritePre *.lua  :call mpbsd#rm_trailing_spaces()
-  autocmd BufWritePre *.py   :call mpbsd#rm_trailing_spaces()
-  autocmd BufWritePre *.sh   :call mpbsd#rm_trailing_spaces()
-  autocmd BufWritePre *.tex  :call mpbsd#rm_trailing_spaces()
-  autocmd BufWritePre *.txt  :call mpbsd#rm_trailing_spaces()
-  autocmd BufWritePre *.vim  :call mpbsd#rm_trailing_spaces()
+  autocmd BufWritePre *.c    :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.h    :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.json :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.lua  :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.py   :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.sh   :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.tex  :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.txt  :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.vim  :call mpbsd#remove_trailing_spaces()
 augroup END
 
 augroup mpbsd_latexing

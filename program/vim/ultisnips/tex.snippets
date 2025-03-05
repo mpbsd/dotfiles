@@ -2,9 +2,6 @@ global !p
 def in_math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 
-def in_text():
-	return vim.eval('vimtex#syntax#in_mathzone()') != '1'
-
 def comment(): 
 	return vim.eval('vimtex#syntax#in_comment()') == '1'
 
@@ -202,12 +199,10 @@ snippet tbl "table" bA
 \end\{table\}$0
 endsnippet
 
-context "in_text()"
 snippet $$ "inline math" wA
 \$${1:${VISUAL}}\$$0
 endsnippet
 
-context "in_text()"
 snippet [[ "display math" wA
 \[
   ${1:${VISUAL}}

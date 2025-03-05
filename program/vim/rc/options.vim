@@ -100,9 +100,6 @@ set lazyredraw
 " don't invoke fsync() after file write
 set nofsync
 
-" don't apply langmap to mapped characters (see: keymap)
-" set nolangremap
-
 " a list of words that change how cmdline-completion is done
 set wildoptions=pum,tagfile
 
@@ -115,6 +112,6 @@ if has("gui_running")
   set guioptions-=l
   set guioptions-=m
   set guioptions-=r
-  set guifont=Lilex\ Nerd\ Font\ Mono\ 14
+  set guifont=JetBrainsMono\ Nerd\ Font\ 14
   set guiheadroom=0
 endif

@@ -1,6 +1,7 @@
 Abolish aa{,s} à{,s}
 Abolish ac{ao,oes} aç{ão,ões}
 Abolish ah{,s} á{,s}
+Abolish aprovac{ao,oes} aprovaç{ão,ões}
 Abolish area{,s} área{,s}
 Abolish ateh até
 Abolish atraves através
@@ -52,6 +53,7 @@ Abolish quimic{a,as,o,os} químic{a,as,o,os}
 Abolish referencia{,s} referência{,s}
 Abolish regi{ao,oes} regi{ão,ões}
 Abolish rela{ao,oes} relaç{ão,ões}
+Abolish reprovac{ao,oes} reprovaç{ão,ões}
 Abolish sao são
 Abolish sec{ao,oes} seç{ão,ões}
 Abolish sehrie{,s} série{,s}
