@@ -52,6 +52,8 @@ nnoremap <Leader>0g :0G<CR>
 
 nnoremap <LocalLeader>es :UltiSnipsEdit<CR>
 
+noremap <LocalLeader>dk :call deadk#toggle_dead_keys()<CR>
+
 nnoremap <LocalLeader>x :so %<CR>
 
 nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
