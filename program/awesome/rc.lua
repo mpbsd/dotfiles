@@ -1,22 +1,17 @@
 --[[
-    Awesome WM configuration
+    Awesome WM
     Marcelo Barboza
 --]]
 
-local gears = require("gears")
-local awful = require("awful")
-require("awful.autofocus")
--- Widget and layout library
-local wibox = require("wibox")
--- Theme handling library
-local beautiful = require("beautiful")
--- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
+local gears         = require("gears")
+local awful         = require("awful")
+                      require("awful.autofocus")
+local wibox         = require("wibox")
+local beautiful     = require("beautiful")
+local naughty       = require("naughty")
+local menubar       = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+                      require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
@@ -55,25 +50,28 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+local theme = function(name)
+	local path = "<HOME>/.config/awesome/themes/<name>/theme.lua"
+	local repl = {
+		["<HOME>"] = os.getenv("HOME"),
+		["<name>"] = name,
+	}
+	return path:gsub("<[^>]+>", repl)
+end
+beautiful.init(theme("zenburn"))
 
 -- This is used later as the default terminal and editor to run.
-terminal = "st"
-editor = os.getenv("EDITOR") or "nvim"
-editor_cmd = terminal .. " -e " .. editor
+local terminal = "st"
+local editor = os.getenv("EDITOR") or "vim"
+local editor_cmd = terminal .. " -e " .. editor
 
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod1"
+local modkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
 	awful.layout.suit.tile,
-	awful.layout.suit.max,
-	awful.layout.suit.floating,
+	-- awful.layout.suit.max,
+	-- awful.layout.suit.floating,
 }
 -- }}}
 
@@ -222,7 +220,7 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Create a tasklist widget
 	s.mytasklist = awful.widget.tasklist({
 		screen = s,
-		filter = awful.widget.tasklist.filter.currenttags,
+		filter = awful.widget.tasklist.filter.focused,
 		buttons = tasklist_buttons,
 	})
 
@@ -517,8 +515,7 @@ awful.rules.rules = {
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
-	-- { rule = { class = "Firefox" },
-	-- properties = { screen = 1, tag = "2" } },
+	{ rule = { class = "Firefox" }, properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
@@ -591,4 +588,5 @@ end)
 -- my additions to this config
 beautiful.useless_gap = 5
 
+awful.spawn.with_shell("picom")
 awful.spawn.with_shell("st -e tmux")
