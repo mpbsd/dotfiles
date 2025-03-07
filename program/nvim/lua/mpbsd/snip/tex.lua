@@ -1218,6 +1218,7 @@ return {
 		end),
 		{ condition = conds.in_math }
 	),
+	-- }}}
 	-- absolute value, norm {{{
 	s(
 		{
