@@ -88,8 +88,8 @@ local utils = {
 	delimiter = function(_, snip, user_args)
 		local D = {
 			p = {
-				lhs = [[(]],
-				rhs = [[)]],
+				lhs = "(",
+				rhs = ")",
 			},
 			b = {
 				lhs = "[",
@@ -1218,6 +1218,7 @@ return {
 		end),
 		{ condition = conds.in_math }
 	),
+	-- }}}
 	-- absolute value, norm {{{
 	s(
 		{
