@@ -22,7 +22,7 @@ if filereadable(expand('~/.vim/plugged/vim-colors-solarized/colors/solarized.vim
 endif
 
 if filereadable(expand('~/.vim/plugged/vim-abolish/plugin/abolish.vim'))
-  let g:abolish_save_file.= expand('~/.vim/after/plugin/abbrv.vim')
+  let g:abolish_save_file = expand('~/.vim/after/plugin/abbrv.vim')
 endif
 
 if filereadable(expand('~/.vim/plugged/ultisnips/plugin/UltiSnips.vim'))

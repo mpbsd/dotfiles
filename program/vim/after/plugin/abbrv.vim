@@ -29,14 +29,17 @@ Abolish eh{,s} é{,s}
 Abolish entao então
 Abolish equivalencia equivalência
 Abolish estah{,s} está{,s}
+Abolish estatistica estatística
 Abolish estatistica{,s} estatística{,s}
 Abolish exercicio{,s} exercício{,s}
+Abolish fisica física
 Abolish fisic{a,o,os} físic{a,o,os}
 Abolish func{ao,oes} funç{ão,ões}
 Abolish goias goiás
 Abolish harmonica{,s} harmônica{,s}
 Abolish hipotese hipótese
 Abolish inscric{ao,oes} inscriç{ão,ões}
+Abolish matematica matemática
 Abolish matematic{a,o,os} matemátic{a,o,os}
 Abolish matricula{,s} matrícula{,s}
 Abolish nao não
@@ -49,6 +52,7 @@ Abolish potencia{,s} potência{,s}
 Abolish proposic{ao,oes} proposiç{ão,ões}
 Abolish proposi{ao,oes} proposiç{ão,ões}
 Abolish propri{a,o} própri{a,o}
+Abolish quimica química
 Abolish quimic{a,as,o,os} químic{a,as,o,os}
 Abolish referencia{,s} referência{,s}
 Abolish regi{ao,oes} regi{ão,ões}
@@ -62,5 +66,7 @@ Abolish sequencia{,s} sequência{,s}
 Abolish soluc{ao,oes} soluç{ão,ões}
 Abolish tambem também
 Abolish ultimo{,s} último{,s}
+Abolish unico{,s} único{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
+Abolish variave{l,is} variáve{l,is}
 Abolish vizinhanca{,s} vizinhança{,s}

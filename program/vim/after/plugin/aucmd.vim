@@ -36,8 +36,8 @@ augroup mpbsd_latexing
   autocmd!
   autocmd FileType tex {
     setlocal spell
-    nnoremap <LocalLeader>f :Make draft<CR>
-    nnoremap <LocalLeader>d :Make final<CR>
     nnoremap <LocalLeader>c :Make clean<CR>
+    nnoremap <LocalLeader>d :Make draft<CR>
+    nnoremap <LocalLeader>f :Make final<CR>
   }
 augroup END
