@@ -19,6 +19,12 @@ return {
 					},
 					diagnostics = {
 						globals = {
+							-- awesomewm
+							"awesome",
+							"client",
+							"root",
+							"screen",
+							-- luasnips
 							"ls",
 							"s",
 							"sn",

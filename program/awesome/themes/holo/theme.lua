@@ -7,7 +7,15 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
+local wall = function(name)
+	local path = "<HOME>/.config/awesome/themes/<name>/wall.png"
+	local repl = {
+		["<HOME>"] = os.getenv("HOME"),
+		["<name>"] = name,
+	}
+	return path:gsub("<[^>]+>", repl)
+end
+theme.wallpaper = wall("holo")
 -- }}}
 
 -- {{{ Styles

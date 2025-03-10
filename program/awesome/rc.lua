@@ -5,12 +5,12 @@
 
 local gears = require("gears")
 local awful = require("awful")
+require("awful.autofocus")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
-require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
@@ -58,7 +58,7 @@ local theme = function(name)
 	}
 	return path:gsub("<[^>]+>", repl)
 end
-beautiful.init(theme("zenburn"))
+beautiful.init(theme("holo"))
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "st"
@@ -70,8 +70,8 @@ local modkey = "Mod1"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
 	awful.layout.suit.tile,
-	-- awful.layout.suit.max,
-	-- awful.layout.suit.floating,
+	awful.layout.suit.floating,
+	awful.layout.suit.max,
 }
 -- }}}
 
@@ -98,6 +98,8 @@ local myawesomemenu = {
 local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
 local menu_terminal = { "open terminal", terminal }
 
+local mymainmenu = nil
+
 if has_fdo then
 	mymainmenu = freedesktop.menu.build({
 		before = { menu_awesome },
@@ -113,7 +115,7 @@ else
 	})
 end
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
+local mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -232,7 +234,7 @@ awful.screen.connect_for_each_screen(function(s)
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			-- mylauncher,
+			mylauncher,
 			s.mytaglist,
 			s.mypromptbox,
 		},
@@ -259,7 +261,7 @@ root.buttons(gears.table.join(
 -- }}}
 
 -- {{{ Key bindings
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
@@ -355,7 +357,7 @@ globalkeys = gears.table.join(
 	end, { description = "show the menubar", group = "launcher" })
 )
 
-clientkeys = gears.table.join(
+local clientkeys = gears.table.join(
 	awful.key({ modkey }, "f", function(c)
 		c.fullscreen = not c.fullscreen
 		c:raise()
@@ -440,7 +442,7 @@ for i = 1, 9 do
 	)
 end
 
-clientbuttons = gears.table.join(
+local clientbuttons = gears.table.join(
 	awful.button({}, 1, function(c)
 		c:emit_signal("request::activate", "mouse_click", { raise = true })
 	end),
