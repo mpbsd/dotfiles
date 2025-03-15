@@ -3,6 +3,14 @@
   By Marcelo Barboza
 --]]
 
+-- local awful = require("awful")
+-- local beautiful = require("beautiful")
+-- local gears = require("gears")
+-- local hotkeys_popup = require("awful.hotkeys_popup")
+-- local menubar = require("menubar")
+-- local naughty = require("naughty")
+-- local wibox = require("wibox")
+
 local themes_path = string.format("%s/.config/awesome/themes/", os.getenv("HOME"))
 local dpi = require("beautiful.xresources").apply_dpi
 
@@ -75,7 +83,11 @@ theme.menu_width = dpi(300)
 -- {{{ Taglist
 theme.taglist_squares_sel = themes_path .. "custom/taglist/squarefz.png"
 theme.taglist_squares_unsel = themes_path .. "custom/taglist/squarez.png"
---theme.taglist_squares_resize = "false"
+theme.taglist_squares_resize = true
+-- }}}
+
+-- {{{ Tasklist
+theme.tasklist_disable_icon = true
 -- }}}
 
 -- {{{ Misc
@@ -133,4 +145,4 @@ theme.titlebar_maximized_button_normal_inactive = themes_path .. "custom/titleba
 
 return theme
 
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
+-- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=4:softtabstop=4:textwidth=80
