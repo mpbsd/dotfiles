@@ -1,26 +1,27 @@
 --[[
-  An Awesome WM theme
+  An Awesome WM theme based on the zenburn theme
   By Marcelo Barboza
 --]]
 
--- local awful = require("awful")
--- local beautiful = require("beautiful")
--- local gears = require("gears")
--- local hotkeys_popup = require("awful.hotkeys_popup")
--- local menubar = require("menubar")
--- local naughty = require("naughty")
--- local wibox = require("wibox")
+local path = function(name)
+	local path = "<HOME>/.config/awesome/themes/<name>/"
+	local repl = {
+		["<HOME>"] = os.getenv("HOME"),
+		["<name>"] = name,
+	}
+	return path:gsub("<[^>]+>", repl)
+end
 
-local themes_path = string.format("%s/.config/awesome/themes/", os.getenv("HOME"))
+local themes_path = path("custom")
 local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "custom/zenburn-background.png"
+theme.wallpaper = themes_path .. "zenburn-background.png"
 -- }}}
 
 -- {{{ Styles
-theme.font = "UbuntuMono Nerd Font Mono 12"
+theme.font = "Terminess Nerd Font Mono 10"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"
@@ -81,68 +82,53 @@ theme.menu_width = dpi(300)
 
 -- {{{ Icons
 -- {{{ Taglist
-theme.taglist_squares_sel = themes_path .. "custom/taglist/squarefz.png"
-theme.taglist_squares_unsel = themes_path .. "custom/taglist/squarez.png"
-theme.taglist_squares_resize = true
--- }}}
-
--- {{{ Tasklist
-theme.tasklist_disable_icon = true
+theme.taglist_squares_sel = themes_path .. "taglist/squarefz.png"
+theme.taglist_squares_unsel = themes_path .. "taglist/squarez.png"
+--theme.taglist_squares_resize = "false"
 -- }}}
 
 -- {{{ Misc
-theme.awesome_icon = themes_path .. "custom/awesome-icon.png"
+theme.awesome_icon = themes_path .. "awesome-icon.png"
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
 -- }}}
 
 -- {{{ Layout
-theme.layout_tile = themes_path .. "custom/layouts/tile.png"
-theme.layout_tileleft = themes_path .. "custom/layouts/tileleft.png"
-theme.layout_tilebottom = themes_path .. "custom/layouts/tilebottom.png"
-theme.layout_tiletop = themes_path .. "custom/layouts/tiletop.png"
-theme.layout_fairv = themes_path .. "custom/layouts/fairv.png"
-theme.layout_fairh = themes_path .. "custom/layouts/fairh.png"
-theme.layout_spiral = themes_path .. "custom/layouts/spiral.png"
-theme.layout_dwindle = themes_path .. "custom/layouts/dwindle.png"
-theme.layout_max = themes_path .. "custom/layouts/max.png"
-theme.layout_fullscreen = themes_path .. "custom/layouts/fullscreen.png"
-theme.layout_magnifier = themes_path .. "custom/layouts/magnifier.png"
-theme.layout_floating = themes_path .. "custom/layouts/floating.png"
-theme.layout_cornernw = themes_path .. "custom/layouts/cornernw.png"
-theme.layout_cornerne = themes_path .. "custom/layouts/cornerne.png"
-theme.layout_cornersw = themes_path .. "custom/layouts/cornersw.png"
-theme.layout_cornerse = themes_path .. "custom/layouts/cornerse.png"
+theme.layout_tile = themes_path .. "layouts/tile.png"
+theme.layout_floating = themes_path .. "layouts/floating.png"
+theme.layout_max = themes_path .. "layouts/max.png"
 -- }}}
 
 -- {{{ Titlebar
-theme.titlebar_close_button_focus = themes_path .. "custom/titlebar/close_focus.png"
-theme.titlebar_close_button_normal = themes_path .. "custom/titlebar/close_normal.png"
+theme.titlebar_close_button_focus = themes_path .. "titlebar/close_focus.png"
+theme.titlebar_close_button_normal = themes_path .. "titlebar/close_normal.png"
 
 theme.titlebar_minimize_button_normal = themes_path .. "default/titlebar/minimize_normal.png"
 theme.titlebar_minimize_button_focus = themes_path .. "default/titlebar/minimize_focus.png"
 
-theme.titlebar_ontop_button_focus_active = themes_path .. "custom/titlebar/ontop_focus_active.png"
-theme.titlebar_ontop_button_normal_active = themes_path .. "custom/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_inactive = themes_path .. "custom/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_inactive = themes_path .. "custom/titlebar/ontop_normal_inactive.png"
+theme.titlebar_ontop_button_focus_active = themes_path .. "titlebar/ontop_focus_active.png"
+theme.titlebar_ontop_button_normal_active = themes_path .. "titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_inactive = themes_path .. "titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_inactive = themes_path .. "titlebar/ontop_normal_inactive.png"
 
-theme.titlebar_sticky_button_focus_active = themes_path .. "custom/titlebar/sticky_focus_active.png"
-theme.titlebar_sticky_button_normal_active = themes_path .. "custom/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_inactive = themes_path .. "custom/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_inactive = themes_path .. "custom/titlebar/sticky_normal_inactive.png"
+theme.titlebar_sticky_button_focus_active = themes_path .. "titlebar/sticky_focus_active.png"
+theme.titlebar_sticky_button_normal_active = themes_path .. "titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_inactive = themes_path .. "titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_inactive = themes_path .. "titlebar/sticky_normal_inactive.png"
 
-theme.titlebar_floating_button_focus_active = themes_path .. "custom/titlebar/floating_focus_active.png"
-theme.titlebar_floating_button_normal_active = themes_path .. "custom/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_inactive = themes_path .. "custom/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_inactive = themes_path .. "custom/titlebar/floating_normal_inactive.png"
+theme.titlebar_floating_button_focus_active = themes_path .. "titlebar/floating_focus_active.png"
+theme.titlebar_floating_button_normal_active = themes_path .. "titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_inactive = themes_path .. "titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_inactive = themes_path .. "titlebar/floating_normal_inactive.png"
 
-theme.titlebar_maximized_button_focus_active = themes_path .. "custom/titlebar/maximized_focus_active.png"
-theme.titlebar_maximized_button_normal_active = themes_path .. "custom/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_inactive = themes_path .. "custom/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_inactive = themes_path .. "custom/titlebar/maximized_normal_inactive.png"
+theme.titlebar_maximized_button_focus_active = themes_path .. "titlebar/maximized_focus_active.png"
+theme.titlebar_maximized_button_normal_active = themes_path .. "titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_inactive = themes_path .. "titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_inactive = themes_path .. "titlebar/maximized_normal_inactive.png"
 -- }}}
 -- }}}
+
+theme.tasklist_disable_icon = true
 
 return theme
 
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=4:softtabstop=4:textwidth=80
+-- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80
