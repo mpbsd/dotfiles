@@ -3,16 +3,9 @@
   By Marcelo Barboza
 --]]
 
-local path = function(name)
-	local path = "<HOME>/.config/awesome/themes/<name>/"
-	local repl = {
-		["<HOME>"] = os.getenv("HOME"),
-		["<name>"] = name,
-	}
-	return path:gsub("<[^>]+>", repl)
-end
+local vars = require("core.vars")
 
-local themes_path = path("custom")
+local themes_path = vars.theme_path("custom")
 local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
