@@ -69,8 +69,8 @@ theme.mouse_finder_color = "#CC9393"
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_height = dpi(30)
-theme.menu_width = dpi(300)
+theme.menu_height = dpi(20)
+theme.menu_width = dpi(120)
 -- }}}
 
 -- {{{ Icons

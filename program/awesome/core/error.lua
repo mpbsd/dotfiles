@@ -1,10 +1,10 @@
-local naughty = require("core.libs").naughty
+local libs = require("core.libs")
 
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-	naughty.notify({
-		preset = naughty.config.presets.critical,
+	libs.naughty.notify({
+		preset = libs.naughty.config.presets.critical,
 		title = "Oops, there were errors during startup!",
 		text = awesome.startup_errors,
 	})
@@ -19,8 +19,8 @@ do
 			return
 		end
 		in_error = true
-		naughty.notify({
-			preset = naughty.config.presets.critical,
+		libs.naughty.notify({
+			preset = libs.naughty.config.presets.critical,
 			title = "Oops, an error happened!",
 			text = tostring(err),
 		})

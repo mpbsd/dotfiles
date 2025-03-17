@@ -1,80 +1,27 @@
 -- Standard awesome library
 local libs = require("core.libs")
 local vars = require("core.vars")
+local menu = require("core.menu")
 
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 
--- Load Debian menu entries
-local debian = require("debian.menu")
-local has_fdo, freedesktop = pcall(require, "freedesktop")
-
 -- Error handling
 require("core.error")
 
--- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 libs.beautiful.init(vars.theme_conf("custom"))
-
--- This is used later as the default terminal and editor to run.
-local terminal = vars.terminal
-local editor = vars.editor
-local editor_cmd = vars.terminal .. " -e " .. editor
-
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-local modkey = vars.modkey
-
--- Table of layouts to cover with libs.awful.layout.inc, order matters.
+-- Table of layouts
 libs.awful.layout.layouts = vars.layouts
--- }}}
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-local myawesomemenu = {
-	{
-		"hotkeys",
-		function()
-			libs.hotkeys_popup.show_help(nil, libs.awful.screen.focused())
-		end,
-	},
-	{ "manual", terminal .. " -e man awesome" },
-	{ "edit config", editor_cmd .. " " .. awesome.conffile },
-	{ "restart", awesome.restart },
-	{
-		"quit",
-		function()
-			awesome.quit()
-		end,
-	},
-}
-
-local menu_awesome = { "awesome", myawesomemenu, libs.beautiful.awesome_icon }
-local menu_terminal = { "open terminal", terminal }
-
-local mymainmenu = nil
-if has_fdo then
-	mymainmenu = freedesktop.menu.build({
-		before = { menu_awesome },
-		after = { menu_terminal },
-	})
-else
-	mymainmenu = libs.awful.menu({
-		items = {
-			menu_awesome,
-			{ "Debian", debian.menu.Debian_menu.Debian },
-			menu_terminal,
-		},
-	})
-end
+local mymainmenu = libs.awful.menu(menu)
 
 local mylauncher = libs.awful.widget.launcher({ image = libs.beautiful.awesome_icon, menu = mymainmenu })
 
 -- libs.Menubar configuration
-libs.menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+libs.menubar.utils.terminal = vars.terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- Keyboard map indicator and switcher
@@ -89,13 +36,13 @@ local taglist_buttons = libs.gears.table.join(
 	libs.awful.button({}, 1, function(t)
 		t:view_only()
 	end),
-	libs.awful.button({ modkey }, 1, function(t)
+	libs.awful.button({ vars.modkey }, 1, function(t)
 		if client.focus then
 			client.focus:move_to_tag(t)
 		end
 	end),
 	libs.awful.button({}, 3, libs.awful.tag.viewtoggle),
-	libs.awful.button({ modkey }, 3, function(t)
+	libs.awful.button({ vars.modkey }, 3, function(t)
 		if client.focus then
 			client.focus:toggle_tag(t)
 		end
@@ -218,41 +165,46 @@ root.buttons(libs.gears.table.join(
 
 -- {{{ Key bindings
 local globalkeys = libs.gears.table.join(
-	libs.awful.key({ modkey }, "s", libs.hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
-	libs.awful.key({ modkey }, "Left", libs.awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	libs.awful.key({ modkey }, "Right", libs.awful.tag.viewnext, { description = "view next", group = "tag" }),
-	libs.awful.key({ modkey }, "Escape", libs.awful.tag.history.restore, { description = "go back", group = "tag" }),
+	libs.awful.key({ vars.modkey }, "s", libs.hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+	libs.awful.key({ vars.modkey }, "Left", libs.awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	libs.awful.key({ vars.modkey }, "Right", libs.awful.tag.viewnext, { description = "view next", group = "tag" }),
+	libs.awful.key(
+		{ vars.modkey },
+		"Escape",
+		libs.awful.tag.history.restore,
+		{ description = "go back", group = "tag" }
+	),
 
-	libs.awful.key({ modkey }, "j", function()
+	libs.awful.key({ vars.modkey }, "j", function()
 		libs.awful.client.focus.byidx(1)
 	end, { description = "focus next by index", group = "client" }),
-	libs.awful.key({ modkey }, "k", function()
+	libs.awful.key({ vars.modkey }, "k", function()
 		libs.awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
-	libs.awful.key({ modkey }, "w", function()
+	libs.awful.key({ vars.modkey }, "w", function()
 		mymainmenu:show()
 	end, { description = "show main menu", group = "awesome" }),
 
 	-- Layout manipulation
-	libs.awful.key({ modkey, "Shift" }, "j", function()
+	libs.awful.key({ vars.modkey, "Shift" }, "j", function()
 		libs.awful.client.swap.byidx(1)
 	end, { description = "swap with next client by index", group = "client" }),
-	libs.awful.key({ modkey, "Shift" }, "k", function()
+	libs.awful.key({ vars.modkey, "Shift" }, "k", function()
 		libs.awful.client.swap.byidx(-1)
 	end, { description = "swap with previous client by index", group = "client" }),
-	libs.awful.key({ modkey, "Control" }, "j", function()
+	libs.awful.key({ vars.modkey, "Control" }, "j", function()
 		libs.awful.screen.focus_relative(1)
 	end, { description = "focus the next screen", group = "screen" }),
-	libs.awful.key({ modkey, "Control" }, "k", function()
+	libs.awful.key({ vars.modkey, "Control" }, "k", function()
 		libs.awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
 	libs.awful.key(
-		{ modkey },
+		{ vars.modkey },
 		"u",
 		libs.awful.client.urgent.jumpto,
 		{ description = "jump to urgent client", group = "client" }
 	),
-	libs.awful.key({ modkey }, "Tab", function()
+	libs.awful.key({ vars.modkey }, "Tab", function()
 		libs.awful.client.focus.history.previous()
 		if client.focus then
 			client.focus:raise()
@@ -260,38 +212,43 @@ local globalkeys = libs.gears.table.join(
 	end, { description = "go back", group = "client" }),
 
 	-- Standard program
-	libs.awful.key({ modkey }, "Return", function()
-		libs.awful.spawn(terminal)
+	libs.awful.key({ vars.modkey, "Shift" }, "Return", function()
+		libs.awful.spawn(vars.terminal)
 	end, { description = "open a terminal", group = "launcher" }),
-	libs.awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-	libs.awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	libs.awful.key(
+		{ vars.modkey, "Control" },
+		"r",
+		awesome.restart,
+		{ description = "reload awesome", group = "awesome" }
+	),
+	libs.awful.key({ vars.modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
-	libs.awful.key({ modkey }, "l", function()
+	libs.awful.key({ vars.modkey }, "l", function()
 		libs.awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
-	libs.awful.key({ modkey }, "h", function()
+	libs.awful.key({ vars.modkey }, "h", function()
 		libs.awful.tag.incmwfact(-0.05)
 	end, { description = "decrease master width factor", group = "layout" }),
-	libs.awful.key({ modkey, "Shift" }, "h", function()
+	libs.awful.key({ vars.modkey, "Shift" }, "h", function()
 		libs.awful.tag.incnmaster(1, nil, true)
 	end, { description = "increase the number of master clients", group = "layout" }),
-	libs.awful.key({ modkey, "Shift" }, "l", function()
+	libs.awful.key({ vars.modkey, "Shift" }, "l", function()
 		libs.awful.tag.incnmaster(-1, nil, true)
 	end, { description = "decrease the number of master clients", group = "layout" }),
-	libs.awful.key({ modkey, "Control" }, "h", function()
+	libs.awful.key({ vars.modkey, "Control" }, "h", function()
 		libs.awful.tag.incncol(1, nil, true)
 	end, { description = "increase the number of columns", group = "layout" }),
-	libs.awful.key({ modkey, "Control" }, "l", function()
+	libs.awful.key({ vars.modkey, "Control" }, "l", function()
 		libs.awful.tag.incncol(-1, nil, true)
 	end, { description = "decrease the number of columns", group = "layout" }),
-	libs.awful.key({ modkey }, "space", function()
+	libs.awful.key({ vars.modkey }, "space", function()
 		libs.awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
-	libs.awful.key({ modkey, "Shift" }, "space", function()
+	libs.awful.key({ vars.modkey, "Shift" }, "space", function()
 		libs.awful.layout.inc(-1)
 	end, { description = "select previous", group = "layout" }),
 
-	libs.awful.key({ modkey, "Control" }, "n", function()
+	libs.awful.key({ vars.modkey, "Control" }, "n", function()
 		local c = libs.awful.client.restore()
 		-- Focus restored client
 		if c then
@@ -300,11 +257,11 @@ local globalkeys = libs.gears.table.join(
 	end, { description = "restore minimized", group = "client" }),
 
 	-- Prompt
-	libs.awful.key({ modkey }, "r", function()
+	libs.awful.key({ vars.modkey }, "r", function()
 		libs.awful.screen.focused().mypromptbox:run()
 	end, { description = "run prompt", group = "launcher" }),
 
-	libs.awful.key({ modkey }, "x", function()
+	libs.awful.key({ vars.modkey }, "x", function()
 		libs.awful.prompt.run({
 			prompt = "Run Lua code: ",
 			textbox = libs.awful.screen.focused().mypromptbox.widget,
@@ -313,48 +270,48 @@ local globalkeys = libs.gears.table.join(
 		})
 	end, { description = "lua execute prompt", group = "awesome" }),
 	-- libs.Menubar
-	libs.awful.key({ modkey }, "p", function()
+	libs.awful.key({ vars.modkey }, "p", function()
 		libs.menubar.show()
 	end, { description = "show the libs.menubar", group = "launcher" })
 )
 
 local clientkeys = libs.gears.table.join(
-	libs.awful.key({ modkey }, "f", function(c)
+	libs.awful.key({ vars.modkey }, "f", function(c)
 		c.fullscreen = not c.fullscreen
 		c:raise()
 	end, { description = "toggle fullscreen", group = "client" }),
-	libs.awful.key({ modkey, "Shift" }, "c", function(c)
+	libs.awful.key({ vars.modkey, "Shift" }, "c", function(c)
 		c:kill()
 	end, { description = "close", group = "client" }),
 	libs.awful.key(
-		{ modkey, "Control" },
+		{ vars.modkey, "Control" },
 		"space",
 		libs.awful.client.floating.toggle,
 		{ description = "toggle floating", group = "client" }
 	),
-	libs.awful.key({ modkey, "Control" }, "Return", function(c)
+	libs.awful.key({ vars.modkey, "Control" }, "Return", function(c)
 		c:swap(libs.awful.client.getmaster())
 	end, { description = "move to master", group = "client" }),
-	libs.awful.key({ modkey }, "o", function(c)
+	libs.awful.key({ vars.modkey }, "o", function(c)
 		c:move_to_screen()
 	end, { description = "move to screen", group = "client" }),
-	libs.awful.key({ modkey }, "t", function(c)
+	libs.awful.key({ vars.modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
-	libs.awful.key({ modkey }, "n", function(c)
+	libs.awful.key({ vars.modkey }, "n", function(c)
 		-- The client currently has the input focus, so it cannot be
 		-- minimized, since minimized clients can't have the focus.
 		c.minimized = true
 	end, { description = "minimize", group = "client" }),
-	libs.awful.key({ modkey }, "m", function(c)
+	libs.awful.key({ vars.modkey }, "m", function(c)
 		c.maximized = not c.maximized
 		c:raise()
 	end, { description = "(un)maximize", group = "client" }),
-	libs.awful.key({ modkey, "Control" }, "m", function(c)
+	libs.awful.key({ vars.modkey, "Control" }, "m", function(c)
 		c.maximized_vertical = not c.maximized_vertical
 		c:raise()
 	end, { description = "(un)maximize vertically", group = "client" }),
-	libs.awful.key({ modkey, "Shift" }, "m", function(c)
+	libs.awful.key({ vars.modkey, "Shift" }, "m", function(c)
 		c.maximized_horizontal = not c.maximized_horizontal
 		c:raise()
 	end, { description = "(un)maximize horizontally", group = "client" })
@@ -367,7 +324,7 @@ for i = 1, 9 do
 	globalkeys = libs.gears.table.join(
 		globalkeys,
 		-- View tag only.
-		libs.awful.key({ modkey }, "#" .. i + 9, function()
+		libs.awful.key({ vars.modkey }, "#" .. i + 9, function()
 			local screen = libs.awful.screen.focused()
 			local tag = screen.tags[i]
 			if tag then
@@ -375,7 +332,7 @@ for i = 1, 9 do
 			end
 		end, { description = "view tag #" .. i, group = "tag" }),
 		-- Toggle tag display.
-		libs.awful.key({ modkey, "Control" }, "#" .. i + 9, function()
+		libs.awful.key({ vars.modkey, "Control" }, "#" .. i + 9, function()
 			local screen = libs.awful.screen.focused()
 			local tag = screen.tags[i]
 			if tag then
@@ -383,7 +340,7 @@ for i = 1, 9 do
 			end
 		end, { description = "toggle tag #" .. i, group = "tag" }),
 		-- Move client to tag.
-		libs.awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
+		libs.awful.key({ vars.modkey, "Shift" }, "#" .. i + 9, function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
 				if tag then
@@ -392,7 +349,7 @@ for i = 1, 9 do
 			end
 		end, { description = "move focused client to tag #" .. i, group = "tag" }),
 		-- Toggle tag on focused client.
-		libs.awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function()
+		libs.awful.key({ vars.modkey, "Control", "Shift" }, "#" .. i + 9, function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
 				if tag then
@@ -407,11 +364,11 @@ local clientbuttons = libs.gears.table.join(
 	libs.awful.button({}, 1, function(c)
 		c:emit_signal("request::activate", "mouse_click", { raise = true })
 	end),
-	libs.awful.button({ modkey }, 1, function(c)
+	libs.awful.button({ vars.modkey }, 1, function(c)
 		c:emit_signal("request::activate", "mouse_click", { raise = true })
 		libs.awful.mouse.client.move(c)
 	end),
-	libs.awful.button({ modkey }, 3, function(c)
+	libs.awful.button({ vars.modkey }, 3, function(c)
 		c:emit_signal("request::activate", "mouse_click", { raise = true })
 		libs.awful.mouse.client.resize(c)
 	end)
@@ -446,6 +403,7 @@ libs.awful.rules.rules = {
 				"DTA", -- Firefox addon DownThemAll.
 				"copyq", -- Includes session name in class.
 				"pinentry",
+				"gcr-prompter",
 			},
 			class = {
 				"Arandr",
@@ -458,6 +416,7 @@ libs.awful.rules.rules = {
 				"Wpa_gui",
 				"veromix",
 				"xtightvncviewer",
+				"Gcr-prompter",
 			},
 
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -471,15 +430,34 @@ libs.awful.rules.rules = {
 				"pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
 			},
 		},
-		properties = { floating = true },
+		properties = {
+			floating = true,
+		},
 	},
 
 	-- Add titlebars to normal clients and dialogs
-	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
+	{
+		rule_any = {
+			type = {
+				"normal",
+				"dialog",
+			},
+		},
+		properties = {
+			titlebars_enabled = false,
+		},
+	},
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
-	-- { rule = { class = "Firefox" },
-	--   properties = { screen = 1, tag = "2" } },
+	{
+		rule = {
+			class = "Firefox",
+		},
+		properties = {
+			screen = 1,
+			tag = "2",
+		},
+	},
 }
 -- }}}
 
