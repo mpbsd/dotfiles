@@ -10,7 +10,10 @@ require("awful.hotkeys_popup.keys")
 require("core.fail")
 
 -- Themes define colours, icons, font and wallpapers.
-libs.beautiful.init(vars.theme_conf("custom"))
+local chosen_theme = {
+	"custom",
+}
+libs.beautiful.init(vars.theme_conf(chosen_theme[1]))
 
 -- Table of layouts
 libs.awful.layout.layouts = vars.layouts
@@ -275,7 +278,7 @@ local globalkeys = libs.gears.table.join(
 	end, { description = "lua execute prompt", group = "awesome" }),
 	-- libs.Menubar
 	libs.awful.key({ vars.modkey }, "p", function()
-		libs.menubar.show()
+		libs.awful.spawn("dmenu_run")
 	end, { description = "show the libs.menubar", group = "launcher" })
 )
 
