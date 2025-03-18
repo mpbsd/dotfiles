@@ -44,7 +44,7 @@ local G = {
 				},
 				{
 					"files",
-					vars.terminal .. " -e vifm",
+					vars.terminal .. " -e lf",
 				},
 				{
 					"editor",

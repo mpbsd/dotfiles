@@ -881,7 +881,7 @@ libs.awful.rules.rules = {
 	-- Set Chromium to always map on the tag named "2" on screen 1.
 	{
 		rule = {
-			class = "chromium",
+			class = "Chromium",
 		},
 		properties = {
 			screen = 1,
