@@ -14,7 +14,7 @@ theme.wallpaper = themes_path .. "wallpaper.png"
 -- }}}
 
 -- {{{ Styles
-theme.font = "UbuntuMono Nerd Font Mono 9"
+theme.font = "Terminess Nerd Font Mono 9"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"
@@ -27,7 +27,7 @@ theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
-theme.useless_gap = dpi(4)
+theme.useless_gap = dpi(8)
 theme.border_width = dpi(2)
 theme.border_normal = "#3F3F3F"
 theme.border_focus = "#6F6F6F"
