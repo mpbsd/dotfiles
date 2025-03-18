@@ -800,7 +800,7 @@ local clientbuttons = libs.gears.table.join(
 root.keys(globalkeys)
 -- }}}
 
--- {{{ Rules
+-- Rules {{{
 -- Rules to apply to new clients (through the "manage" signal).
 libs.awful.rules.rules = {
 	-- All clients will match this rule.
@@ -825,7 +825,6 @@ libs.awful.rules.rules = {
 				"DTA", -- Firefox addon DownThemAll.
 				"copyq", -- Includes session name in class.
 				"pinentry",
-				"gcr-prompter",
 			},
 			class = {
 				"Arandr",
@@ -838,7 +837,6 @@ libs.awful.rules.rules = {
 				"Wpa_gui",
 				"veromix",
 				"xtightvncviewer",
-				"Gcr-prompter",
 			},
 
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -870,10 +868,30 @@ libs.awful.rules.rules = {
 		},
 	},
 
+	-- Set st to always map on the tag named "2" on screen 1.
+	{
+		rule = {
+			class = "st",
+		},
+		properties = {
+			screen = 1,
+			tag = "1",
+		},
+	},
+	-- Set Chromium to always map on the tag named "2" on screen 1.
+	{
+		rule = {
+			class = "chromium",
+		},
+		properties = {
+			screen = 1,
+			tag = "2",
+		},
+	},
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	{
 		rule = {
-			class = "Firefox",
+			class = "firefox-esr",
 		},
 		properties = {
 			screen = 1,

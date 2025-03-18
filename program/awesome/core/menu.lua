@@ -43,8 +43,8 @@ local G = {
 					"calibre",
 				},
 				{
-					"dolphin",
-					"dolphin",
+					"files",
+					vars.terminal .. " -e vifm",
 				},
 				{
 					"editor",

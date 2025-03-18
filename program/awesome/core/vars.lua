@@ -22,9 +22,9 @@ local M = {
 	end,
 	-- }}}
 	modkey = "Mod1",
-	terminal = "alacritty",
+	terminal = "st",
 	editor = "vi",
-	editor_cmd = "alacritty -e vi",
+	editor_cmd = "st -e vi",
 	layouts = {
 		libs.awful.layout.suit.tile,
 		libs.awful.layout.suit.floating,
