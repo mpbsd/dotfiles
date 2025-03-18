@@ -7,7 +7,7 @@ require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 
 -- Error handling
-require("core.error")
+require("core.fail")
 
 -- Themes define colours, icons, font and wallpapers.
 libs.beautiful.init(vars.theme_conf("custom"))
