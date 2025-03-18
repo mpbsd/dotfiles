@@ -216,7 +216,6 @@ local globalkeys = libs.gears.table.join(
 			group = "tag",
 		}
 	),
-
 	libs.awful.key(
 		{
 			vars.modkey,
@@ -256,7 +255,6 @@ local globalkeys = libs.gears.table.join(
 			group = "awesome",
 		}
 	),
-
 	-- Layout manipulation
 	libs.awful.key(
 		{
@@ -341,7 +339,6 @@ local globalkeys = libs.gears.table.join(
 			group = "client",
 		}
 	),
-
 	-- Standard program
 	libs.awful.key(
 		{
@@ -381,7 +378,6 @@ local globalkeys = libs.gears.table.join(
 			group = "awesome",
 		}
 	),
-
 	libs.awful.key(
 		{
 			vars.modkey,
@@ -491,7 +487,6 @@ local globalkeys = libs.gears.table.join(
 			group = "layout",
 		}
 	),
-
 	libs.awful.key(
 		{
 			vars.modkey,
@@ -510,7 +505,6 @@ local globalkeys = libs.gears.table.join(
 			group = "client",
 		}
 	),
-
 	-- Prompt
 	libs.awful.key(
 		{
@@ -525,7 +519,6 @@ local globalkeys = libs.gears.table.join(
 			group = "launcher",
 		}
 	),
-
 	libs.awful.key(
 		{
 			vars.modkey,
