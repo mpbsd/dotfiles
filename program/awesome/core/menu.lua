@@ -1,7 +1,7 @@
 local libs = require("core.libs")
 local vars = require("core.vars")
 
-local M = {
+local G = {
 	items = {
 		-- awesome {{{
 		{
@@ -34,6 +34,55 @@ local M = {
 			},
 		},
 		-- }}}
+		-- accessories {{{
+		{
+			"accessories",
+			{
+				{
+					"calibre",
+					"calibre",
+				},
+				{
+					"dolphin",
+					"dolphin",
+				},
+				{
+					"editor",
+					vars.editor_cmd,
+				},
+				{
+					"terminal",
+					vars.terminal,
+				},
+			},
+		},
+		-- }}}
+		-- games {{{
+		{
+			"games",
+			{
+				{
+					"hedgewars",
+					"hedgewars",
+				},
+			},
+		},
+		-- }}}
+		-- graphics {{{
+		{
+			"graphics",
+			{
+				{
+					"gimp",
+					"gimp",
+				},
+				{
+					"inkscape",
+					"inkscape",
+				},
+			},
+		},
+		-- }}}
 		-- internet {{{
 		{
 			"internet",
@@ -53,13 +102,26 @@ local M = {
 			},
 		},
 		-- }}}
-		-- terminal {{{
+		-- office {{{
 		{
-			"terminal",
-			vars.terminal,
+			"office",
+			{
+				{
+					"kile",
+					"kile",
+				},
+				{
+					"libreoffice",
+					"libreoffice",
+				},
+				{
+					"okular",
+					"okular",
+				},
+			},
 		},
 		-- }}}
 	},
 }
 
-return M
+return G

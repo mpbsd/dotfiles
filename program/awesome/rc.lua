@@ -11,17 +11,21 @@ require("core.fail")
 
 -- Themes define colours, icons, font and wallpapers.
 libs.beautiful.init(vars.theme_conf("custom"))
+
 -- Table of layouts
 libs.awful.layout.layouts = vars.layouts
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 local mymainmenu = libs.awful.menu(menu)
-
-local mylauncher = libs.awful.widget.launcher({ image = libs.beautiful.awesome_icon, menu = mymainmenu })
+local mylauncher = libs.awful.widget.launcher({
+	image = libs.beautiful.awesome_icon,
+	menu = mymainmenu,
+})
 
 -- libs.Menubar configuration
-libs.menubar.utils.terminal = vars.terminal -- Set the terminal for applications that require it
+-- Set the terminal for applications that require it
+libs.menubar.utils.terminal = vars.terminal
 -- }}}
 
 -- Keyboard map indicator and switcher
