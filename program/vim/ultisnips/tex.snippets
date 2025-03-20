@@ -2,6 +2,9 @@ global !p
 def in_math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 
+def in_text():
+	return vim.eval('vimtex#syntax#in_mathzone()') != '1'
+
 def comment(): 
 	return vim.eval('vimtex#syntax#in_comment()') == '1'
 
@@ -10,11 +13,12 @@ def env(name):
 	return x != '0' and y != '0'
 endglobal
 
+context "in_text()"
 snippet _article "basic article template" bA
 \documentclass[a4paper,12pt]\{article\}
 
 \usepackage[T1]\{fontenc\}
-\usepakcage[english]\{babel\}
+\usepackage[english]\{babel\}
 \usepackage\{amsmath\}
 \usepackage\{amssymb\}
 \usepackage\{amsthm\}
@@ -94,6 +98,12 @@ endsnippet
 
 snippet _proofs "proofs" bA
 \section\{Proofs\}\label\{sec:proofs\}
+
+$0
+endsnippet
+
+snippet '^cha' "labeled chapter" rA
+\chapter\{${1:name}\}\label\{chp:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
@@ -207,6 +217,40 @@ snippet [[ "display math" wA
 \[
   ${1:${VISUAL}}
 \]$0
+endsnippet
+
+context "in_math()"
+snippet 'd([pPbBcC])' "delimiters" rA
+`!p
+delimiter = {
+	'p': {
+		'opening': r'(',
+		'closing': r')',
+	},
+	'P': {
+		'opening': r'\left(',
+		'closing': r'\right)',
+	},
+	'b': {
+		'opening': r'[',
+		'closing': r']',
+	},
+	'B': {
+		'opening': r'\left[',
+		'closing': r'\right]',
+	},
+	'c': {
+		'opening': r'\{',
+		'closing': r'\}',
+	},
+	'C': {
+		'opening': r'\left\{',
+		'closing': r'\right\}',
+	},
+}
+opening = delimiter[match.group(1)]['opening']
+closing = delimiter[match.group(1)]['closing']
+snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 
 context "in_math()"

@@ -6,6 +6,7 @@ let s:rc_files = [
       \'options',
       \'keymaps',
       \'plugins',
+      \'configs',
       \]
 
 for rc_file in s:rc_files

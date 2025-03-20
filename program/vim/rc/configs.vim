@@ -27,10 +27,10 @@ endif
 
 if filereadable(expand('~/.vim/plugged/ultisnips/plugin/UltiSnips.vim'))
   let g:UltiSnipsSnippetDirectories = [expand('~/.vim/ultisnips')]
-  let g:UltiSnipsExpandTrigger = '<Tab>'
-  let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-  let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-  let g:UltiSnipsEditSplit = 'tabdo'
+  let g:UltiSnipsExpandTrigger = "<Tab>"
+  let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+  let g:UltiSnipsEditSplit = "tabdo"
 endif
 
 if filereadable(expand('~/.vim/plugged/vimtex/plugin/vimtex.vim'))

@@ -88,16 +88,28 @@ local utils = {
 	delimiter = function(_, snip, user_args)
 		local D = {
 			p = {
-				lhs = "(",
-				rhs = ")",
+				lhs = [[(]],
+				rhs = [[)]],
+			},
+			P = {
+				lhs = [[\left(]],
+				rhs = [[\right)]],
 			},
 			b = {
 				lhs = "[",
 				rhs = "]",
 			},
+			B = {
+				lhs = "\\left[",
+				rhs = "\\right]",
+			},
 			c = {
 				lhs = [[\{]],
 				rhs = [[\}]],
+			},
+			C = {
+				lhs = [[\left\{]],
+				rhs = [[\right\}]],
 			},
 		}
 		return D[snip.captures[1]][user_args]
@@ -391,29 +403,6 @@ return {
 		)
 	),
 	-- }}}
-	-- delimiters {{{
-	s(
-		{
-			trig = [[d([pbc])]],
-			regTrig = true,
-			trigEngine = "ecma",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			desc = "delimiters",
-		},
-		fmta(
-			[[
-	    \left<><>\right<>
-			]],
-			{
-				f(utils.delimiter, {}, { user_args = { "lhs" } }),
-				i(1),
-				f(utils.delimiter, {}, { user_args = { "rhs" } }),
-			}
-		),
-		{ condition = utils.in_math }
-	),
-	-- }}}
 	-- abstract {{{
 	s(
 		{
@@ -702,6 +691,29 @@ return {
       ]],
 			{ i(1) }
 		)
+	),
+	-- }}}
+	-- delimiters {{{
+	s(
+		{
+			trig = [[d([pPbBcC])]],
+			regTrig = true,
+			trigEngine = "ecma",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			desc = "delimiters",
+		},
+		fmta(
+			[[
+	    <><><>
+			]],
+			{
+				f(utils.delimiter, {}, { user_args = { "lhs" } }),
+				i(1),
+				f(utils.delimiter, {}, { user_args = { "rhs" } }),
+			}
+		),
+		{ condition = utils.in_math }
 	),
 	-- }}}
 	-- less than or equal to {{{

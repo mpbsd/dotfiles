@@ -12,10 +12,6 @@ nnoremap <Leader>fm :Maps<CR>
 nnoremap <LocalLeader>w :w<CR>
 nnoremap <LocalLeader>q :q<CR>
 
-nnoremap Y y$
-
-nnoremap <Leader>; :
-
 nnoremap <Leader>s- :sp<CR>
 nnoremap <Leader>s\ :vs<CR>
 
@@ -42,6 +38,9 @@ nnoremap <Leader>hs :call mpbsd#vim_search_for_help_in_new('s')<CR>
 nnoremap <Leader>hv :call mpbsd#vim_search_for_help_in_new('v')<CR>
 nnoremap <Leader>ht :call mpbsd#vim_search_for_help_in_new('t')<CR>
 
+nnoremap <Leader>; :
+
+nnoremap Y y$
 nnoremap K :call mpbsd#vim_find_help_cword(expand('<cword>'))<CR>
 
 nnoremap <Leader>pd :PlugUpdate<CR>
@@ -52,9 +51,7 @@ nnoremap <Leader>0g :0G<CR>
 
 nnoremap <LocalLeader>es :UltiSnipsEdit<CR>
 
-noremap <LocalLeader>dk :call deadk#toggle_dead_keys()<CR>
-
-nnoremap <LocalLeader>x :so %<CR>
+nnoremap <LocalLeader>dk :call deadk#toggle_dead_keys()<CR>
 
 nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
 
