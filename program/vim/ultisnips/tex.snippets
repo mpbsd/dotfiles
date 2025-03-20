@@ -4,13 +4,6 @@ def in_math():
 
 def in_text():
 	return vim.eval('vimtex#syntax#in_mathzone()') != '1'
-
-def comment(): 
-	return vim.eval('vimtex#syntax#in_comment()') == '1'
-
-def env(name):
-	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
-	return x != '0' and y != '0'
 endglobal
 
 context "in_text()"
@@ -52,14 +45,17 @@ $0
 \end\{document\}
 endsnippet
 
+context "in_text()"
 snippet opt "package with an option" bA
 \usepackage[${1:opt}]\{${2:pkg}\}$0
 endsnippet
 
+context "in_text()"
 snippet pkg "package" bA
 \usepackage\{${1:pkg}\}$0
 endsnippet
 
+context "in_text()"
 snippet mid "mid range set of packages" bA
 \usepackage[T1]\{fontenc\}
 \usepakcage[english]\{babel\}
@@ -78,96 +74,112 @@ snippet mid "mid range set of packages" bA
 \intervalconfig\{soft open fences\}
 endsnippet
 
+context "in_text()"
 snippet _introduction "introduction" bA
 \section\{Introduction\}\label\{sec:introduction\}
 
 $0
 endsnippet
 
+context "in_text()"
 snippet _results "results" bA
 \section\{Main Results\}\label\{sec:results\}
 
 $0
 endsnippet
 
+context "in_text()"
 snippet _examples "examples" bA
 \section\{Examples\}\label\{sec:examples\}
 
 $0
 endsnippet
 
+context "in_text()"
 snippet _proofs "proofs" bA
 \section\{Proofs\}\label\{sec:proofs\}
 
 $0
 endsnippet
 
+context "in_text()"
 snippet '^cha' "labeled chapter" rA
 \chapter\{${1:name}\}\label\{chp:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
+context "in_text()"
 snippet '^sec' "labeled section" rA
 \section\{${1:name}\}\label\{sec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
+context "in_text()"
 snippet '^subsec' "labeled subsection" rA
 \subsection\{${1:name}\}\label\{subsec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
+context "in_text()"
 snippet '^subsubsec' "labeled subsubsection" rA
 \subsubsection\{${1:name}\}\label\{subsubsec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
+context "in_text()"
 snippet abs "abstract" bA
 \begin\{abstract\}
 	$0
 \end\{abstract\}$0
 endsnippet
 
+context "in_text()"
 snippet beg "generic" bA
 \begin\{$1\}
 	$2
 \end\{$1\}$0
 endsnippet
 
+context "in_text()"
 snippet cor "corollary" bA
 \begin\{corollary}\label\{cor:$1\}
   $2
 \end\{corollary\}$0
 endsnippet
 
+context "in_text()"
 snippet def "definition" bA
 \begin\{definition}\label\{def:$1\}
   $2
 \end\{definition\}$0
 endsnippet
 
+context "in_text()"
 snippet des "description" bA
 \begin\{description\}
 	\item[$1] $2
 \end\{description\}$0
 endsnippet
 
+context "in_text()"
 snippet enu "enumerate" bA
 \begin\{enumerate\}
   \item $1
 \end\{enumerate\}$0
 endsnippet
 
+context "in_text()"
 snippet equ "equation" bA
 \begin\{equation\}\label\{eq:$1\}
   $2
 \end\{equation\}$0
 endsnippet
 
+context "in_text()"
 snippet ite "itemize" bA
 \begin\{itemize\}
 	\item $1
