@@ -111,6 +111,10 @@ local utils = {
 				lhs = [[\left\{]],
 				rhs = [[\right\}]],
 			},
+			g = {
+				lhs = [[{]],
+				rhs = [[}]],
+			},
 		}
 		return D[snip.captures[1]][user_args]
 	end,
@@ -696,7 +700,7 @@ return {
 	-- delimiters {{{
 	s(
 		{
-			trig = [[d([pPbBcC])]],
+			trig = [[d([pPbBcCg])]],
 			regTrig = true,
 			trigEngine = "ecma",
 			wordTrig = false,

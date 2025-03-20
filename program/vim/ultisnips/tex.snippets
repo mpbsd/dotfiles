@@ -232,7 +232,7 @@ snippet [[ "display math" wA
 endsnippet
 
 context "in_math()"
-snippet 'd([pPbBcC])' "delimiters" rA
+snippet 'd([pPbBcCg])' "delimiters" rA
 `!p
 delimiter = {
 	'p': {
@@ -258,6 +258,10 @@ delimiter = {
 	'C': {
 		'opening': r'\left\{',
 		'closing': r'\right\}',
+	},
+	'g': {
+		'opening': r'{',
+		'closing': r'}',
 	},
 }
 opening = delimiter[match.group(1)]['opening']
