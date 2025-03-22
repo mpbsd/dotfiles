@@ -1,4 +1,7 @@
 local mods = require("core.mods")
+local mkey = "Mod1"
+local term = "st"
+local edit = "vi"
 
 local M = {
 	-- theme_path {{{
@@ -34,10 +37,10 @@ local M = {
 		return M
 	end,
 	-- }}}
-	modkey = "Mod1",
-	terminal = "st",
-	editor = "vi",
-	editor_cmd = "st -e vi",
+	modkey = mkey,
+	terminal = term,
+	editor = edit,
+	editor_cmd = term .. " -e " .. edit,
 	-- layouts {{{
 	layouts = {
 		mods.awful.layout.suit.tile,
@@ -46,7 +49,8 @@ local M = {
 	-- }}}
 	-- cmds to run at startup {{{
 	run_at_startup = function()
-		mods.awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/look/custom/wall.png")
+    local wall = "feh --bg-scale ~/.config/awesome/look/custom/wall.png"
+		mods.awful.spawn.with_shell(wall)
 		mods.awful.spawn("picom")
 		mods.awful.spawn("st -e tmux")
 	end,

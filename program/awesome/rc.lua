@@ -164,11 +164,11 @@ root.buttons(mods.gears.table.join(
 -- }}}
 
 -- Key bindings {{{
--- local globalkeys = keys["globalkeys"]
+local globalkeys = keys["globalkeys"]
 
-local myfunc = function(i)
-	local M = mods.gears.table.join(
-		keys["globalkeys"],
+for i = 1, 9 do
+	globalkeys = mods.gears.table.join(
+		globalkeys,
 		-- View tag only.
 		mods.awful.key(
 			{
@@ -248,92 +248,6 @@ local myfunc = function(i)
 			}
 		)
 	)
-	return M
-end
-
-for i = 1, 9 do
-	globalkeys = myfunc(i)
-	-- 	globalkeys = mods.gears.table.join(
-	-- 		globalkeys,
-	-- 		-- View tag only.
-	-- 		mods.awful.key(
-	-- 			{
-	-- 				vars.modkey,
-	-- 			},
-	-- 			"#" .. i + 9,
-	-- 			function()
-	-- 				local screen = mods.awful.screen.focused()
-	-- 				local tag = screen.tags[i]
-	-- 				if tag then
-	-- 					tag:view_only()
-	-- 				end
-	-- 			end,
-	-- 			{
-	-- 				description = "view tag #" .. i,
-	-- 				group = "tag",
-	-- 			}
-	-- 		),
-	-- 		-- Toggle tag display.
-	-- 		mods.awful.key(
-	-- 			{
-	-- 				vars.modkey,
-	-- 				"Control",
-	-- 			},
-	-- 			"#" .. i + 9,
-	-- 			function()
-	-- 				local screen = mods.awful.screen.focused()
-	-- 				local tag = screen.tags[i]
-	-- 				if tag then
-	-- 					mods.awful.tag.viewtoggle(tag)
-	-- 				end
-	-- 			end,
-	-- 			{
-	-- 				description = "toggle tag #" .. i,
-	-- 				group = "tag",
-	-- 			}
-	-- 		),
-	-- 		-- Move client to tag.
-	-- 		mods.awful.key(
-	-- 			{
-	-- 				vars.modkey,
-	-- 				"Shift",
-	-- 			},
-	-- 			"#" .. i + 9,
-	-- 			function()
-	-- 				if client.focus then
-	-- 					local tag = client.focus.screen.tags[i]
-	-- 					if tag then
-	-- 						client.focus:move_to_tag(tag)
-	-- 					end
-	-- 				end
-	-- 			end,
-	-- 			{
-	-- 				description = "move focused client to tag #" .. i,
-	-- 				group = "tag",
-	-- 			}
-	-- 		),
-	-- 		-- Toggle tag on focused client.
-	-- 		mods.awful.key(
-	-- 			{
-	-- 				vars.modkey,
-	-- 				"Control",
-	-- 				"Shift",
-	-- 			},
-	-- 			"#" .. i + 9,
-	-- 			function()
-	-- 				if client.focus then
-	-- 					local tag = client.focus.screen.tags[i]
-	-- 					if tag then
-	-- 						client.focus:toggle_tag(tag)
-	-- 					end
-	-- 				end
-	-- 			end,
-	-- 			{
-	-- 				description = "toggle focused client on tag #" .. i,
-	-- 				group = "tag",
-	-- 			}
-	-- 		)
-	-- 	)
 end
 
 -- Set keys
