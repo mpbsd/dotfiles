@@ -9,7 +9,7 @@ require("awful.hotkeys_popup.keys")
 -- Error handling
 require("core.flaw")
 
--- Themes define colours, icons, font and wallpapers.
+-- look define colours, icons, font and wallpapers.
 local chosen_theme = {
 	"custom",
 }
@@ -20,11 +20,8 @@ mods.awful.layout.layouts = vars.layouts
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-local mymainmenu = mods.awful.menu(menu)
-local mylauncher = mods.awful.widget.launcher({
-	image = mods.beautiful.awesome_icon,
-	menu = mymainmenu,
-})
+local mymainmenu = vars.menu(menu)["mymainmenu"]
+local mylauncher = vars.menu(menu)["mylauncher"]
 
 -- mods.Menubar configuration
 -- Set the terminal for applications that require it
