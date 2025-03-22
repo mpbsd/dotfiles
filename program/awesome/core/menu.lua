@@ -1,4 +1,4 @@
-local libs = require("core.libs")
+local mods = require("core.mods")
 local vars = require("core.vars")
 
 local G = {
@@ -10,7 +10,7 @@ local G = {
 				{
 					"hotkeys",
 					function()
-						libs.hotkeys_popup.show_help(nil, libs.awful.screen.focused())
+						mods.hotkeys_popup.show_help(nil, mods.awful.screen.focused())
 					end,
 				},
 				{

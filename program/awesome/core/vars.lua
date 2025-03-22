@@ -1,4 +1,4 @@
-local libs = require("core.libs")
+local mods = require("core.mods")
 
 local M = {
 	-- theme_path {{{
@@ -26,14 +26,14 @@ local M = {
 	editor = "vi",
 	editor_cmd = "alacritty -e vi",
 	layouts = {
-		libs.awful.layout.suit.tile,
-		libs.awful.layout.suit.floating,
-		libs.awful.layout.suit.max,
+		mods.awful.layout.suit.tile,
+		mods.awful.layout.suit.max,
+		mods.awful.layout.suit.floating,
 	},
 	run_at_startup = function()
-		libs.awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/themes/custom/awesome-wall.png")
-		libs.awful.spawn("picom")
-		libs.awful.spawn("alacritty -e tmux")
+		mods.awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/themes/custom/awesome-wall.png")
+		mods.awful.spawn("picom")
+		mods.awful.spawn("alacritty -e tmux")
 	end,
 }
 
