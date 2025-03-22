@@ -88,16 +88,24 @@ local G = {
 			"internet",
 			{
 				{
-					"chromium",
-					"chromium",
+					"chat",
+					"telegram-desktop",
 				},
 				{
-					"firefox",
+					"ffox",
 					"firefox-esr",
 				},
 				{
-					"telegram",
-					"telegram-desktop",
+					"help",
+					vars.terminal .. " -e irssi",
+				},
+				{
+					"mail",
+					vars.terminal .. " -e mutt",
+				},
+				{
+					"news",
+					vars.terminal .. " -e newsboat",
 				},
 			},
 		},

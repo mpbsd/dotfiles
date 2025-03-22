@@ -23,30 +23,34 @@ local M = {
 	-- }}}
 	-- menu {{{
 	menu = function(menu)
-		local H = {
-			mymainmenu = mods.awful.menu(menu),
+		local m = mods.awful.menu(menu)
+		local M = {
+			mymainmenu = m,
 			mylauncher = mods.awful.widget.launcher({
 				image = mods.beautiful.awesome_icon,
-				menu = mods.awful.menu(menu),
+				menu = m,
 			}),
 		}
-		return H
+		return M
 	end,
 	-- }}}
 	modkey = "Mod1",
-	terminal = "alacritty",
+	terminal = "st",
 	editor = "vi",
-	editor_cmd = "alacritty -e vi",
+	editor_cmd = "st -e vi",
+	-- layouts {{{
 	layouts = {
 		mods.awful.layout.suit.tile,
 		mods.awful.layout.suit.max,
-		mods.awful.layout.suit.floating,
 	},
+	-- }}}
+	-- cmds to run at startup {{{
 	run_at_startup = function()
 		mods.awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/look/custom/wall.png")
 		mods.awful.spawn("picom")
-		mods.awful.spawn("alacritty -e tmux")
+		mods.awful.spawn("st -e tmux")
 	end,
+	-- }}}
 }
 
 return M
