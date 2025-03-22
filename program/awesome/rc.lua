@@ -904,4 +904,6 @@ libs.awful.rules.rules = {
 -- Signals
 require("core.sign")
 
+vars.run_at_startup()
+
 -- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80
