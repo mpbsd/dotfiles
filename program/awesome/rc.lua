@@ -165,7 +165,6 @@ root.buttons(mods.gears.table.join(
 
 -- Key bindings {{{
 local globalkeys = keys["globalkeys"]
-local clientkeys = keys["clientkeys"]
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
@@ -254,8 +253,6 @@ for i = 1, 9 do
 	)
 end
 
-local clientbuttons = keys["clientbuttons"]
-
 -- Set keys
 root.keys(globalkeys)
 -- }}}
@@ -271,8 +268,8 @@ mods.awful.rules.rules = {
 			border_color = mods.beautiful.border_normal,
 			focus = mods.awful.client.focus.filter,
 			raise = true,
-			keys = clientkeys,
-			buttons = clientbuttons,
+			keys = keys["clientkeys"],
+			buttons = keys["clientbuttons"],
 			screen = mods.awful.screen.preferred,
 			placement = mods.awful.placement.no_overlap + mods.awful.placement.no_offscreen,
 		},
