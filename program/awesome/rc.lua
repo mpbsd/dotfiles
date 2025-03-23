@@ -7,10 +7,11 @@ local keys = require("core.keys")
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 
--- Error handling
+-- flaw {{{
 require("core.flaw")
+-- }}}
 
--- look define colours, icons, font and wallpapers.
+-- look {{{
 local look = {
 	"custom",
 }
@@ -18,8 +19,9 @@ mods.beautiful.init(vars.theme_conf(look[1]))
 
 -- Table of layouts
 mods.awful.layout.layouts = vars.layouts
+-- }}}
 
--- {{{ Menu
+-- menu {{{
 -- Create a launcher widget and a main menu
 local mymainmenu = vars.menu(menu)["mymainmenu"]
 local mylauncher = vars.menu(menu)["mylauncher"]
@@ -29,7 +31,7 @@ local mylauncher = vars.menu(menu)["mylauncher"]
 mods.menubar.utils.terminal = vars.terminal
 -- }}}
 
--- {{{ Wibar
+-- wbar {{{
 
 -- Create a mods.wibox for each screen and add it
 local taglist_buttons = mods.gears.table.join(
@@ -153,7 +155,7 @@ mods.awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
--- {{{ Mouse bindings
+-- meys {{{
 root.buttons(mods.gears.table.join(
 	mods.awful.button({}, 3, function()
 		mymainmenu:toggle()
@@ -163,7 +165,7 @@ root.buttons(mods.gears.table.join(
 ))
 -- }}}
 
--- Key bindings {{{
+-- keys {{{
 local globalkeys = keys["globalkeys"]
 
 for i = 1, 9 do
@@ -254,7 +256,7 @@ end
 root.keys(globalkeys)
 -- }}}
 
--- Rules {{{
+-- rule {{{
 -- Rules to apply to new clients (through the "manage" signal).
 mods.awful.rules.rules = {
 	-- All clients will match this rule.
@@ -351,9 +353,12 @@ mods.awful.rules.rules = {
 }
 -- }}}
 
--- Signals
+-- sign {{{
 require("core.sign")
+-- }}}
 
+-- startup {{{
 vars.run_at_startup()
+-- }}}
 
 -- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80

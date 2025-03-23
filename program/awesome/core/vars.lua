@@ -49,7 +49,7 @@ local M = {
 	-- }}}
 	-- cmds to run at startup {{{
 	run_at_startup = function()
-    local wall = "feh --bg-scale ~/.config/awesome/look/custom/wall.png"
+		local wall = "feh --bg-scale ~/.config/awesome/look/custom/wall.png"
 		mods.awful.spawn.with_shell(wall)
 		mods.awful.spawn("picom")
 		mods.awful.spawn("st -e tmux")

@@ -379,7 +379,21 @@ local M = {
 				mods.awful.spawn("dmenu_run")
 			end,
 			{
-				description = "show the mods.menubar",
+				description = "show the menubar",
+				group = "launcher",
+			}
+		),
+		mods.awful.key(
+			{
+				vars.modkey,
+				"Control",
+			},
+			"b",
+			function()
+				mods.awful.spawn("chromium")
+			end,
+			{
+				description = "browse the web",
 				group = "launcher",
 			}
 		)
@@ -428,7 +442,6 @@ local M = {
 		mods.awful.key(
 			{
 				vars.modkey,
-				"Control",
 			},
 			"Return",
 			function(c)
