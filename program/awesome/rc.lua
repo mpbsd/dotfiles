@@ -350,6 +350,52 @@ mods.awful.rules.rules = {
 			tag = "2",
 		},
 	},
+	{
+		rule = {
+			class = "kile",
+		},
+		properties = {
+			screen = 1,
+			tag = "4",
+		},
+	},
+	{
+		rule = {
+			class = "mpv",
+		},
+		properties = {
+			screen = 1,
+			tag = "7",
+			floating = true,
+		},
+	},
+	{
+		rule = {
+			class = "calibre",
+		},
+		properties = {
+			screen = 1,
+			tag = "8",
+		},
+	},
+	{
+		rule = {
+			class = "Gimp",
+		},
+		properties = {
+			screen = 1,
+			tag = "9",
+		},
+	},
+	{
+		rule = {
+			class = "Inkscape",
+		},
+		properties = {
+			screen = 1,
+			tag = "9",
+		},
+	},
 }
 -- }}}
 

@@ -848,7 +848,7 @@ return {
 		{ condition = utils.in_math }
 	),
 	-- }}}
-	-- function declaration {{{
+	-- function definition {{{
 	s(
 		{
 			trig = "fnd",
@@ -898,33 +898,33 @@ return {
 			{
 				f(function(_, snip)
 					local fn = {
-						["cos"] = [[\cos]],
-						["sin"] = [[\sin]],
-						["tan"] = [[\tan]],
-						["acos"] = [[\arccos]],
-						["asin"] = [[\arcsin]],
-						["atan"] = [[\arctan]],
-						["sec"] = [[\sec]],
-						["csc"] = [[\csc]],
-						["cot"] = [[\cot]],
-						["asec"] = [[\arcsec]],
-						["acsc"] = [[\arccsc]],
-						["acot"] = [[\arccot]],
-						["cosh"] = [[\cosh]],
-						["sinh"] = [[\sinh]],
-						["tanh"] = [[\tanh]],
-						["acosh"] = [[\arccosh]],
-						["asinh"] = [[\arcsinh]],
-						["atanh"] = [[\arctanh]],
-						["sech"] = [[\sech]],
-						["csch"] = [[\csch]],
-						["coth"] = [[\coth]],
-						["asech"] = [[\arcsech]],
-						["acsch"] = [[\arccsch]],
-						["acoth"] = [[\arccoth]],
+						["cos"] = [[\\cos]],
+						["sin"] = [[\\sin]],
+						["tan"] = [[\\tan]],
+						["acos"] = [[\\arccos]],
+						["asin"] = [[\\arcsin]],
+						["atan"] = [[\\arctan]],
+						["sec"] = [[\\sec]],
+						["csc"] = [[\\csc]],
+						["cot"] = [[\\cot]],
+						["asec"] = [[\\arcsec]],
+						["acsc"] = [[\\arccsc]],
+						["acot"] = [[\\arccot]],
+						["cosh"] = [[\\cosh]],
+						["sinh"] = [[\\sinh]],
+						["tanh"] = [[\\tanh]],
+						["acosh"] = [[\\arccosh]],
+						["asinh"] = [[\\arcsinh]],
+						["atanh"] = [[\\arctanh]],
+						["sech"] = [[\\sech]],
+						["csch"] = [[\\csch]],
+						["coth"] = [[\\coth]],
+						["asech"] = [[\\arcsech]],
+						["acsch"] = [[\\arccsch]],
+						["acoth"] = [[\\arccoth]],
 						["exp"] = [[e^]],
-						["log"] = [[\log]],
-						["ln"] = [[\ln]],
+						["log"] = [[\\log]],
+						["ln"] = [[\\ln]],
 					}
 					return fn[snip.captures[1]]
 				end),
@@ -1196,14 +1196,14 @@ return {
 	-- infinity {{{
 	s({
 		trig = [[oo]],
-		wordTrig = false,
+		wordTrig = true,
 		snippetType = "autosnippet",
 		desc = "infinity",
 	}, t([[\infty]]), { condition = utils.in_math }),
 	-- }}}
 	-- dots {{{
 	s({
-		trig = [[(?<!\\)([dlv]dots)]],
+		trig = [[(?<!\\)([cdlv]dots)]],
 		regTrig = true,
 		trigEngine = "ecma",
 		snippetType = "autosnippet",
@@ -1220,14 +1220,14 @@ return {
 		desc = "greek letters",
 	}, f(utils.greek_letter), { condition = utils.in_math }),
 	-- }}}
-	-- bar, hat, overline and vector {{{
+	-- bar, dot, hat, overline and vector {{{
 	s(
 		{
-			trig = [[(\S+).(bar|hat|overline|vec)]],
+			trig = [[(\S+)\.(bar|d{1,3}ot|hat|overline|vec)]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
-			desc = "bar, hat, overline and vector",
+			desc = "bar, dot, hat, overline and vector",
 		},
 		f(function(_, snip)
 			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
@@ -1238,11 +1238,11 @@ return {
 	-- absolute value, norm {{{
 	s(
 		{
-			trig = [[(\S+).(abs|norm)]],
+			trig = [[(\S+)\.(abs|norm)]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
-			desc = "bar, hat, overline and vector",
+			desc = "absolute value, norm",
 		},
 		f(function(_, snip)
 			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
@@ -1350,7 +1350,9 @@ return {
 	-- \partial_{} {{{
 	s(
 		{
-			trig = "6xi",
+			trig = "6x([ijkl])",
+			regTrig = true,
+			trigEngine = "ecma",
 			wordTrig = false,
 			snippetType = "autosnippet",
 			desc = [[\partial_{}]],
@@ -1359,7 +1361,7 @@ return {
 			[[
 	    \X{<>}
 	    ]],
-			{ i(1, "i") }
+			{ l(l.CAPTURE1, {}) }
 		),
 		{ condition = utils.in_math }
 	),
@@ -1367,8 +1369,9 @@ return {
 	-- dx_{} {{{
 	s(
 		{
-			trig = "dxi",
-			wordTrig = false,
+			trig = "dx([ijkl])",
+			regTrig = true,
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = [[dx^{}]],
 		},
@@ -1376,7 +1379,7 @@ return {
 			[[
 	    dx^{<>}
 	    ]],
-			{ i(1, "i") }
+			{ l(l.CAPTURE1, {}) }
 		),
 		{ condition = utils.in_math }
 	),

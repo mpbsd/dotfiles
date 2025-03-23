@@ -34,6 +34,10 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzz
 nnoremap N Nzz
 
+nnoremap <Leader>aa :A <CR>
+nnoremap <Leader>as :AS<CR>
+nnoremap <Leader>av :AV<CR>
+
 nnoremap <Leader>hs :call mpbsd#vim_search_for_help_in_new('s')<CR>
 nnoremap <Leader>hv :call mpbsd#vim_search_for_help_in_new('v')<CR>
 nnoremap <Leader>ht :call mpbsd#vim_search_for_help_in_new('t')<CR>
@@ -42,6 +46,8 @@ nnoremap <Leader>; :
 
 nnoremap Y y$
 nnoremap K :call mpbsd#vim_find_help_cword(expand('<cword>'))<CR>
+
+nnoremap <Leader>nh :nohl<CR>
 
 nnoremap <Leader>pd :PlugUpdate<CR>
 nnoremap <Leader>pg :PlugUpgrade<CR>
