@@ -135,6 +135,18 @@ local KEY = {
 		},
 	},
 	-- }}}
+	-- nohls {{{
+	{
+		mod = "n",
+		lhs = "<Leader>nh",
+		rhs = "<Cmd>nohls<CR>",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "nohls",
+		},
+	},
+	-- }}}
 	-- hsplit -> vsplit {{{
 	{
 		mod = "n",

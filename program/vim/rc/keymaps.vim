@@ -47,7 +47,7 @@ nnoremap <Leader>; :
 nnoremap Y y$
 nnoremap K :call mpbsd#vim_find_help_cword(expand('<cword>'))<CR>
 
-nnoremap <Leader>nh :nohl<CR>
+nnoremap <Leader>nh :nohls<CR>
 
 nnoremap <Leader>pd :PlugUpdate<CR>
 nnoremap <Leader>pg :PlugUpgrade<CR>

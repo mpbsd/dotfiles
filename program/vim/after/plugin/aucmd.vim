@@ -42,7 +42,9 @@ augroup mpbsd_edit_latex_files
     setlocal spell
 
     nnoremap <LocalLeader>ea :Earticle<CR>
+    nnoremap <LocalLeader>eb :Ebibliography<CR>
     nnoremap <LocalLeader>ei :Eintroduction<CR>
+    nnoremap <LocalLeader>em :Emakefile<CR>
     nnoremap <LocalLeader>er :Eresults<CR>
     nnoremap <LocalLeader>ee :Eexamples<CR>
     nnoremap <LocalLeader>ep :Eproofs<CR>
