@@ -36,6 +36,7 @@ Abolish fisica física
 Abolish fisic{a,o,os} físic{a,o,os}
 Abolish func{ao,oes} funç{ão,ões}
 Abolish goias goiás
+Abolish graduacao graduação
 Abolish harmonica{,s} harmônica{,s}
 Abolish hipotese hipótese
 Abolish inscric{ao,oes} inscriç{ão,ões}
@@ -66,7 +67,6 @@ Abolish sequencia{,s} sequência{,s}
 Abolish soluc{ao,oes} soluç{ão,ões}
 Abolish tambem também
 Abolish ultimo{,s} último{,s}
-Abolish unico{,s} único{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
 Abolish variave{l,is} variáve{l,is}
 Abolish vizinhanca{,s} vizinhança{,s}

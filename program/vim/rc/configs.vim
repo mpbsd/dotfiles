@@ -35,5 +35,7 @@ endif
 
 if filereadable(expand('~/.vim/plugged/vimtex/plugin/vimtex.vim'))
   let g:vimtex_compiler_enabled = v:false
+  let g:vimtex_format_enabled = v:false
   let g:vimtex_imaps_enabled = v:false
+  let g:vimtex_indent_enabled = v:false
 endif
