@@ -191,6 +191,20 @@ local M = {
 				vars.modkey,
 				"Control",
 			},
+			"t",
+			function()
+				mods.awful.spawn.with_shell(vars.terminal .. " -e tmux")
+			end,
+			{
+				description = "open a terminal",
+				group = "launcher",
+			}
+		),
+		mods.awful.key(
+			{
+				vars.modkey,
+				"Control",
+			},
 			"r",
 			awesome.restart,
 			{
