@@ -396,6 +396,15 @@ mods.awful.rules.rules = {
 			tag = "9",
 		},
 	},
+	{
+		rule = {
+			class = "libreoffice",
+		},
+		properties = {
+			screen = 1,
+			tag = "6",
+		},
+	},
 }
 -- }}}
 
