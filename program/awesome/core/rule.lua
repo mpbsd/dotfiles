@@ -105,6 +105,15 @@ mods.awful.rules.rules = {
 	},
 	{
 		rule = {
+			class = "libreoffice",
+		},
+		properties = {
+			screen = 1,
+			tag = "5",
+		},
+	},
+	{
+		rule = {
 			class = "mpv",
 		},
 		properties = {
@@ -116,6 +125,15 @@ mods.awful.rules.rules = {
 	{
 		rule = {
 			class = "calibre",
+		},
+		properties = {
+			screen = 1,
+			tag = "8",
+		},
+	},
+	{
+		rule = {
+			class = "Xournalpp",
 		},
 		properties = {
 			screen = 1,
@@ -138,15 +156,6 @@ mods.awful.rules.rules = {
 		properties = {
 			screen = 1,
 			tag = "9",
-		},
-	},
-	{
-		rule = {
-			class = "libreoffice",
-		},
-		properties = {
-			screen = 1,
-			tag = "6",
 		},
 	},
 }
