@@ -38,10 +38,18 @@ local M = {
 		return M
 	end,
 	-- }}}
+	-- modkey {{{
 	modkey = mkey,
+	-- }}}
+	-- terminal {{{
 	terminal = term,
+	-- }}}
+	-- editor {{{
 	editor = edit,
+	-- }}}
+	-- editor_cmd {{{
 	editor_cmd = term .. " -e " .. edit,
+	-- }}}
 	-- layouts {{{
 	layouts = {
 		mods.awful.layout.suit.tile,
