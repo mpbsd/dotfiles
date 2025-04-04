@@ -21,35 +21,36 @@ mods.awful.rules.rules = {
 	{
 		rule_any = {
 			instance = {
-				"DTA", -- Firefox addon DownThemAll.
-				"copyq", -- Includes session name in class.
+				"DTA",
+				"copyq",
 				"pinentry",
+				"gcr-prompter",
 			},
 			class = {
 				"Arandr",
 				"Blueman-manager",
 				"Gpick",
 				"Kruler",
-				"MessageWin", -- kalarm.
+				"MessageWin",
 				"Sxiv",
-				"Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
+				"Tor Browser",
 				"Wpa_gui",
 				"veromix",
 				"xtightvncviewer",
+				"Gcr-prompter",
 			},
-			-- Note that the name property shown in xprop might be set slightly after creation of the client
-			-- and the name shown there might not match defined rules here.
 			name = {
-				"Event Tester", -- xev.
+				"Event Tester",
 			},
 			role = {
-				"AlarmWindow", -- Thunderbird's calendar.
-				"ConfigManager", -- Thunderbird's about:config.
-				"pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
+				"AlarmWindow",
+				"ConfigManager",
+				"pop-up",
 			},
 		},
 		properties = {
 			floating = true,
+			placement = mods.awful.placement.centered,
 		},
 	},
 	-- Add titlebars to normal clients and dialogs
