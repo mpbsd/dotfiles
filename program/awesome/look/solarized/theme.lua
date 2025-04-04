@@ -5,8 +5,27 @@
 
 local vars = require("core.vars")
 
-local themes_path = vars.theme_path("custom")
+local themes_path = vars.theme_path("solarized")
 local dpi = require("beautiful.xresources").apply_dpi
+
+local color = {
+	base3 = "#002b36ff",
+	base2 = "#073642ff",
+	base1 = "#586e75ff",
+	base0 = "#657b83ff",
+	base00 = "#839496ff",
+	base01 = "#93a1a1ff",
+	base02 = "#eee8d5ff",
+	base03 = "#fdf6e3ff",
+	yellow = "#b58900ff",
+	orange = "#cb4b16ff",
+	red = "#dc322fff",
+	magenta = "#d33682ff",
+	violet = "#6c71c4ff",
+	blue = "#268bd2ff",
+	cyan = "#2aa198ff",
+	green = "#859900ff",
+}
 
 -- {{{ Main
 local theme = {}
@@ -17,58 +36,33 @@ theme.wallpaper = themes_path .. "wall.png"
 theme.font = "Terminess Nerd Font Mono 9"
 
 -- {{{ Colors
-theme.fg_normal = "#DCDCCC"
-theme.fg_focus = "#F0DFAF"
-theme.fg_urgent = "#CC9393"
-theme.bg_normal = "#3F3F3F"
-theme.bg_focus = "#1E2320"
-theme.bg_urgent = "#3F3F3F"
+theme.fg_normal = color.base01
+theme.fg_focus = color.base03
+theme.fg_urgent = color.base3
+theme.bg_normal = color.base3
+theme.bg_focus = color.base1
+theme.bg_urgent = color.red
 theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
 theme.useless_gap = dpi(6)
 theme.border_width = dpi(2)
-theme.border_normal = "#3F3F3F"
-theme.border_focus = "#6F6F6F"
-theme.border_marked = "#CC9393"
+theme.border_normal = color.base2
+theme.border_focus = color.green
+theme.border_marked = color.red
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus = "#3F3F3F"
-theme.titlebar_bg_normal = "#3F3F3F"
--- }}}
-
--- There are other variable sets
--- overriding the default one when
--- defined, the sets are:
--- [taglist|tasklist]_[bg|fg]_[focus|urgent|occupied|empty|volatile]
--- titlebar_[normal|focus]
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- Example:
---theme.taglist_bg_focus = "#CC9393"
--- }}}
-
--- {{{ Widgets
--- You can add as many variables as
--- you wish and access them by using
--- beautiful.variable in your rc.lua
---theme.fg_widget        = "#AECF96"
---theme.fg_center_widget = "#88A175"
---theme.fg_end_widget    = "#FF5656"
---theme.bg_widget        = "#494B4F"
---theme.border_widget    = "#3F3F3F"
+theme.titlebar_bg_focus = color.base1
+theme.titlebar_bg_normal = color.base2
 -- }}}
 
 -- {{{ Mouse finder
 theme.mouse_finder_color = "#CC9393"
--- mouse_finder_[timeout|animate_timeout|radius|factor]
 -- }}}
 
 -- {{{ Menu
--- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
 theme.menu_height = dpi(20)
 theme.menu_width = dpi(120)
 -- }}}
@@ -77,7 +71,6 @@ theme.menu_width = dpi(120)
 -- {{{ Taglist
 theme.taglist_squares_sel = themes_path .. "taglist/squarefz.png"
 theme.taglist_squares_unsel = themes_path .. "taglist/squarez.png"
---theme.taglist_squares_resize = "false"
 -- }}}
 
 -- {{{ Misc
