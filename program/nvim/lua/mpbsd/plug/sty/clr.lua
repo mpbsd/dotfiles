@@ -1,7 +1,7 @@
 return {
 	{
 		"craftzdog/solarized-osaka.nvim",
-		enabled = false,
+		enabled = true,
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -28,7 +28,7 @@ return {
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		enabled = true,
+		enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
