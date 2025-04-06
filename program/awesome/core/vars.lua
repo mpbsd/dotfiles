@@ -1,7 +1,7 @@
 local mods = require("core.mods")
 
 local mkey = "Mod1"
-local term = "st"
+local term = "alacritty"
 local edit = "vi"
 
 local M = {

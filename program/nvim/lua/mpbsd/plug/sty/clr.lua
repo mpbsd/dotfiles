@@ -1,7 +1,7 @@
 return {
 	{
 		"craftzdog/solarized-osaka.nvim",
-		enabled = true,
+		enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -14,15 +14,23 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("nightfox")
+			vim.cmd.colorscheme("carbonfox")
 		end,
 	},
 	{
 		"folke/tokyonight.nvim",
-		enabled = false,
+		enabled = true,
 		lazy = false,
 		priority = 1000,
 		config = function()
+			local tokyonight = require("tokyonight")
+			tokyonight.setup({
+				transparent = false,
+				styles = {
+					sidebars = "dark",
+					floats = "dark",
+				},
+			})
 			vim.cmd.colorscheme("tokyonight-night")
 		end,
 	},
