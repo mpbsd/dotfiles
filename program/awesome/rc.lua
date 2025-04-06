@@ -3,7 +3,7 @@ local vars = require("core.vars")
 local keys = require("core.keys")
 local look = {
 	"custom",
-	"solarized",
+	"solarz",
 }
 
 require("awful.autofocus")
