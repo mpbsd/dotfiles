@@ -145,7 +145,7 @@ local M = {
 	end,
 	-- }}}
 	-- cmds to run at startup {{{
-	run_at_startup = function()
+	startup_programs = function()
 		mods.awful.spawn("picom")
 		mods.awful.spawn(term .. " -e tmux")
 	end,

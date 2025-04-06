@@ -28,6 +28,6 @@ require("core.rule")
 
 require("core.sign")
 
-vars.run_at_startup()
+vars.startup_programs()
 
 -- vim: filetype=lua:expandtab:shiftwidth=2:tabstop=2:softtabstop=2:textwidth=80
