@@ -41,7 +41,7 @@ theme.fg_urgent = color.base3
 theme.bg_normal = color.base3
 theme.bg_focus = color.base1
 theme.bg_urgent = color.red
-theme.bg_systray = theme.bg_normal
+theme.bg_systray = color.base3
 -- }}}
 
 -- {{{ Borders
@@ -50,15 +50,6 @@ theme.border_width = dpi(2)
 theme.border_normal = color.base2
 theme.border_focus = color.green
 theme.border_marked = color.red
--- }}}
-
--- {{{ Titlebars
-theme.titlebar_bg_focus = color.base1
-theme.titlebar_bg_normal = color.base2
--- }}}
-
--- {{{ Mouse finder
-theme.mouse_finder_color = "#CC9393"
 -- }}}
 
 -- {{{ Menu
