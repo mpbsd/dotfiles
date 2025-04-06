@@ -65,6 +65,7 @@ Abolish sehrie{,s} série{,s}
 Abolish senao senão
 Abolish sequencia{,s} sequência{,s}
 Abolish soluc{ao,oes} soluç{ão,ões}
+Abolish superficie{,s} superfície{,s}
 Abolish tambem também
 Abolish ultimo{,s} último{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
