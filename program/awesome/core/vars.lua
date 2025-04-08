@@ -56,7 +56,7 @@ local M = {
 		mods.awful.layout.suit.max,
 	},
 	-- }}}
-	-- function to set keys {{{
+	-- set_keys {{{
 	set_keys = function(globalkeys)
 		for i = 1, 9 do
 			globalkeys = mods.gears.table.join(
@@ -144,7 +144,7 @@ local M = {
 		root.keys(globalkeys)
 	end,
 	-- }}}
-	-- startup programs {{{
+	-- startup_programs {{{
 	startup_programs = function()
 		-- mods.awful.spawn("picom")
 		mods.awful.spawn(term .. " -e tmux")
