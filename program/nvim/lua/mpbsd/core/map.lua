@@ -277,8 +277,8 @@ local KEY = {
 			local pos = vim.fn.getpos(".")
 			local reg = vim.fn.getreg("/")
 			for lhs, rhs in pairs(EQUIVALENCE_TABLE) do
-				local subs_cmd = [[%s/]] .. lhs .. [[/]] .. rhs .. [[/ge]]
-				vim.cmd(subs_cmd)
+				local substitution_cmd = [[%s/]] .. lhs .. [[/]] .. rhs .. [[/ge]]
+				vim.cmd(substitution_cmd)
 			end
 			vim.fn.setpos(".", pos)
 			vim.fn.setreg("/", reg)
