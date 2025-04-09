@@ -44,7 +44,7 @@ Abolish matematica matemática
 Abolish matematic{a,o,os} matemátic{a,o,os}
 Abolish matricula{,s} matrícula{,s}
 Abolish nao não
-Abolish numeric{a,o,as,os} numérica{a,o,as,os}
+Abolish numeric{a,o,as,os} numéric{a,o,as,os}
 Abolish numero{,s} número{,s}
 Abolish olimpiada{,s} olimpíada{,s}
 Abolish operac{ao,oes} operaç{ão,ões}
