@@ -12,7 +12,7 @@ require("awful.hotkeys_popup.keys")
 
 require("core.flaw")
 
-mods.beautiful.init(vars.theme_conf(look[2]))
+mods.beautiful.init(vars.theme_conf(look[1]))
 
 mods.awful.layout.layouts = vars.layouts
 

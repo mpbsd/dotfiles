@@ -1,6 +1,8 @@
 Abolish aa{,s} à{,s}
 Abolish ac{ao,oes} aç{ão,ões}
+Abolish afirmac{ao,oes} afirmaç{ão,ões}
 Abolish ah{,s} á{,s}
+Abolish aleatori{a,o,as,os} aleatóri{a,o,as,os}
 Abolish aprovac{ao,oes} aprovaç{ão,ões}
 Abolish area{,s} área{,s}
 Abolish ateh até
@@ -23,6 +25,7 @@ Abolish correc{ao,oes} correç{ão,ões}
 Abolish definic{ao,oes} definiç{ão,ões}
 Abolish demonstra{ao,oes} demonstraç{ão,ões}
 Abolish diferenca diferença
+Abolish distribuic{ao,oes} distribuiç{ão,ões}
 Abolish divisive{l,eis} divisíve{l,eis}
 Abolish edic{ao,oes} ediç{ão,ões}
 Abolish eh{,s} é{,s}
@@ -48,6 +51,7 @@ Abolish numeric{a,o,as,os} numérica{a,o,as,os}
 Abolish numero{,s} número{,s}
 Abolish olimpiada{,s} olimpíada{,s}
 Abolish operac{ao,oes} operaç{ão,ões}
+Abolish parametro{,s} parâmetro{,s}
 Abolish permutac{ao,oes} permutaç{ão,ões}
 Abolish potencia{,s} potência{,s}
 Abolish proposic{ao,oes} proposiç{ão,ões}
