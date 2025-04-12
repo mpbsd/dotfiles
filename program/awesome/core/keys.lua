@@ -4,6 +4,7 @@ local menu = require("core.menu")
 
 local M = {
 	globalkeys = mods.gears.table.join(
+		-- show help {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -15,6 +16,8 @@ local M = {
 				group = "awesome",
 			}
 		),
+		-- }}}
+		-- view previous {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -26,6 +29,8 @@ local M = {
 				group = "tag",
 			}
 		),
+		-- }}}
+		-- view next {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -37,6 +42,8 @@ local M = {
 				group = "tag",
 			}
 		),
+		-- }}}
+		-- go back {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -48,6 +55,8 @@ local M = {
 				group = "tag",
 			}
 		),
+		-- }}}
+		-- focus next by index {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -61,6 +70,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- focus previous by index {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -74,6 +85,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- show main menu {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -87,7 +100,8 @@ local M = {
 				group = "awesome",
 			}
 		),
-		-- Layout manipulation
+		-- }}}
+		-- swap with next client by index {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -102,6 +116,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- swap with previous client by index {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -116,6 +132,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- focus the next screen {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -130,6 +148,8 @@ local M = {
 				group = "screen",
 			}
 		),
+		-- }}}
+		-- focus the previous screen {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -144,6 +164,8 @@ local M = {
 				group = "screen",
 			}
 		),
+		-- }}}
+		-- jump to urgent client {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -155,6 +177,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- go back {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -171,7 +195,8 @@ local M = {
 				group = "client",
 			}
 		),
-		-- Standard program
+		-- }}}
+		-- open a terminal {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -186,6 +211,8 @@ local M = {
 				group = "launcher",
 			}
 		),
+		-- }}}
+		-- open a terminal {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -200,6 +227,8 @@ local M = {
 				group = "launcher",
 			}
 		),
+		-- }}}
+		-- reload awesome {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -212,6 +241,8 @@ local M = {
 				group = "awesome",
 			}
 		),
+		-- }}}
+		-- quit awesome {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -224,6 +255,8 @@ local M = {
 				group = "awesome",
 			}
 		),
+		-- }}}
+		-- increase master width factor {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -237,6 +270,8 @@ local M = {
 				group = "layout",
 			}
 		),
+		-- }}}
+		-- decrease master width factor {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -250,6 +285,8 @@ local M = {
 				group = "layout",
 			}
 		),
+		-- }}}
+		-- increase the number of master clients {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -264,6 +301,8 @@ local M = {
 				group = "layout",
 			}
 		),
+		-- }}}
+		-- decrease the number of master clients {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -278,6 +317,8 @@ local M = {
 				group = "layout",
 			}
 		),
+		-- }}}
+		-- increase the number of columns {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -292,6 +333,8 @@ local M = {
 				group = "layout",
 			}
 		),
+		-- }}}
+		-- decrease the number of columns {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -306,6 +349,8 @@ local M = {
 				group = "layout",
 			}
 		),
+		-- }}}
+		-- select next {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -319,6 +364,8 @@ local M = {
 				group = "layout",
 			}
 		),
+		-- }}}
+		-- select previous {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -333,6 +380,8 @@ local M = {
 				group = "layout",
 			}
 		),
+		-- }}}
+		-- restore minimized {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -341,7 +390,6 @@ local M = {
 			"n",
 			function()
 				local c = mods.awful.client.restore()
-				-- Focus restored client
 				if c then
 					c:emit_signal("request::activate", "key.unminimize", { raise = true })
 				end
@@ -351,7 +399,8 @@ local M = {
 				group = "client",
 			}
 		),
-		-- Prompt
+		-- }}}
+		-- run prompt {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -365,6 +414,8 @@ local M = {
 				group = "launcher",
 			}
 		),
+		-- }}}
+		-- lua execute prompt {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -383,7 +434,8 @@ local M = {
 				group = "awesome",
 			}
 		),
-		-- mods.Menubar
+		-- }}}
+		-- show the menubar {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -397,6 +449,8 @@ local M = {
 				group = "launcher",
 			}
 		),
+		-- }}}
+		-- browse the web {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -413,6 +467,8 @@ local M = {
 		)
 	),
 	clientkeys = mods.gears.table.join(
+		-- }}}
+		-- toggle fullscreen {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -427,6 +483,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- close {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -441,6 +499,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- toggle floating {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -453,6 +513,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- move to master {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -466,6 +528,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- move to screen {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -479,6 +543,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- toggle keep on top {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -492,14 +558,14 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- minimize {{{
 		mods.awful.key(
 			{
 				vars.modkey,
 			},
 			"n",
 			function(c)
-				-- The client currently has the input focus, so it cannot be
-				-- minimized, since minimized clients can't have the focus.
 				c.minimized = true
 			end,
 			{
@@ -507,6 +573,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- (un)maximize {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -521,6 +589,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- (un)maximize vertically {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -536,6 +606,8 @@ local M = {
 				group = "client",
 			}
 		),
+		-- }}}
+		-- (un)maximize horizontally {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -551,19 +623,26 @@ local M = {
 				group = "client",
 			}
 		)
+		-- }}}
 	),
 	clientbuttons = mods.gears.table.join(
+		-- mouse: activate {{{
 		mods.awful.button({}, 1, function(c)
 			c:emit_signal("request::activate", "mouse_click", { raise = true })
 		end),
+		-- }}}
+		-- mouse: select {{{
 		mods.awful.button({ vars.modkey }, 1, function(c)
 			c:emit_signal("request::activate", "mouse_click", { raise = true })
 			mods.awful.mouse.client.move(c)
 		end),
+		-- }}}
+		-- mouse: resize {{{
 		mods.awful.button({ vars.modkey }, 3, function(c)
 			c:emit_signal("request::activate", "mouse_click", { raise = true })
 			mods.awful.mouse.client.resize(c)
 		end)
+		-- }}}
 	),
 }
 

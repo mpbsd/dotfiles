@@ -68,6 +68,24 @@ mods.awful.rules.rules = {
 	-- Set st to always map on the tag named "2" on screen 1.
 	{
 		rule = {
+			class = "Alacritty",
+		},
+		properties = {
+			screen = 1,
+			tag = "1",
+		},
+	},
+	{
+		rule = {
+			class = "kitty",
+		},
+		properties = {
+			screen = 1,
+			tag = "1",
+		},
+	},
+	{
+		rule = {
 			class = "st",
 		},
 		properties = {
