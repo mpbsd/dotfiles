@@ -3,3 +3,5 @@ set relativenumber
 
 nnoremap ,w :w<CR>
 nnoremap ,q :q<CR>
+
+nnoremap ,r :rename<CR>

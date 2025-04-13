@@ -212,7 +212,7 @@ local M = {
 			}
 		),
 		-- }}}
-		-- open a terminal {{{
+		-- new tmux session {{{
 		mods.awful.key(
 			{
 				vars.modkey,
@@ -223,7 +223,7 @@ local M = {
 				mods.awful.spawn.with_shell(vars.terminal .. " -e tmux")
 			end,
 			{
-				description = "open a terminal",
+				description = "new tmux session",
 				group = "launcher",
 			}
 		),
