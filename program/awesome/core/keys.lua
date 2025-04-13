@@ -228,6 +228,25 @@ local M = {
 			}
 		),
 		-- }}}
+		-- kitty terminal {{{
+		mods.awful.key(
+			{
+				vars.modkey,
+				"Shift",
+			},
+			"t",
+			function()
+				mods.awful.spawn("kitty", {
+					floating = true,
+					placement = mods.awful.placement.centered,
+				})
+			end,
+			{
+				description = "kitty terminal",
+				group = "launcher",
+			}
+		),
+		-- }}}
 		-- reload awesome {{{
 		mods.awful.key(
 			{
