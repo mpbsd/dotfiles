@@ -1,9 +1,8 @@
 local mods = require("core.mods")
 local keys = require("core.keys")
 
--- Rules to apply to new clients (through the "manage" signal).
 mods.awful.rules.rules = {
-	-- All clients will match this rule.
+	-- All clients will match this rule {{{
 	{
 		rule = {},
 		properties = {
@@ -17,7 +16,8 @@ mods.awful.rules.rules = {
 			placement = mods.awful.placement.no_overlap + mods.awful.placement.no_offscreen,
 		},
 	},
-	-- Floating clients.
+	-- }}}
+	-- Floating clients {{{
 	{
 		rule_any = {
 			instance = {
@@ -53,7 +53,8 @@ mods.awful.rules.rules = {
 			placement = mods.awful.placement.centered,
 		},
 	},
-	-- Add titlebars to normal clients and dialogs
+	-- }}}
+	-- remove titlebars from normal clients and dialogs {{{
 	{
 		rule_any = {
 			type = {
@@ -65,7 +66,8 @@ mods.awful.rules.rules = {
 			titlebars_enabled = false,
 		},
 	},
-	-- Set st to always map on the tag named "2" on screen 1.
+	-- }}}
+	-- alacritty {{{
 	{
 		rule = {
 			class = "Alacritty",
@@ -75,6 +77,8 @@ mods.awful.rules.rules = {
 			tag = "1",
 		},
 	},
+	-- }}}
+	-- kitty {{{
 	{
 		rule = {
 			class = "kitty",
@@ -84,6 +88,8 @@ mods.awful.rules.rules = {
 			tag = "1",
 		},
 	},
+	-- }}}
+	-- st {{{
 	{
 		rule = {
 			class = "st",
@@ -93,7 +99,19 @@ mods.awful.rules.rules = {
 			tag = "1",
 		},
 	},
-	-- Set Chromium to always map on the tag named "2" on screen 1.
+	-- }}}
+	-- calibre {{{
+	{
+		rule = {
+			class = "calibre",
+		},
+		properties = {
+			screen = 1,
+			tag = "8",
+		},
+	},
+	-- }}}
+	-- chromium {{{
 	{
 		rule = {
 			class = "Chromium",
@@ -103,7 +121,8 @@ mods.awful.rules.rules = {
 			tag = "2",
 		},
 	},
-	-- Set Firefox to always map on the tag named "2" on screen 1.
+	-- }}}
+	-- firefox {{{
 	{
 		rule = {
 			class = "firefox-esr",
@@ -113,6 +132,30 @@ mods.awful.rules.rules = {
 			tag = "2",
 		},
 	},
+	-- }}}
+	-- gimp {{{
+	{
+		rule = {
+			class = "Gimp",
+		},
+		properties = {
+			screen = 1,
+			tag = "9",
+		},
+	},
+	-- }}}
+	-- inkscape {{{
+	{
+		rule = {
+			class = "Inkscape",
+		},
+		properties = {
+			screen = 1,
+			tag = "9",
+		},
+	},
+	-- }}}
+	-- kile {{{
 	{
 		rule = {
 			class = "kile",
@@ -122,6 +165,8 @@ mods.awful.rules.rules = {
 			tag = "4",
 		},
 	},
+	-- }}}
+	-- libreoffice {{{
 	{
 		rule = {
 			class = "libreoffice",
@@ -131,6 +176,8 @@ mods.awful.rules.rules = {
 			tag = "5",
 		},
 	},
+	-- }}}
+	-- mpv {{{
 	{
 		rule = {
 			class = "mpv",
@@ -141,15 +188,8 @@ mods.awful.rules.rules = {
 			floating = true,
 		},
 	},
-	{
-		rule = {
-			class = "calibre",
-		},
-		properties = {
-			screen = 1,
-			tag = "8",
-		},
-	},
+	-- }}}
+	-- xournalpp {{{
 	{
 		rule = {
 			class = "Xournalpp",
@@ -159,22 +199,5 @@ mods.awful.rules.rules = {
 			tag = "8",
 		},
 	},
-	{
-		rule = {
-			class = "Gimp",
-		},
-		properties = {
-			screen = 1,
-			tag = "9",
-		},
-	},
-	{
-		rule = {
-			class = "Inkscape",
-		},
-		properties = {
-			screen = 1,
-			tag = "9",
-		},
-	},
+	-- }}}
 }
