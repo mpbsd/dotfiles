@@ -28,6 +28,7 @@ Abolish eh{,s} é{,s}
 Abolish entao então
 Abolish equac{ao,oes} equaç{ão,ões}
 Abolish equivalencia{,s} equivalência{,s}
+Abolish espaco{,s} espaço{,s}
 Abolish estah{,s} está{,s}
 Abolish estatistica{,s} estatística{,s}
 Abolish exercicio{,s} exercício{,s}
