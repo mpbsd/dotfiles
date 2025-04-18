@@ -39,6 +39,7 @@ local OPT = {
 			tab = "│ ",
 			trail = "~",
 		},
+		shortmess = "ltToOCFI",
 		startofline = true,
 		undofile = true,
 		clipboard = "unnamedplus",

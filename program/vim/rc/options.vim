@@ -103,6 +103,8 @@ set nofsync
 " a list of words that change how cmdline-completion is done
 set wildoptions=pum,tagfile
 
+set shortmess=filnxtToOSI
+
 set background=dark
 
 if has("gui_running")
