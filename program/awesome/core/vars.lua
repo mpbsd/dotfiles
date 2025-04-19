@@ -6,6 +6,32 @@ local tmux = "st -e tmux"
 local edit = "vi"
 
 local M = {
+	-- handle_errors {{{
+	handle_errors = function()
+		if awesome.startup_errors then
+			mods.naughty.notify({
+				preset = mods.naughty.config.presets.critical,
+				title = "Oops, there were errors during startup!",
+				text = awesome.startup_errors,
+			})
+		end
+		do
+			local in_error = false
+			awesome.connect_signal("debug::error", function(err)
+				if in_error then
+					return
+				end
+				in_error = true
+				mods.naughty.notify({
+					preset = mods.naughty.config.presets.critical,
+					title = "Oops, an error happened!",
+					text = tostring(err),
+				})
+				in_error = false
+			end)
+		end
+	end,
+	-- }}}
 	-- theme_path {{{
 	theme_path = function(name)
 		local path = "<HOME>/.config/awesome/look/<name>/"

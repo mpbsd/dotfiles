@@ -11,7 +11,7 @@ require("awful.autofocus")
 
 require("awful.hotkeys_popup.keys")
 
-require("core.flaw")
+vars.handle_errors()
 
 mods.beautiful.init(vars.theme_conf(look[1]))
 

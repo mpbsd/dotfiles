@@ -2,50 +2,7 @@ local mods = require("core.mods")
 local vars = require("core.vars")
 local menu = require("core.menu")
 
--- Create a mods.wibox for each screen and add it
-local taglist_buttons = mods.gears.table.join(
-	mods.awful.button({}, 1, function(t)
-		t:view_only()
-	end),
-	mods.awful.button({ vars.modkey }, 1, function(t)
-		if client.focus then
-			client.focus:move_to_tag(t)
-		end
-	end),
-	mods.awful.button({}, 3, mods.awful.tag.viewtoggle),
-	mods.awful.button({ vars.modkey }, 3, function(t)
-		if client.focus then
-			client.focus:toggle_tag(t)
-		end
-	end),
-	mods.awful.button({}, 4, function(t)
-		mods.awful.tag.viewnext(t.screen)
-	end),
-	mods.awful.button({}, 5, function(t)
-		mods.awful.tag.viewprev(t.screen)
-	end)
-)
-
-local tasklist_buttons = mods.gears.table.join(
-	mods.awful.button({}, 1, function(c)
-		if c == client.focus then
-			c.minimized = true
-		else
-			c:emit_signal("request::activate", "tasklist", { raise = true })
-		end
-	end),
-	mods.awful.button({}, 3, function()
-		mods.awful.menu.client_list({ theme = { width = 250 } })
-	end),
-	mods.awful.button({}, 4, function()
-		mods.awful.client.focus.byidx(1)
-	end),
-	mods.awful.button({}, 5, function()
-		mods.awful.client.focus.byidx(-1)
-	end)
-)
-
-local function set_wallpaper(s)
+local set_wallpaper = function(s)
 	-- Wallpaper
 	if mods.beautiful.wallpaper then
 		local wallpaper = mods.beautiful.wallpaper
@@ -90,14 +47,52 @@ mods.awful.screen.connect_for_each_screen(function(s)
 	s.mytaglist = mods.awful.widget.taglist({
 		screen = s,
 		filter = mods.awful.widget.taglist.filter.all,
-		buttons = taglist_buttons,
+		buttons = mods.gears.table.join(
+			mods.awful.button({}, 1, function(t)
+				t:view_only()
+			end),
+			mods.awful.button({ vars.modkey }, 1, function(t)
+				if client.focus then
+					client.focus:move_to_tag(t)
+				end
+			end),
+			mods.awful.button({}, 3, mods.awful.tag.viewtoggle),
+			mods.awful.button({ vars.modkey }, 3, function(t)
+				if client.focus then
+					client.focus:toggle_tag(t)
+				end
+			end),
+			mods.awful.button({}, 4, function(t)
+				mods.awful.tag.viewnext(t.screen)
+			end),
+			mods.awful.button({}, 5, function(t)
+				mods.awful.tag.viewprev(t.screen)
+			end)
+		),
 	})
 
 	-- Create a tasklist widget
 	s.mytasklist = mods.awful.widget.tasklist({
 		screen = s,
 		filter = mods.awful.widget.tasklist.filter.currenttags,
-		buttons = tasklist_buttons,
+		buttons = mods.gears.table.join(
+			mods.awful.button({}, 1, function(c)
+				if c == client.focus then
+					c.minimized = true
+				else
+					c:emit_signal("request::activate", "tasklist", { raise = true })
+				end
+			end),
+			mods.awful.button({}, 3, function()
+				mods.awful.menu.client_list({ theme = { width = 250 } })
+			end),
+			mods.awful.button({}, 4, function()
+				mods.awful.client.focus.byidx(1)
+			end),
+			mods.awful.button({}, 5, function()
+				mods.awful.client.focus.byidx(-1)
+			end)
+		),
 	})
 
 	-- Create the mods.wibox
