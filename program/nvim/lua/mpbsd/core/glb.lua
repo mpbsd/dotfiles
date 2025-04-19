@@ -1,73 +1,15 @@
 return {
-	-- LSP {{{1
+	-- LSP {{{
 	LSP = {
-		-- bashls {{{2
-		bashls = {},
-		-- }}}
-		-- clangd {{{2
-		clangd = {},
-		-- }}}
-		-- jsonls {{{2
-		jsonls = {},
-		-- }}}
-		-- lua_ls {{{2
-		lua_ls = {
-			settings = {
-				Lua = {
-					completion = {
-						callSnippet = "Replace",
-					},
-					diagnostics = {
-						globals = {
-							-- awesomewm
-							"awesome",
-							"client",
-							"root",
-							"screen",
-							-- luasnips
-							"ls",
-							"s",
-							"sn",
-							"isn",
-							"t",
-							"i",
-							"f",
-							"c",
-							"d",
-							"r",
-							"events",
-							"ai",
-							"extras",
-							"l",
-							"rep",
-							"p",
-							"m",
-							"n",
-							"dl",
-							"fmt",
-							"fmta",
-							"conds",
-							"postfix",
-							"types",
-							"parse",
-							"ms",
-							"k",
-						},
-						disable = { "missing-fields" },
-					},
-				},
-			},
-		},
-		-- }}}
-		-- pyright {{{2
-		pyright = {},
-		-- }}}
-		-- texlab {{{2
-		texlab = {},
-		-- }}}
+		"bashls",
+		"clangd",
+		"jsonls",
+		"lua_ls",
+		"pyright",
+		"texlab",
 	},
 	-- }}}
-	-- FMT {{{1
+	-- FMT {{{
 	FMT = {
 		"black",
 		"isort",
@@ -75,7 +17,7 @@ return {
 		"stylua",
 	},
 	-- }}}
-	-- MAP {{{1
+	-- MAP {{{
 	---@param KEY table
 	MAP = function(KEY)
 		for _, kmp in pairs(KEY) do

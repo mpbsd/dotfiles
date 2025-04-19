@@ -1,13 +1,14 @@
 return {
 	"williamboman/mason.nvim",
-	-- dependencies = {
-	-- 	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	-- },
+	dependencies = {
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+	},
 	config = function()
 		local mason = require("mason")
-		-- local mason_tool_installer = require("mason-tool-installer")
-		-- local LSP = require("mpbsd.core.glb").LSP
-		-- local FMT = require("mpbsd.core.glb").FMT
+		local mason_tool_installer = require("mason-tool-installer")
+		local LSP = require("mpbsd.core.glb").LSP
+		local FMT = require("mpbsd.core.glb").FMT
+		local TBL = vim.tbl_extend("force", LSP, FMT)
 
 		mason.setup({
 			ui = {
@@ -19,6 +20,6 @@ return {
 			},
 		})
 
-		-- mason_tool_installer.setup({ ensure_installed = FMT })
+		mason_tool_installer.setup({ ensure_installed = TBL })
 	end,
 }

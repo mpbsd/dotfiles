@@ -139,5 +139,11 @@ vim.lsp.config("*", {
 	capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("pyright")
+vim.lsp.enable({
+	"bashls",
+	"clangd",
+	"jsonls",
+	"lua_ls",
+	"python",
+	"texlab",
+})

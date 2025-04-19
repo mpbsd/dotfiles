@@ -128,6 +128,34 @@ return {
 				},
 			},
 			-- }}}
+			-- [C]onfigure [L]SP {{{
+			{
+				mod = "n",
+				lhs = "<Leader>cl",
+				rhs = function()
+					builtin.find_files({ cwd = "~/.config/nvim/lsp" })
+				end,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[E]dit [L]SP",
+				},
+			},
+			-- }}}
+			-- [C]onfigure [A]after {{{
+			{
+				mod = "n",
+				lhs = "<Leader>ca",
+				rhs = function()
+					builtin.find_files({ cwd = "~/.config/nvim/after/plugin" })
+				end,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[E]dit [A]fter",
+				},
+			},
+			-- }}}
 		}
 
 		MAP(KEY)
