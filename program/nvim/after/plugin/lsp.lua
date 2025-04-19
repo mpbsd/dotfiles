@@ -129,56 +129,15 @@ local set_lsp_keybindings = function(event)
 end
 -- }}}
 
-return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDniel/mason-tool-installer.nvim",
-		{
-			"j-hui/fidget.nvim",
-			opts = {},
-		},
-		"hrsh7th/cmp-nvim-lsp",
-		{
-			"folke/lazydev.nvim",
-			ft = "lua",
-			opts = {
-				library = {
-					{
-						path = "${3rd}/luv/library",
-						words = { "vim%.uv" },
-					},
-				},
-			},
-		},
-	},
-	config = function()
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local mason_lspconfig = require("mason-lspconfig")
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+	callback = set_lsp_keybindings,
+	desc = "LSP Keybindings",
+})
 
-		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
-			callback = set_lsp_keybindings,
-			desc = "LSP Keybindings",
-		})
+vim.lsp.config("*", {
+	capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
-		mason_lspconfig.setup({
-			handlers = {
-				function(server_name)
-					local lspconfig = require("lspconfig")
-					local LSP = require("mpbsd.core.glb").LSP
-					local lsp = LSP[server_name] or {}
-					local capabilities = vim.tbl_deep_extend(
-						"force",
-						vim.lsp.protocol.make_client_capabilities(),
-						cmp_nvim_lsp.default_capabilities()
-					)
-
-					lsp.capabilities = vim.tbl_deep_extend("force", {}, capabilities, lsp.capabilities or {})
-					lspconfig[server_name].setup(lsp)
-				end,
-			},
-		})
-	end,
-}
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("pyright")

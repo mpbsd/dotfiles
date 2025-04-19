@@ -11,6 +11,7 @@ return {
 	"L3MON4D3/LuaSnip",
 	build = install_jsregexp(),
 	config = function()
+		-- local imports {{{
 		local ls = require("luasnip")
 		local s = ls.snippet
 		local sn = ls.snippet_node
@@ -40,8 +41,15 @@ return {
 		local k = require("luasnip.nodes.key_indexer").new_key
 		local loaders = require("luasnip.loaders.from_lua")
 		local MAP = require("mpbsd.core.glb").MAP
+		-- }}}
 
 		loaders.lazy_load({ paths = { "~/.config/nvim/lua/mpbsd/snip" } })
+
+		ls.config.set_config({
+			enable_autosnippets = true,
+			history = true,
+			update_events = { "TextChanged", "TextChangedI" },
+		})
 
 		-- snip_env {{{
 		ls.snip_env = {
@@ -76,6 +84,38 @@ return {
 		-- }}}
 
 		local KEY = {
+			-- Jump Forward {{{
+			{
+				mod = { "i", "s" },
+				lhs = "<C-J>",
+				rhs = function()
+					if ls.expand_or_locally_jumpable(1) then
+						ls.expand_or_jump(1)
+					end
+				end,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "Jump Forward",
+				},
+			},
+			-- }}}
+			-- Jump Backwards {{{
+			{
+				mod = { "i", "s" },
+				lhs = "<C-K>",
+				rhs = function()
+					if ls.locally_jumpable(-1) then
+						ls.jump(-1)
+					end
+				end,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "Jump Backwards",
+				},
+			},
+			-- }}}
 			-- [E]dit [S]nippet {{{
 			{
 				mod = "n",
