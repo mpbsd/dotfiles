@@ -189,6 +189,17 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- telegram {{{
+	{
+		rule = {
+			class = "TelegramDesktop",
+		},
+		properties = {
+			screen = 1,
+			tag = "5",
+		},
+	},
+	-- }}}
 	-- xournalpp {{{
 	{
 		rule = {

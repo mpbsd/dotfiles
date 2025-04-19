@@ -64,7 +64,11 @@ set list
 " characters for displaying in list mode
 set listchars=eol:↴,extends:>,lead:.,multispace:.,nbsp:+,precedes:<,tab:│\ \,trail:~
 
-" show (partial) command in the last line of the screen
+" This option helps to avoid all the hit-enter prompts caused by file
+" messages, for example with CTRL-G, and to avoid some other messages
+set shortmess=filnxtToOSI
+
+" don't show (partial) command in the last line of the screen
 set noshowcmd
 
 " don't show the mode() on the last line
@@ -103,10 +107,10 @@ set nofsync
 " a list of words that change how cmdline-completion is done
 set wildoptions=pum,tagfile
 
-set shortmess=filnxtToOSI
-
+" adjusts the default color groups for that background type
 set background=dark
 
+" graphical user interface
 if has("gui_running")
   set guioptions-=T
   set guioptions-=b
