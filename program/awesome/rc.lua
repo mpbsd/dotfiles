@@ -1,6 +1,7 @@
 local mods = require("core.mods")
 local vars = require("core.vars")
 local keys = require("core.keys")
+local btns = require("core.btns")
 local look = {
 	"custom",
 	"solarz",
@@ -20,7 +21,7 @@ mods.menubar.utils.terminal = vars.terminal
 
 require("core.wbar")
 
-require("core.mkey")
+vars.set_buttons(btns["buttons"])
 
 vars.set_keys(keys["globalkeys"])
 

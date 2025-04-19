@@ -1,8 +1,8 @@
 local mods = require("core.mods")
 
 local mkey = "Mod1"
-local term = "alacritty"
-local tmux = "alacritty -e tmux"
+local term = "st"
+local tmux = "st -e tmux"
 local edit = "vi"
 
 local M = {
@@ -58,10 +58,10 @@ local M = {
 	},
 	-- }}}
 	-- set_keys {{{
-	set_keys = function(globalkeys)
+	set_keys = function(keys)
 		for i = 1, 9 do
-			globalkeys = mods.gears.table.join(
-				globalkeys,
+			keys = mods.gears.table.join(
+				keys,
 				-- View tag only.
 				mods.awful.key(
 					{
@@ -142,12 +142,17 @@ local M = {
 				)
 			)
 		end
-		root.keys(globalkeys)
+		root.keys(keys)
+	end,
+	-- }}}
+	-- set_buttons {{{
+	set_buttons = function(buttons)
+		root.buttons(buttons)
 	end,
 	-- }}}
 	-- startup_programs {{{
 	startup_programs = function()
-		mods.awful.spawn("picom")
+		-- mods.awful.spawn("picom")
 		mods.awful.spawn(tmux)
 	end,
 	-- }}}
