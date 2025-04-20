@@ -52,7 +52,7 @@ return {
 					"ms",
 					"k",
 					-- neovim
-					-- "vim",
+					"vim",
 				},
 				disable = {
 					"missing-fields",

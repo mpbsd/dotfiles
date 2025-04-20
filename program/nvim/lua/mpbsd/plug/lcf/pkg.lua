@@ -23,6 +23,7 @@ return {
 				"json-lsp",
 				"lua-language-server",
 				"pyright",
+				"ruby-lsp",
 				"texlab",
 				-- }}}
 				-- FMT {{{

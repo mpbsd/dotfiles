@@ -145,5 +145,6 @@ vim.lsp.enable({
 	"json",
 	"lua",
 	"py",
+	"rb",
 	"tex",
 })

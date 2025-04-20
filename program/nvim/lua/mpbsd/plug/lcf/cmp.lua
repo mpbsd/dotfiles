@@ -4,18 +4,6 @@ return {
 	version = "1.*",
 	dependencies = {
 		"L3MON4D3/LuaSnip",
-		{
-			"folke/lazydev.nvim",
-			ft = "lua",
-			opts = {
-				library = {
-					{
-						path = "${3rd}/luv/library",
-						words = { "vim%.uv" },
-					},
-				},
-			},
-		},
 	},
 	opts = {
 		keymap = {
@@ -32,23 +20,19 @@ return {
 		},
 		sources = {
 			default = {
+				"buffer",
+				"cmdline",
 				"lsp",
+				"omni",
 				"path",
 				"snippets",
-				"lazydev",
-			},
-			providers = {
-				lazydev = {
-					module = "lazydev.integrations.blink",
-					score_offset = 100,
-				},
 			},
 		},
 		snippets = {
 			preset = "luasnip",
 		},
 		fuzzy = {
-			implementation = "prefer_rust_with_warning",
+			implementation = "rust",
 		},
 		signature = {
 			enabled = true,

@@ -196,7 +196,7 @@ mods.awful.rules.rules = {
 		},
 		properties = {
 			screen = 1,
-			tag = "5",
+			tag = "3",
 		},
 	},
 	-- }}}

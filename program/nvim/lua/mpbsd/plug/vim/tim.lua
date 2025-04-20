@@ -2,8 +2,8 @@ return {
 	{
 		"tpope/vim-abolish",
 		init = function()
-			local afile = vim.fn.expand("~/.config/nvim/after/plugin/abbrv.vim")
-			vim.g.abolish_save_file = afile
+			local a_file = vim.fn.expand("~/.config/nvim/after/plugin/abbrv.vim")
+			vim.g.abolish_save_file = a_file
 		end,
 	},
 	"tpope/vim-characterize",
