@@ -16,11 +16,16 @@ return {
 				"query",
 				"vim",
 				"vimdoc",
+				"python",
+				"ruby",
 			},
 
 			sync_install = false,
 			auto_install = true,
-			ignore_install = { "javascript", "latex" },
+			ignore_install = {
+				"javascript",
+				"latex",
+			},
 
 			highlight = {
 				enable = true,

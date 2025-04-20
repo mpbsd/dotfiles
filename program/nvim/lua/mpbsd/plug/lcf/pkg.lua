@@ -6,9 +6,6 @@ return {
 	config = function()
 		local mason = require("mason")
 		local mason_tool_installer = require("mason-tool-installer")
-		local LSP = require("mpbsd.core.glb").LSP
-		local FMT = require("mpbsd.core.glb").FMT
-		local TBL = vim.tbl_extend("force", LSP, FMT)
 
 		mason.setup({
 			ui = {
@@ -20,6 +17,23 @@ return {
 			},
 		})
 
-		mason_tool_installer.setup({ ensure_installed = TBL })
+		mason_tool_installer.setup({
+			ensure_installed = {
+				-- LSP {{{
+				"bash-language-server",
+				"clangd",
+				"json-lsp",
+				"lua-language-server",
+				"pyright",
+				"texlab",
+				-- }}}
+				-- FMT {{{
+				"black",
+				"isort",
+				"jq",
+				"stylua",
+				-- }}}
+			},
+		})
 	end,
 }

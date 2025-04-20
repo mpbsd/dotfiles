@@ -144,6 +144,6 @@ vim.lsp.enable({
 	"clangd",
 	"jsonls",
 	"lua_ls",
-	"python",
+	"pyright",
 	"texlab",
 })
