@@ -140,10 +140,10 @@ vim.lsp.config("*", {
 })
 
 vim.lsp.enable({
-	"bashls",
-	"clangd",
-	"jsonls",
-	"lua_ls",
-	"pyright",
-	"texlab",
+	"bash",
+	"c",
+	"json",
+	"lua",
+	"py",
+	"tex",
 })

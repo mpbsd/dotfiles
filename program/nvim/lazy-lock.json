@@ -29,5 +29,5 @@
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-unimpaired": { "branch": "master", "commit": "6d44a6dc2ec34607c41ec78acf81657248580bf1" },
-  "vimtex": { "branch": "master", "commit": "bb4e401f97caf29873382c3b7dcb64369c928b3d" }
+  "vimtex": { "branch": "master", "commit": "292ddf8063bc725b027f69d3b42086d221daab1d" }
 }
