@@ -49,9 +49,9 @@ nnoremap <Leader>pd :PlugUpdate<CR>
 nnoremap <Leader>pg :PlugUpgrade<CR>
 nnoremap <Leader>pc :PlugClean<CR>
 
-nnoremap <LocalLeader>pa :A<CR>
-nnoremap <LocalLeader>ps :AS<CR>
-nnoremap <LocalLeader>pv :AV<CR>
+nnoremap <Leader>pa :A<CR>
+nnoremap <Leader>ps :AS<CR>
+nnoremap <Leader>pv :AV<CR>
 
 nnoremap <Leader>0g :0G<CR>
 

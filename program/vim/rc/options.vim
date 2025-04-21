@@ -64,8 +64,7 @@ set list
 " characters for displaying in list mode
 set listchars=eol:↴,extends:>,lead:.,multispace:.,nbsp:+,precedes:<,tab:│\ \,trail:~
 
-" This option helps to avoid all the hit-enter prompts caused by file
-" messages, for example with CTRL-G, and to avoid some other messages
+" avoid certain messages
 set shortmess=filnxtToOSI
 
 " don't show (partial) command in the last line of the screen
@@ -107,7 +106,7 @@ set nofsync
 " a list of words that change how cmdline-completion is done
 set wildoptions=pum,tagfile
 
-" adjusts the default color groups for that background type
+" adjusts the color groups for either dark or light background
 set background=dark
 
 " graphical user interface
