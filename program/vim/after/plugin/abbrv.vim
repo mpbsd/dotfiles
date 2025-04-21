@@ -25,12 +25,16 @@ Abolish correc{ao,oes} correç{ão,ões}
 Abolish definic{ao,oes} definiç{ão,ões}
 Abolish demonstra{ao,oes} demonstraç{ão,ões}
 Abolish diferenca diferença
+Abolish diferenca{,s} diferença{,s}
 Abolish distribuic{ao,oes} distribuiç{ão,ões}
 Abolish divisive{l,eis} divisíve{l,eis}
 Abolish edic{ao,oes} ediç{ão,ões}
 Abolish eh{,s} é{,s}
 Abolish entao então
+Abolish equac{ao,oes} equaç{ão,ões}
 Abolish equivalencia equivalência
+Abolish equivalencia{,s} equivalência{,s}
+Abolish espaco{,s} espaço{,s}
 Abolish estah{,s} está{,s}
 Abolish estatistica estatística
 Abolish estatistica{,s} estatística{,s}
@@ -42,6 +46,7 @@ Abolish goias goiás
 Abolish graduacao graduação
 Abolish harmonica{,s} harmônica{,s}
 Abolish hipotese hipótese
+Abolish hipotese{,s} hipótese{,s}
 Abolish inscric{ao,oes} inscriç{ão,ões}
 Abolish matematica matemática
 Abolish matematic{a,o,os} matemátic{a,o,os}
@@ -59,8 +64,10 @@ Abolish proposi{ao,oes} proposiç{ão,ões}
 Abolish propri{a,o} própri{a,o}
 Abolish quimica química
 Abolish quimic{a,as,o,os} químic{a,as,o,os}
+Abolish quimic{a,o,as,os} químic{a,o,as,os}
 Abolish referencia{,s} referência{,s}
 Abolish regi{ao,oes} regi{ão,ões}
+Abolish relac{ao,oes} relaç{ão,ões}
 Abolish rela{ao,oes} relaç{ão,ões}
 Abolish reprovac{ao,oes} reprovaç{ão,ões}
 Abolish sao são
@@ -72,6 +79,8 @@ Abolish soluc{ao,oes} soluç{ão,ões}
 Abolish superficie{,s} superfície{,s}
 Abolish tambem também
 Abolish ultimo{,s} último{,s}
+Abolish ultim{a,as,o,os} último{a,as,o,os}
+Abolish unico{,s} único{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
 Abolish variave{l,is} variáve{l,is}
 Abolish vizinhanca{,s} vizinhança{,s}

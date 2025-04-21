@@ -6,6 +6,7 @@ local M = {
 	menubar = require("menubar"),
 	naughty = require("naughty"),
 	wibox = require("wibox"),
+	vicious = require("vicious"),
 }
 
 return M
