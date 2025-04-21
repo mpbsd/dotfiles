@@ -166,17 +166,6 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
-	-- libreoffice {{{
-	{
-		rule = {
-			class = "libreoffice",
-		},
-		properties = {
-			screen = 1,
-			tag = "5",
-		},
-	},
-	-- }}}
 	-- mpv {{{
 	{
 		rule = {

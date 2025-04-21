@@ -22,6 +22,7 @@ return {
 				"clangd",
 				"json-lsp",
 				"lua-language-server",
+				"marksman",
 				"pyright",
 				"ruby-lsp",
 				"texlab",
