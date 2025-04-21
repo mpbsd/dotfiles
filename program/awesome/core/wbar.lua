@@ -106,18 +106,20 @@ mods.awful.screen.connect_for_each_screen(function(s)
 	})
 	local cpuwidget = mods.wibox.widget.graph()
 	cpuwidget:set_width(20)
-	cpuwidget:set_color(mods.gears.color.create_solid_pattern("#00ff00"))
+	cpuwidget:set_color(mods.gears.color.create_solid_pattern("#111111"))
 	mods.vicious.cache(mods.vicious.widgets.cpu)
 	cpuwidget.opacity = "1"
 	mods.vicious.register(cpuwidget, mods.vicious.widgets.cpu, "$1", 5)
+	mods.beautiful.graph_bg = "#11111111"
 
+	-- Create a Mem widget
 	local memwidget = mods.wibox.widget.graph()
 	memwidget:set_width(20)
-	cpuwidget:set_color(mods.gears.color.create_solid_pattern("#00ff00"))
+	memwidget:set_color(mods.gears.color.create_solid_pattern("#ffffff"))
 	mods.vicious.cache(mods.vicious.widgets.mem)
 	memwidget.opacity = "1"
-	mods.vicious.register(memwidget, mods.vicious.widgets.mem, "$1", 11)
-	mods.beautiful.graph_bg = "#00000000"
+	mods.vicious.register(memwidget, mods.vicious.widgets.mem, "$1", 5)
+	mods.beautiful.graph_bg = "#11111111"
 
 	-- Add widgets to the mods.wibox
 	s.mywibox:setup({
