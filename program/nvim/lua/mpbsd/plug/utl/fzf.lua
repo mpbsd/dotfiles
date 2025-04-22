@@ -145,7 +145,7 @@ return {
 			-- [C]onfigure [A]after {{{
 			{
 				mod = "n",
-				lhs = "<Leader>ca",
+				lhs = "<Leader>fa",
 				rhs = function()
 					builtin.find_files({ cwd = "~/.config/nvim/after/plugin" })
 				end,
