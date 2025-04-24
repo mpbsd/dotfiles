@@ -13,11 +13,11 @@ return {
 				"lua",
 				"markdown",
 				"markdown_inline",
-				"query",
 				"vim",
 				"vimdoc",
 				"python",
 				"ruby",
+				"query",
 			},
 
 			sync_install = true,

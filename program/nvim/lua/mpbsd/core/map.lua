@@ -323,6 +323,38 @@ local KEY = {
 		},
 	},
 	-- }}}
+	-- [i]nstall grammars for [t]ree-[s]itter {{{
+	{
+		mod = "n",
+		lhs = "<LocalLeader>its",
+		rhs = function()
+			local CMD = ":TSInstall <trs>"
+			local TRS = {
+				"bash",
+				"bibtex",
+				"c",
+				"json",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"vim",
+				"vimdoc",
+				"python",
+				"ruby",
+				"query",
+			}
+			for _, trs in pairs(TRS) do
+				local cmd = CMD:gsub("<trs>", trs)
+				vim.cmd(cmd)
+			end
+		end,
+		opt = {
+			noremap = true,
+			silent = false,
+			desc = "install tree-sitter grammar",
+		},
+	},
+	-- }}}
 }
 
 MAP(KEY)
