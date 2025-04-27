@@ -390,6 +390,13 @@ snip.rv = r"mathbb{" + match.group(1).upper() + "}[" + match.group(2) + "]"
 endsnippet
 
 context "in_math()"
+snippet '\\([fkt])([xt])' "polynomial rings" rA
+`!p
+snip.rv = match.group(1).upper() + "[" + match.group(2) + "]"
+`$0
+endsnippet
+
+context "in_math()"
 snippet 'gg([a-z])([a-z])' "galois group" rA
 `!p
 K = match.group(1).upper()

@@ -40,7 +40,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		local MAP = require("mpbsd.core.glb").MAP
 
 		vim.o.spell = true
-		vim.g.textwidth = 256
 
 		local KEY = {
 			-- LaTeX: edit article {{{

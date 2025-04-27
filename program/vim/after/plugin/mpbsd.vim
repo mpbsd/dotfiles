@@ -1,7 +1,7 @@
-function! mpbsd#vim_search_for_help_in_new(sp_vs_tab) abort
-  if a:sp_vs_tab ==# 'v'
+function! mpbsd#vim_search_for_help_in_new(sp_vs_tb) abort
+  if a:sp_vs_tb ==# 'v'
     let l:help_cmd = ':vert help'
-  elseif a:sp_vs_tab ==# 't'
+  elseif a:sp_vs_tb ==# 't'
     let l:help_cmd = ':tab help'
   else
     let l:help_cmd = ':help'
@@ -44,4 +44,37 @@ function! mpbsd#replace_non_ascii_chars() abort
   endfor
   call setpos('.', l:pos)
   call setreg('/', l:reg)
+endfunction
+
+function! mpbsd#sigaa_students_json() abort
+  let l:fn = expand('%')
+  if l:fn =~# '\<IME[0-9]\{4\}\.json\>'
+    sil exec 'normal ggguG'
+    sil call mpbsd#replace_non_ascii_chars()
+    sil exec '1,$s/usuario \(on\|off\)-line no sigaa/\rnome:/g'
+    sil exec 'v/^\(nome\|curso\|matricula\|usuario\|e-mail\):/d'
+    sil exec '1,$s/\s*enviar mensagem\s*$//'
+    sil exec '1,$s/\(^\s\+\|\s\+$\)//e'
+    let l:ls = [
+          \'nome: \(.*\) (perfil)',
+          \'curso: \(.*\)',
+          \'matricula: \(.*\)',
+          \'usuario: \(.*\)',
+          \'e-mail: \(.*\)$',
+          \]
+    let l:rs = [
+          \'"\3": {',
+          \'\t"fname": "\1",',
+          \'\t"gradc": "\2",',
+          \'\t"uname": "\4",',
+          \'\t"email": "\5"',
+          \'},',
+          \]
+    sil exec printf('1,$s/%s/%s/', join(l:ls, '$\n^'), join(l:rs, '\r'))
+    sil exec 'g/\(marcelo bezerra barboza\|bezerra\|bezerra@ufg.br\)$/d'
+    sil exec '1s/^/{\r\t/'
+    sil exec '$s/$/\r}/'
+    sil exec '1,$s/},$\n^}/}\r}/'
+    sil exec 'normal gg=G'
+  endif
 endfunction

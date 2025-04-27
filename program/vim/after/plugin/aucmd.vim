@@ -53,3 +53,8 @@ augroup mpbsd_edit_latex_files
     nnoremap <LocalLeader>mf :Make final<CR>
   }
 augroup END
+
+augroup mpbsd_sigaa_students_json
+  autocmd!
+  autocmd FileType json :call mpbsd#sigaa_students_json()
+augroup END
