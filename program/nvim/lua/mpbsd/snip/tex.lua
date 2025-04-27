@@ -700,7 +700,7 @@ return {
 	-- delimiters {{{
 	s(
 		{
-			trig = [[d([pPbBcCg])]],
+			trig = [[\\([pPbBcCg])]],
 			regTrig = true,
 			trigEngine = "ecma",
 			wordTrig = false,
@@ -952,6 +952,47 @@ return {
 				["c"] = [[mathbb{C}]],
 			}
 			return M[snip.captures[1]]
+		end),
+		{ condition = utils.in_math }
+	),
+	-- }}}
+	-- polynomial rings {{{
+	s(
+		{
+			trig = [[(?<=\\)([zqrc])([xt])]],
+			regTrig = true,
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "polynomial rings",
+		},
+		f(function(_, snip)
+			local M = {
+				["z"] = [[mathbb{Z}]],
+				["q"] = [[mathbb{Q}]],
+				["r"] = [[mathbb{R}]],
+				["c"] = [[mathbb{C}]],
+			}
+			return M[snip.captures[1]] .. "[" .. snip.captures[2] .. "]"
+		end),
+		{ condition = utils.in_math }
+	),
+	-- }}}
+	-- galois group {{{
+	s(
+		{
+			trig = [[gg([a-z])([a-z])]],
+			regTrig = true,
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "galois group",
+		},
+		f(function(_, snip)
+			local K = snip.captures[1]:upper()
+			local F = snip.captures[2]:upper()
+			if snip.captures[2]:match("[qrc]") then
+				F = [[\mathbb{]] .. snip.captures[2]:upper() .. [[}]]
+			end
+			return "G(" .. K .. "," .. F .. ")"
 		end),
 		{ condition = utils.in_math }
 	),
@@ -1238,11 +1279,11 @@ return {
 	-- absolute value, norm {{{
 	s(
 		{
-			trig = [[(\S+)\.(abs|norm)]],
+			trig = [[(\S+)\.(abs|norm|order)]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
-			desc = "absolute value, norm",
+			desc = "absolute value, norm, order",
 		},
 		f(function(_, snip)
 			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]

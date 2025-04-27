@@ -1,8 +1,7 @@
 augroup mpbsd_edit_csv_files
   autocmd!
-  autocmd FileType csv {
-    setlocal nowrap
-  }
+  autocmd BufWritePre *.csv  :call mpbsd#remove_trailing_spaces()
+  autocmd FileType csv setlocal nowrap
 augroup END
 
 augroup mpbsd_write_emails

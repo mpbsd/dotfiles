@@ -245,7 +245,7 @@ snippet [[ "display math" wA
 endsnippet
 
 context "in_math()"
-snippet 'd([pPbBcCg])' "delimiters" rA
+snippet '\\([pPbBcCg])' "delimiters" rA
 `!p
 delimiter = {
 	'p': {
@@ -380,6 +380,26 @@ endsnippet
 context "in_math()"
 snippet '\\([nzqrc])\1' "numerical sets" rA
 \mathbb\{`!p snip.rv = match.group(1).upper()`\}
+endsnippet
+
+context "in_math()"
+snippet '(?<=\\)([zqrc])([xt])' "polynomial rings" rA
+`!p
+snip.rv = r"mathbb{" + match.group(1).upper() + "}[" + match.group(2) + "]"
+`$0
+endsnippet
+
+context "in_math()"
+snippet 'gg([a-z])([a-z])' "galois group" rA
+`!p
+K = match.group(1).upper()
+if match.group(2) in ["q", "r", "c"]:
+	F = r"\mathbb{" + match.group(2).upper() + "}"
+else:
+	F = match.group(2).upper()
+G = "G(" + K + "," + F + ")"
+snip.rv = G
+`$0
 endsnippet
 
 context "in_math()"
@@ -540,7 +560,7 @@ snippet '(\S+)\.(bar|d{1,3}ot|hat|overline|vec)' "bar, dot, hat, overline and ve
 endsnippet
 
 context "in_math()"
-snippet '(\S+)\.(abs|norm)' "absolute value, norm" rA
+snippet '(\S+)\.(abs|norm|order)' "absolute value, norm, order" rA
 \\`!p snip.rv = match.group(2) + r"{" + match.group(1) + r"}"`$0
 endsnippet
 
