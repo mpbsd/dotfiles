@@ -245,7 +245,7 @@ snippet [[ "display math" wA
 endsnippet
 
 context "in_math()"
-snippet '\\([pPbBcCg])' "delimiters" rA
+snippet '(d)([pPbBcCg])' "delimiters" rA
 `!p
 delimiter = {
 	'p': {
@@ -277,8 +277,8 @@ delimiter = {
 		'closing': r'}',
 	},
 }
-opening = delimiter[match.group(1)]['opening']
-closing = delimiter[match.group(1)]['closing']
+opening = delimiter[match.group(2)]['opening']
+closing = delimiter[match.group(2)]['closing']
 snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
 endsnippet
 

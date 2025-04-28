@@ -98,7 +98,7 @@ mods.awful.screen.connect_for_each_screen(function(s)
 	-- Create the mods.wibox
 	s.mywibox = mods.awful.wibar({ position = "top", screen = s })
 
-	-- Create a CPU widget
+	-- CPU widget
 	-- local cpuicon = mods.wibox.widget({
 	-- 	image = "/usr/share/icons/oxygen/base/22x22/devices/cpu.png",
 	-- 	resize = false,
@@ -112,7 +112,7 @@ mods.awful.screen.connect_for_each_screen(function(s)
 	-- mods.vicious.register(cpuwidget, mods.vicious.widgets.cpu, "$1", 5)
 	-- mods.beautiful.graph_bg = "#11111111"
 
-	-- Create a Mem widget
+	-- MEM widget
 	-- local memwidget = mods.wibox.widget.graph()
 	-- memwidget:set_width(20)
 	-- memwidget:set_color(mods.gears.color.create_solid_pattern("#ffffff"))
