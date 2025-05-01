@@ -551,6 +551,24 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
+	-- frame {{{
+	s(
+		{
+			trig = "fra",
+			snippetType = "autosnippet",
+			desc = "frame",
+		},
+		fmta(
+			[[
+	    \begin{frame}{<>}
+	      <>
+	    \end{frame}
+	    ]],
+			{ i(1), i(2) }
+		),
+		{ condition = conds.line_begin }
+	),
+	-- }}}
 	-- itemize {{{
 	s(
 		{
