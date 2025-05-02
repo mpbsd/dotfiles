@@ -109,6 +109,11 @@ set wildoptions=pum,tagfile
 " adjusts the color groups for either dark or light background
 set background=dark
 
+" use '+' instead of '*' for all yank, delete, change and put operations
+if has('unnamedplus')
+  set clipboard=unnamedplus
+endif
+
 " graphical user interface
 if has("gui_running")
   set guioptions-=T
