@@ -55,6 +55,11 @@ set hlsearch
 " highlight match while typing search pattern
 set incsearch
 
+" use '+' instead of '*' for all yank, delete, change and put operations
+if has('unnamedplus')
+  set clipboard=unnamedplus
+endif
+
 " characters to use for displaying special items
 set fillchars=fold:·,foldsep:│,vert:│
 
@@ -108,11 +113,6 @@ set wildoptions=pum,tagfile
 
 " adjusts the color groups for either dark or light background
 set background=dark
-
-" use '+' instead of '*' for all yank, delete, change and put operations
-if has('unnamedplus')
-  set clipboard=unnamedplus
-endif
 
 " graphical user interface
 if has("gui_running")

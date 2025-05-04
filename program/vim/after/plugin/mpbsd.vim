@@ -49,8 +49,9 @@ endfunction
 function! mpbsd#sigaa_students_json() abort
   let l:fn = expand('%')
   let l:r1 = '\<IME[0-9]\{4\}\.json\>'
-  let l:r2 = '^\s\+"[0-9]\{9\}": {$'
-  if l:fn =~# l:r1 && search(l:r2) == 0
+  let l:r2 = 'usu.rio \(on\|off\)-line no sigaa'
+  let l:r3 = '^\s\+"[0-9]\{9\}": {$'
+  if l:fn =~# l:r1 && search(l:r2) != 0 && search(l:r3) == 0
     sil exec 'normal ggguG'
     sil call mpbsd#replace_non_ascii_chars()
     sil exec '1,$s/usuario \(on\|off\)-line no sigaa/\rnome:/g'
