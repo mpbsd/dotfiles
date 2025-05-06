@@ -69,6 +69,9 @@ set list
 " characters for displaying in list mode
 set listchars=eol:↴,extends:>,lead:.,multispace:.,nbsp:+,precedes:<,tab:│\ \,trail:~
 
+" characters that form pair
+set matchpairs+=<:>
+
 " avoid certain messages
 set shortmess=filnxtToOSI
 
