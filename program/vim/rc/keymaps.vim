@@ -43,7 +43,9 @@ nnoremap <Leader>; :
 nnoremap Y y$
 nnoremap K :call mpbsd#vim_find_help_cword(expand('<cword>'))<CR>
 
-nnoremap <Leader>nh :nohls<CR>
+nnoremap <BS> :nohls<CR>
+
+nnoremap <LocalLeader>jp :g/./.;/^\s*$/-1join<CR>
 
 inoremap <LocalLeader>cc mmB~`ma
 inoremap <LocalLeader>tu mmBgUiw`ma
