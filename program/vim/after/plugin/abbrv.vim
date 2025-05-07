@@ -84,3 +84,7 @@ Abolish unico{,s} único{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
 Abolish variave{l,is} variáve{l,is}
 Abolish vizinhanca{,s} vizinhança{,s}
+Abolish laboratorio{,s} laboratório{,s}
+Abolish informatica informática
+Abolish algebra{,s} álgebra{,s}
+Abolish analitica analítica

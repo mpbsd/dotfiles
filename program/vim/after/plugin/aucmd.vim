@@ -58,5 +58,5 @@ augroup END
 
 augroup mpbsd_sigaa_students_json
   autocmd!
-  autocmd FileType json :call mpbsd#sigaa_students_json()
+  autocmd BufWritePre *.json :call mpbsd#sigaa_students_json()
 augroup END
