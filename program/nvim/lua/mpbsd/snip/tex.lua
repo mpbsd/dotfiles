@@ -164,6 +164,7 @@ return {
 	     <>
 	     \bibliographystyle{plain}
 	     \bibliography{ref/main}
+       <>
 	     \end{document}
 			]],
 			{
@@ -174,6 +175,7 @@ return {
 				t(""),
 				t(""),
 				i(0),
+				t(""),
 			}
 		),
 		{ condition = conds.line_begin }
@@ -692,7 +694,7 @@ return {
 		},
 		fmta(
 			[[
-        $<>$
+        \(<>\)
       ]],
 			{ i(1) }
 		)

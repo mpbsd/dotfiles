@@ -3,6 +3,8 @@ Abolish ac{ao,oes} aç{ão,ões}
 Abolish afirmac{ao,oes} afirmaç{ão,ões}
 Abolish ah{,s} á{,s}
 Abolish aleatori{a,o,as,os} aleatóri{a,o,as,os}
+Abolish algebra{,s} álgebra{,s}
+Abolish analitic{a,o,as,os} analítica{a,o,as,os}
 Abolish aprovac{ao,oes} aprovaç{ão,ões}
 Abolish area{,s} área{,s}
 Abolish ateh até
@@ -47,7 +49,9 @@ Abolish graduacao graduação
 Abolish harmonica{,s} harmônica{,s}
 Abolish hipotese hipótese
 Abolish hipotese{,s} hipótese{,s}
+Abolish informatica informática
 Abolish inscric{ao,oes} inscriç{ão,ões}
+Abolish laboratorio{,s} laboratório{,s}
 Abolish matematica matemática
 Abolish matematic{a,o,os} matemátic{a,o,os}
 Abolish matricula{,s} matrícula{,s}
