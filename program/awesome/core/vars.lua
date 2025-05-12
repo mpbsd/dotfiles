@@ -1,8 +1,8 @@
 local mods = require("core.mods")
 
 local mkey = "Mod1"
-local term = "st"
-local tmux = "st -e tmux"
+local term = "alacritty"
+local tmux = "alacritty -e tmux"
 local edit = "vi"
 
 local M = {
@@ -178,7 +178,7 @@ local M = {
 	-- }}}
 	-- startup_programs {{{
 	startup_programs = function()
-		-- mods.awful.spawn("picom")
+		mods.awful.spawn("picom")
 		mods.awful.spawn(tmux)
 	end,
 	-- }}}
