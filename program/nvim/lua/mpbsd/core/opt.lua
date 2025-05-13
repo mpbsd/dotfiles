@@ -45,6 +45,8 @@ local OPT = {
 		clipboard = "unnamedplus",
 		lazyredraw = true,
 		showmode = false,
+		foldopen = "all",
+		foldclose = "all",
 	},
 	-- }}}
 }
