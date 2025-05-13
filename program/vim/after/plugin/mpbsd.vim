@@ -81,8 +81,3 @@ function! mpbsd#sigaa_students_json() abort
     sil exec 'normal gg=G'
   endif
 endfunction
-
-function! mpbsd#open_pdf_file_in_chromium() abort
-  let l:pdf = substitute(expand('<cWORD>'), '[",]', '', 'g')
-  exec printf(":!chromium %s", l:pdf)
-endfunction
