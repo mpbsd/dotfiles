@@ -138,7 +138,7 @@ local KEY = {
 	-- nohls {{{
 	{
 		mod = "n",
-		lhs = "<Leader>nh",
+		lhs = "<BS>",
 		rhs = "<Cmd>nohls<CR>",
 		opt = {
 			noremap = true,
