@@ -641,6 +641,22 @@ local M = {
 				description = "(un)maximize horizontally",
 				group = "client",
 			}
+		),
+		-- }}}
+		-- opens calibre {{{
+		mods.awful.key(
+			{
+				vars.modkey,
+				"Control",
+			},
+			"c",
+			function(c)
+				mods.awful.spawn("calibre")
+			end,
+			{
+				description = "open calibre",
+				group = "client",
+			}
 		)
 		-- }}}
 	),

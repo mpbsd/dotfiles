@@ -76,7 +76,7 @@ set list
 set listchars=eol:↴,extends:>,lead:.,multispace:.,nbsp:+,precedes:<,tab:│\ \,trail:~
 
 " characters that form pair
-set matchpairs+=<:>
+set matchpairs+=<:>,\{:\}
 
 " avoid certain messages
 set shortmess=filnxtToOSI
