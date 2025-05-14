@@ -1,0 +1,58 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defvar
+  tap-time 250
+  hold-time 250
+)
+
+(defalias
+  a (tap-hold $tap-time $hold-time a lctl)
+  s (tap-hold $tap-time $hold-time s C-spc)
+  d (tap-hold $tap-time $hold-time d lalt)
+  f (tap-hold $tap-time $hold-time f lsft)
+
+  j (tap-hold $tap-time $hold-time j rsft)
+  k (tap-hold $tap-time $hold-time k ralt)
+  l (tap-hold $tap-time $hold-time l C-spc)
+  ; (tap-hold $tap-time $hold-time ; rctl)
+
+  spc (tap-hold $tap-time $hold-time spc (layer-while-held aux))
+
+  H left
+  J down
+  K up
+  L right
+
+  sad (macro s u d o spc a p t spc u p d a t e ret)
+  sag (macro s u d o spc a p t spc u p g r a d e ret)
+  saf (macro s u d o spc a p t spc min f spc i n s t a l l ret)
+  sar (macro s u d o spc a p t spc a u t o r e m o v e ret)
+  sac (macro s u d o spc a p t spc a u t o c l e a n ret)
+  sdb (macro s u d o spc u p d a t e d b ret)
+)
+
+(defsrc
+   esc    1    2    3    4    5    6    7    8    9    0    -    =    \   grv
+   tab    q    w    e    r    t    y    u    i    o    p    [    ] bspc
+  lctl    a    s    d    f    g    h    j    k    l    ;    '  ret
+  lsft    z    x    c    v    b    n    m    ,    .    / rsft
+       lmet lalt            spc           ralt rmet
+)
+
+(deflayer qwerty
+   esc    1    2    3    4    5    6    7    8    9    0    -    =    \   grv
+   tab    q    w    e    r    t    y    u    i    o    p    [    ] bspc
+   esc   @a   @s   @d   @f    g    h   @j   @k   @l   @;    '  ret
+  lsft    z    x    c    v    b    n    m    ,    .    / rsft
+       lmet lalt           @spc           ralt rmet
+)
+
+(deflayer aux
+     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12    _     _
+     _ @sad @sad @sad    _    _    _    _    _    _    _    _    _    _
+     _ @sad @sad @sad    _    _   @H   @J   @K   @L    _    _    _
+     _    _    _    _    _    _    _    _    _    _    _    _
+          _    _              _              _    _
+)
