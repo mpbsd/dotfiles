@@ -63,6 +63,12 @@ endif
 " characters to use for displaying special items
 set fillchars=fold:·,foldsep:│,vert:│
 
+" opens folds
+set foldopen=all
+
+" closes folds
+set foldclose=all
+
 " useful to see the difference between tabs and spaces and for trailing blanks
 set list
 
