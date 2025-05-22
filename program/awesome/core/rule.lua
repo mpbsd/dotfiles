@@ -78,6 +78,17 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- conky {{{
+	{
+		rule = {
+			class = "Conky",
+		},
+		properties = {
+			screen = 1,
+			tag = "9",
+		},
+	},
+	-- }}}
 	-- kitty {{{
 	{
 		rule = {
@@ -107,7 +118,7 @@ mods.awful.rules.rules = {
 		},
 		properties = {
 			screen = 1,
-			tag = "8",
+			tag = "7",
 		},
 	},
 	-- }}}
@@ -140,7 +151,7 @@ mods.awful.rules.rules = {
 		},
 		properties = {
 			screen = 1,
-			tag = "9",
+			tag = "8",
 		},
 	},
 	-- }}}
@@ -151,7 +162,7 @@ mods.awful.rules.rules = {
 		},
 		properties = {
 			screen = 1,
-			tag = "9",
+			tag = "8",
 		},
 	},
 	-- }}}
@@ -173,7 +184,7 @@ mods.awful.rules.rules = {
 		},
 		properties = {
 			screen = 1,
-			tag = "7",
+			tag = "6",
 			floating = true,
 		},
 	},
@@ -196,7 +207,7 @@ mods.awful.rules.rules = {
 		},
 		properties = {
 			screen = 1,
-			tag = "8",
+			tag = "5",
 		},
 	},
 	-- }}}
