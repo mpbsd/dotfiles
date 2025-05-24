@@ -47,9 +47,9 @@ nnoremap <BS> :nohls<CR>
 
 nnoremap <LocalLeader>jp :g/./:.;/^\s*$/-1join<CR>
 
-inoremap <LocalLeader>cc mmB~`ma
-inoremap <LocalLeader>tu mmBgUiw`ma
-inoremap <LocalLeader>tl mmBguiw`ma
+inoremap <LocalLeader>cc mmb~`ma
+inoremap <LocalLeader>tu mmbgUiw`ma
+inoremap <LocalLeader>tl mmbguiw`ma
 
 nnoremap <Leader>pd :PlugUpdate<CR>
 nnoremap <Leader>pg :PlugUpgrade<CR>
