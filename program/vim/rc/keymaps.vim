@@ -45,8 +45,6 @@ nnoremap K :call mpbsd#vim_find_help_cword(expand('<cword>'))<CR>
 
 nnoremap <BS> :nohls<CR>
 
-nnoremap <LocalLeader>jp :g/./:.;/^\s*$/-1join<CR>
-
 inoremap <LocalLeader>cc mmb~`ma
 inoremap <LocalLeader>tu mmbgUiw`ma
 inoremap <LocalLeader>tl mmbguiw`ma
@@ -67,4 +65,4 @@ nnoremap <LocalLeader>dk :call deadk#toggle_dead_keys()<CR>
 
 nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
 
-nnoremap <Leader>uid :-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)'<CR>
+nnoremap <LocalLeader>uid :-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)'<CR>

@@ -1,10 +1,9 @@
-augroup mpbsd_edit_csv_files
+augroup mpbsd_nowrap
   autocmd!
-  autocmd BufWritePre *.csv  :call mpbsd#remove_trailing_spaces()
   autocmd FileType csv setlocal nowrap
 augroup END
 
-augroup mpbsd_write_emails
+augroup mpbsd_email
   autocmd!
   autocmd FileType mail {
     setlocal spell
@@ -23,9 +22,10 @@ augroup mpbsd_fdm
   autocmd FileType vim    setlocal foldmethod=marker
 augroup END
 
-augroup mpbsd_remove_trailing_spaces
+augroup mpbsd_trailing_spaces
   autocmd!
   autocmd BufWritePre *.c    :call mpbsd#remove_trailing_spaces()
+  autocmd BufWritePre *.csv  :call mpbsd#remove_trailing_spaces()
   autocmd BufWritePre *.h    :call mpbsd#remove_trailing_spaces()
   autocmd BufWritePre *.json :call mpbsd#remove_trailing_spaces()
   autocmd BufWritePre *.lua  :call mpbsd#remove_trailing_spaces()
@@ -37,11 +37,10 @@ augroup mpbsd_remove_trailing_spaces
   autocmd BufWritePre *.vim  :call mpbsd#remove_trailing_spaces()
 augroup END
 
-augroup mpbsd_edit_latex_files
+augroup mpbsd_latex
   autocmd!
   autocmd FileType tex {
     setlocal spell
-
     nnoremap <LocalLeader>ea :Earticle<CR>
     nnoremap <LocalLeader>eb :Ebibliography<CR>
     nnoremap <LocalLeader>ei :Eintroduction<CR>
@@ -49,14 +48,13 @@ augroup mpbsd_edit_latex_files
     nnoremap <LocalLeader>er :Eresults<CR>
     nnoremap <LocalLeader>ee :Eexamples<CR>
     nnoremap <LocalLeader>ep :Eproofs<CR>
-
     nnoremap <LocalLeader>mc :Make clean<CR>
     nnoremap <LocalLeader>md :Make draft<CR>
     nnoremap <LocalLeader>mf :Make final<CR>
   }
 augroup END
 
-augroup mpbsd_sigaa_students_json
+augroup mpbsd_sigaa
   autocmd!
   autocmd BufWritePre *.json :call mpbsd#sigaa_students_json()
 augroup END

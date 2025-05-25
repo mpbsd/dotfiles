@@ -4,7 +4,7 @@ Documentation=https://github.com/jtroo/kanata
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/sh -c '$${HOME}/.local/share/cargo/bin/kanata --cfg $${HOME}/.config/kanata/hhk.kbd'
+ExecStart=/usr/bin/sh -c '$${HOME}/.local/share/cargo/bin/kanata --cfg $${HOME}/.config/kanata/tkl.kbd'
 Restart=no
 
 [Install]
