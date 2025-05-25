@@ -134,6 +134,10 @@ local G = {
 					"xournalpp",
 					"xournalpp",
 				},
+				{
+					"zotero",
+					"flatpak run org.zotero.Zotero",
+				},
 			},
 		},
 		-- }}}
