@@ -177,6 +177,17 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- zotero {{{
+	{
+		rule = {
+			class = "Zotero",
+		},
+		properties = {
+			screen = 1,
+			tag = "4",
+		},
+	},
+	-- }}}
 	-- mpv {{{
 	{
 		rule = {

@@ -247,6 +247,22 @@ local M = {
 			}
 		),
 		-- }}}
+		-- zotero {{{
+		mods.awful.key(
+			{
+				vars.modkey,
+				"Control",
+			},
+			"z",
+			function()
+				mods.awful.spawn("flatpak run org.zotero.Zotero")
+			end,
+			{
+				description = "Zotero",
+				group = "launcher",
+			}
+		),
+		-- }}}
 		-- reload awesome {{{
 		mods.awful.key(
 			{
