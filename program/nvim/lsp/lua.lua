@@ -23,6 +23,8 @@ return {
 					"client",
 					"root",
 					"screen",
+					-- conky,
+					"conky",
 					-- luasnips
 					"ls",
 					"s",
