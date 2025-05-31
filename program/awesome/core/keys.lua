@@ -263,6 +263,22 @@ local M = {
 			}
 		),
 		-- }}}
+		-- spotify {{{
+		mods.awful.key(
+			{
+				vars.modkey,
+				"Control",
+			},
+			"s",
+			function()
+				mods.awful.spawn("flatpak run com.spotify.Client")
+			end,
+			{
+				description = "Spotify",
+				group = "launcher",
+			}
+		),
+		-- }}}
 		-- reload awesome {{{
 		mods.awful.key(
 			{

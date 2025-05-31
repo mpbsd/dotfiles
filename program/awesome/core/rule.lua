@@ -188,6 +188,17 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- spotify {{{
+	{
+		rule = {
+			class = "Spotify",
+		},
+		properties = {
+			screen = 1,
+			tag = "6",
+		},
+	},
+	-- }}}
 	-- mpv {{{
 	{
 		rule = {

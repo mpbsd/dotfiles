@@ -114,6 +114,17 @@ local G = {
 			},
 		},
 		-- }}}
+    -- media {{{
+		{
+			"media",
+			{
+				{
+					"spotify",
+					"flatpak run com.spotify.Client",
+				},
+			},
+		},
+		-- }}}
 		-- office {{{
 		{
 			"office",
