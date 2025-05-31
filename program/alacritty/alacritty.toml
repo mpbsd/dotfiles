@@ -2,23 +2,19 @@
 
 decorations = "None"
 decorations_theme_variant = "None"
-
 dimensions.columns = 128
 dimensions.lines = 32
-
 dynamic_padding = true
-padding.x = 7
-padding.y = 7
-
-opacity = 0.9
-
+opacity = 0.95
+padding = { x = 7, y = 7 }
 position = "None"
 
 [font]
 
 normal.family = "JetBrainsMono Nerd Font"
-
 size = 13.0
+offset = { x = 0, y = 0 }
+glyph_offset = { x = 0, y = 0 }
 
 [colors.primary]
 

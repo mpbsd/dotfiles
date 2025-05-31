@@ -27,8 +27,6 @@ snippet _article "article template" bA
 \graphicspath\{\{./fig/\}\}
 \intervalconfig\{soft open fences\}
 
-\newcommand{\normalsubgroup}{\trianglelefteqslant}
-
 \title\{an awesome title\}
 \author\{list of authors\}
 
@@ -49,17 +47,7 @@ $0
 endsnippet
 
 context "in_text()"
-snippet opt "package with options" bA
-\usepackage[${1:opt}]\{${2:pkg}\}$0
-endsnippet
-
-context "in_text()"
-snippet pkg "package without options" bA
-\usepackage\{${1:pkg}\}$0
-endsnippet
-
-context "in_text()"
-snippet mid "mid range set of packages" bA
+snippet _mid "mid range set of packages" bA
 \usepackage[T1]\{fontenc\}
 \usepackage[english]\{babel\}
 \usepackage\{amsmath\}
@@ -71,10 +59,21 @@ snippet mid "mid range set of packages" bA
 \usepackage\{hyperref\}
 \usepackage\{interval\}
 \usepackage\{mathtools\}
+\usepackage\{stmaryrd\}
 \usepackage[table]\{xcolor\}
 
 \graphicspath\{\{./fig/\}\}
 \intervalconfig\{soft open fences\}
+endsnippet
+
+context "in_text()"
+snippet opt "package with options" bA
+\usepackage[${1:opt}]\{${2:pkg}\}$0
+endsnippet
+
+context "in_text()"
+snippet pkg "package without options" bA
+\usepackage\{${1:pkg}\}$0
 endsnippet
 
 context "in_text()"
@@ -392,6 +391,17 @@ snippet '\\([nzqrc])\1' "numerical sets" rA
 \mathbb\{`!p snip.rv = match.group(1).upper()`\}
 endsnippet
 
+snippet _group "custom commands for group theory" bA
+\DeclarePairedDelimiter\order{\lvert}{\rvert}
+\newcommand{\subgroup}{\leqslant}
+\newcommand{\normalsubgroup}{\trianglelefteqslant}
+endsnippet
+
+context "in_math()"
+snippet lagrthm "lagranges theorem" iA
+\order\{${1:G}\}=\left[$1:${2:H}\right]\order\{$2\}
+endsnippet
+
 context "in_math()"
 snippet '(?<=\\)([zqrc])([xt])' "polynomial rings" rA
 `!p
@@ -400,7 +410,7 @@ snip.rv = r"mathbb{" + match.group(1).upper() + "}[" + match.group(2) + "]"
 endsnippet
 
 context "in_math()"
-snippet '\\([fkt])([xt])' "polynomial rings" rA
+snippet '\\([fklt])([xt])' "polynomial rings" rA
 `!p
 snip.rv = match.group(1).upper() + "[" + match.group(2) + "]"
 `$0
@@ -581,7 +591,7 @@ snippet '(\S+)\.(abs|norm|order)' "absolute value, norm, order" rA
 \\`!p snip.rv = match.group(2) + r"{" + match.group(1) + r"}"`$0
 endsnippet
 
-snippet _conformal "custom commands for differential geometry" bA
+snippet _dgeom "custom commands for differential geometry" bA
 \newcommand{\X}[1]{\partial_{#1}}
 \newcommand{\flatMetr}[2]{g{\left({#1},{#2}\right)}}
 \newcommand{\flatConn}[2]{\nabla_{#1}{#2}}

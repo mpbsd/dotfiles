@@ -311,7 +311,7 @@ local KEY = {
 	-- generate a random alphanumeric pass phrase {{{
 	{
 		mod = "n",
-		lhs = "<Leader>uid",
+		lhs = "<LocalLeader>uid",
 		rhs = function()
 			local hex = [[-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)']]
 			vim.cmd(hex)

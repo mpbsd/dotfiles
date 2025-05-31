@@ -41,13 +41,14 @@ nnoremap <Leader>ht :call mpbsd#vim_search_for_help_in_new('t')<CR>
 nnoremap <Leader>; :
 
 nnoremap Y y$
-nnoremap K :call mpbsd#vim_find_help_cword(expand('<cword>'))<CR>
 
-nnoremap <BS> :nohls<CR>
+nnoremap K :call mpbsd#vim_find_help_cword(expand('<cword>'))<CR>
 
 inoremap <LocalLeader>cc mmb~`ma
 inoremap <LocalLeader>tu mmbgUiw`ma
 inoremap <LocalLeader>tl mmbguiw`ma
+
+nnoremap <BS> :nohls<CR>
 
 nnoremap <Leader>pd :PlugUpdate<CR>
 nnoremap <Leader>pg :PlugUpgrade<CR>

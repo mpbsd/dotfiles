@@ -149,3 +149,8 @@ vim.lsp.enable({
 	"rb",
 	"tex",
 })
+
+vim.diagnostic.config({
+	virtual_lines = true,
+	virtual_text = true,
+})
