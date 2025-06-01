@@ -194,6 +194,20 @@ return {
 				},
 			},
 			-- }}}
+			-- [T]lescope [B]ibTeX {{{
+			{
+				mod = "i",
+				lhs = "<LocalLeader>tb",
+				rhs = function()
+					vim.cmd([[Telescope bibtex]])
+				end,
+				opt = {
+					noremap = true,
+					silent = true,
+					desc = "[T]elescope [B]ibTeX",
+				},
+			},
+			-- }}}
 		}
 
 		MAP(KEY)

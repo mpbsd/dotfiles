@@ -645,30 +645,6 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- dynamic_matrix {{{
-	s(
-		{
-			trig = [[([bBp])mat(\d+)(\d+)]],
-			regTrig = true,
-			trigEngine = "ecma",
-			snippetType = "autosnippet",
-			desc = "dynamic matrix",
-		},
-		fmta(
-			[[
-	    \begin{<>}
-	      <>
-	    \end{<>}
-	    ]],
-			{
-				l(l.CAPTURE1 .. "matrix", {}),
-				d(1, utils.dynamic_matrix),
-				l(l.CAPTURE1 .. "matrix", {}),
-			}
-		),
-		{ condition = utils.in_math }
-	),
-	-- }}}
 	-- theorem {{{
 	s(
 		{
@@ -737,6 +713,30 @@ return {
 				f(utils.delimiter, {}, { user_args = { "lhs" } }),
 				i(1),
 				f(utils.delimiter, {}, { user_args = { "rhs" } }),
+			}
+		),
+		{ condition = utils.in_math }
+	),
+	-- }}}
+	-- dynamic_matrix {{{
+	s(
+		{
+			trig = [[([bBp])mat(\d+)(\d+)]],
+			regTrig = true,
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "dynamic matrix",
+		},
+		fmta(
+			[[
+	    \begin{<>}
+	      <>
+	    \end{<>}
+	    ]],
+			{
+				l(l.CAPTURE1 .. "matrix", {}),
+				d(1, utils.dynamic_matrix),
+				l(l.CAPTURE1 .. "matrix", {}),
 			}
 		),
 		{ condition = utils.in_math }
@@ -978,22 +978,6 @@ return {
 		{ condition = utils.in_math }
 	),
 	-- }}}
-	-- lagranges theorem {{{
-	s(
-		{
-			trig = "lagrange",
-			snippetType = "autosnippet",
-			desc = "lagranges theorem",
-		},
-		fmta(
-			[[
-      \order{<>}=\left[<>:<>\right]\order{<>}
-      ]],
-			{ i(1, "G"), rep(1), i(2, "H"), rep(2) }
-		),
-		{ condition = conds.in_math }
-	),
-	-- }}}
 	-- polynomial rings {{{
 	s(
 		{
@@ -1011,26 +995,6 @@ return {
 				["c"] = [[mathbb{C}]],
 			}
 			return M[snip.captures[1]] .. "[" .. snip.captures[2] .. "]"
-		end),
-		{ condition = utils.in_math }
-	),
-	-- }}}
-	-- galois group {{{
-	s(
-		{
-			trig = [[gg([a-z])([a-z])]],
-			regTrig = true,
-			trigEngine = "ecma",
-			snippetType = "autosnippet",
-			desc = "galois group",
-		},
-		f(function(_, snip)
-			local K = snip.captures[1]:upper()
-			local F = snip.captures[2]:upper()
-			if snip.captures[2]:match("[qrc]") then
-				F = [[\mathbb{]] .. snip.captures[2]:upper() .. [[}]]
-			end
-			return "G(" .. K .. "," .. F .. ")"
 		end),
 		{ condition = utils.in_math }
 	),
@@ -1288,6 +1252,92 @@ return {
 		snippetType = "autosnippet",
 		desc = "dots",
 	}, l([[\]] .. l.CAPTURE1), { condition = conds.in_math }),
+	-- }}}
+	-- custom commands for group theory {{{
+	s(
+		{
+			trig = "_group",
+			snippetType = "autosnippet",
+			desc = "custom commands for group theory",
+		},
+		t({
+			[[\DeclarePairedDelimiter{\order}{\lvert}{\rvert}]],
+			[[\newcommand{\subgroup}{\leqslant}]],
+			[[\newcommand{\normalsubgroup}{\trianglelefteqslant}]],
+		}),
+		{ condition = conds.line_begin }
+	),
+	-- }}}
+	-- subgroup {{{
+	s(
+		{
+			trig = ";sg",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			desc = "subgroup",
+		},
+		fmta(
+			[[
+      {<>}\subgroup{<>}
+      ]],
+			{ i(1, "H"), i(2, "G") }
+		),
+		{ condition = conds.in_math }
+	),
+	-- }}}
+	-- normal subgroup {{{
+	s(
+		{
+			trig = ";ns",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			desc = "normal subgroup",
+		},
+		fmta(
+			[[
+      {<>}\normalsubgroup{<>}
+      ]],
+			{ i(1, "N"), i(2, "G") }
+		),
+		{ condition = conds.in_math }
+	),
+	-- }}}
+	-- lagrange's theorem {{{
+	s(
+		{
+			trig = ";lt",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			desc = "lagrange's theorem",
+		},
+		fmta(
+			[[
+      \order{<>}=\left[<>:<>\right]\order{<>}
+      ]],
+			{ i(1, "G"), rep(1), i(2, "H"), rep(2) }
+		),
+		{ condition = conds.in_math }
+	),
+	-- }}}
+	-- galois group {{{
+	s(
+		{
+			trig = [[gg([a-z])([a-z])]],
+			regTrig = true,
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "galois group",
+		},
+		f(function(_, snip)
+			local K = snip.captures[1]:upper()
+			local F = snip.captures[2]:upper()
+			if snip.captures[2]:match("[qrc]") then
+				F = [[\mathbb{]] .. snip.captures[2]:upper() .. [[}]]
+			end
+			return "G(" .. K .. "," .. F .. ")"
+		end),
+		{ condition = utils.in_math }
+	),
 	-- }}}
 	-- greek letters {{{
 	s({
@@ -1570,5 +1620,21 @@ return {
 		snippetType = "autosnippet",
 		desc = "second covariant derivative of the modeling factor",
 	}, t([[\mathcal{G}_{2}]]), { condition = utils.in_math }),
+	-- }}}
+	-- cite {{{
+	s(
+		{
+			trig = [[\cite]],
+			snippetType = "autosnippet",
+			desc = "cite",
+		},
+		fmta(
+			[[
+      ~\cite{<>}<>
+      ]],
+			{ i(1), i(0) }
+		),
+		{ condition = utils.in_text }
+	),
 	-- }}}
 }
