@@ -19,7 +19,7 @@ return {
         snippetType = "<>",
         desc = "<>",
       }, <>,
-      { condition = <> },
+      { condition = <> }
       ),
       -- }}}
       ]],

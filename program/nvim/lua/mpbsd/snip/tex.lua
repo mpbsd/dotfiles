@@ -145,6 +145,7 @@ return {
 	     \usepackage{hyperref}
 	     \usepackage{interval}
 	     \usepackage{mathtools}
+	     \usepackage{stmaryrd}
 	     \usepackage[table]{xcolor}
 	     <>
 	     \graphicspath{{./fig/}}
@@ -232,6 +233,7 @@ return {
 			[[\usepackage{hyperref}]],
 			[[\usepackage{interval}]],
 			[[\usepackage{mathtools}]],
+			[[\usepackage{stmaryrd}]],
 			[[\usepackage[table]{xcolor}]],
 		}),
 		{ condition = conds.line_begin }
@@ -646,7 +648,7 @@ return {
 	-- dynamic_matrix {{{
 	s(
 		{
-			trig = [[([bBpvV])mat(\d+)(\d+)]],
+			trig = [[([bBp])mat(\d+)(\d+)]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
@@ -905,7 +907,7 @@ return {
 	-- trigonometric, exponential, logarithmic and hyperbolic functions {{{
 	s(
 		{
-			trig = [[\\(a?(cos|sin|tan|sec|csc|cot)h?|exp|log|ln)]],
+			trig = [[(?<=\\)(a?(cos|sin|tan|sec|csc|cot)h?|exp|log|ln)]],
 			regTrig = true,
 			trigEngine = "ecma",
 			wordTrig = false,
@@ -918,33 +920,33 @@ return {
 			{
 				f(function(_, snip)
 					local fn = {
-						["cos"] = [[\\cos]],
-						["sin"] = [[\\sin]],
-						["tan"] = [[\\tan]],
-						["acos"] = [[\\arccos]],
-						["asin"] = [[\\arcsin]],
-						["atan"] = [[\\arctan]],
-						["sec"] = [[\\sec]],
-						["csc"] = [[\\csc]],
-						["cot"] = [[\\cot]],
-						["asec"] = [[\\arcsec]],
-						["acsc"] = [[\\arccsc]],
-						["acot"] = [[\\arccot]],
-						["cosh"] = [[\\cosh]],
-						["sinh"] = [[\\sinh]],
-						["tanh"] = [[\\tanh]],
-						["acosh"] = [[\\arccosh]],
-						["asinh"] = [[\\arcsinh]],
-						["atanh"] = [[\\arctanh]],
-						["sech"] = [[\\sech]],
-						["csch"] = [[\\csch]],
-						["coth"] = [[\\coth]],
-						["asech"] = [[\\arcsech]],
-						["acsch"] = [[\\arccsch]],
-						["acoth"] = [[\\arccoth]],
+						["cos"] = [[cos]],
+						["sin"] = [[sin]],
+						["tan"] = [[tan]],
+						["acos"] = [[arccos]],
+						["asin"] = [[arcsin]],
+						["atan"] = [[arctan]],
+						["sec"] = [[sec]],
+						["csc"] = [[csc]],
+						["cot"] = [[cot]],
+						["asec"] = [[arcsec]],
+						["acsc"] = [[arccsc]],
+						["acot"] = [[arccot]],
+						["cosh"] = [[cosh]],
+						["sinh"] = [[sinh]],
+						["tanh"] = [[tanh]],
+						["acosh"] = [[arccosh]],
+						["asinh"] = [[arcsinh]],
+						["atanh"] = [[arctanh]],
+						["sech"] = [[sech]],
+						["csch"] = [[csch]],
+						["coth"] = [[coth]],
+						["asech"] = [[arcsech]],
+						["acsch"] = [[arccsch]],
+						["acoth"] = [[arccoth]],
 						["exp"] = [[e^]],
-						["log"] = [[\\log]],
-						["ln"] = [[\\ln]],
+						["log"] = [[log]],
+						["ln"] = [[ln]],
 					}
 					return fn[snip.captures[1]]
 				end),
@@ -974,6 +976,22 @@ return {
 			return M[snip.captures[1]]
 		end),
 		{ condition = utils.in_math }
+	),
+	-- }}}
+	-- lagranges theorem {{{
+	s(
+		{
+			trig = "lagrange",
+			snippetType = "autosnippet",
+			desc = "lagranges theorem",
+		},
+		fmta(
+			[[
+      \order{<>}=\left[<>:<>\right]\order{<>}
+      ]],
+			{ i(1, "G"), rep(1), i(2, "H"), rep(2) }
+		),
+		{ condition = conds.in_math }
 	),
 	-- }}}
 	-- polynomial rings {{{
@@ -1314,7 +1332,7 @@ return {
 	-- custom commands for differential geometry {{{
 	s(
 		{
-			trig = "_conformal",
+			trig = "_dgeom",
 			snippetType = "autosnippet",
 			desc = "custom commands for differential geometry",
 		},
