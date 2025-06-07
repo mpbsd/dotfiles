@@ -83,40 +83,50 @@ function! mpbsd#sigaa_students_json() abort
     sil exec '$s/$/\r}/'
     sil exec '1,$s/},$\n^}/}\r}/'
     sil exec 'normal gg=G'
+  else
+    echo 'Does not match criteria for code execution.'
   endif
 endfunction
 
 function! mpbsd#parse_json_omeg() abort
-  argdo silent execute 'normal ggguG'
-  argdo silent call mpbsd#unicode_seq_to_char()
-  argdo silent call mpbsd#replace_non_ascii_chars()
-  argdo silent %s/{"/{\r"/g
-  argdo silent %s/,"/,\r"/g
-  argdo silent %s/":\%( \)\@!/": /e
-  argdo silent %s/telefone da escolaformato/telefone da escola/e
-  argdo silent %s/"nome completo\%(\.[0-9]\{1,2\}\)\?"/"fname"/e
-  argdo silent %s/"e-mail de contato individual\%(\.[0-9]\{1,2\}\)\?"/"email"/e
-  argdo silent %s/"cpf\%(digite no padrao 000\.000\.000-00\)\?\%(\.[0-9]\{1,2\}\)\?"/"cpfnr"/e
-  argdo silent %s/"data de nascimento\%(\.[0-9]\{1,2\}\)\?"/"birth"/e
-  argdo silent %s/null},$/null\r},/
-  argdo silent %s/"\%(voce \)\?deseja inscrever \%(algum\|outro\)(a) aluno(a) no nivel \([123]\)?\%(\.[0-9]\{1,2\}\)\?": "sim"/"level": \1/
-  argdo silent %s/"\%(voce \)\?deseja inscrever \%(algum\|outro\)(a) aluno(a) no nivel \([123]\)?\%(\.[0-9]\{1,2\}\)\?": \%(null\|"nao"\)/"level": null/
-  argdo silent %s/"caso o(a) aluno(a) tenha alguma necessidade especial para realizacao da prova, esta deve ser informada abaixo:\s*\%(\.[0-9]\{1,2\}\)\?"/"needs"/
-  argdo silent g/"level":/s/^/{\r/
-  argdo silent g/"needs":/s/$/\r},/
-  argdo silent %s/,\%($\n^}\)\@=//
-  argdo silent %s/}}$/\r}\r}/
-  argdo silent %s/{$\n^"level": null,$\n^"fname": null,$\n^"email": null,$\n^"cpfnr": null,$\n^"birth": null,$\n^"needs": null$\n^},\?//
-  argdo silent g/^$/d
-  argdo silent g/"numero de telefone da escola/s/$/\r"estudante": {/
-  argdo silent g/"[0-9]\{1,2\}": {$/s/^/},\r/
-  argdo silent %s/^{$\n^},$/{/
-  argdo silent $s/$/\r}/
-  argdo silent %s/,\%($\n^}\)\@=//
-  argdo silent execute 'normal gg=G'
-  argdo silent %s/\s\+\(",\?\)$/\1/
-  let @q = '/^\s*{$\n^\s*"level":f{mm/"cpfnr":f:w"ayt,`mia: '
-  while search('^\s*{$\n^\s*"level":')
-    argdo silent execute 'normal @q'
-  endwhile
+  let l:fn = expand('%')
+  let l:r1 = '\<\(regulares\|medalhistas\)\.json\>'
+  let l:r2 = '^{"0":{'
+  let l:r3 = '^\s\+"estudante": [$'
+  if l:fn =~# l:r1 && search(l:r2) != 0 && search(l:r3) == 0
+    argdo silent execute 'normal ggguG'
+    argdo silent call mpbsd#unicode_seq_to_char()
+    argdo silent call mpbsd#replace_non_ascii_chars()
+    argdo silent %s/{"/{\r"/g
+    argdo silent %s/,"/,\r"/g
+    argdo silent %s/":\%( \)\@!/": /e
+    argdo silent %s/telefone da escolaformato/telefone da escola/e
+    argdo silent %s/"nome completo\%(\.[0-9]\{1,2\}\)\?"/"fname"/e
+    argdo silent %s/"e-mail de contato individual\%(\.[0-9]\{1,2\}\)\?"/"email"/e
+    argdo silent %s/"cpf\%(digite no padrao 000\.000\.000-00\)\?\%(\.[0-9]\{1,2\}\)\?"/"cpfnr"/e
+    argdo silent %s/"data de nascimento\%(\.[0-9]\{1,2\}\)\?"/"birth"/e
+    argdo silent %s/null},$/null\r},/
+    argdo silent %s/"\%(voce \)\?deseja inscrever \%(algum\|outro\)(a) aluno(a) no nivel \([123]\)?\%(\.[0-9]\{1,2\}\)\?": "sim"/"level": \1/
+    argdo silent %s/"\%(voce \)\?deseja inscrever \%(algum\|outro\)(a) aluno(a) no nivel \([123]\)?\%(\.[0-9]\{1,2\}\)\?": \%(null\|"nao"\)/"level": null/
+    argdo silent %s/"caso o(a) aluno(a) tenha alguma necessidade especial para realizacao da prova, esta deve ser informada abaixo:\s*\%(\.[0-9]\{1,2\}\)\?"/"needs"/
+    argdo silent g/"level":/s/^/{\r/
+    argdo silent g/"needs":/s/$/\r},/
+    argdo silent %s/,\%($\n^}\)\@=//
+    argdo silent %s/}}$/\r}\r}/
+    argdo silent %s/{$\n^"level": null,$\n^"fname": null,$\n^"email": null,$\n^"cpfnr": null,$\n^"birth": null,$\n^"needs": null$\n^},\?//
+    argdo silent g/^$/d
+    argdo silent g/"numero de telefone da escola/s/$/\r"estudante": {/
+    argdo silent g/"[0-9]\{1,2\}": {$/s/^/},\r/
+    argdo silent %s/^{$\n^},$/{/
+    argdo silent $s/$/\r}/
+    argdo silent %s/,\%($\n^}\)\@=//
+    argdo silent execute 'normal gg=G'
+    argdo silent %s/\s\+\(",\?\)$/\1/
+    let @q = '/^\s*"estudante": {$$mm%r]`mr['
+    vimgrep /^\s*"estudante": {$/ ##
+    cdo silent execute 'normal @q'
+    argdo silent %s/"\([0-9]\{3\}\)\.\([0-9]\{3\}\)\.\([0-9]\{3\}\)-\([0-9]\{2\}\)"/"\1\2\3\4"/
+  else
+    echo 'Does not match criteria for code execution.'
+  endif
 endfunction
