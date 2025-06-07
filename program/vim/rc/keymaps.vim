@@ -68,4 +68,4 @@ nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
 
 nnoremap <LocalLeader>uid :-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)'<CR>
 
-nnoremap <F8> :call mpbsd#regulares()<CR>
+nnoremap <F8> :call mpbsd#parse_json_omeg()<CR>

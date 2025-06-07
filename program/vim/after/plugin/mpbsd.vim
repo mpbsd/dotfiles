@@ -86,7 +86,7 @@ function! mpbsd#sigaa_students_json() abort
   endif
 endfunction
 
-function! mpbsd#regulares() abort
+function! mpbsd#parse_json_omeg() abort
   argdo silent execute 'normal ggguG'
   argdo silent call mpbsd#unicode_seq_to_char()
   argdo silent call mpbsd#replace_non_ascii_chars()
@@ -108,7 +108,7 @@ function! mpbsd#regulares() abort
   argdo silent %s/}}$/\r}\r}/
   argdo silent %s/{$\n^"level": null,$\n^"fname": null,$\n^"email": null,$\n^"cpfnr": null,$\n^"birth": null,$\n^"needs": null$\n^},\?//
   argdo silent g/^$/d
-  argdo silent g/"numero de telefone da escola"/s/$/\r"estudante": {/
+  argdo silent g/"numero de telefone da escola/s/$/\r"estudante": {/
   argdo silent g/"[0-9]\{1,2\}": {$/s/^/},\r/
   argdo silent %s/^{$\n^},$/{/
   argdo silent $s/$/\r}/
@@ -116,5 +116,7 @@ function! mpbsd#regulares() abort
   argdo silent execute 'normal gg=G'
   argdo silent %s/\s\+\(",\?\)$/\1/
   let @q = '/^\s*{$\n^\s*"level":f{mm/"cpfnr":f:w"ayt,`mia: '
-  argdo silent execute 'normal 1024@q'
+  while search('^\s*{$\n^\s*"level":')
+    argdo silent execute 'normal @q'
+  endwhile
 endfunction
