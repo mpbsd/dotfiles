@@ -67,3 +67,5 @@ nnoremap <LocalLeader>dk :call deadk#toggle_dead_keys()<CR>
 nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
 
 nnoremap <LocalLeader>uid :-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)'<CR>
+
+nnoremap <F8> :call mpbsd#regulares()<CR>
