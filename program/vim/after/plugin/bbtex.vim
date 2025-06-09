@@ -1,8 +1,5 @@
-let $FZF_BIBTEX_CACHEDIR = expand('~/.cache/fzf-bibtex')
-let $FZF_BIBTEX_SOURCES = expand('~/.local/share/bibliography/full.bib')
-
 function! s:bibtex_cite_sink(lines) abort
-  let l:r=system("bibtex-cite ", a:lines)
+  let l:r=system("bibtex-cite -mode=latex", a:lines)
   execute ':normal! a' . l:r
 endfunction
 
