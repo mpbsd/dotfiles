@@ -100,6 +100,10 @@ local G = {
 					vars.terminal .. " -e irssi",
 				},
 				{
+					"librewolf",
+					"flatpak run io.gitlab.librewolf-community",
+				},
+				{
 					"mutt",
 					vars.terminal .. " -e mutt",
 				},

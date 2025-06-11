@@ -55,7 +55,7 @@ function! mpbsd#sigaa_students_json() abort
   let l:r1 = '\<IME[0-9]\{4\}\.json\>'
   let l:r2 = 'usu.rio \(on\|off\)-line no sigaa'
   let l:r3 = '^\s\+"[0-9]\{9\}": {$'
-  if l:fn =~# l:r1 && search(l:r2) != 0 && search(l:r3) == 0
+  if l:fn =~# l:r1 && search(l:r2) > 0 && search(l:r3) == 0
     sil exec 'normal ggguG'
     sil call mpbsd#replace_non_ascii_chars()
     sil exec '1,$s/usuario \(on\|off\)-line no sigaa/\rnome:/g'
@@ -84,7 +84,25 @@ function! mpbsd#sigaa_students_json() abort
     sil exec '1,$s/},$\n^}/}\r}/'
     sil exec 'normal gg=G'
   else
-    echo 'Does not match criteria for code execution.'
+    echo 'Does not match criteria for code execution'
+  endif
+endfunction
+
+function! mpbsd#sampa_scalar() abort
+  let l:fn = expand('%')
+  let l:r1 = '\<scalar\.txt\>'
+  let l:r2 = '(X0\%(, X[0-9]\+\)\+)'
+  if l:fn =~# l:r1 && search(l:r2) > 0
+    silent %s/\.0\%(\*\)\@=//g
+    silent %s/\%(U[0-9]\+\)\@<=(X0\%(, X[0-9]\+\)\+)//g
+    silent %s/ \([+-]\) /\r\1/g
+    silent g/Derivative(U[0-9]\+, (X[0-9]\+, 2))$/m$
+    silent g/Derivative(U[0-9]\+, X[0-9]\+)\*\*2$/m$
+    silent g/Derivative(U[0-9]\+, X[0-9]\+)\*Derivative(U[0-9]\+, X[0-9]\+)/m$
+    silent g/(X[0-9]\+, 2))$\n^.*\*\*2/s/$/\r/
+    silent g/\*\*2$\n^.*Derivative(U[0-9]\+, X[0-9]\+)\*Derivative/s/$/\r/
+  else
+    echo 'Does not match criteria for code execution'
   endif
 endfunction
 
@@ -93,7 +111,7 @@ function! mpbsd#parse_json_omeg() abort
   let l:r1 = '\<\(regulares\|medalhistas\)\.json\>'
   let l:r2 = '^{"0":{'
   let l:r3 = '^\s\+"estudante": [$'
-  if l:fn =~# l:r1 && search(l:r2) != 0 && search(l:r3) == 0
+  if l:fn =~# l:r1 && search(l:r2) > 0 && search(l:r3) == 0
     argdo silent execute 'normal ggguG'
     argdo silent call mpbsd#unicode_seq_to_char()
     argdo silent call mpbsd#replace_non_ascii_chars()
@@ -127,6 +145,6 @@ function! mpbsd#parse_json_omeg() abort
     cdo silent execute 'normal @q'
     argdo silent %s/"\([0-9]\{3\}\)\.\([0-9]\{3\}\)\.\([0-9]\{3\}\)-\([0-9]\{2\}\)"/"\1\2\3\4"/
   else
-    echo 'Does not match criteria for code execution.'
+    echo 'Does not match criteria for code execution'
   endif
 endfunction

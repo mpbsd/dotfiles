@@ -177,6 +177,17 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- librewolf {{{
+	{
+		rule = {
+			class = "librewolf",
+		},
+		properties = {
+			screen = 1,
+			tag = "2",
+		},
+	},
+	-- }}}
 	-- zotero {{{
 	{
 		rule = {
