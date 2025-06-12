@@ -2,14 +2,22 @@ require("luasnip.session.snippet_collection").clear_snippets("python")
 
 return {
 	-- #!/usr/bin/env python3 {{{
-	s({
-		trig = "#!",
-		snippetType = "autosnippet",
-		desc = "#!/usr/bin/env python3",
-	}, {
-		t([[#!/usr/bin/env python3]]),
-		t(""),
-	}, { condition = conds.line_begin }),
+	s(
+		{
+			trig = "#!",
+			snippetType = "autosnippet",
+			desc = "#!/usr/bin/env python3",
+		},
+		fmta(
+			[[
+      #!/usr/bin/env python3
+      <>
+      <>
+      ]],
+			{ t(""), i(0) }
+		),
+		{ condition = conds.line_begin }
+	),
 	-- }}}
 	-- import <> {{{
 	s({
