@@ -50,6 +50,9 @@ inoremap <LocalLeader>tl mmbguiw`ma
 
 nnoremap <BS> :nohls<CR>
 
+nnoremap <LocalLeader>bd :set background=dark<CR>
+nnoremap <LocalLeader>bl :set background=light<CR>
+
 nnoremap <Leader>pd :PlugUpdate<CR>
 nnoremap <Leader>pg :PlugUpgrade<CR>
 nnoremap <Leader>pc :PlugClean<CR>
