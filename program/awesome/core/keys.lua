@@ -493,7 +493,7 @@ local M = {
 			},
 			"p",
 			function()
-				mods.awful.spawn("rofi -show run")
+				mods.awful.spawn("dmenu_run")
 			end,
 			{
 				description = "show the menubar",
