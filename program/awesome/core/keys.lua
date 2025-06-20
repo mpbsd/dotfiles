@@ -524,7 +524,7 @@ local M = {
 			},
 			"b",
 			function()
-				mods.awful.spawn("flatpak run io.gitlab.librewolf-community")
+				mods.awful.spawn("chromium")
 			end,
 			{
 				description = "browse the web",
