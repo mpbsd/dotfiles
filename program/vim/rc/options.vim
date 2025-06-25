@@ -56,9 +56,9 @@ set hlsearch
 set incsearch
 
 " use '+' instead of '*' for all yank, delete, change and put operations
-if has('unnamedplus')
-  set clipboard=unnamedplus
-endif
+" if has('unnamedplus')
+"   set clipboard=unnamedplus
+" endif
 
 " characters to use for displaying special items
 set fillchars=fold:·,foldsep:│,vert:│

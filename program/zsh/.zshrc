@@ -21,12 +21,12 @@ source "${HOME}/.config/zsh/rc/keychain.zsh"
 
 # syntax-highlighting and autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bg=#073642,fg=#eee8e5,bold'
-source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+source '/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
 
 # FZF
-source "/usr/share/doc/fzf/examples/completion.zsh"
-source "/usr/share/doc/fzf/examples/key-bindings.zsh"
+source '/usr/share/doc/fzf/examples/completion.zsh'
+source '/usr/share/doc/fzf/examples/key-bindings.zsh'
 
 # aliases
 source "${HOME}/.config/zsh/zsh_aliases"

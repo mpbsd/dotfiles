@@ -151,3 +151,10 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = [[set nowrap]],
 	desc = "CSV",
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = vim.api.nvim_create_augroup("edit_json_files", { clear = true }),
+	pattern = { "json" },
+	command = [[%s/'/"/g]],
+	desc = "json",
+})
