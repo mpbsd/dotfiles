@@ -25,6 +25,7 @@ return {
 					"screen",
 					-- conky,
 					"conky",
+					"conky_parse",
 					-- luasnips
 					"ls",
 					"s",
