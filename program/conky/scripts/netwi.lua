@@ -22,3 +22,5 @@ function nwiface()
 
 	return result
 end
+
+print(nwiface())
