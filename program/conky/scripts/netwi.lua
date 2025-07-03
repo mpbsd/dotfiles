@@ -1,26 +1,40 @@
-function nwiface()
-	local CMD_PART = {
-		[[ip a]],
-		[[sed -n '/inet\s\+[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\/24/p']],
-		[[sed 's/^.* \([a-z0-9]\+\)$/\1/']],
-		[[head -1]],
-	}
+function nwi()
+  CMD_PART = {
+    [[ip a]],
+    [[sed -n '/inet\s\+[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\/24/p']],
+    [[sed 's/^.* \([a-z0-9]\+\)$/\1/']],
+    [[head -1]],
+  }
 
-	local cmd = CMD_PART[1]
+  cmd = CMD_PART[1]
 
-	for i = 2, 4 do
-		cmd = cmd .. " | " .. CMD_PART[i]
-	end
+  for i = 2, 4 do
+    cmd = cmd .. " | " .. CMD_PART[i]
+  end
 
-	local handle = io.popen(cmd)
-	local result = nil
+  handle = io.popen(cmd)
+  result = nil
 
-	if handle ~= nil then
-		result = handle:read("*a"):gsub("\n", "")
-		handle:close()
-	end
+  if handle ~= nil then
+    result = handle:read("*a"):gsub("\n", "")
+    handle:close()
+  end
 
-	return result
+  return result
 end
 
-print(nwiface())
+function conky_iname()
+  return nwi()
+end
+
+function conky_iface()
+  return conky_parse("${addr " .. nwi() .. "}")
+end
+
+function conky_speed(direction)
+  return conky_parse("${" .. direction .. "speed " .. nwi() .. "}")
+end
+
+function conky_graph(direction)
+  return conky_parse("${" .. direction .. "speedgraph " .. nwi() .. " 14,}")
+end
