@@ -47,7 +47,7 @@ theme.bg_systray = color.base3
 -- {{{ Borders
 theme.useless_gap = dpi(6)
 theme.border_width = dpi(2)
-theme.border_normal = color.base01
+theme.border_normal = color.base00
 theme.border_focus = color.green
 theme.border_marked = color.red
 -- }}}
