@@ -1,5 +1,5 @@
 {
-  "LuaSnip": { "branch": "master", "commit": "eda5be8f0ce9816278671f0b578cdbb8b762c701" },
+  "LuaSnip": { "branch": "master", "commit": "66b5c2707e624dcd2cd3605676c64a2efe47e9d1" },
   "blink.cmp": { "branch": "main", "commit": "9bcb14b43852a6f2bfd5ac9ef29cb5cf09b1b39b" },
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
@@ -10,7 +10,7 @@
   "nightfox.nvim": { "branch": "main", "commit": "ba47d4b4c5ec308718641ba7402c143836f35aa9" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "89ebe73cd2836db80a22d9748999ace0241917a5" },
-  "nvim-web-devicons": { "branch": "master", "commit": "19d6211c78169e78bab372b585b6fb17ad974e82" },
+  "nvim-web-devicons": { "branch": "master", "commit": "a1366758b3a232036dc97be8ca41184aa3f50506" },
   "oil.nvim": { "branch": "master", "commit": "bbad9a76b2617ce1221d49619e4e4b659b3c61fc" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "tabular": { "branch": "master", "commit": "12437cd1b53488e24936ec4b091c9324cafee311" },
