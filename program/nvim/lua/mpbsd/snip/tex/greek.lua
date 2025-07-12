@@ -1,8 +1,8 @@
-local utils = require("mpbsd.core.glb").utils
+local utils = require("mpbsd.core.snp")
 
 return {
 	s({
-		trig = "`([abgdezhjiklmnxprstufcyw]|[GDJLXPSUFYW]|v[ejpsrf])",
+		trig = [[`([abgdezhjiklmnxprstufcyw]|[GDJLXPSUFYW]|v[ejpsrf])]],
 		regTrig = true,
 		trigEngine = "ecma",
 		wordTrig = false,

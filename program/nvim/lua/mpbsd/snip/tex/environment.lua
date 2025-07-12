@@ -1,4 +1,4 @@
-local utils = require("mpbsd.core.glb").utils
+local utils = require("mpbsd.core.snp")
 
 return {
 	-- abstract {{{
@@ -256,7 +256,7 @@ return {
 	-- dynamic_matrix {{{
 	s(
 		{
-			trig = [[([bBp])mat(\d+)(\d+)]],
+			trig = [[([bBp])mat([0-9]+)([0-9]+)]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",

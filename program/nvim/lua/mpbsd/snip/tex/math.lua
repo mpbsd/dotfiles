@@ -1,4 +1,4 @@
-local utils = require("mpbsd.core.glb").utils
+local utils = require("mpbsd.core.snp")
 
 return {
 	-- inline math mode {{{
