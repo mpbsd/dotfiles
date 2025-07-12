@@ -135,9 +135,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP Keybindings",
 })
 
-vim.lsp.config("*", {
-	capabilities = require("blink.cmp").get_lsp_capabilities(),
-})
+-- vim.lsp.config("*", {
+-- 	capabilities = require("blink.cmp").get_lsp_capabilities(),
+-- })
 
 vim.lsp.enable({
 	"bash",
