@@ -1,0 +1,13 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_math()"
+snippet oo "infty" wA
+\infty
+endsnippet
+
+context "in_math()"
+snippet '(?<!\\)([cdlv]dots)' "dots" rA
+\\`!p snip.rv = match.group(1)`$0
+endsnippet

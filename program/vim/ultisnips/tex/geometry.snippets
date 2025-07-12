@@ -1,66 +1,4 @@
-global !p
-from snippets import in_text, in_math
-endglobal
-
-snippet _group "custom commands for group theory" bA
-\DeclarePairedDelimiter\order{\lvert}{\rvert}
-\newcommand{\subgroup}{\leqslant}
-\newcommand{\normalsubgroup}{\trianglelefteqslant}
-endsnippet
-
-context "in_math()"
-snippet lagrthm "lagranges theorem" iA
-\order\{${1:G}\}=\left[$1:${2:H}\right]\order\{$2\}
-endsnippet
-
-context "in_math()"
-snippet '(?<=\\)([zqrc])([xt])' "polynomial rings" rA
-`!p
-snip.rv = r"mathbb{" + match.group(1).upper() + "}[" + match.group(2) + "]"
-`$0
-endsnippet
-
-context "in_math()"
-snippet '\\([fklt])([xt])' "polynomial rings" rA
-`!p
-snip.rv = match.group(1).upper() + "[" + match.group(2) + "]"
-`$0
-endsnippet
-
-context "in_math()"
-snippet 'gg([a-z])([a-z])' "galois group" rA
-`!p
-K = match.group(1).upper()
-if match.group(2) in ["q", "r", "c"]:
-	F = r"\mathbb{" + match.group(2).upper() + "}"
-else:
-	F = match.group(2).upper()
-G = "G(" + K + "," + F + ")"
-snip.rv = G
-`$0
-endsnippet
-
-context "in_math()"
-snippet oo "infty" wA
-\infty
-endsnippet
-
-context "in_math()"
-snippet '(?<!\\)([cdlv]dots)' "dots" rA
-\\`!p snip.rv = match.group(1)`$0
-endsnippet
-
-context "in_math()"
-snippet '(\S+)\.(bar|d{1,3}ot|hat|overline|vec)' "bar, dot, hat, overline and vector" rA
-\\`!p snip.rv = match.group(2) + r"{" + match.group(1) + r"}"`$0
-endsnippet
-
-context "in_math()"
-snippet '(\S+)\.(abs|norm|order)' "absolute value, norm, order" rA
-\\`!p snip.rv = match.group(2) + r"{" + match.group(1) + r"}"`$0
-endsnippet
-
-snippet _dgeom "custom commands for differential geometry" bA
+snippet _geo "custom commands: differential geometry" bA
 \newcommand{\X}[1]{\partial_{#1}}
 \newcommand{\flatMetr}[2]{g{\left({#1},{#2}\right)}}
 \newcommand{\flatConn}[2]{\nabla_{#1}{#2}}
@@ -76,7 +14,7 @@ M^{n}
 endsnippet
 
 context "in_math()"
-snippet '(?<=\\)([ehs])\1' "n-dimensional, simply connect riemannian space forms" rA
+snippet '(?<=\\)([ehs])\1' "n-dimensional space forms" rA
 `!p snip.rv = r"mathbb{" + match.group(1).upper() + r"}"`$0
 endsnippet
 

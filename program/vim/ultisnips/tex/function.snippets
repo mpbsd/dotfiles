@@ -18,7 +18,7 @@ snippet fnr "function reference" iA
 endsnippet
 
 context "in_math()"
-snippet '\\(a?(cos|sin|tan|sec|csc|cot)h?)' "trigonometric functions" r
+snippet '\\(a?(cos|sin|tan|sec|csc|cot)h?|exp|log|ln)' "functions" r
 `!p
 function = {
 	"cos": r"\cos",
@@ -45,19 +45,10 @@ function = {
 	"asech": r"\arcsech",
 	"acsch": r"\arccsch",
 	"acoth": r"\arccoth",
-}
-snip.rv = function[match.group(1)]
-`\{${1:x}\}$0
-endsnippet
-
-context "in_math()"
-snippet '\\(exp|log|ln)' "important functions" rA
-`!p
-function = {
 	"exp": r"e^",
 	"log": r"\log",
 	"ln": r"\ln",
 }
 snip.rv = function[match.group(1)]
-`\{${1:x}\}$0
+`\{\left(${1:x}\right)\}$0
 endsnippet

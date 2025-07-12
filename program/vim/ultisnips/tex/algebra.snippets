@@ -1,0 +1,37 @@
+snippet _grp "custom commands: groups" bA
+\DeclarePairedDelimiter\order{\lvert}{\rvert}
+\newcommand{\subgroup}{\leqslant}
+\newcommand{\normalsubgroup}{\trianglelefteqslant}
+endsnippet
+
+context "in_math()"
+snippet lgrthm "Lagrange's Theorem" iA
+\order\{${1:G}\}=\left[$1:${2:H}\right]\order\{$2\}
+endsnippet
+
+context "in_math()"
+snippet '(?<=\\)([zqrc])([xt])' "polynomial rings" rA
+`!p
+snip.rv = r"mathbb{" + match.group(1).upper() + "}[" + match.group(2) + "]"
+`$0
+endsnippet
+
+context "in_math()"
+snippet '\\([fklt])([xt])' "polynomial rings" rA
+`!p
+snip.rv = match.group(1).upper() + "[" + match.group(2) + "]"
+`$0
+endsnippet
+
+context "in_math()"
+snippet 'gg([a-z])([a-z])' "galois group" rA
+`!p
+K = match.group(1).upper()
+if match.group(2) in ["q", "r", "c"]:
+	F = r"\mathbb{" + match.group(2).upper() + "}"
+else:
+	F = match.group(2).upper()
+G = "G(" + K + "," + F + ")"
+snip.rv = G
+`$0
+endsnippet
