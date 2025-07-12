@@ -1,0 +1,63 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_math()"
+snippet fna "function action" iA
+\{\{${1:x}\}\mapsto\{${2:f(x)}\}\}$0
+endsnippet
+
+context "in_math()"
+snippet fnd "function definition" iA
+\{${1:f}\}:\{${2:A}\}\to\{${3:B}\},\quad\{\{${4:x}\}\mapsto\{${5:f(x)}\}\}$0
+endsnippet
+
+context "in_math()"
+snippet fnr "function reference" iA
+\{${1:f}\{\left(${2:x}\right)\}\}$0
+endsnippet
+
+context "in_math()"
+snippet '\\(a?(cos|sin|tan|sec|csc|cot)h?)' "trigonometric functions" r
+`!p
+function = {
+	"cos": r"\cos",
+	"sin": r"\sin",
+	"tan": r"\tan",
+	"acos": r"\arccos",
+	"asin": r"\arcsin",
+	"atan": r"\arctan",
+	"sec": r"\sec",
+	"csc": r"\csc",
+	"cot": r"\cot",
+	"asec": r"\arcsec",
+	"acsc": r"\arccsc",
+	"acot": r"\arccot",
+	"cosh": r"\cosh",
+	"sinh": r"\sinh",
+	"tanh": r"\tanh",
+	"acosh": r"\arccosh",
+	"asinh": r"\arcsinh",
+	"atanh": r"\arctanh",
+	"sech": r"\sech",
+	"csch": r"\csch",
+	"coth": r"\coth",
+	"asech": r"\arcsech",
+	"acsch": r"\arccsch",
+	"acoth": r"\arccoth",
+}
+snip.rv = function[match.group(1)]
+`\{${1:x}\}$0
+endsnippet
+
+context "in_math()"
+snippet '\\(exp|log|ln)' "important functions" rA
+`!p
+function = {
+	"exp": r"e^",
+	"log": r"\log",
+	"ln": r"\ln",
+}
+snip.rv = function[match.group(1)]
+`\{${1:x}\}$0
+endsnippet

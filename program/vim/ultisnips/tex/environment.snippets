@@ -1,0 +1,113 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_text()"
+snippet abs "abstract" bA
+\begin\{abstract\}
+	$0
+\end\{abstract\}$0
+endsnippet
+
+context "in_text()"
+snippet ali "align" bA
+\begin\{align\}
+	$0
+\end\{align\}$0
+endsnippet
+
+context "in_text()"
+snippet beg "generic" bA
+\begin\{$1\}
+	$2
+\end\{$1\}$0
+endsnippet
+
+context "in_text()"
+snippet cor "corollary" bA
+\begin\{corollary}\label\{cor:$1\}
+  $2
+\end\{corollary\}$0
+endsnippet
+
+context "in_text()"
+snippet def "definition" bA
+\begin\{definition}\label\{def:$1\}
+  $2
+\end\{definition\}$0
+endsnippet
+
+context "in_text()"
+snippet des "description" bA
+\begin\{description\}
+	\item[$1] $2
+\end\{description\}$0
+endsnippet
+
+context "in_text()"
+snippet enu "enumerate" bA
+\begin\{enumerate\}
+  \item $1
+\end\{enumerate\}$0
+endsnippet
+
+context "in_text()"
+snippet equ "equation" bA
+\begin\{equation\}\label\{eq:$1\}
+  $2
+\end\{equation\}$0
+endsnippet
+
+context "in_text()"
+snippet fra "frame" bA
+\begin\{frame\}\{${1:Frame Title}\}
+  $0
+\end\{frame\}
+endsnippet
+
+context "in_text()"
+snippet ite "itemize" bA
+\begin\{itemize\}
+	\item $1
+\end\{itemize\}$0
+endsnippet
+
+context "in_text()"
+snippet lem "lemma" bA
+\begin\{lemma\}\label\{lem:$1\}
+  $2
+\end\{lemma\}$0
+endsnippet
+
+context "in_text()"
+snippet pro "proposition" bA
+\begin\{proposition\}\label\{prop:$1\}
+  $2
+\end\{proposition\}$0
+endsnippet
+
+context "in_text()"
+snippet rmk "remark" bA
+\begin\{remark\}\label\{rmk:$1\}
+  $2
+\end\{remark\}$0
+endsnippet
+
+context "in_text()"
+snippet tbl "table" bA
+\begin\{table\}[${1:htpb}]
+	\centering
+	\begin\{tabular\}\{${3:l}\}
+		$0
+	\end\{tabular\}
+	\caption\{${2:caption}\}
+	\label\{tbl:${2/(\w+)|(\W+)/(?2:_:\l$1)/g}\}
+\end\{table\}$0
+endsnippet
+
+context "in_text()"
+snippet thm "theorem" bA
+\begin\{theorem\}\label\{thm:$1\}
+  $2
+\end\{theorem\}$0
+endsnippet

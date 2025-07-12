@@ -1,0 +1,41 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_math()"
+snippet '(d)([pPbBcCg])' "delimiters" rA
+`!p
+delimiter = {
+	'p': {
+		'opening': r'(',
+		'closing': r')',
+	},
+	'P': {
+		'opening': r'\left(',
+		'closing': r'\right)',
+	},
+	'b': {
+		'opening': r'[',
+		'closing': r']',
+	},
+	'B': {
+		'opening': r'\left[',
+		'closing': r'\right]',
+	},
+	'c': {
+		'opening': r'\{',
+		'closing': r'\}',
+	},
+	'C': {
+		'opening': r'\left\{',
+		'closing': r'\right\}',
+	},
+	'g': {
+		'opening': r'{',
+		'closing': r'}',
+	},
+}
+opening = delimiter[match.group(2)]['opening']
+closing = delimiter[match.group(2)]['closing']
+snip.rv = opening`${1:${VISUAL}}`!p snip.rv = closing`$0
+endsnippet

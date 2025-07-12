@@ -1,0 +1,146 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+snippet _group "custom commands for group theory" bA
+\DeclarePairedDelimiter\order{\lvert}{\rvert}
+\newcommand{\subgroup}{\leqslant}
+\newcommand{\normalsubgroup}{\trianglelefteqslant}
+endsnippet
+
+context "in_math()"
+snippet lagrthm "lagranges theorem" iA
+\order\{${1:G}\}=\left[$1:${2:H}\right]\order\{$2\}
+endsnippet
+
+context "in_math()"
+snippet '(?<=\\)([zqrc])([xt])' "polynomial rings" rA
+`!p
+snip.rv = r"mathbb{" + match.group(1).upper() + "}[" + match.group(2) + "]"
+`$0
+endsnippet
+
+context "in_math()"
+snippet '\\([fklt])([xt])' "polynomial rings" rA
+`!p
+snip.rv = match.group(1).upper() + "[" + match.group(2) + "]"
+`$0
+endsnippet
+
+context "in_math()"
+snippet 'gg([a-z])([a-z])' "galois group" rA
+`!p
+K = match.group(1).upper()
+if match.group(2) in ["q", "r", "c"]:
+	F = r"\mathbb{" + match.group(2).upper() + "}"
+else:
+	F = match.group(2).upper()
+G = "G(" + K + "," + F + ")"
+snip.rv = G
+`$0
+endsnippet
+
+context "in_math()"
+snippet oo "infty" wA
+\infty
+endsnippet
+
+context "in_math()"
+snippet '(?<!\\)([cdlv]dots)' "dots" rA
+\\`!p snip.rv = match.group(1)`$0
+endsnippet
+
+context "in_math()"
+snippet '(\S+)\.(bar|d{1,3}ot|hat|overline|vec)' "bar, dot, hat, overline and vector" rA
+\\`!p snip.rv = match.group(2) + r"{" + match.group(1) + r"}"`$0
+endsnippet
+
+context "in_math()"
+snippet '(\S+)\.(abs|norm|order)' "absolute value, norm, order" rA
+\\`!p snip.rv = match.group(2) + r"{" + match.group(1) + r"}"`$0
+endsnippet
+
+snippet _dgeom "custom commands for differential geometry" bA
+\newcommand{\X}[1]{\partial_{#1}}
+\newcommand{\flatMetr}[2]{g{\left({#1},{#2}\right)}}
+\newcommand{\flatConn}[2]{\nabla_{#1}{#2}}
+\newcommand{\riemMetr}[2]{\bar{g}{\left({#1},{#2}\right)}}
+\newcommand{\riemConn}[2]{\bar{\nabla}_{#1}{#2}}
+\newcommand{\curvTens}[2]{\bar{R}m\left({#1},{#2}\right)}
+\newcommand{\riccTens}[2]{\bar{R}c\left({#1},{#2}\right)}
+endsnippet
+
+context "in_math()"
+snippet mnf "n-dimensional differentiable manifold" iA
+M^{n}
+endsnippet
+
+context "in_math()"
+snippet '(?<=\\)([ehs])\1' "n-dimensional, simply connect riemannian space forms" rA
+`!p snip.rv = r"mathbb{" + match.group(1).upper() + r"}"`$0
+endsnippet
+
+context "in_math()"
+snippet mnf "n-dimensional riemannian manifold" iA
+\left(M^\{n\},g\right)
+endsnippet
+
+context "in_math()"
+snippet mng "n-dimensional riemannian manifold" iA
+\left(M^\{n\},\bar\{g\}\right)
+endsnippet
+
+context "in_math()"
+snippet asf "algebra of smooth real functions" iA
+C^\{\infty\}\{\left(${1:M^\{n\}}\right)\}$0
+endsnippet
+
+context "in_math()"
+snippet mvf "module of smooth vector fields" iA
+\mathfrak\{X\}^\{\infty\}\{\left(${1:M^\{n\}}\right)\}$0
+endsnippet
+
+context "in_math()"
+snippet '6x([ijkl])' "\partial_{}" rA
+\X\{`!p snip.rv = match.group(1)`\}$0
+endsnippet
+
+context "in_math()"
+snippet 'dx([ijkl])' "dx_{}" rA
+dx^\{`!p snip.rv = match.group(1)`\}$0
+endsnippet
+
+context "in_math()"
+snippet frm "(flat) riemannian metric" iA
+\flatMetr\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet flc "levi-civita connection" iA
+\flatConn\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet grm "riemannian metric" iA
+\riemMetr\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet glc "levi-civita connection" iA
+\riemConn\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet d0mf "modeling factor" iA
+\mathcal{G}_{0}
+endsnippet
+
+context "in_math()"
+snippet d1mf "first covariant derivative of the modeling factor" iA
+\mathcal{G}_{1}
+endsnippet
+
+context "in_math()"
+snippet d2mf "second covariant derivative of the modeling factor" iA
+\mathcal{G}_{2}
+endsnippet

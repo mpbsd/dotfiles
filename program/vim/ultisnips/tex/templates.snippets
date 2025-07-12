@@ -1,0 +1,63 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_text()"
+snippet _article "article template" bA
+\documentclass[a4paper,12pt]\{article\}
+
+\usepackage[T1]\{fontenc\}
+\usepackage[english]\{babel\}
+\usepackage\{amsmath\}
+\usepackage\{amssymb\}
+\usepackage\{amsthm\}
+\usepackage\{enumerate\}
+\usepackage\{graphicx\}
+\usepackage\{float\}
+\usepackage\{hyperref\}
+\usepackage\{interval\}
+\usepackage\{mathtools\}
+\usepackage\{stmaryrd\}
+\usepackage[table]\{xcolor\}
+
+\graphicspath\{\{./fig/\}\}
+\intervalconfig\{soft open fences\}
+
+\title\{an awesome title\}
+\author\{list of authors\}
+
+\begin\{document\}
+
+\maketitle
+
+% \input\{sec/01\}  % introduction
+% \input\{sec/02\}  % results
+% \input\{sec/03\}  % examples
+\input\{sec/04\}  % proofs
+$0
+
+\bibliographystyle\{plain\}
+\bibliography\{ref/main\}
+
+\end\{document\}
+endsnippet
+
+context "in_text()"
+snippet _mid "mid range set of packages" bA
+\usepackage[T1]\{fontenc\}
+\usepackage[english]\{babel\}
+\usepackage\{amsmath\}
+\usepackage\{amssymb\}
+\usepackage\{amsthm\}
+\usepackage\{enumerate\}
+\usepackage\{graphicx\}
+\usepackage\{float\}
+\usepackage\{hyperref\}
+\usepackage\{interval\}
+\usepackage\{mathtools\}
+\usepackage\{stmaryrd\}
+\usepackage[table]\{xcolor\}
+
+\graphicspath\{\{./fig/\}\}
+\intervalconfig\{soft open fences\}
+endsnippet

@@ -1,0 +1,38 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_math()"
+snippet <= "less than or equal to" iA
+\{${1:x}\}\leqslant\{${2:y}\}$0
+endsnippet
+
+context "in_math()"
+snippet >= "greater than or equal to" iA
+\{${1:x}\}\geqslant\{${2:y}\}$0
+endsnippet
+
+context "in_math()"
+snippet ++ "sum" iA
+\sum_\{${1:i}=${2:0}\}^\{${3:n}\}$0
+endsnippet
+
+context "in_math()"
+snippet ** "product" iA
+\prod_\{${1:i}=${2:0}\}^\{${3:n}\}$0
+endsnippet
+
+context "in_math()"
+snippet // "fraction" iA
+\frac\{${1:x}\}\{${2:y}\}$0
+endsnippet
+
+context "in_math()"
+snippet '([_^])\1' "su(b|per)script" rA
+`!p snip.rv = match.group(1)`\{${1:${VISUAL}}\}$0
+endsnippet
+
+context "in_math()"
+snippet '(?<=\^)-1' "inverse" rA
+{-1}
+endsnippet

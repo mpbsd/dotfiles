@@ -1,0 +1,70 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_math()"
+snippet '`([abgdezhjiklmnxprstufcyw])' "greek letters: part 1" rA
+`!p
+alphabet = {
+	"a": r"\alpha",
+	"b": r"\beta",
+	"g": r"\gamma",
+	"d": r"\delta",
+	"e": r"\epsilon",
+	"z": r"\zeta",
+	"h": r"\eta",
+	"j": r"\theta",
+	"i": r"\iota",
+	"k": r"\kappa",
+	"l": r"\lambda",
+	"m": r"\mu",
+	"n": r"\nu",
+	"x": r"\xi",
+	"p": r"\pi",
+	"r": r"\rho",
+	"s": r"\sigma",
+	"t": r"\tau",
+	"u": r"\upsilon",
+	"f": r"\phi",
+	"c": r"\chi",
+	"y": r"\psi",
+	"w": r"\omega",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+context "in_math()"
+snippet '`([GDJLXPSUFYW])' "greek letters: part 2" rA
+`!p
+alphabet = {
+	"G": r"\Gamma",
+	"D": r"\Delta",
+	"J": r"\Theta",
+	"L": r"\Lambda",
+	"X": r"\Xi",
+	"P": r"\Pi",
+	"S": r"\Sigma",
+	"U": r"\Upsilon",
+	"F": r"\Phi",
+	"Y": r"\Psi",
+	"W": r"\Omega",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet
+
+context "in_math()"
+snippet '`v([jpfres])' "greek letters: part 3" rA
+`!p
+alphabet = {
+	"e": r"\varepsilon",
+	"j": r"\vartheta",
+	"p": r"\varpi",
+	"s": r"\varsigma",
+	"r": r"\varrho",
+	"f": r"\varphi",
+}
+snip.rv = alphabet[match.group(1)]
+`
+endsnippet

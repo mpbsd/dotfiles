@@ -1,0 +1,88 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_math()"
+snippet ;fa "for all" iA
+\forall\,\{${1:x}\}\in\{${2:A}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;te "there exists" iA
+\exists\,\{${1:x}\}\in\{${2:A}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;ee "belongs to" iA
+\{${1:x}\}\in\{${2:A}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';EE' "owns" rA
+\{${1:A}\}\owns\{${2:x}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;cc "subset" iA
+\{${1:A}\}\subset\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';CC' "supset" rA
+\{${1:A}\}\supset\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;uu "cup" iA
+\{${1:A}\}\cup\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';UU' "bigcup" rA
+\bigcup_\{${1:i\in\{I\}}\}${2:U_\{i\}}$0
+endsnippet
+
+context "in_math()"
+snippet ;nn "cap" iA
+\{${1:A}\}\cap\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';NN' "bigcap" rA
+\bigcap_\{${1:i\in\{I\}}\}${2:U_\{i\}}$0
+endsnippet
+
+context "in_math()"
+snippet ;xx "times" iA
+\{${1:A}\}\times\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ';XX' "cartesian product" rA
+\prod_\{${1:i\in\{I\}}\}${2:U_\{i\}}$0
+endsnippet
+
+context "in_math()"
+snippet ;ox "otimes" iA
+\{${1:dx_\{i\}}\}\otimes\{${2:dx_\{j\}}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;ac "absolute complement" iA
+^\{c\}
+endsnippet
+
+context "in_math()"
+snippet ;rc "relative completment" iA
+\{${1:A}\}\setminus\{${2:B}\}$0
+endsnippet
+
+context "in_math()"
+snippet ;OO "empty set" iA
+\emptyset
+endsnippet
+
+context "in_math()"
+snippet '\\([nzqrc])\1' "numerical sets" rA
+\mathbb\{`!p snip.rv = match.group(1).upper()`\}
+endsnippet

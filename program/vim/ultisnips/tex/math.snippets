@@ -1,0 +1,15 @@
+global !p
+from snippets import in_text, in_math
+endglobal
+
+context "in_text()"
+snippet (( "inline math" wA
+\(${1:${VISUAL}}\)$0
+endsnippet
+
+context "in_text()"
+snippet [[ "display math" wA
+\[
+  ${1:${VISUAL}}
+\]$0
+endsnippet
