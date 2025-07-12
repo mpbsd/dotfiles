@@ -30,7 +30,7 @@ return {
       ]],
 			{ i(1, "H"), i(2, "G") }
 		),
-		{ condition = conds.in_math }
+		{ condition = utils.in_math }
 	),
 	-- }}}
 	-- normal subgroup {{{
@@ -47,7 +47,7 @@ return {
       ]],
 			{ i(1, "N"), i(2, "G") }
 		),
-		{ condition = conds.in_math }
+		{ condition = utils.in_math }
 	),
 	-- }}}
 	-- lagrange's theorem {{{
@@ -64,7 +64,7 @@ return {
       ]],
 			{ i(1, "G"), rep(1), i(2, "H"), rep(2) }
 		),
-		{ condition = conds.in_math }
+		{ condition = utils.in_math }
 	),
 	-- }}}
 	-- galois group {{{

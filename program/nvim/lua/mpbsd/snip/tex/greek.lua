@@ -7,7 +7,6 @@ return {
 		trigEngine = "ecma",
 		wordTrig = false,
 		snippetType = "autosnippet",
-		docstring = "a",
 		desc = "greek letters",
 	}, f(utils.greek_letter), { condition = utils.in_math }),
 }

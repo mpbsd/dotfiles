@@ -15,12 +15,12 @@ return {
 	utils = {
 		-- in_math {{{2
 		in_math = function()
-			return vim.fn["vimtex#syntax#in_mathzone"]() == "1"
+			return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 		end,
 		-- }}}
 		-- in_text {{{2
 		in_text = function()
-			return vim.fn["vimtex#syntax#in_mathzone"]() ~= "1"
+			return vim.fn["vimtex#syntax#in_mathzone"]() ~= 1
 		end,
 		-- }}}
 		-- greek_letter {{{2

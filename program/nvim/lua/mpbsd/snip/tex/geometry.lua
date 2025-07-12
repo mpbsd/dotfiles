@@ -26,7 +26,7 @@ return {
 		wordTrig = false,
 		snippetType = "autosnippet",
 		desc = "n-dimensional differentiable manifold",
-	}, { t("M^{n}") }, { condition = conds.in_math }),
+	}, { t("M^{n}") }, { condition = utils.in_math }),
 	-- }}}
 	-- n-dimensional, simply connected riemannian space forms {{{
 	s(
@@ -45,7 +45,7 @@ return {
 			}
 			return M[snip.captures[1]] .. [[^{n}]]
 		end),
-		{ condition = conds.in_math }
+		{ condition = utils.in_math }
 	),
 	-- }}}
 	-- n-dimensional riemannian manifold {{{

@@ -124,7 +124,7 @@ return {
 		f(function(_, snip)
 			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
 		end),
-		{ condition = conds.in_math }
+		{ condition = utils.in_math }
 	),
 	-- }}}
 	-- absolute value, norm {{{
@@ -139,7 +139,7 @@ return {
 		f(function(_, snip)
 			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
 		end),
-		{ condition = conds.in_math }
+		{ condition = utils.in_math }
 	),
 	-- }}}
 }
