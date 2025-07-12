@@ -146,11 +146,10 @@ vim.lsp.enable({
 	"lua",
 	"md",
 	"py",
-	"rb",
 	"tex",
 })
 
 vim.diagnostic.config({
-	virtual_lines = true,
+	virtual_lines = false,
 	virtual_text = true,
 })

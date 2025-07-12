@@ -24,7 +24,6 @@ return {
 				"lua-language-server",
 				"marksman",
 				"pyright",
-				"ruby-lsp",
 				"texlab",
 				-- }}}
 				-- FMT {{{

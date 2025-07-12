@@ -25,7 +25,7 @@ return {
 				"lsp",
 				"omni",
 				"path",
-				-- "snippets",
+				"snippets",
 			},
 		},
 		snippets = {
