@@ -19,7 +19,7 @@ require("lazy").setup({
 	},
 	spec = {
 		{
-			import = "mpbsd.plug.lcf", -- lsp, cmp and fmt
+			import = "mpbsd.plug.lcf", -- cmp, fmt, pkg and snp
 		},
 		{
 			import = "mpbsd.plug.sty", -- styling
