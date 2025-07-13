@@ -1,16 +1,51 @@
 local helper = {
-	-- in_math {{{
+	-- in_math {{{1
 	in_math = function()
 		return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 	end,
 	-- }}}
-	-- in_text {{{
+	-- in_text {{{1
 	in_text = function()
 		return vim.fn["vimtex#syntax#in_mathzone"]() ~= 1
 	end,
 	-- }}}
-	-- greek_letter {{{
-	greek_letter = function(_, snip)
+	-- delimiter {{{1
+	delimiter = function(_, snip, user_args)
+		local D = {
+			p = {
+				lhs = [[(]],
+				rhs = [[)]],
+			},
+			P = {
+				lhs = [[\left(]],
+				rhs = [[\right)]],
+			},
+			b = {
+				lhs = "[",
+				rhs = "]",
+			},
+			B = {
+				lhs = "\\left[",
+				rhs = "\\right]",
+			},
+			c = {
+				lhs = [[\{]],
+				rhs = [[\}]],
+			},
+			C = {
+				lhs = [[\left\{]],
+				rhs = [[\right\}]],
+			},
+			g = {
+				lhs = [[{]],
+				rhs = [[}]],
+			},
+		}
+		return D[snip.captures[2]][user_args]
+	end,
+	-- }}}
+	-- greek {{{1
+	greek = function(_, snip)
 		local alphabet = {
 			a = "alpha",
 			b = "beta",
@@ -56,20 +91,54 @@ local helper = {
 		return [[\]] .. alphabet[snip.captures[1]]
 	end,
 	-- }}}
-	-- dynamic_matrix {{{
-	dynamic_matrix = function(_, snip)
+	-- mathfn {{{
+	mathfn = function(_, snip)
+		local F = {
+			["cos"] = [[cos]],
+			["sin"] = [[sin]],
+			["tan"] = [[tan]],
+			["acos"] = [[arccos]],
+			["asin"] = [[arcsin]],
+			["atan"] = [[arctan]],
+			["sec"] = [[sec]],
+			["csc"] = [[csc]],
+			["cot"] = [[cot]],
+			["asec"] = [[arcsec]],
+			["acsc"] = [[arccsc]],
+			["acot"] = [[arccot]],
+			["cosh"] = [[cosh]],
+			["sinh"] = [[sinh]],
+			["tanh"] = [[tanh]],
+			["acosh"] = [[arccosh]],
+			["asinh"] = [[arcsinh]],
+			["atanh"] = [[arctanh]],
+			["sech"] = [[sech]],
+			["csch"] = [[csch]],
+			["coth"] = [[coth]],
+			["asech"] = [[arcsech]],
+			["acsch"] = [[arccsch]],
+			["acoth"] = [[arccoth]],
+			["exp"] = [[e^]],
+			["log"] = [[log]],
+			["ln"] = [[ln]],
+		}
+		return F[snip.captures[1]]
+	end,
+	-- }}}
+	-- matrix {{{1
+	matrix = function(_, snip)
 		local rows = tonumber(snip.captures[2])
 		local cols = tonumber(snip.captures[3])
 		local node = {}
 		local indx = 1
-		for J = 1, rows do
-			for K = 1, cols do
-				local x_JK = "x_{" .. tostring(J) .. tostring(K) .. "}"
-				table.insert(node, i(indx, x_JK))
-				if K < cols then
+		for R = 1, rows do
+			for C = 1, cols do
+				local x_RC = "x_{" .. tostring(R) .. tostring(C) .. "}"
+				table.insert(node, i(indx, x_RC))
+				if C < cols then
 					table.insert(node, t([[ & ]]))
 				else
-					if J < rows then
+					if R < rows then
 						table.insert(node, t({ [[ \\ ]], "" }))
 					else
 						table.insert(node, t([[ \\ ]]))
@@ -81,48 +150,16 @@ local helper = {
 		return sn(nil, node)
 	end,
 	-- }}}
-	-- delimiter {{{
-	delimiter = function(_, snip, user_args)
-		local D = {
-			p = {
-				lhs = [[(]],
-				rhs = [[)]],
-			},
-			P = {
-				lhs = [[\left(]],
-				rhs = [[\right)]],
-			},
-			b = {
-				lhs = "[",
-				rhs = "]",
-			},
-			B = {
-				lhs = "\\left[",
-				rhs = "\\right]",
-			},
-			c = {
-				lhs = [[\{]],
-				rhs = [[\}]],
-			},
-			C = {
-				lhs = [[\left\{]],
-				rhs = [[\right\}]],
-			},
-			g = {
-				lhs = [[{]],
-				rhs = [[}]],
-			},
-		}
-		return D[snip.captures[2]][user_args]
-	end,
-	-- }}}
 }
 
 return {
-	-- article template {{{
+	-- templates {{{1
+	-- article {{{2
 	s(
 		{
-			trig = "_article",
+			trig = "^_article",
+			regTrig = true,
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "article template",
 		},
@@ -175,13 +212,13 @@ return {
 				t(""),
 			}
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- mid range set of packages {{{
+	-- mid range set of packages {{{2
 	s(
 		{
-			trig = "_mid",
+			trig = "^_mid",
 			snippetType = "autosnippet",
 			desc = "mid range set of package",
 		},
@@ -200,15 +237,17 @@ return {
 			[[\usepackage{stmaryrd}]],
 			[[\usepackage[table]{xcolor}]],
 		}),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- package without options {{{
+	-- }}}
+	-- loading packages {{{1
+	-- package without options {{{2
 	s(
 		{
-			trig = "pkg",
+			trig = "^_pkg",
 			snippetType = "autosnippet",
-			desc = "package without options",
+			desc = "without options",
 		},
 		fmta(
 			[[
@@ -216,15 +255,15 @@ return {
       ]],
 			{ i(1, "pkg") }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- package with options {{{
+	-- package with options {{{2
 	s(
 		{
-			trig = "opt",
+			trig = "^_opt",
 			snippetType = "autosnippet",
-			desc = "package with options",
+			desc = "with options",
 		},
 		fmta(
 			[[
@@ -232,13 +271,15 @@ return {
       ]],
 			{ i(1, "opt"), i(2, "pkg") }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- introduction {{{
+	-- }}}
+	-- headers {{{1
+	-- introduction {{{2
 	s(
 		{
-			trig = "_introduction",
+			trig = "^_introduction",
 			snippetType = "autosnippet",
 			desc = "introduction",
 		},
@@ -250,13 +291,13 @@ return {
 			]],
 			{ t(""), i(0) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- results {{{
+	-- results {{{2
 	s(
 		{
-			trig = "_results",
+			trig = "^_results",
 			snippetType = "autosnippet",
 			desc = "results",
 		},
@@ -268,13 +309,13 @@ return {
 			]],
 			{ t(""), i(0) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- examples {{{
+	-- examples {{{2
 	s(
 		{
-			trig = "_examples",
+			trig = "^_examples",
 			snippetType = "autosnippet",
 			desc = "examples",
 		},
@@ -286,13 +327,13 @@ return {
 			]],
 			{ t(""), i(0) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- proofs {{{
+	-- proofs {{{2
 	s(
 		{
-			trig = "_proofs",
+			trig = "^_proof",
 			snippetType = "autosnippet",
 			desc = "proofs",
 		},
@@ -304,13 +345,13 @@ return {
 			]],
 			{ t(""), i(0) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- labeled chapter {{{
+	-- labeled chapter {{{2
 	s(
 		{
-			trig = [[^cha]],
+			trig = [[^_chapter]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
@@ -328,14 +369,14 @@ return {
 				t(""),
 				i(0),
 			},
-			{ condition = conds.line_begin }
+			{ condition = helper.in_text }
 		)
 	),
 	-- }}}
-	-- labeled section {{{
+	-- labeled section {{{2
 	s(
 		{
-			trig = [[^sec]],
+			trig = [[^_section]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
@@ -353,14 +394,14 @@ return {
 				t(""),
 				i(0),
 			},
-			{ condition = conds.line_begin }
+			{ condition = helper.in_text }
 		)
 	),
 	-- }}}
-	-- labeled subsection {{{
+	-- labeled subsection {{{2
 	s(
 		{
-			trig = [[^subsec]],
+			trig = [[^_subsection]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
@@ -378,14 +419,14 @@ return {
 				t(""),
 				i(0),
 			},
-			{ condition = conds.line_begin }
+			{ condition = helper.in_text }
 		)
 	),
 	-- }}}
-	-- labeled subsubsection {{{
+	-- labeled subsubsection {{{2
 	s(
 		{
-			trig = [[^subsubsec]],
+			trig = [[^_subsubsection]],
 			regTrig = true,
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
@@ -403,14 +444,14 @@ return {
 				t(""),
 				i(0),
 			},
-			{ condition = conds.line_begin }
+			{ condition = helper.in_text }
 		)
 	),
 	-- }}}
-	-- abstract {{{
+	-- abstract {{{2
 	s(
 		{
-			trig = "abs",
+			trig = "^abs",
 			snippetType = "autosnippet",
 			desc = "abstract",
 		},
@@ -422,13 +463,13 @@ return {
 			]],
 			{ i(1) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- align {{{
+	-- align {{{2
 	s(
 		{
-			trig = "ali",
+			trig = "^ali",
 			snippetType = "autosnippet",
 			desc = "align",
 		},
@@ -440,10 +481,10 @@ return {
 			]],
 			{ i(1) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- generic {{{
+	-- generic {{{2
 	s(
 		{
 			trig = "beg",
@@ -461,7 +502,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- corollary {{{
+	-- corollary {{{2
 	s(
 		{
 			trig = "cor",
@@ -479,7 +520,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- definition {{{
+	-- definition {{{2
 	s(
 		{
 			trig = "def",
@@ -497,7 +538,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- description {{{
+	-- description {{{2
 	s(
 		{
 			trig = "des",
@@ -515,7 +556,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- enumerate {{{
+	-- enumerate {{{2
 	s(
 		{
 			trig = "enu",
@@ -533,7 +574,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- equation {{{
+	-- equation {{{2
 	s(
 		{
 			trig = "equ",
@@ -551,7 +592,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- frame {{{
+	-- frame {{{2
 	s(
 		{
 			trig = "fra",
@@ -569,7 +610,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- itemize {{{
+	-- itemize {{{2
 	s(
 		{
 			trig = "ite",
@@ -587,7 +628,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- lemma {{{
+	-- lemma {{{2
 	s(
 		{
 			trig = "lem",
@@ -605,10 +646,35 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- proposition {{{
+	-- matrix {{{2
 	s(
 		{
-			trig = "prp",
+			trig = [[([bBp])mat([0-9]+)([0-9]+)]],
+			regTrig = true,
+			docTrig = [[bmat22]],
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "dynamic matrix",
+		},
+		fmta(
+			[[
+	    \begin{<>}
+	      <>
+	    \end{<>}
+	    ]],
+			{
+				l(l.CAPTURE1 .. "matrix", {}),
+				d(1, helper.matrix),
+				l(l.CAPTURE1 .. "matrix", {}),
+			}
+		),
+		{ condition = helper.in_math }
+	),
+	-- }}}
+	-- proposition {{{2
+	s(
+		{
+			trig = "prop",
 			snippetType = "autosnippet",
 			desc = "proposition",
 		},
@@ -623,7 +689,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- remark {{{
+	-- remark {{{2
 	s(
 		{
 			trig = "rmk",
@@ -641,7 +707,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- theorem {{{
+	-- theorem {{{2
 	s(
 		{
 			trig = "thm",
@@ -659,32 +725,9 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- dynamic_matrix {{{
-	s(
-		{
-			trig = [[([bBp])mat([0-9]+)([0-9]+)]],
-			regTrig = true,
-			docstring = "pmat22",
-			trigEngine = "ecma",
-			snippetType = "autosnippet",
-			desc = "dynamic matrix",
-		},
-		fmta(
-			[[
-	    \begin{<>}
-	      <>
-	    \end{<>}
-	    ]],
-			{
-				l(l.CAPTURE1 .. "matrix", {}),
-				d(1, helper.dynamic_matrix),
-				l(l.CAPTURE1 .. "matrix", {}),
-			}
-		),
-		{ condition = helper.in_math }
-	),
 	-- }}}
-	-- inline math mode {{{
+	-- math mode {{{1
+	-- inline math mode {{{2
 	s(
 		{
 			trig = "((",
@@ -700,7 +743,7 @@ return {
 		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- display math mode {{{
+	-- display math mode {{{2
 	s(
 		{
 			trig = "[[",
@@ -718,7 +761,9 @@ return {
 		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- delimiters {{{
+	-- }}}
+	-- delimiters {{{1
+	-- delimiters {{{2
 	s(
 		{
 			trig = [[(d)([pPbBcCg])]],
@@ -741,7 +786,9 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- for all {{{
+	-- }}}
+	-- sets {{{1
+	-- for all {{{2
 	s(
 		{
 			trig = [[;fa]],
@@ -751,14 +798,14 @@ return {
 		},
 		fmta(
 			[[
-  \forall\,{<>}\in{<>}
-  ]],
+      \forall\,{<>}\in{<>}
+      ]],
 			{ i(1, "x"), i(2, "A") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- there exists {{{
+	-- there exists {{{2
 	s(
 		{
 			trig = [[;te]],
@@ -768,14 +815,14 @@ return {
 		},
 		fmta(
 			[[
-  \exists\,{<>}\in{<>}
-  ]],
+      \exists\,{<>}\in{<>}
+      ]],
 			{ i(1, "x"), i(2, "A") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- belongs to {{{
+	-- belongs to {{{2
 	s(
 		{
 			trig = [[;ee]],
@@ -785,14 +832,14 @@ return {
 		},
 		fmta(
 			[[
-  {<>}\in{<>}
-  ]],
+      {<>}\in{<>}
+      ]],
 			{ i(1, "x"), i(2, "A") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- owns {{{
+	-- owns {{{2
 	s(
 		{
 			trig = [[;EE]],
@@ -802,14 +849,14 @@ return {
 		},
 		fmta(
 			[[
-  {<>}\owns{<>}
-  ]],
+      {<>}\owns{<>}
+      ]],
 			{ i(1, "A"), i(2, "x") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- subset {{{
+	-- subset {{{2
 	s(
 		{
 			trig = [[;cc]],
@@ -819,14 +866,14 @@ return {
 		},
 		fmta(
 			[[
-  {<>}\subset{<>}
-  ]],
+      {<>}\subset{<>}
+      ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- subset {{{
+	-- subset {{{2
 	s(
 		{
 			trig = [[;CC]],
@@ -836,14 +883,14 @@ return {
 		},
 		fmta(
 			[[
-  {<>}\supset{<>}
-  ]],
+      {<>}\supset{<>}
+      ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- cup {{{
+	-- cup {{{2
 	s(
 		{
 			trig = [[;uu]],
@@ -853,14 +900,14 @@ return {
 		},
 		fmta(
 			[[
-  {<>}\cup{<>}
-  ]],
+      {<>}\cup{<>}
+      ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- bigcup {{{
+	-- bigcup {{{2
 	s(
 		{
 			trig = [[;UU]],
@@ -870,14 +917,14 @@ return {
 		},
 		fmta(
 			[[
-  \bigcup_{<>}<>
-  ]],
+      \bigcup_{<>}<>
+      ]],
 			{ i(1, [[i\in{I}]]), i(2, [[U_{i}]]) }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- cap {{{
+	-- cap {{{2
 	s(
 		{
 			trig = [[;nn]],
@@ -887,14 +934,14 @@ return {
 		},
 		fmta(
 			[[
-  {<>}\cap{<>}
-  ]],
+      {<>}\cap{<>}
+      ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- bigcap {{{
+	-- bigcap {{{2
 	s(
 		{
 			trig = [[;NN]],
@@ -904,14 +951,14 @@ return {
 		},
 		fmta(
 			[[
-  \bigcap_{<>}<>
-  ]],
+      \bigcap_{<>}<>
+      ]],
 			{ i(1, [[i\in{I}]]), i(2, [[U_{i}]]) }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- times {{{
+	-- times {{{2
 	s(
 		{
 			trig = [[;xx]],
@@ -921,14 +968,14 @@ return {
 		},
 		fmta(
 			[[
-  {<>}\times{<>}
-  ]],
+      {<>}\times{<>}
+      ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- cartesian product {{{
+	-- cartesian product {{{2
 	s(
 		{
 			trig = [[;XX]],
@@ -938,14 +985,14 @@ return {
 		},
 		fmta(
 			[[
-  \prod_{<>}<>
-  ]],
+      \prod_{<>}<>
+      ]],
 			{ i(1, [[i\in{I}]]), i(2, [[U_{i}]]) }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- absolute complement {{{
+	-- absolute complement {{{2
 	s(
 		{
 			trig = [[;ac]],
@@ -955,14 +1002,14 @@ return {
 		},
 		fmta(
 			[[
-  {<>}\setminus{<>}
-  ]],
+      {<>}\setminus{<>}
+      ]],
 			{ i(1, "A"), i(2, "B") }
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- relative complement {{{
+	-- relative complement {{{2
 	s({
 		trig = [[;rc]],
 		wordTrig = false,
@@ -970,7 +1017,7 @@ return {
 		desc = "relative complement",
 	}, t([[^{c}]]), { condition = helper.in_math }),
 	-- }}}
-	-- empty set {{{
+	-- empty set {{{2
 	s({
 		trig = [[;OO]],
 		wordTrig = false,
@@ -978,11 +1025,12 @@ return {
 		desc = "empty set",
 	}, t([[\emptyset]]), { condition = helper.in_math }),
 	-- }}}
-	-- numerical sets {{{
+	-- numerical sets {{{2
 	s(
 		{
 			trig = [[(?<=\\)([nzqrc])\1]],
 			regTrig = true,
+			docTrig = [[\nn]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "numerical sets",
@@ -1000,7 +1048,9 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- function action {{{
+	-- }}}
+	-- functions {{{1
+	-- function action {{{2
 	s(
 		{
 			trig = "fna",
@@ -1017,7 +1067,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- function definition {{{
+	-- function definition {{{2
 	s(
 		{
 			trig = "fnd",
@@ -1034,7 +1084,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- function reference {{{
+	-- function reference {{{2
 	s(
 		{
 			trig = "fnr",
@@ -1051,7 +1101,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- trigonometric, exponential, logarithmic and hyperbolic functions {{{
+	-- trigonometric, exponential, logarithmic and hyperbolic functions {{{2
 	s(
 		{
 			trig = [[(?<=\\)(a?(cos|sin|tan|sec|csc|cot)h?|exp|log|ln)]],
@@ -1062,48 +1112,43 @@ return {
 		},
 		fmta(
 			[[
-	    <>{\left(<>\right)}
-	    ]],
+	    <>{\left(<>\right)}<>
+			]],
 			{
-				f(function(_, snip)
-					local fn = {
-						["cos"] = [[cos]],
-						["sin"] = [[sin]],
-						["tan"] = [[tan]],
-						["acos"] = [[arccos]],
-						["asin"] = [[arcsin]],
-						["atan"] = [[arctan]],
-						["sec"] = [[sec]],
-						["csc"] = [[csc]],
-						["cot"] = [[cot]],
-						["asec"] = [[arcsec]],
-						["acsc"] = [[arccsc]],
-						["acot"] = [[arccot]],
-						["cosh"] = [[cosh]],
-						["sinh"] = [[sinh]],
-						["tanh"] = [[tanh]],
-						["acosh"] = [[arccosh]],
-						["asinh"] = [[arcsinh]],
-						["atanh"] = [[arctanh]],
-						["sech"] = [[sech]],
-						["csch"] = [[csch]],
-						["coth"] = [[coth]],
-						["asech"] = [[arcsech]],
-						["acsch"] = [[arccsch]],
-						["acoth"] = [[arccoth]],
-						["exp"] = [[e^]],
-						["log"] = [[log]],
-						["ln"] = [[ln]],
-					}
-					return fn[snip.captures[1]]
-				end),
-				i(2, "x"),
+				f(helper.mathfn),
+				i(1),
+				i(0),
 			}
 		),
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- less than or equal to {{{
+	-- abs, norm, order {{{2
+	s(
+		{
+			trig = [[(?<=\\)(abs|norm|order)]],
+			regTrig = true,
+			docTrig = [[\abs]],
+			trigEngine = "ecma",
+			wordTrig = false,
+			desc = "trigonometric, exponential, logarithmic and hyperbolic functions",
+		},
+		fmta(
+			[[
+	    <>{<>}<>
+			]],
+			{
+				l(l.CAPTURE1, {}),
+				i(1),
+				i(0),
+			}
+		),
+		{ condition = helper.in_math }
+	),
+	-- }}}
+	-- }}}
+	-- binary operations, relations, inverse {{{1
+	-- less than or equal to {{{2
 	s(
 		{
 			trig = "<=",
@@ -1119,7 +1164,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- greater than or equal to {{{
+	-- greater than or equal to {{{2
 	s(
 		{
 			trig = ">=",
@@ -1135,7 +1180,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- sum {{{
+	-- sum {{{2
 	s(
 		{
 			trig = "++",
@@ -1151,7 +1196,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- product {{{
+	-- product {{{2
 	s(
 		{
 			trig = "**",
@@ -1167,7 +1212,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- fraction {{{
+	-- fraction {{{2
 	s(
 		{
 			trig = "//",
@@ -1183,7 +1228,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- su(b|per)script {{{
+	-- su(b|per)script {{{2
 	s(
 		{
 			trig = [[([_^])\1]],
@@ -1205,7 +1250,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- inverse {{{
+	-- inverse {{{2
 	s({
 		trig = [[(?<=\^)-1]],
 		regTrig = true,
@@ -1214,7 +1259,7 @@ return {
 		desc = "inverse",
 	}, t([[{-1}]]), { condition = helper.in_math }),
 	-- }}}
-	-- bar, dot, hat, overline and vector {{{
+	-- bar, dot, hat, overline and vector {{{2
 	s(
 		{
 			trig = [[(\S+)\.(bar|d{1,3}ot|hat|overline|vec)]],
@@ -1229,33 +1274,20 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- absolute value, norm {{{
-	s(
-		{
-			trig = [[(\S+)\.(abs|norm|order)]],
-			regTrig = true,
-			trigEngine = "ecma",
-			snippetType = "autosnippet",
-			desc = "absolute value, norm, order",
-		},
-		f(function(_, snip)
-			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
-		end),
-		{ condition = helper.in_math }
-	),
 	-- }}}
-	-- greek letters {{{
+	-- special symbols {{{1
+	-- greek letters {{{2
 	s({
 		trig = [[`([abgdezhjiklmnxprstufcyw]|[GDJLXPSUFYW]|v[ejpsrf])]],
 		regTrig = true,
-		docstring = "`vj",
+		docTrig = [[`a]],
 		trigEngine = "ecma",
 		wordTrig = false,
 		snippetType = "autosnippet",
 		desc = "greek letters",
-	}, f(helper.greek_letter), { condition = helper.in_math }),
+	}, f(helper.greek), { condition = helper.in_math }),
 	-- }}}
-	-- infity {{{
+	-- infity {{{2
 	s({
 		trig = [[oo]],
 		wordTrig = false,
@@ -1263,7 +1295,7 @@ return {
 		desc = "infinity",
 	}, t([[\infty]]), { condition = helper.in_math }),
 	-- }}}
-	-- dots {{{
+	-- dots {{{2
 	s({
 		trig = [[(?<!\\)([cdlv]dots)]],
 		regTrig = true,
@@ -1272,10 +1304,12 @@ return {
 		desc = "dots",
 	}, l([[\]] .. l.CAPTURE1), { condition = helper.in_math }),
 	-- }}}
-	-- custom commands for group theory {{{
+	-- }}}
+	-- algebraic structures {{{1
+	-- custom commands typesetting stuff related to group theory {{{2
 	s(
 		{
-			trig = "_group",
+			trig = "^_group",
 			snippetType = "autosnippet",
 			desc = "custom commands for group theory",
 		},
@@ -1284,10 +1318,10 @@ return {
 			[[\newcommand{\subgroup}{\leqslant}]],
 			[[\newcommand{\normalsubgroup}{\trianglelefteqslant}]],
 		}),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
-	-- subgroup {{{
+	-- subgroup {{{2
 	s(
 		{
 			trig = ";sg",
@@ -1304,7 +1338,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- normal subgroup {{{
+	-- normal subgroup {{{2
 	s(
 		{
 			trig = ";ns",
@@ -1321,7 +1355,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- lagrange's theorem {{{
+	-- lagrange's theorem {{{2
 	s(
 		{
 			trig = ";lt",
@@ -1338,7 +1372,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- galois group {{{
+	-- galois group {{{2
 	s(
 		{
 			trig = [[gg([a-z])([a-z])]],
@@ -1358,11 +1392,12 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- polynomial rings {{{
+	-- polynomial rings {{{2
 	s(
 		{
 			trig = [[(?<=\\)([zqrc])([xt])]],
 			regTrig = true,
+			docTrig = [[\zx]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "polynomial rings",
@@ -1379,10 +1414,28 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- custom commands for differential geometry {{{
+	-- }}}
+	-- analysis {{{1
+	-- custom commands for typesetting stuff related to analysis {{{2
 	s(
 		{
-			trig = "_dgeom",
+			trig = "^_analysis",
+			snippetType = "autosnippet",
+			desc = "custom commands for typesetting stuff related to analysis",
+		},
+		t({
+			[[\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}]],
+			[[\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}]],
+		}),
+		{ condition = helper.in_text }
+	),
+	-- }}}
+	-- }}}
+	-- differential geometry {{{1
+	-- custom commands for differential geometry {{{2
+	s(
+		{
+			trig = "^_geom",
 			snippetType = "autosnippet",
 			desc = "custom commands for differential geometry",
 		},
@@ -1398,7 +1451,7 @@ return {
 		{ condition = conds.line_begin }
 	),
 	-- }}}
-	-- n-dimensional differentiable manifold {{{
+	-- n-dimensional differentiable manifold {{{2
 	s({
 		trig = "Mn",
 		wordTrig = false,
@@ -1406,7 +1459,7 @@ return {
 		desc = "n-dimensional differentiable manifold",
 	}, { t("M^{n}") }, { condition = helper.in_math }),
 	-- }}}
-	-- n-dimensional, simply connected riemannian space forms {{{
+	-- n-dimensional, simply connected riemannian space forms {{{2
 	s(
 		{
 			trig = [[(?<=\\)([ehs])\1]],
@@ -1426,7 +1479,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- n-dimensional riemannian manifold {{{
+	-- n-dimensional riemannian manifold {{{2
 	s({
 		trig = "mnf",
 		wordTrig = false,
@@ -1434,7 +1487,7 @@ return {
 		desc = "n-dimensional riemannian manifold",
 	}, t([[\left(M^{n},g\right)]]), { condition = helper.in_math }),
 	-- }}}
-	-- n-dimensional riemannian manifold {{{
+	-- n-dimensional riemannian manifold {{{2
 	s({
 		trig = "mng",
 		wordTrig = false,
@@ -1442,7 +1495,7 @@ return {
 		desc = "n-dimensional riemannian manifold",
 	}, t([[\left(M^{n},\bar{g}\right)]]), { condition = helper.in_math }),
 	-- }}}
-	-- algebra of smooth functions {{{
+	-- algebra of smooth functions {{{2
 	s(
 		{
 			trig = "asf",
@@ -1459,7 +1512,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- module of smooth vector fields {{{
+	-- module of smooth vector fields {{{2
 	s(
 		{
 			trig = "mvf",
@@ -1476,7 +1529,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- \partial_{} {{{
+	-- \partial_{} {{{2
 	s(
 		{
 			trig = "6x([ijkl])",
@@ -1495,7 +1548,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- dx_{} {{{
+	-- dx_{} {{{2
 	s(
 		{
 			trig = "dx([ijkl])",
@@ -1513,7 +1566,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- nabla 1 {{{
+	-- nabla 1 {{{2
 	s({
 		trig = "nb1",
 		wordTrig = false,
@@ -1521,7 +1574,7 @@ return {
 		desc = [[\nabla]],
 	}, t([[\nabla]]), { condition = helper.in_math }),
 	-- }}}
-	-- nabla 2 {{{
+	-- nabla 2 {{{2
 	s({
 		trig = "nb2",
 		wordTrig = false,
@@ -1529,7 +1582,7 @@ return {
 		desc = [[\nabla^{2}]],
 	}, t([[\nabla^{2}]]), { condition = helper.in_math }),
 	-- }}}
-	-- (flat) riemannian metric {{{
+	-- (flat) riemannian metric {{{2
 	s(
 		{
 			trig = "frm",
@@ -1546,7 +1599,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- (flat) riemannian connection {{{
+	-- (flat) riemannian connection {{{2
 	s(
 		{
 			trig = "flc",
@@ -1563,7 +1616,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- riemannian metric {{{
+	-- riemannian metric {{{2
 	s(
 		{
 			trig = "grm",
@@ -1580,7 +1633,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- riemannian connection {{{
+	-- riemannian connection {{{2
 	s(
 		{
 			trig = "glc",
@@ -1597,7 +1650,7 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- modeling factor {{{
+	-- modeling factor {{{2
 	s({
 		trig = "d0mf",
 		wordTrig = false,
@@ -1605,7 +1658,7 @@ return {
 		desc = "modeling factor",
 	}, t([[\mathcal{G}_{0}]]), { condition = helper.in_math }),
 	-- }}}
-	-- first covariant derivative of the modeling factor {{{
+	-- first covariant derivative of the modeling factor {{{2
 	s({
 		trig = "d1mf",
 		wordTrig = false,
@@ -1613,7 +1666,7 @@ return {
 		desc = "first covariant derivative of the modeling factor",
 	}, t([[\mathcal{G}_{1}]]), { condition = helper.in_math }),
 	-- }}}
-	-- second covariant derivative of the modeling factor {{{
+	-- second covariant derivative of the modeling factor {{{2
 	s({
 		trig = "d2mf",
 		wordTrig = false,
@@ -1621,7 +1674,9 @@ return {
 		desc = "second covariant derivative of the modeling factor",
 	}, t([[\mathcal{G}_{2}]]), { condition = helper.in_math }),
 	-- }}}
-	-- cite {{{
+	-- }}}
+	-- citation, bibliography {{{1
+	-- cite {{{2
 	s(
 		{
 			trig = [[\cite]],
@@ -1636,5 +1691,6 @@ return {
 		),
 		{ condition = helper.in_text }
 	),
+	-- }}}
 	-- }}}
 }
