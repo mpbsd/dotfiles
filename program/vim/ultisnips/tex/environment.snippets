@@ -1,5 +1,5 @@
 global !p
-from snippets import in_text, in_math
+from tex_snippets import in_text, in_math
 endglobal
 
 context "in_text()"
@@ -25,14 +25,14 @@ endsnippet
 
 context "in_text()"
 snippet cor "corollary" bA
-\begin\{corollary}\label\{cor:$1\}
+\begin\{corollary\}\label\{cor:$1\}
   $2
 \end\{corollary\}$0
 endsnippet
 
 context "in_text()"
 snippet def "definition" bA
-\begin\{definition}\label\{def:$1\}
+\begin\{definition\}\label\{def:$1\}
   $2
 \end\{definition\}$0
 endsnippet

@@ -21,15 +21,15 @@ return {
 	-- }}}
 	-- import <> {{{
 	s({
-		trig = "_im",
+		trig = ";im",
 		snippetType = "autosnippet",
 		desc = "import <>",
-	}, { t("import"), i(1) }, { condition = conds.line_begin }),
+	}, { t("import ") }, { condition = conds.line_begin }),
 	-- }}}
 	-- from <> import <> {{{
 	s(
 		{
-			trig = "_fr",
+			trig = ";fr",
 			snippetType = "autosnippet",
 			desc = "from <> import <>",
 		},
@@ -47,14 +47,14 @@ return {
 	-- }}}
 	-- from datetime import datetime {{{
 	s({
-		trig = "_dt",
+		trig = ";dt",
 		snippetType = "autosnippet",
 		desc = "from datetime import datetime",
 	}, { t("from datetime import datetime") }, { condition = conds.line_begin }),
 	-- }}}
 	-- import re {{{
 	s({
-		trig = "_re",
+		trig = ";re",
 		snippetType = "autosnippet",
 		desc = "import re",
 	}, { t("import re") }, { condition = conds.line_begin }),
@@ -107,7 +107,7 @@ return {
 	-- }}}
 	-- re.compile() {{{
 	s({
-		trig = "re.c",
+		trig = "recomp",
 		snippetType = "autosnippet",
 		desc = "re.compile()",
 	}, fmta([[re.compile(r'<>')]], { i(1) })),
