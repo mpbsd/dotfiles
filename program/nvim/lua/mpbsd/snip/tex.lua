@@ -94,33 +94,33 @@ local helper = {
 	-- mathfn {{{
 	mathfn = function(_, snip)
 		local F = {
-			["cos"] = [[cos]],
-			["sin"] = [[sin]],
-			["tan"] = [[tan]],
-			["acos"] = [[arccos]],
-			["asin"] = [[arcsin]],
-			["atan"] = [[arctan]],
-			["sec"] = [[sec]],
-			["csc"] = [[csc]],
-			["cot"] = [[cot]],
-			["asec"] = [[arcsec]],
-			["acsc"] = [[arccsc]],
-			["acot"] = [[arccot]],
-			["cosh"] = [[cosh]],
-			["sinh"] = [[sinh]],
-			["tanh"] = [[tanh]],
-			["acosh"] = [[arccosh]],
-			["asinh"] = [[arcsinh]],
-			["atanh"] = [[arctanh]],
-			["sech"] = [[sech]],
-			["csch"] = [[csch]],
-			["coth"] = [[coth]],
-			["asech"] = [[arcsech]],
-			["acsch"] = [[arccsch]],
-			["acoth"] = [[arccoth]],
-			["exp"] = [[e^]],
-			["log"] = [[log]],
-			["ln"] = [[ln]],
+			cos = [[cos]],
+			sin = [[sin]],
+			tan = [[tan]],
+			acos = [[arccos]],
+			asin = [[arcsin]],
+			atan = [[arctan]],
+			sec = [[sec]],
+			csc = [[csc]],
+			cot = [[cot]],
+			asec = [[arcsec]],
+			acsc = [[arccsc]],
+			acot = [[arccot]],
+			cosh = [[cosh]],
+			sinh = [[sinh]],
+			tanh = [[tanh]],
+			acosh = [[arccosh]],
+			asinh = [[arcsinh]],
+			atanh = [[arctanh]],
+			sech = [[sech]],
+			csch = [[csch]],
+			coth = [[coth]],
+			asech = [[arcsech]],
+			acsch = [[arccsch]],
+			acoth = [[arccoth]],
+			exp = [[e^]],
+			log = [[log]],
+			ln = [[ln]],
 		}
 		return F[snip.captures[1]]
 	end,
@@ -157,8 +157,9 @@ return {
 	-- article {{{2
 	s(
 		{
-			trig = "^_article",
+			trig = [[^\s*;article]],
 			regTrig = true,
+			docTrig = "_article",
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "article template",
@@ -218,7 +219,10 @@ return {
 	-- mid range set of packages {{{2
 	s(
 		{
-			trig = "^_mid",
+			trig = [[^\s*;mid]],
+			regTrig = true,
+			docTrig = ";mid",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "mid range set of package",
 		},
@@ -245,7 +249,10 @@ return {
 	-- package without options {{{2
 	s(
 		{
-			trig = "^_pkg",
+			trig = [[^\s*;pkg]],
+			regTrig = true,
+			docTrig = ";pkg",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "without options",
 		},
@@ -261,7 +268,10 @@ return {
 	-- package with options {{{2
 	s(
 		{
-			trig = "^_opt",
+			trig = [[^\s*;opt]],
+			regTrig = true,
+			docTrig = ";opt",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "with options",
 		},
@@ -279,7 +289,10 @@ return {
 	-- introduction {{{2
 	s(
 		{
-			trig = "^_introduction",
+			trig = [[^\s*;introduction]],
+			regTrig = true,
+			docTrig = ";introduction",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "introduction",
 		},
@@ -297,7 +310,10 @@ return {
 	-- results {{{2
 	s(
 		{
-			trig = "^_results",
+			trig = [[^\s*;results]],
+			regTrig = true,
+			docTrig = ";results",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "results",
 		},
@@ -315,7 +331,10 @@ return {
 	-- examples {{{2
 	s(
 		{
-			trig = "^_examples",
+			trig = [[^\s*;examples]],
+			regTrig = true,
+			docTrig = ";examples",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "examples",
 		},
@@ -333,7 +352,10 @@ return {
 	-- proofs {{{2
 	s(
 		{
-			trig = "^_proof",
+			trig = [[^\s*;proofs]],
+			regTrig = true,
+			docTrig = ";proofs",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "proofs",
 		},
@@ -351,8 +373,9 @@ return {
 	-- labeled chapter {{{2
 	s(
 		{
-			trig = [[^_chapter]],
+			trig = [[^\s*;chapter]],
 			regTrig = true,
+			docTrig = "_chapter",
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "labeled chapter",
@@ -376,8 +399,9 @@ return {
 	-- labeled section {{{2
 	s(
 		{
-			trig = [[^_section]],
+			trig = [[^\s*;section]],
 			regTrig = true,
+			docTrig = "_section",
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "labeled section",
@@ -401,8 +425,9 @@ return {
 	-- labeled subsection {{{2
 	s(
 		{
-			trig = [[^_subsection]],
+			trig = [[^\s*;subsection]],
 			regTrig = true,
+			docTrig = "_subsection",
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "labeled subsection",
@@ -426,8 +451,9 @@ return {
 	-- labeled subsubsection {{{2
 	s(
 		{
-			trig = [[^_subsubsection]],
+			trig = [[^\s*;subsubsection]],
 			regTrig = true,
+			docTrig = "_subsubsection",
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "labeled subsubsection",
@@ -451,7 +477,10 @@ return {
 	-- abstract {{{2
 	s(
 		{
-			trig = "^abs",
+			trig = [[^\s*;abstract]],
+			regTrig = true,
+			docTrig = ";abstract",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "abstract",
 		},
@@ -469,7 +498,10 @@ return {
 	-- align {{{2
 	s(
 		{
-			trig = "^ali",
+			trig = [[^\s*;align]],
+			regTrig = true,
+			docTrig = ";align",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "align",
 		},
@@ -487,7 +519,10 @@ return {
 	-- generic {{{2
 	s(
 		{
-			trig = "beg",
+			trig = [[^\s*;begin]],
+			regTrig = true,
+			docTrig = ";begin",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "generic",
 		},
@@ -499,13 +534,16 @@ return {
 			]],
 			{ i(1), i(2), rep(1) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- corollary {{{2
 	s(
 		{
-			trig = "cor",
+			trig = [[^\s*;corollary]],
+			regTrig = true,
+			docTrig = ";corollary",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "corollary",
 		},
@@ -517,13 +555,16 @@ return {
 			]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- definition {{{2
 	s(
 		{
-			trig = "def",
+			trig = [[^\s*;definition]],
+			regTrig = true,
+			docTrig = ";definition",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "definition",
 		},
@@ -535,13 +576,16 @@ return {
 			]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- description {{{2
 	s(
 		{
-			trig = "des",
+			trig = [[^\s*;description]],
+			regTrig = true,
+			docTrig = ";description",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "description",
 		},
@@ -553,13 +597,16 @@ return {
 	    ]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- enumerate {{{2
 	s(
 		{
-			trig = "enu",
+			trig = [[^\s*;enumerate]],
+			regTrig = true,
+			docTrig = ";enumerate",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "enumerate",
 		},
@@ -571,13 +618,16 @@ return {
 	    ]],
 			{ i(1) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- equation {{{2
 	s(
 		{
-			trig = "equ",
+			trig = [[^\s*;equation]],
+			regTrig = true,
+			docTrig = ";equation",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "equation",
 		},
@@ -589,13 +639,16 @@ return {
 	    ]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- frame {{{2
 	s(
 		{
-			trig = "fra",
+			trig = [[^\s*;frame]],
+			regTrig = true,
+			docTrig = ";frame",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "frame",
 		},
@@ -607,13 +660,16 @@ return {
 	    ]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- itemize {{{2
 	s(
 		{
-			trig = "ite",
+			trig = [[^\s*;itemize]],
+			regTrig = true,
+			docTrig = ";itemize",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "itemize",
 		},
@@ -625,13 +681,16 @@ return {
 	    ]],
 			{ i(1) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- lemma {{{2
 	s(
 		{
-			trig = "lem",
+			trig = [[^\s*;lemma]],
+			regTrig = true,
+			docTrig = ";lemma",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "lemma",
 		},
@@ -643,7 +702,7 @@ return {
 	    ]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- matrix {{{2
@@ -674,7 +733,10 @@ return {
 	-- proposition {{{2
 	s(
 		{
-			trig = "prop",
+			trig = [[^\s*;proposition]],
+			regTrig = true,
+			docTrig = ";proposition",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "proposition",
 		},
@@ -686,13 +748,16 @@ return {
 	    ]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- remark {{{2
 	s(
 		{
-			trig = "rmk",
+			trig = [[^\s*;remark]],
+			regTrig = true,
+			docTrig = ";remark",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "remark",
 		},
@@ -704,13 +769,16 @@ return {
 	    ]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- theorem {{{2
 	s(
 		{
-			trig = "thm",
+			trig = [[^\s*;theorem]],
+			regTrig = true,
+			docTrig = ";theorem",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "theorem",
 		},
@@ -722,7 +790,7 @@ return {
 	    ]],
 			{ i(1), i(2) }
 		),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- }}}
@@ -768,6 +836,7 @@ return {
 		{
 			trig = [[(d)([pPbBcCg])]],
 			regTrig = true,
+			docTrig = "dp",
 			trigEngine = "ecma",
 			wordTrig = false,
 			snippetType = "autosnippet",
@@ -1106,6 +1175,7 @@ return {
 		{
 			trig = [[(?<=\\)(a?(cos|sin|tan|sec|csc|cot)h?|exp|log|ln)]],
 			regTrig = true,
+			docTrig = [[\cos]],
 			trigEngine = "ecma",
 			wordTrig = false,
 			desc = "trigonometric, exponential, logarithmic and hyperbolic functions",
@@ -1233,6 +1303,7 @@ return {
 		{
 			trig = [[([_^])\1]],
 			regTrig = true,
+			docTrig = [[__]],
 			trigEngine = "ecma",
 			wordTrig = false,
 			snippetType = "autosnippet",
@@ -1254,28 +1325,14 @@ return {
 	s({
 		trig = [[(?<=\^)-1]],
 		regTrig = true,
+		docTrig = [[\^-1]],
 		trigEngine = "ecma",
 		snippetType = "autosnippet",
 		desc = "inverse",
 	}, t([[{-1}]]), { condition = helper.in_math }),
 	-- }}}
-	-- bar, dot, hat, overline and vector {{{2
-	s(
-		{
-			trig = [[(\S+)\.(bar|d{1,3}ot|hat|overline|vec)]],
-			regTrig = true,
-			trigEngine = "ecma",
-			snippetType = "autosnippet",
-			desc = "bar, dot, hat, overline and vector",
-		},
-		f(function(_, snip)
-			return [[\]] .. snip.captures[2] .. [[{]] .. snip.captures[1] .. [[}]]
-		end),
-		{ condition = helper.in_math }
-	),
 	-- }}}
-	-- }}}
-	-- special symbols {{{1
+	-- symbols {{{1
 	-- greek letters {{{2
 	s({
 		trig = [[`([abgdezhjiklmnxprstufcyw]|[GDJLXPSUFYW]|v[ejpsrf])]],
@@ -1299,6 +1356,7 @@ return {
 	s({
 		trig = [[(?<!\\)([cdlv]dots)]],
 		regTrig = true,
+		docTrig = [[acdots]],
 		trigEngine = "ecma",
 		snippetType = "autosnippet",
 		desc = "dots",
@@ -1306,10 +1364,13 @@ return {
 	-- }}}
 	-- }}}
 	-- algebraic structures {{{1
-	-- custom commands typesetting stuff related to group theory {{{2
+	-- custom commands for typesetting stuff related to group theory {{{2
 	s(
 		{
-			trig = "^_group",
+			trig = [[^\s*;group]],
+			regTrig = true,
+			docTrig = ";group",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "custom commands for group theory",
 		},
@@ -1377,6 +1438,7 @@ return {
 		{
 			trig = [[gg([a-z])([a-z])]],
 			regTrig = true,
+			docTrig = [[ggkf]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "galois group",
@@ -1419,7 +1481,10 @@ return {
 	-- custom commands for typesetting stuff related to analysis {{{2
 	s(
 		{
-			trig = "^_analysis",
+			trig = [[^\s*;analysis]],
+			regTrig = true,
+			docTrig = ";analysis",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "custom commands for typesetting stuff related to analysis",
 		},
@@ -1435,7 +1500,10 @@ return {
 	-- custom commands for differential geometry {{{2
 	s(
 		{
-			trig = "^_geom",
+			trig = [[^\s*;geometry]],
+			regTrig = true,
+			docTrig = ";geometry",
+			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "custom commands for differential geometry",
 		},
@@ -1448,7 +1516,7 @@ return {
 			[[\newcommand{\curvTens}[2]{\bar{R}m\left({#1},{#2}\right)}]],
 			[[\newcommand{\riccTens}[2]{\bar{R}c\left({#1},{#2}\right)}]],
 		}),
-		{ condition = conds.line_begin }
+		{ condition = helper.in_text }
 	),
 	-- }}}
 	-- n-dimensional differentiable manifold {{{2
@@ -1464,6 +1532,7 @@ return {
 		{
 			trig = [[(?<=\\)([ehs])\1]],
 			regTrig = true,
+			docTrig = [[\ee]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "n-dimensional, simply connected Riemannian space forms",
@@ -1534,6 +1603,7 @@ return {
 		{
 			trig = "6x([ijkl])",
 			regTrig = true,
+			docTrig = "6xi",
 			trigEngine = "ecma",
 			wordTrig = false,
 			snippetType = "autosnippet",
@@ -1553,6 +1623,7 @@ return {
 		{
 			trig = "dx([ijkl])",
 			regTrig = true,
+			docTrig = "dxi",
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = [[dx^{}]],
