@@ -159,7 +159,7 @@ return {
 		{
 			trig = [[^\s*;article]],
 			regTrig = true,
-			docTrig = "_article",
+			docTrig = [[\s*;article]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "article template",
@@ -221,7 +221,7 @@ return {
 		{
 			trig = [[^\s*;mid]],
 			regTrig = true,
-			docTrig = ";mid",
+			docTrig = [[\s*;mid]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "mid range set of package",
@@ -251,7 +251,7 @@ return {
 		{
 			trig = [[^\s*;pkg]],
 			regTrig = true,
-			docTrig = ";pkg",
+			docTrig = [[\s*;pkg]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "without options",
@@ -270,7 +270,7 @@ return {
 		{
 			trig = [[^\s*;opt]],
 			regTrig = true,
-			docTrig = ";opt",
+			docTrig = [[\s*;opt]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "with options",
@@ -291,7 +291,7 @@ return {
 		{
 			trig = [[^\s*;introduction]],
 			regTrig = true,
-			docTrig = ";introduction",
+			docTrig = [[\s*;introduction]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "introduction",
@@ -312,7 +312,7 @@ return {
 		{
 			trig = [[^\s*;results]],
 			regTrig = true,
-			docTrig = ";results",
+			docTrig = [[\s*;results]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "results",
@@ -333,7 +333,7 @@ return {
 		{
 			trig = [[^\s*;examples]],
 			regTrig = true,
-			docTrig = ";examples",
+			docTrig = [[\s*;examples]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "examples",
@@ -354,7 +354,7 @@ return {
 		{
 			trig = [[^\s*;proofs]],
 			regTrig = true,
-			docTrig = ";proofs",
+			docTrig = [[\s*;proofs]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "proofs",
@@ -375,7 +375,7 @@ return {
 		{
 			trig = [[^\s*;chapter]],
 			regTrig = true,
-			docTrig = "_chapter",
+			docTrig = [[\s*;chapter]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "labeled chapter",
@@ -401,7 +401,7 @@ return {
 		{
 			trig = [[^\s*;section]],
 			regTrig = true,
-			docTrig = "_section",
+			docTrig = [[\s*;section]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "labeled section",
@@ -427,7 +427,7 @@ return {
 		{
 			trig = [[^\s*;subsection]],
 			regTrig = true,
-			docTrig = "_subsection",
+			docTrig = [[\s*;subsection]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "labeled subsection",
@@ -453,7 +453,7 @@ return {
 		{
 			trig = [[^\s*;subsubsection]],
 			regTrig = true,
-			docTrig = "_subsubsection",
+			docTrig = [[\s*;subsubsection]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "labeled subsubsection",
@@ -479,7 +479,7 @@ return {
 		{
 			trig = [[^\s*;abstract]],
 			regTrig = true,
-			docTrig = ";abstract",
+			docTrig = [[\s*;abstract]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "abstract",
@@ -500,7 +500,7 @@ return {
 		{
 			trig = [[^\s*;align]],
 			regTrig = true,
-			docTrig = ";align",
+			docTrig = [[\s*;align]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "align",
@@ -521,7 +521,7 @@ return {
 		{
 			trig = [[^\s*;begin]],
 			regTrig = true,
-			docTrig = ";begin",
+			docTrig = [[\s*;begin]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "generic",
@@ -542,7 +542,7 @@ return {
 		{
 			trig = [[^\s*;corollary]],
 			regTrig = true,
-			docTrig = ";corollary",
+			docTrig = [[\s*;corollary]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "corollary",
@@ -563,7 +563,7 @@ return {
 		{
 			trig = [[^\s*;definition]],
 			regTrig = true,
-			docTrig = ";definition",
+			docTrig = [[\s*;definition]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "definition",
@@ -584,7 +584,7 @@ return {
 		{
 			trig = [[^\s*;description]],
 			regTrig = true,
-			docTrig = ";description",
+			docTrig = [[\s*;description]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "description",
@@ -605,7 +605,7 @@ return {
 		{
 			trig = [[^\s*;enumerate]],
 			regTrig = true,
-			docTrig = ";enumerate",
+			docTrig = [[\s*;enumerate]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "enumerate",
@@ -626,7 +626,7 @@ return {
 		{
 			trig = [[^\s*;equation]],
 			regTrig = true,
-			docTrig = ";equation",
+			docTrig = [[\s*;equation]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "equation",
@@ -647,7 +647,7 @@ return {
 		{
 			trig = [[^\s*;frame]],
 			regTrig = true,
-			docTrig = ";frame",
+			docTrig = [[\s*;frame]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "frame",
@@ -668,7 +668,7 @@ return {
 		{
 			trig = [[^\s*;itemize]],
 			regTrig = true,
-			docTrig = ";itemize",
+			docTrig = [[\s*;itemize]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "itemize",
@@ -689,7 +689,7 @@ return {
 		{
 			trig = [[^\s*;lemma]],
 			regTrig = true,
-			docTrig = ";lemma",
+			docTrig = [[\s*;lemma]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "lemma",
@@ -735,7 +735,7 @@ return {
 		{
 			trig = [[^\s*;proposition]],
 			regTrig = true,
-			docTrig = ";proposition",
+			docTrig = [[\s*;proposition]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "proposition",
@@ -756,7 +756,7 @@ return {
 		{
 			trig = [[^\s*;remark]],
 			regTrig = true,
-			docTrig = ";remark",
+			docTrig = [[\s*;remark]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "remark",
@@ -777,7 +777,7 @@ return {
 		{
 			trig = [[^\s*;theorem]],
 			regTrig = true,
-			docTrig = ";theorem",
+			docTrig = [[\s*;theorem]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "theorem",
@@ -1369,7 +1369,7 @@ return {
 		{
 			trig = [[^\s*;group]],
 			regTrig = true,
-			docTrig = ";group",
+			docTrig = [[\s*;group]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "custom commands for group theory",
@@ -1483,7 +1483,7 @@ return {
 		{
 			trig = [[^\s*;analysis]],
 			regTrig = true,
-			docTrig = ";analysis",
+			docTrig = [[\s*;analysis]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "custom commands for typesetting stuff related to analysis",
@@ -1502,7 +1502,7 @@ return {
 		{
 			trig = [[^\s*;geometry]],
 			regTrig = true,
-			docTrig = ";geometry",
+			docTrig = [[\s*;geometry]],
 			trigEngine = "ecma",
 			snippetType = "autosnippet",
 			desc = "custom commands for differential geometry",
