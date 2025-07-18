@@ -32,7 +32,7 @@ theme.wallpaper = themes_path .. "wall.png"
 -- }}}
 
 -- {{{ Styles
-theme.font = "Terminess Nerd Font Mono 9"
+theme.font = "Terminess Nerd Font Propo 12"
 
 -- {{{ Colors
 theme.fg_normal = color.base01
