@@ -64,7 +64,7 @@ theme.taglist_squares_unsel = themes_path .. "taglist/squarez.png"
 -- }}}
 
 -- {{{ Misc
-theme.awesome_icon = themes_path .. "icon.png"
+theme.awesome_icon = themes_path .. "layouts/awesome.png"
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
 -- }}}
 
