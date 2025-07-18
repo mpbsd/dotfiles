@@ -148,4 +148,4 @@ configuration {
   }
 }
 
-@theme "/usr/share/rofi/themes/solarized_alternate.rasi"
+@theme "/usr/share/rofi/themes/solarized.rasi"
