@@ -8,14 +8,14 @@ local themes_path = vars.theme_path("solarz")
 local dpi = require("beautiful.xresources").apply_dpi
 
 local color = {
-	base3 = "#002b36",
-	base2 = "#073642",
-	base1 = "#586e75",
-	base0 = "#657b83",
-	base00 = "#839496",
-	base01 = "#93a1a1",
-	base02 = "#eee8d5",
-	base03 = "#fdf6e3",
+	base03 = "#002b36",
+	base02 = "#074642",
+	base01 = "#586e75",
+	base00 = "#657b83",
+	base0 = "#839496",
+	base1 = "#93a1a1",
+	base2 = "#eee8d5",
+	base3 = "#fdf6e3",
 	yellow = "#b58900",
 	orange = "#cb4b16",
 	red = "#dc322f",
@@ -32,24 +32,24 @@ theme.wallpaper = themes_path .. "wall.png"
 -- }}}
 
 -- {{{ Styles
-theme.font = "Terminess Nerd Font Propo 10"
+theme.font = "Terminess Nerd Font Propo 9"
 
 -- {{{ Colors
-theme.fg_normal = color.base01
-theme.fg_focus = color.base03
+theme.fg_normal = color.base2
+theme.fg_focus = color.base2
 theme.fg_urgent = color.base3
-theme.bg_normal = color.base3
-theme.bg_focus = color.base1
-theme.bg_urgent = color.red
-theme.bg_systray = color.base3
+theme.bg_normal = color.base03
+theme.bg_focus = color.base01
+theme.bg_urgent = color.orange
+theme.bg_systray = color.base03
 -- }}}
 
 -- {{{ Borders
 theme.useless_gap = dpi(6)
-theme.border_width = dpi(2)
-theme.border_normal = color.base2
-theme.border_focus = color.green
-theme.border_marked = color.red
+theme.border_width = dpi(1)
+theme.border_normal = color.base01
+theme.border_focus = color.base1
+theme.border_marked = color.green
 -- }}}
 
 -- {{{ Menu

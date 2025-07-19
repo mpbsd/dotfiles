@@ -3,7 +3,6 @@ local vars = require("core.vars")
 local keys = require("core.keys")
 local btns = require("core.btns")
 local look = {
-	"custom",
 	"solarz",
 }
 
@@ -13,7 +12,7 @@ require("awful.hotkeys_popup.keys")
 
 vars.handle_errors()
 
-mods.beautiful.init(vars.theme_conf(look[2]))
+mods.beautiful.init(vars.theme_conf(look[1]))
 
 mods.awful.layout.layouts = vars.layouts
 
