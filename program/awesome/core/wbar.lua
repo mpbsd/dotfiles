@@ -1,6 +1,6 @@
 local mods = require("core.mods")
 local vars = require("core.vars")
-local menu = require("core.menu")
+-- local menu = require("core.menu")
 
 local set_wallpaper = function(s)
 	-- Wallpaper
@@ -126,8 +126,9 @@ mods.awful.screen.connect_for_each_screen(function(s)
 		layout = mods.wibox.layout.align.horizontal,
 		{ -- Left widgets
 			layout = mods.wibox.layout.fixed.horizontal,
-			vars.menu(menu)["mylauncher"],
+			-- vars.menu(menu)["mylauncher"],
 			s.mytaglist,
+			s.mylayoutbox,
 			s.mypromptbox,
 		},
 		s.mytasklist, -- Middle widget
@@ -137,7 +138,7 @@ mods.awful.screen.connect_for_each_screen(function(s)
 			-- cpuwidget,
 			-- memwidget,
 			mods.wibox.widget.textclock(),
-			s.mylayoutbox,
+			-- s.mylayoutbox,
 		},
 	})
 end)
