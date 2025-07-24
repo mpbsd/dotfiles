@@ -111,6 +111,17 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- cool retro term {{{
+	{
+		rule = {
+			class = "cool-retro-term",
+		},
+		properties = {
+			screen = 1,
+			tag = "1",
+		},
+	},
+	-- }}}
 	-- calibre {{{
 	{
 		rule = {
