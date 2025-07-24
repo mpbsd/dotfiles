@@ -246,25 +246,6 @@ return {
 	-- }}}
 	-- }}}
 	-- loading packages {{{1
-	-- package without options {{{2
-	s(
-		{
-			trig = [[^\s*;pkg]],
-			regTrig = true,
-			docTrig = [[\s*;pkg]],
-			trigEngine = "ecma",
-			snippetType = "autosnippet",
-			desc = "without options",
-		},
-		fmta(
-			[[
-      \usepackage{<>}
-      ]],
-			{ i(1, "pkg") }
-		),
-		{ condition = helper.in_text }
-	),
-	-- }}}
 	-- package with options {{{2
 	s(
 		{
@@ -280,6 +261,25 @@ return {
       \usepackage[<>]{<>}
       ]],
 			{ i(1, "opt"), i(2, "pkg") }
+		),
+		{ condition = helper.in_text }
+	),
+	-- }}}
+	-- package without options {{{2
+	s(
+		{
+			trig = [[^\s*;pkg]],
+			regTrig = true,
+			docTrig = [[\s*;pkg]],
+			trigEngine = "ecma",
+			snippetType = "autosnippet",
+			desc = "without options",
+		},
+		fmta(
+			[[
+      \usepackage{<>}
+      ]],
+			{ i(1, "pkg") }
 		),
 		{ condition = helper.in_text }
 	),
