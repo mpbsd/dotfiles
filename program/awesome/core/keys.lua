@@ -247,6 +247,37 @@ local M = {
 			}
 		),
 		-- }}}
+		-- select bookmark {{{
+		mods.awful.key(
+			{
+				vars.modkey,
+			},
+			"b",
+			function()
+				mods.awful.spawn.with_shell("bash -c ~/.local/bin/bread")
+			end,
+			{
+				description = "select bookmark",
+				group = "launcher",
+			}
+		),
+		-- }}}
+		-- gramps {{{
+		mods.awful.key(
+			{
+				vars.modkey,
+				"Control",
+			},
+			"g",
+			function()
+				mods.awful.spawn("flatpak run org.gramps_project.Gramps")
+			end,
+			{
+				description = "Gramps",
+				group = "launcher",
+			}
+		),
+		-- }}}
 		-- zotero {{{
 		mods.awful.key(
 			{

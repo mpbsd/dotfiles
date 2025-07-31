@@ -118,7 +118,7 @@ local G = {
 			},
 		},
 		-- }}}
-    -- media {{{
+		-- media {{{
 		{
 			"media",
 			{
