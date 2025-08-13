@@ -5,14 +5,14 @@ decorations_theme_variant = "None"
 dimensions.columns = 128
 dimensions.lines = 32
 dynamic_padding = true
-opacity = 0.95
-padding = { x = 7, y = 7 }
+opacity = 0.96
+padding = { x = 8, y = 8 }
 position = "None"
 
 [font]
 
 normal.family = "JetBrainsMono Nerd Font Mono"
-size = 14.0
+size = 16.0
 offset = { x = 0, y = 0 }
 glyph_offset = { x = 0, y = 0 }
 
