@@ -178,7 +178,7 @@ local M = {
 	-- }}}
 	-- startup_programs {{{
 	startup_programs = function()
-		mods.awful.spawn("picom")
+		mods.awful.spawn("picom --backend xrender")
 		mods.awful.spawn.with_shell("conky -c ~/.config/conky/conky.conf")
 		mods.awful.spawn(tmux)
 	end,
