@@ -5,7 +5,6 @@ alias -s txt=vim
 # cat {{{
 if [ "$machine" = 'Linux' ]
 then
-  alias cat='batcat'
   alias ed='/usr/lib/plan9/bin/ed'
 elif [ "$machine" = 'Darwin' ]
 then
