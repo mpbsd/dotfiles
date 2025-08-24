@@ -64,4 +64,4 @@ alias ...='cd ../..'
 alias purge="dpkg -l | sed -n '/^ii/!p' | tail +6"
 # }}}
 
-alias recscr='ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0+0,0 -f alsa -ac 2 -i hw:0 -vf setpts=N/FR/TB ~/videos/output.mp4'
+alias recscr='ffmpeg -f x11grab -video_size 1920x1080 -i :0.0+0,0 -f pulse -i default -c:v libx264 -preset ultrafast -crf 18 -c:a aac -b:a 192k ~/videos/output.mp4'
