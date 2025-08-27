@@ -39,10 +39,6 @@ local G = {
 			"accessories",
 			{
 				{
-					"calibre",
-					"calibre",
-				},
-				{
 					"files",
 					vars.terminal .. " -e vifm",
 				},
@@ -53,17 +49,6 @@ local G = {
 				{
 					"terminal",
 					vars.terminal,
-				},
-			},
-		},
-		-- }}}
-		-- games {{{
-		{
-			"games",
-			{
-				{
-					"hedgewars",
-					"hedgewars",
 				},
 			},
 		},
@@ -100,20 +85,12 @@ local G = {
 					vars.terminal .. " -e irssi",
 				},
 				{
-					"librewolf",
-					"flatpak run io.gitlab.librewolf-community",
-				},
-				{
 					"mutt",
 					vars.terminal .. " -e mutt",
 				},
 				{
 					"newsboat",
 					vars.terminal .. " -e newsboat",
-				},
-				{
-					"telegram",
-					"telegram-desktop",
 				},
 			},
 		},
@@ -133,10 +110,6 @@ local G = {
 		{
 			"office",
 			{
-				{
-					"kile",
-					"kile",
-				},
 				{
 					"libreoffice",
 					"libreoffice",
