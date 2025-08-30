@@ -5,7 +5,7 @@ decorations_theme_variant = "None"
 dimensions.columns = 128
 dimensions.lines = 32
 dynamic_padding = true
-opacity = 0.96
+opacity = 0.90
 padding = { x = 8, y = 8 }
 position = "None"
 
