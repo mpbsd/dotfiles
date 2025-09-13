@@ -9,13 +9,13 @@
 
 (defalias
   a (tap-hold $tap-time $hold-time a lctl)
-  s (tap-hold $tap-time $hold-time s C-spc)
+  s (tap-hold $tap-time $hold-time s lmet)
   d (tap-hold $tap-time $hold-time d lalt)
   f (tap-hold $tap-time $hold-time f lsft)
 
   j (tap-hold $tap-time $hold-time j rsft)
   k (tap-hold $tap-time $hold-time k ralt)
-  l (tap-hold $tap-time $hold-time l C-spc)
+  l (tap-hold $tap-time $hold-time l rmet)
   ; (tap-hold $tap-time $hold-time ; rctl)
 
   spc (tap-hold $tap-time $hold-time spc (layer-while-held aux))
