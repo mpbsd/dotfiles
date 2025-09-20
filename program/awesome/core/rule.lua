@@ -111,6 +111,19 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- gvim {{{
+	{
+		rule = {
+			class = "Gvim",
+		},
+		properties = {
+      floating = true,
+			placement = mods.awful.placement.centered,
+			screen = 1,
+			tag = "1",
+		},
+	},
+	-- }}}
 	-- cool retro term {{{
 	{
 		rule = {
@@ -227,9 +240,10 @@ mods.awful.rules.rules = {
 			class = "mpv",
 		},
 		properties = {
+			floating = true,
+			placement = mods.awful.placement.centered,
 			screen = 1,
 			tag = "6",
-			floating = true,
 		},
 	},
 	-- }}}
