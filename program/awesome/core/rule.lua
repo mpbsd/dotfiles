@@ -78,6 +78,17 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- chromium {{{
+	{
+		rule = {
+			class = "Chromium",
+		},
+		properties = {
+			screen = 1,
+			tag = "2",
+		},
+	},
+	-- }}}
 	-- conky {{{
 	{
 		rule = {
@@ -89,41 +100,6 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
-	-- kitty {{{
-	{
-		rule = {
-			class = "kitty",
-		},
-		properties = {
-			screen = 1,
-			tag = "1",
-		},
-	},
-	-- }}}
-	-- st {{{
-	{
-		rule = {
-			class = "st",
-		},
-		properties = {
-			screen = 1,
-			tag = "1",
-		},
-	},
-	-- }}}
-	-- gvim {{{
-	{
-		rule = {
-			class = "Gvim",
-		},
-		properties = {
-      floating = true,
-			placement = mods.awful.placement.centered,
-			screen = 1,
-			tag = "1",
-		},
-	},
-	-- }}}
 	-- cool retro term {{{
 	{
 		rule = {
@@ -132,28 +108,6 @@ mods.awful.rules.rules = {
 		properties = {
 			screen = 1,
 			tag = "1",
-		},
-	},
-	-- }}}
-	-- calibre {{{
-	{
-		rule = {
-			class = "calibre",
-		},
-		properties = {
-			screen = 1,
-			tag = "7",
-		},
-	},
-	-- }}}
-	-- chromium {{{
-	{
-		rule = {
-			class = "Chromium",
-		},
-		properties = {
-			screen = 1,
-			tag = "2",
 		},
 	},
 	-- }}}
@@ -179,6 +133,19 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
+	-- gvim {{{
+	{
+		rule = {
+			class = "Gvim",
+		},
+		properties = {
+      floating = true,
+			placement = mods.awful.placement.centered,
+			screen = 1,
+			tag = "1",
+		},
+	},
+	-- }}}
 	-- inkscape {{{
 	{
 		rule = {
@@ -201,36 +168,14 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
-	-- librewolf {{{
+	-- kitty {{{
 	{
 		rule = {
-			class = "librewolf",
+			class = "kitty",
 		},
 		properties = {
 			screen = 1,
-			tag = "2",
-		},
-	},
-	-- }}}
-	-- zotero {{{
-	{
-		rule = {
-			class = "Zotero",
-		},
-		properties = {
-			screen = 1,
-			tag = "4",
-		},
-	},
-	-- }}}
-	-- spotify {{{
-	{
-		rule = {
-			class = "Spotify",
-		},
-		properties = {
-			screen = 1,
-			tag = "6",
+			tag = "1",
 		},
 	},
 	-- }}}
@@ -247,14 +192,25 @@ mods.awful.rules.rules = {
 		},
 	},
 	-- }}}
-	-- telegram {{{
+	-- spotify {{{
 	{
 		rule = {
-			class = "TelegramDesktop",
+			class = "Spotify",
 		},
 		properties = {
 			screen = 1,
-			tag = "3",
+			tag = "6",
+		},
+	},
+	-- }}}
+	-- st {{{
+	{
+		rule = {
+			class = "st",
+		},
+		properties = {
+			screen = 1,
+			tag = "1",
 		},
 	},
 	-- }}}
@@ -266,6 +222,17 @@ mods.awful.rules.rules = {
 		properties = {
 			screen = 1,
 			tag = "5",
+		},
+	},
+	-- }}}
+	-- zotero {{{
+	{
+		rule = {
+			class = "Zotero",
+		},
+		properties = {
+			screen = 1,
+			tag = "4",
 		},
 	},
 	-- }}}
