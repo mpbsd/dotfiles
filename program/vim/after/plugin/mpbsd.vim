@@ -52,7 +52,7 @@ endfunction
 
 function! mpbsd#sigaa_students_json() abort
   let l:fn = expand('%')
-  let l:r1 = '\<IME[0-9]\{4\}\.json\>'
+  let l:r1 = '\<[0-9]\{6\}IME[0-9]\{4\}\.json\>'
   let l:r2 = 'usu.rio \(on\|off\)-line no sigaa'
   let l:r3 = '^\s\+"[0-9]\{9\}": {$'
   if l:fn =~# l:r1 && search(l:r2) > 0 && search(l:r3) == 0
