@@ -1,6 +1,6 @@
-nnoremap <Leader>cv :Files ~/.config/vim/rc<CR>
-nnoremap <Leader>fa :Files ~/.config/vim/after/plugin<CR>
-nnoremap <Leader>fp :Files ~/.config/vim/plugged<CR>
+nnoremap <Leader>cv :Files $XDG_CONFIG_HOME/vim/rc<CR>
+nnoremap <Leader>fa :Files $XDG_CONFIG_HOME/vim/after/plugin<CR>
+nnoremap <Leader>fp :Files $XDG_CONFIG_HOME/vim/plugged<CR>
 nnoremap <Leader>fs :Snippets<CR>
 
 nnoremap <Leader>fb :Buffers<CR>
@@ -67,6 +67,6 @@ nnoremap <LocalLeader>es :UltiSnipsEdit<CR>
 
 nnoremap <LocalLeader>dk :call deadk#toggle_dead_keys()<CR>
 
-nnoremap <Leader>le :e ~/.local/share/pta/2024.ledger<CR>
+nnoremap <Leader>le :e $XDG_DATA_HOME/pta/2024.ledger<CR>
 
 nnoremap <LocalLeader>uid :-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)'<CR>

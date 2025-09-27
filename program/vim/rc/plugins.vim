@@ -1,12 +1,12 @@
 let s:A = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-let s:B = '!curl -fLo ~/.local/share/vim/autoload/plug.vim --create-dirs '
+let s:B = '!curl -fLo $XDG_DATA_HOME/vim/autoload/plug.vim --create-dirs '
 let s:C = s:B . s:A
 
-if empty(glob('~/.local/share/vim/autoload/plug.vim'))
+if empty(glob('$XDG_DATA_HOME/vim/autoload/plug.vim'))
   silent execute s:C
 endif
 
-call plug#begin('~/.local/share/vim/plugged')
+call plug#begin('$XDG_DATA_HOME/vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
 

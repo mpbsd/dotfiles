@@ -1,4 +1,4 @@
-let s:rc_files_dir = expand('~/.config/vim/rc')
+let s:rc_files_dir = expand('$XDG_CONFIG_HOME/vim/rc')
 
 let s:rc_files = [
       \'globals',
