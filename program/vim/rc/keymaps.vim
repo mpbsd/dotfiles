@@ -1,6 +1,6 @@
-nnoremap <Leader>cv :Files ~/.vim/rc<CR>
-nnoremap <Leader>fa :Files ~/.vim/after/plugin<CR>
-nnoremap <Leader>fp :Files ~/.vim/plugged<CR>
+nnoremap <Leader>cv :Files ~/.config/vim/rc<CR>
+nnoremap <Leader>fa :Files ~/.config/vim/after/plugin<CR>
+nnoremap <Leader>fp :Files ~/.config/vim/plugged<CR>
 nnoremap <Leader>fs :Snippets<CR>
 
 nnoremap <Leader>fb :Buffers<CR>

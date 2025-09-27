@@ -1,4 +1,4 @@
-if filereadable(expand('~/.vim/plugged/vim-airline/plugin/airline.vim'))
+if filereadable(expand('~/.local/share/vim/plugged/vim-airline/plugin/airline.vim'))
   let g:airline_symbols_ascii = 1
   let g:airline_section_c = '%t'
   let g:airline_section_y = '%{&fileencoding} %{&fileformat}'
@@ -7,7 +7,7 @@ if filereadable(expand('~/.vim/plugged/vim-airline/plugin/airline.vim'))
   let g:airline#extensions#tabline#fnamemod = ':t:.'
 endif
 
-if filereadable(expand('~/.vim/plugged/vim-colors-solarized/colors/solarized.vim'))
+if filereadable(expand('~/.local/share/vim/plugged/vim-colors-solarized/colors/solarized.vim'))
   let g:solarized_termcolors = 16
   let g:solarized_termtrans = 0
   let g:solarized_degrade = 0
@@ -21,19 +21,19 @@ if filereadable(expand('~/.vim/plugged/vim-colors-solarized/colors/solarized.vim
   colorscheme solarized
 endif
 
-if filereadable(expand('~/.vim/plugged/vim-abolish/plugin/abolish.vim'))
-  let g:abolish_save_file = expand('~/.vim/after/plugin/abbrv.vim')
+if filereadable(expand('~/.local/share/vim/plugged/vim-abolish/plugin/abolish.vim'))
+  let g:abolish_save_file = expand('~/.config/vim/after/plugin/abbrv.vim')
 endif
 
-if filereadable(expand('~/.vim/plugged/ultisnips/plugin/UltiSnips.vim'))
-  let g:UltiSnipsSnippetDirectories = [expand('~/.vim/ultisnips')]
+if filereadable(expand('~/.local/share/vim/plugged/ultisnips/plugin/UltiSnips.vim'))
+  let g:UltiSnipsSnippetDirectories = [expand('~/.config/vim/ultisnips')]
   let g:UltiSnipsExpandTrigger = "<Tab>"
   let g:UltiSnipsJumpForwardTrigger = "<Tab>"
   let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
   let g:UltiSnipsEditSplit = "tabdo"
 endif
 
-if filereadable(expand('~/.vim/plugged/vimtex/plugin/vimtex.vim'))
+if filereadable(expand('~/.local/share/vim/plugged/vimtex/plugin/vimtex.vim'))
   let g:vimtex_compiler_enabled = v:false
   let g:vimtex_format_enabled = v:false
   let g:vimtex_imaps_enabled = v:false

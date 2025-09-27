@@ -1,3 +1,5 @@
+set rtp+=$XDG_DATA_HOME/vim
+
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 let g:ft_man_open_mode = 'tab'
