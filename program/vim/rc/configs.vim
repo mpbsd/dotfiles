@@ -2,7 +2,7 @@ if filereadable(expand('$XDG_DATA_HOME/vim/plugged/vim-airline/plugin/airline.vi
   let g:airline_symbols_ascii = 1
   let g:airline_section_c = '%t'
   let g:airline_section_y = '%{&fileencoding} %{&fileformat}'
-  let g:airline_section_z = '%P (%06l:%06c)'
+  let g:airline_section_z = '%P %06l:%06c'
   let g:airline_extensions = ['branch', 'tabline']
   let g:airline#extensions#tabline#fnamemod = ':t:.'
 endif
