@@ -41,28 +41,28 @@ $0
 endsnippet
 
 context "in_text()"
-snippet '^cha' "labeled chapter" rA
+snippet 'cha' "labeled chapter" bA
 \chapter\{${1:name}\}\label\{chp:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet '^sec' "labeled section" rA
+snippet 'sec' "labeled section" bA
 \section\{${1:name}\}\label\{sec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet '^subsec' "labeled subsection" rA
+snippet 'subsec' "labeled subsection" bA
 \subsection\{${1:name}\}\label\{subsec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet '^subsubsec' "labeled subsubsection" rA
+snippet 'subsubsec' "labeled subsubsection" bA
 \subsubsection\{${1:name}\}\label\{subsubsec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0

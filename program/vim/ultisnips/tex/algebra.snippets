@@ -14,7 +14,7 @@ snippet lgrthm "Lagrange's Theorem" iA
 endsnippet
 
 context "in_math()"
-snippet '(?<=\\)([zqrc])([xt])' "polynomial rings" rA
+snippet '(?<=\\)([a-z])\1([xt])' "polynomial rings" rA
 `!p
 snip.rv = r"mathbb{" + match.group(1).upper() + "}[" + match.group(2) + "]"
 `$0
