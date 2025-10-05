@@ -3,66 +3,66 @@ from tex_snippets import in_text, in_math
 endglobal
 
 context "in_text()"
-snippet opt "package with options" bA
+snippet ;opt "package with options" bA
 \usepackage[${1:opt}]\{${2:pkg}\}$0
 endsnippet
 
 context "in_text()"
-snippet pkg "package without options" bA
+snippet ;pkg "package without options" bA
 \usepackage\{${1:pkg}\}$0
 endsnippet
 
 context "in_text()"
-snippet _introduction "introduction" bA
+snippet ;introduction "introduction" bA
 \section\{Introduction\}\label\{sec:introduction\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet _results "results" bA
+snippet ;results "results" bA
 \section\{Main Results\}\label\{sec:results\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet _examples "examples" bA
+snippet ;examples "examples" bA
 \section\{Examples\}\label\{sec:examples\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet _proofs "proofs" bA
+snippet ;proofs "proofs" bA
 \section\{Proofs\}\label\{sec:proofs\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet 'cha' "labeled chapter" bA
+snippet ;chapter "labeled chapter" bA
 \chapter\{${1:name}\}\label\{chp:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet 'sec' "labeled section" bA
+snippet ;section "labeled section" bA
 \section\{${1:name}\}\label\{sec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet 'subsec' "labeled subsection" bA
+snippet ;subsection "labeled subsection" bA
 \subsection\{${1:name}\}\label\{subsec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0
 endsnippet
 
 context "in_text()"
-snippet 'subsubsec' "labeled subsubsection" bA
+snippet ;subsubsec "labeled subsubsection" bA
 \subsubsection\{${1:name}\}\label\{subsubsec:${2:${1/(\w+)|(\W+)/(?2:_:\l$1)/g}}\}
 
 $0

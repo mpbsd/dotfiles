@@ -3,7 +3,7 @@ from tex_snippets import in_text, in_math
 endglobal
 
 context "in_text()"
-snippet _article "article template" bA
+snippet ;article "article template" bA
 \documentclass[a4paper,12pt]\{article\}
 
 \usepackage[T1]\{fontenc\}
@@ -25,6 +25,7 @@ snippet _article "article template" bA
 
 \title\{an awesome title\}
 \author\{list of authors\}
+\date\{\\today\}
 
 \begin\{document\}
 
@@ -43,7 +44,7 @@ $0
 endsnippet
 
 context "in_text()"
-snippet _mid "mid range set of packages" bA
+snippet ;midpkg "mid range set of packages" bA
 \usepackage[T1]\{fontenc\}
 \usepackage[english]\{babel\}
 \usepackage\{amsmath\}
@@ -61,3 +62,20 @@ snippet _mid "mid range set of packages" bA
 \graphicspath\{\{./fig/\}\}
 \intervalconfig\{soft open fences\}
 endsnippet
+
+snippet ;grppkg "custom commands: groups" bA
+\DeclarePairedDelimiter\order{\lvert}{\rvert}
+\newcommand{\subgroup}{\leqslant}
+\newcommand{\normalsubgroup}{\trianglelefteqslant}
+endsnippet
+
+snippet ;geopkg "custom commands: differential geometry" bA
+\newcommand{\X}[1]{\partial_{#1}}
+\newcommand{\flatMetr}[2]{g{\left({#1},{#2}\right)}}
+\newcommand{\flatConn}[2]{\nabla_{#1}{#2}}
+\newcommand{\riemMetr}[2]{\bar{g}{\left({#1},{#2}\right)}}
+\newcommand{\riemConn}[2]{\bar{\nabla}_{#1}{#2}}
+\newcommand{\curvTens}[2]{\bar{R}m\left({#1},{#2}\right)}
+\newcommand{\riccTens}[2]{\bar{R}c\left({#1},{#2}\right)}
+endsnippet
+

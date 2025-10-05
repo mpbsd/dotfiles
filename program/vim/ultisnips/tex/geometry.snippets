@@ -2,16 +2,6 @@ global !p
 from tex_snippets import in_text, in_math
 endglobal
 
-snippet _geo "custom commands: differential geometry" bA
-\newcommand{\X}[1]{\partial_{#1}}
-\newcommand{\flatMetr}[2]{g{\left({#1},{#2}\right)}}
-\newcommand{\flatConn}[2]{\nabla_{#1}{#2}}
-\newcommand{\riemMetr}[2]{\bar{g}{\left({#1},{#2}\right)}}
-\newcommand{\riemConn}[2]{\bar{\nabla}_{#1}{#2}}
-\newcommand{\curvTens}[2]{\bar{R}m\left({#1},{#2}\right)}
-\newcommand{\riccTens}[2]{\bar{R}c\left({#1},{#2}\right)}
-endsnippet
-
 context "in_math()"
 snippet ndm "n-dimensional differentiable manifold" iA
 M^{n}
@@ -19,11 +9,11 @@ endsnippet
 
 context "in_math()"
 snippet '(?<=\\)([ehs])\1' "n-dimensional space forms" rA
-`!p snip.rv = r"mathbb{" + match.group(1).upper() + r"}"`$0
+`!p snip.rv = r"mathbb{" + match.group(1).upper() + r"}^{n}"`$0
 endsnippet
 
 context "in_math()"
-snippet mnf "n-dimensional riemannian manifold" iA
+snippet mnf "n-dimensional (flat) riemannian manifold" iA
 \left(M^\{n\},g\right)
 endsnippet
 

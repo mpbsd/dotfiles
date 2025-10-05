@@ -33,11 +33,6 @@ snippet '(?<=\^)-1' "inverse" rA
 endsnippet
 
 context "in_math()"
-snippet '(\S+)\.(bar|d{1,3}ot|hat|overline|vec)' "bar, dot, hat, overline and vector" rA
-\\`!p snip.rv = match.group(2) + r"{" + match.group(1) + r"}"`$0
-endsnippet
-
-context "in_math()"
-snippet '(\S+)\.(abs|norm|order)' "absolute value, norm, order" rA
-\\`!p snip.rv = match.group(2) + r"{" + match.group(1) + r"}"`$0
+snippet '(?<=\\)(abs|bar|d{1,3}ot|hat|norm|order|overline|vec)' "abs, bar, dot, hat, norm, order, overline and vector" rA
+`!p snip.rv = match.group(1)`\{${1:x}\}$0
 endsnippet

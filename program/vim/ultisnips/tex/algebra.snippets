@@ -2,28 +2,15 @@ global !p
 from tex_snippets import in_text, in_math
 endglobal
 
-snippet _grp "custom commands: groups" bA
-\DeclarePairedDelimiter\order{\lvert}{\rvert}
-\newcommand{\subgroup}{\leqslant}
-\newcommand{\normalsubgroup}{\trianglelefteqslant}
-endsnippet
-
 context "in_math()"
-snippet lgrthm "Lagrange's Theorem" iA
+snippet [g;h] "Lagrange's Theorem" iA
 \order\{${1:G}\}=\left[$1:${2:H}\right]\order\{$2\}
 endsnippet
 
 context "in_math()"
-snippet '(?<=\\)([a-z])\1([xt])' "polynomial rings" rA
+snippet '(?<=\\)([a-z])\1([xt])' "polynomial rings in one unknown" rA
 `!p
 snip.rv = r"mathbb{" + match.group(1).upper() + "}[" + match.group(2) + "]"
-`$0
-endsnippet
-
-context "in_math()"
-snippet '\\([fklt])([xt])' "polynomial rings" rA
-`!p
-snip.rv = match.group(1).upper() + "[" + match.group(2) + "]"
 `$0
 endsnippet
 
