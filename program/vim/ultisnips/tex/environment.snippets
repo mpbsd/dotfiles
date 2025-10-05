@@ -3,98 +3,98 @@ from tex_snippets import in_text, in_math
 endglobal
 
 context "in_text()"
-snippet abs "abstract" bA
+snippet ;abstract "abstract" bA
 \begin\{abstract\}
 	$0
 \end\{abstract\}$0
 endsnippet
 
 context "in_text()"
-snippet ali "align" bA
+snippet ;align "align" bA
 \begin\{align\}
 	$0
 \end\{align\}$0
 endsnippet
 
 context "in_text()"
-snippet beg "generic" bA
+snippet ;begin "generic" bA
 \begin\{$1\}
 	$2
 \end\{$1\}$0
 endsnippet
 
 context "in_text()"
-snippet cor "corollary" bA
+snippet ;corollary "corollary" bA
 \begin\{corollary\}\label\{cor:$1\}
   $2
 \end\{corollary\}$0
 endsnippet
 
 context "in_text()"
-snippet def "definition" bA
+snippet ;definition "definition" bA
 \begin\{definition\}\label\{def:$1\}
   $2
 \end\{definition\}$0
 endsnippet
 
 context "in_text()"
-snippet des "description" bA
+snippet ;description "description" bA
 \begin\{description\}
 	\item[$1] $2
 \end\{description\}$0
 endsnippet
 
 context "in_text()"
-snippet enu "enumerate" bA
+snippet ;enumerate "enumerate" bA
 \begin\{enumerate\}
   \item $1
 \end\{enumerate\}$0
 endsnippet
 
 context "in_text()"
-snippet equ "equation" bA
+snippet ;equation "equation" bA
 \begin\{equation\}\label\{eq:$1\}
   $2
 \end\{equation\}$0
 endsnippet
 
 context "in_text()"
-snippet fra "frame" bA
+snippet ;frame "frame" bA
 \begin\{frame\}\{${1:Frame Title}\}
   $0
 \end\{frame\}
 endsnippet
 
 context "in_text()"
-snippet ite "itemize" bA
+snippet ;itemize "itemize" bA
 \begin\{itemize\}
 	\item $1
 \end\{itemize\}$0
 endsnippet
 
 context "in_text()"
-snippet lem "lemma" bA
+snippet ;lemma "lemma" bA
 \begin\{lemma\}\label\{lem:$1\}
   $2
 \end\{lemma\}$0
 endsnippet
 
 context "in_text()"
-snippet prp "proposition" bA
+snippet ;proposition "proposition" bA
 \begin\{proposition\}\label\{prop:$1\}
   $2
 \end\{proposition\}$0
 endsnippet
 
 context "in_text()"
-snippet rmk "remark" bA
+snippet ;remark "remark" bA
 \begin\{remark\}\label\{rmk:$1\}
   $2
 \end\{remark\}$0
 endsnippet
 
 context "in_text()"
-snippet tbl "table" bA
+snippet ;table "table" bA
 \begin\{table\}[${1:htpb}]
 	\centering
 	\begin\{tabular\}\{${3:l}\}
@@ -106,7 +106,7 @@ snippet tbl "table" bA
 endsnippet
 
 context "in_text()"
-snippet thm "theorem" bA
+snippet ;theorem "theorem" bA
 \begin\{theorem\}\label\{thm:$1\}
   $2
 \end\{theorem\}$0
