@@ -87,7 +87,7 @@ snippet ;proposition "proposition" bA
 endsnippet
 
 context "in_text()"
-snippet ;problemwl "problem with a list of problems" bA
+snippet ;problem1l "list of problems" bA
 \begin\{problem\}[$1]\label\{problem:${1/(\W+)/(?1:-:\l$1)/g}\}
   \leavevmode\vspace\{-\baselineskip\}
 	\begin\{enumerate\}[(a)]
@@ -98,7 +98,7 @@ snippet ;problemwl "problem with a list of problems" bA
 endsnippet
 
 context "in_text()"
-snippet ;problemsl "single problem" bA
+snippet ;problem0l "single problem" bA
 \begin\{problem\}[$1]\label\{problem:${1/(\W+)/(?1:-:\l$1)/g}\}
 	$3
 \end\{problem\}$0
@@ -112,8 +112,8 @@ snippet ;remark "remark" bA
 endsnippet
 
 context "in_text()"
-snippet ;solutionwl "solution to a problem with a list of problems" bA
-\begin\{solution\}[problem:$1]
+snippet ;solution1l "solution to a list of problems" bA
+\begin\{solution\}[$1]
   \leavevmode\vspace\{-\baselineskip\}
   \begin\{enumerate\}[(a)]
     \item
@@ -123,8 +123,8 @@ snippet ;solutionwl "solution to a problem with a list of problems" bA
 endsnippet
 
 context "in_text()"
-snippet ;solutionsl "solution to a single problem" bA
-\begin\{solution\}[problem:$1]
+snippet ;solution0l "solution to a single problem" bA
+\begin\{solution\}[$1]
 	$2
 \end\{solution\}$0
 endsnippet
