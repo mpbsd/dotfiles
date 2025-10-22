@@ -18,7 +18,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
 
-Plug 'lervag/vimtex', { 'tag': 'v2.15' }
+Plug 'lervag/vimtex', { 'tag': 'v2.17' }
 
 Plug 'sirver/ultisnips'
 
