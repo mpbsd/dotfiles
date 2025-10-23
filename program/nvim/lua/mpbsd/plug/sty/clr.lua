@@ -1,11 +1,29 @@
 return {
 	{
-		"rebelot/kanagawa.nvim",
+		"ellisonleao/gruvbox.nvim",
 		enabled = true,
 		lazy = false,
 		priority = 1000,
 		config = function()
+			vim.cmd.colorscheme("gruvbox")
+		end,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		enabled = false,
+		lazy = false,
+		priority = 1000,
+		config = function()
 			vim.cmd.colorscheme("kanagawa")
+		end,
+	},
+	{
+		"shaunsingh/nord.nvim",
+		enabled = false,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("nord")
 		end,
 	},
 	{

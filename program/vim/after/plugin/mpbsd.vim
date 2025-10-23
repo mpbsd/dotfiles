@@ -46,6 +46,21 @@ function! mpbsd#replace_non_ascii_chars() abort
   call setreg('/', l:reg)
 endfunction
 
+function! mpbsd#toggle_between_true_and_false() abort
+  let l:cword = expand('<cword>')
+  if index(["true", "false"], tolower(l:cword)) >= 0
+    if l:cword ==# 'True'
+      sil exec 'normal ciwFalse'
+    elseif l:cword ==# 'true'
+      sil exec 'normal ciwfalse'
+    elseif l:cword ==# 'False'
+      sil exec 'normal ciwTrue'
+    elseif l:cword ==# 'false'
+      sil exec 'normal ciwtrue'
+    endif
+  endif
+endfunction
+
 function! mpbsd#unicode_seq_to_char() abort
   silent %s/\\u\(\x\{4\}\)/\=nr2char('0x'.submatch(1),1)/ge
 endfunction
