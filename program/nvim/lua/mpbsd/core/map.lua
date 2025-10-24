@@ -358,7 +358,7 @@ local KEY = {
 	-- toggle between true and false values {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>tb",
+		lhs = "<LocalLeader>tf",
 		rhs = function()
 			local cword = vim.fn.expand("<cword>")
 			local value = { "true", "false" }
