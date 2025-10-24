@@ -355,6 +355,32 @@ local KEY = {
 		},
 	},
 	-- }}}
+	-- toggle between true and false values {{{
+	{
+		mod = "n",
+		lhs = "<LocalLeader>tb",
+		rhs = function()
+			local cword = vim.fn.expand("<cword>")
+			local value = { "true", "false" }
+			if vim.fn.index(value, vim.fn.tolower(cword)) >= 0 then
+				if cword == "True" then
+					vim.cmd([[sil exec 'normal ciwFalse']])
+				elseif cword == "true" then
+					vim.cmd([[sil exec 'normal ciwfalse']])
+				elseif cword == "False" then
+					vim.cmd([[sil exec 'normal ciwTrue']])
+				elseif cword == "false" then
+					vim.cmd([[sil exec 'normal ciwtrue']])
+				end
+			end
+		end,
+		opt = {
+			noremap = true,
+			silent = false,
+			desc = "toggle between true and false values",
+		},
+	},
+	-- }}}
 }
 
 MAP(KEY)
