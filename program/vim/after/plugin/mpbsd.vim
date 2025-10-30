@@ -46,16 +46,17 @@ function! mpbsd#replace_non_ascii_chars() abort
   call setreg('/', l:reg)
 endfunction
 
-function! mpbsd#toggle_between_true_and_false() abort
-  let l:cword = expand('<cword>')
-  if index(["true", "false"], tolower(l:cword)) >= 0
-    if l:cword ==# 'True'
+function! mpbsd#toggle_between_true_and_false_values() abort
+  let l:CW = expand('<cword>')
+  let l:BV = ["true", "false"]
+  if index(l:BV, tolower(l:CW)) >= 0
+    if l:CW ==# 'True'
       sil exec 'normal ciwFalse'
-    elseif l:cword ==# 'true'
+    elseif l:CW ==# 'true'
       sil exec 'normal ciwfalse'
-    elseif l:cword ==# 'False'
+    elseif l:CW ==# 'False'
       sil exec 'normal ciwTrue'
-    elseif l:cword ==# 'false'
+    elseif l:CW ==# 'false'
       sil exec 'normal ciwtrue'
     endif
   endif

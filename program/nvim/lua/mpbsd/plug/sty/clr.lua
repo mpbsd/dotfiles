@@ -1,7 +1,7 @@
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
-		enabled = true,
+		enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -19,7 +19,7 @@ return {
 	},
 	{
 		"shaunsingh/nord.nvim",
-		enabled = false,
+		enabled = true,
 		lazy = false,
 		priority = 1000,
 		config = function()

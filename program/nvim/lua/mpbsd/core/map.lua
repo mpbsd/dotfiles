@@ -255,10 +255,10 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [D]e[C]ode buffer {{{
+	-- [D]ecode [B]uffer {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>dc",
+		lhs = "<LocalLeader>db",
 		rhs = function()
 			local EQUIVALENCE_TABLE = {
 				["à"] = "a",

@@ -54,7 +54,7 @@ nnoremap <BS> :nohls<CR>
 nnoremap <LocalLeader>bd :set background=dark<CR>
 nnoremap <LocalLeader>bl :set background=light<CR>
 
-nnoremap <LocalLeader>tf :call mpbsd#toggle_between_true_and_false()<CR>
+nnoremap <LocalLeader>tf :call mpbsd#toggle_between_true_and_false_values()<CR>
 
 nnoremap <Leader>pd :PlugUpdate<CR>
 nnoremap <Leader>pg :PlugUpgrade<CR>
