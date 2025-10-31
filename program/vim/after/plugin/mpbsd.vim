@@ -78,22 +78,26 @@ function! mpbsd#sigaa_students_json() abort
     sil exec 'v/^\(nome\|curso\|matricula\|usuario\|e-mail\):/d'
     sil exec '1,$s/\s*enviar mensagem\s*$//'
     sil exec '1,$s/\(^\s\+\|\s\+$\)//e'
-    let l:ls = [
-          \'nome: \(.*\) (perfil)',
-          \'curso: \(.*\)',
-          \'matricula: \(.*\)',
-          \'usuario: \(.*\)',
-          \'e-mail: \(.*\)$',
-          \]
-    let l:rs = [
-          \'"\3": {',
-          \'\t"fname": "\1",',
-          \'\t"gradc": "\2",',
-          \'\t"uname": "\4",',
-          \'\t"email": "\5"',
-          \'},',
-          \]
-    sil exec printf('1,$s/%s/%s/', join(l:ls, '$\n^'), join(l:rs, '\r'))
+    let l:subscmd = {
+          \  'lhs': [
+          \    'nome: \(.*\) (perfil)',
+          \    'curso: \(.*\)',
+          \    'matricula: \(.*\)',
+          \    'usuario: \(.*\)',
+          \    'e-mail: \(.*\)$',
+          \  ],
+          \ 'rhs': [
+          \    '"\3": {',
+          \    '\t"fname": "\1",',
+          \    '\t"gradc": "\2",',
+          \    '\t"uname": "\4",',
+          \    '\t"email": "\5"',
+          \    '},',
+          \  ],
+          \}
+    let l:lhs = join(l:subscmd['lhs'], '$\n^')
+    let l:rhs = join(l:subscmd['rhs'], '\r')
+    sil exec printf('1,$s/%s/%s/', l:lhs, l:rhs)
     sil exec 'g/\(marcelo bezerra barboza\|bezerra\|bezerra@ufg.br\)$/d'
     sil exec '1s/^/{\r\t/'
     sil exec '$s/$/\r}/'
@@ -106,31 +110,31 @@ endfunction
 
 function! mpbsd#ime_servers() abort
   let l:subscmd = {
-        \ 'lhs': [
-        \   '^"\([0-9]\{5,\}\)"',
-        \   '"\([^"]\+\)"',
-        \   '"\([^"]\+\)"',
-        \   '"\([^"]\+\)"',
-        \   '"\%([^"]*\)"',
-        \   '"\([^"]\+\)"',
-        \   '"\([^"]\+\)"',
-        \   '"\([^"]\+\)"',
-        \   '"\%([^"]*\)"',
-        \   '"\([^"]\+\)"',
-        \   '"\([^"]\+\)"$',
+        \  'lhs': [
+        \    '^"\([0-9]\{5,\}\)"',
+        \    '"\([^"]\+\)"',
+        \    '"\([^"]\+\)"',
+        \    '"\([^"]\+\)"',
+        \    '"\%([^"]*\)"',
+        \    '"\([^"]\+\)"',
+        \    '"\([^"]\+\)"',
+        \    '"\([^"]\+\)"',
+        \    '"\%([^"]*\)"',
+        \    '"\([^"]\+\)"',
+        \    '"\([^"]\+\)"$',
         \  ],
-        \ 'rhs': [
-        \   '"\1": {"',
-        \   '"fname": "\2"',
-        \   '"birth": "\3"',
-        \   '"ignit": "\4"',
-        \   '"funct": "\5"',
-        \   '"categ": "\6"',
-        \   '"degre": "\7"',
-        \   '"regim": "\8"',
-        \   '"afair": "\9"',
-        \   '"break": "[]"',
-        \   '"patch": "[]"\r},',
+        \  'rhs': [
+        \    '"\1": {"',
+        \    '"fname": "\2"',
+        \    '"birth": "\3"',
+        \    '"ignit": "\4"',
+        \    '"funct": "\5"',
+        \    '"categ": "\6"',
+        \    '"degre": "\7"',
+        \    '"regim": "\8"',
+        \    '"afair": "\9"',
+        \    '"break": "[]"',
+        \    '"patch": "[]"\r},',
         \  ],
         \}
   sil exec 'norm ggd17j'
@@ -145,22 +149,4 @@ function! mpbsd#ime_servers() abort
   sil 1s/^/{\r/
   sil $s/},$/}\r}/
   sil exec 'norm gg=G'
-endfunction
-
-function! mpbsd#sampa_scalar() abort
-  let l:fn = expand('%')
-  let l:r1 = '\<scalar\.txt\>'
-  let l:r2 = '(X0\%(, X[0-9]\+\)\+)'
-  if l:fn =~# l:r1 && search(l:r2) > 0
-    silent %s/\.0\%(\*\)\@=//g
-    silent %s/\%(U[0-9]\+\)\@<=(X0\%(, X[0-9]\+\)\+)//g
-    silent %s/ \([+-]\) /\r\1/g
-    silent g/Derivative(U[0-9]\+, (X[0-9]\+, 2))$/m$
-    silent g/Derivative(U[0-9]\+, X[0-9]\+)\*\*2$/m$
-    silent g/Derivative(U[0-9]\+, X[0-9]\+)\*Derivative(U[0-9]\+, X[0-9]\+)/m$
-    silent g/(X[0-9]\+, 2))$\n^.*\*\*2/s/$/\r/
-    silent g/\*\*2$\n^.*Derivative(U[0-9]\+, X[0-9]\+)\*Derivative/s/$/\r/
-  else
-    echo 'Does not match criteria for code execution'
-  endif
 endfunction
