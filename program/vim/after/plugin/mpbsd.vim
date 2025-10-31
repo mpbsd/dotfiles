@@ -104,6 +104,40 @@ function! mpbsd#sigaa_students_json() abort
   endif
 endfunction
 
+function! mpbsd#ime_servers() abort
+  let l:subscmd = {
+        \ 'lhs': [
+        \   '^"\([0-9]\{5,\}\)"',
+        \   '"\([^"]\+\)"',
+        \   '"\([^"]\+\)"',
+        \   '"\([^"]\+\)"',
+        \   '"\%([^"]*\)"',
+        \   '"\([^"]\+\)"',
+        \   '"\([^"]\+\)"',
+        \   '"\([^"]\+\)"',
+        \   '"\%([^"]*\)"',
+        \   '"\([^"]\+\)"',
+        \   '"\([^"]\+\)"$',
+        \  ],
+        \ 'rhs': [
+        \   '"\1": {"',
+        \   '"fname": "\2"',
+        \   '"birth": "\3"',
+        \   '"ignit": "\4"',
+        \   '"funct": "\5"',
+        \   '"categ": "\6"',
+        \   '"degre": "\7"',
+        \   '"regim": "\8"',
+        \   '"afair": "\9"',
+        \   '"break": "[]"',
+        \   '"patch": "[]"\r}',
+        \  ],
+        \}
+  let l:lhs = join(l:subscmd['lhs'], ',')
+  let l:rhs = join(l:subscmd['rhs'], '\r')
+  exec printf("1,$s/%s/%s/", l:lhs, l:rhs)
+endfunction
+
 function! mpbsd#sampa_scalar() abort
   let l:fn = expand('%')
   let l:r1 = '\<scalar\.txt\>'
