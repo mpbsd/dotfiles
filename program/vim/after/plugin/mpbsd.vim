@@ -130,12 +130,21 @@ function! mpbsd#ime_servers() abort
         \   '"regim": "\8"',
         \   '"afair": "\9"',
         \   '"break": "[]"',
-        \   '"patch": "[]"\r}',
+        \   '"patch": "[]"\r},',
         \  ],
         \}
+  sil exec 'norm ggd17j'
+  sil exec 'norm ggguG'
+  sil %s/\v(^|$)/"/g
+  sil %s/,/","/g
+  sil %s/\s\+","/","/g
   let l:lhs = join(l:subscmd['lhs'], ',')
-  let l:rhs = join(l:subscmd['rhs'], '\r')
-  exec printf("1,$s/%s/%s/", l:lhs, l:rhs)
+  let l:rhs = join(l:subscmd['rhs'], ',\r')
+  sil exec printf("1,$s/%s/%s/", l:lhs, l:rhs)
+  sil %s/{",$/{/
+  sil 1s/^/{\r/
+  sil $s/},$/}\r}/
+  sil exec 'norm gg=G'
 endfunction
 
 function! mpbsd#sampa_scalar() abort
