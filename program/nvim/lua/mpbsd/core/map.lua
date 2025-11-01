@@ -355,7 +355,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- toggle between true and false values {{{
+	-- toggle between [T]rue and [F]alse values {{{
 	{
 		mod = "n",
 		lhs = "<LocalLeader>tf",

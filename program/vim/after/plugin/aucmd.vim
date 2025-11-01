@@ -56,5 +56,10 @@ augroup END
 
 augroup mpbsd_sigaa
   autocmd!
-  autocmd BufWritePre *.json :call mpbsd#sigaa_students_json()
+  autocmd BufWritePre *.json :call mpbsd#students_sigaa()
+augroup END
+
+augroup mpbsd_staff
+  autocmd!
+  autocmd BufWritePre *.json :call mpbsd#staff_ime()
 augroup END

@@ -66,7 +66,7 @@ function! mpbsd#unicode_seq_to_char() abort
   silent %s/\\u\(\x\{4\}\)/\=nr2char('0x'.submatch(1),1)/ge
 endfunction
 
-function! mpbsd#sigaa_students_json() abort
+function! mpbsd#students_sigaa() abort
   let l:fn = expand('%')
   let l:r1 = '\<[0-9]\{6\}IME[0-9]\{4\}\.json\>'
   let l:r2 = 'usu.rio \(on\|off\)-line no sigaa'
@@ -108,45 +108,55 @@ function! mpbsd#sigaa_students_json() abort
   endif
 endfunction
 
-function! mpbsd#ime_servers() abort
-  let l:subscmd = {
-        \  'lhs': [
-        \    '^"\([0-9]\{5,\}\)"',
-        \    '"\([^"]\+\)"',
-        \    '"\([^"]\+\)"',
-        \    '"\([^"]\+\)"',
-        \    '"\%([^"]*\)"',
-        \    '"\([^"]\+\)"',
-        \    '"\([^"]\+\)"',
-        \    '"\([^"]\+\)"',
-        \    '"\%([^"]*\)"',
-        \    '"\([^"]\+\)"',
-        \    '"\([^"]\+\)"$',
-        \  ],
-        \  'rhs': [
-        \    '"\1": {"',
-        \    '"fname": "\2"',
-        \    '"birth": "\3"',
-        \    '"ignit": "\4"',
-        \    '"funct": "\5"',
-        \    '"categ": "\6"',
-        \    '"degre": "\7"',
-        \    '"regim": "\8"',
-        \    '"afair": "\9"',
-        \    '"break": "[]"',
-        \    '"patch": "[]"\r},',
-        \  ],
-        \}
-  sil exec 'norm ggd17j'
-  sil exec 'norm ggguG'
-  sil %s/\v(^|$)/"/g
-  sil %s/,/","/g
-  sil %s/\s\+","/","/g
-  let l:lhs = join(l:subscmd['lhs'], ',')
-  let l:rhs = join(l:subscmd['rhs'], ',\r')
-  sil exec printf("1,$s/%s/%s/", l:lhs, l:rhs)
-  sil %s/{",$/{/
-  sil 1s/^/{\r/
-  sil $s/},$/}\r}/
-  sil exec 'norm gg=G'
+function! mpbsd#staff_ime() abort
+  let l:fn = expand('%')
+  let l:r1 = '\<staff_ime\.json\>'
+  let l:r2 = 'DEMONSTRATIVO DE PESSOAL LOTADO'
+  let l:r3 = 'INSTITUTO DE MATEMÁTICA E ESTATÍSTICA'
+  if l:fn =~# l:r1 && search(l:r2) > 0 && search(l:r3) > 0
+    let l:subscmd = {
+          \  'lhs': [
+          \    '^"\([0-9]\{5,\}\)"',
+          \    '"\([^"]\+\)"',
+          \    '"\([^"]\+\)"',
+          \    '"\([^"]\+\)"',
+          \    '"\%([^"]*\)"',
+          \    '"\([^"]\+\)"',
+          \    '"\([^"]\+\)"',
+          \    '"\([^"]\+\)"',
+          \    '"\%([^"]*\)"',
+          \    '"\([^"]\+\)"',
+          \    '"\([^"]\+\)"$',
+          \  ],
+          \  'rhs': [
+          \    '"\1": {"',
+          \    '"fname": "\2"',
+          \    '"birth": "\3"',
+          \    '"ignit": "\4"',
+          \    '"funct": "\5"',
+          \    '"categ": "\6"',
+          \    '"degre": "\7"',
+          \    '"regim": "\8"',
+          \    '"afair": "\9"',
+          \    '"break": "[]"',
+          \    '"patch": "[]"\r},',
+          \  ],
+          \}
+    sil exec 'norm ggd17j'
+    sil exec 'norm ggguG'
+    call mpbsd#replace_non_ascii_chars()
+    sil %s/\v(^|$)/"/g
+    sil %s/,/","/g
+    sil %s/\s\+","/","/g
+    let l:lhs = join(l:subscmd['lhs'], ',')
+    let l:rhs = join(l:subscmd['rhs'], ',\r')
+    sil exec printf("1,$s/%s/%s/", l:lhs, l:rhs)
+    sil %s/{",$/{/
+    sil 1s/^/{\r/
+    sil $s/},$/}\r}/
+    sil exec 'norm gg=G'
+    set fileformat=unix
+  else
+    echo 'Does not match criteria for code execution'
+  endif
 endfunction
