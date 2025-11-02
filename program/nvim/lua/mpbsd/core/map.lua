@@ -323,10 +323,10 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- [i]nstall grammars for [t]ree-[s]itter {{{
+	-- [I]nstall [G]rammars for tree-sitter {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>its",
+		lhs = "<LocalLeader>ig",
 		rhs = function()
 			local CMD = ":TSInstall <trs>"
 			local TRS = {
@@ -351,7 +351,7 @@ local KEY = {
 		opt = {
 			noremap = true,
 			silent = false,
-			desc = "install tree-sitter grammar",
+			desc = "install grammars for tree-sitter",
 		},
 	},
 	-- }}}
