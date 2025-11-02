@@ -419,14 +419,14 @@ local KEY = {
 						[["patch": "[]"\r},]],
 					},
 				}
+				local lhs = vim.fn.join(subscmd["lhs"], [[,]])
+				local rhs = vim.fn.join(subscmd["rhs"], [[,\r]])
 				vim.cmd([[sil exec 'norm ggd17j']])
 				vim.cmd([[sil exec 'norm ggguG']])
 				vim.cmd([[sil exec 'norm ,db']])
 				vim.cmd([[sil %s/\v(^|$)/"/g]])
 				vim.cmd([[sil %s/,/","/g]])
 				vim.cmd([[sil %s/\s\+","/","/g]])
-				local lhs = vim.fn.join(subscmd["lhs"], [[,]])
-				local rhs = vim.fn.join(subscmd["rhs"], [[,\r]])
 				vim.cmd([[1,$s/]] .. lhs .. [[/]] .. rhs .. [[/]])
 				vim.cmd([[sil 1s/^/{\r/]])
 				vim.cmd([[sil %s/{",$/{/]])
