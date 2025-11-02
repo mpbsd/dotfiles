@@ -381,6 +381,69 @@ local KEY = {
 		},
 	},
 	-- }}}
+	-- [S]taff [I]ME {{{
+	{
+		mod = "n",
+		lhs = "<LocalLeader>si",
+		rhs = function()
+			local fn = vim.fn.expand("%")
+			local b1 = vim.regex([[\<staff_ime\.json\>]]):match_str(fn)
+			local b2 = vim.fn.search("DEMONSTRATIVO DE PESSOAL LOTADO") > 0
+			local b3 = vim.fn.search("INSTITUTO DE MATEMÁTICA E ESTATÍSTICA") > 0
+			if b1 and b2 and b3 then
+				local subscmd = {
+					lhs = {
+						[[^"\([0-9]\{5,\}\)"]],
+						[["\([^"]\+\)"]],
+						[["\([^"]\+\)"]],
+						[["\([^"]\+\)"]],
+						[["\%([^"]*\)"]],
+						[["\([^"]\+\)"]],
+						[["\([^"]\+\)"]],
+						[["\([^"]\+\)"]],
+						[["\%([^"]*\)"]],
+						[["\([^"]\+\)"]],
+						[["\([^"]\+\)"$]],
+					},
+					rhs = {
+						[["\1": {"]],
+						[["fname": "\2"]],
+						[["birth": "\3"]],
+						[["ignit": "\4"]],
+						[["funct": "\5"]],
+						[["categ": "\6"]],
+						[["degre": "\7"]],
+						[["regim": "\8"]],
+						[["afair": "\9"]],
+						[["break": "[]"]],
+						[["patch": "[]"\r},]],
+					},
+				}
+				vim.cmd([[sil exec 'norm ggd17j']])
+				vim.cmd([[sil exec 'norm ggguG']])
+				vim.cmd([[sil exec 'norm ,db']])
+				vim.cmd([[sil %s/\v(^|$)/"/g]])
+				vim.cmd([[sil %s/,/","/g]])
+				vim.cmd([[sil %s/\s\+","/","/g]])
+				local lhs = vim.fn.join(subscmd["lhs"], [[,]])
+				local rhs = vim.fn.join(subscmd["rhs"], [[,\r]])
+				vim.cmd([[1,$s/]] .. lhs .. [[/]] .. rhs .. [[/]])
+				vim.cmd([[sil 1s/^/{\r/]])
+				vim.cmd([[sil %s/{",$/{/]])
+				vim.cmd([[$s/,$/\r}/]])
+				vim.cmd([[set fileformat=unix]])
+				vim.cmd([[write]])
+			else
+				print("Does not match criteria for code execution")
+			end
+		end,
+		opt = {
+			noremap = true,
+			silent = false,
+			desc = "[S]taff [I]ME",
+		},
+	},
+	-- }}}
 }
 
 MAP(KEY)
