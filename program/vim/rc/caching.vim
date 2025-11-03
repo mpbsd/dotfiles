@@ -5,10 +5,10 @@ endif
 execute printf("set viminfofile=%s/.viminfo", g:netrw_home)
 
 let s:dirs = {
-      \'backupdir': 'bdir',
-      \'directory': 'sdir',
-      \'undodir'  : 'udir',
-      \'viewdir'  : 'vdir',
+      \  'backupdir': 'bdir',
+      \  'directory': 'sdir',
+      \  'undodir'  : 'udir',
+      \  'viewdir'  : 'vdir',
       \}
 
 for [lhs, rhs] in items(s:dirs)

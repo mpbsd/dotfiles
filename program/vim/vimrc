@@ -1,12 +1,12 @@
 let s:rc_files_dir = expand('$XDG_CONFIG_HOME/vim/rc')
 
 let s:rc_files = [
-      \'globals',
-      \'caching',
-      \'options',
-      \'keymaps',
-      \'plugins',
-      \'configs',
+      \  'globals',
+      \  'caching',
+      \  'options',
+      \  'keymaps',
+      \  'plugins',
+      \  'configs',
       \]
 
 for rc_file in s:rc_files

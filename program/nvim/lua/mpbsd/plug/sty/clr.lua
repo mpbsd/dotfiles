@@ -9,6 +9,15 @@ return {
 		end,
 	},
 	{
+		"jpwol/thorn.nvim",
+		enable = true,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("thorn")
+		end,
+	},
+	{
 		"rebelot/kanagawa.nvim",
 		enabled = false,
 		lazy = false,
@@ -19,7 +28,7 @@ return {
 	},
 	{
 		"shaunsingh/nord.nvim",
-		enabled = true,
+		enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
