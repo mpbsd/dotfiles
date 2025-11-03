@@ -88,3 +88,4 @@ Abolish unico{,s} único{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
 Abolish variave{l,is} variáve{l,is}
 Abolish vizinhanca{,s} vizinhança{,s}
+Abolish interpolacao interpolação
