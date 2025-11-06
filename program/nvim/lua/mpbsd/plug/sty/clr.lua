@@ -1,38 +1,11 @@
 return {
 	{
-		"ellisonleao/gruvbox.nvim",
-		enabled = false,
+		"EdenEast/nightfox.nvim",
+		enabled = true,
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("gruvbox")
-		end,
-	},
-	{
-		"jpwol/thorn.nvim",
-		enable = true,
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("thorn")
-		end,
-	},
-	{
-		"rebelot/kanagawa.nvim",
-		enabled = false,
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("kanagawa")
-		end,
-	},
-	{
-		"shaunsingh/nord.nvim",
-		enabled = false,
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("nord")
+			vim.cmd.colorscheme("terafox")
 		end,
 	},
 	{
