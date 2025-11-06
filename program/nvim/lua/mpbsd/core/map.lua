@@ -466,8 +466,8 @@ local KEY = {
 						[["degre": "\7"]],
 						[["regim": "\8"]],
 						[["afair": "\9"]],
-						[["break": "[]"]],
-						[["patch": "[]"\r},]],
+						'"break": []',
+						'"patch": []\\r},',
 					},
 				}
 				local lhs = vim.fn.join(subscmd["lhs"], [[,]])
