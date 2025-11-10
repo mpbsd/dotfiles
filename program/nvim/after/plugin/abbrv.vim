@@ -46,15 +46,19 @@ Abolish fisic{a,o,os} físic{a,o,os}
 Abolish func{ao,oes} funç{ão,ões}
 Abolish goias goiás
 Abolish graduacao graduação
+Abolish grafico{,s} gráfico{,s}
 Abolish harmonica{,s} harmônica{,s}
 Abolish hipotese hipótese
 Abolish hipotese{,s} hipótese{,s}
+Abolish implicita{,s} implícita{,s}
 Abolish informatica informática
 Abolish inscric{ao,oes} inscriç{ão,ões}
+Abolish interpolacao interpolação
 Abolish laboratorio{,s} laboratório{,s}
 Abolish matematica matemática
 Abolish matematic{a,o,os} matemátic{a,o,os}
 Abolish matricula{,s} matrícula{,s}
+Abolish mudanca{,s} mudança{,s}
 Abolish nao não
 Abolish numeric{a,o,as,os} numéric{a,o,as,os}
 Abolish numero{,s} número{,s}
@@ -88,4 +92,3 @@ Abolish unico{,s} único{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
 Abolish variave{l,is} variáve{l,is}
 Abolish vizinhanca{,s} vizinhança{,s}
-Abolish interpolacao interpolação
