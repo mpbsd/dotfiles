@@ -9,7 +9,19 @@ return {
 	"tpope/vim-characterize",
 	"tpope/vim-dadbod",
 	"tpope/vim-dispatch",
-	"tpope/vim-fugitive",
+	{
+		"tpope/vim-fugitive",
+		keys = {
+			{
+				mode = "n",
+				"<Leader>0g",
+				"<Cmd>0G<CR>",
+				noremap = true,
+				silent = true,
+				desc = "Git Status",
+			},
+		},
+	},
 	"tpope/vim-projectionist",
 	"tpope/vim-repeat",
 	"tpope/vim-surround",

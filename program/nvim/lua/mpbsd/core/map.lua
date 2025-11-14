@@ -195,18 +195,6 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- Fugitive {{{
-	{
-		mod = "n",
-		lhs = "<Leader>0g",
-		rhs = "<Cmd>0G<CR>",
-		opt = {
-			noremap = true,
-			silent = true,
-			desc = "Fugitive",
-		},
-	},
-	-- }}}
 	-- [C]heck [H]ealth {{{
 	{
 		mod = "n",
@@ -351,7 +339,7 @@ local KEY = {
 		opt = {
 			noremap = true,
 			silent = false,
-			desc = "install grammars for tree-sitter",
+			desc = "[I]nstall [G]rammars for tree-sitter",
 		},
 	},
 	-- }}}
@@ -377,7 +365,7 @@ local KEY = {
 		opt = {
 			noremap = true,
 			silent = false,
-			desc = "toggle between true and false values",
+			desc = "toggle between [T]rue and [F]alse values",
 		},
 	},
 	-- }}}
