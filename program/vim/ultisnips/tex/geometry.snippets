@@ -53,6 +53,11 @@ snippet flc "levi-civita connection" iA
 endsnippet
 
 context "in_math()"
+snippet fct "riemannian curvature" iA
+\curvTnsr\left(${1:X},${2:Y}\right){${3:Z}}$0
+endsnippet
+
+context "in_math()"
 snippet grm "riemannian metric" iA
 \riemMetr\{${1:X}\}\{${2:Y}\}$0
 endsnippet
@@ -60,6 +65,11 @@ endsnippet
 context "in_math()"
 snippet glc "levi-civita connection" iA
 \riemConn\{${1:X}\}\{${2:Y}\}$0
+endsnippet
+
+context "in_math()"
+snippet gct "riemannian curvature" iA
+\riemCurv\left(${1:X},${2:Y}\right){${3:Z}}$0
 endsnippet
 
 context "in_math()"
