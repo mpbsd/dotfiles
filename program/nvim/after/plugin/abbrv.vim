@@ -15,6 +15,7 @@ Abolish betania betânia
 Abolish binaria{,s} binária{,s}
 Abolish calculo{,s} cálculo{,s}
 Abolish capitulo{,s} capítulo{,s}
+Abolish caracteristic{a,as,o,os} característic{a,as,o,os}
 Abolish ciencia{,s} ciência{,s}
 Abolish colec{ao,oes} coleç{ão,ões}
 Abolish composic{ao,oes} composiç{ão,ões}
@@ -66,6 +67,7 @@ Abolish olimpiada{,s} olimpíada{,s}
 Abolish operac{ao,oes} operaç{ão,ões}
 Abolish parametro{,s} parâmetro{,s}
 Abolish permutac{ao,oes} permutaç{ão,ões}
+Abolish polinomio{,s} polinômio{,s}
 Abolish potencia{,s} potência{,s}
 Abolish proposic{ao,oes} proposiç{ão,ões}
 Abolish proposi{ao,oes} proposiç{ão,ões}
