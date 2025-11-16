@@ -139,7 +139,7 @@ mods.awful.rules.rules = {
 			class = "Gvim",
 		},
 		properties = {
-      floating = true,
+			floating = true,
 			placement = mods.awful.placement.centered,
 			screen = 1,
 			tag = "1",
@@ -211,6 +211,17 @@ mods.awful.rules.rules = {
 		properties = {
 			screen = 1,
 			tag = "1",
+		},
+	},
+	-- }}}
+	-- texmaker {{{
+	{
+		rule = {
+			class = "Texmaker",
+		},
+		properties = {
+			screen = 1,
+			tag = "4",
 		},
 	},
 	-- }}}

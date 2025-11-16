@@ -228,6 +228,25 @@ local M = {
 			}
 		),
 		-- }}}
+		-- alacritty terminal {{{
+		mods.awful.key(
+			{
+				vars.modkey,
+				"Shift",
+			},
+			"a",
+			function()
+				mods.awful.spawn("alacritty", {
+					floating = true,
+					placement = mods.awful.placement.centered,
+				})
+			end,
+			{
+				description = "alacritty terminal",
+				group = "launcher",
+			}
+		),
+		-- }}}
 		-- kitty terminal {{{
 		mods.awful.key(
 			{
@@ -250,7 +269,7 @@ local M = {
 		-- select bookmark {{{
 		mods.awful.key(
 			{
-				vars.modkey,
+				vars.winkey,
 			},
 			"b",
 			function()
@@ -262,18 +281,32 @@ local M = {
 			}
 		),
 		-- }}}
-		-- gramps {{{
+		-- passmenu {{{
 		mods.awful.key(
 			{
-				vars.modkey,
-				"Control",
+				vars.winkey,
 			},
-			"g",
+			"p",
 			function()
-				mods.awful.spawn("flatpak run org.gramps_project.Gramps")
+				mods.awful.spawn.with_shell("passmenu")
 			end,
 			{
-				description = "Gramps",
+				description = "passmenu",
+				group = "launcher",
+			}
+		),
+		-- }}}
+		-- potpmenu {{{
+		mods.awful.key(
+			{
+				vars.winkey,
+			},
+			"o",
+			function()
+				mods.awful.spawn.with_shell("potpmenu")
+			end,
+			{
+				description = "potpmenu",
 				group = "launcher",
 			}
 		),
@@ -293,21 +326,6 @@ local M = {
 				group = "launcher",
 			}
 		),
-		-- select bookmark {{{
-		mods.awful.key(
-			{
-				vars.modkey,
-			},
-			"b",
-			function()
-				mods.awful.spawn.with_shell("bash -c ~/.local/bin/bread")
-			end,
-			{
-				description = "select bookmark",
-				group = "launcher",
-			}
-		),
-		-- }}}
 		-- }}}
 		-- spotify {{{
 		mods.awful.key(
