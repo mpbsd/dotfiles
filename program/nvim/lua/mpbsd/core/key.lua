@@ -281,7 +281,7 @@ local KEY = {
 	-- [R]remove [T]railing spaces from the current buffer {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>tm",
+		lhs = "<LocalLeader>rt",
 		rhs = function()
 			local pos = vim.fn.getpos(".")
 			local reg = vim.fn.getreg("/")
