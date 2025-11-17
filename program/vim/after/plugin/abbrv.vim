@@ -39,6 +39,7 @@ Abolish equivalencia equivalência
 Abolish equivalencia{,s} equivalência{,s}
 Abolish espaco{,s} espaço{,s}
 Abolish estah{,s} está{,s}
+Abolish estao estão
 Abolish estatistica estatística
 Abolish estatistica{,s} estatística{,s}
 Abolish exercicio{,s} exercício{,s}
