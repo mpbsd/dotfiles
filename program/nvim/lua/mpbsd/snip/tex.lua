@@ -1193,15 +1193,16 @@ return {
 		{ condition = helper.in_math }
 	),
 	-- }}}
-	-- abs, norm, order {{{2
+	-- abs, norm, order, d{1,2}ot {{{2
 	s(
 		{
-			trig = [[(?<=\\)(abs|norm|order)]],
+			trig = [[(?<=\\)(abs|norm|order|d{1,2}ot)]],
 			regTrig = true,
 			docTrig = [[\abs]],
 			trigEngine = "ecma",
+			snippetType = "autosnippet",
 			wordTrig = false,
-			desc = "trigonometric, exponential, logarithmic and hyperbolic functions",
+			desc = "abs, norm, order, d{1,2}ot",
 		},
 		fmta(
 			[[
@@ -1261,7 +1262,7 @@ return {
 			[[
 	    \sum_{<>=<>}^{<>}<>
 	    ]],
-			{ i(1, "i"), i(2, "0"), i(3, "n-1"), i(4, "x_{i}") }
+			{ i(1, "i"), i(2, "1"), i(3, "n"), i(4, "x_{i}") }
 		),
 		{ condition = helper.in_math }
 	),
@@ -1277,7 +1278,7 @@ return {
 			[[
 	    \prod_{<>=<>}^{<>}<>
 	    ]],
-			{ i(1, "i"), i(2, "0"), i(3, "n-1"), i(4, "x_{i}") }
+			{ i(1, "i"), i(2, "1"), i(3, "n"), i(4, "x_{i}") }
 		),
 		{ condition = helper.in_math }
 	),
@@ -1751,6 +1752,7 @@ return {
 	s(
 		{
 			trig = [[\cite]],
+			wordTrig = false,
 			snippetType = "autosnippet",
 			desc = "cite",
 		},
