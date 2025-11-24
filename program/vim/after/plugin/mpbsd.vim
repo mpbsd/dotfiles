@@ -46,18 +46,38 @@ function! mpbsd#replace_non_ascii_chars() abort
   call setreg('/', l:reg)
 endfunction
 
-function! mpbsd#toggle_between_true_and_false_values() abort
+function! mpbsd#toggle_between_oposite_values() abort
   let l:CW = expand('<cword>')
-  let l:BV = ["true", "false"]
+  let l:BV = ['true', 'false', 'yes', 'no']
   if index(l:BV, tolower(l:CW)) >= 0
     if l:CW ==# 'True'
-      sil exec 'normal ciwFalse'
+      silent execute 'normal ciwFalse'
     elseif l:CW ==# 'true'
-      sil exec 'normal ciwfalse'
+      silent execute 'normal ciwfalse'
     elseif l:CW ==# 'False'
-      sil exec 'normal ciwTrue'
+      silent execute 'normal ciwTrue'
     elseif l:CW ==# 'false'
-      sil exec 'normal ciwtrue'
+      silent execute 'normal ciwtrue'
+    elseif l:CW ==# 'Yes'
+      silent execute 'normal ciwNo'
+    elseif l:CW ==# 'yes'
+      silent execute 'normal ciwno'
+    elseif l:CW ==# 'No'
+      silent execute 'normal ciwYes'
+    elseif l:CW ==# 'no'
+      silent execute 'normal ciwyes'
+    endif
+  endif
+endfunction
+
+function! mpbsd#toggle_between_oposite_signs() abort
+  let l:SV = ['+', '-']
+  silent execute 'normal "ayl'
+  if index(l:SV, @a) >= 0
+    if @a ==# '+'
+      silent execute 'normal s-'
+    elseif @a ==# '-'
+      silent execute 'normal s+'
     endif
   endif
 endfunction
@@ -72,12 +92,12 @@ function! mpbsd#students_sigaa() abort
   let l:r2 = 'usu.rio \(on\|off\)-line no sigaa'
   let l:r3 = '^\s\+"[0-9]\{9\}": {$'
   if l:fn =~# l:r1 && search(l:r2) > 0 && search(l:r3) == 0
-    sil exec 'normal ggguG'
+    silent execute 'normal ggguG'
     sil call mpbsd#replace_non_ascii_chars()
-    sil exec '1,$s/usuario \(on\|off\)-line no sigaa/\rnome:/g'
-    sil exec 'v/^\(nome\|curso\|matricula\|usuario\|e-mail\):/d'
-    sil exec '1,$s/\s*enviar mensagem\s*$//'
-    sil exec '1,$s/\(^\s\+\|\s\+$\)//e'
+    silent execute '1,$s/usuario \(on\|off\)-line no sigaa/\rnome:/g'
+    silent execute 'v/^\(nome\|curso\|matricula\|usuario\|e-mail\):/d'
+    silent execute '1,$s/\s*enviar mensagem\s*$//'
+    silent execute '1,$s/\(^\s\+\|\s\+$\)//e'
     let l:subscmd = {
           \  'lhs': [
           \    'nome: \(.*\) (perfil)',
@@ -97,12 +117,12 @@ function! mpbsd#students_sigaa() abort
           \}
     let l:lhs = join(l:subscmd['lhs'], '$\n^')
     let l:rhs = join(l:subscmd['rhs'], '\r')
-    sil exec printf('1,$s/%s/%s/', l:lhs, l:rhs)
-    sil exec 'g/\(marcelo bezerra barboza\|bezerra\|bezerra@ufg.br\)$/d'
-    sil exec '1s/^/{\r\t/'
-    sil exec '$s/$/\r}/'
-    sil exec '1,$s/},$\n^}/}\r}/'
-    sil exec 'normal gg=G'
+    silent execute printf('1,$s/%s/%s/', l:lhs, l:rhs)
+    silent execute 'g/\(marcelo bezerra barboza\|bezerra\|bezerra@ufg.br\)$/d'
+    silent execute '1s/^/{\r\t/'
+    silent execute '$s/$/\r}/'
+    silent execute '1,$s/},$\n^}/}\r}/'
+    silent execute 'normal gg=G'
   else
     echo 'Does not match criteria for code execution'
   endif
@@ -142,19 +162,19 @@ function! mpbsd#staff_ime() abort
           \    '"patch": "[]"\r},',
           \  ],
           \}
-    sil exec 'norm ggd17j'
-    sil exec 'norm ggguG'
+    silent execute 'norm ggd17j'
+    silent execute 'norm ggguG'
     call mpbsd#replace_non_ascii_chars()
     sil %s/\v(^|$)/"/g
     sil %s/,/","/g
     sil %s/\s\+","/","/g
     let l:lhs = join(l:subscmd['lhs'], ',')
     let l:rhs = join(l:subscmd['rhs'], ',\r')
-    sil exec printf("1,$s/%s/%s/", l:lhs, l:rhs)
+    silent execute printf("1,$s/%s/%s/", l:lhs, l:rhs)
     sil %s/{",$/{/
     sil 1s/^/{\r/
     sil $s/},$/}\r}/
-    sil exec 'norm gg=G'
+    silent execute 'norm gg=G'
     set fileformat=unix
   else
     echo 'Does not match criteria for code execution'
