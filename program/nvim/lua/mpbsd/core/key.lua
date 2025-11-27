@@ -369,49 +369,37 @@ local KEY = {
 		},
 	},
 	-- }}}
+	-- toggle between oposite signs {{{
+	{
+		mod = "n",
+		lhs = "<Leader>os",
+		rhs = function()
+			local SV = { "+", "-" }
+			vim.cmd([[silent execute 'normal "ayl']])
+			vim.cmd([[echo @a]])
+			if vim.fn.index(SV, vim.fn.getreg("a")) >= 0 then
+				local sv = vim.fn.getreg("a")
+				if sv == "+" then
+					vim.cmd([[silent execute 'normal s-']])
+				elseif sv == "-" then
+					vim.cmd([[silent execute 'normal s+']])
+				end
+			end
+		end,
+		opt = {
+			noremap = true,
+			silent = false,
+			desc = "toggle between [O]pposite [S]igns",
+		},
+	},
+	-- }}}
 	-- [S]tudents [S]IGAA {{{
 	{
 		mod = "n",
 		lhs = "<LocalLeader>ss",
 		rhs = function()
-			local fn = vim.regex([[\<[0-9]\{6\}IME[0-9]\{4\}\.json\>]])
-			local b1 = fn:match_str(vim.fn.expand("%"))
-			local b2 = vim.fn.search([[usu.rio \(on\|off\)-line no sigaa]]) > 0
-			local b3 = vim.fn.search([[^\s*"[0-9]\{9\}": {$']]) == 0
-			if b1 and b2 and b3 then
-				vim.cmd([[sil exec 'norm ggguG']])
-				vim.cmd([[sil exec 'norm ,db']])
-				vim.cmd([[sil exec '1,$s/usuario \(on\|off\)-line no sigaa/\rnome:/g']])
-				vim.cmd([[sil exec 'v/^\(nome\|curso\|matricula\|usuario\|e-mail\):/d']])
-				vim.cmd([[sil exec '1,$s/\s*enviar mensagem\s*$//']])
-				vim.cmd([[sil exec '1,$s/\(^\s\+\|\s\+$\)//e']])
-				local subscmd = {
-					lhs = {
-						[[nome: \(.*\) (perfil)]],
-						[[curso: \(.*\)]],
-						[[matricula: \(.*\)]],
-						[[usuario: \(.*\)]],
-						[[e-mail: \(.*\)$]],
-					},
-					rhs = {
-						[["\3": {,]],
-						[["fname": "\1",]],
-						[["gradc": "\2",]],
-						[["uname": "\4",]],
-						[["email": "\5"]],
-						[[},]],
-					},
-				}
-				local lhs = vim.fn.join(subscmd["lhs"], [[$\n^]])
-				local rhs = vim.fn.join(subscmd["rhs"], [[\r]])
-				vim.cmd([[1,$s/]] .. lhs .. [[/]] .. rhs .. [[/]])
-				vim.cmd([[sil exec 'g/\(marcelo bezerra barboza\|bezerra\|bezerra@ufg.br\)$/d']])
-				vim.cmd([[sil exec '1s/^/{\r\t/']])
-				vim.cmd([[sil exec '%s/{,$/{/']])
-				vim.cmd([[sil exec '$s/$/\r}/']])
-				vim.cmd([[sil exec '%s/},$\n^}/}\r}/']])
-				vim.cmd([[sil exec 'normal gg=G']])
-			end
+			vim.cmd([[silent execute 'normal "ayl']])
+			vim.cmd([[echo @a]])
 		end,
 		opt = {
 			noremap = true,
