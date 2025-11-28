@@ -346,10 +346,10 @@ local KEY = {
 	-- toggle between [O]pposite [V]alues {{{
 	{
 		mod = "n",
-		lhs = "<Leader>tf",
+		lhs = "<Leader>ov",
 		rhs = function()
 			local cword = vim.fn.expand("<cword>")
-			local value = { "true", "false" }
+			local value = { "true", "false", "yes", "no" }
 			if vim.fn.index(value, vim.fn.tolower(cword)) >= 0 then
 				if cword == "True" then
 					vim.cmd([[sil exec 'normal ciwFalse']])
@@ -359,6 +359,14 @@ local KEY = {
 					vim.cmd([[sil exec 'normal ciwTrue']])
 				elseif cword == "false" then
 					vim.cmd([[sil exec 'normal ciwtrue']])
+				elseif cword == "Yes" then
+					vim.cmd([[sil exec 'normal ciwNo']])
+				elseif cword == "yes" then
+					vim.cmd([[sil exec 'normal ciwno']])
+				elseif cword == "No" then
+					vim.cmd([[sil exec 'normal ciwYes']])
+				elseif cword == "no" then
+					vim.cmd([[sil exec 'normal ciwyes']])
 				end
 			end
 		end,
