@@ -70,7 +70,7 @@ function! mpbsd#toggle_between_oposite_values() abort
   endif
 endfunction
 
-function! mpbsd#toggle_between_oposite_signs() abort
+function! mpbsd#toggle_between_plus_and_minus_signs() abort
   let l:SV = ['+', '-']
   silent execute 'normal "ayl'
   if index(l:SV, @a) >= 0
@@ -78,18 +78,6 @@ function! mpbsd#toggle_between_oposite_signs() abort
       silent execute 'normal s-'
     elseif @a ==# '-'
       silent execute 'normal s+'
-    endif
-  endif
-endfunction
-
-function! mpbsd#toggle_between_plus_and_minus_signs() abort
-  let l:CW = expand('<cword>')
-  let l:SV = ['+', '-']
-  if index(l:SV, l:CW) >= 0
-    if l:CW == '-'
-      sil exec 'normal s+'
-    elseif l:CW == '+'
-      sil exec 'normal s-'
     endif
   endif
 endfunction
