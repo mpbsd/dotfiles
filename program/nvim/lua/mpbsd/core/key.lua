@@ -369,7 +369,7 @@ local KEY = {
 		},
 	},
 	-- }}}
-	-- toggle between oposite signs {{{
+	-- toggle between [O]pposite [S]igns {{{
 	{
 		mod = "n",
 		lhs = "<Leader>os",

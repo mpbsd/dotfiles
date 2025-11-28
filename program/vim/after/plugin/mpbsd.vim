@@ -46,7 +46,7 @@ function! mpbsd#replace_non_ascii_chars() abort
   call setreg('/', l:reg)
 endfunction
 
-function! mpbsd#toggle_between_oposite_values() abort
+function! mpbsd#toggle_between_opposite_values() abort
   let l:CW = expand('<cword>')
   let l:BV = ['true', 'false', 'yes', 'no']
   if index(l:BV, tolower(l:CW)) >= 0
@@ -70,7 +70,7 @@ function! mpbsd#toggle_between_oposite_values() abort
   endif
 endfunction
 
-function! mpbsd#toggle_between_plus_and_minus_signs() abort
+function! mpbsd#toggle_between_opposite_signs() abort
   let l:SV = ['+', '-']
   silent execute 'normal "ayl'
   if index(l:SV, @a) >= 0
