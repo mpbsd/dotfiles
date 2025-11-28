@@ -48,7 +48,7 @@ endfunction
 
 function! mpbsd#toggle_between_true_and_false_values() abort
   let l:CW = expand('<cword>')
-  let l:BV = ["true", "false"]
+  let l:BV = ['true', 'false']
   if index(l:BV, tolower(l:CW)) >= 0
     if l:CW ==# 'True'
       sil exec 'normal ciwFalse'
@@ -58,6 +58,18 @@ function! mpbsd#toggle_between_true_and_false_values() abort
       sil exec 'normal ciwTrue'
     elseif l:CW ==# 'false'
       sil exec 'normal ciwtrue'
+    endif
+  endif
+endfunction
+
+function! mpbsd#toggle_between_plus_and_minus_signs() abort
+  let l:CW = expand('<cword>')
+  let l:SV = ['+', '-']
+  if index(l:SV, l:CW) >= 0
+    if l:CW == '-'
+      sil exec 'normal s+'
+    elseif l:CW == '+'
+      sil exec 'normal s-'
     endif
   endif
 endfunction
