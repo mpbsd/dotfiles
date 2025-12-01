@@ -231,11 +231,35 @@ local KEY = {
 		},
 	},
 	-- }}}
+	-- [T]o [U]pper case {{{
+	{
+		mod = "n",
+		lhs = "<LocalLeader>tu",
+		rhs = "gUiw",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[T]o [U]pper case",
+		},
+	},
+	-- }}}
 	-- [T]o [L]ower case {{{
 	{
 		mod = "i",
 		lhs = "<LocalLeader>tl",
 		rhs = "<esc>mmbguiw`ma",
+		opt = {
+			noremap = true,
+			silent = true,
+			desc = "[T]o [L]ower case",
+		},
+	},
+	-- }}}
+	-- [T]o [L]ower case {{{
+	{
+		mod = "n",
+		lhs = "<LocalLeader>tl",
+		rhs = "guiw",
 		opt = {
 			noremap = true,
 			silent = true,
