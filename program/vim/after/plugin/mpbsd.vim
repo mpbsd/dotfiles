@@ -180,3 +180,11 @@ function! mpbsd#staff_ime() abort
     echo 'Does not match criteria for code execution'
   endif
 endfunction
+
+function! mpbsd#format_distinct_configurations() abort
+  silent %s/), (/\r),\r(/g
+  silent %s/(\[/(\r\t\[/
+  silent %s/\], \[/\],\r\t\[/g
+  silent %s/^\[(/(/
+  silent %s/)\]$/\r)/
+endfunction
