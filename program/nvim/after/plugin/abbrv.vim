@@ -11,6 +11,7 @@ Abolish ateh até
 Abolish atraves através
 Abolish ausencia{,s} ausência{,s}
 Abolish avaliac{ao,oes} avaliaç{ão,ões}
+Abolish basic{a,as,o,os} básic{a,as,o,os}
 Abolish betania betânia
 Abolish binaria{,s} binária{,s}
 Abolish calculo{,s} cálculo{,s}
@@ -21,6 +22,7 @@ Abolish colec{ao,oes} coleç{ão,ões}
 Abolish composic{ao,oes} composiç{ão,ões}
 Abolish computacao computação
 Abolish condic{ao,oes} condiç{ão,ões}
+Abolish configurac{ao,oes} configuraç{ão,ões}
 Abolish conjugac{ao,oes} conjugaç{ão,ões}
 Abolish contem contém
 Abolish convergencia convergência
@@ -65,6 +67,7 @@ Abolish numeric{a,o,as,os} numéric{a,o,as,os}
 Abolish numero{,s} número{,s}
 Abolish olimpiada{,s} olimpíada{,s}
 Abolish operac{ao,oes} operaç{ão,ões}
+Abolish ortonormalizacao ortonormalização
 Abolish parametro{,s} parâmetro{,s}
 Abolish permutac{ao,oes} permutaç{ão,ões}
 Abolish polinomio{,s} polinômio{,s}
@@ -86,6 +89,7 @@ Abolish sehrie{,s} série{,s}
 Abolish senao senão
 Abolish sequencia{,s} sequência{,s}
 Abolish soluc{ao,oes} soluç{ão,ões}
+Abolish subespaco{,s} subespaço{,s}
 Abolish superficie{,s} superfície{,s}
 Abolish tambem também
 Abolish ultimo{,s} último{,s}
@@ -94,5 +98,3 @@ Abolish unico{,s} único{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
 Abolish variave{l,is} variáve{l,is}
 Abolish vizinhanca{,s} vizinhança{,s}
-Abolish subespaco{,s} subespaço{,s}
-Abolish ortonormalizacao ortonormalização
