@@ -133,4 +133,5 @@ if has("gui_running")
   set guioptions-=r
   set guifont=JetBrainsMono\ Nerd\ Font\ 13
   set guiheadroom=0
+  set background=light
 endif

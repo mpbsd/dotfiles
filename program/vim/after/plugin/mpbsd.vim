@@ -182,9 +182,16 @@ function! mpbsd#staff_ime() abort
 endfunction
 
 function! mpbsd#format_distinct_configurations() abort
-  silent %s/), (/\r),\r(/g
-  silent %s/(\[/(\r\t\[/
-  silent %s/\], \[/\],\r\t\[/g
-  silent %s/^\[(/(/
-  silent %s/)\]$/\r)/
+  silent %s/), (/\r),\r(/eg
+  silent %s/(\[/(\r\t\[/e
+  silent %s/\], \[/\],\r\t\[/eg
+  silent %s/^\[(/(/e
+  silent %s/)\]$/\r)/e
+  silent %s/\%(^\s*\['\|'\],\?$\)//eg
+  silent %s/', '/-/eg
+  silent g/-/Tab /-
+  silent g/-/>>
+  silent %s/^),$\n^($/\r# 1\r/e
+  silent %s/^($/# 1\r/e
+  silent g/^)$/d
 endfunction
