@@ -2,34 +2,23 @@
 #+author: Marcelo Bezerra
 #+email: bezerra@ufg.br
 #+options: num:nil toc:nil
-
-* Setup a package manager
-
-** Setup package with use-package
-
-#+begin_src emacs-lisp
-  (require 'package)
-  (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
-                           ("melpa" . "https://melpa.org/packages/")
-                           ("org" . "https://orgmode.org/elpa/"))
-  )
-  (package-initialize)
-  (unless package-archive-contents (package-refresh-contents))
-  (unless (package-installed-p 'use-package)
-          (package-install 'use-package))
-  (require 'use-package)
-  (setq use-package-always-ensure t)
-#+end_src
+#+property: header-args:emacs-lisp :tangle ./init-new.el
 
 * Setup the UX
+
+** Allows for GNU/Emacs to play nicely with tiling window managers
 
 #+begin_src emacs-lisp
   (setq frame-resize-pixelwise t)
 #+end_src
 
+** Inhibit the startup message
+
 #+begin_src emacs-lisp
   (setq inhibit-startup-message t)
 #+end_src
+
+** Inhibit bars of various kinds
 
 #+begin_src emacs-lisp
   (menu-bar-mode -1)
@@ -38,14 +27,14 @@
   (tooltip-mode -1)
 #+end_src
 
+** Display relative line numbers
+
 #+begin_src emacs-lisp
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode +1)
 #+end_src
 
-#+begin_src emacs-lisp
-  (load-theme 'wombat)
-#+end_src
+** Setup font faces
 
 #+begin_src emacs-lisp
   (defvar +font-size-fixed 128)
@@ -68,7 +57,34 @@
   )
 #+end_src
 
-* Keybindings
+* Setup a package manager
+
+** Setup both package and use-package
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
+                           ("melpa" . "https://melpa.org/packages/")
+                           ("org" . "https://orgmode.org/elpa/"))
+  )
+  (package-initialize)
+  (unless package-archive-contents (package-refresh-contents))
+  (unless (package-installed-p 'use-package)
+          (package-install 'use-package))
+  (require 'use-package)
+  (setq use-package-always-ensure t)
+#+end_src
+
+* Setup a color scheme
+
+#+begin_src emacs-lisp
+  (use-package solarized-theme)
+  (load-theme 'solarized-light t)
+#+end_src
+
+* Setup keybindings
+
+** General Keybindings and Evil Mode
 
 #+begin_src emacs-lisp
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
