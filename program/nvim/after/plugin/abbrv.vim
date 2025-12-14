@@ -41,6 +41,7 @@ Abolish equivalencia equivalência
 Abolish equivalencia{,s} equivalência{,s}
 Abolish espaco{,s} espaço{,s}
 Abolish estah{,s} está{,s}
+Abolish estao estão
 Abolish estatistica estatística
 Abolish estatistica{,s} estatística{,s}
 Abolish exercicio{,s} exercício{,s}
@@ -66,6 +67,7 @@ Abolish nao não
 Abolish numeric{a,o,as,os} numéric{a,o,as,os}
 Abolish numero{,s} número{,s}
 Abolish olimpiada{,s} olimpíada{,s}
+Abolish opc{ao,oes} opç{ão,ões}
 Abolish operac{ao,oes} operaç{ão,ões}
 Abolish ortonormalizacao ortonormalização
 Abolish parametro{,s} parâmetro{,s}
@@ -75,6 +77,7 @@ Abolish potencia{,s} potência{,s}
 Abolish proposic{ao,oes} proposiç{ão,ões}
 Abolish proposi{ao,oes} proposiç{ão,ões}
 Abolish propri{a,o} própri{a,o}
+Abolish quest{ao,oes} quest{ão,ões}
 Abolish quimica química
 Abolish quimic{a,as,o,os} químic{a,as,o,os}
 Abolish quimic{a,o,as,os} químic{a,o,as,os}
@@ -98,3 +101,4 @@ Abolish unico{,s} único{,s}
 Abolish unic{a,as,o,os} únic{a,as,o,os}
 Abolish variave{l,is} variáve{l,is}
 Abolish vizinhanca{,s} vizinhança{,s}
+Abolish voce{,s} você{,s}
