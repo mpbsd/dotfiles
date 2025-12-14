@@ -3,7 +3,7 @@
 #+email: bezerra@ufg.br
 #+options: num:nil toc:nil
 
-* Setup package and use-package
+* Setup a package manager
 
 #+begin_src emacs-lisp
   (require 'package)
@@ -22,6 +22,10 @@
 * Setup the UX
 
 #+begin_src emacs-lisp
+  (setq frame-resize-pixelwise t)
+#+end_src
+
+#+begin_src emacs-lisp
   (setq inhibit-startup-message t)
 #+end_src
 
@@ -30,6 +34,15 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
   (tooltip-mode -1)
+#+end_src
+
+#+begin_src emacs-lisp
+  (setq display-line-numbers-type 'relative)
+  (global-display-line-numbers-mode +1)
+#+end_src
+
+#+begin_src emacs-lisp
+  (load-theme 'wombat)
 #+end_src
 
 #+begin_src emacs-lisp
@@ -51,15 +64,6 @@
      ("C-=" . default-text-scale-increase)
      )
   )
-#+end_src
-
-#+begin_src emacs-lisp
-  (setq display-line-numbers-type 'relative)
-  (global-display-line-numbers-mode +1)
-#+end_src
-
-#+begin_src emacs-lisp
-  (load-theme 'wombat)
 #+end_src
 
 * Keybindings

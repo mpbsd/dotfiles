@@ -1,4 +1,5 @@
 program/emacs/init.el~
+program/emacs/evil.org~
 program/nvim/lazy-lock.json
 program/vifm/vifminfo.json
 program/vim/pythonx/__pycache__/
