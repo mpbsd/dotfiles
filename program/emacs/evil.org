@@ -5,6 +5,8 @@
 
 * Setup a package manager
 
+** Setup package with use-package
+
 #+begin_src emacs-lisp
   (require 'package)
   (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
