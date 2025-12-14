@@ -1,0 +1,101 @@
+#+title: GNU/Emacs Configuration
+#+author: Marcelo Bezerra
+#+email: bezerra@ufg.br
+#+options: num:nil toc:nil
+
+* Setup package and use-package
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
+                           ("melpa" . "https://melpa.org/packages/")
+                           ("org" . "https://orgmode.org/elpa/"))
+  )
+  (package-initialize)
+  (unless package-archive-contents (package-refresh-contents))
+  (unless (package-installed-p 'use-package)
+          (package-install 'use-package))
+  (require 'use-package)
+  (setq use-package-always-ensure t)
+#+end_src
+
+* Setup the UX
+
+#+begin_src emacs-lisp
+  (setq inhibit-startup-message t)
+#+end_src
+
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (tooltip-mode -1)
+#+end_src
+
+#+begin_src emacs-lisp
+  (defvar +font-size-fixed 128)
+  (defvar +font-size-variable 128)
+  (set-face-attribute 'default nil
+                      :family "JetBrainsMono Nerd Font Mono"
+                      :height +font-size-fixed)
+  (set-face-attribute 'fixed-pitch nil
+                      :family "JetBrainsMono Nerd Font Mono"
+                      :height +font-size-fixed)
+  (set-face-attribute 'variable-pitch nil
+                      :family "JetBrainsMono Nerd Font Mono"
+                      :height +font-size-variable)
+  (use-package default-text-scale
+   :bind (
+     ("C-0" . default-text-scale-reset)
+     ("C--" . default-text-scale-decrease)
+     ("C-=" . default-text-scale-increase)
+     )
+  )
+#+end_src
+
+#+begin_src emacs-lisp
+  (setq display-line-numbers-type 'relative)
+  (global-display-line-numbers-mode +1)
+#+end_src
+
+#+begin_src emacs-lisp
+  (load-theme 'wombat)
+#+end_src
+
+* Keybindings
+
+#+begin_src emacs-lisp
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+  (use-package general
+    :config
+    (general-create-definer rune/leader-keys
+      :keymaps '(normal insert visual emacs)
+      :prefix "SPC"
+      :global-prefix "C-SPC"
+    )
+    ; (rune/leader-keys
+    ;   "t"  '(:ignore t :which-key "toggles")
+    ;   "tt" '(counsel-load-theme :which-key "choose theme")
+    ; )
+  )
+  (use-package evil
+    :init
+    (setq evil-want-integration t)
+    (setq evil-want-keybinding nil)
+    (setq evil-want-C-u-scroll t)
+    (setq evil-want-C-i-jump nil)
+    :config
+    (evil-mode 1)
+    ; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+    ; (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+    ; (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+    ; (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+    ; (evil-set-initial-state 'messages-buffer-mode 'normal)
+    ; (evil-set-initial-state 'dashboard-mode 'normal)
+  )
+  (use-package evil-collection
+    :after evil
+    :config
+    (evil-collection-init)
+  )
+#+end_src

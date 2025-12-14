@@ -349,11 +349,12 @@ local KEY = {
 				"lua",
 				"markdown",
 				"markdown_inline",
+				"python",
+				"query",
+				"regex",
+				"ruby",
 				"vim",
 				"vimdoc",
-				"python",
-				"ruby",
-				"query",
 			}
 			for _, trs in pairs(TRS) do
 				local cmd = CMD:gsub("<trs>", trs)
