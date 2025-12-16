@@ -1,65 +1,26 @@
-#+title:    GNU/Emacs Configuration
-#+author:   Marcelo Bezerra
-#+email:    bezerra@ufg.br
-#+startup:  showeverything
-#+property: header-args :tangle evil.el
-
-* Setup a package manager
-
-** Package management
-
-*** Setup package repositories
-
-#+begin_src emacs-lisp
 (require 'package)
 (add-to-list 'package-archives '("G" . "https://elpa.gnu.org/packages/") t)
-(add-to-list 'package-archives '("M" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("O" . "https://orgmode.org/packages/") t)
+(add-to-list 'package-archives '("M" . "https://melpa.org/packages/")    t)
+(add-to-list 'package-archives '("O" . "https://orgmode.org/packages/")  t)
 (package-initialize)
 (unless package-archive-contents (package-refresh-contents))
-#+end_src
 
-*** Setup use-package
-
-#+begin_src emacs-lisp
 (unless (package-installed-p 'use-package) (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
-#+end_src
 
-* Setup the UX
-
-** Allows for GNU/Emacs to play nicely with tiling window managers
-
-#+begin_src emacs-lisp
 (setq frame-resize-pixelwise t)
-#+end_src
 
-** Inhibit the startup message
-
-#+begin_src emacs-lisp
 (setq inhibit-startup-message t)
-#+end_src
 
-** Inhibit bars of various kinds
-
-#+begin_src emacs-lisp
 (menu-bar-mode   -1)
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
-#+end_src
 
-** Display relative line numbers
-
-#+begin_src emacs-lisp
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode +1)
-#+end_src
 
-** Setup font faces
-
-#+begin_src emacs-lisp
 (defvar +font-size-fixed 128)
 (defvar +font-size-variable 128)
 (set-face-attribute 'default nil
@@ -78,18 +39,10 @@
              :bind (("C-0" . default-text-scale-reset)
                     ("C--" . default-text-scale-decrease)
                     ("C-=" . default-text-scale-increase)))
-#+end_src
 
-** Setup a color scheme
-
-#+begin_src emacs-lisp
 (use-package gruvbox-theme)
 (load-theme 'gruvbox t)
-#+end_src
 
-** Setup spacious-mode
-
-#+begin_src emacs-lisp
 (use-package spacious-padding
              :ensure t
              :config
@@ -107,20 +60,10 @@
              (spacious-padding-mode 1)
              ;; Set a key binding if you need to toggle spacious padding.
              (define-key global-map (kbd "<f8>") #'spacious-padding-mode))
-#+end_src
 
-** Setup org-bullets
-
-#+begin_src emacs-lisp
 (use-package org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-#+end_src
 
-* Setup keybindings
-
-** Setup Evil Mode
-
-#+begin_src emacs-lisp
 (use-package evil
              :init
              (setq evil-want-integration t)
@@ -135,15 +78,10 @@
              (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
              (evil-set-initial-state 'messages-buffer-mode 'normal)
              (evil-set-initial-state 'dashboard-mode 'normal))
-#+end_src
 
-#+begin_src emacs-lisp
 (use-package evil-collection
              :after evil
              :config
              (evil-collection-init))
-#+end_src
 
-#+begin_src emacs-lisp
 (use-package evil-tutor)
-#+end_src
