@@ -4,15 +4,22 @@
 
 * Setup a package manager
 
-** Setup both package and use-package
+** Package management
+
+*** Setup package repositories
 
 #+begin_src emacs-lisp
 (require 'package)
-(setq package-archives '(("elpa"  . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("org"   . "https://orgmode.org/packages/")))
+(add-to-list 'package-archives '("G" . "https://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("M" . "https://melpa.org/packages/")    t)
+(add-to-list 'package-archives '("O" . "https://orgmode.org/packages/")  t)
 (package-initialize)
 (unless package-archive-contents (package-refresh-contents))
+#+end_src
+
+*** Ensure use-package is installed
+
+#+begin_src emacs-lisp
 (unless (package-installed-p 'use-package) (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
@@ -74,8 +81,8 @@
 ** Setup a color scheme
 
 #+begin_src emacs-lisp
-(use-package solarized-theme)
-(load-theme 'solarized-dark t)
+(use-package gruvbox-theme)
+(load-theme 'gruvbox t)
 #+end_src
 
 ** Setup org-bullets

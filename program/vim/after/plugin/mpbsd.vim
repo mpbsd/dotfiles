@@ -158,6 +158,7 @@ function! mpbsd#staff_ime() abort
           \    '"degre": "\7"',
           \    '"regim": "\8"',
           \    '"afair": "\9"',
+          \    '"usual": "[]"',
           \    '"break": "[]"',
           \    '"patch": "[]"\r},',
           \  ],

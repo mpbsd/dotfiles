@@ -511,6 +511,7 @@ local KEY = {
 						[["degre": "\7"]],
 						[["regim": "\8"]],
 						[["afair": "\9"]],
+						'"usual": []',
 						'"break": []',
 						'"patch": []\\r},',
 					},
