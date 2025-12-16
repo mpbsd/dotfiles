@@ -1,6 +1,8 @@
-#+title: GNU/Emacs Configuration
-#+author: Marcelo Bezerra
-#+email: bezerra@ufg.br
+#+title:    GNU/Emacs Configuration
+#+author:   Marcelo Bezerra
+#+email:    bezerra@ufg.br
+#+startup:  showeverything
+#+property: header-args :tangle evil.el
 
 * Setup a package manager
 
@@ -122,15 +124,4 @@
 
 #+begin_src emacs-lisp
 (use-package evil-tutor)
-#+end_src
-
-** Setup General Keybindings
-
-#+begin_src emacs-lisp
-(use-package general
-             :config
-             (general-create-definer mpbsd/leader-keys
-                                     :keymaps '(normal insert visual emacs)
-                                     :prefix "SPC"
-                                     :global-prefix "C-SPC"))
 #+end_src
