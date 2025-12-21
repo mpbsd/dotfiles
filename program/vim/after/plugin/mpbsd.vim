@@ -128,9 +128,42 @@ function! mpbsd#students_sigaa() abort
   endif
 endfunction
 
+function! mpbsd#rgcg() abort
+  let l:rule = [
+        \ '^\(\%(art\.\|§\) *\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)',
+        \ 'par[aá]grafo [uú]nico\.\?',
+        \ '[ivxlcdm]\+\s*[.-]\s*\)$'
+        \]
+  let l:proc = '\<[0-9]\{5\}\.[0-9]\{6\}\/[0-9]\{4\}-[0-9]\{2\}\>'
+  let l:line = [
+        \ '^goi[aâ]nia, [0-9]\{1,2\} de [a-zç]\+ de [0-9]\{4\}\.\?$',
+        \ '^regulamento geral dos cursos de graduação (rgcg)$'
+        \]
+  let l:MEAN = [
+        \ '\%((mge) será obtida pela seguinte fórmula: \)\@<=',
+        \ '.*',
+        \ '\%( em que:\)\@=',
+        \ '\\\[MGE=\\frac{\\sum_{i=1}^{N}CHD_{i}ND_{i}}',
+        \ '{\\sum_{i=1}^{N}CHD_{i}}\\\]'
+        \]
+  let l:mge0 = l:MEAN[0] . l:MEAN[1] . l:MEAN[2]
+  let l:mge1 = l:MEAN[3] . l:MEAN[4]
+  silent %s/^ *[0-9*]\+ *$//ge
+  silent execute printf("g/./:/%s/+1;/^$/-1join", join(l:rule, '\|'))
+  silent execute printf("1,/%s/-1d", l:proc)
+  silent execute printf("/%s/;/%s/d", l:line[0], l:line[1])
+  silent %s/R E S O L V E:/\\begin{document}/
+  silent $s/$/\\end{document}/
+  silent g/\(^$\n^$\)\+/d
+  silent %s/–/-/ge
+  silent %s/%/\\\%/ge
+  silent %s/IP *= *100\*TA *+ *10\*TI *- *3\*QR/\\\[IP=100TA+10TI-3QR\\\]/
+  silent execute printf("1,$s/%s/%s/", l:mge0, l:mge1)
+endfunction
+
 function! mpbsd#staff_ime() abort
   let l:fn = expand('%')
-  let l:r1 = '\<staff_ime\.json\>'
+  let l:r1 = '\<staff\.json\>'
   let l:r2 = 'DEMONSTRATIVO DE PESSOAL LOTADO'
   let l:r3 = 'INSTITUTO DE MATEMÁTICA E ESTATÍSTICA'
   if l:fn =~# l:r1 && search(l:r2) > 0 && search(l:r3) > 0
@@ -158,9 +191,9 @@ function! mpbsd#staff_ime() abort
           \    '"degre": "\7"',
           \    '"regim": "\8"',
           \    '"afair": "\9"',
-          \    '"usual": "[]"',
-          \    '"break": "[]"',
-          \    '"patch": "[]"\r},',
+          \    '"usual": []',
+          \    '"break": []',
+          \    '"patch": []\r},',
           \  ],
           \}
     silent execute 'norm ggd17j'
