@@ -6,6 +6,7 @@ alias -s txt=vim
 if [ "$machine" = 'Linux' ]
 then
   alias ed='/usr/lib/plan9/bin/ed'
+  alias abook='abook --datafile ~/projects/reserved/program/abook/addressbook'
 elif [ "$machine" = 'Darwin' ]
 then
   alias cat='bat'
@@ -47,7 +48,7 @@ fi
 
 # python virtual environments {{{
 alias python=python3
-alias ae='. ~/.local/share/python3/bin/activate'
+alias ae='. venv/bin/activate'
 alias de='deactivate'
 # }}}
 
