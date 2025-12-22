@@ -148,6 +148,19 @@ function! mpbsd#rgcg() abort
         \]
   let l:mge0 = l:MEAN[0] . l:MEAN[1] . l:MEAN[2]
   let l:mge1 = l:MEAN[3] . l:MEAN[4]
+  let l:artg = [
+        \ '^\(art\. \+\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)\)$\n^\(.*\)$',
+        \ '\\begin{artigo}\\label{\1}\r\2\r\\end{artigo}'
+        \]
+  let l:parg = [
+        \ '^\(§ \+\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)\)$\n^\(.*\)$',
+        \ '\\begin{paragrafo}\\label{\1}\r\2\r\\end{paragrafo}'
+        \]
+  let l:uniq = [
+        \ '^parágrafo único\.\?$\n^\s*\(.*\)$',
+        \ '\\begin{paragrafounico}\r\1\r\\end{paragrafounico}'
+        \]
+  " command execution starts here
   silent %s/^ *[0-9*]\+ *$//ge
   silent execute printf("g/./:/%s/+1;/^$/-1join", join(l:rule, '\|'))
   silent execute printf("1,/%s/-1d", l:proc)
@@ -159,6 +172,9 @@ function! mpbsd#rgcg() abort
   silent %s/%/\\\%/ge
   silent %s/IP *= *100\*TA *+ *10\*TI *- *3\*QR/\\\[IP=100TA+10TI-3QR\\\]/
   silent execute printf("1,$s/%s/%s/", l:mge0, l:mge1)
+  silent execute printf("1,$s/%s/%s/", l:artg[0], l:artg[1])
+  silent execute printf("1,$s/%s/%s/", l:parg[0], l:parg[1])
+  silent execute printf("1,$s/%s/%s/", l:uniq[0], l:uniq[1])
 endfunction
 
 function! mpbsd#staff_ime() abort
