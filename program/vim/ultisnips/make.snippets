@@ -32,16 +32,17 @@ clean:
 endsnippet
 
 snippet _clang "C projects" bA
-CC     = cc
+CC     = gcc
 CFLAGS = -g -W -Wall -Wextra -Wpedantic -std=c89
 CLIBS  = -lc
 
-$0
+build: src/main.c
+	$(CC) $(CFLAGS) $(CLIBS) src/main.c -o bin/main.o
 
 clean:
-	find bin -type f -name "*.o" -delete
+	find bin -type f -name "*.o" | xargs rm -rf
 
-.PHONY: clean
+.PHONY: build clean
 endsnippet
 
 snippet _python "Python projects" bA
