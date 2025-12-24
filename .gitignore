@@ -1,6 +1,5 @@
+program/emacs/custom.el
 program/emacs/evil.org~
-program/emacs/init-new.el
-program/emacs/init-new.el~
 program/emacs/init.el~
 program/nvim/lazy-lock.json
 program/vifm/vifminfo.json

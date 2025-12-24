@@ -12,7 +12,7 @@
 
 #+begin_src emacs-lisp
   (require 'package)
-  (add-to-list 'package-archives '("G" . "https://elpa.gnu.org/packages/") t)
+  (add-to-list 'package-archives '("E" . "https://elpa.gnu.org/packages/") t)
   (add-to-list 'package-archives '("M" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("O" . "https://orgmode.org/packages/") t)
   (package-initialize)
@@ -22,7 +22,8 @@
 *** Setup use-package
 
 #+begin_src emacs-lisp
-  (unless (package-installed-p 'use-package) (package-install 'use-package))
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
   (require 'use-package)
   (setq use-package-always-ensure t)
 #+end_src
@@ -35,19 +36,20 @@
   (setq frame-resize-pixelwise t)
 #+end_src
 
-** Inhibit the startup message
+** Inhibit both the startup and scratch messages
 
 #+begin_src emacs-lisp
   (setq inhibit-startup-message t)
+  (setq initial-scratch-message nil)
 #+end_src
 
-** Inhibit bars of various kinds
+** Disabling various things
 
 #+begin_src emacs-lisp
-  (menu-bar-mode   -1)
+  (menu-bar-mode -1)
   (scroll-bar-mode -1)
-  (tool-bar-mode   -1)
-  (tooltip-mode    -1)
+  (tool-bar-mode -1)
+  (tooltip-mode -1)
 #+end_src
 
 ** Display relative line numbers
@@ -55,6 +57,12 @@
 #+begin_src emacs-lisp
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode +1)
+#+end_src
+
+** Highlight the current line
+
+#+begin_src emacs-lisp
+  (global-hl-line-mode +1)
 #+end_src
 
 ** Setup font faces
@@ -100,9 +108,9 @@
 ** Setup a modeline
 
 #+begin_src emacs-lisp
-    (use-package doom-modeline
-      :ensure t
-      :init (doom-modeline-mode 1))
+  (use-package doom-modeline
+    :ensure t
+    :init (doom-modeline-mode 1))
 #+end_src
 
 ** Setup spacious-mode
@@ -112,14 +120,14 @@
     :ensure t
     :config
     (setq spacious-padding-widths
-	'( :internal-border-width 15
-	   :header-line-width 4
-	   :mode-line-width 6
-	   :custom-button-width 3
-	   :tab-width 4
-	   :right-divider-width 30
-	   :scroll-bar-width 8
-	   :fringe-width 8))
+	    '( :internal-border-width 15
+	       :header-line-width 4
+	       :mode-line-width 6
+	       :custom-button-width 3
+	       :tab-width 4
+	       :right-divider-width 30
+	       :scroll-bar-width 8
+	       :fringe-width 8))
     ; (spacious-padding-mode 1)
     (define-key global-map (kbd "<f8>") #'spacious-padding-mode))
 #+end_src

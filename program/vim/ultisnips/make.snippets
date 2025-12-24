@@ -32,8 +32,8 @@ clean:
 endsnippet
 
 snippet _clang "C projects" bA
-CC     = gcc
-CFLAGS = -g -W -Wall -Wextra -Wpedantic -std=c89
+CC     = cc
+CFLAGS = -g -W -Wall -Werror -Wextra -Wpedantic -std=c89
 CLIBS  = -lc
 
 build: src/main.c
