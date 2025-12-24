@@ -10,7 +10,7 @@
 
 *** Setup package repositories
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (require 'package)
   (add-to-list 'package-archives '("E" . "https://elpa.gnu.org/packages/") t)
   (add-to-list 'package-archives '("M" . "https://melpa.org/packages/") t)
@@ -21,7 +21,7 @@
 
 *** Setup use-package
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (unless (package-installed-p 'use-package)
     (package-install 'use-package))
   (require 'use-package)
@@ -32,20 +32,20 @@
 
 ** Allows for GNU/Emacs to play nicely with tiling window managers
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (setq frame-resize-pixelwise t)
 #+end_src
 
 ** Inhibit both the startup and scratch messages
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (setq inhibit-startup-message t)
   (setq initial-scratch-message nil)
 #+end_src
 
 ** Disabling various things
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
@@ -54,20 +54,20 @@
 
 ** Display relative line numbers
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode)
 #+end_src
 
 ** Highlight the current line
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (global-hl-line-mode)
 #+end_src
 
 ** Setup font faces
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (defvar +font-size-fixed 128)
   (defvar +font-size-variable 128)
   (set-face-attribute 'default nil
@@ -90,7 +90,7 @@
 
 ** Setup a color scheme
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (use-package doom-themes
     :ensure t
     :custom
@@ -107,7 +107,7 @@
 
 ** Setup a modeline
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (use-package doom-modeline
     :ensure t
     :init (doom-modeline-mode 1))
@@ -115,33 +115,33 @@
 
 ** Setup spacious-mode
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (use-package spacious-padding
     :ensure t
     :config
     (setq spacious-padding-widths
-	    '( :internal-border-width 15
-	       :header-line-width 4
-	       :mode-line-width 6
-	       :custom-button-width 3
-	       :tab-width 4
-	       :right-divider-width 30
-	       :scroll-bar-width 8
-	       :fringe-width 8))
-    ; (spacious-padding-mode 1)
+  	'( :internal-border-width 15
+  	   :header-line-width 4
+  	   :mode-line-width 6
+  	   :custom-button-width 3
+  	   :tab-width 4
+  	   :right-divider-width 30
+  	   :scroll-bar-width 8
+  	   :fringe-width 8))
+  					; (spacious-padding-mode 1)
     (define-key global-map (kbd "<f8>") #'spacious-padding-mode))
 #+end_src
 
 ** Setup org-bullets
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (use-package org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 #+end_src
 
 * Inhibit backup files
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (setq make-backup-files nil)
 #+end_src
 
@@ -149,7 +149,7 @@
 
 ** Setup Evil Mode
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (use-package evil
     :init
     (setq evil-want-integration t)
@@ -166,13 +166,20 @@
     (evil-set-initial-state 'dashboard-mode 'normal))
 #+end_src
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (use-package evil-collection
     :after evil
     :config
     (evil-collection-init))
 #+end_src
 
-#+begin_src emacs-lisp
+#+begin_src elisp
   (use-package evil-tutor)
+#+end_src
+
+* Magit
+
+#+begin_src elisp
+  (use-package magit
+    :ensure t)
 #+end_src
