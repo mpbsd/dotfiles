@@ -56,13 +56,13 @@
 
 #+begin_src emacs-lisp
   (setq display-line-numbers-type 'relative)
-  (global-display-line-numbers-mode +1)
+  (global-display-line-numbers-mode)
 #+end_src
 
 ** Highlight the current line
 
 #+begin_src emacs-lisp
-  (global-hl-line-mode +1)
+  (global-hl-line-mode)
 #+end_src
 
 ** Setup font faces
@@ -137,6 +137,12 @@
 #+begin_src emacs-lisp
   (use-package org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
+
+* Inhibit backup files
+
+#+begin_src emacs-lisp
+  (setq make-backup-files nil)
 #+end_src
 
 * Setup keybindings
