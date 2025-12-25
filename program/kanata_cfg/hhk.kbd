@@ -51,8 +51,8 @@
 
 (deflayer aux
      _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12    _     _
-     _ @sad @sad @sad    _    _    _    _    _    _    _    _    _    _
-     _ @sad @sad @sad    _    _   @H   @J   @K   @L    _    _    _
+     _ @sad @sag @saf    _    _    _    _    _    _    _    _    _    _
+     _ @sar @sac @sdb    _    _   @H   @J   @K   @L    _    _    _
      _    _    _    _    _    _    _    _    _    _    _    _
           _    _              _              _    _
 )
