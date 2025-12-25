@@ -1,4 +1,8 @@
-(defcfg process-unmapped-keys yes)
+; vim: ft=lisp
+
+(defcfg
+ process-unmapped-keys yes
+)
 
 (defvar
   tap-time 250
@@ -16,8 +20,7 @@
   l (tap-hold $tap-time $hold-time l C-spc)
   ; (tap-hold $tap-time $hold-time ; rctl)
 
-  spc (tap-hold $tap-time $hold-time spc (layer-while-held aux)
-)
+  spc (tap-hold $tap-time $hold-time spc (layer-while-held aux))
 
   H left
   J down
@@ -33,25 +36,25 @@
 )
 
 (defsrc
-   esc    1    2    3    4    5    6    7    8    9    0    -    =    \   grv
-   tab    q    w    e    r    t    y    u    i    o    p    [    ] bspc
-  lctl    a    s    d    f    g    h    j    k    l    ;    '  ret
+   esc    1    2    3    4    5    6    7    8    9    0    -    = bspc
+   tab    q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps    a    s    d    f    g    h    j    k    l    ;    '  ret
   lsft    z    x    c    v    b    n    m    ,    .    / rsft
-       lmet lalt            spc           ralt rmet
+  lctl lmet lalt            spc           ralt rmet rctl
 )
 
 (deflayer qwerty
-   esc    1    2    3    4    5    6    7    8    9    0    -    =    \   grv
-   tab    q    w    e    r    t    y    u    i    o    p    [    ] bspc
+   esc    1    2    3    4    5    6    7    8    9    0    -    = bspc
+   tab    q    w    e    r    t    y    u    i    o    p    [    ]    \
    esc   @a   @s   @d   @f    g    h   @j   @k   @l   @;    '  ret
   lsft    z    x    c    v    b    n    m    ,    .    / rsft
-       lmet lalt           @spc           ralt rmet
+  lctl lmet lalt           @spc           ralt rmet rctl
 )
 
 (deflayer aux
-     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12    _     _
+     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12    _
      _ @sad @sag @saf    _    _    _    _    _    _    _    _    _    _
      _ @sar @sac @sdb    _    _   @H   @J   @K   @L    _    _    _
      _    _    _    _    _    _    _    _    _    _    _    _
-          _    _              _              _    _
+     _    _    _              _              _    _    _
 )

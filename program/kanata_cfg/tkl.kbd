@@ -18,7 +18,8 @@
   l (tap-hold $tap-time $hold-time l rmet)
   ; (tap-hold $tap-time $hold-time ; rctl)
 
-  spc (tap-hold $tap-time $hold-time spc (layer-while-held aux))
+  spc (tap-hold $tap-time $hold-time spc (layer-while-held aux)
+)
 
   lcb S-[
   rcb S-]
@@ -58,7 +59,7 @@
 
 (deflayer aux
      _    _    _    _    _    _    _    _    _    _    _    _    _          _      _     _
-     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12    _  @sad   @sag  @saf
+     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12  del  @sad   @sag  @saf
      _    _    _    _    _    _    _    _    _    _    _    _    _    _  @sar   @sac  @sdb
      _ @lcb    [    ] @rcb    _   @H   @J   @K   @L    _    _    _
      _    _  @lt  @gt    _    _    _    _    _    _    _    _                      _
