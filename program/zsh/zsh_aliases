@@ -7,6 +7,7 @@ if [ "$machine" = 'Linux' ]
 then
   alias ed='/usr/lib/plan9/bin/ed'
   alias abook='abook --config "${XDG_CONFIG_HOME}/abook/abookrc" --datafile "${XDG_CONFIG_HOME}/abook/addressbook"'
+  alias irssi='irssi --config="${XDG_CONFIG_HOME}/irssi/config" --home="${XDG_DATA_HOME}/irssi"'
 elif [ "$machine" = 'Darwin' ]
 then
   alias cat='bat'

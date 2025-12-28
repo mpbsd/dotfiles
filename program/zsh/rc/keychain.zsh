@@ -1,4 +1,4 @@
-keychain --quiet --nogui obsd pass home ghub cros
+keychain --absolute --dir "${XDG_RUNTIME_DIR}/keychain" --quiet --nogui obsd pass home ghub cros
 [ -z "${HOSTNAME}" ] && HOSTNAME=`uname -n`
-[ -f ${HOME}/.keychain/${HOSTNAME}-sh ] && . ${HOME}/.keychain/${HOSTNAME}-sh
-[ -f ${HOME}/.keychain/${HOSTNAME}-sh-gpg ] && . ${HOME}/.keychain/${HOSTNAME}-sh-gpg
+[ -f "${XDG_RUNTIME_DIR}/.keychain/${HOSTNAME}-sh" ] && . "${XDG_RUNTIME_DIR}/.keychain/${HOSTNAME}-sh"
+[ -f "${XDG_RUNTIME_DIR}/.keychain/${HOSTNAME}-sh-gpg" ] && . "${XDG_RUNTIME_DIR}/.keychain/${HOSTNAME}-sh-gpg"
