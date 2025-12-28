@@ -56,9 +56,9 @@ set hlsearch
 set incsearch
 
 " use '+' instead of '*' for all yank, delete, change and put operations
-" if has('unnamedplus')
-"   set clipboard=unnamedplus
-" endif
+if has('unnamedplus')
+  set clipboard+=unnamedplus
+endif
 
 " characters to use for displaying special items
 set fillchars=fold:·,foldsep:│,vert:│
@@ -125,13 +125,16 @@ set background=dark
 
 " graphical user interface
 if has("gui_running")
-  set guioptions-=T
-  set guioptions-=b
   set guioptions+=d
-  set guioptions-=l
+  set guioptions+=i
+  set guioptions-=b
   set guioptions-=m
+  set guioptions-=t
+  set guioptions-=T
+  set guioptions-=l
+  set guioptions-=L
   set guioptions-=r
+  set guioptions-=R
   set guifont=JetBrainsMono\ Nerd\ Font\ 13
   set guiheadroom=0
-  set background=light
 endif
