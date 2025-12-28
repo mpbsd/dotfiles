@@ -21,8 +21,10 @@
   spc (tap-hold $tap-time $hold-time spc (layer-while-held aux)
 )
 
-  lcb S-[
-  rcb S-]
+  lp S-9
+  rp S-0
+  lb S-[
+  rb S-]
   lt S-,
   gt S-.
 
@@ -60,8 +62,8 @@
 (deflayer aux
      _    _    _    _    _    _    _    _    _    _    _    _    _          _      _     _
      _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12  del  @sad   @sag  @saf
-     _    _    _    _    _    _    _    _    _    _    _    _    _    _  @sar   @sac  @sdb
-     _ @lcb    [    ] @rcb    _   @H   @J   @K   @L    _    _    _
+     _    _  @lp  @rp    _    _    _    _    _    _    _    _    _    _  @sar   @sac  @sdb
+     _  @lb    [    ]  @rb    _   @H   @J   @K   @L    _    _    _
      _    _  @lt  @gt    _    _    _    _    _    _    _    _                      _
      _    _    _              _              _    _    _                    _      _     _
 )

@@ -6,7 +6,7 @@ alias -s txt=vim
 if [ "$machine" = 'Linux' ]
 then
   alias ed='/usr/lib/plan9/bin/ed'
-  alias abook='abook --datafile ~/projects/reserved/program/abook/addressbook'
+  alias abook='abook --config "${XDG_CONFIG_HOME}/abook/abookrc" --datafile "${XDG_CONFIG_HOME}/abook/addressbook"'
 elif [ "$machine" = 'Darwin' ]
 then
   alias cat='bat'
@@ -55,6 +55,9 @@ alias de='deactivate'
 # sqlite {{{
 alias sqlite3="sqlite3 --init ${HOME}/.config/sqlite3/sqliterc"
 # }}}
+
+# wget
+alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget/hsts"'
 
 # change directory {{{
 alias ..='cd ..'

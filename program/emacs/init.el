@@ -1,5 +1,8 @@
 (setq vc-follow-symlinks t)
 
+(setq viper-mode t)
+(require 'viper)
+
 (setq gc-cons-threshold (* 8 1024 1024 1024))
 (run-with-idle-timer 10 t (lambda () (garbage-collect)))
 (setq read-process-output-max (* 1024 1024))
@@ -8,13 +11,13 @@
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
 
-(defvar backups-dir
+(defvar backup-dir
   (file-name-as-directory (expand-file-name "backups" user-emacs-directory)))
-(unless (file-exists-p backups-dir)
-  (make-directory backups-dir))
+(unless (file-exists-p backup-dir)
+  (make-directory backup-dir))
 
 (setq backup-by-copying t
-      backup-directory-alist `((".*" . ,backups-dir))
+      backup-directory-alist `((".*" . ,backup-dir))
       delete-old-version t
       kept-new-versions 6
       kept-old-versions 2
@@ -49,4 +52,6 @@
                     :height +font-size-variable
                     :weight 'medium)
 
-(load-theme 'tango-dark)
+(load-theme 'modus-vivendi)
+
+(setq sentence-end-double-space nil)
