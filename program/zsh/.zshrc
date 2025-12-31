@@ -20,7 +20,7 @@ source "${HOME}/.config/zsh/rc/mappings.zsh"
 source "${HOME}/.config/zsh/rc/keychain.zsh"
 
 # syntax-highlighting and autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bg=#073642,fg=#eee8e5,bold'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bg=#073642,fg=#eee8e5'
 source '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 source '/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
 
