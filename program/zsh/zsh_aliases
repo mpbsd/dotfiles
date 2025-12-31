@@ -1,70 +1,65 @@
-machine=$(uname -s)
+SYSTEM=$(uname -o)
 
 alias -s txt=vim
 
-# cat {{{
-if [ "$machine" = 'Linux' ]
-then
-  alias ed='/usr/lib/plan9/bin/ed'
-  alias abook='abook --config "${XDG_CONFIG_HOME}/abookrc/abookrc" --datafile "${HOME}/projects/reserved/program/abookdb/addressbook"'
-  alias irssi='irssi --config="${XDG_CONFIG_HOME}/irssi/config" --home="${XDG_DATA_HOME}/irssi"'
-  alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget/wget-hsts"'
-elif [ "$machine" = 'Darwin' ]
-then
-  alias cat='bat'
-fi
-# }}}
-
-# file management {{{
+# file management
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
-alias xu='shred -xu'
-# }}}
 
-# git {{{
-alias ga='git add'
-alias gc='git checkout'
-alias gd='git diff'
-alias gi='git commit'
-alias gj='git pull'
-alias gk='git push'
-alias gl='git log --graph --oneline --decorate'
-alias gm='git mergetool'
-alias gt='git status'
-# }}}
+# changing directories
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
-# ls {{{
-if [ "$machine" = 'Linux' ]
+if [ "$SYSTEM" = 'GNU/Linux' ]  # {{{
 then
+  # ABOOK
+  ABOOKCONF="${XDG_CONFIG_HOME}/abookrc/abookrc"
+  ABOOKDATA="${HOME}/projects/reserved/program/abookdb/addressbook"
+  alias abook="abook --config ${ABOOKCONF} --datafile ${ABOOKDATA}"
+
+  # Ed is the standard text editor
+  alias ed='/usr/lib/plan9/bin/ed'
+
+  # IRSSI
+  IRSSICONF="${XDG_CONFIG_HOME}/irssi/config"
+  IRSSIDATA="${XDG_DATA_HOME}/irssi"
+  alias irssi="irssi --config=${IRSSICONF} --home=${IRSSIDATA}"
+
+  # WGET
+  alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget/wget-hsts"'
+
+  # listing files
   alias la='ls --color=auto -A'
   alias ll='ls --color=auto -l'
   alias ls='ls --color=auto'
-elif [ "$machine" = 'Darwin' ]
+
+  # file management
+  alias xu='shred -xu'
+
+  # Debian specific
+  if [ -x /usr/bin/lsb_release ]
+  then
+    DISTRO="$(lsb_release -i | sed 's/^Distributor ID:\s\+\(.*\)$/\1/')"
+    if [ "$DISTRO" = 'Debian' ]
+    then
+      alias purge="dpkg -l | sed -n '/^\(Desired\||\|+\|ii\)/!p'"
+    fi
+  fi
+elif [ "$SYSTEM" = 'Darwin' ]
 then
+  # listing files
   alias la='ls -G -A'
   alias ll='ls -G -l'
   alias ls='ls -G'
-fi
-# }}}
+fi  # }}}
 
-# python virtual environments {{{
+# Python {{{
 alias python=python3
 alias ae='. venv/bin/activate'
 alias de='deactivate'
 # }}}
 
-# sqlite {{{
-alias sqlite3="sqlite3 --init ${HOME}/.config/sqlite3/sqliterc"
-# }}}
-
-# change directory {{{
-alias ..='cd ..'
-alias ...='cd ../..'
-# }}}
-
-# purge {{{
-alias purge="dpkg -l | sed -n '/^ii/!p' | tail +6"
-# }}}
-
+# Hacks
 alias recscr='ffmpeg -f x11grab -video_size 1920x1080 -i :0.0+0,0 -f pulse -i default -c:v libx264 -preset ultrafast -crf 18 -c:a aac -b:a 192k ~/videos/output.mp4'
