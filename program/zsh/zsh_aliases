@@ -8,6 +8,7 @@ then
   alias ed='/usr/lib/plan9/bin/ed'
   alias abook='abook --config "${XDG_CONFIG_HOME}/abookrc/abookrc" --datafile "${HOME}/projects/reserved/program/abookdb/addressbook"'
   alias irssi='irssi --config="${XDG_CONFIG_HOME}/irssi/config" --home="${XDG_DATA_HOME}/irssi"'
+  alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget/wget-hsts"'
 elif [ "$machine" = 'Darwin' ]
 then
   alias cat='bat'
@@ -56,9 +57,6 @@ alias de='deactivate'
 # sqlite {{{
 alias sqlite3="sqlite3 --init ${HOME}/.config/sqlite3/sqliterc"
 # }}}
-
-# wget
-alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget/hsts"'
 
 # change directory {{{
 alias ..='cd ..'

@@ -1,8 +1,5 @@
 (setq vc-follow-symlinks t)
 
-(setq viper-mode t)
-(require 'viper)
-
 (setq gc-cons-threshold (* 8 1024 1024 1024))
 (run-with-idle-timer 10 t (lambda () (garbage-collect)))
 (setq read-process-output-max (* 1024 1024))
@@ -11,8 +8,7 @@
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
 
-(defvar backup-dir
-  (file-name-as-directory (expand-file-name "backups" user-emacs-directory)))
+(defvar backup-dir "~/.cache/emacs/")
 (unless (file-exists-p backup-dir)
   (make-directory backup-dir))
 
@@ -31,6 +27,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(set-fringe-mode '(10 . 10))
 
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
