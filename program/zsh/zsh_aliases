@@ -15,17 +15,17 @@ alias ....='cd ../../..'
 if [ "$SYSTEM" = 'GNU/Linux' ]  # {{{
 then
   # ABOOK
-  ABOOKCONF="${XDG_CONFIG_HOME}/abookrc/abookrc"
-  ABOOKDATA="${HOME}/projects/reserved/program/abookdb/addressbook"
-  alias abook="abook --config ${ABOOKCONF} --datafile ${ABOOKDATA}"
+  alias abook="abook\
+    --config ${XDG_CONFIG_HOME}/abookrc/abookrc\
+    --datafile ${HOME}/projects/reserved/program/abookdb/addressbook"
 
   # Ed is the standard text editor
   alias ed='/usr/lib/plan9/bin/ed'
 
   # IRSSI
-  IRSSICONF="${XDG_CONFIG_HOME}/irssi/config"
-  IRSSIDATA="${XDG_DATA_HOME}/irssi"
-  alias irssi="irssi --config=${IRSSICONF} --home=${IRSSIDATA}"
+  alias irssi="irssi\
+    --config=${XDG_CONFIG_HOME}/irssi/config\
+    --home=${XDG_CONFIG_HOME}/irssi"
 
   # WGET
   alias wget='wget --hsts-file="${XDG_CACHE_HOME}/wget/wget-hsts"'
