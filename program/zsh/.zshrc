@@ -9,6 +9,7 @@ source "${HOME}/.config/zsh/rc/history.zsh"
 
 # prompt
 source "${HOME}/.config/zsh/rc/prompt.zsh"
+# eval "$(starship init zsh)"
 
 # vi mode
 source "${HOME}/.config/zsh/rc/vimode.zsh"
