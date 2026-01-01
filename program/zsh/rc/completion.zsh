@@ -7,6 +7,7 @@ bindkey -M menuselect 'l' vi-down-line-or-history
 
 setopt MENU_COMPLETE
 
-autoload -Uz compinit; compinit -d ~/.cache/zsh/zcompdump
+autoload -Uz compinit
+compinit -d ~/.cache/zsh/zcompdump
 
 zstyle ':completion:*' menu select
