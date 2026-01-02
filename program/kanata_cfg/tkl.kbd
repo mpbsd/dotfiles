@@ -1,11 +1,8 @@
-(defcfg
-  process-unmapped-keys yes
-)
+(defcfg process-unmapped-keys yes)
 
 (defvar
   tap-time 250
-  hold-time 250
-)
+  hold-time 250)
 
 (defalias
   a (tap-hold $tap-time $hold-time a lctl)
@@ -18,15 +15,32 @@
   l (tap-hold $tap-time $hold-time l rmet)
   ; (tap-hold $tap-time $hold-time ; rctl)
 
-  spc (tap-hold $tap-time $hold-time spc (layer-while-held aux)
-)
+  spc (tap-hold $tap-time $hold-time spc (layer-while-held aux))
 
+  td S-`
+  ex S-1
+  at S-2
+  hs S-3
+  dl S-4
+  pe S-5
+  cr S-6
+  an S-7
+  as S-8
   lp S-9
   rp S-0
+  ms S--
+  es S-=
+
   lb S-[
   rb S-]
+  pp S-\
+
+  cl S-;
+  dq S-'
+
   lt S-,
   gt S-.
+  qs S-/
 
   H left
   J down
@@ -61,9 +75,9 @@
 
 (deflayer aux
      _    _    _    _    _    _    _    _    _    _    _    _    _          _      _     _
-     _   f1   f2   f3   f4   f5   f6   f7   f8   f9  f10  f11  f12  del  @sad   @sag  @saf
-     _    _  @lp  @rp    _    _    _    _    _    _    _    _    _    _  @sar   @sac  @sdb
-     _  @lb    [    ]  @rb    _   @H   @J   @K   @L    _    _    _
-     _    _  @lt  @gt    _    _    _    _    _    _    _    _                      _
+   @td  @ex  @at  @hs  @dl  @pe  @cr  @an  @as  @lp  @rp  @ms  @es  del  @sad   @sag  @saf
+     _    _  @lp  @rp    _    _    _    _    _    _    _  @lb  @rb  @pp  @sar   @sac  @sdb
+     _  @lb    [    ]  @rb    _   @H   @J   @K   @L  @cl  @dq    _
+     _    _  @lt  @gt    _    _    _    _  @lt  @gt  @qs    _                      _
      _    _    _              _              _    _    _                    _      _     _
 )

@@ -63,17 +63,17 @@ nnoremap <Leader>pd :PlugUpdate<CR>
 nnoremap <Leader>pg :PlugUpgrade<CR>
 nnoremap <Leader>pc :PlugClean<CR>
 
-nnoremap <Leader>pa :A<CR>
-nnoremap <Leader>ps :AS<CR>
-nnoremap <Leader>pv :AV<CR>
-
 nnoremap <Leader>0g :0G<CR>
 
 nnoremap <LocalLeader>es :UltiSnipsEdit<CR>
 
-nnoremap <LocalLeader>dk :call deadk#toggle_dead_keys()<CR>
+nnoremap <Leader>le :e $XDG_DATA_HOME/pta/2026.ledger<CR>
 
-nnoremap <Leader>le :e $XDG_DATA_HOME/pta/2024.ledger<CR>
+nnoremap <Leader>pa :A<CR>
+nnoremap <Leader>ps :AS<CR>
+nnoremap <Leader>pv :AV<CR>
+
+nnoremap <LocalLeader>dk :call deadk#toggle_dead_keys()<CR>
 
 nnoremap <LocalLeader>uid :-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)'<CR>
 
