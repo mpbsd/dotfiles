@@ -55,6 +55,7 @@ Abolish harmonica{,s} harmônica{,s}
 Abolish hipotese hipótese
 Abolish hipotese{,s} hipótese{,s}
 Abolish implicita{,s} implícita{,s}
+Abolish importac{ao,oes} importaç{ão,ões}
 Abolish informatica informática
 Abolish inscric{ao,oes} inscriç{ão,ões}
 Abolish interpolacao interpolação

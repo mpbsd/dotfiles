@@ -1,0 +1,40 @@
+global !p
+
+def TIER(t):
+	T = {
+		"b": "bens:",
+		"e": "encargos:",
+		"g": "gastos:",
+		"r": "receita:",
+	}
+	return T[t] if t in T.keys() else None
+
+def SPAN(T, D, A, C="BRL"):
+	"""
+	T: tier
+	D: description
+	A: amount
+	C: currency
+	"""
+	span = 80
+	tabs = 2
+	text = TIER(T) + D
+	bulk = f"{A} {C}"
+	bare = span - tabs - len(text) - len(bulk)
+	return (tabs * " ") + text + (bare * " ") + bulk
+
+endglobal
+
+snippet d "data" bA
+`date +%Y-%m-%d` ${1:place}
+$0
+endsnippet
+
+snippet '^\s*([begr]) (.*) \1 (-?\d+\.\d{2})$' "[begr]" rA
+`!p
+T = match.group(1)
+D = match.group(2)
+A = match.group(3)
+snip.rv = SPAN(T, D, A)`
+$0
+endsnippet

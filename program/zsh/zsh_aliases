@@ -1,6 +1,7 @@
 SYSTEM=$(uname -o)
 
 alias -s txt=vim
+alias -s ledger=vim
 
 # file management
 alias cp='cp -iv'
@@ -18,6 +19,8 @@ then
   alias abook="abook\
     --config ${XDG_CONFIG_HOME}/abookrc/abookrc\
     --datafile ${HOME}/projects/reserved/program/abookdb/addressbook"
+
+  alias bt='bluetoothctl'
 
   # Ed is the standard text editor
   alias ed='/usr/lib/plan9/bin/ed'
