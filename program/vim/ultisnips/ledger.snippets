@@ -2,9 +2,9 @@ global !p
 
 def TIER(t):
 	T = {
-		"b": "bens:",
-		"e": "encargos:",
-		"g": "gastos:",
+		"a": "ativos:",
+		"p": "passivos:",
+		"d": "despesas:",
 		"r": "receita:",
 	}
 	return T[t] if t in T.keys() else None
@@ -30,7 +30,7 @@ snippet d "data" bA
 $0
 endsnippet
 
-snippet '^\s*([begr]) (.*) \1 (-?\d+\.\d{2})$' "[begr]" rA
+snippet '^\s*([apdr]) (.*) \1 (-?\d+\.\d{2})$' "a helper function" rA
 `!p
 T = match.group(1)
 D = match.group(2)

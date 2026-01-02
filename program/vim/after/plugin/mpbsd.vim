@@ -86,6 +86,21 @@ function! mpbsd#unicode_seq_to_char() abort
   silent %s/\\u\(\x\{4\}\)/\=nr2char('0x'.submatch(1),1)/ge
 endfunction
 
+function! mpbsd#format_ledger_file() abort
+  let l:ll = 80
+  let l:tb = 2
+  let l:cl = getline('.')
+  let l:re = '^\s*\([a-z: -]\+\)\s\{2,\}\(-\?[0-9]\+\.[0-9]\{2\} BRL\)$'
+  if l:cl =~# l:re
+    let l:g1 = trim(substitute(l:cl, l:re, '\1', ''))
+    let l:g2 = trim(substitute(l:cl, l:re, '\2', ''))
+    let l:ws = l:ll - l:tb - strwidth(l:g1) - strwidth(l:g2)
+    let l:ts = '%-' . l:tb . 's%s%-' . l:ws . 's%s'
+    let l:fs = printf(l:ts, ' ', l:g1, ' ', l:g2)
+    silent execute printf("s/%s/%s/", l:cl, l:fs)
+  endif
+endfunction
+
 function! mpbsd#students_sigaa() abort
   let l:fn = expand('%')
   let l:r1 = '\<[0-9]\{6\}IME[0-9]\{4\}\.json\>'
@@ -126,55 +141,6 @@ function! mpbsd#students_sigaa() abort
   else
     echo 'Does not match criteria for code execution'
   endif
-endfunction
-
-function! mpbsd#rgcg() abort
-  let l:rule = [
-        \ '^\(\%(art\.\|§\) *\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)',
-        \ 'par[aá]grafo [uú]nico\.\?',
-        \ '[ivxlcdm]\+\s*[.-]\s*\)$'
-        \]
-  let l:proc = '\<[0-9]\{5\}\.[0-9]\{6\}\/[0-9]\{4\}-[0-9]\{2\}\>'
-  let l:line = [
-        \ '^goi[aâ]nia, [0-9]\{1,2\} de [a-zç]\+ de [0-9]\{4\}\.\?$',
-        \ '^regulamento geral dos cursos de graduação (rgcg)$'
-        \]
-  let l:MEAN = [
-        \ '\%((mge) será obtida pela seguinte fórmula: \)\@<=',
-        \ '.*',
-        \ '\%( em que:\)\@=',
-        \ '\\\[MGE=\\frac{\\sum_{i=1}^{N}CHD_{i}ND_{i}}',
-        \ '{\\sum_{i=1}^{N}CHD_{i}}\\\]'
-        \]
-  let l:mge0 = l:MEAN[0] . l:MEAN[1] . l:MEAN[2]
-  let l:mge1 = l:MEAN[3] . l:MEAN[4]
-  let l:artg = [
-        \ '^\(art\. \+\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)\)$\n^\(.*\)$',
-        \ '\\begin{artigo}\\label{\1}\r\2\r\\end{artigo}'
-        \]
-  let l:parg = [
-        \ '^\(§ \+\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)\)$\n^\(.*\)$',
-        \ '\\begin{paragrafo}\\label{\1}\r\2\r\\end{paragrafo}'
-        \]
-  let l:uniq = [
-        \ '^parágrafo único\.\?$\n^\s*\(.*\)$',
-        \ '\\begin{paragrafounico}\r\1\r\\end{paragrafounico}'
-        \]
-  " command execution starts here
-  silent %s/^ *[0-9*]\+ *$//ge
-  silent execute printf("g/./:/%s/+1;/^$/-1join", join(l:rule, '\|'))
-  silent execute printf("1,/%s/-1d", l:proc)
-  silent execute printf("/%s/;/%s/d", l:line[0], l:line[1])
-  silent %s/R E S O L V E:/\\begin{document}/
-  silent $s/$/\\end{document}/
-  silent g/\(^$\n^$\)\+/d
-  silent %s/–/-/ge
-  silent %s/%/\\\%/ge
-  silent %s/IP *= *100\*TA *+ *10\*TI *- *3\*QR/\\\[IP=100TA+10TI-3QR\\\]/
-  silent execute printf("1,$s/%s/%s/", l:mge0, l:mge1)
-  silent execute printf("1,$s/%s/%s/", l:artg[0], l:artg[1])
-  silent execute printf("1,$s/%s/%s/", l:parg[0], l:parg[1])
-  silent execute printf("1,$s/%s/%s/", l:uniq[0], l:uniq[1])
 endfunction
 
 function! mpbsd#staff_ime() abort
@@ -229,6 +195,55 @@ function! mpbsd#staff_ime() abort
   else
     echo 'Does not match criteria for code execution'
   endif
+endfunction
+
+function! mpbsd#rgcg() abort
+  let l:rule = [
+        \ '^\(\%(art\.\|§\) *\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)',
+        \ 'par[aá]grafo [uú]nico\.\?',
+        \ '[ivxlcdm]\+\s*[.-]\s*\)$'
+        \]
+  let l:proc = '\<[0-9]\{5\}\.[0-9]\{6\}\/[0-9]\{4\}-[0-9]\{2\}\>'
+  let l:line = [
+        \ '^goi[aâ]nia, [0-9]\{1,2\} de [a-zç]\+ de [0-9]\{4\}\.\?$',
+        \ '^regulamento geral dos cursos de graduação (rgcg)$'
+        \]
+  let l:MEAN = [
+        \ '\%((mge) será obtida pela seguinte fórmula: \)\@<=',
+        \ '.*',
+        \ '\%( em que:\)\@=',
+        \ '\\\[MGE=\\frac{\\sum_{i=1}^{N}CHD_{i}ND_{i}}',
+        \ '{\\sum_{i=1}^{N}CHD_{i}}\\\]'
+        \]
+  let l:mge0 = l:MEAN[0] . l:MEAN[1] . l:MEAN[2]
+  let l:mge1 = l:MEAN[3] . l:MEAN[4]
+  let l:artg = [
+        \ '^\(art\. \+\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)\)$\n^\(.*\)$',
+        \ '\\begin{artigo}\\label{\1}\r\2\r\\end{artigo}'
+        \]
+  let l:parg = [
+        \ '^\(§ \+\%([1-9][ºo]\|[0-9]\{2,\}\.\?\)\)$\n^\(.*\)$',
+        \ '\\begin{paragrafo}\\label{\1}\r\2\r\\end{paragrafo}'
+        \]
+  let l:uniq = [
+        \ '^parágrafo único\.\?$\n^\s*\(.*\)$',
+        \ '\\begin{paragrafounico}\r\1\r\\end{paragrafounico}'
+        \]
+  " command execution starts here
+  silent %s/^ *[0-9*]\+ *$//ge
+  silent execute printf("g/./:/%s/+1;/^$/-1join", join(l:rule, '\|'))
+  silent execute printf("1,/%s/-1d", l:proc)
+  silent execute printf("/%s/;/%s/d", l:line[0], l:line[1])
+  silent %s/R E S O L V E:/\\begin{document}/
+  silent $s/$/\\end{document}/
+  silent g/\(^$\n^$\)\+/d
+  silent %s/–/-/ge
+  silent %s/%/\\\%/ge
+  silent %s/IP *= *100\*TA *+ *10\*TI *- *3\*QR/\\\[IP=100TA+10TI-3QR\\\]/
+  silent execute printf("1,$s/%s/%s/", l:mge0, l:mge1)
+  silent execute printf("1,$s/%s/%s/", l:artg[0], l:artg[1])
+  silent execute printf("1,$s/%s/%s/", l:parg[0], l:parg[1])
+  silent execute printf("1,$s/%s/%s/", l:uniq[0], l:uniq[1])
 endfunction
 
 function! mpbsd#format_distinct_configurations() abort

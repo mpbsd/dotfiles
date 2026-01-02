@@ -54,6 +54,11 @@ augroup mpbsd_latex
   }
 augroup END
 
+augroup mpbsd_ledger
+  autocmd!
+  autocmd BufWritePre *.ledger :call mpbsd#format_ledger_file()
+augroup END
+
 augroup mpbsd_sigaa
   autocmd!
   autocmd BufWritePre *.json :call mpbsd#students_sigaa()
