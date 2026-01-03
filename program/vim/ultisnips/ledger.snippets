@@ -4,7 +4,7 @@ def TIER(t):
 	T = {
 		"a": "ativos:",
 		"p": "passivos:",
-		"d": "despesas:",
+		"g": "gastos:",
 		"r": "receita:",
 	}
 	return T[t] if t in T.keys() else None
@@ -12,7 +12,7 @@ def TIER(t):
 def SPAN(T, D, A, C="BRL"):
 	"""
 	T: tier
-	D: description
+	D: description (account, in PTA's jargon)
 	A: amount
 	C: currency
 	"""
@@ -30,7 +30,7 @@ snippet d "data" bA
 $0
 endsnippet
 
-snippet '^\s*([apdr]) (.*) \1 (-?\d+\.\d{2})$' "a helper function" rA
+snippet '^\s*([apgr]) (.*) \1 (-?\d+\.\d{2})$' "a helper function" rA
 `!p
 T = match.group(1)
 D = match.group(2)
