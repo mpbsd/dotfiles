@@ -1,7 +1,7 @@
 nnoremap <Leader>rc :e $XDG_CONFIG_HOME/vim/vimrc<CR>
 nnoremap <Leader>cv :Files $XDG_CONFIG_HOME/vim/rc<CR>
 nnoremap <Leader>fa :Files $XDG_CONFIG_HOME/vim/after/plugin<CR>
-nnoremap <Leader>fp :Files $XDG_CONFIG_HOME/vim/plugged<CR>
+nnoremap <Leader>fp :Files $XDG_DATA_HOME/vim/plugged<CR>
 nnoremap <Leader>fh :History<CR>
 nnoremap <Leader>fs :Snippets<CR>
 
