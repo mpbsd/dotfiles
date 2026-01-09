@@ -22,9 +22,6 @@ then
 
   alias bt='bluetoothctl'
 
-  # Ed is the standard text editor
-  alias ed='/usr/lib/plan9/bin/ed'
-
   # IRSSI
   alias irssi="irssi\
     --config=${XDG_CONFIG_HOME}/irssi/config\
