@@ -16,7 +16,7 @@ local KEY = {
 	-- [W]rite {{{
 	{
 		mod = "n",
-		lhs = "<Leader>w",
+		lhs = "<LocalLeader>w",
 		rhs = "<Cmd>w<CR>",
 		opt = {
 			noremap = true,
@@ -28,7 +28,7 @@ local KEY = {
 	-- [Q]uit {{{
 	{
 		mod = "n",
-		lhs = "<Leader>q",
+		lhs = "<LocalLeader>q",
 		rhs = "<Cmd>q<CR>",
 		opt = {
 			noremap = true,
@@ -222,7 +222,7 @@ local KEY = {
 	-- [T]o [U]pper case {{{
 	{
 		mod = "i",
-		lhs = "<Leader>tu",
+		lhs = "<LocalLeader>tu",
 		rhs = "<esc>mmbgUiw`ma",
 		opt = {
 			noremap = true,
@@ -234,7 +234,7 @@ local KEY = {
 	-- [T]o [U]pper case {{{
 	{
 		mod = "n",
-		lhs = "<Leader>tu",
+		lhs = "<LocalLeader>tu",
 		rhs = "gUiw",
 		opt = {
 			noremap = true,
@@ -246,7 +246,7 @@ local KEY = {
 	-- [T]o [L]ower case {{{
 	{
 		mod = "i",
-		lhs = "<Leader>tl",
+		lhs = "<LocalLeader>tl",
 		rhs = "<esc>mmbguiw`ma",
 		opt = {
 			noremap = true,
@@ -258,7 +258,7 @@ local KEY = {
 	-- [T]o [L]ower case {{{
 	{
 		mod = "n",
-		lhs = "<Leader>tl",
+		lhs = "<LocalLeader>tl",
 		rhs = "guiw",
 		opt = {
 			noremap = true,
@@ -323,7 +323,7 @@ local KEY = {
 	-- generate a random alphanumeric pass phrase {{{
 	{
 		mod = "n",
-		lhs = "<Leader>uid",
+		lhs = "<Leader>id",
 		rhs = function()
 			local hex = [[-1r!python3 -c 'import uuid; print(uuid.uuid4().hex)']]
 			vim.cmd(hex)

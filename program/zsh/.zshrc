@@ -1,4 +1,4 @@
-# PATH
+# path
 source "${HOME}/.config/zsh/rc/path.zsh"
 
 # completion
@@ -20,13 +20,12 @@ source "${HOME}/.config/zsh/rc/mappings.zsh"
 source "${HOME}/.config/zsh/rc/keychain.zsh"
 
 # syntax-highlighting and autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bg=#073642,fg=#EEE8E5'
-source '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-source '/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+# zsh_autosuggest_highlight_style='bg=#073642,fg=#eee8e5'
+# source '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+# source '/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
 
-# FZF
-source '/usr/share/doc/fzf/examples/completion.zsh'
-source '/usr/share/doc/fzf/examples/key-bindings.zsh'
+# fzf
+source "${HOME}/.config/zsh/rc/fzf.zsh"
 
 # aliases
 source "${HOME}/.config/zsh/zsh_aliases"

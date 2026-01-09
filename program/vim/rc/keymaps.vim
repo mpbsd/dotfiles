@@ -1,4 +1,4 @@
-nnoremap <Leader>rc :e $XDG_CONFIG_HOME/vim/vimrc<CR>
+nnoremap <Leader>rc :edit $XDG_CONFIG_HOME/vim/vimrc<CR>
 nnoremap <Leader>cv :Files $XDG_CONFIG_HOME/vim/rc<CR>
 nnoremap <Leader>fa :Files $XDG_CONFIG_HOME/vim/after/plugin<CR>
 nnoremap <Leader>fp :Files $XDG_DATA_HOME/vim/plugged<CR>
@@ -44,16 +44,16 @@ nnoremap <Leader>ht :call mpbsd#vim_search_for_help_in_new('t')<CR>
 nnoremap K :call mpbsd#vim_find_help_cword(expand('<cword>'))<CR>
 
 nnoremap <Leader>; :
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <LocalLeader>q :q<CR>
+nnoremap <LocalLeader>w :w<CR>
 nnoremap Y y$
 
-inoremap <Leader>cc mmb~`ma
-nnoremap <Leader>cc mmb~`m
-inoremap <Leader>tu mmbgUiw`ma
-nnoremap <Leader>tu mmgUiw`m
-inoremap <Leader>tl mmbguiw`ma
-nnoremap <Leader>tl mmguiw`m
+inoremap <LocalLeader>cc mmb~`ma
+nnoremap <LocalLeader>cc mmb~`m
+inoremap <LocalLeader>tu mmbgUiw`ma
+nnoremap <LocalLeader>tu mmgUiw`m
+inoremap <LocalLeader>tl mmbguiw`ma
+nnoremap <LocalLeader>tl mmguiw`m
 
 nnoremap <Leader>db :call mpbsd#replace_non_ascii_chars()<CR>
 

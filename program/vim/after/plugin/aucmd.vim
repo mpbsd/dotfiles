@@ -5,9 +5,7 @@ augroup END
 
 augroup mpbsd_email
   autocmd!
-  autocmd FileType mail {
-    setlocal spell
-  }
+  autocmd FileType mail setlocal spell
 augroup END
 
 augroup mpbsd_fdm
