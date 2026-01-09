@@ -16,7 +16,7 @@ local KEY = {
 	-- [W]rite {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>w",
+		lhs = "<Leader>w",
 		rhs = "<Cmd>w<CR>",
 		opt = {
 			noremap = true,
@@ -28,7 +28,7 @@ local KEY = {
 	-- [Q]uit {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>q",
+		lhs = "<Leader>q",
 		rhs = "<Cmd>q<CR>",
 		opt = {
 			noremap = true,
@@ -198,7 +198,7 @@ local KEY = {
 	-- [C]heck [H]ealth {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>ch",
+		lhs = "<Leader>ch",
 		rhs = "<Cmd>checkhealth<CR>",
 		opt = {
 			noremap = true,
@@ -210,7 +210,7 @@ local KEY = {
 	-- [C]amel [C]ase {{{
 	{
 		mod = "i",
-		lhs = "<LocalLeader>cc",
+		lhs = "<Leader>cc",
 		rhs = "<esc>mmb~`ma",
 		opt = {
 			noremap = true,
@@ -222,7 +222,7 @@ local KEY = {
 	-- [T]o [U]pper case {{{
 	{
 		mod = "i",
-		lhs = "<LocalLeader>tu",
+		lhs = "<Leader>tu",
 		rhs = "<esc>mmbgUiw`ma",
 		opt = {
 			noremap = true,
@@ -234,7 +234,7 @@ local KEY = {
 	-- [T]o [U]pper case {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>tu",
+		lhs = "<Leader>tu",
 		rhs = "gUiw",
 		opt = {
 			noremap = true,
@@ -246,7 +246,7 @@ local KEY = {
 	-- [T]o [L]ower case {{{
 	{
 		mod = "i",
-		lhs = "<LocalLeader>tl",
+		lhs = "<Leader>tl",
 		rhs = "<esc>mmbguiw`ma",
 		opt = {
 			noremap = true,
@@ -258,7 +258,7 @@ local KEY = {
 	-- [T]o [L]ower case {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>tl",
+		lhs = "<Leader>tl",
 		rhs = "guiw",
 		opt = {
 			noremap = true,
@@ -270,7 +270,7 @@ local KEY = {
 	-- [D]ecode [B]uffer {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>db",
+		lhs = "<Leader>db",
 		rhs = function()
 			local EQUIVALENCE_TABLE = {
 				["à"] = "a",
@@ -305,7 +305,7 @@ local KEY = {
 	-- [R]remove [T]railing spaces from the current buffer {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>rt",
+		lhs = "<Leader>rt",
 		rhs = function()
 			local pos = vim.fn.getpos(".")
 			local reg = vim.fn.getreg("/")
@@ -338,7 +338,7 @@ local KEY = {
 	-- [I]nstall [G]rammars for tree-sitter {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>ig",
+		lhs = "<Leader>ig",
 		rhs = function()
 			local CMD = ":TSInstall <trs>"
 			local TRS = {
@@ -429,7 +429,7 @@ local KEY = {
 	-- [S]tudents [S]IGAA {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>ss",
+		lhs = "<Leader>ss",
 		rhs = function()
 			local fn = vim.regex([[\<[0-9]\{6\}IME[0-9]\{4\}\.json\>]])
 			local b1 = fn:match_str(vim.fn.expand("%"))
@@ -480,7 +480,7 @@ local KEY = {
 	-- [S]taff [I]ME {{{
 	{
 		mod = "n",
-		lhs = "<LocalLeader>si",
+		lhs = "<Leader>si",
 		rhs = function()
 			local fn = vim.fn.expand("%")
 			local b1 = vim.regex([[\<staff_ime\.json\>]]):match_str(fn)
