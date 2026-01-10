@@ -47,7 +47,7 @@ bindkey -M vicmd '^e' edit-command-line
 function zle-keymap-select () {
   case "$KEYMAP" in
     vicmd)
-      echo -ne '\e[3 q'
+      echo -ne '\e[5 q'
       ;;
     viins|main)
       echo -ne '\e[1 q'
