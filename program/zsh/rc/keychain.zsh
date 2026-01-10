@@ -8,7 +8,7 @@ typeset -a KEYS=(
 
 keychain \
   --absolute \
-  --dir "${XDG_RUNTIME_DIR}/keychain" \
+  --dir "${XDG_DATA_HOME}/keychain" \
   --nogui \
   --quiet \
   "${(z)KEYS}"
