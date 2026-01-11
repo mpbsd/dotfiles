@@ -55,8 +55,8 @@ augroup END
 
 augroup mpbsd_ledger
   autocmd!
-  autocmd BufWritePre *.ledger g/BRL$/s/\s*,\s*/:/ge
-  autocmd BufWritePre *.ledger g/BRL$/:call mpbsd#format_ledger_file()
+  autocmd BufWritePre *.ledger <silent> g/BRL$/s/\s*,\s*/:/ge
+  autocmd BufWritePre *.ledger <silent> g/BRL$/:call mpbsd#format_ledger_file()
 augroup END
 
 augroup mpbsd_sigaa
