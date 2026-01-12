@@ -97,7 +97,7 @@ function! mpbsd#format_ledger_file() abort
     let l:ws = l:ll - l:tb - strwidth(l:g1) - strwidth(l:g2)
     let l:ts = '%-' . l:tb . 's%s%-' . l:ws . 's%s'
     let l:fs = printf(l:ts, ' ', l:g1, ' ', l:g2)
-    silent execute printf("s/%s/%s/", l:cl, l:fs)
+    silent execute printf("s/%s/%s/e", l:cl, l:fs)
   endif
 endfunction
 
