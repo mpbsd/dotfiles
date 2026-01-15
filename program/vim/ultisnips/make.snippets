@@ -1,4 +1,4 @@
-snippet _latex "LaTeX projects" bA
+snippet ;latex "LaTeX projects" bA
 TEX_ENGINE = xelatex
 BIB_ENGINE = bibtex
 OPR_SYSTEM = $(shell uname -s)
@@ -31,7 +31,7 @@ clean:
 .PHONY: draft final clean
 endsnippet
 
-snippet _clang "C projects" bA
+snippet ;clang "C projects" bA
 CC     = cc
 CFLAGS = -g -W -Wall -Werror -Wextra -Wpedantic -std=c89
 CLIBS  = -lc
@@ -45,16 +45,13 @@ clean:
 .PHONY: build clean
 endsnippet
 
-snippet _python "Python projects" bA
+snippet ;python "Python projects" bA
 build:
 	python3 -m pkgs.core
 
 black:
 	isort pkgs/core.py
 	black -l 79 pkgs/core.py
-
-clean:
-	find . -type d -name __pycache__ | xargs rm -rf
 
 ready:
 	python3 -m venv venv; \
@@ -63,5 +60,5 @@ ready:
 	pip install -r requirements.txt; \
 	deactivate
 
-.PHONY: build black clean ready
+.PHONY: build black ready
 endsnippet

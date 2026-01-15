@@ -1,0 +1,4 @@
+mode            = TABLE
+separator       = "|"
+main prompt     = "sqlite> "
+continue prompt = "   ...> "
