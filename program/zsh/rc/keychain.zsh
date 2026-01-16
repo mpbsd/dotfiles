@@ -2,6 +2,7 @@ typeset -a KEYS=(
   obsd
   pass
   home
+  berg
   ghub
   cros
 )
