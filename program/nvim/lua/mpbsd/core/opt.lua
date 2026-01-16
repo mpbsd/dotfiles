@@ -47,6 +47,7 @@ local OPT = {
 		showmode = false,
 		foldopen = "all",
 		foldclose = "all",
+		winborder = "rounded",
 	},
 	-- }}}
 }

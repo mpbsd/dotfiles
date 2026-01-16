@@ -1,9 +1,9 @@
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = vim.api.nvim_create_augroup("highlight_on_yank", { clear = true }),
+	group = vim.api.nvim_create_augroup("mpbsd_hl", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
-	desc = "Highlight yanked text",
+	desc = "Highlight on yank",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -17,11 +17,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		"tex",
 	},
 	command = [[setlocal foldmethod=marker]],
-	desc = "Marker foldmethod",
+	desc = "Sets foldmethod to marker based on filetypes",
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	group = vim.api.nvim_create_augroup("rm_trailing_spaces", { clear = true }),
+	group = vim.api.nvim_create_augroup("mpbsd_trim", { clear = true }),
 	pattern = {
 		"c",
 		"h",
@@ -30,11 +30,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		"sh",
 	},
 	command = [[%s/\s\+$//e]],
-	desc = "Trim white spaces",
+	desc = "Trim trailing white spaces off of your files on every save",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("edit_latex_files", { clear = true }),
+	group = vim.api.nvim_create_augroup("mpbsd_latex", { clear = true }),
 	pattern = { "tex" },
 	callback = function()
 		local MAP = require("mpbsd.core.glb").MAP
@@ -146,7 +146,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("edit_csv_files", { clear = true }),
+	group = vim.api.nvim_create_augroup("mpbsd_csv", { clear = true }),
 	pattern = { "csv" },
 	command = [[set nowrap]],
 	desc = "CSV",

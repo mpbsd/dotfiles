@@ -20,7 +20,7 @@ augroup mpbsd_fdm
   autocmd FileType vim    setlocal foldmethod=marker
 augroup END
 
-augroup mpbsd_trailing_spaces
+augroup mpbsd_trim
 autocmd!
 autocmd BufWritePre *.c       :call mpbsd#remove_trailing_spaces()
 autocmd BufWritePre *.csv     :call mpbsd#remove_trailing_spaces()

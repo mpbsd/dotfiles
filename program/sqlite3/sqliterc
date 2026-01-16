@@ -1,4 +1,4 @@
-mode            = TABLE
-separator       = "|"
-main prompt     = "sqlite> "
-continue prompt = "   ...> "
+.headers    on
+.mode       table
+.separator  |
+.prompt     "sqlite> " "   ...> "
